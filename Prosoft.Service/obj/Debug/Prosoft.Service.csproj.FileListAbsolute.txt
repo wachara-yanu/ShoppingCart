@@ -1,0 +1,17 @@
+D:\SourceCode\Ouikum\Prosoft.Service\bin\Debug\Prosoft.Service.dll
+D:\SourceCode\Ouikum\Prosoft.Service\bin\Debug\Prosoft.Service.pdb
+D:\SourceCode\Ouikum\Prosoft.Service\bin\Debug\System.Web.Mvc.dll
+D:\SourceCode\Ouikum\Prosoft.Service\bin\Debug\System.Web.Mvc.xml
+D:\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.csprojAssemblyReference.cache
+D:\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.csproj.CoreCompileInputs.cache
+D:\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.csproj.CopyComplete
+D:\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.dll
+D:\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.pdb
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\bin\Debug\Prosoft.Service.dll
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\bin\Debug\Prosoft.Service.pdb
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\bin\Debug\System.Web.Mvc.dll
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\bin\Debug\System.Web.Mvc.xml
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.csprojAssemblyReference.cache
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.csproj.CopyComplete
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.dll
+D:\SoureCode_2\SourceCode\Ouikum\Prosoft.Service\obj\Debug\Prosoft.Service.pdb
