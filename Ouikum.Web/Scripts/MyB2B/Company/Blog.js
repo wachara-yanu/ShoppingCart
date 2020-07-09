@@ -1,0 +1,325 @@
+﻿$(function () {
+    $('#addBlog_form').validate(
+    {
+        onkeydown: false,
+        onkeyup: false,
+        rules: {
+            ArticleName: {
+                required: true,
+                minlength: 4
+            },
+            ArticleTypeID: {
+                select: 0
+            },
+            ImgPath: {
+                required: true
+            },
+            ShortDescription: {
+                required: true
+            }
+        },
+        messages: {
+            ArticleName: {
+                required: label.vldrequired,
+                minlength: label.vldless_4char
+            },
+            ArticleTypeID: {
+                select: label.vldselectarticletype
+            },
+            ImgPath: {
+                required: label.vldrequired_img
+            },
+            ShortDescription: {
+                required: label.vldrequired
+            }
+        },
+        highlight: function (label) {
+            $('#btn_save').attr('disabled', true);
+            $(label).closest('.control-group').removeClass('success');
+            $(label).closest('.control-group').addClass('error');
+
+        },
+        success: function (label) {
+            label.closest('.control-group').removeClass('error');
+            label.closest('.control-group').addClass('success');
+            $('#btn_save').removeAttrs('disabled');
+        }
+    });
+
+    $("em").remove();
+    $(".t-upload-button > span").remove();
+    $("#add").click(function () {
+        $("h3#head_form").html("ADD ARTICLE");
+        $('#objState').val(1);
+        $("#Add_Edit").slideDown(function () {
+            $("#sidebar").height($("#autoHeight").height());
+            $("#main").height($("#autoHeight").height());
+        });
+        $(".SearchBlog").val("");
+        $('.show').hide();
+        $('.hide').show();
+        $('.icon-ShowHide.hide').removeAttr('style');
+    });
+    $(".close,#btn_cancle").click(function () {
+        $('.show').show();
+        $('.hide').hide();
+        $('.icon-ShowHide.hide').removeAttr('style');
+        close();
+    });
+    /*----------------------Ajax Submit-------------------------*/
+    $("#btn_save").click(function () {
+        if ($('#addBlog_form').valid() && checkBlog()) {
+            var LengthShortDescription = $('#ShortDescription').val().length;
+            var Description = tinyMCE.get('Description').getContent();
+                data = {
+                    objState: $('#objState').val(),
+                    RowVersion: $('#RowVersion').val(),
+                    ArticleID: $('#ArticleID').val(),
+                    ArticleTypeID: $('#ArticleTypeID').val(),
+                    ArticleName: $('#ArticleName').val(),
+                    Description: tinyMCE.get('Description').getContent(),
+                    ShortDescription: $('#ShortDescription').val(),
+                    ImgPath: $("#ImgPath").val()
+                }
+                if (LengthShortDescription < 500) {
+                    if (Description != ""){
+                        OpenLoading(true);
+                        $.ajax({
+                            url: GetUrl("Company/SaveBlog"),
+                            data: data,
+                            type: "POST",
+                            //datatype: "json",
+                            traditional: true,
+                            success: function (data) {
+                                if (data != null) {
+                                    OpenLoading(false);
+                                    $("#Add_Edit").slideUp(function () {
+                                        $("#sidebar").height($("#autoHeight").height());
+                                        $("#main").height($("#autoHeight").height());
+                                    });
+                                    close();
+                                    window.location = GetUrl('MyB2B/Company/Blog');
+
+                                    $(g_hidsubmit).eq(g_no).click();
+                                    if ($('#objState').val() == 1) {
+                                        if (data) {
+                                            bootbox.alert(label.vldsave_success);
+                                        } else {
+                                            bootbox.alert(label.vldsave_unsuccess);
+                                        }
+                                    } else {
+                                        if (data) {
+                                            bootbox.alert(label.vldedit_success);
+                                        } else {
+                                            bootbox.alert(label.vldEdit_unsuccess);
+                                        }
+                                    }
+
+                                    $('.show').show();
+                                    $('.hide').hide();
+                                    $('.icon-ShoswHide.hide').removeAttr('style');
+
+                                    close();
+                                    window.location = GetUrl('MyB2B/Company/Blog');
+
+                                } //end if
+                                else {
+                                    OpenLoading(false);
+                                    bootbox.alert(label.vldsave_unsuccess);
+                                }
+                            },
+                            error: function () {
+                                OpenLoading(false);
+                                //bootbox.alert(label.vldcannot_check_info);
+                            }
+                        });
+                    }else{
+                        bootbox.alert("กรุณากรอกเนื้อหารายละเอียด");
+                    }
+                } else {
+                    bootbox.alert(label.vldmessagelength);
+                }
+        } else {
+            bootbox.alert(label.vldrequired_complete);
+        }
+    });
+
+    $("ul.toggle > li").each(function (index) {
+        if ($(this).attr("id") == 'tab_Blog') {
+            $(this).addClass('active_template');
+        }
+        else {
+            $(this).removeClass('active_template');
+        }
+    });
+
+    tinyMCE.init({
+        mode: "exact",
+        elements: "Description",
+        theme: "advanced",
+        width: "80%",
+        height: "300",
+        plugins: "emotions,spellchecker,advhr,insertdatetime,preview",
+
+        // Theme options - button# indicated the row# only
+        theme_advanced_buttons1: "newdocument,|,bold,italic,underline,|,justifyleft,justifycenter,justifyright,fontselect,fontsizeselect,formatselect",
+        theme_advanced_buttons2: "cut,copy,paste,|,bullist,numlist,|,outdent,indent,|,undo,redo,forecolor,backcolor,|,link,unlink,|,insertdate,inserttime,|,code,preview",
+        //theme_advanced_buttons3: "",
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "left",
+        theme_advanced_statusbar_location: "bottom",
+        theme_advanced_resizing: false
+    });
+});
+
+/*---------------------------EditBlog---------------------------------*/
+function EditBlog(id) {
+    $.ajax({
+        url: GetUrl("Company/EditBlog"),
+        data: { ArticleID: id },
+        type: "POST",
+        datatype: "json",
+        traditional: true,
+        success: function (data) {
+            if (data != null) {
+                var urlArticle = GetUpload("Article/" + data.CompID + "/" + data.ArticleID + "/" + data.ImgPath + "");
+                $("h3#head_form").html("EDIT ARTICLE");
+                $('#btn_save').removeAttrs('disabled');
+                $(".SearchBlog").val("");
+                $('#objState').val(2);
+                $('#RowVersion').val(data.RowVersion);
+                $('#ArticleID').val(data.ArticleID);
+                $("#ArticleTypeID option[value=" + data.ArticleTypeID + "]").attr("selected", "selected");
+                $('#ArticleName').val(data.ArticleName);
+                $('#Description').val(data.Description);
+                tinyMCE.get('Description').setContent(data.Description);
+                $('#ShortDescription').val(data.ShortDescription);
+                //tinyMCE.get('ShortDescription').setContent(data.ShortDescription);
+                $("#ImgPath").val(data.ImgPath);
+                if (data.ImgPath != null && data.ImgPath != "") {
+                    $("#img_ImgPath").attr("src", urlArticle);
+                    $("#img_ImgPath").css("height", "120px");
+                } else {
+                    $("#img_ImgPath").attr("src", "http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image");
+                }
+                $('.control-group').removeClass("success error");
+                $("#Add_Edit").slideDown(function () {
+                    $("#sidebar").height($("#autoHeight").height());
+                    $("#main").height($("#autoHeight").height());
+                });
+                $('.show').hide();
+                $('.hide').show();
+                $('.icon-ShowHide.hide').removeAttr('style');
+            } //end if
+            else {
+                bootbox.alert(label.vldsave_unsuccess);
+            }
+        },
+        error: function () {
+            //bootbox.alert(label.vldcannot_check_info);
+        }
+    });
+}
+
+function CheckBoxall(Obj) {
+    if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+        $(".cbxCompID").attr("checked", "checked");
+        $(".cbxCompID").attr("value", "true");
+        Obj.attr("checked", "checked");
+        Obj.attr("value", "true");
+
+    } else {
+        $(".cbxCompID").removeAttr("checked");
+        $(".cbxCompID").attr("value", "false");
+        Obj.removeAttr("checked");
+        Obj.attr("value", "false");
+    }
+
+}
+
+function CheckBox(id) {
+    if ($("#" + id + "").attr("value") == true || $("#" + id + "").attr("checked") == "checked") {
+        if ($(".checkboxAll").attr("value") == true || $(".checkboxAll").attr("checked") == "checked") {
+            $("#" + id + "").attr("checked", "checked");
+            $("#" + id + "").attr("value", "true");
+        } else {
+            $("#" + id + "").attr("checked", "checked");
+            $("#" + id + "").attr("value", "true");
+        }
+    } else {
+        $(".cbxCompID").removeAttr("checked");
+        $(".cbxCompID").attr("value", "false");
+    }
+}
+
+/*-----------------------validateform-----------------------------*/
+$.validator.addMethod("Brief_Des", function (value, element, arg) {
+    var editorContent = tinyMCE.get('Brief_Description').getContent();
+    return arg != editorContent;
+
+}, label.vldrequired);
+$.validator.addMethod("detail", function (value, element, arg) {
+    var editorContent = tinyMCE.get('detail').getContent();
+    return arg != editorContent;
+
+}, label.vldrequired);
+
+$.validator.addMethod("select", function (value, element, arg) {
+    return arg != value;
+});
+
+/*------------------------close--------------------------------*/
+function close() {
+    $("#Add_Edit").slideUp(function () {
+        $("#sidebar").height($("#autoHeight").height());
+        $("#main").height($("#autoHeight").height());
+    });
+    $('#btn_save').attr('disabled', 'disabled');
+    $('#RowVersion').val("");
+    $('#ArticleID').val("");
+    $('#ArticleTypeID').val("");
+    $('#ArticleName').val("");
+    $('#Description').val("");
+    tinyMCE.get('Description').setContent("");
+    $('#ShortDescription').val("");
+    //tinyMCE.get('ShortDescription').setContent("");
+    $("#ImgPath").val("");
+    $(".SearchBlog").val("");
+    $("#ImgBlog").html("<img id='img_ImgPath' src='http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image' />");
+    $('.control-group').removeClass("success error");
+    $(".error").text("");
+}
+
+function delblog() {
+    if ($(".cbxItem").is(':checked')) {
+        if (confirm(label.vldconfirm_del_data)) { DelData('', '', 'ArticleID', 'Company'); }
+    } else {
+        bootbox.alert(label.vldnotice_del);
+    }
+}
+
+/*---------------------------------- Check Error --------------------------*/
+
+function checkError() {
+    if ($('.control-group').hasClass('error')) {
+        $("#btn_save").attr('disabled', true);
+        return false;
+    } else {
+        $("#btn_save").attr('disabled', false);
+        return true;
+    }
+}
+
+/*-------------------------------- Check Validate Blog All -----------------*/
+function checkBlog() {
+    var bool = true;
+    var ImgPath = $('#ImgPath').val();
+    if (ImgPath == "") {
+        $("#ImgPath").closest('.control-group').removeClass('success');
+        $("#ImgPath").closest('.control-group').addClass('error');
+        $('#ImgPath').next().remove();
+        $('#ImgPath').after('<label for="ImgPath" generated="true" class="error">กรุณากรอกข้อมูล</label>');
+        bool = false;
+    }
+    return bool;
+}
