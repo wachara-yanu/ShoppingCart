@@ -1,0 +1,145 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="12.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{C03E85B5-888C-44B6-BF82-AFC9EA698A06}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>Ouikum</RootNamespace>
+    <AssemblyName>Ouikum</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <TargetFrameworkProfile />
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="System" />
+    <Reference Include="System.ComponentModel.DataAnnotations" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Data.Linq" />
+    <Reference Include="System.Runtime.Caching" />
+    <Reference Include="System.Transactions" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Address\AddressService.cs" />
+    <Compile Include="Article\ArticleService.cs" />
+    <Compile Include="Article\emArticleService.cs" />
+    <Compile Include="Banner\BannerService.cs" />
+    <Compile Include="BaseSC.cs" />
+    <Compile Include="BizType\BizTypeService.cs" />
+    <Compile Include="Buylead\BuyleadService.cs" />
+    <Compile Include="Cart\CartService.cs" />
+    <Compile Include="Category\CategoryService.cs" />
+    <Compile Include="Chat\ChatService.cs" />
+    <Compile Include="Common\CommonService.cs" />
+    <Compile Include="Company\CompanyService.cs" />
+    <Compile Include="Company\emCompanyService.cs" />
+    <Compile Include="Currency\CurrencyService.cs" />
+    <Compile Include="Favorite\FavBuyleadService.cs" />
+    <Compile Include="Favorite\FavCompanyService.cs" />
+    <Compile Include="Favorite\FavProductService.cs" />
+    <Compile Include="Job\JobService.cs" />
+    <Compile Include="Member\MemberService.cs" />
+    <Compile Include="Member\MemberService_Sync.cs" />
+    <Compile Include="Member\Model\Mail.cs" />
+    <Compile Include="Member\Model\Register.cs" />
+    <Compile Include="Member\Model\Sync.cs" />
+    <Compile Include="Message\MessageService.cs" />
+    <Compile Include="OrderPuchase\OrderPurchaseService.cs" />
+    <Compile Include="OrderPuchase\OrderStatusService.cs" />
+    <Compile Include="Order\OrderService.cs" />
+    <Compile Include="Order\PaymentAccountService.cs" />
+    <Compile Include="Package\PackageService.cs" />
+    <Compile Include="Ouikum.designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Ouikum.dbml</DependentUpon>
+    </Compile>
+    <Compile Include="Product\HotFeaProductService.cs" />
+    <Compile Include="Product\ProductGroupService.cs" />
+    <Compile Include="Product\ProductImageService.cs" />
+    <Compile Include="Product\ProductService.cs" />
+    <Compile Include="Product\ProductShipmentService.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Properties\Settings1.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+      <DependentUpon>Settings.settings</DependentUpon>
+    </Compile>
+    <Compile Include="Purchase\PurchaseService.cs" />
+    <Compile Include="Quotation\QuotationAttachService.cs" />
+    <Compile Include="Quotation\QuotationService.cs" />
+    <Compile Include="Shipment\ShipmentService.cs" />
+    <Compile Include="Shopping\ShoppingService.cs" />
+    <Compile Include="Transport\TransportService.cs" />
+    <Compile Include="Web\WebService.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config">
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ouikum.dbml">
+      <Generator>MSLinqToSQLGenerator</Generator>
+      <LastGenOutput>Ouikum.designer.cs</LastGenOutput>
+      <SubType>Designer</SubType>
+    </None>
+    <None Include="Ouikum.dbml.layout">
+      <DependentUpon>Ouikum.dbml</DependentUpon>
+    </None>
+    <None Include="Properties\Settings.settings">
+      <Generator>PublicSettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings1.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{3259AA49-8AA1-44D3-9025-A0B520596A8C}" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Prosoft.Base\Prosoft.Base.csproj">
+      <Project>{fd977740-3408-4dcf-af0f-7c80bbf9d806}</Project>
+      <Name>Prosoft.Base</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prosoft.Resource.Web\Prosoft.Resource.Web.csproj">
+      <Project>{a8149d48-6071-4585-b737-74da04a6ee0c}</Project>
+      <Name>Prosoft.Resource.Web</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Prosoft.Service\Prosoft.Service.csproj">
+      <Project>{b1ddcd3c-90ad-49fc-8e09-6d1e46542fce}</Project>
+      <Name>Prosoft.Service</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
+       Other similar extension points exist, see Microsoft.Common.targets.
+  <Target Name="BeforeBuild">
+  </Target>
+  <Target Name="AfterBuild">
+  </Target>
+  -->
+</Project>

@@ -1,0 +1,1317 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ordesignerObjectsDiagram dslVersion="1.0.0.0" absoluteBounds="0, 0, 79.375, 63.375" name="B2B">
+  <DataContextMoniker Name="/OuikumDataContext" />
+  <nestedChildShapes>
+    <classShape Id="4467bcc9-0ccd-46e4-9114-285d5aa1a60c" absoluteBounds="0.625, 17.125, 2, 5.2323225911458309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bArticle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ac563ae2-5320-4fd9-b4e2-ef5fac826bf0" absoluteBounds="0.64, 17.585, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c4a51e07-71eb-4bcc-a163-e865054992de" absoluteBounds="3.125, 17.125, 2, 5.0400211588541666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bSuccessStory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c3f1fd4-2f69-4e69-a244-ae2454810cc3" absoluteBounds="3.14, 17.585, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fe076d93-4d5e-4e5b-ba37-022983a94d42" absoluteBounds="5.375, 17.25, 2, 4.46311686197917">
+      <DataClassMoniker Name="/OuikumDataContext/b2bArticleType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="91a68bb4-3d6b-4e98-b784-0d4ec0ded669" absoluteBounds="5.39, 17.71, 1.9700000000000002, 3.9031168619791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a4151ee6-bac5-46fc-8d3e-11c069170a18" absoluteBounds="9.625, 6.875, 2, 6.0015283203124987">
+      <DataClassMoniker Name="/OuikumDataContext/b2bAssignLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1bbdb5a9-d503-4e46-a669-d8ad7cbd4abc" absoluteBounds="9.64, 7.3350000000000009, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9bcc4b7f-4b0b-4175-8f4a-40e2d1e0beda" absoluteBounds="16.375, 11, 2, 10.809064127604167">
+      <DataClassMoniker Name="/OuikumDataContext/b2bBuylead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="48cd5c8b-f87b-4618-a2a5-e90fcd7eaa0f" absoluteBounds="16.39, 11.46, 1.9700000000000002, 10.249064127604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2852912b-31b2-4950-9bb1-5bb71a93f982" absoluteBounds="18.625, 8.875, 2, 5.2323225911458309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a1fd9500-e62f-4a81-8290-79c6e41281d5" absoluteBounds="18.64, 9.335, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cdd9aafe-aa4b-4906-b678-b2eafc18e09b" absoluteBounds="7.625, 17.25, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCategoryType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="922940c4-3e38-443c-a6ca-cc28834233bb" absoluteBounds="7.6400000000000006, 17.71, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f354d76b-3f83-47db-a428-2c3b668d3ac1" absoluteBounds="18.625, 17.875, 2, 4.0785139973958309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyCertify" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ada41633-2162-4e5b-a2d7-4141a9751d42" absoluteBounds="18.64, 18.335, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4d614f83-7262-4613-87e5-9d6d19c04d1d" absoluteBounds="11.875, 13.125, 2, 5.0400211588541666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyPayment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1ad2b000-80bd-4bc5-9824-99faef46e251" absoluteBounds="11.89, 13.585, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="824a8599-fefb-4af9-bc3c-07871dade5b4" absoluteBounds="23, 0.75, 2, 6.9630354817708326">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="488e3aac-7485-46be-89ef-6b5e2d20cc20" absoluteBounds="23.015, 1.21, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d1783fc2-3dbf-4329-8e4c-4c13101c0aa0" absoluteBounds="29.75, 4.375, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyStat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="328a33db-cc72-433e-8f5e-9ed2efca5bb6" absoluteBounds="29.765, 4.8350000000000009, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="658af377-6bfb-4318-836d-f245b2a5a9d1" absoluteBounds="21.25, 8.875, 2, 3.6939111328125005">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyVATCertify" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1948a2a4-aef0-43ff-a65f-7ecc341ebc83" absoluteBounds="21.265, 9.335, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d122858b-dfc7-485d-83d3-df997889b6c5" absoluteBounds="18.5, 0.75, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/OuikumDataContext/b2bEmCompanyLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="12b4eac5-e6a7-44a6-9256-71cd32434cf1" absoluteBounds="18.515, 1.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4a689a07-9653-4d80-be6a-0e38a6a17b3c" absoluteBounds="16.25, 0.75, 2, 4.2708154296874987">
+      <DataClassMoniker Name="/OuikumDataContext/b2bEmLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9a492946-ecd4-41c9-97ca-7d563094acbd" absoluteBounds="16.265, 1.21, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e4f3ac9c-06c6-4c7e-a026-2c6edacebeb0" absoluteBounds="18.625, 14.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bFavBuylead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="162a0d7f-dfd8-40fd-9bab-a602b5ed0650" absoluteBounds="18.64, 14.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2172314c-309f-4575-ab72-fbfa2af6b2a6" absoluteBounds="12, 18.625, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bFavCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="71d670ec-1d5d-44e4-97bf-9de82be7cdbd" absoluteBounds="12.015, 19.085, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="41903273-7c43-42c4-b212-0745a769f6c7" absoluteBounds="21.25, 13, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bFavProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="379d5e43-90b8-4e49-ab6d-c17fb83118f9" absoluteBounds="21.265, 13.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="517022d4-a920-40fc-a271-d3e69aa952fa" absoluteBounds="21.125, 18.625, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bFollowCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7a698d9-6cb4-4cca-a18e-84fdfd2da1b8" absoluteBounds="21.14, 19.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="291ba36c-9256-42cc-929e-085bb8179fc5" absoluteBounds="12, 22.125, 2, 3.30930826822917">
+      <DataClassMoniker Name="/OuikumDataContext/b2bLeadFolder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d37e1181-261e-4552-a183-36862c5bfb6e" absoluteBounds="12.015, 22.585, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4acaf2b7-4349-4195-b433-62d66b57e0bc" absoluteBounds="14.375, 22.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bLogOn" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6a7ad13b-2729-4405-8e11-7ce7ce976556" absoluteBounds="14.39, 22.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ac9991f-bce7-46b8-8e7d-563e0aad112c" absoluteBounds="21.125, 22.125, 2, 10.809064127604167">
+      <DataClassMoniker Name="/OuikumDataContext/b2bMemberPaid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="62082c83-78bb-43e2-87cb-5f3f905226ed" absoluteBounds="21.14, 22.585, 1.9700000000000002, 10.249064127604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b1398a30-ae6f-4c71-b1de-e828f6ffacc5" absoluteBounds="27.5, 5.125, 2, 4.2708154296874987">
+      <DataClassMoniker Name="/OuikumDataContext/b2bPackageGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="af96077d-e844-4c16-b975-96c410c96e8d" absoluteBounds="27.515, 5.585, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f6ab6273-b964-46bb-913c-2836db3dcab8" absoluteBounds="23.5, 8.875, 2, 4.0785139973958309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bPaymentAccount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="78e76d6e-57b0-4aae-a2c4-7efad4283536" absoluteBounds="23.515, 9.335, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7da8a9be-9fa9-4e92-a937-05cd46255b75" absoluteBounds="23.5, 13.375, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bPaymentType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="05e3d5c4-078a-467c-9f1a-ab1a9f27665b" absoluteBounds="23.515, 13.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6202aac8-245a-4405-a7f6-fd06c9f2e66f" absoluteBounds="23.375, 18.625, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProductGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4b85856a-4912-4990-9178-2f5bff2669d0" absoluteBounds="23.39, 19.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0945f4b3-cdf4-4327-bcb6-a25f55177258" absoluteBounds="2.75, 0.625, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProductImage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4ef80774-e56f-4bcc-84cf-a2ae67938f69" absoluteBounds="2.765, 1.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="740638b6-98cf-4364-882b-4afd3f3380e3" absoluteBounds="14.125, 13.25, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProductPayment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e6439ac4-1c7f-4da6-bd07-5d37af185e53" absoluteBounds="14.14, 13.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1631369c-f2db-43fd-b7c7-4bae40b1cd2f" absoluteBounds="23.375, 22.25, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProductProperty" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a956546-9294-4be6-9858-542448b29ba7" absoluteBounds="23.39, 22.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34dab925-2854-44e4-82e7-0fae9180375d" absoluteBounds="14.125, 0.75, 2, 3.1170068359375005">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProductShipment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3c04968-e2c5-4b8a-930c-556afbe5d527" absoluteBounds="14.14, 1.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6fafd4be-7519-4714-9ef0-3855cae55e74" absoluteBounds="12, 25.75, 2, 4.0785139973958309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProperty" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2c13ccdd-23d1-4ba6-bf2c-442f1781fc26" absoluteBounds="12.015, 26.21, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34fb7ac0-c29c-469a-823d-23a93403b0ef" absoluteBounds="14.375, 25.75, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bPropertyValue" />
+      <nestedChildShapes>
+        <elementListCompartment Id="50f7c7d8-7aa2-440b-9585-e676dbc99aed" absoluteBounds="14.39, 26.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ebc0e05e-11f6-4d8f-902f-9ec805fa5bc3" absoluteBounds="27.5, 0.75, 2, 4.0785139973958326">
+      <DataClassMoniker Name="/OuikumDataContext/b2bQuestion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d257d7f-9cdc-4ed2-a872-e4438056421c" absoluteBounds="27.515, 1.21, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5950dbcd-03da-48a6-8d86-5f2f9236e115" absoluteBounds="29.75, 0.75, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bQuestionCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="afe209f8-b33e-46aa-9078-1303c8484bad" absoluteBounds="29.765, 1.21, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7692ac4d-95ee-4ba5-83c9-62d54af13396" absoluteBounds="25.75, 9.625, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bQuestionReply" />
+      <nestedChildShapes>
+        <elementListCompartment Id="803cafec-1787-4302-bf0e-385b3175314d" absoluteBounds="25.765, 10.085, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c728dd42-61fa-4b4a-a133-5e83fb9d0eb6" absoluteBounds="25.75, 13.375, 2, 4.6554182942708309">
+      <DataClassMoniker Name="/OuikumDataContext/emArticle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="205eb160-a23c-43fd-ac43-a96f9d0dcee2" absoluteBounds="25.765, 13.835, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2085768a-6e0b-4262-9034-5679eb95a619" absoluteBounds="25.75, 18.625, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/OuikumDataContext/smAuditSchema" />
+      <nestedChildShapes>
+        <elementListCompartment Id="18e68c48-7bb4-4d17-88a9-9451aa97f789" absoluteBounds="25.765, 19.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="606f1207-66aa-4809-a95e-7d4364cc40dc" absoluteBounds="25.75, 22.625, 2, 4.0785139973958309">
+      <DataClassMoniker Name="/OuikumDataContext/emArticleType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b2fd0acb-9431-4007-8740-aa6bddd3c8b3" absoluteBounds="25.765, 23.085, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c0e36f45-e78a-4fa4-b238-b0d12e36c4de" absoluteBounds="23.375, 26.375, 2, 3.309308268229163">
+      <DataClassMoniker Name="/OuikumDataContext/emBank" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3aa6cc60-faab-4c81-8e1d-f65095ed99be" absoluteBounds="23.39, 26.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c544a934-5420-44d5-85fe-e605abdc580c" absoluteBounds="25.75, 27, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/emChatFriend" />
+      <nestedChildShapes>
+        <elementListCompartment Id="986871ff-f92f-4797-8e29-1ab17b220579" absoluteBounds="25.765, 27.46, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="095a438a-c29a-43e3-95b6-6f0bd4321bb1" absoluteBounds="0.5, 27.5, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/emChatMessage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0b0fac30-35e1-42ff-83c2-9fb6d375e2f9" absoluteBounds="0.515, 27.96, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4aa9be40-2255-43be-ab1c-ac43063592a8" absoluteBounds="2.875, 27.5, 2, 2.732403971354163">
+      <DataClassMoniker Name="/OuikumDataContext/emChatRoom" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dbc2cfaa-f67e-41fd-b135-a0303c2d0a3e" absoluteBounds="2.89, 27.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fb0bf164-3076-460d-a91d-7fae1008bee9" absoluteBounds="5.125, 27.5, 2, 7.5399397786458309">
+      <DataClassMoniker Name="/OuikumDataContext/emCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8c38f5e4-e65e-4893-8868-d3412fff4b59" absoluteBounds="5.14, 27.96, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="81efd81a-58f0-49b1-bbfc-396522f48d90" absoluteBounds="32.5, 0.75, 2, 6.5784326171874987">
+      <DataClassMoniker Name="/OuikumDataContext/emCompanyProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0ac6afc2-feff-4a59-9145-26321c41f53f" absoluteBounds="32.515, 1.21, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="092c69c1-a286-4e62-a8be-4429d0a14d21" absoluteBounds="32.375, 7.875, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/emContact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="70281a7e-d30b-4748-a6ca-0fc4a75829fe" absoluteBounds="32.39, 8.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b9ddd53c-6a8a-47db-acfb-d4c8da32177e" absoluteBounds="32.25, 11.875, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/emContactGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="228c0a57-5f2b-4e7a-b802-797bd7686a4a" absoluteBounds="32.265, 12.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dd732fbf-b065-4a18-9f37-8fb2c52a26b0" absoluteBounds="32.25, 15.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/emContinent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe5d6310-c088-42bc-b6d6-ed8c3f441492" absoluteBounds="32.265, 15.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7b2708a0-048b-43a2-ad2e-2a32f020d260" absoluteBounds="32.375, 19, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/emCountry" />
+      <nestedChildShapes>
+        <elementListCompartment Id="84d2008b-f081-4369-9364-6e582db033a3" absoluteBounds="32.39, 19.46, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10f89278-a2b4-4569-a540-598518621909" absoluteBounds="32.375, 22.875, 2, 3.30930826822917">
+      <DataClassMoniker Name="/OuikumDataContext/emCurrency" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0f2d561f-dcba-44dc-a129-9455c7a86145" absoluteBounds="32.39, 23.335, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0bf7c3d1-92d1-4a44-93a8-dcfb88cb266a" absoluteBounds="7.375, 0.625, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/OuikumDataContext/emDistrict" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da8f0e54-0102-4b42-b9ba-5619f8d2ce02" absoluteBounds="7.39, 1.085, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="aaf5b2a6-38c0-4ae2-80c8-b664b8262599" absoluteBounds="32.375, 26.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/emEnum" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2a3cd5e6-27c9-4adc-924c-be2aee215917" absoluteBounds="32.39, 27.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="be54fdde-d527-457e-b71b-84aaa9ce37d6" absoluteBounds="12, 30.125, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OuikumDataContext/emEnumType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="018c3786-d7ef-45ad-b72d-ddf739b8fa0b" absoluteBounds="12.015, 30.585, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="583506af-3be5-48a1-8622-bac8fe82d4e0" absoluteBounds="9.625, 0.625, 2, 6.0015283203124987">
+      <DataClassMoniker Name="/OuikumDataContext/emJob" />
+      <nestedChildShapes>
+        <elementListCompartment Id="14d17574-8a7b-46b1-83b6-fff95d118185" absoluteBounds="9.64, 1.085, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4eaf9094-e7c9-48d3-be01-4c571a94b85f" absoluteBounds="7.375, 7.625, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/OuikumDataContext/emJobCategory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="54b94ed1-4008-48d8-b2c5-2eabc7734673" absoluteBounds="7.39, 8.085, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="270a7810-2dad-402c-82d1-7cbd4bec0412" absoluteBounds="14.25, 30.125, 2, 8.69374837239583">
+      <DataClassMoniker Name="/OuikumDataContext/emMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c1f27bbf-3be9-4a43-877e-b3ab5d103fcd" absoluteBounds="14.265, 30.585, 1.9700000000000002, 8.1337483723958321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ae88302e-ae74-40e1-aceb-607acd911477" absoluteBounds="28.25, 32.125, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/OuikumDataContext/emMemberActivate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bc3fea62-24d4-43f6-8b47-7906444fa2db" absoluteBounds="28.265, 32.585, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="79024ad3-0afc-436a-98a7-07bdaa2bfea7" absoluteBounds="35, 30.25, 2, 3.3093082682291595">
+      <DataClassMoniker Name="/OuikumDataContext/emMemberWeb" />
+      <nestedChildShapes>
+        <elementListCompartment Id="427185e3-eb33-4004-ac6a-17dc2d38436e" absoluteBounds="35.015, 30.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d4d27f6a-0247-4391-b0de-022e12a7af7d" absoluteBounds="0.75, 33, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/OuikumDataContext/emMessageAttach" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3863fba5-227c-48d2-9737-00fb9ddd3ea9" absoluteBounds="0.765, 33.46, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cb3878c8-225e-4aa8-afb0-c17bd8d07c77" absoluteBounds="35, 7.25, 2, 3.1170068359375014">
+      <DataClassMoniker Name="/OuikumDataContext/emMessageFolder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da7cf038-02d8-4f2a-9e56-08c2014eae21" absoluteBounds="35.015, 7.7100000000000009, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b03fa979-0e98-4ff9-b5b6-ce2457212316" absoluteBounds="35, 10.875, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/emMessageTemplate" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b6a159df-5850-40b8-9975-bd5af9a3f033" absoluteBounds="35.015, 11.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="98b1ec43-7970-4cea-b78a-c5df3b07d673" absoluteBounds="35, 14.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/emNotification" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ebad3c9b-834f-4157-8f27-e18ae2a0638c" absoluteBounds="35.015, 15.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="40166e54-e02e-498a-b9aa-2fd16bb6fecb" absoluteBounds="35, 18.375, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/OuikumDataContext/emOccupation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="34b176f8-5aa5-4f98-9a03-e119a9b0c445" absoluteBounds="35.015, 18.835, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e3cbea3-7b84-498b-95f6-0391efb877c3" absoluteBounds="35, 21.625, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/OuikumDataContext/emProvince" />
+      <nestedChildShapes>
+        <elementListCompartment Id="cb6946b9-5c13-4106-854b-917087bd2988" absoluteBounds="35.015, 22.085, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cbd1bccc-1fe3-4696-a141-e13caa079c7c" absoluteBounds="35, 26.375, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/emSpamCriteria" />
+      <nestedChildShapes>
+        <elementListCompartment Id="56ff7b81-4b37-450b-b535-8720fb97b645" absoluteBounds="35.015, 26.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dac063a7-9c3a-4a35-952b-53987fd09b59" absoluteBounds="35, 33.875, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/emSpamRule" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9fa74439-4034-4da5-8630-d29c36658ffb" absoluteBounds="35.015, 34.335, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="570dc183-07cf-491e-b3fe-a425522f9f94" absoluteBounds="16.625, 30.25, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/emWeb" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f11f454d-3eb4-4e30-85ec-723b7e995e60" absoluteBounds="16.64, 30.71, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="00d87209-b403-4995-8b03-b3a3a13c162c" absoluteBounds="23.625, 32, 2, 6.5784326171875023">
+      <DataClassMoniker Name="/OuikumDataContext/smAuditEvent" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e1349dc2-575a-4bfc-b779-33e54a5f6c1f" absoluteBounds="23.64, 32.46, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bd33faa2-9f2e-4b06-bdae-2db7dfcd446c" absoluteBounds="37.375, 0.75, 2, 6.9630354817708326">
+      <DataClassMoniker Name="/OuikumDataContext/view_emJob" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c0e62014-e7c1-42b5-9c56-2e32e1cec963" absoluteBounds="37.39, 1.21, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c69f90ce-2dd5-4506-94a8-c98d79a22098" absoluteBounds="37.375, 8.125, 2, 6.7707340494791666">
+      <DataClassMoniker Name="/OuikumDataContext/view_b2bArticle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2827c80e-6877-4d41-aa33-a56d891acc81" absoluteBounds="37.39, 8.585, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cf1d0760-4e0c-45ad-ad48-9150ef52ca71" absoluteBounds="37.375, 15.25, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OuikumDataContext/view_BuyLeadAutoComplete" />
+      <nestedChildShapes>
+        <elementListCompartment Id="64466c1c-2701-4689-9aa9-fafb9d6a6b99" absoluteBounds="37.39, 15.71, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cfd9a2f4-330c-489f-96af-f61e68232eb2" absoluteBounds="37.5, 17, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OuikumDataContext/view_CategoryGroupByCateLV1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="084508be-924e-4dd7-a607-128fb0ce28c5" absoluteBounds="37.515, 17.46, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b4f4e21a-4a91-476b-b805-da9a120c4caa" absoluteBounds="37.5, 19.5, 2, 4.6554182942708309">
+      <DataClassMoniker Name="/OuikumDataContext/view_CategoryProperty" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c79acdad-ab16-43a9-bfa5-25bbf50ff399" absoluteBounds="37.515, 19.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3403cf7d-000a-4eaf-a949-4f324d6484d1" absoluteBounds="25.875, 32.125, 2, 4.4631168619791595">
+      <DataClassMoniker Name="/OuikumDataContext/view_CategoryWithCount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2d67ac1c-af0d-4716-8d98-b8d80724266e" absoluteBounds="25.89, 32.585, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="026306c7-db85-4bb0-b548-7bb70ba0554f" absoluteBounds="37.375, 26.375, 2, 2.5401025390625023">
+      <DataClassMoniker Name="/OuikumDataContext/view_ChatFriend" />
+      <nestedChildShapes>
+        <elementListCompartment Id="99c6361e-1b01-46a5-816e-42ca12ea6d90" absoluteBounds="37.39, 26.835, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="60b0c83c-1dbb-45c4-8a6c-ea2e6c5cc7e9" absoluteBounds="30.375, 38.875, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/OuikumDataContext/view_ChatMessageReadCount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="66ef79c0-39f7-47d8-89c8-8036d689cbff" absoluteBounds="30.39, 39.335, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="80c4b1b6-cca2-4837-b0f2-36f356faf8c0" absoluteBounds="37.375, 29.25, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OuikumDataContext/view_ChatMessageUnReadCount" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1de0f82-ac98-4204-8170-02a07545cb5c" absoluteBounds="37.39, 29.71, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="efbd0120-8e1c-4b46-ba5d-2a6386a1b831" absoluteBounds="2.875, 33.125, 2, 1.1939925130208309">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyAutoComplete" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f063f64-7a78-4e65-bcd7-c65184becc7d" absoluteBounds="2.89, 33.585, 1.9700000000000002, 0.63399251302083326" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="4ca1cb2c-9fae-4df7-8b68-3157a699d529" absoluteBounds="2.875, 34.5, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyAutoCompleteMap" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4c1818bc-0173-42b3-ae18-546907beeed4" absoluteBounds="2.8899999999999997, 34.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7ce35cb6-016a-4d90-9c33-5d60e9bdbb3f" absoluteBounds="34.875, 37.75, 2, 4.2708154296875023">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyCertify" />
+      <nestedChildShapes>
+        <elementListCompartment Id="855144a7-c409-4c51-8262-f0f8bce43458" absoluteBounds="34.89, 38.21, 1.9700000000000002, 3.7108154296875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c989f182-1f16-425d-98f4-270729716e94" absoluteBounds="0.75, 42.75, 2, 6.9630354817708309">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyMobile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f3287ae0-1c76-44a8-9191-fc1de1d08de3" absoluteBounds="0.765, 43.21, 1.9700000000000002, 6.403035481770833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="10a9eaa3-b191-4cbe-b184-3f958bef06a8" absoluteBounds="39.875, 4.5, 2, 5.4246240234374987">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyPayment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="706a1812-2069-4c68-ae1d-b483ceb7da91" absoluteBounds="39.89, 4.96, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="7a8baaec-9cf4-410f-8489-2e08cc042b59" absoluteBounds="40, 10.25, 2, 8.8860498046875023">
+      <DataClassMoniker Name="/OuikumDataContext/View_CompanyProduct_Report" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c0fef92a-8a28-4518-998e-e40f412e5de5" absoluteBounds="40.015, 10.71, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9c6091cd-d154-4215-baa7-c23a11372379" absoluteBounds="42.125, 36.625, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/view_Contact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="631f4bef-6ba5-4263-95bf-24c5880b53d2" absoluteBounds="42.14, 37.085, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2803a531-2e6f-4629-a0ee-ff4b74288167" absoluteBounds="3.75, 43.75, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/view_Country" />
+      <nestedChildShapes>
+        <elementListCompartment Id="da3798b9-ee5f-4a66-9b7a-6db8b0ff528c" absoluteBounds="3.765, 44.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5264b8fd-2709-4528-8562-672ab438b4e6" absoluteBounds="6.75, 43.75, 2, 10.424461263020831">
+      <DataClassMoniker Name="/OuikumDataContext/view_DetailMemberPaid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="eee578b2-cb5c-4c05-be51-add03c107cc8" absoluteBounds="6.765, 44.21, 1.9700000000000002, 9.8644612630208321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5dd43e7e-2807-4bbe-b4fc-ff2311d590e9" absoluteBounds="12, 39.25, 2, 5.8092268880208309">
+      <DataClassMoniker Name="/OuikumDataContext/view_emArticle" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3c16857e-5010-4ff2-a555-9446fe28a3a2" absoluteBounds="12.015, 39.71, 1.9700000000000002, 5.249226888020833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e1ab2975-1274-4294-87ad-c3421d39015a" absoluteBounds="14.25, 39.25, 2, 3.3093082682291595">
+      <DataClassMoniker Name="/OuikumDataContext/view_emChat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="70046362-1c96-451c-a7ff-6175b483d9d4" absoluteBounds="14.265, 39.71, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="069fd7ab-c95c-488f-b0de-72f4d44f78ef" absoluteBounds="42.375, 0.875, 2, 7.1553369140624987">
+      <DataClassMoniker Name="/OuikumDataContext/view_emCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ddd91d04-a293-40cd-a8ea-dcffd91da9b8" absoluteBounds="42.39, 1.335, 1.9700000000000002, 6.5953369140625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="6f73b0d1-3d25-4f82-b25b-023d8866d7b5" absoluteBounds="42.375, 8.375, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/view_EmCompanyLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5996ac78-7585-4d0f-9e7e-d3cad9da9bad" absoluteBounds="42.39, 8.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="18771bcd-ac6b-40d0-869a-21cb7d81b15d" absoluteBounds="42.375, 12.125, 2, 12.155174153645831">
+      <DataClassMoniker Name="/OuikumDataContext/view_emCompanyMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="24acf43f-42f4-45d6-9c65-7b58ec0832e9" absoluteBounds="42.39, 12.585, 1.9700000000000002, 11.595174153645832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="64c03abe-9465-4837-9eb3-5f15f0b5e583" absoluteBounds="16.5, 39.25, 2, 8.50144694010416">
+      <DataClassMoniker Name="/OuikumDataContext/view_emMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b881c52a-74bb-4695-ba90-4e932497e64c" absoluteBounds="16.515, 39.71, 1.9700000000000002, 7.941446940104167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ea8b9c90-e89a-4c29-8863-11367229dad6" absoluteBounds="23.625, 38.875, 2, 6.7707340494791595">
+      <DataClassMoniker Name="/OuikumDataContext/view_SuccessStory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="354bbac3-ed50-4767-ae0a-2de07419dd35" absoluteBounds="23.64, 39.335, 1.9700000000000002, 6.2107340494791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="78e90b50-7f2b-48d1-a921-e7acd1f49082" absoluteBounds="44.625, 24.625, 2, 2.3478011067708309">
+      <DataClassMoniker Name="/OuikumDataContext/view_EnumData" />
+      <nestedChildShapes>
+        <elementListCompartment Id="7acfc022-8c0d-4866-b504-b5b6b3e82138" absoluteBounds="44.64, 25.085, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1d8f753d-4a3b-4f33-8c9b-ec717fd3859d" absoluteBounds="25.875, 43.5, 2, 2.1554996744791595">
+      <DataClassMoniker Name="/OuikumDataContext/view_Excel_Category" />
+      <nestedChildShapes>
+        <elementListCompartment Id="32512e52-f440-46c0-a4a5-e303b10255bd" absoluteBounds="25.89, 43.96, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="fdfe766a-c50c-42be-b681-b8b79318285d" absoluteBounds="44.625, 27.25, 2, 9.078351236979163">
+      <DataClassMoniker Name="/OuikumDataContext/view_FavBuyLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="04e78698-96d3-4090-a878-8d0c02923eac" absoluteBounds="44.64, 27.71, 1.9700000000000002, 8.5183512369791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="206deb36-7bdc-47db-876e-62a9a4b7e65f" absoluteBounds="44.5, 36.625, 2, 5.2323225911458309">
+      <DataClassMoniker Name="/OuikumDataContext/view_FavCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="314b3ac4-9c85-4a6c-85fe-aba3b12582c0" absoluteBounds="44.515, 37.085, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="479de4c0-44f8-4442-a766-f747155da124" absoluteBounds="28.125, 38.875, 2, 9.84755696614583">
+      <DataClassMoniker Name="/OuikumDataContext/view_FavProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b51a269b-0cc5-421e-bcf0-0b63f0bcb8d0" absoluteBounds="28.14, 39.335, 1.9700000000000002, 9.2875569661458321" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a517046b-bdfb-433b-85dd-752b52ff2bbb" absoluteBounds="34.875, 42.375, 2, 3.3093082682291595">
+      <DataClassMoniker Name="/OuikumDataContext/view_FollowCatgory" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5a09c65f-21bd-4a55-a5a9-9abe878adcf9" absoluteBounds="34.89, 42.835, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8d1f0dce-81bd-45e9-9bc5-f6524f2f87c2" absoluteBounds="44.5, 42.125, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OuikumDataContext/view_logOn" />
+      <nestedChildShapes>
+        <elementListCompartment Id="95a9bb16-09a2-47ac-ab94-01633f87793f" absoluteBounds="44.515, 42.585, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c104ac1e-fb3a-4c9b-b8e3-cb787e710002" absoluteBounds="44.875, 0.875, 2, 9.6552555338541666">
+      <DataClassMoniker Name="/OuikumDataContext/view_Member" />
+      <nestedChildShapes>
+        <elementListCompartment Id="51c3eb89-b24b-443d-a806-0f45f537d4c5" absoluteBounds="44.89, 1.335, 1.9700000000000002, 9.0952555338541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b3d331a5-cf9e-41a8-b296-44c87615fab9" absoluteBounds="9.75, 43.5, 2, 1.0016910807291595">
+      <DataClassMoniker Name="/OuikumDataContext/view_MemberCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1e13722a-d386-4692-ad41-100c364815fc" absoluteBounds="9.765, 43.96, 1.9700000000000002, 0.44169108072916669" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b9b0a9db-81b1-47e1-b3d6-a93df4239bee" absoluteBounds="49.75, 7.625, 2, 12.347475585937502">
+      <DataClassMoniker Name="/OuikumDataContext/view_MemberPaid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="62cfa896-3c96-4b93-9ab4-40cbf52a881c" absoluteBounds="49.765, 8.085, 1.9700000000000002, 11.7874755859375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="648d69c5-2959-4e61-9162-695a8891e93a" absoluteBounds="47.25, 20.375, 2, 11.770571289062502">
+      <DataClassMoniker Name="/OuikumDataContext/view_MemberPaidApprove" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8cc824ea-48f7-4e3b-86f4-b1dfdbd4baf3" absoluteBounds="47.265, 20.835, 1.9700000000000002, 11.2105712890625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8f8c7ccd-1a27-4ced-b0fe-bc8976be918f" absoluteBounds="3.75, 47.5, 2, 1.3862939453125023">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductAutoComplete" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6e0dda92-5dc9-4691-b904-8f5080deff9a" absoluteBounds="3.765, 47.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0bd6555a-31dd-4812-8cd1-8d615c11c151" absoluteBounds="9.625, 44.75, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductGroup" />
+      <nestedChildShapes>
+        <elementListCompartment Id="49224bcf-379e-4b57-8215-48be6fd9582c" absoluteBounds="9.64, 45.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dad84e0e-d1b3-4007-bee0-e65757642263" absoluteBounds="47.375, 0.875, 2, 2.3478011067708335">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductGroup_Count" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d8e95baf-7ae5-4b41-ab43-d2fd10eb2619" absoluteBounds="47.39, 1.335, 1.9700000000000002, 1.7878011067708335" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0e880d25-883e-46d0-a9b4-3fe0db25c0dc" absoluteBounds="47.375, 3.625, 2, 3.6939111328124987">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductImage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c262124e-78c1-4d36-ba2c-45a40e0a86a2" absoluteBounds="47.39, 4.085, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1cd61e8a-4b96-4701-a266-3f9b9e50e752" absoluteBounds="47.375, 7.625, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductMobile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9076e3ab-4a2d-42a2-ba24-64a8fe91a19b" absoluteBounds="47.39, 8.085, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c925bb40-9b41-4bd4-819f-42bf098c7ef6" absoluteBounds="9.625, 48.625, 2, 4.6554182942708309">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductPayment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1171c54-2c39-4b8e-b1ef-c48e6c622995" absoluteBounds="9.64, 49.085, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="352cddd2-85e5-4567-ad53-6d9fd2b12fcf" absoluteBounds="47.25, 11.375, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductProperty" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c6448cae-473e-4d3f-88bd-562c1f7916c4" absoluteBounds="47.265, 11.835, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="a70e522f-71e3-4cb1-8b83-17eb226b5564" absoluteBounds="12, 46.375, 2, 5.6169254557291595">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductSearch" />
+      <nestedChildShapes>
+        <elementListCompartment Id="186422a6-0866-41b9-9277-c7b9650d550f" absoluteBounds="12.015, 46.835, 1.9700000000000002, 5.0569254557291661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0de69923-43a5-4401-b824-415778c37c6e" absoluteBounds="49.75, 20.375, 2, 3.5016097005208309">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductShipment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ee8acbdb-a1b8-4f04-be10-25e1d2240d85" absoluteBounds="49.765, 20.835, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="30ff2e29-dd6a-4dc6-b011-042ce550886e" absoluteBounds="49.75, 24.375, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/OuikumDataContext/view_Property" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ff6928b5-6aa2-4372-812b-2c7de80eebbc" absoluteBounds="49.765, 24.835, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47838eae-653f-4418-8da4-b30934c8a35c" absoluteBounds="49.75, 28.75, 2, 4.6554182942708309">
+      <DataClassMoniker Name="/OuikumDataContext/view_Province" />
+      <nestedChildShapes>
+        <elementListCompartment Id="65a01a75-3bda-4bb0-a450-1a76e2bbf54e" absoluteBounds="49.765, 29.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b15694e-d004-4160-8628-6af5bc596743" absoluteBounds="34.875, 46.125, 2, 1.9631982421875023">
+      <DataClassMoniker Name="/OuikumDataContext/view_PurchaseComp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca377568-5b61-442b-aed4-7bc39348d787" absoluteBounds="34.89, 46.585, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="83252973-1ef3-4234-8d7d-7ec9fa5bf59c" absoluteBounds="49.75, 33.875, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/OuikumDataContext/view_PurchasingSearchProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2ce30a93-6222-495d-a6ae-c0907f4fbe78" absoluteBounds="49.765, 34.335, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="796973d3-7e9e-4a80-a4d0-fc88e1104191" absoluteBounds="49.75, 38.125, 2, 4.4631168619791595">
+      <DataClassMoniker Name="/OuikumDataContext/view_Question" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9159d2d3-740e-4dcc-a4f6-c5e5bb5e0b53" absoluteBounds="49.765, 38.585, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="85b8d284-7e0c-4e84-bb10-4f2262415552" absoluteBounds="42.125, 44.25, 2, 2.9247054036458309">
+      <DataClassMoniker Name="/OuikumDataContext/view_QuestionReply" />
+      <nestedChildShapes>
+        <elementListCompartment Id="573b170a-3d8b-418b-ac56-f4750f9a965a" absoluteBounds="42.14, 44.71, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f3c98ef0-a8c9-4933-be39-e6ed3b1597c5" absoluteBounds="47, 43.875, 2, 12.924379882812502">
+      <DataClassMoniker Name="/OuikumDataContext/view_Quotation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d4d7b020-a285-40dd-8e68-95465279264e" absoluteBounds="47.015, 44.335, 1.9700000000000002, 12.3643798828125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="55a5c954-229f-43c9-88aa-852639d95118" absoluteBounds="42.125, 47.5, 2, 4.6554182942708309">
+      <DataClassMoniker Name="/OuikumDataContext/view_QuotationPublic" />
+      <nestedChildShapes>
+        <elementListCompartment Id="39ca80a6-3f7d-4111-811d-232b0fbd10e0" absoluteBounds="42.14, 47.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c8f3872d-2993-44ca-b58a-d25e66b45d79" absoluteBounds="0.75, 50, 2, 11.193666992187502">
+      <DataClassMoniker Name="/OuikumDataContext/view_SearchBuylead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="b100030b-7122-44a9-83e9-e11a579fd9b9" absoluteBounds="0.765, 50.46, 1.9700000000000002, 10.6336669921875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9c476c88-a4a5-432a-8ace-52f829d7c677" absoluteBounds="23.625, 46, 2, 1.5785953776041595">
+      <DataClassMoniker Name="/OuikumDataContext/view_SearchComp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="03b6b7bc-947a-4eb9-9aba-ff7bda27a66f" absoluteBounds="23.64, 46.46, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3412d2cc-ecb2-4147-b1db-8458bb262911" absoluteBounds="54.75, 11.75, 2, 2.5401025390624987">
+      <DataClassMoniker Name="/OuikumDataContext/view_Province_Region" />
+      <nestedChildShapes>
+        <elementListCompartment Id="0d4d75a9-8df2-4cf0-83a0-1bc30d2291a3" absoluteBounds="54.765, 12.21, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="905ac118-689d-4c12-954a-e8c749fbc705" absoluteBounds="11.875, 9.75, 2, 3.1170068359375023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4ab8644-90e9-4c6c-912d-91c3a52f6aa0" absoluteBounds="11.89, 10.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1cbf79bb-404c-4238-9392-53b50c6728bd" absoluteBounds="54.75, 24.75, 2, 5.2323225911458309">
+      <DataClassMoniker Name="/OuikumDataContext/view_AssignLeadForReport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="167baab1-9bc0-417e-82e7-49638980287f" absoluteBounds="54.765, 25.21, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="57301122-ac4a-407c-8880-dfd68a2412a4" absoluteBounds="54.75, 46.75, 2, 15.231997070312502">
+      <DataClassMoniker Name="/OuikumDataContext/view_BuyLead" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e07f23ec-387a-441c-8476-d4882825b052" absoluteBounds="54.765, 47.21, 1.9700000000000002, 14.6719970703125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd32953e-ab22-4625-8123-5704f43f1e36" absoluteBounds="3.125, 50.125, 2, 4.0785139973958309">
+      <DataClassMoniker Name="/OuikumDataContext/b2bBanner" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f1b2dfe5-4f00-4d7e-9b1d-9ed2e96f661f" absoluteBounds="3.14, 50.585, 1.9700000000000002, 3.518513997395833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(18.25 : 2.30850341796875); (18.5 : 2.30850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bEmLead/b2bEmLead_b2bEmCompanyLead" />
+      <nodes>
+        <classShapeMoniker Id="4a689a07-9653-4d80-be6a-0e38a6a17b3c" />
+        <classShapeMoniker Id="d122858b-dfc7-485d-83d3-df997889b6c5" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.375 : 16.0296541341146); (18.625 : 16.0296541341146)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bBuylead/b2bBuylead_b2bFavBuylead" />
+      <nodes>
+        <classShapeMoniker Id="9bcc4b7f-4b0b-4175-8f4a-40e2d1e0beda" />
+        <classShapeMoniker Id="e4f3ac9c-06c6-4c7e-a026-2c6edacebeb0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.875 : 14.8085034179688); (14.125 : 14.8085034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompanyPayment/b2bCompanyPayment_b2bProductPayment" />
+      <nodes>
+        <classShapeMoniker Id="4d614f83-7262-4613-87e5-9d6d19c04d1d" />
+        <classShapeMoniker Id="740638b6-98cf-4364-882b-4afd3f3380e3" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.375 : 2.37580485026042); (9.625 : 2.37580485026042)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emDistrict/emDistrict_emJob" />
+      <nodes>
+        <classShapeMoniker Id="0bf7c3d1-92d1-4a44-93a8-dcfb88cb266a" />
+        <classShapeMoniker Id="583506af-3be5-48a1-8622-bac8fe82d4e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(9.375 : 9.56810628255208); (9.5625 : 9.56810628255208); (9.5625 : 6.8125); (10.625 : 6.8125); (10.625 : 6.6265283203125)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emJobCategory/emJobCategory_emJob" />
+      <nodes>
+        <classShapeMoniker Id="4eaf9094-e7c9-48d3-be01-4c571a94b85f" />
+        <classShapeMoniker Id="583506af-3be5-48a1-8622-bac8fe82d4e0" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.625 : 11.3085034179688); (11.875 : 11.3085034179688)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bAssignLead/b2bAssignLead_b2bCompanyLead" />
+      <nodes>
+        <classShapeMoniker Id="a4151ee6-bac5-46fc-8d3e-11c069170a18" />
+        <classShapeMoniker Id="905ac118-689d-4c12-954a-e8c749fbc705" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4413e97b-43bf-4bfd-ba6f-db859710b5fd" absoluteBounds="0.5, 1.75, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/OuikumDataContext/emRegion" />
+      <nestedChildShapes>
+        <elementListCompartment Id="67d6f800-8548-4071-9595-5bfa805ea3c4" absoluteBounds="0.515, 2.21, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="47a4f1ba-609f-40b2-b351-df3bd665b876" absoluteBounds="0.5, 0.5, 2, 1.7708968098958331">
+      <DataClassMoniker Name="/OuikumDataContext/Person" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dcf3d1aa-009e-45be-8e7d-bbc76e35b639" absoluteBounds="0.51500000000000012, 0.96, 1.9700000000000002, 1.2108968098958333" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3c04bdad-e40c-43b6-a52e-8226e4857802" absoluteBounds="5.125, 13.5, 2, 2.5401025390625">
+      <DataClassMoniker Name="/OuikumDataContext/tbKeyword" />
+      <nestedChildShapes>
+        <elementListCompartment Id="3cc50690-05da-499a-a824-ea34100805a9" absoluteBounds="5.1400000000000006, 13.96, 1.9700000000000002, 1.9801025390625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e39e1b4f-e08c-4ff7-911d-5ad4ce10f87a" absoluteBounds="14, 4.25, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/OuikumDataContext/tbProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="d1144e36-5b65-4f0c-a463-9258063c255a" absoluteBounds="14.015, 4.71, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="0c5fa0fe-91cb-4026-8edf-191d8cb18570" absoluteBounds="11.875, 5.5, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/OuikumDataContext/tbProductDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3fef6ee-ed61-4905-99f0-fdd9504778eb" absoluteBounds="11.89, 5.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="27f5b076-efac-437d-a341-4c9276225803" absoluteBounds="7.375, 4.5, 2, 2.7324039713541666">
+      <DataClassMoniker Name="/OuikumDataContext/tbProductKeyword" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dc126421-2430-4454-8e5b-765674f2f97a" absoluteBounds="7.3900000000000006, 4.96, 1.9700000000000002, 2.1724039713541665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(32.375 : 20.7508048502604); (27.8125 : 20.7508048502604); (27.8125 : 18.5625); (20.75 : 18.5625); (20.75 : 17.8125); (18.4375 : 17.8125); (18.4375 : 10.9375); (14.0625 : 10.9375); (14.0625 : 18.5625); (11.828125 : 18.5625); (11.828125 : 16.4375); (9.71875 : 16.4375); (9.71875 : 17.0625); (0.4375 : 17.0625); (0.4375 : 5.34535970052083); (1.5 : 5.34535970052083); (1.5 : 5.25160970052083)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emCountry/emCountry_emRegion" />
+      <nodes>
+        <classShapeMoniker Id="7b2708a0-048b-43a2-ad2e-2a32f020d260" />
+        <classShapeMoniker Id="4413e97b-43bf-4bfd-ba6f-db859710b5fd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="96fb75a6-3886-4a4d-9ff7-49a703c17d96" absoluteBounds="35, 0.75, 2, 6.0015283203125">
+      <DataClassMoniker Name="/OuikumDataContext/emMessage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d1730ca-ab6c-4cc8-9fcf-efcc8a247c43" absoluteBounds="35.015, 1.21, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d07cda56-65b4-4c57-aad0-a87c14bf4077" absoluteBounds="47.125, 33.125, 2, 7.5399397786458326">
+      <DataClassMoniker Name="/OuikumDataContext/view_Message" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f26260dc-9fe3-4d64-a551-f6084d003f84" absoluteBounds="47.14, 33.585, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d13172a6-7acd-4e71-9df9-a0402edb15d5" absoluteBounds="42.25, 24.625, 2, 10.6167626953125">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompMember" />
+      <nestedChildShapes>
+        <elementListCompartment Id="bbfd58c8-2f4c-43da-98c3-055e6e3a7652" absoluteBounds="42.265, 25.085, 1.9700000000000002, 10.0567626953125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="94683534-4cbb-45e3-9eeb-26b6e0b9b532" absoluteBounds="39.875, 0.875, 2, 3.1170068359375">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyContact" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7b93c4a-31f3-428c-b25c-48cd80405169" absoluteBounds="39.89, 1.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="9728dad0-6ed8-4f50-a4ee-683a713089bd" absoluteBounds="7.375, 12.125, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyMenu" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f45631fe-84c8-4880-9ac3-473f6c025e4a" absoluteBounds="7.3900000000000006, 12.585, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8defb537-ac66-42c2-a5db-f0a4ee4c0e47" absoluteBounds="2.75, 4.75, 2, 11.962872721354165">
+      <DataClassMoniker Name="/OuikumDataContext/b2bQuotation" />
+      <nestedChildShapes>
+        <elementListCompartment Id="1cbdba0a-254f-4ed2-bbd6-dfd19f43770c" absoluteBounds="2.765, 5.21, 1.9700000000000002, 11.402872721354166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="516e84f0-ed13-479b-827d-98b78f692e5f" absoluteBounds="49.875, 0.875, 2, 3.1170068359375">
+      <DataClassMoniker Name="/OuikumDataContext/b2bQuotationFolder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ae74d332-0c6f-4443-bd78-b7a94640dcd8" absoluteBounds="49.89, 1.335, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="726cc37e-acb6-4436-8e20-a947099e2d34" absoluteBounds="52.375, 0.875, 2, 11.962872721354165">
+      <DataClassMoniker Name="/OuikumDataContext/View_QuotationList" />
+      <nestedChildShapes>
+        <elementListCompartment Id="40e0ee8a-7247-484a-8c14-7c01c3fd366f" absoluteBounds="52.39, 1.335, 1.9700000000000002, 11.402872721354166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b6f36859-d568-4960-a015-9ba7cd719ad4" absoluteBounds="5.125, 9.5, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/OuikumDataContext/b2bQuotationAttach" />
+      <nestedChildShapes>
+        <elementListCompartment Id="444f4112-18af-425c-b50c-42bca7469ef9" absoluteBounds="5.14, 9.96, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(4.75 : 11.3469555664062); (5.125 : 11.3469555664062)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bQuotation/b2bQuotation_b2bQuotationAttach" />
+      <nodes>
+        <classShapeMoniker Id="8defb537-ac66-42c2-a5db-f0a4ee4c0e47" />
+        <classShapeMoniker Id="b6f36859-d568-4960-a015-9ba7cd719ad4" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="c8501179-e25f-4540-b9ae-acb102394f9a" absoluteBounds="9.75, 16.5, 2, 26.193178710937502">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompany" />
+      <nestedChildShapes>
+        <elementListCompartment Id="9ade669c-284f-43ef-9d59-6dbcbc4572e9" absoluteBounds="9.765, 16.96, 1.9700000000000002, 25.6331787109375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.218748 : 16.5); (10.218748 : 14.4527091471354); (9.61458333333333 : 14.4527091471354 : JumpStart); (9.38541666666667 : 14.4527091471354 : JumpEnd); (9.375 : 14.4527091471354)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompany/b2bCompany_b2bCompanyMenu" />
+      <nodes>
+        <classShapeMoniker Id="c8501179-e25f-4540-b9ae-acb102394f9a" />
+        <classShapeMoniker Id="9728dad0-6ed8-4f50-a4ee-683a713089bd" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="5fe7e0bd-a3f3-4f3a-a43b-98dbcfee7bbd" absoluteBounds="37.375, 31.25, 2, 31.000714518229167">
+      <DataClassMoniker Name="/OuikumDataContext/view_Company" />
+      <nestedChildShapes>
+        <elementListCompartment Id="ca2f8304-f1e0-423c-bb43-598b78ae25d3" absoluteBounds="37.39, 31.71, 1.9700000000000002, 30.440714518229164" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="91fd9527-3ea6-4b19-879e-118ab06d3fde" absoluteBounds="52.375, 13.25, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompMemberHotFeat" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e37101da-2846-48fe-8e88-fdd025eb2f62" absoluteBounds="52.39, 13.71, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="104b7050-4bb2-4c08-8409-c8b003db8f69" absoluteBounds="16.5, 48.125, 2, 3.6939111328125023">
+      <DataClassMoniker Name="/OuikumDataContext/b2bPackageOption" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c01ed62d-9894-43af-9026-ce9838d9603e" absoluteBounds="16.515, 48.585, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="545ae1e6-1e76-41dd-ab65-40b0f08dad05" absoluteBounds="40, 19.5, 2, 7.5399397786458326">
+      <DataClassMoniker Name="/OuikumDataContext/view_CompanyProfile" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a7b2eccd-ea08-46fe-9ad1-df30c0f5a9ce" absoluteBounds="40.015, 19.96, 1.9700000000000002, 6.979939778645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5e9bdb07-70d6-4a4a-8d0f-1ece724ce581" absoluteBounds="3.125, 22.625, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/OuikumDataContext/b2bOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="07ad4c14-fa9b-417c-a1ca-e6f3bb36fb61" absoluteBounds="3.14, 23.085, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c414e586-0c5f-4098-8b41-67ee70d7b701" absoluteBounds="14.25, 48.125, 2, 6.0015283203125">
+      <DataClassMoniker Name="/OuikumDataContext/b2bPackage" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f8664bf6-c557-42f3-b458-cd6d66757f1e" absoluteBounds="14.265, 48.585, 1.9700000000000002, 5.4415283203125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(16.25 : 49.9719555664063); (16.5 : 49.9719555664063)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bPackage/b2bPackage_b2bPackageOption" />
+      <nodes>
+        <classShapeMoniker Id="c414e586-0c5f-4098-8b41-67ee70d7b701" />
+        <classShapeMoniker Id="104b7050-4bb2-4c08-8409-c8b003db8f69" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="796322aa-c4d5-4d76-961d-45e1cccb7c12" absoluteBounds="0.625, 22.625, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/OuikumDataContext/b2bHotFeaProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="46699789-f810-4b5b-9b07-35009eea4ee5" absoluteBounds="0.63999999999999968, 23.085, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e726a99e-5c2c-4ef8-8bd6-0baea020427a" absoluteBounds="42.125, 40.5, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/view_HotFeaProductGroupByOrderID" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2eaf4545-e90f-43c9-b058-62f9588ffb05" absoluteBounds="42.14, 40.96, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f6aed950-5669-4cce-8706-0f64390f55d3" absoluteBounds="25.25, 0.75, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/OuikumDataContext/b2bOrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5ad886bc-f35e-4886-a0dd-ca92bbab7910" absoluteBounds="25.265, 1.21, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d9440bf8-a725-47be-b5df-ea00c26ef144" absoluteBounds="7.625, 20.375, 2, 9.0783512369791648">
+      <DataClassMoniker Name="/OuikumDataContext/view_OrderDetailHotProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="520e6204-f760-4278-a779-8ae43a0c6923" absoluteBounds="7.64, 20.835, 1.9700000000000002, 8.5183512369791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="ac538351-f76e-44b8-8cdd-3a97d17249b4" absoluteBounds="7.625, 29.75, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/OuikumDataContext/view_OrderComp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a4fb4afc-d8c3-4313-8125-4e22a4e4aa3a" absoluteBounds="7.64, 30.21, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="92e5b3d7-74be-4a81-bb29-4e8e12f86231" absoluteBounds="7.625, 34.625, 2, 4.8477197265625">
+      <DataClassMoniker Name="/OuikumDataContext/view_OrderDetailComp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="85d29a63-e5a3-4a36-a99c-d2953e6482c8" absoluteBounds="7.64, 35.085, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="50dd5466-e981-4b34-943c-7e8e5e77687d" absoluteBounds="3.25, 54.625, 2, 3.3093082682291666">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumTransport" />
+      <nestedChildShapes>
+        <elementListCompartment Id="96f8dd20-92f0-4eb1-8c6e-fd6414c5e39c" absoluteBounds="3.2649999999999997, 55.085, 1.9700000000000002, 2.7493082682291665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="de3616f1-67b5-42cc-972f-ea5989d32483" absoluteBounds="54.875, 0.875, 2, 10.6167626953125">
+      <DataClassMoniker Name="/OuikumDataContext/view_SearchProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6838360f-e219-4f0f-bf0f-cf71b3d6a100" absoluteBounds="54.89, 1.335, 1.9700000000000002, 10.0567626953125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="dbcbd4b2-e9eb-4727-a136-1759b07c4f5a" absoluteBounds="55, 30.375, 2, 15.616599934895834">
+      <DataClassMoniker Name="/OuikumDataContext/view_Product" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8da229a7-a982-4223-b462-a8521af4ab02" absoluteBounds="55.015, 30.835, 1.9700000000000002, 15.056599934895832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5332c60f-76da-4724-925f-bc0d976818fb" absoluteBounds="5.125, 0.5, 2, 8.8860498046875">
+      <DataClassMoniker Name="/OuikumDataContext/view_ProductMobileApp" />
+      <nestedChildShapes>
+        <elementListCompartment Id="80bbb3cf-3574-410b-979d-41ab31c08581" absoluteBounds="5.14, 0.96, 1.9700000000000002, 8.3260498046875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="5e2bce05-2728-45ed-8cf6-e838c108a6b0" absoluteBounds="57.375, 7.875, 2, 16.193504231770834">
+      <DataClassMoniker Name="/OuikumDataContext/View_OuikumTempOrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f44e0248-d2ac-42e6-8f49-1666356755d9" absoluteBounds="57.39, 8.335, 1.9700000000000002, 15.633504231770832" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3fe9527d-9e5e-4b59-adbb-85db322cf368" absoluteBounds="57.125, 0.875, 2, 10.809064127604165">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumMemberPaid" />
+      <nestedChildShapes>
+        <elementListCompartment Id="e50ff383-c0b7-4259-943c-d4a98f27948b" absoluteBounds="57.14, 1.335, 1.9700000000000002, 10.249064127604166" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="1ea23d47-9b34-46dc-8e00-d7db6fe19373" absoluteBounds="16.625, 23.375, 2, 5.2323225911458326">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumTempOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f2c88e7e-a120-4d55-9192-ee3e1ef617e1" absoluteBounds="16.64, 23.835, 1.9700000000000002, 4.672322591145833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(8.375 : 4.12660970052083); (8.375 : 4.484375); (9.53125 : 4.484375); (9.53125 : 16.484375); (11.78125 : 16.484375); (11.78125 : 25.734375); (11.8541666666667 : 25.734375 : JumpStart); (12.0208333333333 : 25.734375 : JumpEnd); (16.625 : 25.734375); (16.625 : 23.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emDistrict/emDistrict_OuikumTempOrder" />
+      <nodes>
+        <classShapeMoniker Id="0bf7c3d1-92d1-4a44-93a8-dcfb88cb266a" />
+        <classShapeMoniker Id="1ea23d47-9b34-46dc-8e00-d7db6fe19373" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(35 : 24.2499120651042); (34.625 : 24.2499120651042); (34.625 : 22.7516097005208); (28 : 22.7516097005208); (28 : 22.5689111328125); (25.5 : 22.5689111328125); (25.5 : 21.8670068359375); (20.875 : 21.8670068359375); (20.875 : 22.4535139973958); (20.7708333333333 : 22.4535139973958 : JumpStart); (20.6041666666667 : 22.4535139973958 : JumpEnd); (20.0208338333333 : 22.4535139973958 : JumpStart); (19.8541671666667 : 22.4535139973958 : JumpEnd); (17.625 : 22.4535139973958); (17.625 : 23.375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emProvince/emProvince_OuikumTempOrder" />
+      <nodes>
+        <classShapeMoniker Id="0e3cbea3-7b84-498b-95f6-0391efb877c3" />
+        <classShapeMoniker Id="1ea23d47-9b34-46dc-8e00-d7db6fe19373" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="e1b2bf58-9082-4e58-8be7-489015947c6b" absoluteBounds="19, 24.75, 2, 4.8477197265625">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumTempOrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c0fee326-a6fe-497d-9bba-89d227469e6e" absoluteBounds="19.015, 25.21, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.75 : 23.1982684420072); (11.8541666666667 : 23.1982684420072 : JumpStart); (12.0208333333333 : 23.1982684420072 : JumpEnd); (17.5416666666667 : 23.1982684420072 : JumpStart); (17.7083333333333 : 23.1982684420072 : JumpEnd); (19.468748 : 23.1982684420072); (19.468748 : 24.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompany/b2bCompany_OuikumTempOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="c8501179-e25f-4540-b9ae-acb102394f9a" />
+        <classShapeMoniker Id="e1b2bf58-9082-4e58-8be7-489015947c6b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(18.625 : 26.6786612955729); (19 : 26.6786612955729)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/OuikumTempOrder/OuikumTempOrder_OuikumTempOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="1ea23d47-9b34-46dc-8e00-d7db6fe19373" />
+        <classShapeMoniker Id="e1b2bf58-9082-4e58-8be7-489015947c6b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="10ceea39-833f-4d7b-a627-e21776ef5052" absoluteBounds="29, 12.875, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/OuikumDataContext/TempCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="f7ec2546-8b8f-49a9-b099-d48ba977c825" absoluteBounds="29.015, 13.335, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(10.75 : 16.5); (10.75 : 13.0625); (13.9791666666667 : 13.0625 : JumpStart); (14.1458333333333 : 13.0625 : JumpEnd); (16.25 : 13.0625); (16.25 : 10.9375); (18.59375 : 10.9375); (18.59375 : 14.1698225911458); (20.6041666666667 : 14.1698225911458 : JumpStart); (20.7708333333333 : 14.1698225911458 : JumpEnd); (21.125 : 14.1698225911458); (21.125 : 12.9375); (23.375 : 12.9375); (23.375 : 13.0160139973958); (28.90625 : 13.0160139973958); (28.90625 : 14.3373527018229); (29 : 14.3373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompany/b2bCompany_TempCart" />
+      <nodes>
+        <classShapeMoniker Id="c8501179-e25f-4540-b9ae-acb102394f9a" />
+        <classShapeMoniker Id="10ceea39-833f-4d7b-a627-e21776ef5052" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="4c1251f7-8bf6-4935-a55a-3e30a418afc0" absoluteBounds="3.75, 58.5, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/OuikumDataContext/View_TempCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="5603d492-2d8b-4424-8393-57482efb1476" absoluteBounds="3.765, 58.96, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="34f58422-6885-4772-816b-1fd6d7b29d9c" absoluteBounds="57.625, 25.5, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OuikumDataContext/View_CountTempCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="219723d7-ad07-43be-918c-1e7cbec20fd8" absoluteBounds="57.64, 25.96, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="849c1b4a-03ae-496a-acd9-bb53eefbbdfd" absoluteBounds="52.625, 31.5, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/OuikumDataContext/emSubDistrict" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8b76220a-58d7-4bd7-973e-02474a87a9f7" absoluteBounds="52.64, 31.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="bc9cf89f-42a8-42ea-92c1-e9ae6d71c879" absoluteBounds="60.625, 8.625, 2, 2.1554996744791666">
+      <DataClassMoniker Name="/OuikumDataContext/View_TempShipmentCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="43a9c307-a11c-49e4-832a-1362e2dc7035" absoluteBounds="60.64, 9.085, 1.9700000000000002, 1.5954996744791665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b331ef9c-1ed4-4a4c-bf00-f5020757a784" absoluteBounds="60.5, 11.875, 2, 1.3862939453125">
+      <DataClassMoniker Name="/OuikumDataContext/View_SumTempCart" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8d226326-e29d-4f87-92a5-a71b99339760" absoluteBounds="60.515, 12.335, 1.9700000000000002, 0.8262939453125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2301ef14-6a91-4da4-b515-02975ba2b2ef" absoluteBounds="11.875, 0.75, 2, 4.4631168619791666">
+      <DataClassMoniker Name="/OuikumDataContext/b2bCompanyShipment" />
+      <nestedChildShapes>
+        <elementListCompartment Id="c3223692-ebb9-4137-9396-ae8f73b93108" absoluteBounds="11.89, 1.21, 1.9700000000000002, 3.903116861979167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(13.875 : 2.30850341796875); (14.125 : 2.30850341796875)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompanyShipment/b2bCompanyShipment_b2bProductShipment" />
+      <nodes>
+        <classShapeMoniker Id="2301ef14-6a91-4da4-b515-02975ba2b2ef" />
+        <classShapeMoniker Id="34dab925-2854-44e4-82e7-0fae9180375d" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(13.875 : 2.98155843098958); (14.0625 : 2.98155843098958); (14.0625 : 3.9295068359375); (16.1875 : 3.9295068359375); (16.1875 : 8.8125); (20.6875 : 8.8125); (20.6875 : 24.65625); (20 : 24.65625); (20 : 24.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompanyShipment/b2bCompanyShipment_OuikumTempOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="2301ef14-6a91-4da4-b515-02975ba2b2ef" />
+        <classShapeMoniker Id="e1b2bf58-9082-4e58-8be7-489015947c6b" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="b3463ca7-e664-4266-b643-fb4a98f3649b" absoluteBounds="59.75, 0.875, 2, 3.6939111328124996">
+      <DataClassMoniker Name="/OuikumDataContext/emShipmentProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4bdaf27d-e359-4785-aed2-d2ad2b93b00d" absoluteBounds="59.765, 1.335, 1.9700000000000002, 3.1339111328125" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="c5f40c9c-6902-4ced-bc3a-a68a7c954c4f" absoluteBounds="60, 4.75, 2, 6.5784326171875">
+      <DataClassMoniker Name="/OuikumDataContext/View_ShipmentProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="4f26a822-b235-4a2e-9364-483959b8dd19" absoluteBounds="60.015, 5.21, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="b20f02e2-e3b3-4766-bbdd-5c360b455036" absoluteBounds="63.375, 4.5, 2, 3.8862125651041666">
+      <DataClassMoniker Name="/OuikumDataContext/View_ListemShipmentProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="81a13722-ac8a-4857-8fe2-c1bdf1563c8a" absoluteBounds="63.39, 4.96, 1.9700000000000002, 3.3262125651041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="89a0b112-4852-421e-a5fb-09c7db40c7a6" absoluteBounds="63.125, 14.625, 2, 4.8477197265625">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumOrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="a0f7be24-2565-4b84-a3e2-a9e881eeae4c" absoluteBounds="63.14, 15.085, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(11.75 : 35.9949102689303); (11.9375 : 35.9949102689303); (11.9375 : 22.0625); (25.6875 : 22.0625); (25.6875 : 22.5625); (34.9375 : 22.5625); (34.9375 : 26.3125); (39.9375 : 26.3125); (39.9375 : 19.4375); (42.1875 : 19.4375); (42.1875 : 24.5625); (47.1875 : 24.5625); (47.1875 : 20.3125); (49.6875 : 20.3125); (49.6875 : 24.3125); (64.125 : 24.3125); (64.125 : 19.4727197265625)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompany/b2bCompany_OuikumOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="c8501179-e25f-4540-b9ae-acb102394f9a" />
+        <classShapeMoniker Id="89a0b112-4852-421e-a5fb-09c7db40c7a6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="d0a9d961-8207-4943-9d91-bedb13165645" absoluteBounds="60.25, 14.125, 2, 5.4246240234375">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="242b2c77-57c2-4596-a1a5-af00f18f823c" absoluteBounds="60.265, 14.585, 1.9700000000000002, 4.8646240234375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(62.25 : 15.7744299316406); (63.125 : 15.7744299316406)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/OuikumOrder/OuikumOrder_OuikumOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="d0a9d961-8207-4943-9d91-bedb13165645" />
+        <classShapeMoniker Id="89a0b112-4852-421e-a5fb-09c7db40c7a6" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(11.75 : 29.5965893554688); (11.9375 : 29.5965893554688); (11.9375 : 22.0625); (20.6041666666667 : 22.0625 : JumpStart); (20.7708333333333 : 22.0625 : JumpEnd); (20.7916666666667 : 22.0625 : JumpStart); (20.9583333333333 : 22.0625 : JumpEnd); (25.4166666666667 : 22.0625 : JumpStart); (25.5833333333333 : 22.0625 : JumpEnd); (25.6875 : 22.0625); (25.6875 : 22.5625); (34.9375 : 22.5625); (34.9375 : 26.3125); (39.9375 : 26.3125); (39.9375 : 19.4375); (42.1875 : 19.4375); (42.1875 : 24.5625); (47.1875 : 24.5625); (47.1875 : 20.3125); (49.6875 : 20.3125); (49.6875 : 24.3125); (61.25 : 24.3125); (61.25 : 19.5496240234375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bCompany/b2bCompany_OuikumOrder" />
+      <nodes>
+        <classShapeMoniker Id="c8501179-e25f-4540-b9ae-acb102394f9a" />
+        <classShapeMoniker Id="d0a9d961-8207-4943-9d91-bedb13165645" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(8.906252 : 4.12660970052083); (8.906252 : 4.4375); (9.46875 : 4.4375); (9.46875 : 16.4375); (11.84375 : 16.4375); (11.84375 : 18.2275211588542); (13.9791666666667 : 18.2275211588542 : JumpStart); (14.1458333333333 : 18.2275211588542 : JumpEnd); (16.1875 : 18.2275211588542); (16.1875 : 21.8715641276042); (16.2291666666667 : 21.8715641276042 : JumpStart); (16.3958333333333 : 21.8715641276042 : JumpEnd); (18.5 : 21.8715641276042); (18.5 : 17.8125); (20.6041666666667 : 17.8125 : JumpStart); (20.7708333333333 : 17.8125 : JumpEnd); (25.625 : 17.8125); (25.625 : 18.0929182942708); (32.125 : 18.0929182942708); (32.125 : 15.3125); (34.9375 : 15.3125); (34.9375 : 17.9295068359375); (37.375 : 17.9295068359375); (37.375 : 19.1985498046875); (42.25 : 19.1985498046875); (42.25 : 12.0625); (47.125 : 12.0625); (47.125 : 20.0349755859375); (57.25 : 20.0349755859375); (57.25 : 24.1935042317708); (60.15625 : 24.1935042317708); (60.15625 : 16.8373120117188); (60.25 : 16.8373120117188)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emDistrict/emDistrict_OuikumOrder" />
+      <nodes>
+        <classShapeMoniker Id="0bf7c3d1-92d1-4a44-93a8-dcfb88cb266a" />
+        <classShapeMoniker Id="d0a9d961-8207-4943-9d91-bedb13165645" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(37 : 23.7604077148438); (37.4375 : 23.7604077148438); (37.4375 : 19.4375); (42.3125 : 19.4375); (42.3125 : 24.3426741536458); (47.125 : 24.3426741536458); (47.125 : 20.25); (49.625 : 20.25); (49.625 : 24.34375); (60.718748 : 24.34375); (60.718748 : 19.5496240234375)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/emProvince/emProvince_OuikumOrder" />
+      <nodes>
+        <classShapeMoniker Id="0e3cbea3-7b84-498b-95f6-0391efb877c3" />
+        <classShapeMoniker Id="d0a9d961-8207-4943-9d91-bedb13165645" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="7b6887d7-9ccf-42f0-ba81-be58680e967e" absoluteBounds="63.125, 1.125, 2, 2.9247054036458331">
+      <DataClassMoniker Name="/OuikumDataContext/OuikumStausOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="11f9b69b-0c3b-4c39-8f69-1cdda600e11f" absoluteBounds="63.14, 1.585, 1.9700000000000002, 2.364705403645833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="965d747f-0d47-41d4-989f-bef6cf6f4bf4" absoluteBounds="44.625, 44.375, 2, 8.5014469401041666">
+      <DataClassMoniker Name="/OuikumDataContext/view_OrderDetail" />
+      <nestedChildShapes>
+        <elementListCompartment Id="43e4de80-269e-43b5-9530-46da77dcaf90" absoluteBounds="44.64, 44.835, 1.9700000000000002, 7.941446940104167" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="f1858de3-008e-4a03-a6e4-918c5f80443a" absoluteBounds="71.125, 2.375, 2, 4.8477197265625">
+      <DataClassMoniker Name="/OuikumDataContext/View_HistoryOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="8fa1b68c-c6ed-4cba-938a-fc7e09fa3421" absoluteBounds="71.14, 2.835, 1.9700000000000002, 4.2877197265625" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="d201bde4-ed42-4c61-a87f-44991ca2f292" absoluteBounds="20.875, 0.75, 2, 3.1170068359375">
+      <DataClassMoniker Name="/OuikumDataContext/b2bBusinessType" />
+      <nestedChildShapes>
+        <elementListCompartment Id="17bd6c79-baa1-4c71-b56c-4c8de49034db" absoluteBounds="20.89, 1.21, 1.9700000000000002, 2.5570068359375" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="53eec91b-6568-45f6-bfa5-96dc80c893b0" absoluteBounds="0.5, 5.625, 2, 9.0783512369791648">
+      <DataClassMoniker Name="/OuikumDataContext/b2bProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="04eeb82a-7c2f-4a40-bfe6-58cd63b2e529" absoluteBounds="0.51500000000000012, 6.085, 1.9700000000000002, 8.5183512369791661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <associationConnector edgePoints="[(1.9999995 : 5.625); (1.9999995 : 5.31410970052083); (2.5625 : 5.31410970052083); (2.5625 : 2.47195556640625); (2.75 : 2.47195556640625)]" fixedFrom="Algorithm" fixedTo="Algorithm">
+      <AssociationMoniker Name="/OuikumDataContext/b2bProduct/b2bProduct_b2bProductImage" />
+      <nodes>
+        <classShapeMoniker Id="53eec91b-6568-45f6-bfa5-96dc80c893b0" />
+        <classShapeMoniker Id="0945f4b3-cdf4-4327-bcb6-a25f55177258" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 8.9825077138672); (2.75 : 8.9825077138672)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bProduct/b2bProduct_b2bQuotation" />
+      <nodes>
+        <classShapeMoniker Id="53eec91b-6568-45f6-bfa5-96dc80c893b0" />
+        <classShapeMoniker Id="8defb537-ac66-42c2-a5db-f0a4ee4c0e47" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.5 : 12.4650154277344); (2.6875 : 12.4650154277344); (2.6875 : 16.7753727213542); (7.3125 : 16.7753727213542); (7.3125 : 11.5737125651042); (9.5625 : 11.5737125651042); (9.5625 : 12.9390283203125); (13.9791666666667 : 12.9390283203125 : JumpStart); (14.1458333333333 : 12.9390283203125 : JumpEnd); (16.3125 : 12.9390283203125); (16.3125 : 22.1410139973958); (19.9375005 : 22.1410139973958); (19.9375005 : 24.75)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bProduct/b2bProduct_OuikumTempOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="53eec91b-6568-45f6-bfa5-96dc80c893b0" />
+        <classShapeMoniker Id="e1b2bf58-9082-4e58-8be7-489015947c6b" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(1.5 : 14.7033512369792); (1.5 : 16.7753727213542); (7.25 : 16.7753727213542); (7.25 : 12.0625); (9.38541666666667 : 12.0625 : JumpStart); (9.55208333333333 : 12.0625 : JumpEnd); (9.59375 : 12.0625); (9.59375 : 13.0625); (13.9791666666667 : 13.0625 : JumpStart); (14.1458333333333 : 13.0625 : JumpEnd); (16.1875 : 13.0625); (16.1875 : 10.9375); (18.5 : 10.9375); (18.5 : 14.1698225911458); (20.6041666666667 : 14.1698225911458 : JumpStart); (20.7708333333333 : 14.1698225911458 : JumpEnd); (20.9375 : 14.1698225911458); (20.9375 : 12.9375); (23.4375 : 12.9375); (23.4375 : 13.0160139973958); (28.65625 : 13.0160139973958); (28.65625 : 14.3373527018229); (29 : 14.3373527018229)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bProduct/b2bProduct_TempCart" />
+      <nodes>
+        <classShapeMoniker Id="53eec91b-6568-45f6-bfa5-96dc80c893b0" />
+        <classShapeMoniker Id="10ceea39-833f-4d7b-a627-e21776ef5052" />
+      </nodes>
+    </associationConnector>
+    <associationConnector edgePoints="[(2.031252 : 14.7033512369792); (2.031252 : 17.0488598632813); (9.6875 : 17.0488598632813); (9.6875 : 16.4375); (11.8125 : 16.4375); (11.8125 : 18.2275211588542); (13.9791666666667 : 18.2275211588542 : JumpStart); (14.1458333333333 : 18.2275211588542 : JumpEnd); (16.25 : 18.2275211588542); (16.25 : 21.8715641276042); (18.5625 : 21.8715641276042); (18.5625 : 17.8125); (20.6041666666667 : 17.8125 : JumpStart); (20.7708333333333 : 17.8125 : JumpEnd); (25.6875 : 17.8125); (25.6875 : 18.0929182942708); (32.1875 : 18.0929182942708); (32.1875 : 18.7468082682292); (34.9375 : 18.7468082682292); (34.9375 : 18.3125); (37.4375 : 18.3125); (37.4375 : 19.1985498046875); (42.3125 : 19.1985498046875); (42.3125 : 12.0625); (47.1875 : 12.0625); (47.1875 : 20.0349755859375); (57.3125 : 20.0349755859375); (57.3125 : 24.1310042317708); (60.6354146666667 : 24.1310042317708 : JumpStart); (60.8020813333333 : 24.1310042317708 : JumpEnd); (63.03125 : 24.1310042317708); (63.03125 : 17.0488598632813); (63.125 : 17.0488598632813)]" fixedFrom="NotFixed" fixedTo="NotFixed">
+      <AssociationMoniker Name="/OuikumDataContext/b2bProduct/b2bProduct_OuikumOrderDetail" />
+      <nodes>
+        <classShapeMoniker Id="53eec91b-6568-45f6-bfa5-96dc80c893b0" />
+        <classShapeMoniker Id="89a0b112-4852-421e-a5fb-09c7db40c7a6" />
+      </nodes>
+    </associationConnector>
+    <classShape Id="1c314505-404e-462d-9ff4-802faec89830" absoluteBounds="5.375, 22.125, 2, 4.6554182942708326">
+      <DataClassMoniker Name="/OuikumDataContext/b2bHotFeaProduct1" />
+      <nestedChildShapes>
+        <elementListCompartment Id="2b0fdb6e-ce06-4167-b4da-9150551000cd" absoluteBounds="5.39, 22.585, 1.9700000000000002, 4.095418294270833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="e58113cb-ed66-4af0-a5c2-6204587d860f" absoluteBounds="31.5, 41.5, 2, 9.6552555338541648">
+      <DataClassMoniker Name="/OuikumDataContext/view_HotFeaProduct" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fdca0dbf-feb5-4dc4-99ba-c1e027c45ef2" absoluteBounds="31.515, 41.96, 1.9700000000000002, 9.0952555338541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="cd0cce96-bd55-4b1e-bee9-633ce2d2240e" absoluteBounds="71.5, 0.5, 2, 1.5785953776041666">
+      <DataClassMoniker Name="/OuikumDataContext/Count_Pageview" />
+      <nestedChildShapes>
+        <elementListCompartment Id="076f8b3a-be19-45cd-916e-35d15564bff4" absoluteBounds="71.515, 0.96, 1.9700000000000002, 1.0185953776041665" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="accbf3b0-7fcb-4e72-906a-0176e3bf03d0" absoluteBounds="67.25, 0.5, 2, 6.5784326171875">
+      <DataClassMoniker Name="/OuikumDataContext/View_OuikumOrderDetailSC" />
+      <nestedChildShapes>
+        <elementListCompartment Id="fe150681-3748-4ba7-838c-38c46eb7640b" absoluteBounds="67.265, 0.96, 1.9700000000000002, 6.0184326171875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="2b8c8f94-8b93-4d72-907d-e104d73f1b86" absoluteBounds="76.5, 0.625, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/OuikumDataContext/view_EmailToSeller" />
+      <nestedChildShapes>
+        <elementListCompartment Id="dd06852f-ec82-42a2-9da7-fc217146e2e0" absoluteBounds="76.515, 1.085, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="409ab11e-1f76-43f3-8a31-1005dd85bcb9" absoluteBounds="74, 0.875, 2, 5.0400211588541657">
+      <DataClassMoniker Name="/OuikumDataContext/view_EmailToBuyer" />
+      <nestedChildShapes>
+        <elementListCompartment Id="6146d522-8747-4341-b767-106b963e842d" absoluteBounds="74.015, 1.335, 1.9700000000000002, 4.4800211588541661" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="8c457859-f9fe-4821-addf-a518bc6e76a7" absoluteBounds="74, 6.25, 2, 3.5016097005208326">
+      <DataClassMoniker Name="/OuikumDataContext/View_getSendmailOrder" />
+      <nestedChildShapes>
+        <elementListCompartment Id="89f4f4f0-7a30-4e51-bd4b-ffe6734c52f5" absoluteBounds="74.015, 6.71, 1.9700000000000002, 2.941609700520833" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+    <classShape Id="3ebbca2e-a8f1-4741-ab71-9ea0887c3e85" absoluteBounds="77.125, 6.5, 2, 1.9631982421875">
+      <DataClassMoniker Name="/OuikumDataContext/view_getMailOrdertoSeller" />
+      <nestedChildShapes>
+        <elementListCompartment Id="595ee1c9-c278-4705-a47b-ead26af7aeac" absoluteBounds="77.14, 6.96, 1.9700000000000002, 1.4031982421875" name="DataPropertiesCompartment" titleTextColor="Black" itemTextColor="Black" />
+      </nestedChildShapes>
+    </classShape>
+  </nestedChildShapes>
+</ordesignerObjectsDiagram>
