@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="vldcannot_save" xml:space="preserve">
+    <value>Can not be saved.</value>
+  </data>
+  <data name="vldcan_save" xml:space="preserve">
+    <value>Can be saved.</value>
+  </data>
+  <data name="vldcompname_exists" xml:space="preserve">
+    <value>Company name is duplicate.</value>
+  </data>
+  <data name="vlddisplayname_exists" xml:space="preserve">
+    <value>Display name is  duplicate.</value>
+  </data>
+  <data name="vldemail_exists" xml:space="preserve">
+    <value>Email is  duplicate.</value>
+  </data>
+  <data name="vldengonly" xml:space="preserve">
+    <value>Incorrect data (English only).</value>
+  </data>
+  <data name="vldmin_4_max_16char" xml:space="preserve">
+    <value>Please enter at least 4 char and no more than 16 char.</value>
+  </data>
+  <data name="vldmin_6_max_20char" xml:space="preserve">
+    <value>Please enter at least 6 char and no more than 20 char.</value>
+  </data>
+  <data name="vldrequired" xml:space="preserve">
+    <value>This field is required.</value>
+  </data>
+  <data name="vldusername_exists" xml:space="preserve">
+    <value>Username is duplicate.</value>
+  </data>
+  <data name="vldfix_format_email" xml:space="preserve">
+    <value>Enter a correct email address.</value>
+  </data>
+  <data name="vldless_3char" xml:space="preserve">
+    <value>lease enter at least 3 characters.</value>
+  </data>
+  <data name="vldless_4char" xml:space="preserve">
+    <value>lease enter at least 4 characters.</value>
+  </data>
+  <data name="vldless_9char" xml:space="preserve">
+    <value>lease enter at least 9 characters.</value>
+  </data>
+  <data name="vldmin_4_max_20char" xml:space="preserve">
+    <value>Please enter at least 4 char and no more than 20 char.</value>
+  </data>
+  <data name="vldsame_value" xml:space="preserve">
+    <value>Please enter the same value again.</value>
+  </data>
+  <data name="vldselectbiztype" xml:space="preserve">
+    <value>Please select a business type.</value>
+  </data>
+  <data name="vldselectdistrict" xml:space="preserve">
+    <value>Please select district.</value>
+  </data>
+  <data name="vldselectprovince" xml:space="preserve">
+    <value>Please select province.</value>
+  </data>
+  <data name="vldbankid" xml:space="preserve">
+    <value>Please select your source bank.</value>
+  </data>
+  <data name="vldbranchname" xml:space="preserve">
+    <value>Please fill out the fields that have been paid.</value>
+  </data>
+  <data name="vldpayeraccname" xml:space="preserve">
+    <value>Please fill in the account name transfer.</value>
+  </data>
+  <data name="vldpayeraccno" xml:space="preserve">
+    <value>Please fill out the account number, the transferor.</value>
+  </data>
+  <data name="vldadd_buylead_success" xml:space="preserve">
+    <value>Add buylead success.</value>
+  </data>
+  <data name="vldadd_moredetail" xml:space="preserve">
+    <value>Add more details.</value>
+  </data>
+  <data name="vldadd_succss" xml:space="preserve">
+    <value>Add has successfully.</value>
+  </data>
+  <data name="vldalert_message" xml:space="preserve">
+    <value>You have messages</value>
+  </data>
+  <data name="vldall_required" xml:space="preserve">
+    <value>Please fill in all required fields.</value>
+  </data>
+  <data name="vldbuyleadexpire" xml:space="preserve">
+    <value>Buylead expire date incorrect.</value>
+  </data>
+  <data name="vldcancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="vldcannot_check_info" xml:space="preserve">
+    <value>Cannot check information, Please try again.</value>
+  </data>
+  <data name="vldcannot_insert_zero" xml:space="preserve">
+    <value>Can not insert less than 0.</value>
+  </data>
+  <data name="vldchange_password_error" xml:space="preserve">
+    <value>Change password error. Please try again later.</value>
+  </data>
+  <data name="vldchange_pass_success" xml:space="preserve">
+    <value>Change password successfully.</value>
+  </data>
+  <data name="vldcompare_choose" xml:space="preserve">
+    <value>Please choose product to compare.</value>
+  </data>
+  <data name="vldcompare_exist" xml:space="preserve">
+    <value>This item has exist compare product.</value>
+  </data>
+  <data name="vldcompare_max" xml:space="preserve">
+    <value>Compare products has full.</value>
+  </data>
+  <data name="vldcompare_success" xml:space="preserve">
+    <value>dd compare success.</value>
+  </data>
+  <data name="vldconfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="vldconfirm_del" xml:space="preserve">
+    <value>Confirm to delete this item.</value>
+  </data>
+  <data name="vldconfirm_del_all" xml:space="preserve">
+    <value>Confirm to delete all item.</value>
+  </data>
+  <data name="vldconfirm_restore" xml:space="preserve">
+    <value>Confirm to restore this item.</value>
+  </data>
+  <data name="vldconfirm_restore_all" xml:space="preserve">
+    <value>Confirm to restore all item.</value>
+  </data>
+  <data name="vlddel_msg_success" xml:space="preserve">
+    <value>Delete Message Successfully.</value>
+  </data>
+  <data name="vlddel_success" xml:space="preserve">
+    <value>Delete successfully.</value>
+  </data>
+  <data name="vlddel_unsuccess" xml:space="preserve">
+    <value>Unsuccessful delete data. Please try again later.</value>
+  </data>
+  <data name="vlddetails" xml:space="preserve">
+    <value>Enter details.</value>
+  </data>
+  <data name="vlddraft_success" xml:space="preserve">
+    <value>Draft has been saved.</value>
+  </data>
+  <data name="vlddrag_to_junk" xml:space="preserve">
+    <value>Drag to junk.</value>
+  </data>
+  <data name="vldedit_success" xml:space="preserve">
+    <value>Edit successfully.</value>
+  </data>
+  <data name="vldedit_unsuccess" xml:space="preserve">
+    <value>Unsuccessful edit data. Please try again later.</value>
+  </data>
+  <data name="vldemail_request" xml:space="preserve">
+    <value>This email does not match the request.</value>
+  </data>
+  <data name="vldenter_message" xml:space="preserve">
+    <value>Please enter the message.</value>
+  </data>
+  <data name="vldenter_recipient" xml:space="preserve">
+    <value>Please enter the recipient.</value>
+  </data>
+  <data name="vldenter_search" xml:space="preserve">
+    <value>Please enter your search.</value>
+  </data>
+  <data name="vldenter_subject" xml:space="preserve">
+    <value>Please enter a subject.</value>
+  </data>
+  <data name="vldenter_validemail" xml:space="preserve">
+    <value>Please enter a valid email address.</value>
+  </data>
+  <data name="vldfill_youremail" xml:space="preserve">
+    <value>Please fill in your email.</value>
+  </data>
+  <data name="vldfill_yourmessage" xml:space="preserve">
+    <value>Please fill in your message.</value>
+  </data>
+  <data name="vldfill_yourname" xml:space="preserve">
+    <value>Please fill in your name.</value>
+  </data>
+  <data name="vldfix_format_number" xml:space="preserve">
+    <value>Enter only numbers.</value>
+  </data>
+  <data name="vldfix_format_picture" xml:space="preserve">
+    <value>Support file .jpg .jpeg .png only.</value>
+  </data>
+  <data name="vldformaterror" xml:space="preserve">
+    <value>Your format is not correct.</value>
+  </data>
+  <data name="vldhide_moredetail" xml:space="preserve">
+    <value>Hide more details.</value>
+  </data>
+  <data name="vldimg_fix5" xml:space="preserve">
+    <value>Just Select 5 Images Only.</value>
+  </data>
+  <data name="vldinput_correct_number" xml:space="preserve">
+    <value>Please input correct number.</value>
+  </data>
+  <data name="vldinput_keyword" xml:space="preserve">
+    <value>Please enter keyword.</value>
+  </data>
+  <data name="vldismaxproduct" xml:space="preserve">
+    <value>Full! You can add product to maximum 20 items. Please upgrade gold member for get more.</value>
+  </data>
+  <data name="vldless_10char" xml:space="preserve">
+    <value>Please enter at least 10 characters.</value>
+  </data>
+  <data name="vldless_2char" xml:space="preserve">
+    <value>Please enter at least 2 characters.</value>
+  </data>
+  <data name="vldless_5char" xml:space="preserve">
+    <value>Please enter at least 5 characters.</value>
+  </data>
+  <data name="vldless_6char" xml:space="preserve">
+    <value>Please enter at least 6 characters.</value>
+  </data>
+  <data name="vldlmessagelength" xml:space="preserve">
+    <value>A brief description of the article is too long. Please try again later.</value>
+  </data>
+  <data name="vldlocked" xml:space="preserve">
+    <value>Unlocked : Can't be saved.</value>
+  </data>
+  <data name="vldmark_importance_success" xml:space="preserve">
+    <value>Mark Importance Successfully.</value>
+  </data>
+  <data name="vldmark_unimportance_success" xml:space="preserve">
+    <value>Mark Unimportance Successfully.</value>
+  </data>
+  <data name="vldmark_unread_success" xml:space="preserve">
+    <value>Mark Unread Successfully.</value>
+  </data>
+  <data name="vldmaximg_3" xml:space="preserve">
+    <value>Can upload up to 3 images.</value>
+  </data>
+  <data name="vldmax_word5" xml:space="preserve">
+    <value>fill max 5 words.</value>
+  </data>
+  <data name="vldmin_4_max_12char" xml:space="preserve">
+    <value>Please enter at least 4 char and no more than 12 char.</value>
+  </data>
+  <data name="vldmin_6_max_12char" xml:space="preserve">
+    <value>Please enter at least 6 char and no more than 12 char.</value>
+  </data>
+  <data name="vldmore_10char" xml:space="preserve">
+    <value>Please enter no more than 10 characters.</value>
+  </data>
+  <data name="vldmore_50char" xml:space="preserve">
+    <value>Please enter no more than 50 characters.</value>
+  </data>
+  <data name="vldmore_5char" xml:space="preserve">
+    <value>Please enter no more than 5 characters.</value>
+  </data>
+  <data name="vldnoemail" xml:space="preserve">
+    <value>This Email was not found in the system.</value>
+  </data>
+  <data name="vldnon_specific" xml:space="preserve">
+    <value>NonSpecific</value>
+  </data>
+  <data name="vldnotice_del" xml:space="preserve">
+    <value>Please select the data to be deleted.</value>
+  </data>
+  <data name="vldnot_found_company" xml:space="preserve">
+    <value>Not found this company.</value>
+  </data>
+  <data name="vldnouser" xml:space="preserve">
+    <value>This user was not found in the system.</value>
+  </data>
+  <data name="vldnouseremail" xml:space="preserve">
+    <value>Username or email does not exist in the system.</value>
+  </data>
+  <data name="vldno_data" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="vldno_item_selected" xml:space="preserve">
+    <value>You have not selected item.</value>
+  </data>
+  <data name="vldother" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="vldoverpage" xml:space="preserve">
+    <value>cannot go to over page.</value>
+  </data>
+  <data name="vldpassword_incorrect" xml:space="preserve">
+    <value>Password is incorrect.</value>
+  </data>
+  <data name="vldpass_not_same" xml:space="preserve">
+    <value>Passwords do not match.</value>
+  </data>
+  <data name="vldpgroup_already" xml:space="preserve">
+    <value>This Groupname have already.</value>
+  </data>
+  <data name="vldplease_select" xml:space="preserve">
+    <value>Please Select.</value>
+  </data>
+  <data name="vldplease_select_fav" xml:space="preserve">
+    <value>Please Select Favorite.</value>
+  </data>
+  <data name="vldplease_signin" xml:space="preserve">
+    <value>Please SignIn.</value>
+  </data>
+  <data name="vldplease_unlock" xml:space="preserve">
+    <value>Please unlock the security system.</value>
+  </data>
+  <data name="vldpname_already" xml:space="preserve">
+    <value>This productname have already</value>
+  </data>
+  <data name="vldpreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="vldrequest_unsuccessful" xml:space="preserve">
+    <value>The request was unsuccessful. Please try again later.</value>
+  </data>
+  <data name="vldrequired_complete" xml:space="preserve">
+    <value>Please complete all required fields.</value>
+  </data>
+  <data name="vldrequired_img" xml:space="preserve">
+    <value>Please choose image.</value>
+  </data>
+  <data name="vldsave_buyleadSuccess" xml:space="preserve">
+    <value>Save Success, Wait for admin approve.</value>
+  </data>
+  <data name="vldsave_success" xml:space="preserve">
+    <value>Save has successfully.</value>
+  </data>
+  <data name="vldsave_unsuccess" xml:space="preserve">
+    <value>Unsuccessful save data. Please try again later.</value>
+  </data>
+  <data name="vldsearch_buylead" xml:space="preserve">
+    <value>search buylead</value>
+  </data>
+  <data name="vldsearch_product" xml:space="preserve">
+    <value>search product</value>
+  </data>
+  <data name="vldsearch_supplier" xml:space="preserve">
+    <value>search supplier</value>
+  </data>
+  <data name="vldselectacctype" xml:space="preserve">
+    <value>Please select a Account type.</value>
+  </data>
+  <data name="vldselectarticletype" xml:space="preserve">
+    <value>Please select a article type.</value>
+  </data>
+  <data name="vldselectattributes" xml:space="preserve">
+    <value>Select Attributes.</value>
+  </data>
+  <data name="vldselectbank" xml:space="preserve">
+    <value>Please select Bank.</value>
+  </data>
+  <data name="vldselectcomplevel" xml:space="preserve">
+    <value>Please select a company level.</value>
+  </data>
+  <data name="vldselectcountry" xml:space="preserve">
+    <value>Please select Country.</value>
+  </data>
+  <data name="vldselectjobcate" xml:space="preserve">
+    <value>Select a category.</value>
+  </data>
+  <data name="vldselectjobtype" xml:space="preserve">
+    <value>Select job type.</value>
+  </data>
+  <data name="vldselectreqeducation" xml:space="preserve">
+    <value>Select the level of education.</value>
+  </data>
+  <data name="vldselectreqexp" xml:space="preserve">
+    <value>Select experience.</value>
+  </data>
+  <data name="vldselectservicetype" xml:space="preserve">
+    <value>Please select a service type.</value>
+  </data>
+  <data name="vldselect_all" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="vldsenddata_success" xml:space="preserve">
+    <value>Send data to customers successfully.</value>
+  </data>
+  <data name="vldsendtouser_success" xml:space="preserve">
+    <value>Send data to Member successfully.</value>
+  </data>
+  <data name="vldsend_success" xml:space="preserve">
+    <value>Send message successfully.</value>
+  </data>
+  <data name="vldspecific" xml:space="preserve">
+    <value>Specific</value>
+  </data>
+  <data name="vldunlocked" xml:space="preserve">
+    <value>Unlocked : Can be saved.</value>
+  </data>
+  <data name="vldurl_upload" xml:space="preserve">
+    <value>https://ouikumstorage.blob.core.windows.net/upload/</value>
+  </data>
+  <data name="vlduser_incorrect" xml:space="preserve">
+    <value>User Account is incorrect.</value>
+  </data>
+  <data name="vlduser_request" xml:space="preserve">
+    <value>This username does not match the request.</value>
+  </data>
+  <data name="vldcannot_closebid" xml:space="preserve">
+    <value>Can not close the bid.</value>
+  </data>
+  <data name="vldcategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="vldclosebidproduct" xml:space="preserve">
+    <value>Your close the product and then bid. Other supplier will not be able to bid wait product that you have been able to contact you via your email.</value>
+  </data>
+  <data name="vldconfirm_del_cate" xml:space="preserve">
+    <value>you want to delete category?</value>
+  </data>
+  <data name="vldconfirm_del_data" xml:space="preserve">
+    <value>you want to delete data?</value>
+  </data>
+  <data name="vldconfirm_del_mem" xml:space="preserve">
+    <value>you want to delete members ?</value>
+  </data>
+  <data name="vldconfirm_del_packet" xml:space="preserve">
+    <value>you want to delete packet?</value>
+  </data>
+  <data name="vldconfirm_moveanddel_cate" xml:space="preserve">
+    <value>Please select the category that delete or move the product before removing categories.</value>
+  </data>
+  <data name="vldconfirm_move_procate" xml:space="preserve">
+    <value>you want to move product category ?</value>
+  </data>
+  <data name="vlddata_incorrect" xml:space="preserve">
+    <value>Please fill data is incorrect.</value>
+  </data>
+  <data name="vlddear" xml:space="preserve">
+    <value>Dear</value>
+  </data>
+  <data name="vldenddate_buy" xml:space="preserve">
+    <value>Buy end date must be greater than the current date.</value>
+  </data>
+  <data name="vldfill_yourphone" xml:space="preserve">
+    <value>Please fill in your phone number.</value>
+  </data>
+  <data name="vldfix_format_phone" xml:space="preserve">
+    <value>Enter a correct phone number.</value>
+  </data>
+  <data name="vldget_quo" xml:space="preserve">
+    <value>You can Get Quotes them</value>
+  </data>
+  <data name="vldminimg_1" xml:space="preserve">
+    <value>Please select at least 1 image</value>
+  </data>
+  <data name="vldmovepro_to_trash" xml:space="preserve">
+    <value>You are sure to move this product into the trash.</value>
+  </data>
+  <data name="vldmove_pro_zero" xml:space="preserve">
+    <value>Please select the category the product before removing. Category so that the number is 0.</value>
+  </data>
+  <data name="vldnoapprove_pro" xml:space="preserve">
+    <value>Because product lose  quality. And the content is missing.</value>
+  </data>
+  <data name="vldnon_specific_keyword" xml:space="preserve">
+    <value>No specific Keyword</value>
+  </data>
+  <data name="vldpayment_success" xml:space="preserve">
+    <value>Successful payment. Approval of the Admin.</value>
+  </data>
+  <data name="vldpro_bid" xml:space="preserve">
+    <value>Product bid</value>
+  </data>
+  <data name="vldrreqestbid" xml:space="preserve">
+    <value>Request product successfully.</value>
+  </data>
+  <data name="vldseemore" xml:space="preserve">
+    <value>see more</value>
+  </data>
+  <data name="vldselectcate" xml:space="preserve">
+    <value>select category</value>
+  </data>
+  <data name="vldselectcateLV1" xml:space="preserve">
+    <value>select category level 1</value>
+  </data>
+  <data name="vldselectcateLV2" xml:space="preserve">
+    <value>select category level 2</value>
+  </data>
+  <data name="vldselect_company" xml:space="preserve">
+    <value>You have not selected company. Please select that you want company.</value>
+  </data>
+  <data name="vldsendingmsg" xml:space="preserve">
+    <value>Sending message ...</value>
+  </data>
+  <data name="vldsendyoudata_success" xml:space="preserve">
+    <value>Send your data finished</value>
+  </data>
+  <data name="vldsend_purchas_success" xml:space="preserve">
+    <value>Send data success. Can history of data at menu myAssignLead.</value>
+  </data>
+  <data name="vldslidesendmsg" xml:space="preserve">
+    <value>Slide bar to the right. for send message.</value>
+  </data>
+  <data name="vldthk_suggestion" xml:space="preserve">
+    <value>Thank you for your suggestions.</value>
+  </data>
+  <data name="vldview_quo" xml:space="preserve">
+    <value>You can see Get Quotes the product has</value>
+  </data>
+  <data name="vldwaitbid" xml:space="preserve">
+    <value>Please wait for the bids from the seller through your contacts.</value>
+  </data>
+  <data name="vldwaitemail" xml:space="preserve">
+    <value>Can wait contact you via your email.</value>
+  </data>
+  <data name="vldweb" xml:space="preserve">
+    <value>B2BThai.com</value>
+  </data>
+  <data name="vldadd_fav" xml:space="preserve">
+    <value>Add to your favorites.</value>
+  </data>
+  <data name="vldadd_fav_all" xml:space="preserve">
+    <value>Add favorite success all</value>
+  </data>
+  <data name="vldall_fav_success" xml:space="preserve">
+    <value>All items listed to favorite</value>
+  </data>
+  <data name="vldfav_success" xml:space="preserve">
+    <value>This list as a favorite.</value>
+  </data>
+  <data name="vldenddate" xml:space="preserve">
+    <value>The end date can not be less then the start date</value>
+  </data>
+  <data name="vldstartdate" xml:space="preserve">
+    <value>The start date can not be greater then the end date</value>
+  </data>
+  <data name="vlderror_because" xml:space="preserve">
+    <value>Error Because</value>
+  </data>
+  <data name="vldproductlink" xml:space="preserve">
+    <value>Product Link</value>
+  </data>
+  <data name="vldduplicatekeyword" xml:space="preserve">
+    <value>duplicate keyword</value>
+  </data>
+  <data name="vldselectcateLV3" xml:space="preserve">
+    <value>select category level 3</value>
+  </data>
+  <data name="vldall_cate" xml:space="preserve">
+    <value>All Category</value>
+  </data>
+  <data name="vldUpgoldtoPuschase" xml:space="preserve">
+    <value>You  purchase a maximum of only one feature product Name. Please upgrade gold member to increase the order.</value>
+  </data>
+  <data name="vldfavoriteall" xml:space="preserve">
+    <value>Add Favorite Success All</value>
+  </data>
+  <data name="vldquotationreject" xml:space="preserve">
+    <value>Cannot reject, because sent this quotation already</value>
+  </data>
+  <data name="vldAllProvinces" xml:space="preserve">
+    <value>All Provinces</value>
+  </data>
+  <data name="vldAgreement" xml:space="preserve">
+    <value>Accept Agreement</value>
+  </data>
+  <data name="vldconfirm_Expire" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Gold Member Package หมดอายุแล้ว</value>
+  </data>
+  <data name="vldconfirm_NearExpire" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Gold Member Package ใกล้หมดอายุ</value>
+  </data>
+  <data name="vldconfirm_ExpireHot" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Hot Feat หมดอายุแล้ว</value>
+  </data>
+  <data name="vldconfirm_NearExpireHot" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Hot Feat ใกล้หมดอายุ</value>
+  </data>
+  <data name="vldmessage500length" xml:space="preserve">
+    <value>กรุณากรอกข้อความไม่เกิน 500 ตัวอักษร</value>
+  </data>
+</root>

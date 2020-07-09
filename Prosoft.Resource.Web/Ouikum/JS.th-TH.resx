@@ -1,0 +1,690 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="vldcannot_save" xml:space="preserve">
+    <value>ไม่สามารถทำการบันทึกได้</value>
+  </data>
+  <data name="vldcan_save" xml:space="preserve">
+    <value>สามารถทำการบันทึกได้</value>
+  </data>
+  <data name="vldcompname_exists" xml:space="preserve">
+    <value>ชื่อบริษัทนี้ซ้ำ</value>
+  </data>
+  <data name="vlddisplayname_exists" xml:space="preserve">
+    <value>ชื่อที่ใช้แสดงนี้ซ้ำ</value>
+  </data>
+  <data name="vldemail_exists" xml:space="preserve">
+    <value>อีเมล์นี้ซ้ำ</value>
+  </data>
+  <data name="vldengonly" xml:space="preserve">
+    <value>ข้อมูลไม่ถูกต้อง (ภาษาอังกฤษเท่านั้น)</value>
+  </data>
+  <data name="vldmin_4_max_16char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 4 ตัวอักษรและไม่เกิน 16 ตัวอักษร</value>
+  </data>
+  <data name="vldmin_6_max_20char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 6 ตัวอักษรและไม่เกิน 20 ตัวอักษร</value>
+  </data>
+  <data name="vldrequired" xml:space="preserve">
+    <value>กรุณากรอกข้อมูล</value>
+  </data>
+  <data name="vldusername_exists" xml:space="preserve">
+    <value>ชื่อผู้ใช้นี้ซ้ำ</value>
+  </data>
+  <data name="vldfix_format_email" xml:space="preserve">
+    <value>กรุณากรอกรูปแบบอีเมล์ให้ถูกต้อง</value>
+  </data>
+  <data name="vldless_3char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 3 ตัวอักษร</value>
+  </data>
+  <data name="vldless_4char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 4 ตัวอักษร</value>
+  </data>
+  <data name="vldless_9char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 9 ตัวอักษร</value>
+  </data>
+  <data name="vldmin_4_max_20char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 4 ตัวอักษรและไม่เกิน 20 ตัวอักษร</value>
+  </data>
+  <data name="vldsame_value" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลรหัสผ่านให้ตรงกัน</value>
+  </data>
+  <data name="vldselectbiztype" xml:space="preserve">
+    <value>เลือกประเภทธุรกิจ</value>
+  </data>
+  <data name="vldselectdistrict" xml:space="preserve">
+    <value>กรุณาเลือกอำเภอ/เขต</value>
+  </data>
+  <data name="vldselectprovince" xml:space="preserve">
+    <value>กรุณาเลือกจังหวัด</value>
+  </data>
+  <data name="vldbankid" xml:space="preserve">
+    <value>กรุณาเลือกธนาคารต้นทางของคุณ</value>
+  </data>
+  <data name="vldbranchname" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลสาขาที่ได้ทำการชำระเงิน</value>
+  </data>
+  <data name="vldlocked" xml:space="preserve">
+    <value>Locked : ไม่สามารถทำการบันทึกได้</value>
+  </data>
+  <data name="vldunlocked" xml:space="preserve">
+    <value>Unlocked : สามารถทำการบันทึกได้</value>
+  </data>
+  <data name="vldpayeraccname" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลชื่อบัญชีผู้โอน</value>
+  </data>
+  <data name="vldpayeraccno" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลหมายเลขบัญชีผู้โอน</value>
+  </data>
+  <data name="vldadd_buylead_success" xml:space="preserve">
+    <value>บันทึกการประกาศซื้อสำเร็จ</value>
+  </data>
+  <data name="vldadd_moredetail" xml:space="preserve">
+    <value>คลิ๊กเพื่อเพิ่มรายละเอียด</value>
+  </data>
+  <data name="vldadd_succss" xml:space="preserve">
+    <value>เพิ่มข้อมูลสำเร็จ</value>
+  </data>
+  <data name="vldalert_message" xml:space="preserve">
+    <value>มีข้อความถึงคุณ</value>
+  </data>
+  <data name="vldall_required" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลให้ครบ</value>
+  </data>
+  <data name="vldbuyleadexpire" xml:space="preserve">
+    <value>วันที่สิ้นสุดประกาศซื้อต้องมากกว่าวันที่ปัจจุบัน</value>
+  </data>
+  <data name="vldcancel" xml:space="preserve">
+    <value>ยกเลิก</value>
+  </data>
+  <data name="vldcannot_check_info" xml:space="preserve">
+    <value>ไม่สามารถตรวจสอบข้อมูลได้ กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vldcannot_insert_zero" xml:space="preserve">
+    <value>ไม่สามารถเลือกให้น้อยกว่า 0 ได้</value>
+  </data>
+  <data name="vldchange_password_error" xml:space="preserve">
+    <value>เปลี่ยนรหัสผ่านผิดพลาด กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vldchange_pass_success" xml:space="preserve">
+    <value>เปลี่ยนรหัสผ่านเรียบร้อย</value>
+  </data>
+  <data name="vldcompare_choose" xml:space="preserve">
+    <value>กรุณาเลือกสินค้าที่ต้องการเปรียบเทียบ</value>
+  </data>
+  <data name="vldcompare_exist" xml:space="preserve">
+    <value>คุณเลือกสินค้าเปรียบเทียบซ้ำ</value>
+  </data>
+  <data name="vldcompare_max" xml:space="preserve">
+    <value>จำนวนสินค้าเปรียบเทียบเต็ม</value>
+  </data>
+  <data name="vldcompare_success" xml:space="preserve">
+    <value>เพิ่มสินค้าเปรียบเทียบสำเร็จ</value>
+  </data>
+  <data name="vldconfirm" xml:space="preserve">
+    <value>ยืนยัน</value>
+  </data>
+  <data name="vldconfirm_del" xml:space="preserve">
+    <value>Confirm to delete this item.</value>
+  </data>
+  <data name="vldconfirm_del_all" xml:space="preserve">
+    <value>Confirm to delete all item.</value>
+  </data>
+  <data name="vldconfirm_restore" xml:space="preserve">
+    <value>Confirm to restore this item.</value>
+  </data>
+  <data name="vldconfirm_restore_all" xml:space="preserve">
+    <value>Confirm to restore all item.</value>
+  </data>
+  <data name="vlddel_msg_success" xml:space="preserve">
+    <value>ลบข้อความสำเร็จ</value>
+  </data>
+  <data name="vlddel_success" xml:space="preserve">
+    <value>ลบข้อมูลสำเร็จ</value>
+  </data>
+  <data name="vlddel_unsuccess" xml:space="preserve">
+    <value>ลบข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vlddetails" xml:space="preserve">
+    <value>กรอกรายละเอียด</value>
+  </data>
+  <data name="vlddraft_success" xml:space="preserve">
+    <value>บันทึกข้อความร่างสำเร็จ</value>
+  </data>
+  <data name="vlddrag_to_junk" xml:space="preserve">
+    <value>ลากลงถังขยะ</value>
+  </data>
+  <data name="vldedit_success" xml:space="preserve">
+    <value>แก้ไขข้อมูลสำเร็จ</value>
+  </data>
+  <data name="vldedit_unsuccess" xml:space="preserve">
+    <value>แก้ไขข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vldemail_request" xml:space="preserve">
+    <value>อีเมล์นี้ไม่ตรงกับการร้องขอ</value>
+  </data>
+  <data name="vldenter_message" xml:space="preserve">
+    <value>กรุณากรอกเนื้อหาข้อความ</value>
+  </data>
+  <data name="vldenter_recipient" xml:space="preserve">
+    <value>กรุณากรอกชื่อผู้รับ</value>
+  </data>
+  <data name="vldenter_search" xml:space="preserve">
+    <value>กรุณากรอกคำค้นหาของคุณ</value>
+  </data>
+  <data name="vldenter_subject" xml:space="preserve">
+    <value>กรุณากรอกหัวเรื่อง</value>
+  </data>
+  <data name="vldenter_validemail" xml:space="preserve">
+    <value>รูปแบบอีเมล์ไม่ถูกต้อง (ภาษาอังกฤษเท่านั้น)</value>
+  </data>
+  <data name="vldfill_youremail" xml:space="preserve">
+    <value>กรุณากรอกอีเมล์ของคุณ</value>
+  </data>
+  <data name="vldfill_yourmessage" xml:space="preserve">
+    <value>กรุณากรอกรายละเอียดข้อความของคุณ</value>
+  </data>
+  <data name="vldfill_yourname" xml:space="preserve">
+    <value>กรุณากรอกชื่อของคุณ</value>
+  </data>
+  <data name="vldfix_format_number" xml:space="preserve">
+    <value>กรอกได้เฉพาะตัวเลขเท่านั้น</value>
+  </data>
+  <data name="vldfix_format_picture" xml:space="preserve">
+    <value>คุณสามารถเลือกได้เฉพาะไฟล์ .jpg .jpeg .png เท่านั้น</value>
+  </data>
+  <data name="vldformaterror" xml:space="preserve">
+    <value>กรุณาตรวจสอบรูปแบบข้อความ</value>
+  </data>
+  <data name="vldhide_moredetail" xml:space="preserve">
+    <value>ซ่อนรายละเอียด</value>
+  </data>
+  <data name="vldimg_fix5" xml:space="preserve">
+    <value>เลือกได้เพียง 5 รูปภาพ เท่านั้น</value>
+  </data>
+  <data name="vldinput_correct_number" xml:space="preserve">
+    <value>กรุณากรอกตัวเลขให้ถูกต้อง</value>
+  </data>
+  <data name="vldinput_keyword" xml:space="preserve">
+    <value>กรุณาระบุคำค้น</value>
+  </data>
+  <data name="vldismaxproduct" xml:space="preserve">
+    <value>เต็ม! คุณสามารถเพิ่มสินค้าได้สูงสุด 20 รายการ กรุณาอัพเกรดเพื่อรับสิทธิเพิ่มเติม</value>
+  </data>
+  <data name="vldless_10char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 10 ตัวอักษร</value>
+  </data>
+  <data name="vldless_2char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 2 ตัวอักษร</value>
+  </data>
+  <data name="vldless_5char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 5 ตัวอักษร</value>
+  </data>
+  <data name="vldless_6char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 6 ตัวอักษร</value>
+  </data>
+  <data name="vldlmessagelength" xml:space="preserve">
+    <value>ข้อความรายละเอียดโดยย่อของบทความยาวเกินไป กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vldmark_importance_success" xml:space="preserve">
+    <value>ทำเครื่องหมายสำคัญสำเร็จ</value>
+  </data>
+  <data name="vldmark_unimportance_success" xml:space="preserve">
+    <value>ทำเครื่องหมายไม่สำคัญสำเร็จ</value>
+  </data>
+  <data name="vldmark_unread_success" xml:space="preserve">
+    <value>ทำเครื่องหมายยังไม่ได้อ่านสำเร็จ</value>
+  </data>
+  <data name="vldmaximg_3" xml:space="preserve">
+    <value>สามารถอัพโหลดรูปภาพได้สูงสุด3รูปเท่านั้น</value>
+  </data>
+  <data name="vldmax_word5" xml:space="preserve">
+    <value>กรอกสูงสุด 5 คำ</value>
+  </data>
+  <data name="vldmin_4_max_12char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 4 ตัวอักษรและไม่เกิน 12 ตัวอักษร</value>
+  </data>
+  <data name="vldmin_6_max_12char" xml:space="preserve">
+    <value>กรุณากรอกอย่างน้อย 6 ตัวอักษรและไม่เกิน 12 ตัวอักษร</value>
+  </data>
+  <data name="vldmore_10char" xml:space="preserve">
+    <value>กรุณากรอกไม่เกิน 10 ตัวอักษร</value>
+  </data>
+  <data name="vldmore_50char" xml:space="preserve">
+    <value>กรุณากรอกไม่เกิน 50 ตัวอักษร</value>
+  </data>
+  <data name="vldmore_5char" xml:space="preserve">
+    <value>กรุณากรอกไม่เกิน 5 ตัวอักษร</value>
+  </data>
+  <data name="vldnoemail" xml:space="preserve">
+    <value>อีเมล์นี้ไม่อยู่ในระบบ</value>
+  </data>
+  <data name="vldnon_specific" xml:space="preserve">
+    <value>ไม่ระบุ</value>
+  </data>
+  <data name="vldnotice_del" xml:space="preserve">
+    <value>กรุณาเลือกข้อมูลที่ต้องการลบ</value>
+  </data>
+  <data name="vldnot_found_company" xml:space="preserve">
+    <value>ไม่พบบริษัทนี้</value>
+  </data>
+  <data name="vldnouser" xml:space="preserve">
+    <value>ชื่อผู้ใช้นี้ไม่มีอยู่ในระบบ</value>
+  </data>
+  <data name="vldnouseremail" xml:space="preserve">
+    <value>ผู้ใช้หรืออีเมล์นี้ไม่อยู่ในระบบ</value>
+  </data>
+  <data name="vldno_data" xml:space="preserve">
+    <value>-</value>
+  </data>
+  <data name="vldno_item_selected" xml:space="preserve">
+    <value>คุณยังไม่ได้เลือกรายการ</value>
+  </data>
+  <data name="vldother" xml:space="preserve">
+    <value>อื่นๆ</value>
+  </data>
+  <data name="vldoverpage" xml:space="preserve">
+    <value>cannot go to over page.</value>
+  </data>
+  <data name="vldpassword_incorrect" xml:space="preserve">
+    <value>รหัสผ่านไม่ถูกต้อง</value>
+  </data>
+  <data name="vldpass_not_same" xml:space="preserve">
+    <value>รหัสผ่านไม่ตรงกัน</value>
+  </data>
+  <data name="vldpgroup_already" xml:space="preserve">
+    <value>ชื่อกลุ่มสินค้าซ้ำ</value>
+  </data>
+  <data name="vldplease_select" xml:space="preserve">
+    <value>กรุณาเลือก</value>
+  </data>
+  <data name="vldplease_select_fav" xml:space="preserve">
+    <value>กรุณาเลือกรายการโปรด</value>
+  </data>
+  <data name="vldplease_signin" xml:space="preserve">
+    <value>กรุณาเข้าสู่ระบบ</value>
+  </data>
+  <data name="vldplease_unlock" xml:space="preserve">
+    <value>กรุณากรอก Username หรือ Email Address ที่ได้ลงทะเบียนกับระบบไว้</value>
+  </data>
+  <data name="vldpname_already" xml:space="preserve">
+    <value>ชื่อสินค้าซ้ำ</value>
+  </data>
+  <data name="vldpreview" xml:space="preserve">
+    <value>แสดงตัวอย่าง</value>
+  </data>
+  <data name="vldrequest_unsuccessful" xml:space="preserve">
+    <value>การร้องขอไม่สำเร็จ กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vldrequired_complete" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลให้ครบถ้วน</value>
+  </data>
+  <data name="vldrequired_img" xml:space="preserve">
+    <value>กรุณาเลือกรูปภาพ</value>
+  </data>
+  <data name="vldsave_buyleadSuccess" xml:space="preserve">
+    <value>บันทึกสำเร็จ กรุณารอการตรวจสอบจาก ผู้ดูแลระบบ</value>
+  </data>
+  <data name="vldsave_success" xml:space="preserve">
+    <value>บันทึกเสร็จสมบูรณ์</value>
+  </data>
+  <data name="vldsave_unsuccess" xml:space="preserve">
+    <value>บันทึกข้อมูลไม่สำเร็จ กรุณาลองใหม่อีกครั้ง</value>
+  </data>
+  <data name="vldsearch_buylead" xml:space="preserve">
+    <value>ชื่อผู้ซื้อ, คำค้นหาประกาศซื้อ</value>
+  </data>
+  <data name="vldsearch_product" xml:space="preserve">
+    <value>ชื่อสินค้า, คำค้นหาสินค้า</value>
+  </data>
+  <data name="vldsearch_supplier" xml:space="preserve">
+    <value>ชื่อสินค้า, ชื่อผู้ขาย, คำค้นหาผู้ขาย</value>
+  </data>
+  <data name="vldselectacctype" xml:space="preserve">
+    <value>เลือกประเภทบัญชี</value>
+  </data>
+  <data name="vldselectarticletype" xml:space="preserve">
+    <value>เลือกประเภทบทความ</value>
+  </data>
+  <data name="vldselectattributes" xml:space="preserve">
+    <value>เลือกคุณสมบัติที่ต้องการ</value>
+  </data>
+  <data name="vldselectbank" xml:space="preserve">
+    <value>เลือกธนาคาร</value>
+  </data>
+  <data name="vldselectcomplevel" xml:space="preserve">
+    <value>เลือกระดับสมาชิก</value>
+  </data>
+  <data name="vldselectcountry" xml:space="preserve">
+    <value>กรุณาเลือกประเทศ</value>
+  </data>
+  <data name="vldselectjobcate" xml:space="preserve">
+    <value>เลือกหมวดหมู่งาน</value>
+  </data>
+  <data name="vldselectjobtype" xml:space="preserve">
+    <value>เลือกประเภทงาน</value>
+  </data>
+  <data name="vldselectreqeducation" xml:space="preserve">
+    <value>เลือกระดับการศึกษา</value>
+  </data>
+  <data name="vldselectreqexp" xml:space="preserve">
+    <value>เลือกประสบการณ์</value>
+  </data>
+  <data name="vldselectservicetype" xml:space="preserve">
+    <value>เลือกประเภทการใช้งาน</value>
+  </data>
+  <data name="vldselect_all" xml:space="preserve">
+    <value>เลือกทั้งหมด</value>
+  </data>
+  <data name="vldsenddata_success" xml:space="preserve">
+    <value>ส่งข้อมูลให้ลูกค้าเรียบร้อยแล้ว</value>
+  </data>
+  <data name="vldsendtouser_success" xml:space="preserve">
+    <value>ส่งข้อมูลให้ลูกค้าเรียบร้อย</value>
+  </data>
+  <data name="vldsend_success" xml:space="preserve">
+    <value>การส่งข้อความสำเร็จ</value>
+  </data>
+  <data name="vldspecific" xml:space="preserve">
+    <value>ระบุ</value>
+  </data>
+  <data name="vldurl_upload" xml:space="preserve">
+    <value>https://ouikumstorage.blob.core.windows.net/upload/</value>
+  </data>
+  <data name="vlduser_incorrect" xml:space="preserve">
+    <value>บัญชีผู้ใช้ถูกระงับการใช้งาน</value>
+  </data>
+  <data name="vlduser_request" xml:space="preserve">
+    <value>ผู้ใช้นี้ไม่ตรงกับการร้องขอ</value>
+  </data>
+  <data name="vldcannot_closebid" xml:space="preserve">
+    <value>ไม่สามารถปิดการเสนอราคาได้</value>
+  </data>
+  <data name="vldcategory" xml:space="preserve">
+    <value>หมวดหมู่</value>
+  </data>
+  <data name="vldclosebidproduct" xml:space="preserve">
+    <value>คุณได้ทำการปิดการเสนอราคาสินค้าแล้ว  ผู้ขายรายอื่นจะไม่สามารถทำการเสนอราคาสินค้ามาให้คุณได้สามารถรอการติดต่อกลับผ่านทางอีเมล์ของคุณ</value>
+  </data>
+  <data name="vldconfirm_del_cate" xml:space="preserve">
+    <value>คุณต้องการที่จะลบหมวดหมู่หรือไม่</value>
+  </data>
+  <data name="vldconfirm_del_data" xml:space="preserve">
+    <value>ต้องการลบข้อมูลหรือไม่</value>
+  </data>
+  <data name="vldconfirm_del_mem" xml:space="preserve">
+    <value>คุณต้องการที่จะลบสมาชิกหรือไม่</value>
+  </data>
+  <data name="vldconfirm_del_packet" xml:space="preserve">
+    <value>คุณต้องการที่จะลบแพ็คเกจหรือไม่</value>
+  </data>
+  <data name="vldconfirm_moveanddel_cate" xml:space="preserve">
+    <value>กรุณาเลือกยืนยันลบหมวดสินค้า หรือ ย้ายสินค้าก่อนลบหมวดสินค้า</value>
+  </data>
+  <data name="vldconfirm_move_procate" xml:space="preserve">
+    <value>คุณต้องการย้ายหมวดหมู่สินค้าหรือไม่</value>
+  </data>
+  <data name="vlddata_incorrect" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลให้ถูกต้อง</value>
+  </data>
+  <data name="vlddear" xml:space="preserve">
+    <value>เรียนคุณ</value>
+  </data>
+  <data name="vldenddate_buy" xml:space="preserve">
+    <value>วันที่สิ้นสุดประกาศซื้อต้องมากกว่าวันที่ปัจจุบัน</value>
+  </data>
+  <data name="vldfill_yourphone" xml:space="preserve">
+    <value>กรุณากรอกหมายเลขโทรศัพท์</value>
+  </data>
+  <data name="vldfix_format_phone" xml:space="preserve">
+    <value>กรุณากรอกหมายเลขโทรศัพท์ให้ถูกต้อง</value>
+  </data>
+  <data name="vldget_quo" xml:space="preserve">
+    <value>ที่คุณได้ขอราคาไว้</value>
+  </data>
+  <data name="vldminimg_1" xml:space="preserve">
+    <value>กรุณาเลือกอย่างน้อย 1 รูปภาพ</value>
+  </data>
+  <data name="vldmovepro_to_trash" xml:space="preserve">
+    <value>คุณแน่ใจว่าจะย้ายสินค้านี้ลงในถังขยะ</value>
+  </data>
+  <data name="vldmove_pro_zero" xml:space="preserve">
+    <value>กรุณาเลือกย้ายสินค้าก่อนลบหมวดสินค้า เพื่อให้จำนวนสินค้าในหมวดเท่ากับ 0</value>
+  </data>
+  <data name="vldnoapprove_pro" xml:space="preserve">
+    <value>เนื่องจาก : สินค้าไม่มีคุณภาพ  และเนื้อหาไม่ครบ</value>
+  </data>
+  <data name="vldnon_specific_keyword" xml:space="preserve">
+    <value>ไม่ระบุคำค้น</value>
+  </data>
+  <data name="vldpayment_success" xml:space="preserve">
+    <value>การชำระเงินสำเร็จ รอการตรวจสอบจากผู้ดูแลระบบ</value>
+  </data>
+  <data name="vldpro_bid" xml:space="preserve">
+    <value>เสนอราคาสินค้า</value>
+  </data>
+  <data name="vldrreqestbid" xml:space="preserve">
+    <value>ร้องขอราคาสินค้าสำเร็จแล้ว</value>
+  </data>
+  <data name="vldseemore" xml:space="preserve">
+    <value>ดูเพิ่มเติม</value>
+  </data>
+  <data name="vldselectcate" xml:space="preserve">
+    <value>กรุณาเลือกหมวดหมู่</value>
+  </data>
+  <data name="vldselectcateLV1" xml:space="preserve">
+    <value>กรุณาเลือกหมวดหมู่หลัก</value>
+  </data>
+  <data name="vldselectcateLV2" xml:space="preserve">
+    <value>กรุณาเลือกหมวดหมู่รอง</value>
+  </data>
+  <data name="vldselect_company" xml:space="preserve">
+    <value>คุณยังไม่ได้เลือกรายชื่อบริษัท กรุณาเลือกบริษัทที่ต้องการ</value>
+  </data>
+  <data name="vldsendingmsg" xml:space="preserve">
+    <value>กำลังดำเนินการส่งข้อความ...</value>
+  </data>
+  <data name="vldsendyoudata_success" xml:space="preserve">
+    <value>ส่งข้อมูลของคุณเรียบร้อย</value>
+  </data>
+  <data name="vldsend_purchas_success" xml:space="preserve">
+    <value>ส่งข้อมูลสำเร็จ สามารถตรวจสอบประวัติการส่งข้อมูลได้ที่เมนู myAssignLead</value>
+  </data>
+  <data name="vldslidesendmsg" xml:space="preserve">
+    <value>เลื่อนแถบไปด้านขวา เพื่อส่งข้อความ</value>
+  </data>
+  <data name="vldthk_suggestion" xml:space="preserve">
+    <value>ขอบคุณลูกค้าทุกท่านที่ให้คำแนะนำ</value>
+  </data>
+  <data name="vldview_quo" xml:space="preserve">
+    <value>คุณสามารถดูข้อมูลขอราคาสินค้าดังกล่าวได้ที่</value>
+  </data>
+  <data name="vldwaitbid" xml:space="preserve">
+    <value>กรุณารอการเสนอราคาสินค้ากลับจากผู้ขายผ่านข้อมูลการติดต่อของคุณ</value>
+  </data>
+  <data name="vldwaitemail" xml:space="preserve">
+    <value>สามารถรอการติดต่อกลับผ่านทางอีเมล์ของคุณ</value>
+  </data>
+  <data name="vldweb" xml:space="preserve">
+    <value>B2BThai.com</value>
+  </data>
+  <data name="vldadd_fav" xml:space="preserve">
+    <value>เพิ่มรายการโปรดเรียบร้อยแล้ว</value>
+  </data>
+  <data name="vldadd_fav_all" xml:space="preserve">
+    <value>เพิ่มรายการโปรดทั้งหมดเรียบร้อยแล้ว</value>
+  </data>
+  <data name="vldall_fav_success" xml:space="preserve">
+    <value>รายการทั้งหมดอยู่ในรายการโปรดแล้ว</value>
+  </data>
+  <data name="vldfav_success" xml:space="preserve">
+    <value>รายการนี้เป็นรายการโปรดแล้ว</value>
+  </data>
+  <data name="vldenddate" xml:space="preserve">
+    <value>วันที่สิ้นสุดต้องมากกว่าวันที่เริ่มต้น</value>
+  </data>
+  <data name="vldstartdate" xml:space="preserve">
+    <value>วันที่เริ่มต้นต้องน้อยกว่าวันที่สิ้นสุด</value>
+  </data>
+  <data name="vlderror_because" xml:space="preserve">
+    <value>เกิดข้อผิดพลาด เนื่องจาก</value>
+  </data>
+  <data name="vldproductlink" xml:space="preserve">
+    <value>ลิงค์สินค้า</value>
+  </data>
+  <data name="vldduplicatekeyword" xml:space="preserve">
+    <value>คีย์เวิร์ดซ้ำ</value>
+  </data>
+  <data name="vldselectcateLV3" xml:space="preserve">
+    <value>กรุณาเลือกหมวดหมู่ย่อย</value>
+  </data>
+  <data name="vldall_cate" xml:space="preserve">
+    <value>หมวดหมู่สินค้าทั้งหมด</value>
+  </data>
+  <data name="vldUpgoldtoPuschase" xml:space="preserve">
+    <value>คุณมีสิทธิ์ในการสั่งซื้อ Feature Product ได้สูงสุดเพียง 1 ตำแหน่ง กรุณา Upgrade Gold Member เพื่อเพิ่มสิทธิ์การสั่งซื้อ</value>
+  </data>
+  <data name="vldfavoriteall" xml:space="preserve">
+    <value>เพิ่มรายการโปรดทั้งหมดสำเร็จ</value>
+  </data>
+  <data name="vldquotationreject" xml:space="preserve">
+    <value>ไม่สามารถ Reject การร้องขอได้เนื่องจากใบขอราคามีการตอบกลับไปยังผู้ร้องขอแล้ว</value>
+  </data>
+  <data name="vldAllProvinces" xml:space="preserve">
+    <value>ทุกจังหวัด</value>
+  </data>
+  <data name="vldAgreement" xml:space="preserve">
+    <value>กรุณายอมรับเงื่อนไขข้อตกลง</value>
+  </data>
+  <data name="vldconfirm_Expire" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Gold Member Package หมดอายุแล้ว</value>
+  </data>
+  <data name="vldconfirm_NearExpire" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Gold Member Package ใกล้หมดอายุ</value>
+  </data>
+  <data name="vldconfirm_ExpireHot" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Hot Feat หมดอายุแล้ว</value>
+  </data>
+  <data name="vldconfirm_NearExpireHot" xml:space="preserve">
+    <value>ยืนยันการส่งข้อความแจ้ง Hot Feat ใกล้หมดอายุ</value>
+  </data>
+  <data name="vldmessage500length" xml:space="preserve">
+    <value>กรุณากรอกข้อความไม่เกิน 500 ตัวอักษร</value>
+  </data>
+</root>

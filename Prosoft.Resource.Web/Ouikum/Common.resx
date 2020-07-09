@@ -1,0 +1,1722 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnAdd" xml:space="preserve">
+    <value>Add</value>
+  </data>
+  <data name="btnBrowse" xml:space="preserve">
+    <value>Browse</value>
+  </data>
+  <data name="btnClear" xml:space="preserve">
+    <value>Clear</value>
+  </data>
+  <data name="btnCopy" xml:space="preserve">
+    <value>Copy</value>
+  </data>
+  <data name="btnDefault" xml:space="preserve">
+    <value>Default</value>
+  </data>
+  <data name="btnDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="btnMove" xml:space="preserve">
+    <value>Move</value>
+  </data>
+  <data name="btnNotShow" xml:space="preserve">
+    <value>Not Show</value>
+  </data>
+  <data name="btnNotUse" xml:space="preserve">
+    <value>Close your Account</value>
+  </data>
+  <data name="btnSave" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="btnSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="btnSendMessage" xml:space="preserve">
+    <value>Send Message</value>
+  </data>
+  <data name="btnSetting" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="btnShow" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="btnSubmitPaging" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="btnTrash" xml:space="preserve">
+    <value>Trash</value>
+  </data>
+  <data name="btnUse" xml:space="preserve">
+    <value>Account Available</value>
+  </data>
+  <data name="colCreatedBy" xml:space="preserve">
+    <value>Create By</value>
+  </data>
+  <data name="colCreatedDate" xml:space="preserve">
+    <value>Create Date</value>
+  </data>
+  <data name="colDelete" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="colEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="colFormat" xml:space="preserve">
+    <value>Format</value>
+  </data>
+  <data name="colIPAddress" xml:space="preserve">
+    <value>IP Address</value>
+  </data>
+  <data name="colIsShow" xml:space="preserve">
+    <value>Show</value>
+  </data>
+  <data name="colListNo" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="colManage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="colModifiedBy" xml:space="preserve">
+    <value>Modify By</value>
+  </data>
+  <data name="colModifiedDate" xml:space="preserve">
+    <value>Modify Date</value>
+  </data>
+  <data name="colRequire" xml:space="preserve">
+    <value>Require</value>
+  </data>
+  <data name="colSelectAll" xml:space="preserve">
+    <value>Select All</value>
+  </data>
+  <data name="colStatus" xml:space="preserve">
+    <value>Status</value>
+  </data>
+  <data name="lblAbount_us" xml:space="preserve">
+    <value>About us</value>
+  </data>
+  <data name="lblAddress" xml:space="preserve">
+    <value>Address</value>
+  </data>
+  <data name="lblAddress_en" xml:space="preserve">
+    <value>Address </value>
+  </data>
+  <data name="lblBusiness_Type" xml:space="preserve">
+    <value>Business Type</value>
+  </data>
+  <data name="lblBuyer" xml:space="preserve">
+    <value>Buyer</value>
+  </data>
+  <data name="lblCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="lblComname" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="lblContac_us" xml:space="preserve">
+    <value>Contact us</value>
+  </data>
+  <data name="lblCreate_Company_Website" xml:space="preserve">
+    <value>Create Company Website</value>
+  </data>
+  <data name="lblDateFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="lblDateTo" xml:space="preserve">
+    <value>To</value>
+  </data>
+  <data name="lblDistrict" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="lblEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="btnEnter_Site" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="lblExport" xml:space="preserve">
+    <value>Export</value>
+  </data>
+  <data name="lblFax" xml:space="preserve">
+    <value>Fax</value>
+  </data>
+  <data name="lblfirstlast_name" xml:space="preserve">
+    <value>Name-Lastname</value>
+  </data>
+  <data name="lblForgetPWD" xml:space="preserve">
+    <value>Forget Password</value>
+  </data>
+  <data name="lblFree" xml:space="preserve">
+    <value>Free</value>
+  </data>
+  <data name="lblGoToPage" xml:space="preserve">
+    <value>Go to Page</value>
+  </data>
+  <data name="lblHelp" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="lblHelp1" xml:space="preserve">
+    <value>Help</value>
+  </data>
+  <data name="lblItemPerPage" xml:space="preserve">
+    <value>Show per Page</value>
+  </data>
+  <data name="lblJoin_website" xml:space="preserve">
+    <value>Join B2BThai</value>
+  </data>
+  <data name="lblKeyword" xml:space="preserve">
+    <value>Keyword</value>
+  </data>
+  <data name="lblLogIn" xml:space="preserve">
+    <value>Log In</value>
+  </data>
+  <data name="lblLogOut" xml:space="preserve">
+    <value>Log Out</value>
+  </data>
+  <data name="lblManage" xml:space="preserve">
+    <value>Manage</value>
+  </data>
+  <data name="lblMobileno" xml:space="preserve">
+    <value>Mobile number</value>
+  </data>
+  <data name="lblMore_Profits" xml:space="preserve">
+    <value>More Profits</value>
+  </data>
+  <data name="lblNonSpecific" xml:space="preserve">
+    <value>Non-specific</value>
+  </data>
+  <data name="lblNotFound" xml:space="preserve">
+    <value>No Result</value>
+  </data>
+  <data name="lblPhoneno" xml:space="preserve">
+    <value>Phone number</value>
+  </data>
+  <data name="lblPleaseTypeKeyword" xml:space="preserve">
+    <value>Please input  keyword</value>
+  </data>
+  <data name="lblPostal_code" xml:space="preserve">
+    <value>Postal code</value>
+  </data>
+  <data name="lblPost_Buying_Request" xml:space="preserve">
+    <value>Post Buying Request</value>
+  </data>
+  <data name="lblPost_Product" xml:space="preserve">
+    <value>Post Product</value>
+  </data>
+  <data name="lblPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="lblProvince" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="lblRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="lblRememLogIn" xml:space="preserve">
+    <value>Remember Me</value>
+  </data>
+  <data name="lblRequest_Quotation" xml:space="preserve">
+    <value>Request Price</value>
+  </data>
+  <data name="lblSeller" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="lblSeller_Buyer" xml:space="preserve">
+    <value>Buyer &amp; Supplier</value>
+  </data>
+  <data name="lblServiceType" xml:space="preserve">
+    <value>User's Type</value>
+  </data>
+  <data name="lblSign_in" xml:space="preserve">
+    <value>Sign in</value>
+  </data>
+  <data name="lblSign_up" xml:space="preserve">
+    <value>Join Now</value>
+  </data>
+  <data name="lblSign_up_nw" xml:space="preserve">
+    <value>Sign up now</value>
+  </data>
+  <data name="lblSort" xml:space="preserve">
+    <value>Sort</value>
+  </data>
+  <data name="lblSubdistrict" xml:space="preserve">
+    <value>Subdistrict</value>
+  </data>
+  <data name="lblEdit" xml:space="preserve">
+    <value>Edit</value>
+  </data>
+  <data name="lblBookmark" xml:space="preserve">
+    <value>Bookmark this page</value>
+  </data>
+  <data name="lblBuylead" xml:space="preserve">
+    <value>Buylead</value>
+  </data>
+  <data name="lblMember" xml:space="preserve">
+    <value>Member</value>
+  </data>
+  <data name="lblProduct" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="lblSearch" xml:space="preserve">
+    <value>Search</value>
+  </data>
+  <data name="lblSupplier" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="lblOther" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="btnCancel" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="btnMoreDetail" xml:space="preserve">
+    <value>View More…</value>
+  </data>
+  <data name="btnPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="btnDelete_th" xml:space="preserve">
+    <value>Delete</value>
+  </data>
+  <data name="lblRemark" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="btnSelect" xml:space="preserve">
+    <value>Select</value>
+  </data>
+  <data name="btnSave_en" xml:space="preserve">
+    <value>Save</value>
+  </data>
+  <data name="lblComname_en" xml:space="preserve">
+    <value>Company Name</value>
+  </data>
+  <data name="lblDistrict_en" xml:space="preserve">
+    <value>District</value>
+  </data>
+  <data name="lblProvince_en" xml:space="preserve">
+    <value>Province</value>
+  </data>
+  <data name="lblKeyword_en" xml:space="preserve">
+    <value>Keyword</value>
+  </data>
+  <data name="lblPrice_Unit" xml:space="preserve">
+    <value>Price/Unit</value>
+  </data>
+  <data name="lblQuantity" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="lblSum_Price" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="lblUnit" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="lblSeeDetail" xml:space="preserve">
+    <value>See More</value>
+  </data>
+  <data name="lblApprove" xml:space="preserve">
+    <value>Approve</value>
+  </data>
+  <data name="lblNoapprove" xml:space="preserve">
+    <value>Not Approve</value>
+  </data>
+  <data name="lblWaitapprove" xml:space="preserve">
+    <value>Waiting for approve</value>
+  </data>
+  <data name="btnRestore" xml:space="preserve">
+    <value>Restore</value>
+  </data>
+  <data name="lblHome" xml:space="preserve">
+    <value>Home</value>
+  </data>
+  <data name="btnchange" xml:space="preserve">
+    <value>Change</value>
+  </data>
+  <data name="lblCustom" xml:space="preserve">
+    <value>Custom</value>
+  </data>
+  <data name="lblLastmonth" xml:space="preserve">
+    <value>Last Month</value>
+  </data>
+  <data name="lblLastweek" xml:space="preserve">
+    <value>Last Week</value>
+  </data>
+  <data name="lblLastyear" xml:space="preserve">
+    <value>Last Year</value>
+  </data>
+  <data name="lblThismonth" xml:space="preserve">
+    <value>This Month</value>
+  </data>
+  <data name="lblThisweek" xml:space="preserve">
+    <value>This Week</value>
+  </data>
+  <data name="lblThisyear" xml:space="preserve">
+    <value>This Year</value>
+  </data>
+  <data name="lblToday" xml:space="preserve">
+    <value>Today</value>
+  </data>
+  <data name="lblYesterday" xml:space="preserve">
+    <value>Yesterday</value>
+  </data>
+  <data name="lblPaging" xml:space="preserve">
+    <value>Paging</value>
+  </data>
+  <data name="lblAdvanceSearch" xml:space="preserve">
+    <value>Advance Search</value>
+  </data>
+  <data name="lblEndDate" xml:space="preserve">
+    <value>Expired Time</value>
+  </data>
+  <data name="lblStartDate" xml:space="preserve">
+    <value>Start Date</value>
+  </data>
+  <data name="btnGo" xml:space="preserve">
+    <value>GO</value>
+  </data>
+  <data name="btnHide" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="btnImport" xml:space="preserve">
+    <value>Import</value>
+  </data>
+  <data name="btnNew" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="lblBriefDescription" xml:space="preserve">
+    <value>Brief Description</value>
+  </data>
+  <data name="lblCompany" xml:space="preserve">
+    <value>Company</value>
+  </data>
+  <data name="lblDay" xml:space="preserve">
+    <value>Day</value>
+  </data>
+  <data name="lblDetail" xml:space="preserve">
+    <value>Detail</value>
+  </data>
+  <data name="lblList" xml:space="preserve">
+    <value>list</value>
+  </data>
+  <data name="lblMemberProfile" xml:space="preserve">
+    <value>Member Profile</value>
+  </data>
+  <data name="lblOfAll" xml:space="preserve">
+    <value>All of</value>
+  </data>
+  <data name="lblOr" xml:space="preserve">
+    <value>or</value>
+  </data>
+  <data name="lblOrder" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="lblPayment" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="lblPrice" xml:space="preserve">
+    <value>Price</value>
+  </data>
+  <data name="lblSelectImage" xml:space="preserve">
+    <value>Select Image</value>
+  </data>
+  <data name="lblSignOut" xml:space="preserve">
+    <value>SignOut</value>
+  </data>
+  <data name="lblSimpleSearch" xml:space="preserve">
+    <value>Simple Search</value>
+  </data>
+  <data name="lblVersion" xml:space="preserve">
+    <value>Version 2.0</value>
+  </data>
+  <data name="btnConfirm" xml:space="preserve">
+    <value>Confirm</value>
+  </data>
+  <data name="lblMsgLicence" xml:space="preserve">
+    <value>Copyright 2012  ZenStone Corp. All right reserved.</value>
+  </data>
+  <data name="lblWaitapproveRemark" xml:space="preserve">
+    <value>Waiting for approve (Edited)</value>
+  </data>
+  <data name="lblWaitForCheck" xml:space="preserve">
+    <value>Waiting to check</value>
+  </data>
+  <data name="lblViewCount" xml:space="preserve">
+    <value>view</value>
+  </data>
+  <data name="lblFind" xml:space="preserve">
+    <value>Find more</value>
+  </data>
+  <data name="lblSubmitPayment" xml:space="preserve">
+    <value>Payment Inform</value>
+  </data>
+  <data name="lblFavorite" xml:space="preserve">
+    <value>My Favorite</value>
+  </data>
+  <data name="lblCompInfo" xml:space="preserve">
+    <value>Company Information</value>
+  </data>
+  <data name="lblFreeMember" xml:space="preserve">
+    <value>Free Member</value>
+  </data>
+  <data name="lblGoldMember" xml:space="preserve">
+    <value>Gold Member</value>
+  </data>
+  <data name="lblInterested" xml:space="preserve">
+    <value>Interested</value>
+  </data>
+  <data name="lblMyfavorite" xml:space="preserve">
+    <value>My Favorite</value>
+  </data>
+  <data name="lblProInfo" xml:space="preserve">
+    <value>Product details</value>
+  </data>
+  <data name="lblSend_to_Friend" xml:space="preserve">
+    <value>Send to friend</value>
+  </data>
+  <data name="lblCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="lblQty" xml:space="preserve">
+    <value>Quantity</value>
+  </data>
+  <data name="lblRemark_th" xml:space="preserve">
+    <value>Remark</value>
+  </data>
+  <data name="lblUnit_th" xml:space="preserve">
+    <value>Unit</value>
+  </data>
+  <data name="lblForBuyer" xml:space="preserve">
+    <value>For Buyer</value>
+  </data>
+  <data name="lblForSupplier" xml:space="preserve">
+    <value>For Supplier</value>
+  </data>
+  <data name="lblOtherService" xml:space="preserve">
+    <value>สิทธิประโยชน์อื่น ๆ เมื่อใช้ Gold Member</value>
+  </data>
+  <data name="lblSupportCustomer" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="lblSysMember" xml:space="preserve">
+    <value>member system manual</value>
+  </data>
+  <data name="lblBuyerBuyleader" xml:space="preserve">
+    <value>Buying Request</value>
+  </data>
+  <data name="lblBuyleadCenter" xml:space="preserve">
+    <value>Purchasing Center</value>
+  </data>
+  <data name="lblFAQ" xml:space="preserve">
+    <value>FAQ.</value>
+  </data>
+  <data name="lblLastProduct" xml:space="preserve">
+    <value>Search Lastest Product</value>
+  </data>
+  <data name="lblLastSearchBuylead" xml:space="preserve">
+    <value>Search Lastest Buylead</value>
+  </data>
+  <data name="lblUserManual" xml:space="preserve">
+    <value>How to use</value>
+  </data>
+  <data name="btnHideTh" xml:space="preserve">
+    <value>Hide</value>
+  </data>
+  <data name="lblBuyerName" xml:space="preserve">
+    <value>Buyer</value>
+  </data>
+  <data name="lblDownLoadDoc" xml:space="preserve">
+    <value>download file</value>
+  </data>
+  <data name="lblTitleFavBuy" xml:space="preserve">
+    <value>My Favorite Buyer</value>
+  </data>
+  <data name="lblTitleFavPro" xml:space="preserve">
+    <value>My Favorite Product</value>
+  </data>
+  <data name="lblTitleFavSup" xml:space="preserve">
+    <value>My Favorite Supplier</value>
+  </data>
+  <data name="lblTitleHome" xml:space="preserve">
+    <value>Supplier, Buyer, Manufaturer,ASEAN Ouikum E-Marketplace - Ouikum.com</value>
+  </data>
+  <data name="lblMngCompany" xml:space="preserve">
+    <value>Manage Company Website</value>
+  </data>
+  <data name="lblMsgCenter" xml:space="preserve">
+    <value>Message Center</value>
+  </data>
+  <data name="lblContactSupplier" xml:space="preserve">
+    <value>Contact Supplier</value>
+  </data>
+  <data name="titleBenefitGold" xml:space="preserve">
+    <value>Gold Member Benefits</value>
+  </data>
+  <data name="lblCompareBenefit" xml:space="preserve">
+    <value>Benefit Comparison</value>
+  </data>
+  <data name="lblCompLV" xml:space="preserve">
+    <value>Member's type</value>
+  </data>
+  <data name="lblGotoSearch" xml:space="preserve">
+    <value>Go to Search</value>
+  </data>
+  <data name="lblShowAllCate" xml:space="preserve">
+    <value>Show All Category</value>
+  </data>
+  <data name="selectCatelv1" xml:space="preserve">
+    <value>Select Main Category</value>
+  </data>
+  <data name="selectCatelv2" xml:space="preserve">
+    <value>Select Second Category</value>
+  </data>
+  <data name="selectCatelv3" xml:space="preserve">
+    <value>Select Last Category</value>
+  </data>
+  <data name="lblwelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="chooseBizType" xml:space="preserve">
+    <value>Choose Business Type</value>
+  </data>
+  <data name="chooseCountry" xml:space="preserve">
+    <value>Business Location</value>
+  </data>
+  <data name="chooseDistrict" xml:space="preserve">
+    <value>Choose District</value>
+  </data>
+  <data name="chooseProvince" xml:space="preserve">
+    <value>Choose Province</value>
+  </data>
+  <data name="lblCountry" xml:space="preserve">
+    <value>Country</value>
+  </data>
+  <data name="lblFirstName" xml:space="preserve">
+    <value>FirstName</value>
+  </data>
+  <data name="lblLastName" xml:space="preserve">
+    <value>LastName</value>
+  </data>
+  <data name="lblMTE" xml:space="preserve">
+    <value>Make Trade Easy</value>
+  </data>
+  <data name="lblTeamFullSupport" xml:space="preserve">
+    <value>Our team is available to support you.</value>
+  </data>
+  <data name="SearchStoreF_and_E" xml:space="preserve">
+    <value>Product searching easier.</value>
+  </data>
+  <data name="SlideUnlock" xml:space="preserve">
+    <value>Please scrollbar to the right for unlock.</value>
+  </data>
+  <data name="Store24H" xml:space="preserve">
+    <value>Product Store Online 24 hours.</value>
+  </data>
+  <data name="titleSignin" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="titleSignup" xml:space="preserve">
+    <value>Sign Up</value>
+  </data>
+  <data name="lblNewAdvanceSearch" xml:space="preserve">
+    <value>New Advance Search</value>
+  </data>
+  <data name="btnDel_Confirm" xml:space="preserve">
+    <value>Are you sure to delete ?</value>
+  </data>
+  <data name="btnPreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="lblDescription" xml:space="preserve">
+    <value>Description</value>
+  </data>
+  <data name="lblImage" xml:space="preserve">
+    <value>Image</value>
+  </data>
+  <data name="lblVisitors" xml:space="preserve">
+    <value>Visitors</value>
+  </data>
+  <data name="chooseAcc_Type" xml:space="preserve">
+    <value>Select Account Type</value>
+  </data>
+  <data name="chooseBank" xml:space="preserve">
+    <value>Select Bank</value>
+  </data>
+  <data name="lblAcc_Name" xml:space="preserve">
+    <value>Account Name</value>
+  </data>
+  <data name="lblAcc_No" xml:space="preserve">
+    <value>Account Number</value>
+  </data>
+  <data name="lblAcc_Type" xml:space="preserve">
+    <value>Account Type</value>
+  </data>
+  <data name="lblBank" xml:space="preserve">
+    <value>Bank</value>
+  </data>
+  <data name="lblBranch" xml:space="preserve">
+    <value>Branch</value>
+  </data>
+  <data name="lblCurrents" xml:space="preserve">
+    <value>Currents</value>
+  </data>
+  <data name="lblDeposits" xml:space="preserve">
+    <value>Deposits</value>
+  </data>
+  <data name="lblSavings" xml:space="preserve">
+    <value>Savings</value>
+  </data>
+  <data name="lblTotal" xml:space="preserve">
+    <value>Total</value>
+  </data>
+  <data name="lblExpire_date" xml:space="preserve">
+    <value>Expired Date</value>
+  </data>
+  <data name="lblMessage_attach" xml:space="preserve">
+    <value>Attach File</value>
+  </data>
+  <data name="lblNo_name" xml:space="preserve">
+    <value>Not listed</value>
+  </data>
+  <data name="lblManage_comp" xml:space="preserve">
+    <value>Manage information to show on your Company Website.</value>
+  </data>
+  <data name="lblStudy_benefits" xml:space="preserve">
+    <value>read more for your benefit</value>
+  </data>
+  <data name="lblAsk_Quest" xml:space="preserve">
+    <value>Ask a question</value>
+  </data>
+  <data name="lblBecause_not_approved" xml:space="preserve">
+    <value>Because information is not approved</value>
+  </data>
+  <data name="lblExpire" xml:space="preserve">
+    <value>Expired</value>
+  </data>
+  <data name="lblNot_page_find" xml:space="preserve">
+    <value>Sorry, Not found the page you are find</value>
+  </data>
+  <data name="lblRemoved_sys" xml:space="preserve">
+    <value>removed</value>
+  </data>
+  <data name="lblReport_problem" xml:space="preserve">
+    <value>Report a problem</value>
+  </data>
+  <data name="lblSearch_again" xml:space="preserve">
+    <value>Try to search again</value>
+  </data>
+  <data name="lblContact_imm" xml:space="preserve">
+    <value>Please contact immediately.</value>
+  </data>
+  <data name="lblSale_Ad" xml:space="preserve">
+    <value>Sales</value>
+  </data>
+  <data name="lblAll" xml:space="preserve">
+    <value>All</value>
+  </data>
+  <data name="lblSearch_by" xml:space="preserve">
+    <value>Search By</value>
+  </data>
+  <data name="lblDate_payment" xml:space="preserve">
+    <value>Date of Payment</value>
+  </data>
+  <data name="lblTime" xml:space="preserve">
+    <value>Times</value>
+  </data>
+  <data name="lblAdmin_register" xml:space="preserve">
+    <value>We would like to inform that. You register as a member of the Administrators at.</value>
+  </data>
+  <data name="lblWeb_content" xml:space="preserve">
+    <value>You can sign in to use it to make modifications. Add information or buy - sell. Contact and browse through the message center system.</value>
+  </data>
+  <data name="lblUse_again" xml:space="preserve">
+    <value>To enable it again. Please contact us</value>
+  </data>
+  <data name="lblbuy_detail" xml:space="preserve">
+    <value>Demand Buying Details</value>
+  </data>
+  <data name="lblBuy_Mo" xml:space="preserve">
+    <value>For details on demand Buying  . Modify or add information and buy - your sales.</value>
+  </data>
+  <data name="lblClick_here" xml:space="preserve">
+    <value>Click Here</value>
+  </data>
+  <data name="lblDear" xml:space="preserve">
+    <value>Dear</value>
+  </data>
+  <data name="lblmatch_product" xml:space="preserve">
+    <value>have Items that match demand for your product</value>
+  </data>
+  <data name="lblMore" xml:space="preserve">
+    <value>More</value>
+  </data>
+  <data name="lblOnly" xml:space="preserve">
+    <value>Only</value>
+  </data>
+  <data name="lblpass_use_site" xml:space="preserve">
+    <value>Password to access the site</value>
+  </data>
+  <data name="lblStore_online" xml:space="preserve">
+    <value>Your online store</value>
+  </data>
+  <data name="lblSup_info" xml:space="preserve">
+    <value>แจ้งข้อมูลความต้องการซื้อ</value>
+  </data>
+  <data name="lblTeam" xml:space="preserve">
+    <value>Team</value>
+  </data>
+  <data name="lblThk_service" xml:space="preserve">
+    <value>Thank you for the service</value>
+  </data>
+  <data name="lblView_sup_info" xml:space="preserve">
+    <value>You can view information supplier as</value>
+  </data>
+  <data name="lblContactBuyer" xml:space="preserve">
+    <value>Contact Buyer</value>
+  </data>
+  <data name="lblContactCompany" xml:space="preserve">
+    <value>Contact Company</value>
+  </data>
+  <data name="lblmore_500_char" xml:space="preserve">
+    <value>Not more than 500 characters (including HTMLText).</value>
+  </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="lblMission" xml:space="preserve">
+    <value>Mission</value>
+  </data>
+  <data name="lblTel" xml:space="preserve">
+    <value>Tel</value>
+  </data>
+  <data name="lblVDO_ex" xml:space="preserve">
+    <value>Example VDO  using systems.</value>
+  </data>
+  <data name="lblVision" xml:space="preserve">
+    <value>Vision</value>
+  </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>Month</value>
+  </data>
+  <data name="lblYear" xml:space="preserve">
+    <value>Year</value>
+  </data>
+  <data name="lblServiceRate" xml:space="preserve">
+    <value>Advertising Rate</value>
+  </data>
+  <data name="lblerror_tryagian" xml:space="preserve">
+    <value>An error has occurred. Please try again.</value>
+  </data>
+  <data name="lblSysBuyer" xml:space="preserve">
+    <value>Buyer's Manual</value>
+  </data>
+  <data name="lblSysSupplier" xml:space="preserve">
+    <value>Supplier's Manual</value>
+  </data>
+  <data name="lblSysWebsite" xml:space="preserve">
+    <value>Company Website manual</value>
+  </data>
+  <data name="lblPayment_2" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="btnSend" xml:space="preserve">
+    <value>Send</value>
+  </data>
+  <data name="lblPost_product_free" xml:space="preserve">
+    <value>Post Product Free</value>
+  </data>
+  <data name="lblSearchBuylead" xml:space="preserve">
+    <value>Search Buylead</value>
+  </data>
+  <data name="lblSearchProduct" xml:space="preserve">
+    <value>Search Product</value>
+  </data>
+  <data name="lblBe_part" xml:space="preserve">
+    <value>Be a part of Ouikum.com</value>
+  </data>
+  <data name="lbllionjob" xml:space="preserve">
+    <value>Find jobs</value>
+  </data>
+  <data name="lblNoData" xml:space="preserve">
+    <value>No data</value>
+  </data>
+  <data name="lblViewAll" xml:space="preserve">
+    <value>View all</value>
+  </data>
+  <data name="lblViewMore" xml:space="preserve">
+    <value>View more</value>
+  </data>
+  <data name="lblEnter_the_site" xml:space="preserve">
+    <value>Enter Ouikum.com</value>
+  </data>
+  <data name="titleManage_Website" xml:space="preserve">
+    <value>Ouikum.com Management</value>
+  </data>
+  <data name="lblPhone" xml:space="preserve">
+    <value>Phone</value>
+  </data>
+  <data name="ddlSelectPlease" xml:space="preserve">
+    <value>Select Please</value>
+  </data>
+  <data name="lblAboutGold" xml:space="preserve">
+    <value>About Gold Member</value>
+  </data>
+  <data name="lblToMoreBenefits" xml:space="preserve">
+    <value>For more privilege</value>
+  </data>
+  <data name="lblSaveSequence" xml:space="preserve">
+    <value>Save Sequence</value>
+  </data>
+  <data name="lblMember_Admin" xml:space="preserve">
+    <value>Member/Admin</value>
+  </data>
+  <data name="lblMyAdmin" xml:space="preserve">
+    <value>My Admin</value>
+  </data>
+  <data name="lblMyWebsite" xml:space="preserve">
+    <value>My Ouikum</value>
+  </data>
+  <data name="lblReportMsg" xml:space="preserve">
+    <value>Report Messages</value>
+  </data>
+  <data name="lblReportQuo" xml:space="preserve">
+    <value>Report Quotation</value>
+  </data>
+  <data name="lblReportTrade" xml:space="preserve">
+    <value>Report Trade</value>
+  </data>
+  <data name="lblAgree" xml:space="preserve">
+    <value>Agree</value>
+  </data>
+  <data name="lblantCart" xml:space="preserve">
+    <value>antCart</value>
+  </data>
+  <data name="lblB2B_E_MarketPlace" xml:space="preserve">
+    <value>B2B E-MarketPlace</value>
+  </data>
+  <data name="lblB2C_E_MarketPlace" xml:space="preserve">
+    <value>B2C E-MarketPlace</value>
+  </data>
+  <data name="lblFacebook" xml:space="preserve">
+    <value>Facebook</value>
+  </data>
+  <data name="lblHaveAcc" xml:space="preserve">
+    <value>If you have an account</value>
+  </data>
+  <data name="lblLoginwithFacebook" xml:space="preserve">
+    <value>Login with Facebook</value>
+  </data>
+  <data name="lblMakeTradeEasy" xml:space="preserve">
+    <value>Make Trade Easy</value>
+  </data>
+  <data name="lblPoweredbyProsoftGroup" xml:space="preserve">
+    <value>Powered by Prosoft Group</value>
+  </data>
+  <data name="lblReservedB2B" xml:space="preserve">
+    <value>© 2019, Ouikum.com. All right reserved</value>
+  </data>
+  <data name="lblSignUpWithOtherAccount" xml:space="preserve">
+    <value>Sign Up With Other Account</value>
+  </data>
+  <data name="lblSupport" xml:space="preserve">
+    <value>Support</value>
+  </data>
+  <data name="lblUsersignin" xml:space="preserve">
+    <value>You can use Username, Password for Sign in</value>
+  </data>
+  <data name="lblVisitStore" xml:space="preserve">
+    <value>Visit a Store</value>
+  </data>
+  <data name="lblSlideto_unlock" xml:space="preserve">
+    <value>Slide to unlock</value>
+  </data>
+  <data name="lblNearbyExpire" xml:space="preserve">
+    <value>Nearby Expire</value>
+  </data>
+  <data name="lblSave_all" xml:space="preserve">
+    <value>Save All</value>
+  </data>
+  <data name="lblActivated" xml:space="preserve">
+    <value>Activated</value>
+  </data>
+  <data name="lblExpire_en" xml:space="preserve">
+    <value>Expire</value>
+  </data>
+  <data name="lblExpire_today" xml:space="preserve">
+    <value>Expire today</value>
+  </data>
+  <data name="lblLifetime" xml:space="preserve">
+    <value>Extend Lifetime</value>
+  </data>
+  <data name="lbltoExpire" xml:space="preserve">
+    <value>To expire</value>
+  </data>
+  <data name="lblConnectWebsite" xml:space="preserve">
+    <value>Connect with B2BThai</value>
+  </data>
+  <data name="lblGroupimg" xml:space="preserve">
+    <value>Group Photo</value>
+  </data>
+  <data name="lblGroupname" xml:space="preserve">
+    <value>Group Name</value>
+  </data>
+  <data name="lblWebsite" xml:space="preserve">
+    <value>Ouikum.com</value>
+  </data>
+  <data name="btnSubmit" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="lblformat_date" xml:space="preserve">
+    <value>day/month/year</value>
+  </data>
+  <data name="lblAddOption" xml:space="preserve">
+    <value>Add Option</value>
+  </data>
+  <data name="lblSortProduct" xml:space="preserve">
+    <value>Sort Product</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="lblDate" xml:space="preserve">
+    <value>Date</value>
+  </data>
+  <data name="lbllearn_benefits" xml:space="preserve">
+    <value>Site information. Learn to the rights and your benefits.</value>
+  </data>
+  <data name="lblUpPack" xml:space="preserve">
+    <value>Upgrade Package</value>
+  </data>
+  <data name="lblspecific" xml:space="preserve">
+    <value>specific</value>
+  </data>
+  <data name="lblEnterStore" xml:space="preserve">
+    <value>Enter to Product Store</value>
+  </data>
+  <data name="lblSortby" xml:space="preserve">
+    <value>Sort By</value>
+  </data>
+  <data name="lblNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="lblPrev" xml:space="preserve">
+    <value>Prev</value>
+  </data>
+  <data name="lblAnd" xml:space="preserve">
+    <value>And</value>
+  </data>
+  <data name="lblDomainFullName" xml:space="preserve">
+    <value>www.ouikum.com</value>
+  </data>
+  <data name="lblemail_Support" xml:space="preserve">
+    <value>support@ouikum.com</value>
+  </data>
+  <data name="lblFor" xml:space="preserve">
+    <value>For</value>
+  </data>
+  <data name="lblAcc_denie" xml:space="preserve">
+    <value>Sorry, Ouikum.com not find what you are looking for.</value>
+  </data>
+  <data name="lblContact_team_support_for_benefit" xml:space="preserve">
+    <value>Contact the Support Team. For question about the website and services to your benefit.</value>
+  </data>
+  <data name="lblItems_selected" xml:space="preserve">
+    <value>Items selected</value>
+  </data>
+  <data name="lblApply" xml:space="preserve">
+    <value>Apply</value>
+  </data>
+  <data name="lblDefault_setting" xml:space="preserve">
+    <value>Default Setting</value>
+  </data>
+  <data name="lblGetknow_success" xml:space="preserve">
+    <value>If you want others to be successful like you. Well your story with us and get to know others.</value>
+  </data>
+  <data name="lblLocation" xml:space="preserve">
+    <value>Location</value>
+  </data>
+  <data name="lblPleased_success" xml:space="preserve">
+    <value>We are very pleased to see you succeed with a website. And our services.</value>
+  </data>
+  <data name="lblTell_success_story" xml:space="preserve">
+    <value>Tell success story with</value>
+  </data>
+  <data name="lblContac_now" xml:space="preserve">
+    <value>Contact Now</value>
+  </data>
+  <data name="lblAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="lblAcc_exit" xml:space="preserve">
+    <value>This user in the system.</value>
+  </data>
+  <data name="lblNotfoundAcc" xml:space="preserve">
+    <value>This account is not found in the system.</value>
+  </data>
+  <data name="lblQuicktoolbar" xml:space="preserve">
+    <value>Quick toolbar</value>
+  </data>
+  <data name="selectAcc" xml:space="preserve">
+    <value>Select Account</value>
+  </data>
+  <data name="lblmakekeywordtag" xml:space="preserve">
+    <value>Make keyword tag</value>
+  </data>
+  <data name="lblAboutWebsite" xml:space="preserve">
+    <value>About Ouikum</value>
+  </data>
+  <data name="lblContactWebsite" xml:space="preserve">
+    <value>Contact B2BThai</value>
+  </data>
+  <data name="lblMatchingCenter" xml:space="preserve">
+    <value>Matching Center</value>
+  </data>
+  <data name="lblMembership" xml:space="preserve">
+    <value>Member Right</value>
+  </data>
+  <data name="lblNew" xml:space="preserve">
+    <value>New</value>
+  </data>
+  <data name="lblPartners1" xml:space="preserve">
+    <value>B2BThaiExport.com</value>
+  </data>
+  <data name="lblPartners2" xml:space="preserve">
+    <value>Antcart.com</value>
+  </data>
+  <data name="lblPartners3" xml:space="preserve">
+    <value>Lionjob.com</value>
+  </data>
+  <data name="lblPartners4" xml:space="preserve">
+    <value>Sogoodweb.com</value>
+  </data>
+  <data name="lblPartners5" xml:space="preserve">
+    <value>Prosoftcreative.com</value>
+  </data>
+  <data name="lblPartners6" xml:space="preserve">
+    <value>Tacthai.com</value>
+  </data>
+  <data name="lblPartners7" xml:space="preserve">
+    <value>Softbankthai.com</value>
+  </data>
+  <data name="lblPartners8" xml:space="preserve">
+    <value>Onlinesoft.co.th</value>
+  </data>
+  <data name="lblPartners9" xml:space="preserve">
+    <value>Prosoft.co.th</value>
+  </data>
+  <data name="lblPromotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="lblRemoveAll" xml:space="preserve">
+    <value>Remove All</value>
+  </data>
+  <data name="lblSiteMap" xml:space="preserve">
+    <value>Site Map</value>
+  </data>
+  <data name="lblSoftware1" xml:space="preserve">
+    <value>ProsoftWinspeed</value>
+  </data>
+  <data name="lblSoftware2" xml:space="preserve">
+    <value>ProsoftHrmi</value>
+  </data>
+  <data name="lblSoftware3" xml:space="preserve">
+    <value>ProsoftCRM</value>
+  </data>
+  <data name="lblSoftware4" xml:space="preserve">
+    <value>ProsoftmyAccount</value>
+  </data>
+  <data name="lblSoftware5" xml:space="preserve">
+    <value>ProsoftGPS</value>
+  </data>
+  <data name="lblSoftware6" xml:space="preserve">
+    <value>ProsoftEmailMarketing</value>
+  </data>
+  <data name="lblSoftware7" xml:space="preserve">
+    <value>ProsoftBioscan</value>
+  </data>
+  <data name="lblSoftware8" xml:space="preserve">
+    <value>ProsoftPOS</value>
+  </data>
+  <data name="lblSubmitPaymentService" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="lblWebsiteGroup" xml:space="preserve">
+    <value>B2BThai Group</value>
+  </data>
+  <data name="lblDomainShortName" xml:space="preserve">
+    <value>Ouikum.com</value>
+  </data>
+  <data name="lblForMoreInfo" xml:space="preserve">
+    <value>For more information</value>
+  </data>
+  <data name="phone_sale1" xml:space="preserve">
+    <value>088-252-6097</value>
+  </data>
+  <data name="phone_support1" xml:space="preserve">
+    <value>088-252-6097</value>
+  </data>
+  <data name="lblList_total" xml:space="preserve">
+    <value>List of total</value>
+  </data>
+  <data name="lblShare" xml:space="preserve">
+    <value>Share</value>
+  </data>
+  <data name="lblSearchSupplier" xml:space="preserve">
+    <value>Search Suppliers</value>
+  </data>
+  <data name="lblDetails" xml:space="preserve">
+    <value>Details</value>
+  </data>
+  <data name="lblWebsiteStore" xml:space="preserve">
+    <value>Ouikum Store</value>
+  </data>
+  <data name="lblNote" xml:space="preserve">
+    <value>Note</value>
+  </data>
+  <data name="lblCustomerService" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="lblShowcase" xml:space="preserve">
+    <value>Showcase</value>
+  </data>
+  <data name="lblCompWebsite" xml:space="preserve">
+    <value>Website</value>
+  </data>
+  <data name="lblLatestJob" xml:space="preserve">
+    <value>Latest Job</value>
+  </data>
+  <data name="lblClearData" xml:space="preserve">
+    <value>Clear data</value>
+  </data>
+  <data name="lblType" xml:space="preserve">
+    <value>Type</value>
+  </data>
+  <data name="lblStatistic" xml:space="preserve">
+    <value>Statistic</value>
+  </data>
+  <data name="lblUpgradeNow" xml:space="preserve">
+    <value>Upgrade Now</value>
+  </data>
+  <data name="btnClose" xml:space="preserve">
+    <value>Close</value>
+  </data>
+  <data name="lblDate_Time" xml:space="preserve">
+    <value>Date/Time</value>
+  </data>
+  <data name="lblNone" xml:space="preserve">
+    <value>None</value>
+  </data>
+  <data name="lblcentralregion" xml:space="preserve">
+    <value>Central region</value>
+  </data>
+  <data name="lblnortheastern" xml:space="preserve">
+    <value>North-eastern</value>
+  </data>
+  <data name="lblnorthern" xml:space="preserve">
+    <value>Northern</value>
+  </data>
+  <data name="lblOtopproductcenter" xml:space="preserve">
+    <value>Otop Product Center</value>
+  </data>
+  <data name="lblsouthern" xml:space="preserve">
+    <value>Southern</value>
+  </data>
+  <data name="lbleasthern" xml:space="preserve">
+    <value>Easthern</value>
+  </data>
+  <data name="lblwesthern" xml:space="preserve">
+    <value>Westhern</value>
+  </data>
+  <data name="lblPay" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="lblSupplier_info" xml:space="preserve">
+    <value>Supplier</value>
+  </data>
+  <data name="lblSaveNextStep" xml:space="preserve">
+    <value>Save and nextStep</value>
+  </data>
+  <data name="imgLionJob" xml:space="preserve">
+    <value>https://ouikumstorage.blob.core.windows.net/upload/Content/Default/images/lionjob-banner.png</value>
+  </data>
+  <data name="imgProsoftMyaccount" xml:space="preserve">
+    <value>https://ouikumstorage.blob.core.windows.net/upload/Content/Search/images/logo_myAccount.jpg</value>
+  </data>
+  <data name="imgSoGoodWeb" xml:space="preserve">
+    <value>https://ouikumstorage.blob.core.windows.net/upload/Content/Search/images/img_sogood.png</value>
+  </data>
+  <data name="lblAccess" xml:space="preserve">
+    <value>to access</value>
+  </data>
+  <data name="lblAdditionalServices" xml:space="preserve">
+    <value>or see more other services</value>
+  </data>
+  <data name="lblBackMainPage" xml:space="preserve">
+    <value>Back to Home</value>
+  </data>
+  <data name="lblSignIn" xml:space="preserve">
+    <value>ลงชื่อเข้าใช้งาน</value>
+  </data>
+  <data name="lblNot_page_find2" xml:space="preserve">
+    <value>ขออภัยในความไม่สะดวก</value>
+  </data>
+  <data name="lblSkype" xml:space="preserve">
+    <value>Skype</value>
+  </data>
+  <data name="lblRoom" xml:space="preserve">
+    <value>เมื่อเข้าพักที่</value>
+  </data>
+  <data name="lblWebsiteReady_made" xml:space="preserve">
+    <value>รับเว็บไซต์สำเร็จรูป</value>
+  </data>
+  <data name="lblSignUp" xml:space="preserve">
+    <value>สมัครใช้งาน</value>
+  </data>
+  <data name="btnFeature" xml:space="preserve">
+    <value>Open the Feature Product</value>
+  </data>
+  <data name="btnHot" xml:space="preserve">
+    <value>Open the Hot Product</value>
+  </data>
+  <data name="btnHot_link" xml:space="preserve">
+    <value>View more details</value>
+  </data>
+  <data name="btnPackageLIST" xml:space="preserve">
+    <value>Learn More.</value>
+  </data>
+  <data name="btnpremium" xml:space="preserve">
+    <value>Open the Premium Product</value>
+  </data>
+  <data name="lblExplanationPackage_F" xml:space="preserve">
+    <value>Found your products in first time when you visit the website.</value>
+  </data>
+  <data name="lblExplanationPackage_F2" xml:space="preserve">
+    <value>with the service introduction  your products at the main page</value>
+  </data>
+  <data name="lblExplanationPackage_F3" xml:space="preserve">
+    <value>of website. Your product will be show</value>
+  </data>
+  <data name="lblExplanationPackage_F4" xml:space="preserve">
+    <value>in the position which you can visible and </value>
+  </data>
+  <data name="lblExplanationPackage_F5" xml:space="preserve">
+    <value>easily found.</value>
+  </data>
+  <data name="lblExplanationPackage_H" xml:space="preserve">
+    <value>Seen your products before anyone else with </value>
+  </data>
+  <data name="lblExplanationPackage_H2" xml:space="preserve">
+    <value>product advertising service VIP is prominent</value>
+  </data>
+  <data name="lblExplanationPackage_H3" xml:space="preserve">
+    <value>the buyer when they're search products in system.</value>
+  </data>
+  <data name="lblExplanationPackage_P" xml:space="preserve">
+    <value>Products Advertising Service VIP in the screen that</value>
+  </data>
+  <data name="lblExplanationPackage_P2" xml:space="preserve">
+    <value>access the most  prominent the buyer.</value>
+  </data>
+  <data name="lblExplanationPackage_P3" xml:space="preserve">
+    <value>Immediately open the products and send the message</value>
+  </data>
+  <data name="lblExplanationPackage_P4" xml:space="preserve">
+    <value>Your products will be show in position</value>
+  </data>
+  <data name="lblExplanationPackage_P5" xml:space="preserve">
+    <value>visible and easily found.</value>
+  </data>
+  <data name="lblExp_Duration" xml:space="preserve">
+    <value>90 Days (at just 500 Baht)</value>
+  </data>
+  <data name="lblExp_Duration2" xml:space="preserve">
+    <value>90 Days (at just 1,200 Baht)</value>
+  </data>
+  <data name="lblExp_Duration3" xml:space="preserve">
+    <value>90 Days (at just 1,500 Baht)</value>
+  </data>
+  <data name="lblExp_Duration_day" xml:space="preserve">
+    <value>30 Days</value>
+  </data>
+  <data name="lblExp_Piece" xml:space="preserve">
+    <value>Top 2 positions</value>
+  </data>
+  <data name="lblExp_Piece2" xml:space="preserve">
+    <value>Top 1 position</value>
+  </data>
+  <data name="lblExp_Price" xml:space="preserve">
+    <value>200 Baht/Position</value>
+  </data>
+  <data name="lblExp_Price2" xml:space="preserve">
+    <value>500 Baht/Position</value>
+  </data>
+  <data name="lblExp_Price3" xml:space="preserve">
+    <value>600 Baht/Position</value>
+  </data>
+  <data name="lblExp_Pricetage" xml:space="preserve">
+    <value>Prices are inclusive of VAT (VAT) 7% </value>
+  </data>
+  <data name="lblFeature_Advertise" xml:space="preserve">
+    <value>The position of your product at Home page of website.</value>
+  </data>
+  <data name="lblFeature_Advertise_email" xml:space="preserve">
+    <value>The position of your product in Email which contact purchase-sales.</value>
+  </data>
+  <data name="lblFeature_Amount" xml:space="preserve">
+    <value>Amount</value>
+  </data>
+  <data name="lblFeature_description" xml:space="preserve">
+    <value>Description of the service</value>
+  </data>
+  <data name="lblFeature_detail" xml:space="preserve">
+    <value>Detail Package.</value>
+  </data>
+  <data name="lblFeature_Exp" xml:space="preserve">
+    <value>Found your products in first time when you visit the website with the service introduction  your products at the main page. Tour products will be</value>
+  </data>
+  <data name="lblFeature_Exp2" xml:space="preserve">
+    <value>show in the position which you can visible and easily found.</value>
+  </data>
+  <data name="lblFeature_Position" xml:space="preserve">
+    <value>Position</value>
+  </data>
+  <data name="lblFeature_Price" xml:space="preserve">
+    <value>200 Baht (30 days)</value>
+  </data>
+  <data name="lblFeature_Price_detail" xml:space="preserve">
+    <value>All of the  20 positions on the main website.</value>
+  </data>
+  <data name="lblFeature_SubDescription" xml:space="preserve">
+    <value>When you order Feature Product. You will receive advertising space on the website as soon as you're payment.</value>
+  </data>
+  <data name="lblFeature_SubDescription2" xml:space="preserve">
+    <value>When you're payment the service. You can tell name product which you want to advertise.</value>
+  </data>
+  <data name="lblFeature_SubDescription3" xml:space="preserve">
+    <value>Customer service : </value>
+  </data>
+  <data name="lblFeature_SubDescription4" xml:space="preserve">
+    <value>Email : </value>
+  </data>
+  <data name="lblFeature_SubDescription5" xml:space="preserve">
+    <value>The system will be advertising your product within 24 hours.</value>
+  </data>
+  <data name="lblFeature_SubDescription6" xml:space="preserve">
+    <value>Tel 02-402-8413</value>
+  </data>
+  <data name="lblFeature_SubDescription7" xml:space="preserve">
+    <value>support@B2BThai.com</value>
+  </data>
+  <data name="lblFeature_SubDetail" xml:space="preserve">
+    <value>Products advertising service/Recommend your product in Home page of website</value>
+  </data>
+  <data name="lblFeature_SubDetail2" xml:space="preserve">
+    <value>• Top 2 positions/Company</value>
+  </data>
+  <data name="lblFeature_SubDetail3" xml:space="preserve">
+    <value>• Period to show 30 days. Top 90 days/1 position</value>
+  </data>
+  <data name="lblFeature_SubDetail4" xml:space="preserve">
+    <value>Special ! Service orders within 90 days, pay only 500 baht (100 baht discount).</value>
+  </data>
+  <data name="lblFeature_SubDetail5" xml:space="preserve">
+    <value>Your product will be show in position which you can visible and easily found. It can attract a buyer immediately when visiting the website.</value>
+  </data>
+  <data name="lblHot_Advertise" xml:space="preserve">
+    <value>The position of your product when it has searching product.</value>
+  </data>
+  <data name="lblHot_Exp" xml:space="preserve">
+    <value>Seen your products before anyone else with product advertising service VIP is prominent the buyer when they're search products in system.</value>
+  </data>
+  <data name="lblHot_Exp2" xml:space="preserve">
+    <value>Your product will be show in position which you can visiable and easily found.</value>
+  </data>
+  <data name="lblHot_Price" xml:space="preserve">
+    <value>500 Baht (30 days)</value>
+  </data>
+  <data name="lblHot_Price_detail" xml:space="preserve">
+    <value>All of the 20 positions on searching product.</value>
+  </data>
+  <data name="lblHot_SubDescription" xml:space="preserve">
+    <value>When you order Hot Product. You will receive advertising space on the website as soon as you're payment.</value>
+  </data>
+  <data name="lblHot_SubDetail" xml:space="preserve">
+    <value>Products advertising service/Recommend your product in main page of website</value>
+  </data>
+  <data name="lblHot_SubDetail2" xml:space="preserve">
+    <value>Special ! Service orders within 90 days, pay only 1,200 baht (300 baht discount).</value>
+  </data>
+  <data name="lblHot_SubDetail3" xml:space="preserve">
+    <value>When searching for a product in the system. Your product will be displayed in a location that can be seen easily.</value>
+  </data>
+  <data name="lblLink" xml:space="preserve">
+    <value>Learn More &gt;</value>
+  </data>
+  <data name="lblPremium_Advertise" xml:space="preserve">
+    <value>The position of your product when it has open the product.</value>
+  </data>
+  <data name="lblPremium_Advertise2" xml:space="preserve">
+    <value>Position your product in front of your message.</value>
+  </data>
+  <data name="lblPremium_Exp" xml:space="preserve">
+    <value>Products Advertising Service VIP in the screen that access the most  prominent the buyer. Immediately open the products</value>
+  </data>
+  <data name="lblPremium_Exp2" xml:space="preserve">
+    <value>and send the message. Your products will be show in position visible and easily found.</value>
+  </data>
+  <data name="lblPremium_Price" xml:space="preserve">
+    <value>600 Baht (30 days)</value>
+  </data>
+  <data name="lblPremium_Price_detail" xml:space="preserve">
+    <value>All of the  9 positions on the data product page.</value>
+  </data>
+  <data name="lblPremium_SubDescription" xml:space="preserve">
+    <value>When you order Premium Product. You will receive advertising space on the website as soon as you're payment.</value>
+  </data>
+  <data name="lblPremium_SubDescription2" xml:space="preserve">
+    <value>(study the process of payment. click!)</value>
+  </data>
+  <data name="lblPremium_SubDetail" xml:space="preserve">
+    <value>Products advertising service/Recommend your product in data product page of website</value>
+  </data>
+  <data name="lblPremium_SubDetail2" xml:space="preserve">
+    <value>Top 1 position/company</value>
+  </data>
+  <data name="lblPremium_SubDetail3" xml:space="preserve">
+    <value>Special ! Service orders within 90 days, pay only 1,500 baht (300 baht discount).</value>
+  </data>
+  <data name="lblPremium_SubDetail4" xml:space="preserve">
+    <value>When it has open the product in system or send the message to seller. The product will be show in position which they easily found.</value>
+  </data>
+  <data name="lblSearchAgain" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblPacageService" xml:space="preserve">
+    <value>Package and Service</value>
+  </data>
+  <data name="lblService" xml:space="preserve">
+    <value>Service</value>
+  </data>
+  <data name="lblProductPrice" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblGoldMemberExpired" xml:space="preserve">
+    <value>Gold Member</value>
+  </data>
+  <data name="lblDomainShotName" xml:space="preserve">
+    <value>ouikum.com</value>
+  </data>
+  <data name="lblRegisterPackage" xml:space="preserve">
+    <value>รายละเอียดการเลือกใช้บริการเสริมกรณีลูกค้าสมัคร Gold Package</value>
+  </data>
+  <data name="lblMyB2BThai" xml:space="preserve">
+    <value>myOuikum</value>
+  </data>
+  <data name="lblSername" xml:space="preserve">
+    <value>Sername</value>
+  </data>
+  <data name="lblContactUs" xml:space="preserve">
+    <value>Customer Service Department</value>
+  </data>
+  <data name="lblTelCustomer" xml:space="preserve">
+    <value>088-252-6097</value>
+  </data>
+  <data name="lbllineadd" xml:space="preserve">
+    <value>@ouikum</value>
+  </data>
+  <data name="lbltitleAboutus" xml:space="preserve">
+    <value>About Us</value>
+  </data>
+  <data name="lblemailinfo" xml:space="preserve">
+    <value>info@ouikum.com</value>
+  </data>
+  <data name="lblhead" xml:space="preserve">
+    <value>Organic product, Burn free product, Non-Chemical product shopping center</value>
+  </data>
+  <data name="lblAgriculturalcontent" xml:space="preserve">
+    <value>Agricultural Content</value>
+  </data>
+  <data name="lblAllproducts" xml:space="preserve">
+    <value>All Products</value>
+  </data>
+  <data name="lblCentralProducts" xml:space="preserve">
+    <value>Central Products</value>
+  </data>
+  <data name="lblEasternProducts" xml:space="preserve">
+    <value>Eastern Products</value>
+  </data>
+  <data name="lblfootlblSupplier" xml:space="preserve">
+    <value>Seller</value>
+  </data>
+  <data name="lblLatestpurchaseannouncement" xml:space="preserve">
+    <value>Purchase announcement</value>
+  </data>
+  <data name="lblNortheasternProducts" xml:space="preserve">
+    <value>Northeastern Products</value>
+  </data>
+  <data name="lblNorthernProducts" xml:space="preserve">
+    <value>Northern Products</value>
+  </data>
+  <data name="lblNumberofseller" xml:space="preserve">
+    <value>Number of seller</value>
+  </data>
+  <data name="lblOuikumstatistic" xml:space="preserve">
+    <value>Ouikum Statistic</value>
+  </data>
+  <data name="lblProductsalesannouncement" xml:space="preserve">
+    <value>Sales announcement</value>
+  </data>
+  <data name="lblSouthernProducts" xml:space="preserve">
+    <value>Southern Products</value>
+  </data>
+  <data name="lblWesternProducts" xml:space="preserve">
+    <value>Western Products</value>
+  </data>
+  <data name="tileHowto" xml:space="preserve">
+    <value>How to use it</value>
+  </data>
+  <data name="titlAskingPrice" xml:space="preserve">
+    <value>Asking for price</value>
+  </data>
+  <data name="titlAskingPrice2" xml:space="preserve">
+    <value>Asking for price list</value>
+  </data>
+  <data name="titlecompanyweb" xml:space="preserve">
+    <value>Company Website</value>
+  </data>
+  <data name="titleContactouikum" xml:space="preserve">
+    <value>Contact Ouikum.com</value>
+  </data>
+  <data name="titleMessage" xml:space="preserve">
+    <value>Message</value>
+  </data>
+  <data name="titleOrderlist" xml:space="preserve">
+    <value>Order list</value>
+  </data>
+  <data name="titleProduct" xml:space="preserve">
+    <value>Product</value>
+  </data>
+  <data name="titlewelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="lblpageview" xml:space="preserve">
+    <value>Number of Viewer</value>
+  </data>
+</root>

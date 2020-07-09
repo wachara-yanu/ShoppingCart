@@ -1,0 +1,744 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="PvAdminArticle" xml:space="preserve">
+    <value>~/Admin/Article/List</value>
+  </data>
+  <data name="PvAdminCategory" xml:space="preserve">
+    <value>~/Admin/Category/Index</value>
+  </data>
+  <data name="PvAdminHotFeat" xml:space="preserve">
+    <value>~/Admin/HotFeat/Index</value>
+  </data>
+  <data name="PvAdminIndex" xml:space="preserve">
+    <value>~/Admin/Main/Index</value>
+  </data>
+  <data name="PvAdminMember" xml:space="preserve">
+    <value>~/Admin/User/MemberList</value>
+  </data>
+  <data name="PvApproveBuylead" xml:space="preserve">
+    <value>~/Admin/ApproveBuylead/Index</value>
+  </data>
+  <data name="PvApproveMemberPaid" xml:space="preserve">
+    <value>~/Admin/ApproveMemberPaid/Index</value>
+  </data>
+  <data name="PvApproveProduct" xml:space="preserve">
+    <value>~/Admin/ApproveProduct/Index</value>
+  </data>
+  <data name="PvB2BMainIndex" xml:space="preserve">
+    <value>~/MyB2B/Main/Index</value>
+  </data>
+  <data name="PvBenefitAddmore" xml:space="preserve">
+    <value>~/Benefit/AddmoreProduct</value>
+  </data>
+  <data name="PvBenefitAdsrate" xml:space="preserve">
+    <value>~/Benefit/Adsrate</value>
+  </data>
+  <data name="PvBenefitCompare" xml:space="preserve">
+    <value>~/Benefit/Compare</value>
+  </data>
+  <data name="PvBenefitCompweb" xml:space="preserve">
+    <value>~/Benefit/MoreCompanyWeb</value>
+  </data>
+  <data name="PvBenefitGold" xml:space="preserve">
+    <value>~/Benefit/Gold</value>
+  </data>
+  <data name="PvBenefitProgramFree" xml:space="preserve">
+    <value>~/Benefit/ProsoftProgramFree</value>
+  </data>
+  <data name="PvBenefitPurchasing" xml:space="preserve">
+    <value>~/Benefit/PurchasingMatching</value>
+  </data>
+  <data name="PvBenefitRank" xml:space="preserve">
+    <value>~/Benefit/Rank</value>
+  </data>
+  <data name="PvBenefitServicerate" xml:space="preserve">
+    <value>~/Benefit/Servicerate</value>
+  </data>
+  <data name="PvBenefitShowproduct" xml:space="preserve">
+    <value>~/Benefit/ShowProduct</value>
+  </data>
+  <data name="PvBuyleadcenterCh2" xml:space="preserve">
+    <value>~/BuyleadCenter/Main/Channel2</value>
+  </data>
+  <data name="PvBuyleadcenterIndex" xml:space="preserve">
+    <value>~/BuyleadCenter/Main/Index</value>
+  </data>
+  <data name="PvBuyleadIndex" xml:space="preserve">
+    <value>~/MyB2B/buylead/Index</value>
+  </data>
+  <data name="PvBuyleadJunk" xml:space="preserve">
+    <value>~/MyB2B/buylead/Junk</value>
+  </data>
+  <data name="PvChangePwd" xml:space="preserve">
+    <value>~/Member/ChangePassword</value>
+  </data>
+  <data name="PvCompAccount" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyAccount</value>
+  </data>
+  <data name="PvCompBlog" xml:space="preserve">
+    <value>~/MyB2B/Company/Blog</value>
+  </data>
+  <data name="PvCompCetify" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyCertify</value>
+  </data>
+  <data name="PvCompContact" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyContact</value>
+  </data>
+  <data name="PvCompHistory" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyHistory</value>
+  </data>
+  <data name="PvCompPayment" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyPayment</value>
+  </data>
+  <data name="PvCompProduction" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyProduction</value>
+  </data>
+  <data name="PvCompProfile" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyProfile</value>
+  </data>
+  <data name="PvCompShipment" xml:space="preserve">
+    <value>~/MyB2B/Company/CompanyShipment</value>
+  </data>
+  <data name="PvCompTemplate" xml:space="preserve">
+    <value>~/MyB2B/Company/WebsiteTemplate</value>
+  </data>
+  <data name="PvCreateLead" xml:space="preserve">
+    <value>~/MyB2B/Purchase/CreateLead</value>
+  </data>
+  <data name="PvFavoriteBuyers" xml:space="preserve">
+    <value>~/MyB2B/Favorite/Buyers</value>
+  </data>
+  <data name="PvFavoriteProduct" xml:space="preserve">
+    <value>~/MyB2B/Favorite/Index</value>
+  </data>
+  <data name="PvFavoriteSupplier" xml:space="preserve">
+    <value>~/MyB2B/Favorite/Suppliers</value>
+  </data>
+  <data name="PvHomeIndex" xml:space="preserve">
+    <value>~/Home/Index</value>
+  </data>
+  <data name="PvLionJob" xml:space="preserve">
+    <value>http://www.lionjob.com/</value>
+  </data>
+  <data name="PvManualDownload" xml:space="preserve">
+    <value>~/Manual/Download</value>
+  </data>
+  <data name="PvManualIndex" xml:space="preserve">
+    <value>~/Manual/Index</value>
+  </data>
+  <data name="PvMemberProfile" xml:space="preserve">
+    <value>~/Member/MemberProfile</value>
+  </data>
+  <data name="PvMessageList" xml:space="preserve">
+    <value>~/Message/List</value>
+  </data>
+  <data name="PvOrderList" xml:space="preserve">
+    <value>~/MyB2B/Order/List</value>
+  </data>
+  <data name="PvOrderPackage" xml:space="preserve">
+    <value>~/MyB2B/Order/Package</value>
+  </data>
+  <data name="PvOrderPayment" xml:space="preserve">
+    <value>~/MyB2B/Order/PaymentList</value>
+  </data>
+  <data name="PvProductDetail" xml:space="preserve">
+    <value>~/Search/Product/Detail/</value>
+  </data>
+  <data name="PvProductGallery" xml:space="preserve">
+    <value>~/Search/Product/Gallery/</value>
+  </data>
+  <data name="PvProductIndex" xml:space="preserve">
+    <value>~/MyB2B/product/Index</value>
+  </data>
+  <data name="PvProductJunk" xml:space="preserve">
+    <value>~/MyB2B/product/Junk</value>
+  </data>
+  <data name="PvProductRecommend" xml:space="preserve">
+    <value>~/MyB2B/product/Recommend</value>
+  </data>
+  <data name="PvProsoftMyAccount" xml:space="preserve">
+    <value>http://www.prosoftmyaccount.com/</value>
+  </data>
+  <data name="PvPurchaseSearch" xml:space="preserve">
+    <value>~/Purchase/Search/List/</value>
+  </data>
+  <data name="PvQuotationList" xml:space="preserve">
+    <value>~/MyB2B/Quotation/List</value>
+  </data>
+  <data name="PvSearchProduct" xml:space="preserve">
+    <value>~/Search/Product/List/</value>
+  </data>
+  <data name="PvSearchProductCategory" xml:space="preserve">
+    <value>~/Search/Product/List/Category/</value>
+  </data>
+  <data name="PvSearchSupplier" xml:space="preserve">
+    <value>~/Search/Supplier/List/</value>
+  </data>
+  <data name="PvStatMessage" xml:space="preserve">
+    <value>~/Admin/Stat/Message</value>
+  </data>
+  <data name="PvStatQuotation" xml:space="preserve">
+    <value>~/Admin/Stat/Quotation</value>
+  </data>
+  <data name="PvStatTrade" xml:space="preserve">
+    <value>~/Admin/Stat/Trade</value>
+  </data>
+  <data name="PvSearchCategories" xml:space="preserve">
+    <value>~/Search/Categories</value>
+  </data>
+  <data name="PvStoreIndex" xml:space="preserve">
+    <value>~/Store/Index</value>
+  </data>
+  <data name="PvAntCart" xml:space="preserve">
+    <value>http://www.antcart.com/</value>
+  </data>
+  <data name="PvB2BThaiExport" xml:space="preserve">
+    <value>http://www.b2bthaiexport.com/</value>
+  </data>
+  <data name="PvCompanyWebsite" xml:space="preserve">
+    <value>~/CompanyWebsite/</value>
+  </data>
+  <data name="PvProductDetailJs" xml:space="preserve">
+    <value>Search/Product/Detail/</value>
+  </data>
+  <data name="PvSearchProductCategoryJs" xml:space="preserve">
+    <value>Search/Product/List/Category/</value>
+  </data>
+  <data name="PvSearchSupplierCategoryJs" xml:space="preserve">
+    <value>Search/Supplier/List/Category/</value>
+  </data>
+  <data name="PvMemberSignIn" xml:space="preserve">
+    <value>~/Member/SignIn</value>
+  </data>
+  <data name="PvMemberSignUp" xml:space="preserve">
+    <value>~/Member/SignUp</value>
+  </data>
+  <data name="PvMessageContact" xml:space="preserve">
+    <value>~/Message/Contact/</value>
+  </data>
+  <data name="PvPurchaseDetail" xml:space="preserve">
+    <value>~/Purchase/Search/Detail/</value>
+  </data>
+  <data name="PvCompJob" xml:space="preserve">
+    <value>~/MyB2B/Company/Job</value>
+  </data>
+  <data name="PvUploadCompSlip" xml:space="preserve">
+    <value>Companies/Slip/</value>
+  </data>
+  <data name="PvPreviewTemplate" xml:space="preserve">
+    <value>~/MyB2B/Company/PreviewTemplate</value>
+  </data>
+  <data name="PvOpenEmLead" xml:space="preserve">
+    <value>~/MyB2B/Purchase/OpenEmLead/</value>
+  </data>
+  <data name="PvQuotationDetail" xml:space="preserve">
+    <value>~/MyB2B/Quotation/Detail/</value>
+  </data>
+  <data name="PvQuotationImportance" xml:space="preserve">
+    <value>~/MyB2B/Quotation/List/Importance</value>
+  </data>
+  <data name="PvQuotationInbox" xml:space="preserve">
+    <value>~/MyB2B/Quotation/List/Inbox</value>
+  </data>
+  <data name="PvQuotationSentbox" xml:space="preserve">
+    <value>~/MyB2B/Quotation/List/Sentbox</value>
+  </data>
+  <data name="PvForgetPwd" xml:space="preserve">
+    <value>~/Member/ForgetPassword</value>
+  </data>
+  <data name="PvRequestPrice" xml:space="preserve">
+    <value>~/MyB2B/Quotation/RequestPrice/</value>
+  </data>
+  <data name="PvStoreCategory" xml:space="preserve">
+    <value>~/Category/</value>
+  </data>
+  <data name="PvMessageDetail" xml:space="preserve">
+    <value>~/Message/Detail</value>
+  </data>
+  <data name="PvMyChat" xml:space="preserve">
+    <value>~/MyChat/Chatter</value>
+  </data>
+  <data name="PvSoftbank" xml:space="preserve">
+    <value>http://www.aecth.org</value>
+  </data>
+  <data name="PvAboutDownload" xml:space="preserve">
+    <value>http://sogoodwebstorage.blob.core.windows.net/upload/555/</value>
+  </data>
+  <data name="PvManualDownloaddfdf" xml:space="preserve">
+    <value>~/Manual/Download</value>
+  </data>
+  <data name="PvMemberSignOut" xml:space="preserve">
+    <value>~/Member/SignOut</value>
+  </data>
+  <data name="PvProsoftCoTh" xml:space="preserve">
+    <value>http://www.prosoft.co.th</value>
+  </data>
+  <data name="PvSogood" xml:space="preserve">
+    <value>http://www.sogoodweb.com</value>
+  </data>
+  <data name="PvBidProductDetail" xml:space="preserve">
+    <value>~/BidProduct/Detail/</value>
+  </data>
+  <data name="PvBidProductList" xml:space="preserve">
+    <value>~/BidProduct/List/</value>
+  </data>
+  <data name="PvProsoftHrmi" xml:space="preserve">
+    <value>http://www.prosofthrmi.com/</value>
+  </data>
+  <data name="PvProsoftWinspeed" xml:space="preserve">
+    <value>http://www.prosoftwinspeed.com/</value>
+  </data>
+  <data name="PvSuccessDetail" xml:space="preserve">
+    <value>~/Successstory/Detail/</value>
+  </data>
+  <data name="PvSuccessList" xml:space="preserve">
+    <value>~/Successstory/List/</value>
+  </data>
+  <data name="PvAdminList" xml:space="preserve">
+    <value>~/Admin/User/AdminList</value>
+  </data>
+  <data name="PvArticleDetail" xml:space="preserve">
+    <value>~/Articlenews/Detail</value>
+  </data>
+  <data name="PvCheckAccount" xml:space="preserve">
+    <value>~/Member/CheckAccount</value>
+  </data>
+  <data name="PvDefaultDownload" xml:space="preserve">
+    <value>~/Default/DownLoads</value>
+  </data>
+  <data name="PvEditOrder" xml:space="preserve">
+    <value>~/MyB2B/Order/EditOrder</value>
+  </data>
+  <data name="PvEditPayment" xml:space="preserve">
+    <value>~/MyB2B/Order/EditPayment</value>
+  </data>
+  <data name="PvMemberAccount" xml:space="preserve">
+    <value>~/Member/MemberAccount</value>
+  </data>
+  <data name="PvMessageNew" xml:space="preserve">
+    <value>~/Message/New</value>
+  </data>
+  <data name="PvPurchaseList" xml:space="preserve">
+    <value>~/MyB2B/Purchase/List</value>
+  </data>
+  <data name="PvSearchSupplierCategory" xml:space="preserve">
+    <value>~/Search/Supplier/List/Category/</value>
+  </data>
+  <data name="PvPurchaseSearchJs" xml:space="preserve">
+    <value>/Purchase/Search/List/</value>
+  </data>
+  <data name="PvSearchProductJs" xml:space="preserve">
+    <value>/Search/Product/List/</value>
+  </data>
+  <data name="PvSearchSupplierJs" xml:space="preserve">
+    <value>/Search/Supplier/List/</value>
+  </data>
+  <data name="PvAccessDenied" xml:space="preserve">
+    <value>~/Member/AccessDenied</value>
+  </data>
+  <data name="PvEditmember" xml:space="preserve">
+    <value>~/Admin/User/EditMember</value>
+  </data>
+  <data name="PvLoginPage" xml:space="preserve">
+    <value>LoginPage</value>
+  </data>
+  <data name="pvHomeBanner" xml:space="preserve">
+    <value>~/Content/Default/banner/b2bthai/</value>
+  </data>
+  <data name="PvStatMsgDetail" xml:space="preserve">
+    <value>~/Admin/Stat/MessageDetail</value>
+  </data>
+  <data name="UrlArticleList" xml:space="preserve">
+    <value>Admin/Article/List</value>
+  </data>
+  <data name="UrlBuyleadIndex" xml:space="preserve">
+    <value>MyB2B/Buylead/Index</value>
+  </data>
+  <data name="UrlBuyleadJunk" xml:space="preserve">
+    <value>MyB2B/Buylead/Junk</value>
+  </data>
+  <data name="UrlCompWebsite" xml:space="preserve">
+    <value>CompanyWebsite</value>
+  </data>
+  <data name="UrlBuyleadMoveToJunk" xml:space="preserve">
+    <value>MyB2B/Buylead/MoveToJunk</value>
+  </data>
+  <data name="UrlMoveToRecommend" xml:space="preserve">
+    <value>MyB2B/Buylead/MoveToRecommend</value>
+  </data>
+  <data name="UrlMsgContact" xml:space="preserve">
+    <value>Message/Contact</value>
+  </data>
+  <data name="UrlProductIndex" xml:space="preserve">
+    <value>MyB2B/Product/Index</value>
+  </data>
+  <data name="UrlPurchaseSearch" xml:space="preserve">
+    <value>Purchase/Search</value>
+  </data>
+  <data name="UrlQuotationRequestPrice" xml:space="preserve">
+    <value>MyB2B/Quotation/RequestPrice</value>
+  </data>
+  <data name="UrlBackPayment" xml:space="preserve">
+    <value>MyB2B/Order/BackPayment</value>
+  </data>
+  <data name="UrlCancelOrder" xml:space="preserve">
+    <value>MyB2B/Order/CancelOrder</value>
+  </data>
+  <data name="UrlCancelPayment" xml:space="preserve">
+    <value>MyB2B/Order/CancelPayment</value>
+  </data>
+  <data name="UrlCreateEmLead" xml:space="preserve">
+    <value>MyB2B/Purchase/CreateEmLead</value>
+  </data>
+  <data name="UrlDelEmCompLead" xml:space="preserve">
+    <value>MyB2B/Purchase/DeleteEmCompLead</value>
+  </data>
+  <data name="UrlOrderDetail" xml:space="preserve">
+    <value>MyB2B/Order/DeleteOrderDetail</value>
+  </data>
+  <data name="UrlOrderList" xml:space="preserve">
+    <value>MyB2B/Order/List</value>
+  </data>
+  <data name="UrlOrderPackage" xml:space="preserve">
+    <value>MyB2B/Order/Package</value>
+  </data>
+  <data name="UrlOrderPayment" xml:space="preserve">
+    <value>MyB2B/Order/Payment</value>
+  </data>
+  <data name="UrlOrderSummary" xml:space="preserve">
+    <value>MyB2B/Order/SummaryContent</value>
+  </data>
+  <data name="UrlProductJunk" xml:space="preserve">
+    <value>MyB2B/Product/Junk</value>
+  </data>
+  <data name="UrlProductMoveToJunk" xml:space="preserve">
+    <value>MyB2B/Product/MoveToJunk</value>
+  </data>
+  <data name="UrlProductMoveToStore" xml:space="preserve">
+    <value>MyB2B/Product/MoveToStore</value>
+  </data>
+  <data name="UrlProductRecommend" xml:space="preserve">
+    <value>MyB2B/Product/Recommend</value>
+  </data>
+  <data name="UrlProMoveToRecommend" xml:space="preserve">
+    <value>MyB2B/Product/MoveToRecommend</value>
+  </data>
+  <data name="UrlSubmitOrder" xml:space="preserve">
+    <value>MyB2B/Order/SubmitOrder</value>
+  </data>
+  <data name="PvAntCartSearchProduct" xml:space="preserve">
+    <value>http://www.antcart.com/search/product</value>
+  </data>
+  <data name="PvAntCartSearchSupplier" xml:space="preserve">
+    <value>http://www.antcart.com/search/supplier</value>
+  </data>
+  <data name="UrlProductMenu" xml:space="preserve">
+    <value>Search/Product/Menu</value>
+  </data>
+  <data name="UrlSupplierMenu" xml:space="preserve">
+    <value>Search/Supplier/Menu</value>
+  </data>
+  <data name="UrlArticleNews" xml:space="preserve">
+    <value>ArticleNews/Index</value>
+  </data>
+  <data name="UrlBidProduct" xml:space="preserve">
+    <value>BidProduct/BidProduct</value>
+  </data>
+  <data name="pvHomeFooter" xml:space="preserve">
+    <value>UC/FooterUC/HomeFooterUC</value>
+  </data>
+  <data name="PvHomeCss" xml:space="preserve">
+    <value>Home/Home.css</value>
+  </data>
+  <data name="PvFacebookgroup" xml:space="preserve">
+    <value>http://www.facebook.com/B2Bthaigroup?fref=ts</value>
+  </data>
+  <data name="PvSitemap" xml:space="preserve">
+    <value>~/Sitemap/Index</value>
+  </data>
+  <data name="PvB2BAEC" xml:space="preserve">
+    <value>http://www.b2baec.com</value>
+  </data>
+  <data name="PvOnlinesoft" xml:space="preserve">
+    <value>http://www.onlinesoft.co.th</value>
+  </data>
+  <data name="PvProsoftbioscan" xml:space="preserve">
+    <value>http://www.prosoftbioscan.com</value>
+  </data>
+  <data name="PvProsoftCreative" xml:space="preserve">
+    <value>http://www.prosoftcreative.com</value>
+  </data>
+  <data name="PvProsoftcrm" xml:space="preserve">
+    <value>http://www.prosoftcrm.in.th</value>
+  </data>
+  <data name="PvProsoftgps" xml:space="preserve">
+    <value>http://www.prosoftgps.com</value>
+  </data>
+  <data name="PvProsoftmailmk" xml:space="preserve">
+    <value>http://www.prosoftemailmarketing.com</value>
+  </data>
+  <data name="PvProsoftpos" xml:space="preserve">
+    <value>http://www.prosoftpos.com</value>
+  </data>
+  <data name="PvTacthai" xml:space="preserve">
+    <value>http://www.tacthai.com</value>
+  </data>
+  <data name="UrlWeb" xml:space="preserve">
+    <value>http://www.ouikum.com</value>
+  </data>
+  <data name="PvNotFound" xml:space="preserve">
+    <value>~/Default/NotFound</value>
+  </data>
+  <data name="PvAfterSignUp" xml:space="preserve">
+    <value>~/Member/AfterSignUp</value>
+  </data>
+  <data name="PvSignupWithAccount" xml:space="preserve">
+    <value>~/Member/SignupWithAccount</value>
+  </data>
+  <data name="UrlBidDetail" xml:space="preserve">
+    <value>BidProduct/Detail</value>
+  </data>
+  <data name="UrlAbout" xml:space="preserve">
+    <value>http://about.ouikum.com/</value>
+  </data>
+  <data name="UrlAbout_ArticleID93" xml:space="preserve">
+    <value>http://about.ouikum.com/ArticleInfo.aspx?ArticleTypeID=91&amp;ArticleID=93</value>
+  </data>
+  <data name="UrlAbout_ArticleType124" xml:space="preserve">
+    <value>http://about.ouikum.com/ArticleList.aspx?ArticleTypeID=124</value>
+  </data>
+  <data name="UrlAbout_ArticleType78" xml:space="preserve">
+    <value>http://about.ouikum.com/ArticleList.aspx?ArticleTypeID=78</value>
+  </data>
+  <data name="UrlAbout_ArticleType96" xml:space="preserve">
+    <value>http://about.ouikum.com/ArticleList.aspx?ArticleTypeID=96</value>
+  </data>
+  <data name="UrlAbout_ContactUs" xml:space="preserve">
+    <value>http://about.ouikum.com/ContactUs?ref=m</value>
+  </data>
+  <data name="UrlAbout_Manual_benefiegold" xml:space="preserve">
+    <value>http://about.ouikum.com/Download/UserManual/benefitgold.pdf</value>
+  </data>
+  <data name="UrlAbout_Manual_goldpackage" xml:space="preserve">
+    <value>http://about.ouikum.com/Download/UserManual/goldpackage.pdf</value>
+  </data>
+  <data name="UrlAbout_ArticleID129" xml:space="preserve">
+    <value>http://about.ouikum.com/ArticleInfo.aspx?ArticleTypeID=91&amp;ArticleID=129</value>
+  </data>
+  <data name="AboutURL" xml:space="preserve">
+    <value>http://about.ouikum.com</value>
+  </data>
+  <data name="BlobStorageUrl" xml:space="preserve">
+    <value>https://ouikumstorage.blob.core.windows.net/upload/</value>
+  </data>
+  <data name="PvErrorPages" xml:space="preserve">
+    <value>~/Default/ErrorPages</value>
+  </data>
+  <data name="PvHomewebsite" xml:space="preserve">
+    <value>Index</value>
+  </data>
+  <data name="String1" xml:space="preserve">
+    <value />
+  </data>
+  <data name="PvStatContact" xml:space="preserve">
+    <value>~/Admin/Stat/Contact</value>
+  </data>
+  <data name="PvAppstoreThai" xml:space="preserve">
+    <value>http://www.appstorethai.com</value>
+  </data>
+  <data name="PvProSME" xml:space="preserve">
+    <value>http://www.prosmes.com/</value>
+  </data>
+  <data name="UrlBidProductList" xml:space="preserve">
+    <value>http://www.ouikum.com/BidProduct/List/</value>
+  </data>
+  <data name="UrlFacebookFanpage" xml:space="preserve">
+    <value>https://www.facebook.com/ouikumshopping</value>
+  </data>
+  <data name="UrlManualIndex" xml:space="preserve">
+    <value>http://www.ouikum.com/Manual/Guide</value>
+  </data>
+  <data name="UrlProductList" xml:space="preserve">
+    <value>http://www.ouikum.com/Search/Product/List/</value>
+  </data>
+  <data name="UrlPurchaseList" xml:space="preserve">
+    <value>http://www.ouikum.com/Purchase/Search/List/</value>
+  </data>
+  <data name="UrlSupplierList" xml:space="preserve">
+    <value>http://www.ouikum.com/Search/Supplier/List/</value>
+  </data>
+  <data name="UrlSupport" xml:space="preserve">
+    <value>http://support@ouikum.com</value>
+  </data>
+  <data name="UrlTwitterFanpage" xml:space="preserve">
+    <value>http://twitter.com/B2Bthai</value>
+  </data>
+  <data name="UrlBenefitGold" xml:space="preserve">
+    <value>http://www.ouikum.com/Benefit/Gold</value>
+  </data>
+  <data name="UrlProSME" xml:space="preserve">
+    <value>http://www.prosmes.com/ArticleInfo.aspx?ArticleTypeID=2270&amp;ArticleID=9840&amp;d=1</value>
+  </data>
+  <data name="PvNotFoundSearchError" xml:space="preserve">
+    <value>~/Default/NotFoundSearchError</value>
+  </data>
+  <data name="UrlVimanam" xml:space="preserve">
+    <value>http://www.vimannam.com/</value>
+  </data>
+  <data name="UrlNewAbout" xml:space="preserve">
+    <value>http://about.ouikum.com/Article/Detail/18419/%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E</value>
+  </data>
+  <data name="UrlPackageLionJob" xml:space="preserve">
+    <value>http://newabout.lionjob.com/Article/Detail/18482/%E0%B8%A3%E0%B8%B2%E0%B8%84%E0%B8%B2%E0%B9%81%E0%B8%9E%E0%B9%87%E0%B8%84%E0%B9%80%E0%B8%81%E0%B8%88</value>
+  </data>
+  <data name="UrlPackageMyAccount" xml:space="preserve">
+    <value>http://www.prosmes.com/ArticleInfo.aspx?ArticleID=30</value>
+  </data>
+  <data name="UrlPackageSoGood" xml:space="preserve">
+    <value>http://www.sogoodweb.com/Article/Detail/6471/%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B9%81%E0%B8%A5%E0%B8%B0%E0%B8%9A%E0%B8%A3%E0%B8%B4%E0%B8%81%E0%B8%B2%E0%B8%A3?ref=m</value>
+  </data>
+  <data name="UrlPackageVimannum" xml:space="preserve">
+    <value>http://about.ouikum.com/Article/Detail/18586/Upgrade-Gold-Member-%E0%B8%A7%E0%B8%B1%E0%B8%99%E0%B8%99%E0%B8%B5%E0%B9%89-%E0%B8%A3%E0%B8%B1%E0%B8%9A%E0%B8%AA%E0%B9%88%E0%B8%A7%E0%B8%99%E0%B8%A5%E0%B8%94-70-%E0%B9%80%E0%B8%9B%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99%E0%B8%95%E0%B9%8C-%E0%B8%97%E0%B8%B1%E0%B8%99%E0%B8%97%E0%B8%B5%E0%B8%97%E0%B8%B5%E0%B9%88-%E0%B8%A7%E0%B8%B4%E0%B8%A1%E0%B8%B2%E0%B8%99%E0%B8%99%E0%B9%89%E0%B8%B3-%E0%B8%A3%E0%B8%B5%E0%B8%AA%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%97%E0%B8%A7%E0%B8%B4%E0%B8%A1%E0%B8%B2%E0%B8%99%E0%B8%99%E0%B9%89%E0%B8%B3-%E0%B8%A3%E0%B8%B5%E0%B8%AA%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B8%97-%E0%B9%81%E0%B8%81%E0%B9%88%E0%B8%87%E0%B8%81%E0%B8%A3%E0%B8%B0%E0%B8%88%E0%B8%B2%E0%B8%99?ref=m</value>
+  </data>
+  <data name="UrlCondition" xml:space="preserve">
+    <value>http://about.ouikum.com/Article/Detail/18483/%E0%B9%80%E0%B8%87%E0%B8%B7%E0%B9%88%E0%B8%AD%E0%B8%99%E0%B9%84%E0%B8%82%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%A5%E0%B8%87%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2</value>
+  </data>
+  <data name="UrlTechnique" xml:space="preserve">
+    <value>http://about.ouikum.com/Article/Detail/18419/%E0%B9%80%E0%B8%97%E0%B8%84%E0%B8%99%E0%B8%B4%E0%B8%84%E0%B8%81%E0%B8%B2%E0%B8%A3%E0%B8%9B%E0%B8%A3%E0%B8%B0%E0%B8%81%E0%B8%B2%E0%B8%A8%E0%B8%82%E0%B8%B2%E0%B8%A2%E0%B8%AA%E0%B8%B4%E0%B8%99%E0%B8%84%E0%B9%89%E0%B8%B2%E0%B9%83%E0%B8%AB%E0%B9%89%E0%B8%A1%E0%B8%B5%E0%B8%84%E0%B8%B8%E0%B8%93%E0%B8%A0%E0%B8%B2%E0%B8%9E</value>
+  </data>
+  <data name="UrlBennerSeminer" xml:space="preserve">
+    <value>http://about.ouikum.com/Article/Detail/18398/%E0%B9%80%E0%B8%9E%E0%B8%B4%E0%B9%88%E0%B8%A1%E0%B8%A2%E0%B8%AD%E0%B8%94%E0%B8%82%E0%B8%B2%E0%B8%A2-30%E0%B9%80%E0%B8%9B%E0%B8%AD%E0%B8%A3%E0%B9%8C%E0%B9%80%E0%B8%8B%E0%B9%87%E0%B8%99-%E0%B8%81%E0%B8%B1%E0%B8%9A-B2BThai?ref=m</value>
+  </data>
+  <data name="PvPackageList" xml:space="preserve">
+    <value>~/Benefit/PackageList</value>
+  </data>
+  <data name="UrlMemberSignIn" xml:space="preserve">
+    <value>http://www.ouikum.com/Member/SignIn</value>
+  </data>
+  <data name="UrlPackageList" xml:space="preserve">
+    <value>http://www.ouikum.com/Benefit/PackageList</value>
+  </data>
+  <data name="UrlAecth" xml:space="preserve">
+    <value>http://www.aecth.org/</value>
+  </data>
+  <data name="UrlLineOfficail" xml:space="preserve">
+    <value>https://line.me/R/ti/p/%40996twpjk</value>
+  </data>
+</root>

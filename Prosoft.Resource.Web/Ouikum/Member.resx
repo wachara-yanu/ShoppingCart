@@ -1,0 +1,477 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnClose_account" xml:space="preserve">
+    <value>Deactivate an account</value>
+  </data>
+  <data name="lblAccept_Condition" xml:space="preserve">
+    <value>I agree to term and condition</value>
+  </data>
+  <data name="lblAccount_Set" xml:space="preserve">
+    <value>Account Setting</value>
+  </data>
+  <data name="lblAcc_Set" xml:space="preserve">
+    <value>Account Setting</value>
+  </data>
+  <data name="lblAdd_Buylead" xml:space="preserve">
+    <value>Post Buying Request</value>
+  </data>
+  <data name="lblAdd_Product" xml:space="preserve">
+    <value>Post Your Product</value>
+  </data>
+  <data name="lblcancel_acc" xml:space="preserve">
+    <value>Are you sure you want to deactivate your account?</value>
+  </data>
+  <data name="lblChange_Pass" xml:space="preserve">
+    <value>Change Password</value>
+  </data>
+  <data name="lblConfirm_n_pass" xml:space="preserve">
+    <value>Confirm new password.</value>
+  </data>
+  <data name="lblConfirm_Password" xml:space="preserve">
+    <value>Confirm Password</value>
+  </data>
+  <data name="lblCreateWeb" xml:space="preserve">
+    <value>Create Company Website</value>
+  </data>
+  <data name="lblData_sign_in" xml:space="preserve">
+    <value>Information to access the website.</value>
+  </data>
+  <data name="lblDisplay" xml:space="preserve">
+    <value>Display Name</value>
+  </data>
+  <data name="lblEdit_Acc" xml:space="preserve">
+    <value>Edit Account</value>
+  </data>
+  <data name="lblEdit_pf" xml:space="preserve">
+    <value>Edit Profile</value>
+  </data>
+  <data name="lblexplain_more" xml:space="preserve">
+    <value>Please explain more.</value>
+  </data>
+  <data name="lblguide_signin" xml:space="preserve">
+    <value>If you are a member of thes websites, you can sign up immediately.</value>
+  </data>
+  <data name="lblKeep_me" xml:space="preserve">
+    <value>Remember me</value>
+  </data>
+  <data name="lblLinkF" xml:space="preserve">
+    <value>Linked to Facebook.</value>
+  </data>
+  <data name="lblLinkG" xml:space="preserve">
+    <value>Linked to Google</value>
+  </data>
+  <data name="lblLinkT" xml:space="preserve">
+    <value>Linked to Twitter</value>
+  </data>
+  <data name="lblNew_pass" xml:space="preserve">
+    <value>New password</value>
+  </data>
+  <data name="lblno_account" xml:space="preserve">
+    <value>Don't have a B2BMyanmarTrade.com account?</value>
+  </data>
+  <data name="lblPassword" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lblReasons" xml:space="preserve">
+    <value>Reasons to close this account (please specify).</value>
+  </data>
+  <data name="lblReasons1" xml:space="preserve">
+    <value>I have another account.</value>
+  </data>
+  <data name="lblReasons2" xml:space="preserve">
+    <value>This is just temporary. I will come back again.</value>
+  </data>
+  <data name="lblReasons3" xml:space="preserve">
+    <value>I do not understand how to use OuikumMyanmarTrade.com.</value>
+  </data>
+  <data name="lblReasons4" xml:space="preserve">
+    <value>I do not see how OuikumMyanmarTrade.com can be useful.</value>
+  </data>
+  <data name="lblReasons5" xml:space="preserve">
+    <value>I received a lot of an email from OuikumMyanmarTrade.com.</value>
+  </data>
+  <data name="lblReasons6" xml:space="preserve">
+    <value>Other</value>
+  </data>
+  <data name="lblRegister" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="lblRegister_th" xml:space="preserve">
+    <value>Register</value>
+  </data>
+  <data name="lblReset_Pass" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="lblReset_Pass_th" xml:space="preserve">
+    <value>Reset Password</value>
+  </data>
+  <data name="lblRg_ex_acc" xml:space="preserve">
+    <value>Register with another account.</value>
+  </data>
+  <data name="lblTitle_add_buy" xml:space="preserve">
+    <value>If you are looking to buy. You can post a buying request immediately.</value>
+  </data>
+  <data name="lblTitle_add_pro" xml:space="preserve">
+    <value>You can post your product. Free!</value>
+  </data>
+  <data name="lblTitle_web_free" xml:space="preserve">
+    <value>You can create your company website. Free!</value>
+  </data>
+  <data name="lblUserEmai" xml:space="preserve">
+    <value>Username or Email</value>
+  </data>
+  <data name="lblUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="lblWarn" xml:space="preserve">
+    <value>Warning : If you deactivate your account, all data information will be lost and can not be restored.</value>
+  </data>
+  <data name="lblEnter_the_site" xml:space="preserve">
+    <value>Sign in to B2BMyanmarTrade.com</value>
+  </data>
+  <data name="lblWelcome" xml:space="preserve">
+    <value>Welcome</value>
+  </data>
+  <data name="lblWelcome_to_website" xml:space="preserve">
+    <value>Welcome to OuikumMyanmarTrade.com</value>
+  </data>
+  <data name="lblCondition" xml:space="preserve">
+    <value>Terms and Conditions.</value>
+  </data>
+  <data name="lblError_password" xml:space="preserve">
+    <value>Your password is incorrect</value>
+  </data>
+  <data name="lblForget_pass" xml:space="preserve">
+    <value>Forget your passward?</value>
+  </data>
+  <data name="lblNotfound_Account" xml:space="preserve">
+    <value>Account not found.</value>
+  </data>
+  <data name="lblPass" xml:space="preserve">
+    <value>Password</value>
+  </data>
+  <data name="lblRegister_Now" xml:space="preserve">
+    <value>Register Now</value>
+  </data>
+  <data name="lblMember_Account" xml:space="preserve">
+    <value>Account Information</value>
+  </data>
+  <data name="lblMember_Profile" xml:space="preserve">
+    <value>Member Profile</value>
+  </data>
+  <data name="lblLogin" xml:space="preserve">
+    <value>Sign In</value>
+  </data>
+  <data name="lbl_Img" xml:space="preserve">
+    <value>Avatar Image</value>
+  </data>
+  <data name="lblMember_type" xml:space="preserve">
+    <value>Type of Member</value>
+  </data>
+  <data name="lblMem_name" xml:space="preserve">
+    <value>Member Name</value>
+  </data>
+  <data name="lblUser_name" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="lblMem_new" xml:space="preserve">
+    <value>Newest Member</value>
+  </data>
+  <data name="lblMem_update" xml:space="preserve">
+    <value>Last Modified Member</value>
+  </data>
+  <data name="lblNum_contact" xml:space="preserve">
+    <value>Number of Contacts</value>
+  </data>
+  <data name="lblcannotlogin5time" xml:space="preserve">
+    <value>You can not login through 5 times. Your account has been closed for security reasons. Please check your email to verify identity.</value>
+  </data>
+  <data name="lblerror5time" xml:space="preserve">
+    <value>An error has occurred 5 times.</value>
+  </data>
+  <data name="lblErrorSendEmail" xml:space="preserve">
+    <value>An error occurred while sending the email. Please try again.</value>
+  </data>
+  <data name="lblforgetpass_success" xml:space="preserve">
+    <value>You forget password has been successful. Please check your email.</value>
+  </data>
+  <data name="lblMoreTimes" xml:space="preserve">
+    <value>more times.</value>
+  </data>
+  <data name="lblPassword_Incorrect" xml:space="preserve">
+    <value>Password is incorrect. You can sign more</value>
+  </data>
+  <data name="lblPleaseCheckforError" xml:space="preserve">
+    <value>There is an error. Please check for error.</value>
+  </data>
+  <data name="lblPlsPasswordMatchs" xml:space="preserve">
+    <value>Please enter password and confirm password to match.</value>
+  </data>
+  <data name="lblRequestPassAlready" xml:space="preserve">
+    <value>You have request a password already. Please check your email again.</value>
+  </data>
+  <data name="lblUserEmailPass_Incorrect" xml:space="preserve">
+    <value>Username or Email or Password is incorrect.</value>
+  </data>
+  <data name="lblemailalert_gold_mem_exp" xml:space="preserve">
+    <value>Email alert expire of package Gold Member.</value>
+  </data>
+  <data name="lblemailalert_gold_mem_toexp" xml:space="preserve">
+    <value>Email alert near expire of package Gold Member.</value>
+  </data>
+  <data name="lblAlertnoconfirmpass" xml:space="preserve">
+    <value>You did not confirm request new password within the specified period. Please enter your username and email address for request new password again. Sorry for the inconvenience.</value>
+  </data>
+  <data name="lblChangePassSuccess" xml:space="preserve">
+    <value>Change password successful.</value>
+  </data>
+  <data name="lblConfirmpass24h" xml:space="preserve">
+    <value>Please confirm request your new password within 24 hours.</value>
+  </data>
+  <data name="lblEnter_user_or_email_requestPass" xml:space="preserve">
+    <value>If you want to request a new password. Please enter your email address or username that you have registered with the system.</value>
+  </data>
+  <data name="lblRequestNewPass" xml:space="preserve">
+    <value>Request New Password</value>
+  </data>
+  <data name="lblSystem_send_email" xml:space="preserve">
+    <value>The system will send a new password to the email address you registered.</value>
+  </data>
+  <data name="lblupdatePass" xml:space="preserve">
+    <value>Update Password</value>
+  </data>
+  <data name="lbluser_and_email_notcorrect" xml:space="preserve">
+    <value>User's email is not correct. Please check again.</value>
+  </data>
+  <data name="lblresgister_success" xml:space="preserve">
+    <value>You are subscribe to OuikumMyanmarTrade.com</value>
+  </data>
+  <data name="lblAfterSetpass" xml:space="preserve">
+    <value>When you setting a new password successfully. You can sign in with your new password immediately.</value>
+  </data>
+  <data name="lblBestRegards" xml:space="preserve">
+    <value>Best Regards</value>
+  </data>
+  <data name="lblconfirm_set_newpass" xml:space="preserve">
+    <value>to confirm and set a new password</value>
+  </data>
+  <data name="lblCopyurl_activate" xml:space="preserve">
+    <value>If the above link does not work, please copy this URL into your browser window. I forgot my password and to confirm the steps to set up a new password.</value>
+  </data>
+  <data name="lblHaveAccbutnotMember" xml:space="preserve">
+    <value>You are in the system, but is not a member, please register as a member B2BMyanmarTrade</value>
+  </data>
+  <data name="lblNotifyActivateCode" xml:space="preserve">
+    <value>Please "Activate Code" to confirm your new password to access website.</value>
+  </data>
+  <data name="lblNotifyRenewpass" xml:space="preserve">
+    <value>After forgot my password successful. Next step you need to notify your new password again.</value>
+  </data>
+  <data name="lblNotregister" xml:space="preserve">
+    <value>You have not registered in the system. Please register.</value>
+  </data>
+  <data name="pvAgreement" xml:space="preserve">
+    <value>Member/SignUp/Agreement-en</value>
+  </data>
+  <data name="titleSignup" xml:space="preserve">
+    <value>Sign up with OuikumMyanmarTrade.com</value>
+  </data>
+  <data name="lblAccSuspended" xml:space="preserve">
+    <value>Now your account is suspended</value>
+  </data>
+  <data name="lblAftervarifyownership" xml:space="preserve">
+    <value>After successful verification of ownership. You can sign are immediately.</value>
+  </data>
+  <data name="lblConfirmActivatePass" xml:space="preserve">
+    <value>Confirm request Activate Code to confirm forget password login B2BMyanmarTrade for because the original link has expired.</value>
+  </data>
+  <data name="lblConfirmActive" xml:space="preserve">
+    <value>To confirm your active again.</value>
+  </data>
+  <data name="lblNoMember" xml:space="preserve">
+    <value>Member not found.</value>
+  </data>
+  <data name="lblLoginFBError" xml:space="preserve">
+    <value>There was an error while login into Facebook. Please try again later.</value>
+  </data>
+  <data name="lblCheckgold" xml:space="preserve">
+    <value>You can check usage rights to Gold Member at</value>
+  </data>
+  <data name="lblMemberSuspended_success" xml:space="preserve">
+    <value>Has suspended your membership successful.</value>
+  </data>
+  <data name="lblMember_renew" xml:space="preserve">
+    <value>If you want to renew membership. You can the right to at</value>
+  </data>
+  <data name="lblUptofree" xml:space="preserve">
+    <value>The system upgrade your membership level to "Free Member" successful.</value>
+  </data>
+  <data name="lblUptogold" xml:space="preserve">
+    <value>System Upgrade your membership to Gold Member.</value>
+  </data>
+  <data name="lblFillinfoforbenefit" xml:space="preserve">
+    <value>Please enter the information for your benefit.</value>
+  </data>
+  <data name="lblGoldFreeandunlimited" xml:space="preserve">
+    <value>เพื่อรับสิทธิประโยชน์อย่างมากมาย</value>
+  </data>
+  <data name="lblidentifywithadmin" xml:space="preserve">
+    <value>Just enter the information correctly and confirm the identity with the Administrator.</value>
+  </data>
+  <data name="lblinformusername" xml:space="preserve">
+    <value>Inform username or company name.</value>
+  </data>
+  <data name="lblspecialregister" xml:space="preserve">
+    <value>Upgrade Gold Member</value>
+  </data>
+  <data name="lblFreeOnlineStore" xml:space="preserve">
+    <value>Free Online Store!</value>
+  </data>
+  <data name="lblbidproducthome" xml:space="preserve">
+    <value>Bid Products (Products with the request price from buyer)</value>
+  </data>
+  <data name="lblsharethispageon" xml:space="preserve">
+    <value>Share this page on</value>
+  </data>
+  <data name="lblContact" xml:space="preserve">
+    <value>ติดต่อสอบถาม/ลงโฆษณากับเรา ได้ที่</value>
+  </data>
+  <data name="lblCustomer" xml:space="preserve">
+    <value>ฝ่ายบริการลูกค้า : 02-402-8413 หรือ support@Ouikum.com</value>
+  </data>
+  <data name="lblOfficeHours" xml:space="preserve">
+    <value>ฝ่ายขาย-โฆษณา : 088-252-6097</value>
+  </data>
+  <data name="lblUptogoldExpire" xml:space="preserve">
+    <value>แจ้งเตือน Package ของคุณหมดอายุ</value>
+  </data>
+  <data name="lblUptogoldNearExpire" xml:space="preserve">
+    <value>แจ้งเตือน Package ของคุณใกล้หมดอายุ</value>
+  </data>
+  <data name="lblBlockInfo" xml:space="preserve">
+    <value>แจ้งบัญชีผู้ใช้งานของคุณถูกระงับชั่วคราว</value>
+  </data>
+  <data name="lblOfficeHours1" xml:space="preserve">
+    <value>(เวลาทำการ : วันจันทร์ - ศุกร์ 8.30 - 17.00 น. ยกเว้นวันหยุดราชการและนักขัตฤกษ์)</value>
+  </data>
+  <data name="lblSignUpPackage13" xml:space="preserve">
+    <value>ฉันต้องการให้เจ้าหน้าที่ลงสินค้าเพื่อประกาศลงบนหน้าเว็บไซต์ เนื่องจากมีเวลาน้อย ไม่มีความเชี่ยวชาญในการใช้งาน เพื่อประหยัดเวลาในการที่จะต้องมา Add สินค้าเอง</value>
+  </data>
+</root>

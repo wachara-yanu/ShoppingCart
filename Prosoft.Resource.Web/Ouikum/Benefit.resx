@@ -1,0 +1,801 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblAccessInfo" xml:space="preserve">
+    <value>Access to the information as superior</value>
+  </data>
+  <data name="lblaccountsoftware" xml:space="preserve">
+    <value>The accounting software</value>
+  </data>
+  <data name="lblAdsCate" xml:space="preserve">
+    <value>สิทธิ์โฆษณาสินค้าในหน้าค้นหาสินค้า Hot Product</value>
+  </data>
+  <data name="lblAdsFront" xml:space="preserve">
+    <value>สิทธิ์โฆษณาสินค้าในหน้าแสดงข้อมูลรายละเอียดสินค้า Premium Product</value>
+  </data>
+  <data name="lblAdsHome" xml:space="preserve">
+    <value>สิทธิ์โฆษณาสินค้าในหน้าหลักของเว็บไซต์ Feature Product</value>
+  </data>
+  <data name="lblAdsrate" xml:space="preserve">
+    <value>lblAdsrate</value>
+  </data>
+  <data name="lblchoosetheme" xml:space="preserve">
+    <value>Ability to choose web page theme</value>
+  </data>
+  <data name="lblchoosethemeDesc" xml:space="preserve">
+    <value>We have more than 30 themes for you to use as your satisfaction Modern, Aesthetic and Satisfaction can be changes as needed.</value>
+  </data>
+  <data name="lblConnectPostjob" xml:space="preserve">
+    <value>Link a working function with</value>
+  </data>
+  <data name="lblDisplaysproducts" xml:space="preserve">
+    <value>เพิ่มสินค้าไม่จำกัด</value>
+  </data>
+  <data name="lblDisplaysproductsDesc" xml:space="preserve">
+    <value>B2BThaiExport.com allows you to add unlimited products The number of products you have, the more products you can display</value>
+  </data>
+  <data name="lblDisplaytop" xml:space="preserve">
+    <value>Display on the top</value>
+  </data>
+  <data name="lblDisplaytopDesc" xml:space="preserve">
+    <value>Gold member you are very special customer as VIP level, we deliver you “the very first show of search results” and immediately give you the special right just update your product information regularly</value>
+  </data>
+  <data name="lblExclusivefree" xml:space="preserve">
+    <value>Exclusive free several items</value>
+  </data>
+  <data name="lblExclusivefreeDesc" xml:space="preserve">
+    <value>To manage your full business Get free! The shortcut tools that we selected for you either accounting software or job seeking website for 1 year free.</value>
+  </data>
+  <data name="lblfindemployee" xml:space="preserve">
+    <value>help to find the employee</value>
+  </data>
+  <data name="lblfindemployeeDesc" xml:space="preserve">
+    <value>A person has become a human resource that very important to do any organization processes. Increase the chance to find the diligent employees. Just you easily post a job through www.lionjob.com and also to create a company brand to be known to outsiders</value>
+  </data>
+  <data name="lblFirst" xml:space="preserve">
+    <value>First</value>
+  </data>
+  <data name="lblGoldpackage" xml:space="preserve">
+    <value>Gold Member</value>
+  </data>
+  <data name="lblHotlineMatching" xml:space="preserve">
+    <value>Purchasing Hotline &amp; Matching center</value>
+  </data>
+  <data name="lblHotlineMatchingDesc" xml:space="preserve">
+    <value>When any demand for your product comes we are ready to matching the demand with the supply our Gold member to ensure lead information and supporting information to increase sales.</value>
+  </data>
+  <data name="lblImportantInfo" xml:space="preserve">
+    <value>Important information from B2BThaiExport.com</value>
+  </data>
+  <data name="lblIncreaseChannel" xml:space="preserve">
+    <value>We increase the channel to access to your products as much as possible. Like the phrase said “the content is a king”</value>
+  </data>
+  <data name="lblIncreaseChannelDesc" xml:space="preserve">
+    <value>The more online spaces you have and the more products you display. The more chance of your products to find out on Search Engine</value>
+  </data>
+  <data name="lblJobsite" xml:space="preserve">
+    <value>Job site</value>
+  </data>
+  <data name="lblLately" xml:space="preserve">
+    <value>Lately</value>
+  </data>
+  <data name="lblLearnmore" xml:space="preserve">
+    <value>Learn more</value>
+  </data>
+  <data name="lblLinkotherservices" xml:space="preserve">
+    <value>Link to other services</value>
+  </data>
+  <data name="lblLinkotherservicesDesc" xml:space="preserve">
+    <value>Get special offer from B2BThaiExport.com
+To allow such sales easier such as 
+purchasing hotline, matching center</value>
+  </data>
+  <data name="lblLionJob" xml:space="preserve">
+    <value>LionJob.com</value>
+  </data>
+  <data name="lblMaxProduct" xml:space="preserve">
+    <value>The Maximum number of items</value>
+  </data>
+  <data name="lblmoredesign" xml:space="preserve">
+    <value>More web page designs</value>
+  </data>
+  <data name="lblmyAccount" xml:space="preserve">
+    <value>myAccount</value>
+  </data>
+  <data name="lblmyAccountDesc" xml:space="preserve">
+    <value>Accounting software for SMEs businesses, carefully accounting for all processes, save times, save costs, reduce difficulty processes, and save human resources for all operating</value>
+  </data>
+  <data name="lblnewfunction" xml:space="preserve">
+    <value>The new function Product Store</value>
+  </data>
+  <data name="lblnewfunctionDesc" xml:space="preserve">
+    <value>Supported to search vendors easier 
+Gold member ensure that product information is targeted to your target before other</value>
+  </data>
+  <data name="lblnotwebsite" xml:space="preserve">
+    <value>It is not the problem even you already have a website,</value>
+  </data>
+  <data name="lblnotwebsiteDesc" xml:space="preserve">
+    <value>The other way to increase access to customer information Similarly, you have a lot of information on the online world, when you search (search engine) there will be more chance than typical site as twofold</value>
+  </data>
+  <data name="lblOnlineAds" xml:space="preserve">
+    <value>Online advertisemnet system</value>
+  </data>
+  <data name="lblPostemployee" xml:space="preserve">
+    <value>Post for the new employee</value>
+  </data>
+  <data name="lblPostJob" xml:space="preserve">
+    <value>Post a job on the website</value>
+  </data>
+  <data name="lblPostJobDesc" xml:space="preserve">
+    <value>Link a working function with www.lionjob.com the biggest job seeking website of Thailand, seeking for new employee, seeking any job positions or job offering with easily, quickly and thoroughly</value>
+  </data>
+  <data name="lblPremiumWebsite" xml:space="preserve">
+    <value>Free! Company Website</value>
+  </data>
+  <data name="lblPremiumWebsiteDesc" xml:space="preserve">
+    <value>Select Website theme more than 30 themes which appropriate with your business</value>
+  </data>
+  <data name="lblProductsEasily" xml:space="preserve">
+    <value>Products more easily</value>
+  </data>
+  <data name="lblProductsEasyDesc" xml:space="preserve">
+    <value>In the very first show of search results
+Make buyers more likely to fide your product.</value>
+  </data>
+  <data name="lblProgramfree" xml:space="preserve">
+    <value>Exclusive 1 year free!</value>
+  </data>
+  <data name="lblProgramfreeDesc" xml:space="preserve">
+    <value>A gold member on the www.AppStoreThai.com , the privileged more than worth! Get 1 year free!</value>
+  </data>
+  <data name="lblPromoteProduct" xml:space="preserve">
+    <value>Ability to promote unlimited products</value>
+  </data>
+  <data name="lblPromoteProductDesc" xml:space="preserve">
+    <value>The main product category 29 categories would identify target market and online sale is unlimited with the low cost</value>
+  </data>
+  <data name="lblReliableCustomer" xml:space="preserve">
+    <value>Guarantee reliable with your customer</value>
+  </data>
+  <data name="lblReliableCustomerDesc" xml:space="preserve">
+    <value>Create online web page like a premium website as your online product showroom and also display your company profiles.</value>
+  </data>
+  <data name="lblSortproductDisplay" xml:space="preserve">
+    <value>The sort of product display/declaration purchase</value>
+  </data>
+  <data name="lblTemplate" xml:space="preserve">
+    <value>Template</value>
+  </data>
+  <data name="lblunlimetedAccessDesc1" xml:space="preserve">
+    <value>- Access to Leads’ information (buys-sells)</value>
+  </data>
+  <data name="lblunlimetedAccessDesc2" xml:space="preserve">
+    <value>- Receive a news, an exclusive, and any discounted before anyone else</value>
+  </data>
+  <data name="lblUnlimited" xml:space="preserve">
+    <value>Unlimited</value>
+  </data>
+  <data name="lblUnlimitedAccess" xml:space="preserve">
+    <value>Gold member is unlimited to access any information</value>
+  </data>
+  <data name="lblUpgradeGold" xml:space="preserve">
+    <value>Upgrade Gold</value>
+  </data>
+  <data name="lblUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="lblAccname" xml:space="preserve">
+    <value>Account name iNext step Co.,Ltd Saving Account</value>
+  </data>
+  <data name="lblAccnameDesc" xml:space="preserve">
+    <value>Account name iNext step Co.,Ltd</value>
+  </data>
+  <data name="lblAccno" xml:space="preserve">
+    <value>980-2-06241-6</value>
+  </data>
+  <data name="lbladdrmapbkk" xml:space="preserve">
+    <value>2571/1 Software resort Ramlhamheang
+Rd. Huamark Bangkrapi Bangkok 10240
+Tel: (02) 402-8067 
+Phone: (088) 258-3434</value>
+  </data>
+  <data name="lbladdrmapcm" xml:space="preserve">
+    <value>287 M.5 T. Sunsainoi Ampor.Sunsai
+Chiang Mai 50210
+Tel: (02) 402-8068
+Phone: (081) 359-7680</value>
+  </data>
+  <data name="lblAdsbuysell" xml:space="preserve">
+    <value>Advertisement-buying-selling</value>
+  </data>
+  <data name="lbladsclick" xml:space="preserve">
+    <value>Advertising with us Chick!</value>
+  </data>
+  <data name="lbladsrateaddr1" xml:space="preserve">
+    <value>Please withholding tax on behalf of “Prosoft Comtech Co., Ltd.”</value>
+  </data>
+  <data name="lbladsrateaddr2" xml:space="preserve">
+    <value>54/27 Ramkhamhaend 60/2 Ramkhamhaeng Huamark Rd. Bangkrapi Bangkok 10240</value>
+  </data>
+  <data name="lbladsratecompany1" xml:space="preserve">
+    <value>Please send the withholding tax document to the address below</value>
+  </data>
+  <data name="lbladsratecompany2" xml:space="preserve">
+    <value>2571/1 Software resort Ramkhamhaeng Rd. Huamark Bangkrapi Bangkok 10240</value>
+  </data>
+  <data name="lbladsratecompany3" xml:space="preserve">
+    <value>(Company financial office)</value>
+  </data>
+  <data name="lbladsratecompany4" xml:space="preserve">
+    <value>The company will send the invoice and the receipt, after receive the original withholding tax only!</value>
+  </data>
+  <data name="lbladsratefee1" xml:space="preserve">
+    <value>- For advertising rate please deduct 2% withholding tax and fax the deduction document to 089-967-6157 and send the original document by post to our address below</value>
+  </data>
+  <data name="lbladsratefee2" xml:space="preserve">
+    <value>** New members must submit a copy of value added tax registration or a copy of company registration certificate with an address for billing purposes.</value>
+  </data>
+  <data name="lbladsratetax" xml:space="preserve">
+    <value>* Rates exclude VAT 7% and Bank transfer fee!</value>
+  </data>
+  <data name="lblalertorder" xml:space="preserve">
+    <value>Alert you when there are any buying order</value>
+  </data>
+  <data name="lblE_market" xml:space="preserve">
+    <value> App marketplace of Thailand</value>
+  </data>
+  <data name="lblBangkok" xml:space="preserve">
+    <value>Bangkok</value>
+  </data>
+  <data name="lblbranch" xml:space="preserve">
+    <value>Ramkhamheang 53 Rd.</value>
+  </data>
+  <data name="lblChiangMai" xml:space="preserve">
+    <value>Chiang Mai</value>
+  </data>
+  <data name="lblcomeseeus" xml:space="preserve">
+    <value>Or come see us</value>
+  </data>
+  <data name="lblcontactsales" xml:space="preserve">
+    <value>Or contact sales and advertisement : 02-402-8413 or sale@AppStoreThai.com</value>
+  </data>
+  <data name="lblcustomerservice" xml:space="preserve">
+    <value>Customer services : 02-402-8068, 081-359-7680 or support@AppStoreThai.com</value>
+  </data>
+  <data name="lblfaxDesc1" xml:space="preserve">
+    <value>After transferred, please FAX the Evidence (Pay-in-Slip)</value>
+  </data>
+  <data name="lblfaxDesc2" xml:space="preserve">
+    <value>and withholding tax to Ms. Thitima Jantha at FAX No.089-967-6157</value>
+  </data>
+  <data name="lblfaxDesc3" xml:space="preserve">
+    <value>or email to sale@AppStoreThai.com or support@AppStoreThai.com</value>
+  </data>
+  <data name="lblfaxtransfer" xml:space="preserve">
+    <value>FAX the evidence after transferred</value>
+  </data>
+  <data name="lblfreePremium" xml:space="preserve">
+    <value>Free Premium website</value>
+  </data>
+  <data name="lblFurtherinfo" xml:space="preserve">
+    <value>Further information</value>
+  </data>
+  <data name="lblGoldmemberget" xml:space="preserve">
+    <value>What the Gold member will get</value>
+  </data>
+  <data name="lblhelpsupport" xml:space="preserve">
+    <value>AppStoreThai Help and Support</value>
+  </data>
+  <data name="lblhowtoaddproduct" xml:space="preserve">
+    <value>How to add product information</value>
+  </data>
+  <data name="lblhowtoregister" xml:space="preserve">
+    <value>How to register</value>
+  </data>
+  <data name="lblmap" xml:space="preserve">
+    <value>Map of Prosoft Comtech Co., Ltd.</value>
+  </data>
+  <data name="lblofficehouse" xml:space="preserve">
+    <value>(Office Hours : Monday - Friday 8.30 - 18.00 except on Official holidays)</value>
+  </data>
+  <data name="lblPackagePDF" xml:space="preserve">
+    <value>Package PDF form printing</value>
+  </data>
+  <data name="lblPDF" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="lblPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="lblPrintPackageinfo" xml:space="preserve">
+    <value>Print Package information and advertising payment</value>
+  </data>
+  <data name="lblProductinList" xml:space="preserve">
+    <value>400,000 Product</value>
+  </data>
+  <data name="lblreceipt" xml:space="preserve">
+    <value>Pending invoice and receipt from AppStoreThai</value>
+  </data>
+  <data name="lblRemarkDesc" xml:space="preserve">
+    <value>Payment does not include bank transfer fees. If there is any fee, the company reserves the right to charge the customer is responsible.</value>
+  </data>
+  <data name="lblrequestadstel" xml:space="preserve">
+    <value>you can request to advertise at</value>
+  </data>
+  <data name="lblSellersinList" xml:space="preserve">
+    <value>6,000 sellers</value>
+  </data>
+  <data name="lblshippingdoc" xml:space="preserve">
+    <value>Shipping document</value>
+  </data>
+  <data name="lblspecialpromotion" xml:space="preserve">
+    <value>Special Promotion</value>
+  </data>
+  <data name="lblspecialpromotionDesc" xml:space="preserve">
+    <value>If you buy 1 year gold package immediately get 50% discount from 24,000 baht to 12,000 baht/year</value>
+  </data>
+  <data name="lblTabGoldpackage" xml:space="preserve">
+    <value>Gold package</value>
+  </data>
+  <data name="lblTabhowtoAds" xml:space="preserve">
+    <value>How to Advertise</value>
+  </data>
+  <data name="lblTabhowtoPayment" xml:space="preserve">
+    <value>How to make a payment</value>
+  </data>
+  <data name="lbltaxdeduct" xml:space="preserve">
+    <value>* Withholding tax can be deducted as a cost of 2% of the total amount exclude VAT 7%</value>
+  </data>
+  <data name="lbltaxinclude" xml:space="preserve">
+    <value>* All transfer prices must be included VAT 7% and any transfer fee!</value>
+  </data>
+  <data name="lbltelnumber" xml:space="preserve">
+    <value>02-402-8413</value>
+  </data>
+  <data name="lbltopcatalog" xml:space="preserve">
+    <value>Product catalog will be top on catalog page</value>
+  </data>
+  <data name="lbltoplisttechnic" xml:space="preserve">
+    <value>The top list techniques</value>
+  </data>
+  <data name="lbltransferbank" xml:space="preserve">
+    <value>Transfer to bank account</value>
+  </data>
+  <data name="lblviadesc1" xml:space="preserve">
+    <value>you can log in website (www.AppStoreThai.com)</value>
+  </data>
+  <data name="lblviadesc2" xml:space="preserve">
+    <value>in order to add, delete, or edit product information</value>
+  </data>
+  <data name="lblviadesc3" xml:space="preserve">
+    <value>that you want to advertise all the time or Email to sale@AppStoreThai.com</value>
+  </data>
+  <data name="lblviainternetwebsite" xml:space="preserve">
+    <value>Via internet &amp; website</value>
+  </data>
+  <data name="lblVisitorinList" xml:space="preserve">
+    <value>6,000 visitors/day</value>
+  </data>
+  <data name="lblaboutWebsite" xml:space="preserve">
+    <value>About B2BThai</value>
+  </data>
+  <data name="lblbecomefanpage" xml:space="preserve">
+    <value>Become Fan Page</value>
+  </data>
+  <data name="lblcustomservice" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="lblGetmorebenefit" xml:space="preserve">
+    <value>Get more profit.</value>
+  </data>
+  <data name="lblmailsale_ad" xml:space="preserve">
+    <value>support@AppStoreThai.com</value>
+  </data>
+  <data name="lblNews" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="lblNow" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="lblPromotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="lblSitemap" xml:space="preserve">
+    <value>Site Map</value>
+  </data>
+  <data name="lbltelsale_ad" xml:space="preserve">
+    <value>02-402-8413</value>
+  </data>
+  <data name="lblcopyright" xml:space="preserve">
+    <value>Copyright 2013, AppStoreThai.com</value>
+  </data>
+  <data name="lblPolicy" xml:space="preserve">
+    <value>Policy</value>
+  </data>
+  <data name="lbltermofuse" xml:space="preserve">
+    <value>Term of Use</value>
+  </data>
+  <data name="lblPowerprosoftgroup" xml:space="preserve">
+    <value>Powered by Prosoft Group</value>
+  </data>
+  <data name="lblSuggestion" xml:space="preserve">
+    <value>Suggestion</value>
+  </data>
+  <data name="lblSurveyfeature" xml:space="preserve">
+    <value>AppStoreThai  Survey new feature.</value>
+  </data>
+  <data name="lblAllhelp" xml:space="preserve">
+    <value>All help</value>
+  </data>
+  <data name="lblbuychapter1" xml:space="preserve">
+    <value>Chapter 1 - Post Buying Request</value>
+  </data>
+  <data name="lblbuychapter2" xml:space="preserve">
+    <value>Chapter 2 - Search Product</value>
+  </data>
+  <data name="lblbuychapter3" xml:space="preserve">
+    <value>Chapter 3 - Compare Product</value>
+  </data>
+  <data name="lblbuychapter4" xml:space="preserve">
+    <value>Chapter 4 - Request Price</value>
+  </data>
+  <data name="lblbuychapter5" xml:space="preserve">
+    <value>Chapter 5 - Contact to Supplier</value>
+  </data>
+  <data name="lblbuychapter6" xml:space="preserve">
+    <value>Chapter 6 - Product Store</value>
+  </data>
+  <data name="lblbuychapter7" xml:space="preserve">
+    <value>Chapter 7 - Purchase Center</value>
+  </data>
+  <data name="lblBuyerGuide" xml:space="preserve">
+    <value>Buyer User Guide</value>
+  </data>
+  <data name="lblbuyerhelp" xml:space="preserve">
+    <value>Buyer Help</value>
+  </data>
+  <data name="lblCompanyGuide" xml:space="preserve">
+    <value>Company User Guide</value>
+  </data>
+  <data name="lblDownloadAll" xml:space="preserve">
+    <value>Download All</value>
+  </data>
+  <data name="lblDownloadbuy" xml:space="preserve">
+    <value>buy</value>
+  </data>
+  <data name="lblDownloadmember" xml:space="preserve">
+    <value>member</value>
+  </data>
+  <data name="lblDownloadsell" xml:space="preserve">
+    <value>sell</value>
+  </data>
+  <data name="lblDownloadwebsite" xml:space="preserve">
+    <value>website</value>
+  </data>
+  <data name="lblFAQDesc" xml:space="preserve">
+    <value>Frequently Asked Questions</value>
+  </data>
+  <data name="lblmemberchapter1" xml:space="preserve">
+    <value>Chapter 1 - Join website</value>
+  </data>
+  <data name="lblmemberchapter2" xml:space="preserve">
+    <value>Chapter 2 - Sign in MyB2B</value>
+  </data>
+  <data name="lblmemberchapter3" xml:space="preserve">
+    <value>Chapter 3 - Member Profile</value>
+  </data>
+  <data name="lblmemberchapter4" xml:space="preserve">
+    <value>Chapter 4 - Upgrade Gold Member</value>
+  </data>
+  <data name="lblMemberGuide" xml:space="preserve">
+    <value>Member User Guide</value>
+  </data>
+  <data name="lblmemberhelp" xml:space="preserve">
+    <value>Member Help</value>
+  </data>
+  <data name="lblPreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="lblPurchasesquare" xml:space="preserve">
+    <value>Purchasing Center</value>
+  </data>
+  <data name="lblPurchasesquareDesc" xml:space="preserve">
+    <value>Make trade easy and more convenient</value>
+  </data>
+  <data name="lblsellchapter1" xml:space="preserve">
+    <value>Chapter 1 - Post Product</value>
+  </data>
+  <data name="lblsellchapter2" xml:space="preserve">
+    <value>Chapter 2 - Manage Product</value>
+  </data>
+  <data name="lblsellchapter3" xml:space="preserve">
+    <value>Chapter 3 - Manage Recommend Product</value>
+  </data>
+  <data name="lblsellchapter4" xml:space="preserve">
+    <value>Chapter 4 - Contact to Buyer</value>
+  </data>
+  <data name="lblsellchapter5" xml:space="preserve">
+    <value>Chapter 5 - Bid Price</value>
+  </data>
+  <data name="lblSupplierGuide" xml:space="preserve">
+    <value>Supplier User Guide</value>
+  </data>
+  <data name="lblsupplierhelp" xml:space="preserve">
+    <value>Supplier Help</value>
+  </data>
+  <data name="lblvisionmission" xml:space="preserve">
+    <value>About us ,Vision, Mission</value>
+  </data>
+  <data name="lblwebsitechapter1" xml:space="preserve">
+    <value>Chapter 1 - Company Website</value>
+  </data>
+  <data name="lblwebsitechapter2" xml:space="preserve">
+    <value>Chapter 2 - Website Template</value>
+  </data>
+  <data name="lblwebsitechapter3" xml:space="preserve">
+    <value>Chapter 3 - Recommend Product</value>
+  </data>
+  <data name="lblwebsitehelp" xml:space="preserve">
+    <value>Manage Website</value>
+  </data>
+  <data name="lblb2bshopping" xml:space="preserve">
+    <value>B2B shopping</value>
+  </data>
+  <data name="lblBacktoHome" xml:space="preserve">
+    <value>Back to home</value>
+  </data>
+  <data name="lblcreatewebsitefree" xml:space="preserve">
+    <value>Create website free</value>
+  </data>
+  <data name="lblfindjob" xml:space="preserve">
+    <value>Find job in thailand</value>
+  </data>
+  <data name="lblotopproduct" xml:space="preserve">
+    <value>Otop product</value>
+  </data>
+  <data name="lblregisterfor" xml:space="preserve">
+    <value>Register for sign in to B2BMyanmar.com &amp; can use account for other services as follows :</value>
+  </data>
+  <data name="lblsecondhandshopping" xml:space="preserve">
+    <value>B2C shopping</value>
+  </data>
+  <data name="lblsoftwaretrading" xml:space="preserve">
+    <value>Software program trading</value>
+  </data>
+  <data name="lblIsara" xml:space="preserve">
+    <value>พิมพ์งานด่วน นามบัตร
+การ์ด สติ๊กเกอร์ ไม่มีขั้นต่ำ
+จัดส่งทั่วประเทศ</value>
+  </data>
+  <data name="lblaccessrights" xml:space="preserve">
+    <value>สิทธิการเข้าถึงฟังก์ชั่นการทำงานของระบบ</value>
+  </data>
+  <data name="lbladdup" xml:space="preserve">
+    <value>เพิ่มประกาศซื้อสินค้าได้สูงสุด</value>
+  </data>
+  <data name="lblAdvertisingPayment" xml:space="preserve">
+    <value>วิธีชำระค่าโฆษณา</value>
+  </data>
+  <data name="lblbuy" xml:space="preserve">
+    <value>ประกาศซื้อ</value>
+  </data>
+  <data name="lblGoldMember" xml:space="preserve">
+    <value>Gold Member</value>
+  </data>
+  <data name="lblsome" xml:space="preserve">
+    <value>บางส่วน</value>
+  </data>
+  <data name="lbltext1" xml:space="preserve">
+    <value>เว็บไซต์ที่เป็นตัวกลางในการติดต่อซื้อ-ขายสินค้าธุรกิจของคุณ ทำให้การดำเนินธุรกิจซื้อ-ขายของคุณเป็นเรื่องง่าย</value>
+  </data>
+  <data name="lbltext2" xml:space="preserve">
+    <value>ด้วยระบบบริการที่มีมากมายกว่า 20 ระบบ สินค้าที่มากถึง 300,000 รายการ และผู้ขายในระบบมากกว่า 6,000 ราย</value>
+  </data>
+  <data name="lbladsrateaddr3" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblfaxDesc4" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblfaxDesc5" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblPhones" xml:space="preserve">
+    <value>Tel. (081) 359-7680</value>
+  </data>
+  <data name="lblRemakeUp" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblRemarkDescs" xml:space="preserve">
+    <value />
+  </data>
+  <data name="lblskype" xml:space="preserve">
+    <value>Support B2BThai</value>
+  </data>
+  <data name="lblPackage_M" xml:space="preserve">
+    <value>Package M</value>
+  </data>
+  <data name="lblSoGood" xml:space="preserve">
+    <value>www.SoGoodWeb.com</value>
+  </data>
+  <data name="lblValue" xml:space="preserve">
+    <value>ส่วนลดที่พัก 70%</value>
+  </data>
+  <data name="lblVimanNom" xml:space="preserve">
+    <value>วิมานน้ำ รีสอร์ท</value>
+  </data>
+  <data name="lblFeatureProduct" xml:space="preserve">
+    <value>หน้าหลักของเว็บไซต์ (Feature Product)</value>
+  </data>
+  <data name="lblGoldMember1" xml:space="preserve">
+    <value>บริการโฆษณาสินค้าระดับ Gold Member</value>
+  </data>
+  <data name="lblGoldMember2" xml:space="preserve">
+    <value>สิทธิการใช้บริการแนะนำสินค้า ทำให้ผู้ซื้อมีโอกาสพบสินค้าของคุณในหน้าจอที่มีผู้เข้าชมมากที่สุด</value>
+  </data>
+  <data name="lblGoldMember3" xml:space="preserve">
+    <value>สิทธิประโยชน์อื่น ๆ เมื่อใช้ Gold Member</value>
+  </data>
+  <data name="lblGoldMember4" xml:space="preserve">
+    <value>ประกาศรับสมัครงาน ไม่จำกัดจำนวน</value>
+  </data>
+  <data name="lblGoldMember5" xml:space="preserve">
+    <value>ฟรี โปรแกรมบัญชีสำเร็จรูป</value>
+  </data>
+  <data name="lblGoldMember6" xml:space="preserve">
+    <value>ฟรี เว็บไซต์สำเร็จรูป Package M</value>
+  </data>
+  <data name="lblGoldMember7" xml:space="preserve">
+    <value>ส่วนลด 70% ที่ วิมานน้ำ รีสอร์ท</value>
+  </data>
+  <data name="lblHotProduct" xml:space="preserve">
+    <value>หน้าค้นหาสินค้า (Hot Product)</value>
+  </data>
+  <data name="lblPremiumProduct" xml:space="preserve">
+    <value>หน้ารายละเอียดสินค้า (Premium Product)</value>
+  </data>
+  <data name="lblBenefits" xml:space="preserve">
+    <value>สิทธิ์ประโยชน์</value>
+  </data>
+  <data name="lblButton" xml:space="preserve">
+    <value>สมัครเพื่อขอใช้บริการ  Gold Member</value>
+  </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>เดือน</value>
+  </data>
+  <data name="lblProGold" xml:space="preserve">
+    <value>โปรโมชั่นสำหรับ Gold Member</value>
+  </data>
+  <data name="lblServiceCharge" xml:space="preserve">
+    <value>ค่าบริการ</value>
+  </data>
+  <data name="lblAccnameDesc1" xml:space="preserve">
+    <value>ชื่อบัญชีบริษัท โปรซอฟท์ ไอทีโอ จำกัด</value>
+  </data>
+  <data name="lblAccno1" xml:space="preserve">
+    <value>250-6-02491-0</value>
+  </data>
+  <data name="lblbranch1" xml:space="preserve">
+    <value>สาขารามคำแหง 73</value>
+  </data>
+  <data name="lbltelCustomer_Service" xml:space="preserve">
+    <value>02-402-8413</value>
+  </data>
+</root>

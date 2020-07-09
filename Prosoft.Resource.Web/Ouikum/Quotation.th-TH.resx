@@ -1,0 +1,360 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnCancleforSale" xml:space="preserve">
+    <value>ยกเลิกงานขายแล้ว</value>
+  </data>
+  <data name="btnDeleteBid" xml:space="preserve">
+    <value>ลบข้อมูล</value>
+  </data>
+  <data name="btnnoStock" xml:space="preserve">
+    <value>สินค้าหมด Stock</value>
+  </data>
+  <data name="btnPronot_enough" xml:space="preserve">
+    <value>จำนวนสินค้าไม่พอกับที่ต้องการ</value>
+  </data>
+  <data name="btnReject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="lblAttach_pdf" xml:space="preserve">
+    <value>Attach with .pdf</value>
+  </data>
+  <data name="lblAttach_Remark" xml:space="preserve">
+    <value>Attach Remark</value>
+  </data>
+  <data name="lblBid" xml:space="preserve">
+    <value>ใบร้องขอราคา</value>
+  </data>
+  <data name="lblBidback" xml:space="preserve">
+    <value>เสนอราคากลับ</value>
+  </data>
+  <data name="lblBidBy" xml:space="preserve">
+    <value>ผู้ขอราคา</value>
+  </data>
+  <data name="lblBidder" xml:space="preserve">
+    <value>ผู้เสนอราคา</value>
+  </data>
+  <data name="lblBidinfo" xml:space="preserve">
+    <value>ข้อมูลผู้ขอราคาสินค้า</value>
+  </data>
+  <data name="lblBid_sale" xml:space="preserve">
+    <value>เสนอราคาขาย</value>
+  </data>
+  <data name="lblClosebid" xml:space="preserve">
+    <value>ปิดการเสนอราคา</value>
+  </data>
+  <data name="lblCode" xml:space="preserve">
+    <value>Code</value>
+  </data>
+  <data name="lblContactUs" xml:space="preserve">
+    <value>ข้อมูลติดต่อกลับ</value>
+  </data>
+  <data name="lblDes_QuotationLink" xml:space="preserve">
+    <value>คุณสามารถดูข้อมูลการขอราคาสินค้า หรือเสนอราคาสินค้ากลับผ่านระบบ B2BThai.com ได้ที่</value>
+  </data>
+  <data name="lblDes_QuotationLink2" xml:space="preserve">
+    <value>คุณสามารถดูข้อมูลการเสนอราคาสินค้าผ่านระบบ AppstoreThai.com ได้ที่</value>
+  </data>
+  <data name="lblDiscount" xml:space="preserve">
+    <value>ส่วนลด</value>
+  </data>
+  <data name="lblEndbidproduct" xml:space="preserve">
+    <value>ปิดการเสนอราคา</value>
+  </data>
+  <data name="lblEstimate_Price" xml:space="preserve">
+    <value>ข้อมูลการเสนอราคาสินค้า</value>
+  </data>
+  <data name="lblFill_from_complete" xml:space="preserve">
+    <value>กรุณากรอกข้อมูลตามแบบฟอร์มด้านล่างให้ครบถ้วน</value>
+  </data>
+  <data name="lblForSupplier" xml:space="preserve">
+    <value>สำหรับ Suppliers ท่านไหนสนใจ สามารถเสนอราคา ติดต่อที่</value>
+  </data>
+  <data name="lblImportant" xml:space="preserve">
+    <value>ข้อความสำคัญ</value>
+  </data>
+  <data name="lblInbox" xml:space="preserve">
+    <value>Inbox</value>
+  </data>
+  <data name="lblLastBid" xml:space="preserve">
+    <value>ผู้เสนอราคาล่าสุด</value>
+  </data>
+  <data name="lblLowPrice" xml:space="preserve">
+    <value>ราคาต่ำสุด</value>
+  </data>
+  <data name="lblmyRequest" xml:space="preserve">
+    <value>myRequest Price</value>
+  </data>
+  <data name="lblOption" xml:space="preserve">
+    <value>Option</value>
+  </data>
+  <data name="lblPricePerPiece" xml:space="preserve">
+    <value>ราคาต่อชิ้น</value>
+  </data>
+  <data name="lblProductmatchneedbuyer" xml:space="preserve">
+    <value>หากคุณมีสินค้าที่ตรงกับความต้องการของผู้ซื้อ จากรายการด้านล่าง คุณสามารถ</value>
+  </data>
+  <data name="lblProductName" xml:space="preserve">
+    <value>ชื่อสินค้าที่ขอราคา</value>
+  </data>
+  <data name="lblQty" xml:space="preserve">
+    <value>จำนวน</value>
+  </data>
+  <data name="lblQuoAttach" xml:space="preserve">
+    <value>ไฟล์แนบ, ใบเสนอราคา</value>
+  </data>
+  <data name="lblQuoCode" xml:space="preserve">
+    <value>เลขที่เสนอราคา</value>
+  </data>
+  <data name="lblQuoSentMsg" xml:space="preserve">
+    <value>ทำการส่งข้อความถึงผู้ร้องขอสำเร็จ</value>
+  </data>
+  <data name="lblQuotation" xml:space="preserve">
+    <value>ขอราคาสินค้า</value>
+  </data>
+  <data name="lblQuotation1" xml:space="preserve">
+    <value>คำขอราคาสินค้า</value>
+  </data>
+  <data name="lblQuotationDetailFollow1" xml:space="preserve">
+    <value>ได้เสนอราคาสินค้า</value>
+  </data>
+  <data name="lblQuotationDetailFollow2" xml:space="preserve">
+    <value>ที่คุณได้ขอราคาไว้ ผ่านทางเว็บไซต์ B2BThai.com รายละเอียด ดังนี้</value>
+  </data>
+  <data name="lblQuotationMetaDesc" xml:space="preserve">
+    <value>หากคุณมีสินค้าที่ตรงกับความต้องการของผู้ซื้อ คุณสามารถเสนอราคาขายให้กับผู้ซื้อได้ | เสนอราคาสินค้า | B2BThai.com</value>
+  </data>
+  <data name="lblQuotationMetaKeyword" xml:space="preserve">
+    <value>สินค้าที่มีผู้ขอราคาซื้อล่าสุด | B2BThai.com</value>
+  </data>
+  <data name="lblQuotationSubject1" xml:space="preserve">
+    <value>มีผู้เสนอราคาสินค้า</value>
+  </data>
+  <data name="lblQuotationSubject2" xml:space="preserve">
+    <value>ที่คุณได้ขอราคาไว้ผ่านทาง B2BThai.com</value>
+  </data>
+  <data name="lblQuotationTitle" xml:space="preserve">
+    <value>เสนอราคาสินค้า | B2BThai.com</value>
+  </data>
+  <data name="lblQuotation_" xml:space="preserve">
+    <value>ใบเสนอราคา</value>
+  </data>
+  <data name="lblQuotation_Detail" xml:space="preserve">
+    <value>รายละเอียดการขอราคา</value>
+  </data>
+  <data name="lblQuo_date" xml:space="preserve">
+    <value>วันที่ขอราคา</value>
+  </data>
+  <data name="lblRemark" xml:space="preserve">
+    <value>หมายเหตุ</value>
+  </data>
+  <data name="lblReplybid" xml:space="preserve">
+    <value>เสนอราคากลับ</value>
+  </data>
+  <data name="lblReplybid_and_new" xml:space="preserve">
+    <value>ท่านได้เสนอราคากลับแล้ว ต้องการเสนอราคาใหม่หรือไม่</value>
+  </data>
+  <data name="lblReplytext1" xml:space="preserve">
+    <value>มีระบบที่ช่วยให้คุณสามารถติดตามข้อความร้องขอของคุณย้อนหลังได้ตลอดเวลา</value>
+  </data>
+  <data name="lblReplytext2" xml:space="preserve">
+    <value>สามารถเก็บข้อความร้องขอหรือข้อความเสนอราคาให้เป็นข้อความที่สำคัญของคุณได้</value>
+  </data>
+  <data name="lblReqDetailFollow1" xml:space="preserve">
+    <value>ได้ขอราคาสินค้า</value>
+  </data>
+  <data name="lblReqDetailFollow2" xml:space="preserve">
+    <value>ของคุณ ผ่านทางเว็บไซต์ B2BThai.com รายละเอียด ดังนี้ :</value>
+  </data>
+  <data name="lblReqIsSupplierRelated" xml:space="preserve">
+    <value>ส่งอีเมล์ไปยังผู้ขายที่เกี่ยวข้อง</value>
+  </data>
+  <data name="lblReqIsTrackRelated" xml:space="preserve">
+    <value>รับข้อมูลสินค้าที่เกี่ยวข้องเพิ่มเติม</value>
+  </data>
+  <data name="lblReqPriceSubject1" xml:space="preserve">
+    <value>มีผู้สนใจขอราคาสินค้า</value>
+  </data>
+  <data name="lblReqPriceSubject2" xml:space="preserve">
+    <value>ของคุณ - B2BThai.com</value>
+  </data>
+  <data name="lblReqPublic" xml:space="preserve">
+    <value>Public (เปิดให้ผู้ขายรายอื่นเสนอราคาสินค้าได้)</value>
+  </data>
+  <data name="lblReq_List" xml:space="preserve">
+    <value>รายการขอราคาสินค้า</value>
+  </data>
+  <data name="lblReq_Price" xml:space="preserve">
+    <value>สินค้าที่ขอราคา</value>
+  </data>
+  <data name="lblRqsTitle" xml:space="preserve">
+    <value>ใบร้องขอราคาเกี่ยวกับสินค้าดังต่อไปนี้</value>
+  </data>
+  <data name="lblRqsWorn" xml:space="preserve">
+    <value>กรุณาตรวจสอบข้อมูลรายละเอียดของคุณอีกครั้งก่อนการส่ง เพื่อผลประโยชน์ของท่านเอง</value>
+  </data>
+  <data name="lblSale_Approval" xml:space="preserve">
+    <value>Sale Approval</value>
+  </data>
+  <data name="lblSale_Email" xml:space="preserve">
+    <value>Sale Email</value>
+  </data>
+  <data name="lblSale_Manager" xml:space="preserve">
+    <value>Sale Manager</value>
+  </data>
+  <data name="lblSale_Name" xml:space="preserve">
+    <value>Sale Name</value>
+  </data>
+  <data name="lblSentbox" xml:space="preserve">
+    <value>Sentbox</value>
+  </data>
+  <data name="lblSent_myEmail" xml:space="preserve">
+    <value>ส่งอีเมล์ถึงฉัน</value>
+  </data>
+  <data name="lblSomeoneWants" xml:space="preserve">
+    <value>มีลูกค้าต้องการ</value>
+  </data>
+  <data name="lblSum" xml:space="preserve">
+    <value>Sum</value>
+  </data>
+  <data name="lblTitleBidList" xml:space="preserve">
+    <value>สินค้าที่มีผู้ขอราคาซื้อล่าสุด</value>
+  </data>
+  <data name="lblTotalAmount" xml:space="preserve">
+    <value>รวมเป็นเงินทั้งหมด</value>
+  </data>
+  <data name="lblTotal_Price" xml:space="preserve">
+    <value>Total Price</value>
+  </data>
+  <data name="lblVat" xml:space="preserve">
+    <value>Vat (%)</value>
+  </data>
+  <data name="lblWithBuyer" xml:space="preserve">
+    <value>กับผู้ซื้อได้</value>
+  </data>
+  <data name="lblwouldEmail" xml:space="preserve">
+    <value>ต้องการให้ติดต่อกลับผ่านอีเมล์ส่วนตัว</value>
+  </data>
+  <data name="lblwouldPhone" xml:space="preserve">
+    <value>ต้องการให้ติดต่อกลับผ่านทางโทรศัพท์</value>
+  </data>
+  <data name="lblQuotationReport" xml:space="preserve">
+    <value>รายงานการขอราคา</value>
+  </data>
+</root>

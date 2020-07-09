@@ -1,0 +1,456 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnNew_msg" xml:space="preserve">
+    <value>สร้างข้อความ</value>
+  </data>
+  <data name="btnDraft" xml:space="preserve">
+    <value>เพิ่มเป็นข้อความร่าง</value>
+  </data>
+  <data name="btnFavorite" xml:space="preserve">
+    <value>รายการโปรด</value>
+  </data>
+  <data name="btnForward" xml:space="preserve">
+    <value>ส่งต่อ</value>
+  </data>
+  <data name="btnMark_read" xml:space="preserve">
+    <value>Mark Read</value>
+  </data>
+  <data name="btnReply" xml:space="preserve">
+    <value>ตอบกลับ</value>
+  </data>
+  <data name="btnTo" xml:space="preserve">
+    <value>ถึง</value>
+  </data>
+  <data name="lblAttach_file" xml:space="preserve">
+    <value>ไฟล์แนบ</value>
+  </data>
+  <data name="lblAtt_more_file" xml:space="preserve">
+    <value>ไฟล์แนบอื่นๆ</value>
+  </data>
+  <data name="lblDraftbox" xml:space="preserve">
+    <value>ข้อความร่าง</value>
+  </data>
+  <data name="lblFavorite" xml:space="preserve">
+    <value>รายการโปรด</value>
+  </data>
+  <data name="lblMarkImportance" xml:space="preserve">
+    <value>ทำเป็นข้อความสำคัญ</value>
+  </data>
+  <data name="lblInbox" xml:space="preserve">
+    <value>กล่องข้อความ</value>
+  </data>
+  <data name="lblipt_msg" xml:space="preserve">
+    <value>ข้อความสำคัญ</value>
+  </data>
+  <data name="lblMsgcenter" xml:space="preserve">
+    <value>ศูนย์ข้อความ</value>
+  </data>
+  <data name="lblSelect_Contact" xml:space="preserve">
+    <value>เลือกผู้ติดต่อ</value>
+  </data>
+  <data name="lblSendbox" xml:space="preserve">
+    <value>ข้อความที่ส่งแล้ว</value>
+  </data>
+  <data name="lblSubject" xml:space="preserve">
+    <value>หัวเรื่อง</value>
+  </data>
+  <data name="lblMessage" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="btnSend" xml:space="preserve">
+    <value>ส่ง</value>
+  </data>
+  <data name="btnBack" xml:space="preserve">
+    <value>กลับ</value>
+  </data>
+  <data name="btnSignOut" xml:space="preserve">
+    <value>ออกจากระบบ</value>
+  </data>
+  <data name="lblMaximum5mb" xml:space="preserve">
+    <value>สูงสุด 5 mb</value>
+  </data>
+  <data name="btnMsgDelete" xml:space="preserve">
+    <value>ลบ</value>
+  </data>
+  <data name="btnView_more_details" xml:space="preserve">
+    <value>ดูรายละเอียดเพิ่มเติม</value>
+  </data>
+  <data name="colSelectAll" xml:space="preserve">
+    <value>เลือกทั้งหมด</value>
+  </data>
+  <data name="lblRecipient" xml:space="preserve">
+    <value>ผู้รับ</value>
+  </data>
+  <data name="lblSendDate" xml:space="preserve">
+    <value>วันที่ส่ง</value>
+  </data>
+  <data name="lblSender" xml:space="preserve">
+    <value>ผู้ส่ง</value>
+  </data>
+  <data name="lblNew_msg" xml:space="preserve">
+    <value>ข้อความใหม่</value>
+  </data>
+  <data name="lblView_msg" xml:space="preserve">
+    <value>ดูข้อความใหม่</value>
+  </data>
+  <data name="lblSend_contact" xml:space="preserve">
+    <value>ส่งข้อความติดต่อ</value>
+  </data>
+  <data name="btnSendMessage" xml:space="preserve">
+    <value>ส่งข้อความ</value>
+  </data>
+  <data name="pdFromEmail" xml:space="preserve">
+    <value>อีเมล์ของคุณ</value>
+  </data>
+  <data name="pdFromName" xml:space="preserve">
+    <value>ชื่อของคุณ</value>
+  </data>
+  <data name="pdToCompany" xml:space="preserve">
+    <value>ส่งไปยังบริษัท</value>
+  </data>
+  <data name="pdToEmail" xml:space="preserve">
+    <value>ส่งไปยังอีเมล์</value>
+  </data>
+  <data name="pdYourPhone" xml:space="preserve">
+    <value>โทรศัพท์ของคุณ</value>
+  </data>
+  <data name="lblImportance" xml:space="preserve">
+    <value>เพิ่มเป็นข้อความสำคัญ</value>
+  </data>
+  <data name="lblContactComp" xml:space="preserve">
+    <value>ติดต่อบริษัท</value>
+  </data>
+  <data name="lblContactImmediately" xml:space="preserve">
+    <value>กรุณาติดต่อกลับด่วน</value>
+  </data>
+  <data name="lblNoContact" xml:space="preserve">
+    <value>ไม่มีรายชื่อ</value>
+  </data>
+  <data name="btnFrom" xml:space="preserve">
+    <value>จาก</value>
+  </data>
+  <data name="lblconfirm_mark_importance" xml:space="preserve">
+    <value>ต้องการทำเครื่องหมายสำคัญหรือไม่</value>
+  </data>
+  <data name="lblconfirm_mark_unread" xml:space="preserve">
+    <value>ต้องการทำเครื่องหมายยังไม่ได้อ่านหรือไม่</value>
+  </data>
+  <data name="lblYourComment" xml:space="preserve">
+    <value>ความคิดเห็นของคุณ</value>
+  </data>
+  <data name="pdFriendEmail" xml:space="preserve">
+    <value>อีเมล์เพื่อนของคุณ</value>
+  </data>
+  <data name="pdFriendName" xml:space="preserve">
+    <value>ชื่อเพื่อนของคุณ</value>
+  </data>
+  <data name="lblCompany" xml:space="preserve">
+    <value>บริษัท</value>
+  </data>
+  <data name="lblFrom" xml:space="preserve">
+    <value>จากคุณ</value>
+  </data>
+  <data name="lblEmailNote" xml:space="preserve">
+    <value>หมายเหตุ</value>
+  </data>
+  <data name="lblEmailNoteDetail" xml:space="preserve">
+    <value>อีเมล์ฉบับนี้เป็นเพียงการแจ้งข่าวสารจากเว็บไซต์ Ouikum.com เท่านั้น กรุณาอย่าตอบกลับอีเมล์นี้</value>
+  </data>
+  <data name="lblClickToView" xml:space="preserve">
+    <value>คลิกเพื่อดู</value>
+  </data>
+  <data name="lblDear" xml:space="preserve">
+    <value>เรียน คุณ</value>
+  </data>
+  <data name="lblDemandDetail" xml:space="preserve">
+    <value>รายละเอียดความต้องการซื้อ</value>
+  </data>
+  <data name="lblDemandMatchYourProduct" xml:space="preserve">
+    <value>เนื่องด้วยทางเว็บไซต์ Ouikum.com ได้มีการลงโฆษณาและทำการประชาสัมพันธ์สินค้าของบริษัทท่าน ผ่านเว็บไซต์ Ouikum.com</value>
+  </data>
+  <data name="lblForViewDemand" xml:space="preserve">
+    <value>สำหรับเข้าดูรายละเอียดความต้องการซื้อ และเข้าแก้ไขหรือเพิ่มข้อมูลซื้อ-ขายของคุณ</value>
+  </data>
+  <data name="lblHasReqInfo" xml:space="preserve">
+    <value>ได้ขอข้อมูลไว้กับทาง</value>
+  </data>
+  <data name="lblIfEnableAgain" xml:space="preserve">
+    <value>หากต้องการเปิดการใช้งานใหม่อีกครั้ง รบกวนติดต่อเจ้าหน้าที่ Ouikum.com</value>
+  </data>
+  <data name="lblIfRenewMembership" xml:space="preserve">
+    <value>หากต้องการต่ออายุสมาชิก สามารถแจ้งสิทธิได้</value>
+  </data>
+  <data name="lblInfoForCustomer" xml:space="preserve">
+    <value>ข้อมูลสำหรับลูกค้าเว็บไซต์ Ouikum.com เท่านั้น</value>
+  </data>
+  <data name="lblInformRegMember" xml:space="preserve">
+    <value>เราขอแจ้งให้ทราบว่า คุณได้ลงทะเบียนเป็นสมาชิกผ่านผู้ดูแลระบบ ณ วันที่</value>
+  </data>
+  <data name="lblIntroduceJob" xml:space="preserve">
+    <value>ได้แนะนำตำแหน่งงาน</value>
+  </data>
+  <data name="lblJobDetail_Link_below" xml:space="preserve">
+    <value>คุณสามารถดูรายละเอียดของตำแหน่งงานแนะนำตามลิงค์ด้านล่าง</value>
+  </data>
+  <data name="lblSince" xml:space="preserve">
+    <value>เนื่องจาก</value>
+  </data>
+  <data name="lblSincerely" xml:space="preserve">
+    <value>ขอแสดงความนับถือ,</value>
+  </data>
+  <data name="lblTeam" xml:space="preserve">
+    <value>ทีมงาน Ouikum.com</value>
+  </data>
+  <data name="lblThatYou" xml:space="preserve">
+    <value>ที่ คุณ</value>
+  </data>
+  <data name="lblThisInfoSupplier" xml:space="preserve">
+    <value>นี่คือข้อมูลผู้ขายสินค้า</value>
+  </data>
+  <data name="lblToYou" xml:space="preserve">
+    <value>ให้คุณ</value>
+  </data>
+  <data name="lblUserDescription" xml:space="preserve">
+    <value>ท่านสามารถเข้าสู่ระบบการใช้งานเพื่อทำการแก้ไข หรือเพิ่มข้อมูลประกาศซื้อ-ขาย และเรียกดูข้อมูลการติดต่อผ่านระบบศูนย์ข้อความได้</value>
+  </data>
+  <data name="lblViewSupplierAt" xml:space="preserve">
+    <value>คุณสามารถดูข้อมูล Supplier ดังกล่าวได้ที่</value>
+  </data>
+  <data name="lblViewYour_Msg_RequestPrice" xml:space="preserve">
+    <value>ท่านสามารถเข้าไปดูรายงานการส่งข้อความติดต่อและการขอราคาสินค้า ของคุณได้</value>
+  </data>
+  <data name="lblWelcomeTo" xml:space="preserve">
+    <value>ยินดีต้อนรับสู่เว็บไซต์</value>
+  </data>
+  <data name="lblYourAccount" xml:space="preserve">
+    <value>รหัสเข้าใช้งานเว็บไซต์</value>
+  </data>
+  <data name="lblYourOnlineStore" xml:space="preserve">
+    <value>ข้อมูลร้านออนไลน์ของคุณ</value>
+  </data>
+  <data name="lblSendtofriend" xml:space="preserve">
+    <value>ส่งให้เพื่อน</value>
+  </data>
+  <data name="lblAnonymous" xml:space="preserve">
+    <value>ไม่ระบุ</value>
+  </data>
+  <data name="lblPostBuyingLink" xml:space="preserve">
+    <value>ลิ้งค์ประกาศซื้อ</value>
+  </data>
+  <data name="lblProductCompare" xml:space="preserve">
+    <value>เปรียบเทียบสินค้า</value>
+  </data>
+  <data name="lblProductDemand" xml:space="preserve">
+    <value>ต้องการสินค้า</value>
+  </data>
+  <data name="lblProductLink" xml:space="preserve">
+    <value>ลิ้งค์สินค้า</value>
+  </data>
+  <data name="lblSend_to_friend" xml:space="preserve">
+    <value>ส่งต่อถึงเพื่อน</value>
+  </data>
+  <data name="lblGiveScore1" xml:space="preserve">
+    <value>ถ้าคะแนนเต็ม 10,</value>
+  </data>
+  <data name="lblGiveScore2" xml:space="preserve">
+    <value>Ouikum.com สร้างประโยชน์ให้กับคุณในระดับใด?</value>
+  </data>
+  <data name="lblKhun" xml:space="preserve">
+    <value>คุณ</value>
+  </data>
+  <data name="lblMsg_follows" xml:space="preserve">
+    <value>ได้ส่งข้อความถึงคุณ ผ่านทาง Ouikum.com ดังนี้</value>
+  </data>
+  <data name="lblOnlineAuction" xml:space="preserve">
+    <value>การประมูลสินค้าออนไลน์ (E-Aunction)</value>
+  </data>
+  <data name="lblPleaseSpecify" xml:space="preserve">
+    <value>โปรดระบุ</value>
+  </data>
+  <data name="lblReqQuotaion" xml:space="preserve">
+    <value>การขอเสนอใบราคาสินค้า(Quotation)</value>
+  </data>
+  <data name="lblSendMsgAdmin" xml:space="preserve">
+    <value>ส่งข้อความถึง Admin</value>
+  </data>
+  <data name="lblSir" xml:space="preserve">
+    <value>คุณ</value>
+  </data>
+  <data name="lblSubject_p1" xml:space="preserve">
+    <value>คุณมีข้อความใหม่จาก</value>
+  </data>
+  <data name="lblSubject_p2" xml:space="preserve">
+    <value>- Ouikum.com</value>
+  </data>
+  <data name="lblSurveyQuestion" xml:space="preserve">
+    <value>ท่านต้องการให้ระบบ Ouikum.com มีอะไรบ้าง ดังต่อไปนี้</value>
+  </data>
+  <data name="lblSystem_has" xml:space="preserve">
+    <value>ต้องการให้ระบบOuikum.com มี</value>
+  </data>
+  <data name="lblThanksForSuggest" xml:space="preserve">
+    <value>ขอบคุณลูกค้าทุกท่านที่ให้คำแนะนำค่ะ</value>
+  </data>
+  <data name="lblWantToViewMsg" xml:space="preserve">
+    <value>หากต้องการเปิดข้อความใน Ouikum.com กรุณาคลิกลิ้งค์</value>
+  </data>
+  <data name="lblYourEmail" xml:space="preserve">
+    <value>อีเมลล์ของคุณ</value>
+  </data>
+  <data name="lblYourName" xml:space="preserve">
+    <value>ชื่อของคุณ</value>
+  </data>
+  <data name="path_logo" xml:space="preserve">
+    <value>/Content/Default/images/img_LogoB2BThai120x74.png</value>
+  </data>
+  <data name="lblContacted" xml:space="preserve">
+    <value>ได้ติดต่อคุณ</value>
+  </data>
+  <data name="lblSuject_3" xml:space="preserve">
+    <value>ได้ติดต่อคุณ ผ่านทาง Ouikum.com</value>
+  </data>
+  <data name="lblVia" xml:space="preserve">
+    <value>ผ่านทาง Ouikum.com</value>
+  </data>
+  <data name="lblNoresult" xml:space="preserve">
+    <value>ไม่มีผลลัพธ์</value>
+  </data>
+  <data name="lblMsgFromCustomer" xml:space="preserve">
+    <value>ข้อความจากลูกค้า</value>
+  </data>
+  <data name="lblErrorSendMail" xml:space="preserve">
+    <value>เกิดข้อผิดพลาดขณะส่งอีเมลล์ กรุณาลองอีกครั้ง</value>
+  </data>
+  <data name="btnMark_unread" xml:space="preserve">
+    <value>ทำเครื่องหมายยังไม่ได้อ่าน</value>
+  </data>
+  <data name="lblFeedback" xml:space="preserve">
+    <value>แนะนำติชม</value>
+  </data>
+  <data name="lblDemandMatchYourProduct2" xml:space="preserve">
+    <value>เว็บไซต์ที่เป็นตัวกลางในการติดต่อซื้อขายสินค้าธุรกิจออนไลน์ (E-Marketplace) ขนาดใหญ่ เพื่อให้สินค้าของบริษัทท่านมียอดขายที่เพิ่มขึ้น เราได้ทำการประชาสัมพันธ์ให้ท่านอย่างเต็มที่</value>
+  </data>
+  <data name="lblOnly" xml:space="preserve">
+    <value>เท่านั้น</value>
+  </data>
+  <data name="btnMark_unread1" xml:space="preserve">
+    <value>ทำเครื่องหมายยังไม่ได้อ่าน</value>
+  </data>
+</root>

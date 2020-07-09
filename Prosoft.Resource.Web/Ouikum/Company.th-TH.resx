@@ -1,0 +1,468 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblAccount" xml:space="preserve">
+    <value>Account</value>
+  </data>
+  <data name="lblAccount_Setting" xml:space="preserve">
+    <value>ข้อมูลส่วนตัว</value>
+  </data>
+  <data name="lblChange_Request" xml:space="preserve">
+    <value>Change Request </value>
+  </data>
+  <data name="lblCompany_Profile" xml:space="preserve">
+    <value>ข้อมูลจดทะเบียนบริษัท</value>
+  </data>
+  <data name="lblEstimate" xml:space="preserve">
+    <value>Estimate</value>
+  </data>
+  <data name="lblImportance" xml:space="preserve">
+    <value>Importance</value>
+  </data>
+  <data name="lblMessage_Center" xml:space="preserve">
+    <value>ศูนย์ข้อความ</value>
+  </data>
+  <data name="lblMyWebsite_Upd" xml:space="preserve">
+    <value>MyB2B Update</value>
+  </data>
+  <data name="lblNew_Request" xml:space="preserve">
+    <value>New Request</value>
+  </data>
+  <data name="lblOrder_Payment" xml:space="preserve">
+    <value>สั่งซื้อ/ชำระค่าบริการ</value>
+  </data>
+  <data name="lblPost_Now" xml:space="preserve">
+    <value>Post Now</value>
+  </data>
+  <data name="lblQuotation" xml:space="preserve">
+    <value>ใบเสนอเราคา</value>
+  </data>
+  <data name="lblQuotation_Estimate" xml:space="preserve">
+    <value>ขอราคา</value>
+  </data>
+  <data name="lblRead" xml:space="preserve">
+    <value>Read</value>
+  </data>
+  <data name="lblRecent_Buylead" xml:space="preserve">
+    <value>Recent Buylead</value>
+  </data>
+  <data name="lblRecent_Product" xml:space="preserve">
+    <value>Recent Product</value>
+  </data>
+  <data name="lblReject" xml:space="preserve">
+    <value>Reject </value>
+  </data>
+  <data name="lblSetting" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="lblTotal_Buylead" xml:space="preserve">
+    <value>Total Buylead</value>
+  </data>
+  <data name="lblTotal_Product" xml:space="preserve">
+    <value>Total Product</value>
+  </data>
+  <data name="lblUnRead" xml:space="preserve">
+    <value>UnRead</value>
+  </data>
+  <data name="lblUpgrade" xml:space="preserve">
+    <value>Upgrade</value>
+  </data>
+  <data name="lblEmail" xml:space="preserve">
+    <value>Email</value>
+  </data>
+  <data name="lblName" xml:space="preserve">
+    <value>Name</value>
+  </data>
+  <data name="lblTel_No" xml:space="preserve">
+    <value>Tel No.</value>
+  </data>
+  <data name="lblFrom" xml:space="preserve">
+    <value>From</value>
+  </data>
+  <data name="lblCompName" xml:space="preserve">
+    <value>ชื่อบริษัท</value>
+  </data>
+  <data name="lblAccountData" xml:space="preserve">
+    <value>ข้อมูลบัญชีผู้ใช้ในระบบ</value>
+  </data>
+  <data name="lblBusinesses" xml:space="preserve">
+    <value>ประเภทธุรกิจ</value>
+  </data>
+  <data name="lblCompImg" xml:space="preserve">
+    <value>ภาพบริษัท</value>
+  </data>
+  <data name="lblCompLogo" xml:space="preserve">
+    <value>รูปภาพโลโก้บริษัท</value>
+  </data>
+  <data name="lblGuide" xml:space="preserve">
+    <value>แนะนำบริษัท</value>
+  </data>
+  <data name="lblIndustries" xml:space="preserve">
+    <value>ประเภทอุตสาหกรรม</value>
+  </data>
+  <data name="lblMajorMarket" xml:space="preserve">
+    <value>ตลาดหลัก</value>
+  </data>
+  <data name="lblMarketGroup" xml:space="preserve">
+    <value>กลุ่มตลาด</value>
+  </data>
+  <data name="lblMinorMarket" xml:space="preserve">
+    <value>ตลาดรอง</value>
+  </data>
+  <data name="lblComp_Detail" xml:space="preserve">
+    <value>ข้อมูลทั่วไปบริษัท</value>
+  </data>
+  <data name="lblCompCertify" xml:space="preserve">
+    <value>ใบรับรอง/คุณภาพ</value>
+  </data>
+  <data name="lblCompContact" xml:space="preserve">
+    <value>ข้อมูลติดต่อบริษัท</value>
+  </data>
+  <data name="lblCompHistory" xml:space="preserve">
+    <value>ข้อมูลประวัติบริษัท</value>
+  </data>
+  <data name="lblBlog" xml:space="preserve">
+    <value>บทความ</value>
+  </data>
+  <data name="lblCompPayment" xml:space="preserve">
+    <value>ข้อมูลช่องทางการชำระค่าบริการ</value>
+  </data>
+  <data name="lblCompProduction" xml:space="preserve">
+    <value>ข้อมูลการผลิตของบริษัท</value>
+  </data>
+  <data name="lblCompShipment" xml:space="preserve">
+    <value>ข้อมูลช่องทางการขนส่ง</value>
+  </data>
+  <data name="lblCompWebsite" xml:space="preserve">
+    <value>ธีม (Theme) รูปแบบเว็บไซต์บริษัท</value>
+  </data>
+  <data name="lblJob" xml:space="preserve">
+    <value>ข้อมูลประกาศงาน</value>
+  </data>
+  <data name="lblOrderList" xml:space="preserve">
+    <value>รายการสั่งซื้อ</value>
+  </data>
+  <data name="lblOrderPackage" xml:space="preserve">
+    <value>สั่งซื้อ Package</value>
+  </data>
+  <data name="lblPaymentList" xml:space="preserve">
+    <value>รายการแจ้งชำระเงิน</value>
+  </data>
+  <data name="lblSubmitPayment" xml:space="preserve">
+    <value>แจ้งชำระเงิน</value>
+  </data>
+  <data name="lblWebSite" xml:space="preserve">
+    <value>เว็บไซต์บริษัท</value>
+  </data>
+  <data name="lblComp_Map" xml:space="preserve">
+    <value>ภาพแผนที่บริษัท</value>
+  </data>
+  <data name="lblContImg" xml:space="preserve">
+    <value>รูปภาพผู้ติดต่อ</value>
+  </data>
+  <data name="lblEmp_R_and_D" xml:space="preserve">
+    <value>จำนวนพนักงานวิจัยและพัฒนา (R&amp;D)</value>
+  </data>
+  <data name="lblEm_QC" xml:space="preserve">
+    <value>จำนวนพนักงานตรวจสอบคุณภาพ (QC)</value>
+  </data>
+  <data name="lblFact_addr" xml:space="preserve">
+    <value>ที่ตั้งโรงงาน</value>
+  </data>
+  <data name="lblFact_size" xml:space="preserve">
+    <value>ขนาดโรงงาน</value>
+  </data>
+  <data name="lblFounder" xml:space="preserve">
+    <value>ผู้ก่อตั้ง</value>
+  </data>
+  <data name="lblFounder_Owner" xml:space="preserve">
+    <value>ผู้ก่อตั้งและเจ้าของบริษัท</value>
+  </data>
+  <data name="lblMap_Detail" xml:space="preserve">
+    <value>คำอธิบายแผนที่</value>
+  </data>
+  <data name="lblMore" xml:space="preserve">
+    <value>ข้อมูลเพิ่มเติม</value>
+  </data>
+  <data name="lblNum_Emp" xml:space="preserve">
+    <value>จำนวนพนักงาน</value>
+  </data>
+  <data name="lblOwner" xml:space="preserve">
+    <value>เจ้าของบริษัท</value>
+  </data>
+  <data name="lblUserComp" xml:space="preserve">
+    <value>ใช้ข้อมูลบริษัท</value>
+  </data>
+  <data name="lblUserMem" xml:space="preserve">
+    <value>ใช้ข้อมูลสมาชิก</value>
+  </data>
+  <data name="lblYear_Est" xml:space="preserve">
+    <value>ปีที่ก่อตั้ง</value>
+  </data>
+  <data name="lblBlog_Name" xml:space="preserve">
+    <value>ชื่อบทความ</value>
+  </data>
+  <data name="lblComercial_no" xml:space="preserve">
+    <value>หมายเลขทะเบียนพาณิชย์</value>
+  </data>
+  <data name="lblPro_addr" xml:space="preserve">
+    <value>ที่อยู่ในการจดทะเบียน</value>
+  </data>
+  <data name="lblRegisDate" xml:space="preserve">
+    <value>วันที่จดทะเบียน</value>
+  </data>
+  <data name="lblCertify_name" xml:space="preserve">
+    <value>ชื่อใบรับรอง</value>
+  </data>
+  <data name="lblComp_setting" xml:space="preserve">
+    <value>ข้อมูลบริษัท</value>
+  </data>
+  <data name="lblDuration" xml:space="preserve">
+    <value>เวลาการจัดส่ง</value>
+  </data>
+  <data name="lblPackage" xml:space="preserve">
+    <value>บรรจุภัณฑ์</value>
+  </data>
+  <data name="lblShipping" xml:space="preserve">
+    <value>การจัดส่ง</value>
+  </data>
+  <data name="lblShipping_Detail" xml:space="preserve">
+    <value>รายละเอียดการจัดส่ง</value>
+  </data>
+  <data name="titlePreview_Comp" xml:space="preserve">
+    <value>แสดงตัวอย่างรูปแบบเว็บไซต์บริษัท</value>
+  </data>
+  <data name="lblComp_code" xml:space="preserve">
+    <value>รหัสสมาชิก</value>
+  </data>
+  <data name="lblEdit_expiredate" xml:space="preserve">
+    <value>แก้ไขวันหมดอายุ</value>
+  </data>
+  <data name="btnSendMessage" xml:space="preserve">
+    <value>ส่งข้อความติดต่อ</value>
+  </data>
+  <data name="lblBizType" xml:space="preserve">
+    <value>รูปแบบองค์กรธุรกิจ</value>
+  </data>
+  <data name="lblCompanyMap" xml:space="preserve">
+    <value>แผนที่บริษัท</value>
+  </data>
+  <data name="lblContactNumber" xml:space="preserve">
+    <value>เบอร์ผู้ติดต่อ</value>
+  </data>
+  <data name="lblMainProduct" xml:space="preserve">
+    <value>สินค้าหลัก</value>
+  </data>
+  <data name="lblMobilePhone" xml:space="preserve">
+    <value>เบอร์มือถือ</value>
+  </data>
+  <data name="lblPeople" xml:space="preserve">
+    <value>คน</value>
+  </data>
+  <data name="lblVisits" xml:space="preserve">
+    <value>เข้าชม</value>
+  </data>
+  <data name="lblArticle" xml:space="preserve">
+    <value>บทความ</value>
+  </data>
+  <data name="lblCompPic" xml:space="preserve">
+    <value>รูปภาพบริษัท</value>
+  </data>
+  <data name="lblOtherBizType" xml:space="preserve">
+    <value>ประเภทธุรกิจอื่นๆ</value>
+  </data>
+  <data name="lblOwner2" xml:space="preserve">
+    <value>เจ้าของกิจการ</value>
+  </data>
+  <data name="lblUpload_CompImg1" xml:space="preserve">
+    <value>สามารถอัพรูปได้สูงสุด 3 รูป</value>
+  </data>
+  <data name="lblUpload_CompImg2" xml:space="preserve">
+    <value>เพื่อความสวยงามในการแสดงผล รูปภาพควรมีขนาดเท่ากัน</value>
+  </data>
+  <data name="lblUpload_CompImg3" xml:space="preserve">
+    <value>ขนาดรูปไม่ควรมีขนาดมากกว่า 320 x 215 pixel</value>
+  </data>
+  <data name="lblUpload_CompImg4" xml:space="preserve">
+    <value>รูปแบบไฟล์ .jpg .jpeg .gif .png</value>
+  </data>
+  <data name="lblUpload_Cont3" xml:space="preserve">
+    <value>ขนาดไม่เกิน 75 x 75 pixel</value>
+  </data>
+  <data name="lblUpload_Logo1" xml:space="preserve">
+    <value>เลือกได้เพียง 1 ภาพเท่านั้น</value>
+  </data>
+  <data name="lblUpload_Logo2" xml:space="preserve">
+    <value>เพื่อความสวยงามในการแสดงผล รูปภาพควรเป็นสี่เหลี่ยมจัตุรัส</value>
+  </data>
+  <data name="lblUpload_Logo3" xml:space="preserve">
+    <value>ขนาดรูปไม่ควรมีขนาดมากกว่า 100 x 75 pixel</value>
+  </data>
+  <data name="lblUpload_Logo4" xml:space="preserve">
+    <value>รูปแบบไฟล์ .jpg .gif.png</value>
+  </data>
+  <data name="lblUpload_Map2" xml:space="preserve">
+    <value>เพื่อความสวยงามในการแสดงผล รูปภาพควรเป็นสี่เหลี่ยมผืนผ้า</value>
+  </data>
+  <data name="lblUpload_Map3" xml:space="preserve">
+    <value>ขนาดไม่เกิน 500 x 400 pixel</value>
+  </data>
+  <data name="lblCommonTemplate" xml:space="preserve">
+    <value>Common Business Template</value>
+  </data>
+  <data name="lblContactDetail" xml:space="preserve">
+    <value>ข้อมูลการติดต่อ</value>
+  </data>
+  <data name="lblDisplaycompweb" xml:space="preserve">
+    <value>จัดการข้อมูลบริษัทเพื่อแสดงผลใน Company Website ของคุณ</value>
+  </data>
+  <data name="lblGoldTemplate" xml:space="preserve">
+    <value>Gold Business Template</value>
+  </data>
+  <data name="lblGoogleMap" xml:space="preserve">
+    <value>Google Map</value>
+  </data>
+  <data name="lblMapLatitude" xml:space="preserve">
+    <value>MapLatitude</value>
+  </data>
+  <data name="lblMapLongtitude" xml:space="preserve">
+    <value>MapLongtitude</value>
+  </data>
+  <data name="lblPinLatitude" xml:space="preserve">
+    <value>PinLatitude</value>
+  </data>
+  <data name="lblPinLongtitude" xml:space="preserve">
+    <value>PinLongtitude</value>
+  </data>
+  <data name="lblZoom" xml:space="preserve">
+    <value>Zoom</value>
+  </data>
+  <data name="lblLast_supplier" xml:space="preserve">
+    <value>ผู้ขายล่าสุด</value>
+  </data>
+  <data name="lblCompCertifyandAward" xml:space="preserve">
+    <value>ใบรับรองคุณภาพและรางวัล</value>
+  </data>
+  <data name="lblYourCompany" xml:space="preserve">
+    <value>ชื่อร้านค้าของคุณ</value>
+  </data>
+  <data name="lblReportContact" xml:space="preserve">
+    <value>รายงานสถิติบริษัท</value>
+  </data>
+</root>

@@ -1,0 +1,498 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnDecline" xml:space="preserve">
+    <value>Decline</value>
+  </data>
+  <data name="btnReject" xml:space="preserve">
+    <value>Reject</value>
+  </data>
+  <data name="lbl500text" xml:space="preserve">
+    <value>ข้อความไม่เกิน 500 ตัวอักษร</value>
+  </data>
+  <data name="lblAccountTrasferor" xml:space="preserve">
+    <value>ชื่อบัญชีของผู้โอน</value>
+  </data>
+  <data name="lblAdditionalComments" xml:space="preserve">
+    <value>ข้อคิดเห็นเพิ่มเติม</value>
+  </data>
+  <data name="lblAdminCode" xml:space="preserve">
+    <value>Admin Code</value>
+  </data>
+  <data name="lblAdminLevel" xml:space="preserve">
+    <value>ประเภทAdmin</value>
+  </data>
+  <data name="lblAdminNavbarName" xml:space="preserve">
+    <value>Website Management</value>
+  </data>
+  <data name="lblAdminRemark1" xml:space="preserve">
+    <value>กรอกข้อมูลการ BlackList หรือ BlockInfo เพื่อชี้แจงลูกค้าทางอีเมล์</value>
+  </data>
+  <data name="lblAdminRemark2" xml:space="preserve">
+    <value>โปรดระมัดระวังในการกรอกข้อมูล</value>
+  </data>
+  <data name="lblAdminType" xml:space="preserve">
+    <value>ประเภท Admin</value>
+  </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="lblAmountOfTransfer" xml:space="preserve">
+    <value>จำนวนเงินที่โอน</value>
+  </data>
+  <data name="lblApproveCenter" xml:space="preserve">
+    <value>ศูนย์กลางการอนุมัติ</value>
+  </data>
+  <data name="lblApproveProduct" xml:space="preserve">
+    <value>Approve Product</value>
+  </data>
+  <data name="lblArticle" xml:space="preserve">
+    <value>บทความ</value>
+  </data>
+  <data name="lblBankTransfer" xml:space="preserve">
+    <value>ธนาคารต้นทางที่โอน</value>
+  </data>
+  <data name="lblBranch" xml:space="preserve">
+    <value>สาขา</value>
+  </data>
+  <data name="lblBuyer" xml:space="preserve">
+    <value>ผู้ประกาศ</value>
+  </data>
+  <data name="lblBuyleadDetail" xml:space="preserve">
+    <value>Buylead Detail </value>
+  </data>
+  <data name="lblCategory" xml:space="preserve">
+    <value>Category</value>
+  </data>
+  <data name="lblCategoryName" xml:space="preserve">
+    <value>ชื่อหมวดหมู่</value>
+  </data>
+  <data name="lblCateName" xml:space="preserve">
+    <value>CategoryName</value>
+  </data>
+  <data name="lblCateNameEng" xml:space="preserve">
+    <value>CategoryNameEng</value>
+  </data>
+  <data name="lblCateType" xml:space="preserve">
+    <value>Category Type</value>
+  </data>
+  <data name="lblDate_Time" xml:space="preserve">
+    <value>วัน-เวลา</value>
+  </data>
+  <data name="lblDelCategory" xml:space="preserve">
+    <value>ลบหมวดสินค้า</value>
+  </data>
+  <data name="lblHits" xml:space="preserve">
+    <value>Hits</value>
+  </data>
+  <data name="lblimgnoapprove" xml:space="preserve">
+    <value>สินค้าต้องห้าม</value>
+  </data>
+  <data name="lblimgnotmatchdata" xml:space="preserve">
+    <value>รูปภาพไม่ตรงกับสินค้า</value>
+  </data>
+  <data name="lblinputnotcorrect" xml:space="preserve">
+    <value>กรอกข้อมูลไม่ครบ/ไม่ถูกต้อง</value>
+  </data>
+  <data name="lblIshotstory" xml:space="preserve">
+    <value>Is hot story</value>
+  </data>
+  <data name="lblMainCategory" xml:space="preserve">
+    <value>หมวดหมู่หลัก</value>
+  </data>
+  <data name="lblManager" xml:space="preserve">
+    <value>Manager</value>
+  </data>
+  <data name="lblMemberDetail" xml:space="preserve">
+    <value>Member Detail</value>
+  </data>
+  <data name="lblMemberLevel" xml:space="preserve">
+    <value>ระดับสมาชิก</value>
+  </data>
+  <data name="lblMemberStatus" xml:space="preserve">
+    <value>สถานะของสมาชิก</value>
+  </data>
+  <data name="lblMoveCategory" xml:space="preserve">
+    <value>ย้ายหมวดสินค้า</value>
+  </data>
+  <data name="lblMoveProduct" xml:space="preserve">
+    <value>ย้ายสินค้าไปหมวดอื่น</value>
+  </data>
+  <data name="lblMsgWelcome" xml:space="preserve">
+    <value>ยินดีต้อนรับสู่การจัดการเว็บไซต์</value>
+  </data>
+  <data name="lblNewCateEng" xml:space="preserve">
+    <value>สร้างหมวดใหม่(ภาษาอังกฤษ)</value>
+  </data>
+  <data name="lblNewMember" xml:space="preserve">
+    <value>เพิ่มสมาชิก</value>
+  </data>
+  <data name="lblNewPackage" xml:space="preserve">
+    <value>New Package</value>
+  </data>
+  <data name="lblNewProductCate" xml:space="preserve">
+    <value>New Product Category</value>
+  </data>
+  <data name="lblNoCanvas" xml:space="preserve">
+    <value>No canvas support</value>
+  </data>
+  <data name="lblNotSetTime" xml:space="preserve">
+    <value>ไม่ตั้งเวลา</value>
+  </data>
+  <data name="lblOptionCode" xml:space="preserve">
+    <value>Option Code</value>
+  </data>
+  <data name="lblOptionValue" xml:space="preserve">
+    <value>Option Value</value>
+  </data>
+  <data name="lblOrderNo" xml:space="preserve">
+    <value>หมายเลขการสั่งซื้อ</value>
+  </data>
+  <data name="lblOverview" xml:space="preserve">
+    <value>Overview</value>
+  </data>
+  <data name="lblPackage" xml:space="preserve">
+    <value>Package</value>
+  </data>
+  <data name="lblPackageImage" xml:space="preserve">
+    <value>รูปประจำ Package</value>
+  </data>
+  <data name="lblPackageName" xml:space="preserve">
+    <value>ชื่อ Package</value>
+  </data>
+  <data name="lblPakageGroup" xml:space="preserve">
+    <value>Package Group</value>
+  </data>
+  <data name="lblPaymentInfo" xml:space="preserve">
+    <value>ข้อมูลผู้แจ้งชำระเงิน</value>
+  </data>
+  <data name="lblPaymentNo" xml:space="preserve">
+    <value>หมายเลขการแจ้งชำระเงิน</value>
+  </data>
+  <data name="lblPeriod_Package" xml:space="preserve">
+    <value>ระยะเวลาใช้งาน Package</value>
+  </data>
+  <data name="lblPermissions_Setting" xml:space="preserve">
+    <value>ตั้งค่าสิทธิการใช้งาน</value>
+  </data>
+  <data name="lblProductDetail" xml:space="preserve">
+    <value>Product Datail</value>
+  </data>
+  <data name="lblProduct_Costs" xml:space="preserve">
+    <value>รายการสินค้าและค่าใช้จ่าย</value>
+  </data>
+  <data name="lblPurchasingCenter" xml:space="preserve">
+    <value>Purchasing Center</value>
+  </data>
+  <data name="lblRenew" xml:space="preserve">
+    <value>ต่ออายุ</value>
+  </data>
+  <data name="lblReport" xml:space="preserve">
+    <value>รายงาน</value>
+  </data>
+  <data name="lblSeeRolePolicy" xml:space="preserve">
+    <value>See role &amp; policy</value>
+  </data>
+  <data name="lblSelectFromOtherPackage" xml:space="preserve">
+    <value>เลือก OptionCode จาก Package อื่น</value>
+  </data>
+  <data name="lblSendinfoUser" xml:space="preserve">
+    <value>ส่งข้อความถึงผู้ใช้</value>
+  </data>
+  <data name="lblSetTime" xml:space="preserve">
+    <value>ตั้งเวลา</value>
+  </data>
+  <data name="lblSetTime_OpenBuy" xml:space="preserve">
+    <value>ตั้งเวลาเปิดขาย</value>
+  </data>
+  <data name="lblSetting" xml:space="preserve">
+    <value>Setting</value>
+  </data>
+  <data name="lblShowAllCompany" xml:space="preserve">
+    <value>แสดงบริษัททั้งหมด</value>
+  </data>
+  <data name="lblShowMainPage" xml:space="preserve">
+    <value>แสดงข้อมูลในหน้าหลัก</value>
+  </data>
+  <data name="lblSlip" xml:space="preserve">
+    <value>สลิปการโอนเงิน</value>
+  </data>
+  <data name="lblStatistic" xml:space="preserve">
+    <value>สถิติ</value>
+  </data>
+  <data name="lblStats" xml:space="preserve">
+    <value>สถานะ</value>
+  </data>
+  <data name="lblSystem" xml:space="preserve">
+    <value>ระบบ</value>
+  </data>
+  <data name="lblTotal" xml:space="preserve">
+    <value>รวม</value>
+  </data>
+  <data name="lblTransferInfo" xml:space="preserve">
+    <value>ข้อมูลการโอนเงิน</value>
+  </data>
+  <data name="lblTransferredToAccount" xml:space="preserve">
+    <value>บัญชีที่โอนเข้า</value>
+  </data>
+  <data name="lblType" xml:space="preserve">
+    <value>ประเภท</value>
+  </data>
+  <data name="lblUsername" xml:space="preserve">
+    <value>Username</value>
+  </data>
+  <data name="lblVAT" xml:space="preserve">
+    <value>ภาษีมูลค่าเพิ่ม</value>
+  </data>
+  <data name="lblViews" xml:space="preserve">
+    <value>Views</value>
+  </data>
+  <data name="lblWebAccessData" xml:space="preserve">
+    <value>ข้อมูลในการเข้าใช้งานเว็บไซต์</value>
+  </data>
+  <data name="lblWebConfig" xml:space="preserve">
+    <value>Web Config</value>
+  </data>
+  <data name="lblWebsiteConfig" xml:space="preserve">
+    <value>จัดการเว็บไซต์</value>
+  </data>
+  <data name="lblWithuserorpwd" xml:space="preserve">
+    <value>with username/password ?</value>
+  </data>
+  <data name="lblaboutregister" xml:space="preserve">
+    <value>สอบถามเรื่องการสมัครสมาชิก</value>
+  </data>
+  <data name="lblaboutregisterEx" xml:space="preserve">
+    <value>กระบวนการสมัครสมาชิกใช้งานยากมากครับ หลายขั้นตอน ไม่รู้จะทำยังไงดี... Onlinesoft Comtech  -   Jul, 20 2012</value>
+  </data>
+  <data name="vldgoldmemberrenew" xml:space="preserve">
+    <value>ยันยันการต่ออายุ Gold Member ? </value>
+  </data>
+  <data name="lblCannot_save" xml:space="preserve">
+    <value>ไม่สามารถบันทึกได้</value>
+  </data>
+  <data name="lblCate_duplicate" xml:space="preserve">
+    <value>ชื่อหมวดหมู่ซ้ำ ไม่สามารถเพิ่มหมวดหมู่ได้</value>
+  </data>
+  <data name="lblCheck_rights" xml:space="preserve">
+    <value>คุณสามารถตรวจสอบสิทธิการใช้งาน</value>
+  </data>
+  <data name="lblCustomer_website" xml:space="preserve">
+    <value>ข้อมูลลูกค้าเว็บไซต์</value>
+  </data>
+  <data name="lblDisables_acc" xml:space="preserve">
+    <value>บัญชีของคุณถูกระงับการใช้งาน</value>
+  </data>
+  <data name="lblExpiry_date" xml:space="preserve">
+    <value>วันที่หมดอายุ</value>
+  </data>
+  <data name="lblExtendlifetime" xml:space="preserve">
+    <value>หากต้องการต่ออายุสมาชิก สามารถแจ้งสิทธิได้ที่</value>
+  </data>
+  <data name="lblGoldMemberExpired" xml:space="preserve">
+    <value>Gold Member Package ของคุณ  หมดอายุการใช้งานแล้ว</value>
+  </data>
+  <data name="lblGoldMemberExpire_in" xml:space="preserve">
+    <value>Gold Member Package ของคุณจะหมดอายุในวันที่</value>
+  </data>
+  <data name="lblGold_status" xml:space="preserve">
+    <value>สถานะการใช้งานของคุณคือ  Gold Member</value>
+  </data>
+  <data name="lblMsgExtendGlodMember" xml:space="preserve">
+    <value>ข้อความแจ้งการต่ออายุการใช้งาน Package Gold Member</value>
+  </data>
+  <data name="lblnotification_expired" xml:space="preserve">
+    <value>ข้อความแจ้งเตือน Gold Member Package หมดอายุ</value>
+  </data>
+  <data name="lblnotification_to_expire" xml:space="preserve">
+    <value>ข้อความแจ้งเตือน Gold Member Package ใกล้หมดอายุ</value>
+  </data>
+  <data name="lblReportcontact_requestPrice" xml:space="preserve">
+    <value>แจ้งรายงานข้อมูลการติดต่อและขอราคาของคุณ ในเว็บไซต์</value>
+  </data>
+  <data name="lblRight_to_suspended" xml:space="preserve">
+    <value>ได้ระงับสิทธิการเป็นสมาชิกของคุณเรียบร้อยแล้ว</value>
+  </data>
+  <data name="lblStarted_date" xml:space="preserve">
+    <value>วันที่เริ่มใช้งาน</value>
+  </data>
+  <data name="lblUpgradeFreeMember" xml:space="preserve">
+    <value>ระบบได้อัพเกรดระดับสมาชิก ของคุณเป็น Free Member</value>
+  </data>
+  <data name="lblUpgradeGoldMember" xml:space="preserve">
+    <value>ระบบได้อัพเกรดระดับสมาชิก ของคุณเป็น Gold Member</value>
+  </data>
+  <data name="lblAdmin" xml:space="preserve">
+    <value>ผู้ดูแลระบบ</value>
+  </data>
+  <data name="lblAdminArticle" xml:space="preserve">
+    <value>บทความ</value>
+  </data>
+  <data name="lblAdminMsg" xml:space="preserve">
+    <value>ข้อความ</value>
+  </data>
+  <data name="lblApprove" xml:space="preserve">
+    <value>อนุมัติ</value>
+  </data>
+  <data name="lblReject" xml:space="preserve">
+    <value>ไม่อนุมัติ</value>
+  </data>
+  <data name="lblTrade" xml:space="preserve">
+    <value>การซื้อขาย</value>
+  </data>
+  <data name="lblAdminList" xml:space="preserve">
+    <value>รายชื่อผู้ดูแลระบบ</value>
+  </data>
+  <data name="lblEditAdmin" xml:space="preserve">
+    <value>แก้ไขข้อมูลผู้ดูแลระบบ</value>
+  </data>
+  <data name="lblEditMember" xml:space="preserve">
+    <value>แก้ไขข้อมูลสมาชิก</value>
+  </data>
+  <data name="lblMemberList" xml:space="preserve">
+    <value>รายชื่อสมาชิก</value>
+  </data>
+  <data name="lblNewAdmin" xml:space="preserve">
+    <value>เพิ่มผู้ดูแลระบบ</value>
+  </data>
+  <data name="lblArticleDetail" xml:space="preserve">
+    <value>รายละเอียดบทความ</value>
+  </data>
+  <data name="lblstatcontact" xml:space="preserve">
+    <value>Contact</value>
+  </data>
+  <data name="lblManageArticle" xml:space="preserve">
+    <value>จัดการบทความ</value>
+  </data>
+  <data name="lblManageBanner" xml:space="preserve">
+    <value>จัดการ Banner</value>
+  </data>
+  <data name="lblManageCategory" xml:space="preserve">
+    <value>จัดการหมวดหมู่</value>
+  </data>
+  <data name="lblManageMessage" xml:space="preserve">
+    <value>ข้อความสำหรับ Admin</value>
+  </data>
+  <data name="lblTradeReport" xml:space="preserve">
+    <value>ข้อมูลในการเข้าใช้งานเว็บไซต์</value>
+  </data>
+  <data name="lbltranscompany" xml:space="preserve">
+    <value>บริษัทขนส่ง</value>
+  </data>
+</root>

@@ -1,0 +1,675 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="btnAdd_to_Compare" xml:space="preserve">
+    <value>เพิ่มสินค้าเปรียบเทียบ</value>
+  </data>
+  <data name="btnItem_selected" xml:space="preserve">
+    <value>รายการที่ถูกเลือกไว้</value>
+  </data>
+  <data name="lblAddCompare" xml:space="preserve">
+    <value>เปรียบเทียบสินค้า</value>
+  </data>
+  <data name="lblAddFavorite" xml:space="preserve">
+    <value>เพิ่มรายการโปรด</value>
+  </data>
+  <data name="lblAddImg_Guide1" xml:space="preserve">
+    <value>ลากเพื่อจัดวางรูปภาพ, เลือกรูปภาพสูงสุดเพียง</value>
+  </data>
+  <data name="lblAddImg_Guide2" xml:space="preserve">
+    <value>ขนาดไฟล์ไม่เกิน 5 MB , </value>
+  </data>
+  <data name="lblAdd_kw" xml:space="preserve">
+    <value>เพิ่มคีย์เวิร์ด</value>
+  </data>
+  <data name="lbladd_moreDetail" xml:space="preserve">
+    <value>คลิกเพื่อเพิ่มรายละเอียด</value>
+  </data>
+  <data name="lblAdd_product" xml:space="preserve">
+    <value>ลงประกาศขายสินค้า</value>
+  </data>
+  <data name="lblAllitem" xml:space="preserve">
+    <value>รายการ</value>
+  </data>
+  <data name="lblBaht" xml:space="preserve">
+    <value>บาท</value>
+  </data>
+  <data name="lblBuylead" xml:space="preserve">
+    <value>ประกาศซื้อ</value>
+  </data>
+  <data name="lblBuyleadList" xml:space="preserve">
+    <value>รายการประกาศซื้อ</value>
+  </data>
+  <data name="lblBuylead_eng" xml:space="preserve">
+    <value>Buylead</value>
+  </data>
+  <data name="lblCate" xml:space="preserve">
+    <value>หมวดหมู่สินค้า</value>
+  </data>
+  <data name="lblChg_Cate" xml:space="preserve">
+    <value>กำหนดหมวดหมู่ใหม่</value>
+  </data>
+  <data name="lblCloseSetting" xml:space="preserve">
+    <value>ปิดการแก้ไข</value>
+  </data>
+  <data name="lblContactSupplier" xml:space="preserve">
+    <value>ติดต่อผู้ขาย</value>
+  </data>
+  <data name="lblContact_Supplier" xml:space="preserve">
+    <value>ติดต่อผู้ขาย</value>
+  </data>
+  <data name="lblDragProductHere" xml:space="preserve">
+    <value>"ลากสินค้าวางในช่องนี้"</value>
+  </data>
+  <data name="lblEmptybin" xml:space="preserve">
+    <value>Empty Recycle Bin</value>
+  </data>
+  <data name="lblFeature_Pro" xml:space="preserve">
+    <value>สินค้าแนะนำ</value>
+  </data>
+  <data name="lblFile_Format" xml:space="preserve">
+    <value>รูปแบบไฟล์</value>
+  </data>
+  <data name="lblHidemenu" xml:space="preserve">
+    <value>ย่อแถบเมนู</value>
+  </data>
+  <data name="lblImage" xml:space="preserve">
+    <value>รูปภาพ</value>
+  </data>
+  <data name="lblItem" xml:space="preserve">
+    <value>รายการ</value>
+  </data>
+  <data name="lblKeyword" xml:space="preserve">
+    <value>คีย์เวิร์ด</value>
+  </data>
+  <data name="lblKey_word" xml:space="preserve">
+    <value>คำค้น</value>
+  </data>
+  <data name="lblLayout" xml:space="preserve">
+    <value>Layout</value>
+  </data>
+  <data name="lblmain_pic" xml:space="preserve">
+    <value>รูปสินค้าหลัก</value>
+  </data>
+  <data name="lblMinimum_Unit" xml:space="preserve">
+    <value>สั่งซื้อขั้นต่ำ</value>
+  </data>
+  <data name="lblMng_buylead" xml:space="preserve">
+    <value>จัดการประกาศซื้อ</value>
+  </data>
+  <data name="lblMng_FeaPro" xml:space="preserve">
+    <value>จัดการสินค้าแนะนำ</value>
+  </data>
+  <data name="lblMng_Junk" xml:space="preserve">
+    <value>จัดการสินค้าในถังขยะ</value>
+  </data>
+  <data name="lblMng_menu" xml:space="preserve">
+    <value>เมนูจัดการ</value>
+  </data>
+  <data name="lblMng_product" xml:space="preserve">
+    <value>จัดการสินค้า</value>
+  </data>
+  <data name="lblMore_Detail" xml:space="preserve">
+    <value>รายละเอียดเพิ่มเติม</value>
+  </data>
+  <data name="lblMoveToTrash" xml:space="preserve">
+    <value>ย้ายสินค้าลงถังขยะ</value>
+  </data>
+  <data name="lblNoProductGroup" xml:space="preserve">
+    <value>ไม่มีกลุ่มสินค้า</value>
+  </data>
+  <data name="lblNotfoundCate" xml:space="preserve">
+    <value>ไม่พบหมวดสินค้าที่คุณค้นหา</value>
+  </data>
+  <data name="lblOnly" xml:space="preserve">
+    <value>เท่านั้น</value>
+  </data>
+  <data name="lblPay_Ship" xml:space="preserve">
+    <value>การจัดส่งและชำระเงิน</value>
+  </data>
+  <data name="lblPost_NewProduct" xml:space="preserve">
+    <value>ประกาศขายสินค้า</value>
+  </data>
+  <data name="lblPreview" xml:space="preserve">
+    <value>แสดงตัวอย่าง</value>
+  </data>
+  <data name="lblPrice" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="lblPro" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="lblProduct" xml:space="preserve">
+    <value>สินค้า</value>
+  </data>
+  <data name="lblProductCode" xml:space="preserve">
+    <value>รหัสสินค้า</value>
+  </data>
+  <data name="lblProduct_Detail" xml:space="preserve">
+    <value>ข้อมูลสินค้า</value>
+  </data>
+  <data name="lblProduct_in_detail" xml:space="preserve">
+    <value>ข้อมูลสินค้าโดยละเอียด</value>
+  </data>
+  <data name="lblPro_Cate" xml:space="preserve">
+    <value>หมวดสินค้า</value>
+  </data>
+  <data name="lblPro_Group" xml:space="preserve">
+    <value>กลุ่มสินค้า</value>
+  </data>
+  <data name="lblPro_name" xml:space="preserve">
+    <value>ชื่อสินค้า</value>
+  </data>
+  <data name="lblPro_SelectUnit" xml:space="preserve">
+    <value>กรุณาเลือกหน่วยสินค้า</value>
+  </data>
+  <data name="lblPro_Unit" xml:space="preserve">
+    <value>หน่วยสินค้า</value>
+  </data>
+  <data name="lblQuick_Detail" xml:space="preserve">
+    <value>คำอธิบาย</value>
+  </data>
+  <data name="lblRequireImg" xml:space="preserve">
+    <value>กรุณาเลือกอย่างน้อย 1 รูปภาพ</value>
+  </data>
+  <data name="lblReq_Quo" xml:space="preserve">
+    <value>ร้องขอราคา</value>
+  </data>
+  <data name="lblSaveListNo" xml:space="preserve">
+    <value>บันทึกการจัดลำดับ</value>
+  </data>
+  <data name="lblSelectGroup" xml:space="preserve">
+    <value>กรุณาเลือกกลุ่มสินค้า</value>
+  </data>
+  <data name="lblSetting" xml:space="preserve">
+    <value>เปิดการแก้ไข</value>
+  </data>
+  <data name="lblSett_display_opt" xml:space="preserve">
+    <value>ตั้งค่าการแสดงผล</value>
+  </data>
+  <data name="lblShowmenu" xml:space="preserve">
+    <value>แสดงแถบเมนู</value>
+  </data>
+  <data name="lblShow_Topic" xml:space="preserve">
+    <value>การแสดงผล</value>
+  </data>
+  <data name="lblSize" xml:space="preserve">
+    <value>ขนาด</value>
+  </data>
+  <data name="lblHot_Pro" xml:space="preserve">
+    <value>สินค้า Hot</value>
+  </data>
+  <data name="lblMng_Hot" xml:space="preserve">
+    <value>จัดการสินค้ายอดนิยม</value>
+  </data>
+  <data name="lblAdd_Buylead" xml:space="preserve">
+    <value>ลงประกาศซื้อสินค้า</value>
+  </data>
+  <data name="lblAddImg_Guide3" xml:space="preserve">
+    <value>เพื่อการแสดงผลที่สวยงาม รูปภาพควรมี</value>
+  </data>
+  <data name="btnAdd_to_Favorite" xml:space="preserve">
+    <value>เพิ่มในรายการโปรด</value>
+  </data>
+  <data name="btnProduct_Compare" xml:space="preserve">
+    <value>เปรียบเทียบ</value>
+  </data>
+  <data name="lblViewCount" xml:space="preserve">
+    <value>ผู้เข้าชม</value>
+  </data>
+  <data name="lblRecommend_Full" xml:space="preserve">
+    <value>สินค้าแนะนำของคุณเต็มแล้ว</value>
+  </data>
+  <data name="lblProduct_Full" xml:space="preserve">
+    <value>แพ็คเก็คของคุณมีสินค้าเต็มแล้ว</value>
+  </data>
+  <data name="lblMng_Recommend" xml:space="preserve">
+    <value>จัดการสินค้าแนะนำ</value>
+  </data>
+  <data name="validContraband" xml:space="preserve">
+    <value>สินค้าต้องห้าม</value>
+  </data>
+  <data name="validDataImgNotMatchData" xml:space="preserve">
+    <value>รูปภาพไม่ตรงกับสินค้า</value>
+  </data>
+  <data name="validDataMissing_NotCollect" xml:space="preserve">
+    <value>กรอกข้อมูลไม่ครบ/ไม่ถูกต้อง</value>
+  </data>
+  <data name="validOtherRemark" xml:space="preserve">
+    <value>อื่นๆ</value>
+  </data>
+  <data name="btnRequestPrice" xml:space="preserve">
+    <value>ร้องขอราคาสินค้า</value>
+  </data>
+  <data name="lblAllBuylead" xml:space="preserve">
+    <value>ประกาศซื้อทั้งหมด</value>
+  </data>
+  <data name="lblMng_BuyleadJunk" xml:space="preserve">
+    <value>จัดการประกาศซื้อในถังขยะ</value>
+  </data>
+  <data name="lblProductAndService" xml:space="preserve">
+    <value>สินค้าและบริการ</value>
+  </data>
+  <data name="lblServiceRate" xml:space="preserve">
+    <value>อัตราค่าบริการ</value>
+  </data>
+  <data name="lblProductList" xml:space="preserve">
+    <value>รายการสินค้า</value>
+  </data>
+  <data name="lblIndustry" xml:space="preserve">
+    <value>สินค้าอุตสาหกรรม</value>
+  </data>
+  <data name="lblWholesale" xml:space="preserve">
+    <value>สินค้าขายส่ง</value>
+  </data>
+  <data name="lblRelatedSupplier" xml:space="preserve">
+    <value>ผู้ขายที่เกี่ยวข้อง</value>
+  </data>
+  <data name="lblLastCreateProduct" xml:space="preserve">
+    <value>สินค้าใหม่ล่าสุด</value>
+  </data>
+  <data name="lblLastModifyProduct" xml:space="preserve">
+    <value>สินค้าแก้ไขล่าสุด</value>
+  </data>
+  <data name="lblClearallsearch" xml:space="preserve">
+    <value>ล้างผลการค้นหาทั้งหมด</value>
+  </data>
+  <data name="lblUSD" xml:space="preserve">
+    <value>ดอลล่าร์</value>
+  </data>
+  <data name="lblHigh_value_Product" xml:space="preserve">
+    <value>ปริมาณสูงสุดในการผลิต</value>
+  </data>
+  <data name="lblOrigin" xml:space="preserve">
+    <value>แหล่งผลิตสินค้า</value>
+  </data>
+  <data name="lblProduct_relate" xml:space="preserve">
+    <value>สินค้าที่เกี่ยวข้องกับผู้ขายรายนี้</value>
+  </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>จำนวน</value>
+  </data>
+  <data name="lblApproveProduct" xml:space="preserve">
+    <value>อนุมัติสินค้า</value>
+  </data>
+  <data name="lblPremiumproduct" xml:space="preserve">
+    <value>สินค้าพรีเมี่ยม</value>
+  </data>
+  <data name="lblContactCount" xml:space="preserve">
+    <value>จำนวนการติดต่อสินค้า</value>
+  </data>
+  <data name="lblProductGallery" xml:space="preserve">
+    <value>รายการสินค้า</value>
+  </data>
+  <data name="lblSeelargerimage" xml:space="preserve">
+    <value>ดูรูปภาพขนาดจริง</value>
+  </data>
+  <data name="lblFeat" xml:space="preserve">
+    <value>Feat</value>
+  </data>
+  <data name="lblHot" xml:space="preserve">
+    <value>Hot</value>
+  </data>
+  <data name="lblconfirm_del_catepro" xml:space="preserve">
+    <value>ยืนยันลบหมวดสินค้า</value>
+  </data>
+  <data name="lbldel_af_move" xml:space="preserve">
+    <value>หมวดสินค้าเดิมจะถูกลบ หลังจากที่ย้ายสินค้าเสร็จสิ้น</value>
+  </data>
+  <data name="lbledit_cateLV1" xml:space="preserve">
+    <value>แก้ไขหมวดหมู่สินค้าหลัก</value>
+  </data>
+  <data name="lbledit_cateLV2" xml:space="preserve">
+    <value>แก้ไขหมวดหมู่สินค้ารอง</value>
+  </data>
+  <data name="lbledit_cateLV3" xml:space="preserve">
+    <value>แก้ไขหมวดหมู่สินค้าย่อย</value>
+  </data>
+  <data name="lbledit_catetype" xml:space="preserve">
+    <value>แก้ไขประเภทหมวดหมู่</value>
+  </data>
+  <data name="lblmovetonewcate" xml:space="preserve">
+    <value>สินค้าที่อยู่ในหมวดเดิม จะถูกย้ายไปยังหมวดใหม่ด้วย</value>
+  </data>
+  <data name="lblmove_del_proandcate" xml:space="preserve">
+    <value>ย้ายสินค้าก่อนลบหมวดสินค้า</value>
+  </data>
+  <data name="lblnewlocation_pro" xml:space="preserve">
+    <value>ที่อยู่ใหม่ของสินค้า</value>
+  </data>
+  <data name="lblnotdel_catepro" xml:space="preserve">
+    <value>หมวดสินค้าเดิมจะยังไม่ถูกลบ</value>
+  </data>
+  <data name="lblselect_location_pro" xml:space="preserve">
+    <value>เลือกที่อยู่ใหม่ของสินค้า</value>
+  </data>
+  <data name="lblSortProduct" xml:space="preserve">
+    <value>เรียงลำดับสินค้า</value>
+  </data>
+  <data name="lblTermCondition" xml:space="preserve">
+    <value>เงื่อนไขการประกาศซื้อสินค้า</value>
+  </data>
+  <data name="lblAll_pro" xml:space="preserve">
+    <value>สินค้าทั้งหมด</value>
+  </data>
+  <data name="lblMore_Product" xml:space="preserve">
+    <value>More_Product</value>
+  </data>
+  <data name="lblsell_product" xml:space="preserve">
+    <value>ขายสินค้า</value>
+  </data>
+  <data name="lblCharsearch" xml:space="preserve">
+    <value>ก,ข,ฃ,ค,ฅ,ฆ,ง,จ,ฉ,ช,ซ,ฌ,ญ,ฎ,ฏ,ฐ,ฑ,ฒ,ณ,ด,ต,ถ,ท,ธ,น,บ,ป,ผ,ฝ,พ,ฟ,ภ,ม,ย,ร,ล,ว,ศ,ษ,ส,ห,ฬ,อ,ฮ</value>
+  </data>
+  <data name="lblAutoMobile" xml:space="preserve">
+    <value>รถยนต์,มอเตอร์ไซต์,อะไหล่</value>
+  </data>
+  <data name="lblComp_Soft" xml:space="preserve">
+    <value>คอมพิวเตอร์,ซอฟต์แวร์</value>
+  </data>
+  <data name="lblFurniture" xml:space="preserve">
+    <value>เฟอร์นิเจอร์</value>
+  </data>
+  <data name="lblHome_Garden" xml:space="preserve">
+    <value>บ้านและสวน</value>
+  </data>
+  <data name="lblAddUnlimitedProducts" xml:space="preserve">
+    <value>เพิ่มสินค้าได้ไม่จำกัด</value>
+  </data>
+  <data name="lblNum_of_emp" xml:space="preserve">
+    <value>จำนวนพนักงาน</value>
+  </data>
+  <data name="lblProductService" xml:space="preserve">
+    <value>สินค้าบริการ</value>
+  </data>
+  <data name="lblRelate_pro_supplier" xml:space="preserve">
+    <value>สินค้าที่เกี่ยวข้องกับผู้ขายรายนี้</value>
+  </data>
+  <data name="lblProduct_details" xml:space="preserve">
+    <value>รายละเอียดสินค้า</value>
+  </data>
+  <data name="lblMaxProduct" xml:space="preserve">
+    <value>Max Product</value>
+  </data>
+  <data name="lblMax_upload_product" xml:space="preserve">
+    <value>จำนวนรายการสินค้าสูงสุดที่สามารถ Upload ได้</value>
+  </data>
+  <data name="lblComparePro" xml:space="preserve">
+    <value>เปรียบเทียบสินค้า</value>
+  </data>
+  <data name="lblConstruction_Realestate" xml:space="preserve">
+    <value>ก่อสร้าง, วัสดุ</value>
+  </data>
+  <data name="lblConsumer_Electronics" xml:space="preserve">
+    <value>ไฟฟ้า, อิเล็กทรอนิกส์</value>
+  </data>
+  <data name="lblGeneral_Product" xml:space="preserve">
+    <value>ข้อมูลสินค้าโดยทั่วไป</value>
+  </data>
+  <data name="lblHardware_Tools" xml:space="preserve">
+    <value>เครื่องมือ, อุปกรณ์</value>
+  </data>
+  <data name="lblHighProduction" xml:space="preserve">
+    <value>ปริมาณสูงสุดในการผลิต</value>
+  </data>
+  <data name="lblMachinery" xml:space="preserve">
+    <value>เครื่องจักรกล,การลำเลียง</value>
+  </data>
+  <data name="lblOffice_Schoolsupplies" xml:space="preserve">
+    <value>อุปกรณ์สำนักงาน</value>
+  </data>
+  <data name="lblPostBuyinglatest" xml:space="preserve">
+    <value>ประกาศซื้อสินค้าล่าสุด</value>
+  </data>
+  <data name="lblSecurity_Protection" xml:space="preserve">
+    <value>อุปกรณ์ความปลอดภัย</value>
+  </data>
+  <data name="lblBangkok" xml:space="preserve">
+    <value>กรุงเทพมหานคร</value>
+  </data>
+  <data name="lblBkk" xml:space="preserve">
+    <value>กรุงเทพ</value>
+  </data>
+  <data name="lblProductStore" xml:space="preserve">
+    <value>Product Store</value>
+  </data>
+  <data name="lblDemand_sell" xml:space="preserve">
+    <value>ข้อมูลความต้องการซื้อ</value>
+  </data>
+  <data name="lblBidProduct" xml:space="preserve">
+    <value>เสนอราคาสินค้า</value>
+  </data>
+  <data name="lblFeature" xml:space="preserve">
+    <value>แนะนำ</value>
+  </data>
+  <data name="lblNewProduct" xml:space="preserve">
+    <value>สินค้าล่าสุด</value>
+  </data>
+  <data name="lblPost_you_Product" xml:space="preserve">
+    <value>ประกาศขายสินค้าของคุณ</value>
+  </data>
+  <data name="lblSearchstore" xml:space="preserve">
+    <value>ค้นหาสินค้ารูปแบบใหม่</value>
+  </data>
+  <data name="lblMng_Premium" xml:space="preserve">
+    <value>จัดการสินค้าพรีเมี่ยม</value>
+  </data>
+  <data name="lblCateLV1" xml:space="preserve">
+    <value>หมวดหมู่สินค้าหลัก</value>
+  </data>
+  <data name="lblCateLV2" xml:space="preserve">
+    <value>หมวดหมู่สินค้ารอง</value>
+  </data>
+  <data name="lblCateLV3" xml:space="preserve">
+    <value>หมวดหมู่สินค้าย่อย</value>
+  </data>
+  <data name="lblMng_Category" xml:space="preserve">
+    <value>จัดการหมวดหมู่สินค้า</value>
+  </data>
+  <data name="lblSelectSupplier" xml:space="preserve">
+    <value>เลือกผู้ขาย</value>
+  </data>
+  <data name="lblNoFeatPro" xml:space="preserve">
+    <value>ไม่มีสินค้าแนะนำ</value>
+  </data>
+  <data name="lblAllCatePro" xml:space="preserve">
+    <value>หมวดหมู่สินค้าทั้งหมด</value>
+  </data>
+  <data name="lblCatePro" xml:space="preserve">
+    <value>หมวดหมู่สินค้า</value>
+  </data>
+  <data name="lblJunk" xml:space="preserve">
+    <value>ถังขยะ</value>
+  </data>
+  <data name="lblformatfile" xml:space="preserve">
+    <value>ชนิดของไฟล์ .pdf .xlsx .docx .jpg .jpgs</value>
+  </data>
+  <data name="lblCategories1" xml:space="preserve">
+    <value>ก,ข,ฃ,ค,ฅ,ฆ,ง</value>
+  </data>
+  <data name="lblCategories2" xml:space="preserve">
+    <value>จ,ฉ,ช,ซ,ฌ,ญ,ฎ</value>
+  </data>
+  <data name="lblCategories3" xml:space="preserve">
+    <value>ฏ,ฐ,ฑ,ฒ,ณ,ด,ต</value>
+  </data>
+  <data name="lblCategories4" xml:space="preserve">
+    <value>ถ,ท,ธ,น,บ,ป,ผ</value>
+  </data>
+  <data name="lblCategories5" xml:space="preserve">
+    <value>ฝ,พ,ฟ,ภ,ม,ย,ร</value>
+  </data>
+  <data name="lblCategories6" xml:space="preserve">
+    <value>ล,ว,ศ,ษ,ส,ห,ฬ</value>
+  </data>
+  <data name="lblCategories7" xml:space="preserve">
+    <value>อ,ฮ</value>
+  </data>
+  <data name="lblvowel1" xml:space="preserve">
+    <value>เ,แ,ไ,ใ,โ</value>
+  </data>
+  <data name="lblvowel2" xml:space="preserve">
+    <value>่,้,๋,ิ,ี,ื,ึ,ั,็,๊,์,ุ,ู</value>
+  </data>
+  <data name="lblsimilarproduct" xml:space="preserve">
+    <value>more similar product</value>
+  </data>
+  <data name="lblCateofAll" xml:space="preserve">
+    <value>หมวดหมู่ทั้งหมด</value>
+  </data>
+  <data name="lblSupplierlist" xml:space="preserve">
+    <value>รายการผู้ขาย</value>
+  </data>
+  <data name="lblProductImage" xml:space="preserve">
+    <value>ภาพสินค้า</value>
+  </data>
+  <data name="lblClickForUploadPhoto" xml:space="preserve">
+    <value>คลิกเพื่ออัพโหลดภาพ</value>
+  </data>
+  <data name="lblProductInfoMore" xml:space="preserve">
+    <value>ข้อมูลสินค้าเพิ่มเติม</value>
+  </data>
+  <data name="lblSellingConditions" xml:space="preserve">
+    <value>เงื่อนไขประกาศขายสินค้า</value>
+  </data>
+  <data name="lblPreProductInfo" xml:space="preserve">
+    <value>ข้อมูลสินค้าเบื้องต้น</value>
+  </data>
+  <data name="lblConfirmSellProduct" xml:space="preserve">
+    <value>ยืนยันประกาศขายสินค้า</value>
+  </data>
+  <data name="lblHotFeat" xml:space="preserve">
+    <value>อนุมัติสินค้าพรีเมี่ยม</value>
+  </data>
+  <data name="btnRequestPrice2" xml:space="preserve">
+    <value>ใบขอราคาสินค้า</value>
+  </data>
+  <data name="lblTechnique" xml:space="preserve">
+    <value>เทคนิคการประกาศขายสินค้า</value>
+  </data>
+  <data name="lblPrice_one" xml:space="preserve">
+    <value>ราคาสินค้า/ชิ้น</value>
+  </data>
+  <data name="lblQtyUnit_one" xml:space="preserve">
+    <value>หน่วยสินค้า/ชิ้น</value>
+  </data>
+  <data name="lblPricesend" xml:space="preserve">
+    <value>ราคาขายส่ง</value>
+  </data>
+</root>

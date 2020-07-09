@@ -1,0 +1,411 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblAllPayment" xml:space="preserve">
+    <value>ยอดชำระทั้งหมด</value>
+  </data>
+  <data name="lblBack_en" xml:space="preserve">
+    <value>Back</value>
+  </data>
+  <data name="lblBaht" xml:space="preserve">
+    <value>บาท</value>
+  </data>
+  <data name="lblCancelOrder_en" xml:space="preserve">
+    <value>Cancel Order</value>
+  </data>
+  <data name="lblCancel_en" xml:space="preserve">
+    <value>Cancel</value>
+  </data>
+  <data name="lblComments" xml:space="preserve">
+    <value>ข้อคิดเห็นเพิ่มเติม</value>
+  </data>
+  <data name="lblFillPayment" xml:space="preserve">
+    <value>กรอกข้อมูลผู้แจ้งชำระเงิน</value>
+  </data>
+  <data name="lblFillTax_Receipt" xml:space="preserve">
+    <value>กรอกข้อมูลการออกใบกำกับภาษี/ใบเสร็จ</value>
+  </data>
+  <data name="lblNeedTax" xml:space="preserve">
+    <value>ต้องการ</value>
+  </data>
+  <data name="lblNotNeedTax" xml:space="preserve">
+    <value>ไม่ต้องการ</value>
+  </data>
+  <data name="lblOrderCode" xml:space="preserve">
+    <value>หมายเลขการสั่งซื้อ</value>
+  </data>
+  <data name="lblOrdersInfo" xml:space="preserve">
+    <value>ข้อมูลผู้สั่งซื้อ</value>
+  </data>
+  <data name="lblOrder_en" xml:space="preserve">
+    <value>Order</value>
+  </data>
+  <data name="lblPackage_Price" xml:space="preserve">
+    <value>แพ็คเกจและราคา</value>
+  </data>
+  <data name="lblPaid" xml:space="preserve">
+    <value>ชำระเงินแล้ว</value>
+  </data>
+  <data name="lblPaymentInfo" xml:space="preserve">
+    <value>ข้อมูลการชำระค่าบริการ</value>
+  </data>
+  <data name="lblPayment_en" xml:space="preserve">
+    <value>Payment</value>
+  </data>
+  <data name="lblProducts_Costs" xml:space="preserve">
+    <value>รายการสินค้าและค่าใช้จ่าย</value>
+  </data>
+  <data name="lblSubmitPayment_en" xml:space="preserve">
+    <value>Submit Payment</value>
+  </data>
+  <data name="lblSubmit_en" xml:space="preserve">
+    <value>Submit</value>
+  </data>
+  <data name="lblSumPaymentInfo" xml:space="preserve">
+    <value>ข้อมูลในเอกสาร</value>
+  </data>
+  <data name="lblTax" xml:space="preserve">
+    <value>ใบกำกับภาษี</value>
+  </data>
+  <data name="lblUnpaid" xml:space="preserve">
+    <value>ยังไม่ชำระเงิน</value>
+  </data>
+  <data name="lblVat7" xml:space="preserve">
+    <value>VAT 7%</value>
+  </data>
+  <data name="txtPendingPayment" xml:space="preserve">
+    <value>คุณมีรายการสั่งซื้อที่ค้างชำระเงินอยู่ทั้งหมด</value>
+  </data>
+  <data name="lblAccNum" xml:space="preserve">
+    <value>เลขที่บัญชี</value>
+  </data>
+  <data name="lblAlreadyPurchased" xml:space="preserve">
+    <value>คุณมีรายการสั่งซื้อแล้ว กรุณาตรวจสอบข้อมูลการสั่งซื้อของคุณได้</value>
+  </data>
+  <data name="lblAmount" xml:space="preserve">
+    <value>จำนวนเงิน</value>
+  </data>
+  <data name="lblAmountTransfer" xml:space="preserve">
+    <value>จำนวนเงินที่โอน</value>
+  </data>
+  <data name="lblApproved" xml:space="preserve">
+    <value>อนุมัติ</value>
+  </data>
+  <data name="lblBuy" xml:space="preserve">
+    <value>ซื้อ</value>
+  </data>
+  <data name="lblBuyNow" xml:space="preserve">
+    <value>Buy Now</value>
+  </data>
+  <data name="lblChargesAddedData" xml:space="preserve">
+    <value>อัตราค่าบริการเพิ่มข้อมูล</value>
+  </data>
+  <data name="lblChoosejust" xml:space="preserve">
+    <value>เลือกได้เพียง</value>
+  </data>
+  <data name="lblDatePayment" xml:space="preserve">
+    <value>วันที่แจ้งชำระ</value>
+  </data>
+  <data name="lblDatetimeTransfer" xml:space="preserve">
+    <value>วัน-เวลาที่โอน</value>
+  </data>
+  <data name="lblDateTransfer" xml:space="preserve">
+    <value>วันที่โอน</value>
+  </data>
+  <data name="lblDMY" xml:space="preserve">
+    <value>วัน/เดือน/ปี</value>
+  </data>
+  <data name="lblDuration" xml:space="preserve">
+    <value>ระยะเวลา</value>
+  </data>
+  <data name="lblFileFormat" xml:space="preserve">
+    <value>รูปแบบไฟล์</value>
+  </data>
+  <data name="lblFileFormat2" xml:space="preserve">
+    <value>.jpg .jpeg .png</value>
+  </data>
+  <data name="lblFillPaymentInfo" xml:space="preserve">
+    <value>กรอกข้อมูลการชำระเงินต้นทาง</value>
+  </data>
+  <data name="lblFillPaymentInfo2" xml:space="preserve">
+    <value>กรอกรายละเอียดการชำระเงินปลายทาง</value>
+  </data>
+  <data name="lblHere" xml:space="preserve">
+    <value>ที่นี่</value>
+  </data>
+  <data name="lblItem_en" xml:space="preserve">
+    <value>Item</value>
+  </data>
+  <data name="lblNext" xml:space="preserve">
+    <value>Next</value>
+  </data>
+  <data name="lblNo" xml:space="preserve">
+    <value>No.</value>
+  </data>
+  <data name="lblOnePic" xml:space="preserve">
+    <value>1 ภาพ</value>
+  </data>
+  <data name="lblOnly" xml:space="preserve">
+    <value>เท่านั้น</value>
+  </data>
+  <data name="lblOrderDate" xml:space="preserve">
+    <value>วันที่สั่งซื้อ</value>
+  </data>
+  <data name="lblOrderDetailCode" xml:space="preserve">
+    <value>Order Detail Code</value>
+  </data>
+  <data name="lblOrderFeat" xml:space="preserve">
+    <value>สั่งซื้อตำแหน่ง Feature Product</value>
+  </data>
+  <data name="lblOrderHot" xml:space="preserve">
+    <value>สั่งซื้อตำแหน่ง Hot Product</value>
+  </data>
+  <data name="lblOrderList" xml:space="preserve">
+    <value>รายการสั่งซื้อ</value>
+  </data>
+  <data name="lblOrderNo" xml:space="preserve">
+    <value>ใบสั่งซื้อเลขที่</value>
+  </data>
+  <data name="lblPackageName" xml:space="preserve">
+    <value>Package Name</value>
+  </data>
+  <data name="lblPayInformant" xml:space="preserve">
+    <value>ข้อมูลผู้แจ้งชำระเงิน</value>
+  </data>
+  <data name="lblPayment" xml:space="preserve">
+    <value>แจ้งชำระเงิน</value>
+  </data>
+  <data name="lblPaymentAmount" xml:space="preserve">
+    <value>จำนวนเงินที่ชำระ</value>
+  </data>
+  <data name="lblPaymentCode" xml:space="preserve">
+    <value>หมายเลขการแจ้งชำระเงิน</value>
+  </data>
+  <data name="lblPaymentList" xml:space="preserve">
+    <value>รายการที่ชำระ</value>
+  </data>
+  <data name="lblPaymentList2" xml:space="preserve">
+    <value>รายการแจ้งชำระเงิน</value>
+  </data>
+  <data name="lblRateAds" xml:space="preserve">
+    <value>อัตราค่าลงโฆษณา</value>
+  </data>
+  <data name="lblRegisFees" xml:space="preserve">
+    <value>อัตราค่าลงทะเบียน</value>
+  </data>
+  <data name="lblReqApprovNewDoc" xml:space="preserve">
+    <value>ร้องขออนุมัติเอกสารใหม่</value>
+  </data>
+  <data name="lblServiceFeePayment" xml:space="preserve">
+    <value>Service fee payment</value>
+  </data>
+  <data name="lblServicePackage" xml:space="preserve">
+    <value>Service Package</value>
+  </data>
+  <data name="lblSlipTransfer" xml:space="preserve">
+    <value>สลิปการโอน</value>
+  </data>
+  <data name="lblStep1" xml:space="preserve">
+    <value>Step1 Select Package</value>
+  </data>
+  <data name="lblStep2" xml:space="preserve">
+    <value>Step2 Order</value>
+  </data>
+  <data name="lblStep3" xml:space="preserve">
+    <value>Step3 Payment</value>
+  </data>
+  <data name="lblSumPrice_en" xml:space="preserve">
+    <value>Sum Price</value>
+  </data>
+  <data name="lblTime" xml:space="preserve">
+    <value>เวลา</value>
+  </data>
+  <data name="lblTimeTransfer" xml:space="preserve">
+    <value>เวลาที่โอนโดยประมาณ</value>
+  </data>
+  <data name="lblTransferFrom" xml:space="preserve">
+    <value>ธนาคารต้นทางที่โอน</value>
+  </data>
+  <data name="lblTransferInfo" xml:space="preserve">
+    <value>ข้อมูลการโอนเงิน</value>
+  </data>
+  <data name="lblTransferTo" xml:space="preserve">
+    <value>ธนาคารที่โอนเข้า</value>
+  </data>
+  <data name="lblTransferToAcc" xml:space="preserve">
+    <value>บัญชีที่โอนเข้า</value>
+  </data>
+  <data name="lblUpgradeGold" xml:space="preserve">
+    <value>Upgrade Gold Member</value>
+  </data>
+  <data name="tltPagekage" xml:space="preserve">
+    <value>สั่งซื้อแพ็กเกจใน B2BThai.com</value>
+  </data>
+  <data name="lblApprovePayment" xml:space="preserve">
+    <value>อนุมัติการชำระเงิน</value>
+  </data>
+  <data name="lblReqReciept" xml:space="preserve">
+    <value>ขอใบกับกำภาษี</value>
+  </data>
+  <data name="lblCancelOrder" xml:space="preserve">
+    <value>คุณต้องการยกเลิกใบสั่งซื้อนี้หรือไม่</value>
+  </data>
+  <data name="lblCancelPackage" xml:space="preserve">
+    <value>ยกเลิกการสั่งซื้อ Package นี้</value>
+  </data>
+  <data name="lbleditpayment" xml:space="preserve">
+    <value>แก้ไขเสร็จเรียบร้อยแล้ว กรุณาทำการชำระเงิน</value>
+  </data>
+  <data name="lblOrdersuccessPayment" xml:space="preserve">
+    <value>ขั้นตอนการสั่งซื้อเสร็จสมบูรณ์ กรุณาทำการแจ้งชำระเงิน</value>
+  </data>
+  <data name="lblPleasecheckpayment" xml:space="preserve">
+    <value>คุณมีจำนวนเงินที่โอนน้อยกว่าราคา Package ที่คุณเลือก กรุณาตรวจสอบจำนวนเงินที่โอนใหม่อีกครั้ง</value>
+  </data>
+  <data name="lblDiscount" xml:space="preserve">
+    <value>ส่วนลด</value>
+  </data>
+  <data name="lblAcc_name" xml:space="preserve">
+    <value>ชื่อบัญชี</value>
+  </data>
+  <data name="lblAcc_type" xml:space="preserve">
+    <value>ประเภทบัญชี</value>
+  </data>
+  <data name="lblBank_name" xml:space="preserve">
+    <value>ชื่อธนาคาร</value>
+  </data>
+  <data name="lblBranch" xml:space="preserve">
+    <value>สาขา</value>
+  </data>
+  <data name="lblPrice" xml:space="preserve">
+    <value>ราคา</value>
+  </data>
+  <data name="lblFreePackage" xml:space="preserve">
+    <value>Free Package</value>
+  </data>
+  <data name="lblGoldPackage" xml:space="preserve">
+    <value>Gold Package</value>
+  </data>
+  <data name="lblSelectPackage" xml:space="preserve">
+    <value>Select Package</value>
+  </data>
+  <data name="lblOrder" xml:space="preserve">
+    <value>สั่งซื้อ</value>
+  </data>
+</root>

@@ -1,0 +1,797 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<root>
+  <!-- 
+    Microsoft ResX Schema 
+    
+    Version 2.0
+    
+    The primary goals of this format is to allow a simple XML format 
+    that is mostly human readable. The generation and parsing of the 
+    various data types are done through the TypeConverter classes 
+    associated with the data types.
+    
+    Example:
+    
+    ... ado.net/XML headers & schema ...
+    <resheader name="resmimetype">text/microsoft-resx</resheader>
+    <resheader name="version">2.0</resheader>
+    <resheader name="reader">System.Resources.ResXResourceReader, System.Windows.Forms, ...</resheader>
+    <resheader name="writer">System.Resources.ResXResourceWriter, System.Windows.Forms, ...</resheader>
+    <data name="Name1"><value>this is my long string</value><comment>this is a comment</comment></data>
+    <data name="Color1" type="System.Drawing.Color, System.Drawing">Blue</data>
+    <data name="Bitmap1" mimetype="application/x-microsoft.net.object.binary.base64">
+        <value>[base64 mime encoded serialized .NET Framework object]</value>
+    </data>
+    <data name="Icon1" type="System.Drawing.Icon, System.Drawing" mimetype="application/x-microsoft.net.object.bytearray.base64">
+        <value>[base64 mime encoded string representing a byte array form of the .NET Framework object]</value>
+        <comment>This is a comment</comment>
+    </data>
+                
+    There are any number of "resheader" rows that contain simple 
+    name/value pairs.
+    
+    Each data row contains a name, and value. The row also contains a 
+    type or mimetype. Type corresponds to a .NET class that support 
+    text/value conversion through the TypeConverter architecture. 
+    Classes that don't support this are serialized and stored with the 
+    mimetype set.
+    
+    The mimetype is used for serialized objects, and tells the 
+    ResXResourceReader how to depersist the object. This is currently not 
+    extensible. For a given mimetype the value must be set accordingly:
+    
+    Note - application/x-microsoft.net.object.binary.base64 is the format 
+    that the ResXResourceWriter will generate, however the reader can 
+    read any of the formats listed below.
+    
+    mimetype: application/x-microsoft.net.object.binary.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Binary.BinaryFormatter
+            : and then encoded with base64 encoding.
+    
+    mimetype: application/x-microsoft.net.object.soap.base64
+    value   : The object must be serialized with 
+            : System.Runtime.Serialization.Formatters.Soap.SoapFormatter
+            : and then encoded with base64 encoding.
+
+    mimetype: application/x-microsoft.net.object.bytearray.base64
+    value   : The object must be serialized into a byte array 
+            : using a System.ComponentModel.TypeConverter
+            : and then encoded with base64 encoding.
+    -->
+  <xsd:schema id="root" xmlns="" xmlns:xsd="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+    <xsd:import namespace="http://www.w3.org/XML/1998/namespace" />
+    <xsd:element name="root" msdata:IsDataSet="true">
+      <xsd:complexType>
+        <xsd:choice maxOccurs="unbounded">
+          <xsd:element name="metadata">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" />
+              </xsd:sequence>
+              <xsd:attribute name="name" use="required" type="xsd:string" />
+              <xsd:attribute name="type" type="xsd:string" />
+              <xsd:attribute name="mimetype" type="xsd:string" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="assembly">
+            <xsd:complexType>
+              <xsd:attribute name="alias" type="xsd:string" />
+              <xsd:attribute name="name" type="xsd:string" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="data">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+                <xsd:element name="comment" type="xsd:string" minOccurs="0" msdata:Ordinal="2" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" msdata:Ordinal="1" />
+              <xsd:attribute name="type" type="xsd:string" msdata:Ordinal="3" />
+              <xsd:attribute name="mimetype" type="xsd:string" msdata:Ordinal="4" />
+              <xsd:attribute ref="xml:space" />
+            </xsd:complexType>
+          </xsd:element>
+          <xsd:element name="resheader">
+            <xsd:complexType>
+              <xsd:sequence>
+                <xsd:element name="value" type="xsd:string" minOccurs="0" msdata:Ordinal="1" />
+              </xsd:sequence>
+              <xsd:attribute name="name" type="xsd:string" use="required" />
+            </xsd:complexType>
+          </xsd:element>
+        </xsd:choice>
+      </xsd:complexType>
+    </xsd:element>
+  </xsd:schema>
+  <resheader name="resmimetype">
+    <value>text/microsoft-resx</value>
+  </resheader>
+  <resheader name="version">
+    <value>2.0</value>
+  </resheader>
+  <resheader name="reader">
+    <value>System.Resources.ResXResourceReader, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <resheader name="writer">
+    <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
+  </resheader>
+  <data name="lblAccessInfo" xml:space="preserve">
+    <value>การเข้าถึงข้อมูลอย่างเหนือระดับ</value>
+  </data>
+  <data name="lblaccountsoftware" xml:space="preserve">
+    <value>ใช้โปรแกรมบัญชีสำเร็จรูป</value>
+  </data>
+  <data name="lblAdsCate" xml:space="preserve">
+    <value>สิทธิ์โฆษณาสินค้าในหน้าค้นหาสินค้า Hot Product</value>
+  </data>
+  <data name="lblAdsFront" xml:space="preserve">
+    <value>สิทธิ์โฆษณาสินค้าในหน้าแสดงรายละเอียดสินค้า Premium Product</value>
+  </data>
+  <data name="lblAdsHome" xml:space="preserve">
+    <value>สิทธิ์โฆษณาสินค้าในหน้าหลักของเว็บไซต์ Feature Product</value>
+  </data>
+  <data name="lblAdsrate" xml:space="preserve">
+    <value>อัตราค่าโฆษณา</value>
+  </data>
+  <data name="lblchoosetheme" xml:space="preserve">
+    <value>เลือกรูปแบบหน้าร้านออนไลน์ได้</value>
+  </data>
+  <data name="lblchoosethemeDesc" xml:space="preserve">
+    <value>เรามีรูปแบบกว่า 30 รูปแบบให้ท่านได้เลือกใช้งาน ตามความพึงพอใจ สวยงาม ทันสมัย เปลี่ยนได้ตามต้องการ</value>
+  </data>
+  <data name="lblConnectPostjob" xml:space="preserve">
+    <value>เชื่อมฟังก์ชั่นการทำงาน เข้ากับ</value>
+  </data>
+  <data name="lblDisplaysproducts" xml:space="preserve">
+    <value>เพิ่มสินค้าไม่จำกัด</value>
+  </data>
+  <data name="lblDisplaysproductsDesc" xml:space="preserve">
+    <value>Ouikum.com ให้คุณเพิ่มสินค้าได้ไม่จำกัด ตามจำนวนสินค้าในธุรกิจของคุณ</value>
+  </data>
+  <data name="lblDisplaytop" xml:space="preserve">
+    <value>การแสดงผลสินค้าอันดับต้น</value>
+  </data>
+  <data name="lblDisplaytopDesc" xml:space="preserve">
+    <value>Gold Member คุณคือลูกค้าคนพิเศษ ระดับ VIP เรามอบสิทธิการแสดงผลลำดับสินค้าอันดับต้นๆ ให้คุณมีสิทธิเหนือระดับทันที เพียงเข้ามา update ข้อมูลสินค้าเป็นประจำเท่านั้น</value>
+  </data>
+  <data name="lblExclusivefree" xml:space="preserve">
+    <value>สิทธิพิเศษฟรี! หลายรายการ</value>
+  </data>
+  <data name="lblExclusivefreeDesc" xml:space="preserve">
+    <value>บริหารธุรกิจของคุณอย่างครบวงจร รับฟรีเครื่องมือทางลัดที่เราคัดสรรมาเพื่อคุณ ทั้งโปรแกรมบัญชีสำเร็จรูปและเว็บไซต์ประกาศงาน ใช้ฟรี 1 ปีเต็ม</value>
+  </data>
+  <data name="lblfindemployee" xml:space="preserve">
+    <value>ผู้ช่วยในการค้นหาบุคลากร</value>
+  </data>
+  <data name="lblfindemployeeDesc" xml:space="preserve">
+    <value>บุคคลกลายเป็นทรัพยากรบุคคลที่สำคัญมากที่สุดในการทำงาน เพิ่มโอกาสการหาพนักงานที่มีความรู้ความสามารถที่หลากหลาย เพียงโพสประกาศหาพนักงานผ่านเว็บไซต์นี้ง่ายๆ พร้อมทั้งยังสามารถสร้าง Brand บริษัทให้คนภายนอกเป็นที่รู้จักได้อีกด้วย</value>
+  </data>
+  <data name="lblFirst" xml:space="preserve">
+    <value>ลำดับแรก</value>
+  </data>
+  <data name="lblGoldpackage" xml:space="preserve">
+    <value>อัตราค่าโฆษณา Gold Member</value>
+  </data>
+  <data name="lblHotlineMatching" xml:space="preserve">
+    <value>Hotline จัดซื้อ &amp; Matching Center</value>
+  </data>
+  <data name="lblHotlineMatchingDesc" xml:space="preserve">
+    <value>เมื่อมีความต้องการซื้อมาถึงเรา เราพร้อม Matching ความต้องการของผู้ซื้อ กับบริษัทผู้ขาย Gold Member ของเรา เพื่อให้คุณมั่นใจในข้อมูล lead และการสนับสนุนข้อมูลเพื่อเพิ่มยอดขาย</value>
+  </data>
+  <data name="lblImportantInfo" xml:space="preserve">
+    <value>แจ้งข้อมูลข่าวสารสำคัญจากเว็บไซต์ Ouikum.com</value>
+  </data>
+  <data name="lblIncreaseChannel" xml:space="preserve">
+    <value>เราเพิ่มช่องทางเข้าถึงสินค้าของท่านให้มากที่สุด "Content is a king"</value>
+  </data>
+  <data name="lblIncreaseChannelDesc" xml:space="preserve">
+    <value>ยิ่งลูกค้ามีพื้นที่การโปรโมทออนไลน์ และจำนวนสินค้ามากเท่าไหร่ โอกาสติด Search Engine การค้นหาข้อมูล สินค้าของท่านก็ยิ่งสูงมากขึ้นเท่านั้น</value>
+  </data>
+  <data name="lblJobsite" xml:space="preserve">
+    <value>เว็บไซต์หางาน</value>
+  </data>
+  <data name="lblLately" xml:space="preserve">
+    <value>หลังสุด</value>
+  </data>
+  <data name="lblLearnmore" xml:space="preserve">
+    <value>เรียนรู้เพิ่มเติม</value>
+  </data>
+  <data name="lblLinkotherservices" xml:space="preserve">
+    <value>เชื่อมโยงบริการอื่นๆ</value>
+  </data>
+  <data name="lblLinkotherservicesDesc" xml:space="preserve">
+    <value>รับบริการพิเศษเพิ่มเติมจาก Ouikum.com
+เพื่อช่วยให้งานขายง่ายขึ้น เช่น
+Hotline จัดซื้อ, Matching Center</value>
+  </data>
+  <data name="lblLionJob" xml:space="preserve">
+    <value>Aecth.org</value>
+  </data>
+  <data name="lblMaxProduct" xml:space="preserve">
+    <value>เพิ่มประกาศขายสินค้าได้สูงสุด</value>
+  </data>
+  <data name="lblmoredesign" xml:space="preserve">
+    <value>หน้าร้านออนไลน์หลายรูปแบบ</value>
+  </data>
+  <data name="lblmyAccount" xml:space="preserve">
+    <value>myAccount</value>
+  </data>
+  <data name="lblmyAccountDesc" xml:space="preserve">
+    <value>โปรแกรมบัญชี สำหรับธุรกิจ SMEs เพื่อการทำบัญชีได้อย่างละเอียดทุกขั้นตอน ช่วยประหยัดเวลา  ประหยัดค่าใช้จ่าย ลดขั้นตอนการทำงานที่ยุ่งยาก และประหยัดทรัพยากรบุคคลในดำเนินงาน</value>
+  </data>
+  <data name="lblnewfunction" xml:space="preserve">
+    <value>ฟังก์ชั่นใหม่ product Store</value>
+  </data>
+  <data name="lblnewfunctionDesc" xml:space="preserve">
+    <value>รองรับการค้นหาผุ้ขายอย่างง่ายขึ้น Gold Member  มั่นใจได้ว่าข้อมูลสินค้าสามารถเข้าถึงกลุ่มเป้าหมายได้ก่อนใคร</value>
+  </data>
+  <data name="lblnotwebsite" xml:space="preserve">
+    <value>แม้มีเว็บไซต์อยู่แล้วก็ไม่ใช่ปัญหา</value>
+  </data>
+  <data name="lblnotwebsiteDesc" xml:space="preserve">
+    <value>เป็นอีกช่องทาง เพื่อเพิ่มการเข้าถึงข้อมูลให้กับลูกค้า เสมือนมีข้อมูลบนโลกออนไลน์หลายแห่ง เมื่อทำการค้นหาข้อมูล (Search Engine) &#xB; โอกาสมีมากกว่าเว็บไซต์ทั่วไปถึง 2 เท่า</value>
+  </data>
+  <data name="lblOnlineAds" xml:space="preserve">
+    <value>ระบบโฆษณาออนไลน์</value>
+  </data>
+  <data name="lblPostemployee" xml:space="preserve">
+    <value>ลงประกาศหางานที่</value>
+  </data>
+  <data name="lblPostJob" xml:space="preserve">
+    <value>ประกาศหางานในเว็บไซต์ได้</value>
+  </data>
+  <data name="lblPostJobDesc" xml:space="preserve">
+    <value>เว็บหางานแห่งใหญ่ของไทย ประกาศหาพนักงาน ค้นหาตำแหน่งงาน หรือเสนอตำแหน่งงานว่างได้สะดวก รวดเร็ว ทั่วถึง</value>
+  </data>
+  <data name="lblPremiumWebsite" xml:space="preserve">
+    <value>ฟรี! Company Website</value>
+  </data>
+  <data name="lblPremiumWebsiteDesc" xml:space="preserve">
+    <value>เลือก Theme เว็บไซต์ได้มากกว่า 30 รูปแบบ ตามลักษณะที่เหมาะสมกับธุรกิจของคุณ</value>
+  </data>
+  <data name="lblProductsEasily" xml:space="preserve">
+    <value>พบสินค้าได้ง่ายกว่า</value>
+  </data>
+  <data name="lblProductsEasyDesc" xml:space="preserve">
+    <value>แสดงสินค้าในลำดับต้น ๆ ของผลการค้นหา
+ทำให้ผู้ซื้อมีโอกาสพบสินค้าของคุณมากขึ้น</value>
+  </data>
+  <data name="lblProgramfree" xml:space="preserve">
+    <value>สิทธิพิเศษ ใช้ฟรี 1 ปีเต็ม</value>
+  </data>
+  <data name="lblProgramfreeDesc" xml:space="preserve">
+    <value>เมื่อเป็นสมาชิก Gold Member เว็บไซต์ B2BThai.com ได้รับสิทธิพิเศษสุด คุ้มมากกว่าคุ้ม รับไปเลยฟรี 1 ปี</value>
+  </data>
+  <data name="lblPromoteProduct" xml:space="preserve">
+    <value>สามารถลงประกาศขายสินค้าได้อย่างไม่จำกัดจำนวน</value>
+  </data>
+  <data name="lblPromoteProductDesc" xml:space="preserve">
+    <value>หมวดหมู่สินค้าหลัก 29 หมวดหมู่ เสนอข้อมูลเฉพาะเจาะจงถึงกลุ่มเป้าหมายมากยิ่งขึ้น พื้นที่ขายสินค้าออนไลน์ไม่จำกัดด้วยการลงทุนที่ต่ำ</value>
+  </data>
+  <data name="lblReliableCustomer" xml:space="preserve">
+    <value>การันตีความเชื่อมั่น ให้กับลูกค้าของคุณ</value>
+  </data>
+  <data name="lblReliableCustomerDesc" xml:space="preserve">
+    <value>สร้างหน้าร้านออนไลน์รูปแบบ Premium Website เป็นโชว์รูมแสดงสินค้าออนไลน์ และเป็นเว็บไซต์แสดงข้อมูลบริษัทไปด้วยในตัว</value>
+  </data>
+  <data name="lblSortproductDisplay" xml:space="preserve">
+    <value>ลำดับการแสดงผลของสินค้า</value>
+  </data>
+  <data name="lblTemplate" xml:space="preserve">
+    <value>รูปแบบ</value>
+  </data>
+  <data name="lblunlimetedAccessDesc1" xml:space="preserve">
+    <value>- เข้าถึงข้อมูล lead ประกาศซื้อ-ขาย</value>
+  </data>
+  <data name="lblunlimetedAccessDesc2" xml:space="preserve">
+    <value>- รับข่าวสารข้อมูล สิทธิพิเศษ และส่วนลดต่างๆ ก่อนใคร</value>
+  </data>
+  <data name="lblUnlimited" xml:space="preserve">
+    <value>ไม่จำกัด</value>
+  </data>
+  <data name="lblUnlimitedAccess" xml:space="preserve">
+    <value>Gold Member เข้าถึงข้อมูลได้อย่างไม่จำกัด</value>
+  </data>
+  <data name="lblUpgradeGold" xml:space="preserve">
+    <value>Upgrade Gold</value>
+  </data>
+  <data name="lblUser" xml:space="preserve">
+    <value>User</value>
+  </data>
+  <data name="lblAccname" xml:space="preserve">
+    <value>ชื่อบัญชี บริษัท โปรซอฟท์ ไอทีโอ จำกัด ประเภทบัญชี ออมทรัพย์</value>
+  </data>
+  <data name="lblAccnameDesc" xml:space="preserve">
+    <value>ชื่อบัญชี บริษัท โปรซอฟท์ ไอทีโอ จำกัด</value>
+  </data>
+  <data name="lblAccno" xml:space="preserve">
+    <value>078-2-80388-5</value>
+  </data>
+  <data name="lbladdrmapbkk" xml:space="preserve">
+    <value>2571/1 ซอฟท์แวร์ รีสอร์ท ถ.รามคำแหง แขวงหัวหมาก
+เขตบางกะปิ กรุงเทพฯ 10240
+โทรศัพท์ (02) 402-8067
+โทรศัพท์มือถือ (088) 258-3434</value>
+  </data>
+  <data name="lbladdrmapcm" xml:space="preserve">
+    <value>เลขที่ 253/3 หมู่ที่3 ต.ขี้เหล็ก อ.แม่ริม จ.เชียงใหม่ 50180 โทรศัพท์ 053-465-545, 083-421-6879, 088-252-6097</value>
+  </data>
+  <data name="lblAdsbuysell" xml:space="preserve">
+    <value>โฆษณา-ประกาศซื้อ-ขายสินค้า</value>
+  </data>
+  <data name="lbladsclick" xml:space="preserve">
+    <value>ติดต่อสอบถาม/ลงโฆษณากับเรา ได้ที่</value>
+  </data>
+  <data name="lbladsrateaddr1" xml:space="preserve">
+    <value>โดยออกหนังสือรับรองการหักภาษี ณ ที่จ่ายในนาม “ บริษัท โปรซอฟท์ ไอทีโอ จำกัด ”</value>
+  </data>
+  <data name="lbladsrateaddr2" xml:space="preserve">
+    <value>ที่อยู่ 287 ม.5 ต.สันทรายน้อย อ.สันทราย จ.เชียงใหม่ 50210</value>
+  </data>
+  <data name="lbladsratecompany1" xml:space="preserve">
+    <value>กรุณาส่งหนังสือรับรองการหักภาษี ณ ที่จ่าย (ฉบับจริง) มาตามที่อยู่ ข้อมูลด้านล่างนี้</value>
+  </data>
+  <data name="lbladsratecompany2" xml:space="preserve">
+    <value>287 ม.5 ต.สันทรายน้อย อ.สันทราย จ.เชียงใหม่ 50210 </value>
+  </data>
+  <data name="lbladsratecompany3" xml:space="preserve">
+    <value>(ที่อยู่สำนักงานจัดทำบัญชีของบริษัทฯ)</value>
+  </data>
+  <data name="lbladsratecompany4" xml:space="preserve">
+    <value>ทางบริษัทฯจะจัดส่งใบกำกับภาษี/ใบเสร็จรับเงิน หลังจากที่ได้รับหนังสือรับรองการหักภาษี ณ ที่จ่ายฉบับจริงแล้วเท่านั้น</value>
+  </data>
+  <data name="lbladsratefee1" xml:space="preserve">
+    <value>- สามารถหักภาษี ณ ที่จ่ายเป็นค่าโฆษณา 2% จากจำนวนเงินไม่รวม VAT 7%</value>
+  </data>
+  <data name="lbladsratefee2" xml:space="preserve">
+    <value>** สำหรับการใช้บริการครั้งแรก กรุณา FAX ภพ. 20 หรือหนังสือรับรองบริษัทหน้าแรก พร้อมระบุที่อยู่ออกใบเสร็จ/ใบกำกับภาษีมาด้วย</value>
+  </data>
+  <data name="lbladsratetax" xml:space="preserve">
+    <value>- ราคาในการโอนทั้งหมด ต้องรวมภาษีมูลค่าเพิ่ม (VAT 7%) และค่าธรรมเนียมการโอนต่าง ๆ เรียบร้อยแล้วเท่านั้น</value>
+  </data>
+  <data name="lblalertorder" xml:space="preserve">
+    <value>ทำอย่างไรให้สินค้าติดอันดับต้น ๆ</value>
+  </data>
+  <data name="lblE_market" xml:space="preserve">
+    <value>Ouikum E-Marketplace ตลาดซื้อขายสินค้าสำหรับธุรกิจชั้นนำของไทย</value>
+  </data>
+  <data name="lblBangkok" xml:space="preserve">
+    <value>กรุงเทพฯ </value>
+  </data>
+  <data name="lblbranch" xml:space="preserve">
+    <value>สาขาหัวหมาก</value>
+  </data>
+  <data name="lblChiangMai" xml:space="preserve">
+    <value>เชียงใหม่</value>
+  </data>
+  <data name="lblcomeseeus" xml:space="preserve">
+    <value>หรือ เข้ามาพบเราได้ที่</value>
+  </data>
+  <data name="lblcontactsales" xml:space="preserve">
+    <value>ฝ่ายบริการลูกค้า : </value>
+  </data>
+  <data name="lblcustomerservice" xml:space="preserve">
+    <value>ฝ่ายบริการลูกค้า : 02-402-8068, 081-359-7680 หรือ support@B2BThai.com</value>
+  </data>
+  <data name="lblfaxDesc1" xml:space="preserve">
+    <value>หลังจากโอนเงินแล้วกรุณา FAX หรือ E-mail หลักฐานการโอนเงิน (Pay-in Slip) และหนังสือรับรองการ</value>
+  </data>
+  <data name="lblfaxDesc2" xml:space="preserve">
+    <value>หักภาษี ณ ที่จ่าย (ถ้ามี) มาที่ : คุณรัตนา ธรรมดูล FAX : 089-967-6157 หรือส่ง e-mail มาที่</value>
+  </data>
+  <data name="lblfaxDesc3" xml:space="preserve">
+    <value> support@Ouikum.com  พร้อมโทรแจ้งที่เบอร์ 02-402-8413 พร้อมทั้งระบุรายละเอียดดังนี้</value>
+  </data>
+  <data name="lblfaxtransfer" xml:space="preserve">
+    <value>Fax หรือ  E-mail หลักฐานการโอนเงิน</value>
+  </data>
+  <data name="lblfreePremium" xml:space="preserve">
+    <value>เปรียบเทียบสิทธิประโยชน์</value>
+  </data>
+  <data name="lblFurtherinfo" xml:space="preserve">
+    <value>สอบถามเพิ่มเติม</value>
+  </data>
+  <data name="lblGoldmemberget" xml:space="preserve">
+    <value>Gold Member สิ่งที่ท่านจะได้รับ</value>
+  </data>
+  <data name="lblhelpsupport" xml:space="preserve">
+    <value>Ouikum Help and Support</value>
+  </data>
+  <data name="lblhowtoaddproduct" xml:space="preserve">
+    <value>วิธีการเพิ่มข้อมูลสินค้า</value>
+  </data>
+  <data name="lblhowtoregister" xml:space="preserve">
+    <value>วิธีการสมัครสมาชิก</value>
+  </data>
+  <data name="lblmap" xml:space="preserve">
+    <value>แผนที่บริษัท โปรซอฟท์ คอมเท็ค จำกัด</value>
+  </data>
+  <data name="lblofficehouse" xml:space="preserve">
+    <value>(เวลาทำการ : วันจันทร์ - ศุกร์ 8.30 - 17.30 น. ยกเว้นวันหยุดราชการและนักขัตฤกษ์)</value>
+  </data>
+  <data name="lblPackagePDF" xml:space="preserve">
+    <value>ดาวน์โหลดสิทธิประโยชน์ Gold Member</value>
+  </data>
+  <data name="lblPDF" xml:space="preserve">
+    <value>PDF</value>
+  </data>
+  <data name="lblPrint" xml:space="preserve">
+    <value>Print</value>
+  </data>
+  <data name="lblPrintPackageinfo" xml:space="preserve">
+    <value>พิมพ์รายละเอียด Package และการชำระค่าโฆษณา</value>
+  </data>
+  <data name="lblProductinList" xml:space="preserve">
+    <value>สินค้าในระบบ 400,000 รายการ</value>
+  </data>
+  <data name="lblreceipt" xml:space="preserve">
+    <value>รอใบกำกับภาษี/ใบเสร็จรับเงินจาก B2BThai</value>
+  </data>
+  <data name="lblRemarkDesc" xml:space="preserve">
+    <value>การชำระค่าบริการไม่รวมค่าธรรมเนียมธนาคารในการโอนเงิน หากมีค่าธรรมเนียมต่างๆ เกิดขึ้น</value>
+  </data>
+  <data name="lblrequestadstel" xml:space="preserve">
+    <value>ท่านสามารถแจ้งความต้องการลงโฆษณาที่หมายเลข โทรศัพท์</value>
+  </data>
+  <data name="lblSellersinList" xml:space="preserve">
+    <value>ผู้ขายในระบบ 6,000 ราย</value>
+  </data>
+  <data name="lblshippingdoc" xml:space="preserve">
+    <value>การจัดส่งเอกสาร (กรณีลูกค้ามีการหัก ณ ที่จ่าย)</value>
+  </data>
+  <data name="lblspecialpromotion" xml:space="preserve">
+    <value>Promotion พิเศษ</value>
+  </data>
+  <data name="lblspecialpromotionDesc" xml:space="preserve">
+    <value>ซื้อ Gold package 1 ปี วันนี้ รับส่วนลดทันที 50 % จาก 12,000 บาทต่อปี เหลือเพียง 6,000 บาท เท่านั้น</value>
+  </data>
+  <data name="lblTabGoldpackage" xml:space="preserve">
+    <value>Gold Package</value>
+  </data>
+  <data name="lblTabhowtoAds" xml:space="preserve">
+    <value>วิธีลงโฆษณา</value>
+  </data>
+  <data name="lblTabhowtoPayment" xml:space="preserve">
+    <value>วิธีชำระค่าโฆษณา</value>
+  </data>
+  <data name="lbltaxdeduct" xml:space="preserve">
+    <value>- สามารถหักภาษี ณ ที่จ่ายเป็นค่าโฆษณา 2% จากจำนวนเงินไม่รวม VAT7%</value>
+  </data>
+  <data name="lbltaxinclude" xml:space="preserve">
+    <value>- ราคาในการโอนทั้งหมด ต้องรวมภาษีมูลค่าเพิ่ม (VAT 7%) และค่าธรรมเนียมการโอนต่าง ๆ เรียบร้อยแล้วเท่านั้น</value>
+  </data>
+  <data name="lbltelnumber" xml:space="preserve">
+    <value>02-402-8413</value>
+  </data>
+  <data name="lbltopcatalog" xml:space="preserve">
+    <value>วิธีลงโฆษณา</value>
+  </data>
+  <data name="lbltoplisttechnic" xml:space="preserve">
+    <value>ทำอย่างไรให้สินค้าติดอันดับต้นๆ</value>
+  </data>
+  <data name="lbltransferbank" xml:space="preserve">
+    <value>โอนเงินเข้าบัญชีธนาคาร</value>
+  </data>
+  <data name="lblviadesc1" xml:space="preserve">
+    <value>ท่านสามารถ Log In เข้ามายัง Web Site (www.ouikum.com)</value>
+  </data>
+  <data name="lblviadesc2" xml:space="preserve">
+    <value>เพื่อ เพิ่ม ลบ หรือ แก้ไขข้อมูลสินค้าที่ต้องการลงโฆษณา</value>
+  </data>
+  <data name="lblviadesc3" xml:space="preserve">
+    <value>ได้ตลอด หรือ Email มาที่ support@B2BThai.com</value>
+  </data>
+  <data name="lblviainternetwebsite" xml:space="preserve">
+    <value>ทาง Internet &amp; website</value>
+  </data>
+  <data name="lblVisitorinList" xml:space="preserve">
+    <value>ผู้เยี่ยมชมกว่า 6,000 รายต่อวัน</value>
+  </data>
+  <data name="lblaboutWebsite" xml:space="preserve">
+    <value>About Ouikum</value>
+  </data>
+  <data name="lblbecomefanpage" xml:space="preserve">
+    <value>Become Fan Page</value>
+  </data>
+  <data name="lblcustomservice" xml:space="preserve">
+    <value>Customer Service</value>
+  </data>
+  <data name="lblGetmorebenefit" xml:space="preserve">
+    <value>Get more profit.</value>
+  </data>
+  <data name="lblmailsale_ad" xml:space="preserve">
+    <value>support@Ouikum.com</value>
+  </data>
+  <data name="lblNews" xml:space="preserve">
+    <value>News</value>
+  </data>
+  <data name="lblNow" xml:space="preserve">
+    <value>Now</value>
+  </data>
+  <data name="lblPromotion" xml:space="preserve">
+    <value>Promotion</value>
+  </data>
+  <data name="lblSitemap" xml:space="preserve">
+    <value>Site Map</value>
+  </data>
+  <data name="lbltelsale_ad" xml:space="preserve">
+    <value>02-402-8413</value>
+  </data>
+  <data name="lblcopyright" xml:space="preserve">
+    <value>Copyright 2013, B2BThai.com</value>
+  </data>
+  <data name="lblPolicy" xml:space="preserve">
+    <value>Policy</value>
+  </data>
+  <data name="lbltermofuse" xml:space="preserve">
+    <value>Term of Use</value>
+  </data>
+  <data name="lblPowerprosoftgroup" xml:space="preserve">
+    <value>Powered by Ouikum</value>
+  </data>
+  <data name="lblSuggestion" xml:space="preserve">
+    <value>Suggestion</value>
+  </data>
+  <data name="lblSurveyfeature" xml:space="preserve">
+    <value>Ouikum Survey new feature.</value>
+  </data>
+  <data name="lblAllhelp" xml:space="preserve">
+    <value>คู่มือการใช้งานทั้งหมด</value>
+  </data>
+  <data name="lblbuychapter1" xml:space="preserve">
+    <value>Chapter 1 - ประกาศซื้อสินค้า (Post Buying Request)</value>
+  </data>
+  <data name="lblbuychapter2" xml:space="preserve">
+    <value>Chapter 2 - ค้นหาสินค้า (Search Product)</value>
+  </data>
+  <data name="lblbuychapter3" xml:space="preserve">
+    <value>Chapter 3 - เปรียบเทียบรายการสินค้า (Compare)</value>
+  </data>
+  <data name="lblbuychapter4" xml:space="preserve">
+    <value>Chapter 4 - ขอราคาสินค้า (Request Price)</value>
+  </data>
+  <data name="lblbuychapter5" xml:space="preserve">
+    <value>Chapter 5 - ติดต่อผู้ขาย (Contact to Supplier)</value>
+  </data>
+  <data name="lblbuychapter6" xml:space="preserve">
+    <value>Chapter 6 - คลังสินค้า (Product Store)</value>
+  </data>
+  <data name="lblbuychapter7" xml:space="preserve">
+    <value>Chapter 7 - ศูนย์กลางการจัดซื้อ (Purchase Center)</value>
+  </data>
+  <data name="lblBuyerGuide" xml:space="preserve">
+    <value>Buyer User Guide</value>
+  </data>
+  <data name="lblbuyerhelp" xml:space="preserve">
+    <value>รายการเอกสารคู่มือการใช้งานสำหรับผู้ซื้อ</value>
+  </data>
+  <data name="lblCompanyGuide" xml:space="preserve">
+    <value>Company Website User Guide</value>
+  </data>
+  <data name="lblDownloadAll" xml:space="preserve">
+    <value>Download All</value>
+  </data>
+  <data name="lblDownloadbuy" xml:space="preserve">
+    <value>buy</value>
+  </data>
+  <data name="lblDownloadmember" xml:space="preserve">
+    <value>member</value>
+  </data>
+  <data name="lblDownloadsell" xml:space="preserve">
+    <value>sell</value>
+  </data>
+  <data name="lblDownloadwebsite" xml:space="preserve">
+    <value>website</value>
+  </data>
+  <data name="lblFAQDesc" xml:space="preserve">
+    <value>คำถามที่พบบ่อย</value>
+  </data>
+  <data name="lblmemberchapter1" xml:space="preserve">
+    <value>Chapter 1 - สมัครสมาชิก</value>
+  </data>
+  <data name="lblmemberchapter2" xml:space="preserve">
+    <value>Chapter 2 - การเข้าสู่ระบบและ Ouikum</value>
+  </data>
+  <data name="lblmemberchapter3" xml:space="preserve">
+    <value>Chapter 3 - จัดการข้อมูลส่วนตัว</value>
+  </data>
+  <data name="lblmemberchapter4" xml:space="preserve">
+    <value>Chapter 4 - Upgrade Gold Member</value>
+  </data>
+  <data name="lblMemberGuide" xml:space="preserve">
+    <value>Member User Guide</value>
+  </data>
+  <data name="lblmemberhelp" xml:space="preserve">
+    <value>รายการเอกสารคู่มือการใช้งานระบบสมาชิก</value>
+  </data>
+  <data name="lblPreview" xml:space="preserve">
+    <value>Preview</value>
+  </data>
+  <data name="lblPurchasesquare" xml:space="preserve">
+    <value>ศูนย์กลางจัดซื้อ</value>
+  </data>
+  <data name="lblPurchasesquareDesc" xml:space="preserve">
+    <value>ทำให้การซื้อขายสะดวก และง่ายขึ้น</value>
+  </data>
+  <data name="lblsellchapter1" xml:space="preserve">
+    <value>Chapter 1 - ประกาศขายสินค้า (Post Product)</value>
+  </data>
+  <data name="lblsellchapter2" xml:space="preserve">
+    <value>Chapter 2 - จัดการสินค้า (Manage Product)</value>
+  </data>
+  <data name="lblsellchapter3" xml:space="preserve">
+    <value>Chapter 3 - จัดการสินค้าแนะนำ (Manage Recommend Product)</value>
+  </data>
+  <data name="lblsellchapter4" xml:space="preserve">
+    <value>Chapter 4 - ติดต่อผู้ซื้อ (Contact to Buyer)</value>
+  </data>
+  <data name="lblsellchapter5" xml:space="preserve">
+    <value>Chapter 5 - เสนอราคาสินค้า (Bid Price)</value>
+  </data>
+  <data name="lblSupplierGuide" xml:space="preserve">
+    <value>Supplier User Guide</value>
+  </data>
+  <data name="lblsupplierhelp" xml:space="preserve">
+    <value>รายการเอกสารคู่มือการใช้งานสำหรับผู้ขาย</value>
+  </data>
+  <data name="lblvisionmission" xml:space="preserve">
+    <value>เกี่ยวกับเรา, วิสัยทัศน์, พันธกิจ</value>
+  </data>
+  <data name="lblwebsitechapter1" xml:space="preserve">
+    <value>Chapter 1 - เว็บไซต์บริษัท (Company Website)</value>
+  </data>
+  <data name="lblwebsitechapter2" xml:space="preserve">
+    <value>Chapter 2 - รูปแบบเว็บไซต์ (Website Template)</value>
+  </data>
+  <data name="lblwebsitechapter3" xml:space="preserve">
+    <value>Chapter 3 - สินค้าแนะนำ (Recommend Product)</value>
+  </data>
+  <data name="lblwebsitehelp" xml:space="preserve">
+    <value>รายการเอกสารคู่มือรูปแบบเว็บไซต์บริษัท</value>
+  </data>
+  <data name="lblb2bshopping" xml:space="preserve">
+    <value>ซื้อ - ขายสินค้า Ouikum</value>
+  </data>
+  <data name="lblBacktoHome" xml:space="preserve">
+    <value>กลับสู่หน้าหลัก</value>
+  </data>
+  <data name="lblcreatewebsitefree" xml:space="preserve">
+    <value>สร้างเว็บไซต์สำเร็จรูป ฟรี</value>
+  </data>
+  <data name="lblfindjob" xml:space="preserve">
+    <value>หางานทั่วไทย</value>
+  </data>
+  <data name="lblotopproduct" xml:space="preserve">
+    <value>แหล่งสินค้า Otop ทั่วไทย</value>
+  </data>
+  <data name="lblregisterfor" xml:space="preserve">
+    <value>เพื่อเข้าใช้งาน Ouikum.com และบริการอื่น ๆ ดังนี้</value>
+  </data>
+  <data name="lblsecondhandshopping" xml:space="preserve">
+    <value>แหล่งสินค้าขายปลีก-ส่ง</value>
+  </data>
+  <data name="lblsoftwaretrading" xml:space="preserve">
+    <value>แหล่งซื้อ - ขาย ซอฟท์แวร์</value>
+  </data>
+  <data name="lblIsara" xml:space="preserve">
+    <value>พิมพ์งานด่วน นามบัตร
+การ์ด สติ๊กเกอร์ ไม่มีขั้นต่ำ
+จัดส่งทั่วประเทศ</value>
+  </data>
+  <data name="lblaccessrights" xml:space="preserve">
+    <value>สิทธิการเข้าถึงฟังก์ชั่นการทำงานของระบบ</value>
+  </data>
+  <data name="lbladdup" xml:space="preserve">
+    <value>เพิ่มประกาศซื้อสินค้าได้สูงสุด</value>
+  </data>
+  <data name="lblAdvertisingPayment" xml:space="preserve">
+    <value>วิธีชำระค่าโฆษณา</value>
+  </data>
+  <data name="lblbuy" xml:space="preserve">
+    <value>ประกาศซื้อ</value>
+  </data>
+  <data name="lblGoldMember" xml:space="preserve">
+    <value>Gold Member</value>
+  </data>
+  <data name="lblsome" xml:space="preserve">
+    <value>บางส่วน</value>
+  </data>
+  <data name="lbltext1" xml:space="preserve">
+    <value>เว็บไซต์ที่เป็นตัวกลางในการติดต่อซื้อ-ขายสินค้าธุรกิจของคุณ ทำให้การดำเนินธุรกิจซื้อ-ขายของคุณเป็นเรื่องง่าย</value>
+  </data>
+  <data name="lbltext2" xml:space="preserve">
+    <value>ด้วยระบบบริการที่มีมากมายกว่า 20 ระบบ สินค้าที่มากถึง 300,000 รายการ และผู้ขายในระบบมากกว่า 6,000 ราย</value>
+  </data>
+  <data name="lbladsrateaddr3" xml:space="preserve">
+    <value>เลขประจำตัวผู้เสียภาษี 0105555047966</value>
+  </data>
+  <data name="lblfaxDesc4" xml:space="preserve">
+    <value>- ระบุชื่อบริษัทและที่อยู่ในการออกใบกำกับภาษี/ใบเสร็จรับเงิน</value>
+  </data>
+  <data name="lblfaxDesc5" xml:space="preserve">
+    <value>- ระบุชื่อผู้ติดต่อและเบอร์โทรศัพท์ที่สามารถติดต่อได้</value>
+  </data>
+  <data name="lblRemakeUp" xml:space="preserve">
+    <value>หมายเหตุเพิ่มเติม</value>
+  </data>
+  <data name="lblPhones" xml:space="preserve">
+    <value>โทรศัพท์มือถือ (081) 359-7680</value>
+  </data>
+  <data name="lblRemarkDescs" xml:space="preserve">
+    <value>ทางบริษัทฯ ขอสงวนสิทธิ์ให้ลูกค้าเป็นผู้รับผิดชอบในค่าธรรมเนียมนั้นๆ</value>
+  </data>
+  <data name="lblskype" xml:space="preserve">
+    <value>Support Ouikum</value>
+  </data>
+  <data name="lblPackage_M" xml:space="preserve">
+    <value>Package M</value>
+  </data>
+  <data name="lblSoGood" xml:space="preserve">
+    <value>www.aecth.org</value>
+  </data>
+  <data name="lblValue" xml:space="preserve">
+    <value>รับส่วนลด 70%</value>
+  </data>
+  <data name="lblVimanNom" xml:space="preserve">
+    <value>วิมานน้ำ รีสอร์ท</value>
+  </data>
+  <data name="lblFeatureProduct" xml:space="preserve">
+    <value>หน้าหลักของเว็บไซต์ (Feature Product)</value>
+  </data>
+  <data name="lblGoldMember1" xml:space="preserve">
+    <value>บริการโฆษณาสินค้าระดับ Gold Member</value>
+  </data>
+  <data name="lblGoldMember2" xml:space="preserve">
+    <value>สิทธิการใช้บริการแนะนำสินค้า ทำให้ผู้ซื้อมีโอกาสพบสินค้าของคุณในหน้าจอที่มีผู้เข้าชมมากที่สุด</value>
+  </data>
+  <data name="lblGoldMember3" xml:space="preserve">
+    <value>สิทธิประโยชน์อื่น ๆ เมื่อใช้ Gold Member</value>
+  </data>
+  <data name="lblGoldMember4" xml:space="preserve">
+    <value>ประกาศรับสมัครงาน ไม่จำกัดจำนวน</value>
+  </data>
+  <data name="lblGoldMember5" xml:space="preserve">
+    <value>ฟรี โปรแกรมบัญชีสำเร็จรูป</value>
+  </data>
+  <data name="lblGoldMember6" xml:space="preserve">
+    <value>ฟรี เว็บไซต์สำเร็จรูป Package M</value>
+  </data>
+  <data name="lblGoldMember7" xml:space="preserve">
+    <value>ส่วนลด 70% ที่ วิมานน้ำ รีสอร์ท</value>
+  </data>
+  <data name="lblHotProduct" xml:space="preserve">
+    <value>หน้าค้นหาสินค้า (Hot Product)</value>
+  </data>
+  <data name="lblPremiumProduct" xml:space="preserve">
+    <value>หน้ารายละเอียดสินค้า (Premium Product)</value>
+  </data>
+  <data name="lblBenefits" xml:space="preserve">
+    <value>สิทธิ์ประโยชน์</value>
+  </data>
+  <data name="lblButton" xml:space="preserve">
+    <value>สมัครเพื่อขอใช้บริการ  Gold Member</value>
+  </data>
+  <data name="lblMonth" xml:space="preserve">
+    <value>เดือน</value>
+  </data>
+  <data name="lblProGold" xml:space="preserve">
+    <value>โปรโมชั่นสำหรับ Gold Member</value>
+  </data>
+  <data name="lblServiceCharge" xml:space="preserve">
+    <value>ค่าบริการ</value>
+  </data>
+  <data name="lblAccnameDesc1" xml:space="preserve">
+    <value>ชื่อบัญชี บริษัท โปรซอฟท์ ไอทีโอ จำกัด</value>
+  </data>
+  <data name="lblAccno1" xml:space="preserve">
+    <value>250-6-02491-0</value>
+  </data>
+  <data name="lblbranch1" xml:space="preserve">
+    <value>สาขารามคำแหง 73</value>
+  </data>
+  <data name="lbltelCustomer_Service" xml:space="preserve">
+    <value>02-402-8413</value>
+  </data>
+</root>
