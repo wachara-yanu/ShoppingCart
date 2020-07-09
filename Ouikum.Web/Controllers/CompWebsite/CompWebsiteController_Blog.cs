@@ -1,0 +1,195 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Web;
+using System.Web.Mvc;
+using Ouikum.Company;
+using Ouikum.Article;
+//using Prosoft.Base;
+using Prosoft.Service;
+using res = Prosoft.Resource.Web.Ouikum;
+using Ouikum.Product;
+using Ouikum.Common;
+
+namespace Ouikum.Controllers
+{
+    public partial class CompWebsiteController : BaseController
+    {
+        AddressService svAddress;
+
+        #region Member
+        ArticleService svArticle;
+        #endregion
+
+        #region Blog List
+        public ActionResult Blog(int id, int? GroupID, int? CateID, int? CateLevel, string SearchBlog)
+        {
+
+            if (RedirectToProduction())
+
+                return Redirect(UrlProduction);
+
+            string page = "Blog";
+            int countcompany = DefaultWebsite(id, page);
+
+            if (countcompany > 0)
+            {
+                SetPager();
+                SelectList_PageSize();
+                ViewBag.PageIndex = 1;
+                ViewBag.PageSize = 20;
+                ViewBag.TotalRow = 0;
+                ViewBag.GroupID = GroupID != null ? GroupID : 0;
+                ViewBag.CateID = CateID != null ? CateID : 0;
+                ViewBag.CateLevel = CateLevel != null ? CateLevel : 0;
+                ViewBag.CompID = id;
+                ViewBag.TextSearchBlog = SearchBlog;
+
+                //if (ViewBag.CountArticle > 0)
+                //{
+                    if (LogonCompID == ViewBag.CompID)
+                    {
+                        List_DoloadBlog(BlogAction.WebSite, id);
+                    }
+                    else
+                    {
+                        List_DoloadBlog(BlogAction.FrontEnd, id);
+                    }
+                    svArticle = new ArticleService();
+
+                    GetStatusUser();
+
+                    string sqlSelect = "ArticleID, ArticleName, ImgPath, ShortDescription, CompID, ViewCount";
+                    string sqlWhere = "CompID =" + id + " AND IsDelete = 0";
+                    var emArticles = svArticle.SelectData<b2bArticle>(sqlSelect, sqlWhere, "ListNo ASC");
+                    if (!string.IsNullOrEmpty(ViewBag.TextSearchBlog))
+                    {
+                        sqlWhere += "AND ArticleName LIKE N'%" + ViewBag.TextSearchBlog + "%'";
+                    }
+                    ViewBag.emArticles = emArticles;
+
+                    string sqlSelect_comp = "CompID,CompName,CompCode,CompLevel,LogoImgPath,CompAddrLine1,CompPostalCode,CompPhone,CompImgPath,CompShortDes,CompSubDistrict,CompDistrictName,CompProvinceName,ContactEmail,BizTypeOther,BizTypeName,CreatedDate,ServiceType";
+                    string sqlWhere_comp = "CompID =" + id;
+
+                    var company = svCompany.SelectData<view_Company>(sqlSelect_comp, sqlWhere_comp).First();
+                    ViewBag.Company = company;
+                    //ViewBag.WebCompName = (string)company.CompName;
+                    ViewBag.PageType = "Blog";
+
+                    return View();
+                //}
+                //else
+                //{
+                //    GetStatusUser();
+                //    LinkPathCompanyWebsite((string)ViewBag.WebCompName, (int)id);
+                //    return Redirect(PathWebsiteHome);
+                //}
+            }
+            else
+            {
+                return Redirect(res.Pageviews.PvNotFound);
+            }
+
+        }
+        #endregion
+
+        #region Blog Detail
+        public ActionResult BlogDetail(int id, int BlogID)
+        {
+            if (RedirectToProduction())
+                return Redirect(UrlProduction);
+
+            string page = "Blog";
+            int countcompany = DefaultWebsite(id, page);
+            if (countcompany > 0)
+            {
+
+                svArticle = new ArticleService();
+                svCompany = new CompanyService();
+
+                string sqlSelect = "ArticleID, ArticleName, ImgPath, Description, CompID, ViewCount";
+                string sqlWhere = "IsDelete = 0 AND ArticleID = " + BlogID;
+                var count = svArticle.CountData<b2bArticle>(sqlSelect, sqlWhere);
+
+                if (count > 0)
+                {
+                    AddViewCount(BlogID, "Blog");
+
+                    GetStatusUser();
+
+                    var article = svArticle.SelectData<b2bArticle>(sqlSelect, sqlWhere).First();
+                    ViewBag.Article = article;
+
+                    sqlSelect = "ArticleID, ArticleName ,CompID";
+                    sqlWhere = "IsDelete = 0 AND CompID = " + id;
+                    var emArticles = svArticle.SelectData<b2bArticle>(sqlSelect, sqlWhere);
+                    ViewBag.emArticles = emArticles;
+
+                    ViewBag.blogtitle = article.ArticleName + " " + ViewBag.WebCompName + "-B2BThai.com";
+
+                    string sqlSelect_comp = "CompID,CompName,CompCode,CompLevel,LogoImgPath,CompAddrLine1,CompPostalCode,CompPhone,CompImgPath,CompShortDes,CompSubDistrict,CompDistrictName,CompProvinceName,ContactEmail,BizTypeOther,BizTypeName,CreatedDate,ServiceType";
+                    string sqlWhere_comp = "CompID =" + id;
+                    var company = svCompany.SelectData<view_Company>(sqlSelect_comp, sqlWhere_comp).First();
+                    ViewBag.Company = company;
+                    ViewBag.PageType = "Blog";
+
+                    var articles = svCompany.SelectData<view_b2bArticle>(sqlSelect, sqlWhere).First();
+                    ViewBag.BlogArticles = articles;
+                    ViewBag.PageType = "BlogDetail";
+                    GetStatusUser();
+                    if (company.ProvinceName == "กรุงเทพมหานคร")
+                    {
+                        company.ProvinceName = "กรุงเทพ";
+                    }
+                    ViewBag.title = articles.ArticleName + " | " + company.CompName + " | " + company.ProvinceName + " | " + res.Common.lblDomainShortName;
+                    ViewBag.MetaDescription = articles.ArticleName + " | " + company.CompName + " | " + company.CompAddrLine1 + " | " + company.ProvinceName;
+                    ViewBag.MetaKeyword = ViewBag.title;
+
+                    return View();
+                }
+                else
+                {
+                    return Redirect(res.Pageviews.PvNotFound);
+                }
+            }
+            else
+            {
+                return Redirect(res.Pageviews.PvNotFound);
+            }
+
+        }
+        #endregion
+
+        #region Post : Blog
+        [HttpPost]
+        public ActionResult Blog(FormCollection form)
+        {
+            svCompany = new CompanyService();
+            SelectList_PageSize();
+            List<view_b2bArticle> Blogs;
+            SetPager(form);
+            if (!string.IsNullOrEmpty(form["SearchBlog"]))
+            {
+                Blogs = svCompany.SelectData<view_b2bArticle>("*", "IsDelete = 0 and ArticleName LIKE N'%" + form["SearchBlog"] + "%' and CompID = " + LogonCompID, null, (int)ViewBag.PageIndex, (int)ViewBag.PageSize);
+            }
+            else
+            {
+                Blogs = svCompany.SelectData<view_b2bArticle>("*", "IsDelete = 0 and CompID = " + LogonCompID, null, (int)ViewBag.PageIndex, (int)ViewBag.PageSize);
+            }
+
+            if (LogonCompID == ViewBag.CompID)
+            {
+                List_DoloadBlog(BlogAction.WebSite, Convert.ToInt32(form["hidCompID"]));
+            }
+            else
+            {
+                List_DoloadBlog(BlogAction.FrontEnd, Convert.ToInt32(form["hidCompID"]));
+            }
+
+            return PartialView("UC/BlogGalleryUC");
+
+        }
+        #endregion
+
+    }
+}
