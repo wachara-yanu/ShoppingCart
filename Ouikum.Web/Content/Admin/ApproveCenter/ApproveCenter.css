@@ -1,0 +1,54 @@
+﻿.divSearch{ float:left; padding:1%;margin:1%;width:96%; border:1px solid #ccc; margin-left:1%;}
+.moduleAprove {
+border: 1px solid #9BA0AF;
+width: 98%;
+margin-left:1%;
+-webkit-border-radius: 5px;
+-moz-border-radius: 5px;
+border-radius: 5px;
+background: #ffffff;
+float:left;
+}
+#main .moduleAprove header h3 {
+display: block;
+width: 90%;
+float: left;
+}
+.moduleAprove header {
+height: 38px;
+width: 100%;
+background: #F1F1F4 url(../Home/images/secondary_bar.png) repeat-x;
+-webkit-border-top-left-radius: 5px; -webkit-border-top-right-radius: 5px;
+-moz-border-radius-topleft: 5px; -moz-border-radius-topright: 5px;
+border-top-left-radius: 5px; border-top-right-radius: 5px;
+}
+
+.moduleAprove footer {
+height: 32px;
+width: 100%;
+border-top: 1px solid #9CA1B0;
+background: #F1F1F4 url(images/module_footer_bg.png) repeat-x;
+-webkit-border-bottom-left-radius: 5px; -webkit-border-bottom-right-radius: 5px;
+-moz-border-radius-bottomleft: 5px; -moz-border-radius-bottomright: 5px;
+-webkit-border-bottom-left-radius: 5px; -webkit-border-bottom-right-radius: 5px;
+}
+
+#Detail label, span,li{ font-size:13px; }
+#PayerDetail{ float:left; width:28%; padding-right:2%; border-right:1px solid #ccc}
+#PayDetail{ float:left; width:67%; padding-left:2%;}
+#PayDetail .date{ float:left; width:60%;}
+#PayDetail .slipPic{float:left; width:35%; margin-left:2%;}
+#TbPayment th{ text-align:center; background-color:#F2F2F2;}
+
+/*------------------Slide----------------*/
+#divSlide{float:left; width:100%;}
+#divSlide div{float:left;}
+#SlideProImg{width:21%;}
+#Product ul{padding:0px;margin:0px;list-style:none;}
+#Product ul li{display:none; width:10px;}
+#Product img{float:left;width:200px;height:180px;position:absolute; margin-top:0px;}
+#ProductMenu{width:100%;margin-top:185px;}
+#ProductMenu ul{background-color:White; padding:0;margin:0;list-style:none; width:100%;}
+#ProductMenu ul li{border:1px solid #e4e4e4; width:5%;font-size:13px;height:10%;line-height:19px; 
+                   cursor:pointer; text-align:center;font-weight:700; color:black}
+#ProductMenu .BgMenu2{background:#ddd;} 

@@ -1,0 +1,31 @@
+﻿body
+{
+    font-family:Tahoma;
+    font-style:normal;
+    font-size:13px;
+}
+select
+{
+    margin-bottom:0;
+}
+.icon_adminApprove {
+background: url(images/icon_approve.png) no-repeat;
+padding:10px;
+margin:0px 5px 0px 5px;
+}
+.icon_NotApprove {
+background: url(images/icon_notapprove.png) no-repeat;
+padding:10px;
+margin:0px 5px 0px 5px;
+}
+.icon_Delete {
+background: url(images/icon_delete.png) no-repeat;
+padding:10px;
+margin:0px 5px 0px 5px;
+}
+.text_Activated{color:#51a351;}
+.text_NonActivated{color:#f89406;}
+.text_BlackList{color:#bd362f;}
+.text_BlockInfo{color:#5f00bf;}
+.text_Expire{color:#7f7f7f;}
+.text_All{color:#555;}

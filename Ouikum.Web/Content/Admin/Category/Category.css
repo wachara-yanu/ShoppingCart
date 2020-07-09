@@ -1,0 +1,53 @@
+﻿.body
+{
+    width:1503px;
+    margin:0 0px;
+}
+
+.well {
+    background-color: #F8F8F8;
+    border:none;
+    border-right: 1px solid #D7D7D7;
+    border-radius: 0px;
+    box-shadow: 0 1px 1px rgba(0, 0, 0,0) inset;
+    margin-bottom: 20px;
+    min-height: 687px;
+    min-width:268px;
+    max-width:426px;
+    padding:0 0px;
+    height:auto;
+}
+
+hr {
+    line-height: 0px;
+    margin: 0px;
+    border: none;
+    border-top: 0px solid #eeeeee;
+    border-bottom: 1px solid #D7D7D7;
+}
+
+.btn-category
+{
+    width:425px;
+    height:29px;
+    background-image: linear-gradient(bottom, rgb(242,242,242) 8%, rgb(252,252,252) 26%, rgb(255,255,255) 70%);
+    background-image: -o-linear-gradient(bottom, rgb(242,242,242) 8%, rgb(252,252,252) 26%, rgb(255,255,255) 70%);
+    background-image: -moz-linear-gradient(bottom, rgb(242,242,242) 8%, rgb(252,252,252) 26%, rgb(255,255,255) 70%);
+    background-image: -webkit-linear-gradient(bottom, rgb(242,242,242) 8%, rgb(252,252,252) 26%, rgb(255,255,255) 70%);
+    background-image: -ms-linear-gradient(bottom, rgb(242,242,242) 8%, rgb(252,252,252) 26%, rgb(255,255,255) 70%);
+
+    background-image: -webkit-gradient(
+	    linear,
+	    left bottom,
+	    left top,
+	    color-stop(0.08, rgb(242,242,242)),
+	    color-stop(0.26, rgb(252,252,252)),
+	    color-stop(0.7, rgb(255,255,255))
+    );
+    border-bottom: 1px solid #D7D7D7;
+}
+
+.cate-lv1,.cate-lv2,.cate-lv3
+{
+    padding:3px;
+}

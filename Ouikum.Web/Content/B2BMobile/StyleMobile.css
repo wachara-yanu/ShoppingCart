@@ -1,0 +1,560 @@
+﻿/* Smartphones */
+body {
+    min-width:250px;
+    min-height:460px;
+    font-family:Tahoma !important;
+}
+
+.scroll-Menu,.scroll-Search{
+    position:absolute;
+    width:100%;
+    z-index:100;
+    overflow:auto;  
+    top:60px;
+    bottom:0px;
+}
+
+@media only screen and (max-width: 480px) {
+    .logob2b img{
+        width:10%;
+        height:80%;
+        float:left;
+        min-width:60px;
+        min-height:30px;
+        margin-top:5px;
+    }
+}
+
+/* Smartphones to Tablets */
+@media only screen and (min-width: 481px) and (max-width: 767px){   
+    .logob2b img{
+        width:8%;
+        height:80%;
+        float:left;
+        min-width:60px;
+        min-height:30px;
+        margin-top:5px;
+    }
+
+    .menu-name {
+        width:76px;
+        text-align:center;
+    }
+}
+
+
+/* Tablets to other devices */
+@media only screen and (min-width: 768px) and (max-width: 1024px) {
+    .logob2b img{
+        width:6%;
+        height:80%;
+        float:left;
+        min-width:60px;
+        min-height:30px;
+        margin-top:5px;
+    }
+
+    .menu-name {
+        width:80px;
+        text-align:center;
+    }
+}
+
+/*other devices*/
+@media only screen and (min-width: 1025px) {
+    .logob2b img{
+        width:4%;
+        height:80%;
+        float:left;
+        min-width:60px;
+        min-height:30px;
+        margin-top:5px;
+    }
+
+    .menu-name {
+        width:84px;
+        text-align:center;
+    }
+}
+
+/*/////////////////////////////// Cover Page ////////////////////////////////////*/
+
+.cover-wrapper {
+    min-height:100%;
+	position:absolute;
+    width:90%;
+    padding:0% 5% 0% 5%;
+}
+
+.cover-content {
+    padding-bottom:160px;
+}
+
+.logo-area {
+    width:100%;
+    height:auto;
+    text-align:center;
+}
+
+.logob2b-Cover img{
+    width:90px;
+    height:auto;
+}
+
+.btn-mobileVer {
+    width:100%;
+    height:50px;
+    background-color:#396CAC;
+    border:0px;
+    border-radius:5px;
+    color:#fff;
+    font-size:1.1em;
+}
+    .btn-mobileVer:hover {
+        background-color:#1BA1E2;
+    }
+
+.btn-DesktopVer {
+    width:100%;
+    height:50px;
+    background-color:#FD6700;
+    border:0px;
+    border-radius:5px;
+    color:#fff;
+    font-size:1.1em;
+}
+    .btn-DesktopVer:hover {
+        background-color:#FC9B30;
+    }
+
+.b2bapp img{
+    width:150px;
+}
+
+.appstore img {
+    width:90px;
+}
+
+.cover-area{
+    width:100%;
+    height:150px;
+    position:absolute;
+    text-align:right;
+    right:0;
+    bottom:0;
+}
+
+/*//////////////////////////////// Not Found ////////////////////////////////////*/
+
+.container-Notfound{
+    width:90%;
+    padding: 0% 5% 0% 5%;
+    font-size:1.1em;
+}
+
+.logob2b-Notfound img{
+    width:85px;
+    height:50px;
+}
+
+.btn-priMobile{
+    margin-bottom:0;
+    font-weight:normal;
+    line-height:1.42857143;
+    text-align:center;
+    white-space:nowrap;
+    vertical-align:middle;
+    cursor:pointer;
+    background-image:none;
+    border:1px solid transparent;
+    border-radius:4px;
+    padding:4px 6px !important;
+    font-size:14px !important;
+    color:#fff;
+    background-color:#337ab7;
+    border-color:#2e6da4;
+    text-decoration:none;
+}
+    .btn-priMobile:hover{
+        text-decoration:none;
+        background-color:#286090;
+        border-color:#204d74;
+        color:#fff;
+    }
+
+/*/////////////////////////////// Nav Bar ////////////////////////////////////*/
+
+.Navbar-header {
+    width:100%;
+    min-height:50px;
+    background-color:#E9E9E9;             
+    /*background-image:url('Images/navbar-header.jpg');*/      
+    background-repeat:repeat-x;
+    padding: 0% 5% 0% 5%; 
+    position:fixed;
+    z-index:1000;
+    top:0px; 
+}
+
+.nav-menu {
+    width:auto;
+    height:80%;
+    float:right;
+    margin-top:10px;
+}
+
+.nav-submenu {
+    width:100%;
+    height:auto;
+    padding: 0 5% 10px 5%; 
+    background-color:#e9e9e9;
+    border-bottom:1px solid #d5d5d5;
+    position:fixed;
+    z-index:800;
+    float:left;
+    top:50px;
+}
+
+#AttrStatus {
+    float:left;
+    margin-left:10px;
+    margin-top:15px;
+    width:auto;
+    font-size:1em;
+}
+
+.inputsearch {                            
+    height:30px;
+    font-family:Tahoma !important;
+}
+
+.nav-footer {
+    width:100%;
+    height:auto;
+    padding:15px 5% 15px 5%;
+    background-color:#e9e9e9;
+    border-top:1px solid #d5d5d5;
+    position:fixed;
+    bottom:0px;
+}
+
+.nav-footer-index {
+    width:100%;
+    height:101px;
+    padding:15px 5% 15px 5%;
+    background-color:#e9e9e9;
+    border-top:1px solid #d5d5d5;
+    position:absolute;
+    bottom:0px;
+    z-index:150;
+    margin-bottom:20px;
+}
+
+.btn-block {
+    font-size:14px !important;
+    font-family: Tahoma !important;
+}
+
+/*////////////////////////////////// container ///////////////////////////////////////////*/
+
+.container-body {
+    width:100%;
+    padding: 0% 5% 0% 5%;
+}
+
+#scroll-index {
+    position:absolute;
+    background-color:#fff;
+    width:100%;
+    z-index:100;
+    overflow-y:auto;
+    overflow-x:hidden;    
+    top:90px;
+    bottom:120px;
+}
+
+.nav-body {
+    list-style: none;
+    font-size:1.1em !important;
+    padding:0;
+    margin:0;
+}
+
+.nav-body li {
+    width:100%;
+    min-width:100px;
+    padding:8px 0px 8px 5%;
+    color:#0088cc;
+    border-bottom:1px solid #d5d5d5;
+}
+    .nav-body li:hover {
+        background-color:#f1f1f1;
+        box-shadow: 0px 3px 5px #dcdbdb;
+        text-decoration:none;
+    }
+
+.menu-footer {
+    width:90%;
+    padding-bottom:20px;        
+    position:absolute;
+    bottom:0px;
+    background-color:#e9e9e9;
+} 
+
+/*////////////////////////// container menu page only ///////////////////////////////////*/
+
+#container-menu {
+    width:99.96%;
+    height:100%;
+    bottom:0px;
+    margin-top:50px;
+    background-color:#e9e9e9;
+    position:absolute;
+    z-index:900;
+    overflow:auto;
+}
+
+.menu-body {
+    width:100%;
+    min-height:410px;
+    bottom:0px;
+    top:0px;
+    padding: 0% 5% 0% 5%;
+    font-size:1.05em;
+    color:#464646;
+    float:left;
+    position:absolute;
+    z-index:950;
+    background-color:#ffffff;
+    border-top: 1px solid #d5d5d5;
+}
+
+.menu-col{
+    width:33.33%;
+    height:auto;
+    float:left;
+}
+
+.menu-footer-menu {
+    width:90%;
+    bottom:0px;
+    float:left;
+    margin-bottom:40px;        
+    position:absolute;
+    background-color:#e9e9e9;
+}
+
+.badge {
+    position:absolute;
+}
+
+.Bg_Blue {
+    width: 81px;
+    height: 81px;
+    background-color:#009DD9;
+    border-radius:50%;
+    margin:auto auto;
+    display: block;
+} 
+
+.menu-name {
+    width:100%;
+    text-align:center;
+    margin-top:20px;
+}
+
+.icon_menu{
+    margin: 24px 0px 0px 24px;
+}
+
+/*////////////////////////// container search page only ///////////////////////////////////*/
+
+#container-search {
+    width:99.96%;
+    height:100%;
+    bottom:0px;
+    margin-top:50px;
+    background-color:#e9e9e9;
+    position:absolute;
+    z-index:900;
+    overflow:auto;
+} 
+
+.search-body {
+    width:100%;
+    min-height:330px;
+    bottom:0px;
+    top:20px;
+    padding: 0% 5% 0% 5%;
+    font-size:1.05em;
+    float:left;
+    position:absolute;
+    z-index:950;
+    background-color:#e9e9e9;
+}
+
+.menu-footer-search {
+    width:90%;
+    min-height:70px;        
+    position:absolute;
+    bottom:0px;
+    background-color:#e9e9e9;
+}
+
+/*////////////////////////////////// ETC. ///////////////////////////////////////////*/
+
+/*[class^="icon-"], [class*=" icon-"] {
+    background-image:url('/Content/Bootstrap/images/glyphicons-halflings.png')
+}*/
+
+.font20 {font-size: 2.0em !important;}
+.font19 {font-size: 1.9em !important;}
+.font18 {font-size: 1.8em !important;}
+.font17 {font-size: 1.7em !important;}
+.font16 {font-size: 1.6em !important;}
+.font15 {font-size: 1.5em !important;}
+.font14 {font-size: 1.4em !important;}
+.font13 {font-size: 1.3em !important;}
+.font12 {font-size: 1.2em !important;}
+.font11 {font-size: 1.1em !important;}
+.font103 {font-size:1.03em !important;}
+.font10 {font-size:1em !important;}
+.fontorg {color:#ff6a00 !important;}
+.fontblack {color:#000 !important;}
+.fontFFF {color:#fff !important;}
+.fontblue {color:#0088CC !important;}
+.fontLightblue {color:#39f !important;}
+.fontgreen {color:#2E9130 !important;}
+.fontred {color:#FF1300 !important;}
+.fontgray {color:#C0C0C0 !important;}
+.fontbold {font-weight:700 !important;}
+.fontLink-green a {color:#2E9130 !important;}
+.nonUnderLine {
+    text-decoration:none !important;
+}
+.fontlink {color:#388EC8;}
+    .fontlink:hover {text-decoration:underline;color:#06c;}
+
+a:hover {text-decoration:underline;color:#06c;}
+.font-Tahoma {font-family: Tahoma !important;}
+label {font-size: 1em !important;}
+    label.error {font-size: 14px !important;}
+
+.menulink-area {
+    width:100%;
+    text-align:center;
+    font-family:Tahoma;
+}
+
+.form-horizontal .form-group {margin:0px 0px 8px 0px;}
+.row {margin: 0px 0px 0px 0px;}
+.success {margin-bottom:8px !important; height:34px;}
+
+.w-Qty {
+    width:90% !important;
+    padding:6px 0px 4px 1.5% !important;
+    float:left; 
+}
+
+.w-Qty-btn {
+    width:10% !important;
+    margin-top:6px;
+    height:22px !important;
+    float:left; 
+    border-bottom-right-radius:3px !important;
+    border-top-right-radius:3px !important;
+}
+
+.btn {
+    padding:4px 6px !important;
+    font-family:Tahoma;
+    font-size:14px !important;
+}
+
+.btn-area2 {width:49.5%;}
+.btn-area3 {width: 33.33%;float:left;}
+.w_btn100 {width:100%;}
+.w_btn975 {width:97.5%;}
+.w_form100l {padding-left:1% !important; padding-right:0px !important;}
+.w_form100r{padding-left:0px !important; padding-right:1% !important;}
+.mar_t100 {margin-top:100px;}
+.mar_l5per {margin-left: 5%;}
+
+.subheader-area {margin:10px 0px 0px 0px;}
+
+.icon-back img {
+    width:20px;
+    height:20px;
+    margin-top:-1px;
+}
+
+.underline {
+    clear:both;
+    width:100%;
+    height:2px;
+    border-bottom:2px; 
+    border-color:#808080;
+    border-bottom-style:dotted;
+}
+
+.tel_num {
+    width:100%;
+    float:left;
+    font-size:1em !important;
+    border-radius:5px;
+}
+
+.telephone-area-phone {
+    width:10%;
+    height:20px;
+    padding:3px;
+    float:left;
+    max-width:20px;
+    border-radius:50%;
+    background-color:#007EC9;
+}
+
+.telephone-area-number {
+    width:77%;
+    padding:3px 3px 3px 0px;
+    float:left;
+}
+
+.phone-icon img{
+    width:8px;
+    float:left;
+    margin-left:3px; 
+}
+
+.modal-alert {
+    right: 50%;
+    font-size:1em !important;
+}
+
+.bgGray {
+    background-color:#f2f2f2 !important;
+}
+.bgbtn-Gray {
+    background-color:#e9e9e9;
+}
+
+.icon-loader
+{
+    background: url("/Content/B2BMobile/images/iconLoader.gif") no-repeat;
+    width: 24px;
+    height: 24px;
+    display: block;
+}
+#loading{width:100%;height:100%;position:fixed;z-index:1045;background-color:#fff;}
+#imgloading{position:fixed;z-index:1046;}
+
+.warpList
+{
+    white-space: nowrap;
+    text-overflow: ellipsis;
+        -o-text-overflow: ellipsis;
+        -ms-text-overflow: ellipsis;
+    overflow: hidden;
+    width: 247px;
+}
+

@@ -1,0 +1,114 @@
+﻿body {
+    min-width:250px;
+    min-height:460px;
+    font-family:Tahoma;
+    overflow:hidden;
+}
+
+.scroll-CompanyList {
+    position:absolute;
+    background-color:#fff;
+    width:100%;
+    z-index:100;
+    overflow:auto;  
+    overflow-x:hidden !important;
+    top:91px;
+    bottom:0px;
+}
+
+.scroll-CompanyDetail {
+    position:absolute;
+    background-color:#fff;
+    width:100%;
+    z-index:100;
+    overflow:auto;  
+    top:91px;
+    bottom:61px;
+}
+
+/*/////////////////////////////////// Company List //////////////////////////////////////*/
+
+.list-Company {
+    width:100% !important;
+    min-width:315px;
+    padding:20px 5%;
+    font-size:1em;
+    border-bottom: 1px solid #D5D5D5;
+    border-bottom-style:dotted;
+    float:left;
+}
+
+/*/////////////////////////////////// Company Detail //////////////////////////////////////*/
+
+.CompDetail-area {
+    width:100%;
+    padding:10px 0px 10px 0px;
+    font-size:1em;
+}
+
+.line-Subtopic {
+    width:100%;
+    border-top:1px solid #ccc;
+}
+
+.Subtopic {
+    width:15%;
+    margin:2px auto 5px auto;
+    min-width:140px;
+    background-color:#fff;
+    text-align:center;
+    position:relative;
+    bottom:15px;
+    font-size:1.1em !important;
+    color:#C0C0C0;
+}
+
+.CompDetail{
+    width:100%;
+    padding:0px 5% 0px 5%;
+}
+
+.CompLogo_area {
+    width:auto;
+    margin:auto auto;
+    text-align:center;
+}
+
+.CompLogo img{
+    width:15%;
+    min-width:100px;
+    max-width:200px;
+    min-height:100px;
+    max-height:200px;
+}
+
+.CompContact {
+    width: 100%;
+    float: left;
+}
+
+
+.CompProduct{
+    list-style:none;
+    width:100%;
+    /*max-width:900px;*/
+    margin-left:auto;
+    margin-right:auto;
+}
+
+    .CompProduct li img{
+        /*width:23%;*/
+        width:80px;
+        height:80px;
+        margin:1%;
+        /*min-width:68px;
+        min-height:68px;
+        max-width:150px;
+        max-height:150px;*/
+        float:left;
+    }
+
+.socail_name {
+    width:90%;
+    float:left;
+}

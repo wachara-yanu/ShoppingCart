@@ -1,0 +1,103 @@
+﻿@media only screen and (max-width: 1024px) {
+    .divstatForm {
+        width: 94% !important;
+    }
+}
+
+html, body {
+height: 100%;
+margin: 0;
+padding: 0;
+background: #F8F8F8;
+
+}
+
+.spacer {
+height: 20px;
+}
+
+/* Sidebar Icons */
+
+#sidebar li.iconProductCate a {
+background: url(images/icon_productcate.png) no-repeat left;
+}
+#sidebar li.iconPurchas a {
+background: url(images/icon_purchas.png) no-repeat center left;
+}
+#sidebar li.iconMember a {
+background: url(images/icon_member.png) no-repeat center left;
+}
+#sidebar li.iconMessage a {
+background: url(images/icon_message.png) no-repeat center left;
+}
+#sidebar li.iconB2bpackage a {
+background: url(images/icon_b2bpackage.png) no-repeat center left;
+}
+#sidebar li.iconSystemset a {
+background: url(images/icon_systemset.png) no-repeat center left;
+}
+#sidebar li.iconProductAppr a {
+background: url(images/icon_productappr.png) no-repeat center left;
+}
+#sidebar li.iconBuyleadAppr a {
+background: url(images/icon_buyleadappr.png) no-repeat center left;
+}
+#sidebar li.iconOrder a {
+background: url(images/icon_order.png) no-repeat center left;
+}
+#sidebar li.iconOverview a {
+background: url(images/icon_overview.png) no-repeat center left;
+}
+#sidebar li.iconProduct a {
+background: url(images/icon_product.png) no-repeat center left;
+}
+#sidebar li.iconQuotation a {
+background: url(images/icon_quotation.png) no-repeat center left;
+}
+
+
+.iconSetting
+{
+    background:url("images/icon_setting.png") no-repeat;
+    padding-left:40px;
+    margin-left:10px;
+    vertical-align:middle;
+}
+.bgGray{background:url("images/smallgray.png");}
+.bgRed{background:url("images/smallred.png");}
+
+.divstatForm
+{
+    border: 1px solid #CCCCCC;
+    border-radius: 5px 5px 5px 5px;
+    padding: 10px 20px;
+    width: 96.5%;
+    position:relative;
+}
+.notif
+{
+    width:48%; 
+    height:110px;
+    float:left; 
+    position:relative; 
+}
+
+
+
+/* footer */
+.footerline
+{
+    background: url(images/longline.png) no-repeat;
+    margin:5px;
+    padding:5px;
+}
+/* custom bootstrap */
+.label-important, .badge-important
+{
+    background-color:#CC0000;
+}
+.caret-home {
+    border-bottom: 4px solid #000000;
+    border-top: 0 none;
+    content: "";
+}

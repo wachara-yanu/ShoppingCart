@@ -1,0 +1,156 @@
+﻿body {
+    min-width:250px;
+    min-height:460px;
+    font-family:Tahoma;
+    overflow:hidden;
+}
+
+.scroll-QuotationList {
+    position:absolute;
+    background-color:#fff;
+    width:100%;
+    z-index:100;
+    overflow:auto; 
+    overflow-x:hidden; 
+    top:91px;
+    bottom:0px;
+}
+
+.scroll-QuotationDetail {
+    position:absolute;
+    background-color:#fff;
+    width:100%;
+    z-index:100;
+    overflow:auto;  
+    bottom:61px;
+}
+
+/*/////////////////////////////////// Quotataion List //////////////////////////////////////*/
+
+.list-Quotation {
+    width:100%;
+    min-width:350px;
+    padding:20px 5%;
+    font-size:1em;
+    border-bottom: 1px solid #D5D5D5;
+    border-bottom-style:dotted;
+    float:left;
+}
+
+.list-image img{
+    min-width:75px;
+    min-height:75px;
+    max-width:120px;
+    max-height:120px;
+    width:10%;
+    text-align:center;
+    float:left;
+    margin-right:4%;
+}
+
+.list-ctQuotation {
+    width:73%;
+    min-width:100px;
+    height:100%;
+    float:left;
+}
+
+.fontlink_green:hover{
+    text-decoration:underline;
+    color:#2E9130 !important;
+}
+
+/*/////////////////////////////// Quotation Detail ///////////////////////////////////////////*/
+
+.QuoQty-area {
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    font-size: 1.1em;
+}
+
+.QuoDetail-area {
+    width: 100%;
+    padding: 10px 0px 10px 0px;
+    font-size: 1em;
+}
+
+.imgproduct_area{
+    width:100%;
+    float:left;
+    text-align:center;   
+}
+
+.imgproduct img{
+    max-width:200px;
+    max-height:200px;
+}
+
+.line-Subtopic {
+    width:100%;
+    border-top:1px solid #ccc;
+}
+
+.Subtopic {
+    width:15%;
+    margin:2px auto 5px auto;
+    min-width:140px;
+    background-color:#fff;
+    text-align:center;
+    position:relative;
+    bottom:15px;
+    font-size:1.1em !important;
+    color:#C0C0C0;
+}
+
+/*/////////////////////////////// Container Contact Page Only  ///////////////////////////////*/
+
+#quotation-Target,#tel-Target {
+    width:99.96%;
+    height:100%;
+    bottom:0px;
+    margin-top:50px;
+    background-color:#e9e9e9;
+    position:absolute;
+    z-index:700;
+    overflow:auto;
+}
+
+.scroll-contact {
+    position:absolute;
+    width:100%;
+    z-index:760;
+    overflow:auto;  
+    top:91px;
+    bottom:0px;
+}
+
+#quotation-body,#tel-body {
+    width:100%;
+    min-height:380px;
+    bottom:0px;
+    top:20px;
+    padding: 0% 5% 0% 5%;
+    font-size:1.1em;
+    float:left;
+    position:absolute;
+    z-index:750;
+    background-color:#e9e9e9;   
+}
+
+.social-icon img{
+    width:20px;
+    height:20px;
+    margin-right:20px;
+}
+
+.close-icon img {
+    width:25px;
+    height:25px;
+}
+
+/*//////////////////////////////////// Form  ////////////////////////////////////////*/
+
+.form-area2 {width:49.5%;}
+.form-areaQuo1 {width:35%}
+.form-areaQuo2 {width:64.5%}
+.form-area3 {width:33.33%;}
