@@ -1,0 +1,46 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+<div  class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 0px 0px;width: 97%">
+<div class="form-inline">
+    <label class="checkbox mar_l15"> @res.Common.lblKeyword : </label>
+    <input type="text" class="wid_input_search" name="TextSearch" placeholder="@res.Common.lblSearch" style="width:206px"> 
+    <label class="checkbox mar_l28"> @res.Common.lblSearch_by : </label>
+    <select class="wid_select_search" name="SearchType">
+         @foreach (var it in ViewBag.EnumSearchByHotFeat)
+        {
+            <option value="@it.EnumValue">@it.EnumText</option>
+        }
+    </select>
+</div>
+<div class="clean10"></div>
+<div class="form-inline">
+    <label class="checkbox mar_l5"> @res.Admin.lblType : </label>
+    <select name="PStatus" id="PStatus" class="wid_select_search">
+        @foreach (var it in ViewBag.EnumHotFeatStatus)
+        {
+            if (it.EnumValue == ViewBag.PStatus)
+            {
+                <option value="@it.EnumValue" selected >@it.EnumText</option>
+            }
+            else
+            {
+                <option value="@it.EnumValue" >@it.EnumText</option>
+            }
+        }
+    </select>  
+     <label class="checkbox mar_l45"> สถานะ : </label>
+    <select class="wid_select_search" name="SearchStatus">
+         @foreach (var it in ViewBag.EnumSearchByHotFeatStatus)
+        {
+            <option value="@it.EnumValue">@it.EnumText</option>
+        }
+    </select>  
+</div>
+    <div class="clean10"></div>
+<div class="form-inline">
+    <label class="checkbox"> @res.Common.lblStartDate : </label>
+    <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA wid_input_search" style="width:206px" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+    <input type="checkbox" id="SelectAllPeriod"  />
+    <button type="submit" class="btn btn-darkblue btnsearch"><i class="icon-search icon-white mar_t3"></i></button>
+</div>
+
+</div>

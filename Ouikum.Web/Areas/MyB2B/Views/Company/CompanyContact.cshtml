@@ -1,0 +1,614 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{
+    ViewBag.Title = @res.Company.lblCompContact;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@{    
+    var Companies = (view_Company)ViewBag.Companies;
+}
+@section head{
+    <link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />
+} 
+
+<form class="form-horizontal" action="" method="post" id="CompCont_form" name="CompCont_form" style="margin-bottom:0px;">
+    <input type="hidden" value="@Companies.RowVersion" id="RowVersion" name="RowVersion" />
+    <div style="margin-top:25px;">
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลติดต่อบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_con">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit1">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------------------------------------btn edit&save (ตัวที่1)------------------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideTop" id="btn_cancle1">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideTop" id="btn_save1">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="company_con" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Buylead.lblContactName :</label>
+                    <div class="controls ContactFirstName"> 
+                        <label id="lblContactFirstName" class="control-label show show1" for="ContactFirstName" style="text-align:left;">
+                            @if (Companies.ContactFirstName != null && Companies.ContactFirstName != "")
+                                {
+                                    @Companies.ContactFirstName
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text"  name="ContactFirstName" id="ContactFirstName" placeholder="Contact Name" class="span6 hide hide1" value="@Companies.ContactFirstName"/> 
+                        <div class="clean"></div>
+                        <label class="checkbox inline hide hide1" style="cursor:pointer;padding-top:0px;">
+                            @if (Companies.IsContSameAddr == true)
+                            {
+                                <input type="checkbox" id="IsContSameAddr" value="true" checked="checked" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="IsContSameAddr" value="false" />
+                            }   
+                            @res.Company.lblUserComp 
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Common.lblLastName :</label>
+                    <div class="controls"> 
+                        <label id="lblContactLastName" class="control-label show show1" for="ContactLastName" style="text-align:left;">
+                            @if (Companies.ContactLastName != null && Companies.ContactLastName != "")
+                                {
+                                    @Companies.ContactLastName
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text"  name="ContactLastName" id="ContactLastName" placeholder="Contact Last Name" class="span6 hide hide1" value="@Companies.ContactLastName"/>  
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Buylead.lblPositionName :</label>
+                    <div class="controls"> 
+                        <label id="lblContactPositionName" class="control-label show show1" for="ContactPositionName" style="text-align:left;">
+                            @if (Companies.ContactPositionName != null && Companies.ContactPositionName != "")
+                                {
+                                    @Companies.ContactPositionName
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text"  name="ContactPositionName" id="ContactPositionName" placeholder="Position Name" class="span6 hide hide1" value="@Companies.ContactPositionName"/>  
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="AvatarImgPath">@res.Company.lblContImg :</label>
+                    <div class="controls">
+                        <span class="btn btn-file btn-tootip-top hide1" style="display:none;" rel="tooltip"  title="@res.Common.lblSelectImage" style="margin:0">
+                            @(Html.Telerik().Upload()
+                                .Name("FileContactImgPath")
+                                .Multiple((bool)false)
+                                .Async(async => async
+                                .Save("SaveContactImg", "Company")
+                                .Remove("RemoveContactImg", "Company")
+                                .AutoUpload((bool)true))                        
+                                .ClientEvents(events => events
+                                .OnUpload("onUploadImg")
+                                .OnSuccess("onSuccessContImg"))
+                                )
+                        </span>
+                        <input type="hidden" id="ContactImgPath" name="ContactImgPath" value="@Companies.ContactImgPath" />
+                        <div class="fileupload-new thumbnail mar_t10" id="ImgCont" style="width: 100px; height:100px;">
+                            @if (Companies.ContactImgPath != null && Companies.ContactImgPath != "")
+                                {
+                                    <i id='del_ContImg' class='icon-remove-sign btn-tootip-top cursor hide hide1' rel='tooltip'  title='@res.Common.colDelete' style='position:absolute;margin-left:95px;margin-top:-10px;' onclick='Del_ContImg();'></i>
+                                    <img id="img_ContImgPath" src="@Url.CompanyContact(Companies.CompID, @Companies.ContactImgPath)" style="width: 100px;height: 100px;"  />
+                                }
+                            else
+                                {
+                                    <img id="img_ContImgPath" src="http://www.placehold.it/100x75/EFEFEF/AAAAAA&text=no+image" />
+                                }
+                        </div>
+                        <div style="color:Red;">
+                            - @res.Company.lblUpload_Logo1<br />
+                            - @res.Company.lblUpload_Logo2<br />
+                            - @res.Company.lblUpload_Cont3<br /> 
+                            - @res.Company.lblUpload_CompImg4 
+                        </div>
+                    </div>
+                </div>  
+                <div class="control-group">
+                    <label class="control-label" for="ContactAddrLine1">@res.Common.lblAddress :</label>
+                    <div class="controls ContactAddrLine1">
+                        <label id="lblContactAddrLine1" class="control-label show show1" for="ContactAddrLine1" style="text-align:left;">
+                            @if (Companies.ContactAddrLine1 != null && Companies.ContactAddrLine1 != "")
+                                {
+                                    @Companies.ContactAddrLine1
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="ContactAddrLine1" id="ContactAddrLine1" placeholder="Address" class="span6 hide hide1" value="@Companies.ContactAddrLine1"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="ContactProvinceID">@res.Common.lblProvince :</label>
+                    <div class="controls ContactProvinceID">
+                        <label id="lblContactProvinceID" class="control-label show show1" for="ContactProvinceID" style="text-align:left;">
+                            @if (ViewBag.ContactProvinceName != null && ViewBag.ContactProvinceName != "")
+                                {
+                                    @ViewBag.ContactProvinceName
+                                }
+                            else
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        <select name="ContactProvinceID" id="ContactProvinceID" class="span6 hide hide1">
+                            <option value="0">-----@res.Common.chooseProvince-----</option>
+                            @foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                            {
+                                if (Companies.ContactProvinceID == it.ProvinceID)
+                                    {
+                                        <option value="@it.ProvinceID" selected="selected">@it.ProvinceName</option>
+                                    }
+                                else
+                                    {
+                                        <option value="@it.ProvinceID">@it.ProvinceName</option>
+                                    }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="ContactDistrictID">@res.Common.lblDistrict :</label>
+                    <div class="controls ContactDistrictID">
+                        <label id="lblContactDistrictID" class="control-label show show1" for="ContactDistrictID" style="text-align:left;width:500px">
+                            @if (ViewBag.ContactDistrictName != null && ViewBag.ContactDistrictName != "")
+                                {
+                                    @ViewBag.ContactDistrictName
+                                }
+                            else
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        <select name="ContactDistrictID" id="ContactDistrictID"  class="span6 hide hide1">
+                            <option value="0">-----@res.Common.chooseDistrict-----</option>
+                            @foreach (var it in (List<emDistrict>)ViewBag.Districts)
+                            {
+                                if (Companies.ContactDistrictID == it.DistrictID)
+                                    {
+                                        <option value="@it.DistrictID" selected="selected">@it.DistrictName</option>
+                                    }
+                                else
+                                    {
+                                        <option value="@it.DistrictID">@it.DistrictName</option>
+                                    }
+                            }
+                        </select>
+                    </div>
+                </div>  
+                <div class="control-group">
+                    <label class="control-label" for="ContactPostalCode">@res.Common.lblPostal_code :</label>
+                    <div class="controls ContactPostalCode">
+                        <label id="lblContactPostalCode" class="control-label show show1" for="ContactPostalCode" style="text-align:left;">
+                            @if (Companies.ContactPostalCode != null && Companies.ContactPostalCode != "")
+                                {
+                                    @Companies.ContactPostalCode
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="ContactPostalCode" id="ContactPostalCode" placeholder="Postal Code"  class="span6 hide hide1" maxlength="5" value="@Companies.ContactPostalCode"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="ContactEmail">@res.Common.lblEmail :</label>
+                    <div class="controls ContactEmail">
+                        <label id="lblContactEmail" class="control-label show show1" for="ContactEmail" style="text-align:left;">
+                            @if (Companies.ContactEmail != null && Companies.ContactEmail != "")
+                                {
+                                    @Companies.ContactEmail
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="ContactEmail" id="ContactEmail" placeholder="Email Address" class="span6 hide hide1" value="@Companies.ContactEmail" onblur="checkContEmail();"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Phone">@res.Common.lblPhoneno :</label>
+                    <div class="controls ContactPhone">
+                        <label id="lblContactPhone" class="control-label show show1" for="ContactPhone" style="text-align:left;">
+                            @if (Companies.ContactPhone != null && Companies.ContactPhone != "")
+                                {
+                                    @Companies.ContactPhone
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="ContactPhone" id="ContactPhone" placeholder="Phone"  class="span6 hide hide1" value="@Companies.ContactPhone"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Mobile">@res.Common.lblMobileno :</label>
+                    <div class="controls">
+                        <label id="lblContactMobile" class="control-label show show1" for="ContactMobile" style="text-align:left;">
+                            @if (Companies.ContactMobile != null && Companies.ContactMobile != "")
+                                {
+                                    @Companies.ContactMobile
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="ContactMobile" id="ContactMobile" placeholder="Mobile"  class="span6 hide hide1" value="@Companies.ContactMobile"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Fax">@res.Common.lblFax :</label>
+                    <div class="controls">
+                        <label id="lblContactFax" class="control-label show show1" for="ContactFax" style="text-align:left;">
+                            @if (Companies.ContactFax != null && Companies.ContactFax != "")
+                                {
+                                    @Companies.ContactFax
+                                }
+                            else
+                                { 
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="ContactFax" id="ContactFax" placeholder="Fax"  class="span6 hide hide1" value="@Companies.ContactFax"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+					
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลทั่วไปบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_con2">
+                    <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                </div>
+                <div class="blog-edit" id="edit2">
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                    </div>
+                </div>
+                </div>
+
+                <!----------------------------------------btn edit&save (ตัวที่2)------------------------------------------------->
+
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideMiddle" id="btn_cancle2">
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                    </div>
+                    </div>
+                    <div class="blog-saveSet hide hideMiddle" id="btn_save2">
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                    </div>
+                    </div>
+                </div>
+            </div>
+
+        <div id="company_con2" class="CollapseDetail">
+        <div class="clean10"></div>
+            <div class="control-group">
+            <label class="control-label-Comp" for="AvatarImgPath">@res.Company.lblComp_Map :</label>
+            <div class="controls-Comp">
+            <span class="btn btn-file btn-tootip-top hide2" style="display:none;" rel="tooltip"  title="@res.Common.lblSelectImage" style="margin:0">
+                @(Html.Telerik().Upload()
+                .Name("FileMapImgPath")
+                .Multiple((bool)false)
+                .Async(async => async
+                .Save("SaveMapImg", "Company")
+                .Remove("RemoveMapImg", "Company")
+                .AutoUpload((bool)true))
+                .ClientEvents(events => events
+                        .OnUpload("onUploadImg")
+                .OnSuccess("onSuccessMap"))
+                )
+            </span>
+            <input type="hidden" id="MapImgPath" name="MapImgPath" value="@Companies.MapImgPath" />
+            <div class="fileupload-new thumbnail mar_t10" id="ImgMap" style="width: 500px; height: 350px;">
+                @if (Companies.MapImgPath != null && Companies.MapImgPath != "")
+                    {
+                        <i id='del_MapImgPath' class='icon-remove-sign btn-tootip-top cursor hide hide2' rel='tooltip'  title='@res.Common.colDelete' style='position:absolute;margin-left:497px;margin-top:-12px;' onclick='Del_MapImgPath();'></i>
+                        <img id="img_MapImgPath" src="@Url.CompanyMap(Companies.CompID, @Companies.MapImgPath)" style="height: 350px;width: 500px;" />
+                    }
+                else
+                    {
+                        <img id="img_MapImgPath" src="http://www.placehold.it/500x350/EFEFEF/AAAAAA&text=no+image" />
+                    }
+            </div>
+            <div style="color:Red;">
+                - @res.Company.lblUpload_Logo1<br />
+                - @res.Company.lblUpload_Map2<br />
+                - @res.Company.lblUpload_Map3<br /> 
+                - @res.Company.lblUpload_CompImg4 
+            </div>
+            </div>
+            </div>  
+
+            <div class="control-group">
+            <label class="control-label-Comp" for="MapDetail">@res.Company.lblMap_Detail :</label>
+            <div class="controls-Comp">
+            <label id="lblCompMapDetail" class="control-label show2" for="MapDetail" style="text-align:left;width:500px; overflow:auto;">
+                @if (Companies.CompMapDetail != null && Companies.CompMapDetail != "")
+                    {
+                        @Html.Raw(Companies.CompMapDetail)
+                    }
+                else
+                    { 
+                        <text>-</text>
+                    }
+            </label>
+            <div class="hide hide2">
+                <textarea id ="CompMapDetail"> @Companies.CompMapDetail</textarea>
+            </div>
+            </div>
+            </div>
+        </div>
+        </div>
+
+        <div class="clean20"></div>
+
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">Google Map</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_con3">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit3">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------------------------------------btn edit&save (ตัวที่3)------------------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideButtom" id="btn_cancle3">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideButtom" id="btn_save3">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="company_con3" class="CollapseDetail">
+                <div class="content_toggle">
+                    <div class="clean10"></div>
+                    <div class="control-group" style="margin-left: 100px;">
+                        <p class="hide searchmap">
+                            <input type="text" size="60" name="address" id="address" value="" />
+                            <button class="btn " type="button" id="searchmap" onclick="showAddress($('#address').val()); return false">Search</button>
+                        </p>
+                        <div class="clean10"></div>
+                        <div id="map_canvas" style="width: 90%; height: 350px; border-radius: 3px; border: 1px solid #ccc;"></div>
+                    </div>
+                    <div class="control-group hide showmap" style="margin-left:100px;">
+                        <div class="inline mar_b5">
+                            <label class="control-label" for="Fax" style="text-align:left!important;">@res.Company.MapLatitude :</label>
+                            <label id="lblGMapLatitude" class="control-label show3" for="MapLatitude">
+                                @if (Companies.GMapLatitude != null && Companies.GMapLatitude != "")
+                                {
+                                    @Companies.GMapLatitude
+                                }
+                                else
+                                {
+                                    @ViewBag.GMapLatitude
+                                    Companies.GMapLatitude = Convert.ToString(ViewBag.GMapLatitude);
+                                }
+                            </label>
+                            <input type="text" name="GMapLatitude" id="GMapLatitude" placeholder="MapLatitude"  class="span3 mar_l5" value="@Companies.GMapLatitude"/>
+                        </div>
+                        <div class="inline mar_b5">
+                            <label class="control-label" for="Fax" style="text-align:left!important; margin-left:50px;">@res.Company.lblMapLongtitude :</label>
+                            <label id="lblGMapLongtitude" class="control-label show3" for="MapLongtitude">
+                                @if (Companies.GMapLongtitude != null && Companies.GMapLongtitude != "")
+                                {
+                                    @Companies.GMapLongtitude
+                                }
+                                else
+                                {
+                                    @ViewBag.GMapLongtitude
+                                    Companies.GMapLongtitude = Convert.ToString(ViewBag.GMapLongtitude);
+                                }
+                            </label>
+                            <input type="text" name="GMapLongtitude" id="GMapLongtitude" placeholder="MapLongtitude"  class="span3 mar_l5" value="@Companies.GMapLongtitude"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group hide showmap" style="margin-left:100px;">
+                        <div class="inline mar_b5 ">
+                            <label class="control-label" for="Fax" style="text-align:left!important;">@res.Company.lblPinLatitude :</label>
+                            <label id="lblGPinLatitude" class="control-label show3" for="GPinLatitude">
+                                @if (Companies.GPinLatitude != null && Companies.GPinLatitude != "")
+                                {
+                                    @Companies.GPinLatitude
+                                }
+                                else
+                                {
+                                    @ViewBag.GPinLatitude
+                                    Companies.GPinLatitude = Convert.ToString(ViewBag.GPinLatitude);
+                                }
+                            </label>
+                            <input type="text" name="GPinLatitude" id="GPinLatitude" placeholder="PinLatitude"  class="span3 mar_l5" value="@Companies.GPinLatitude"/>
+                        </div>
+                        <div class="inline mar_b5 ">
+                            <label class="control-label" for="Fax" style="text-align:left!important; margin-left:50px;">@res.Company.lblPinLongtitude :</label>
+                            <label id="lblGPinLongtitude" class="control-label show3" for="GPinLongtitude">
+                                @if (Companies.GPinLongtitude != null && Companies.GPinLongtitude != "")
+                                {
+                                    @Companies.GPinLongtitude
+                                }
+                                else
+                                {
+                                    @ViewBag.GPinLongtitude
+                                    Companies.GPinLongtitude = Convert.ToString(ViewBag.GPinLongtitude);
+                                }
+                            </label>
+                            <input type="text" name="GPinLongtitude" id="GPinLongtitude" placeholder="PinLongtitude"  class="span3 mar_l5" value="@Companies.GPinLongtitude"/>
+                        </div>
+                    </div>
+
+                    <div class="control-group center" style="display: none">
+                        <div class="inline mar_l30 show">
+                            <label id="lblGZoom" class="control inline" for="Zoom">@res.Company.lblZoom : 
+                            @if (Companies.GZoom != null && Companies.GZoom != 0)
+                            {
+                                @Companies.GZoom
+                            }
+                            else
+                            {
+                                @ViewBag.GZoom
+                                Companies.GZoom = DataManager.ConvertToShort(ViewBag.GZoom);
+                            }
+                            </label>
+                        </div>
+                        <div class="inline mar_l60 hide">
+                            <label id="" class="control inline" for="Zoom">Zoom : </label>
+                            <input type="text" name="GZoom" id="GZoom" placeholder="Zoom"  class="span2" value="@Companies.GZoom"/>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+    </div>
+    <div class="clean20"></div>
+
+    <div class="control-group">
+        <div class="controls" style="margin-left:0 !important;">
+            <div class="edit btn_editBlue show cursor" id="editAll" style="width:150px">
+                <span class="fl_l icon_btn_edit mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r10">
+                    <p style="line-height:5px;">แก้ไขข้อมูลทั้งหมด</p>
+                </span>
+            </div>
+            <div id="submitAll" class="btn_saveGreen hide cursor">
+                <span class="fl_l icon_btn_save mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r30">
+                    <p style="line-height:5px;">@res.Common.btnSave</p>
+                </span>
+            </div>
+            <div id="cancelAll" class="btn_calcelGray mar_l20 hide cursor">
+                <span class="fl_l icon_btn_cancel mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r30">
+                    <p style="line-height:5px;">@res.Common.btnCancel</p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section js{
+<script src="@Url.js("MyB2B/Company/CompContact.js")" type="text/javascript"></script>
+<script src="@Url.js("MyB2B/Company/CompanyUploads.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>
+@*<script src="~/Scripts/CompanyWeb/Default.js"></script>*@
+<script src="http://maps.google.com/maps?file=api&amp;v=2&amp;key=ABQIAAAAgrj58PbXr2YriiRDqbnL1RSqrCjdkglBijPNIIYrqkVvD1R4QxRl47Yh2D_0C1l5KXQJGrbkSDvXFA" type="text/javascript"></script>
+<script type="text/javascript">
+
+    /*--------------------- toggle -------------------*/
+
+    $(".btnCollapse").live('click', function () {
+        var data = $(this).index(".btnCollapse");
+        var Icon = $(this).find("i")
+        var target = $(this).attr('data-target');
+
+        console.log(target)
+
+        if (Icon.hasClass("icon-chevron-down")) {
+            Icon.removeClass('icon-chevron-down');
+            Icon.addClass("icon-chevron-up")
+            $(target).slideDown();
+        } else {
+            Icon.addClass("icon-chevron-down")
+            Icon.removeClass('icon-chevron-up');
+            $(target).slideUp();
+        }
+    });
+
+    </script>
+}
+

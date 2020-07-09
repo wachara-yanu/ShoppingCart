@@ -1,0 +1,109 @@
+﻿@{
+    ViewBag.Title = @res.Common.lblCategory;
+    Layout = "~/Views/MP/MP_Purchase.cshtml";
+}
+
+@using Ouikum.Category;
+@using res = Prosoft.Resource.Web.Ouikum;
+
+@{
+    var svCategory = new CategoryService();
+    var index = ViewBag.Prefix;
+}
+
+@section head{
+    <link rel="canonical" href="http://@res.Common.lblDomainShortName/Search/Categories" />
+    <!-- REVOLUTION BANNER CSS SETTINGS -->
+	<link rel="stylesheet" type="text/css" href="@Url.css("Home/Slide.css")" media="screen" />
+    <!-- rcarousel slide -->
+    <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+
+    <style type="text/css">
+    .listCate li
+    {
+        list-style:none;
+    }
+    </style>
+}
+
+@section js{
+    <script type="text/javascript" src="@Url.js("Search/Categories.js")"></script>
+    <script src="@Href("~/Scripts/default.js")" type="text/javascript"></script>
+     
+     <!-- Rcarousel slide -->
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.core.min.js")" type="text/javascript"></script>   
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.widget.min.js")" type="text/javascript"></script>   
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.rcarousel.min.js")" type="text/javascript"></script>
+    @*<script src="@Url.js("Home/AdminMessagePopup.js")" type="text/javascript"></script>*@   
+}
+<div class="container_home">
+    <div class="clean15"></div>
+    <div id="home-main "> 
+        <div><h4>@res.Common.lblCategory:</h4></div>
+        @Html.Partial("UC/SearchFilter")
+        <div>
+
+            <section>
+            @{if (index != null)
+                {
+                @Html.Partial("UC/SearchIndex")
+                }
+                else
+                {
+                @Html.Partial("UC/SearchAll")
+                }
+            }
+            </section>
+        </div>
+    </div>
+    <div class="clean10"></div> 
+
+    <div class="clean10"></div>
+    <div id="Home-Feature">
+        @Html.Partial("~/Views/Home/UC/Feature.cshtml")  
+    </div>
+    <div class="clean10"></div>  
+</div>
+@Html.Partial(res.Pageviews.pvHomeFooter)
+<script type="text/javascript">
+    function hideArticle(obj) {
+        var index = $('.imgHide').index(obj);
+        if ($('.imgShow').eq(index).hasClass('hide') == true) {
+            $('.imgShow').eq(index).removeClass("hide");
+            $('.imgHide').eq(index).addClass('hide');
+            $('.content').eq(index).hide();
+        }
+    }
+
+    function showArticle(obj) {
+        var index = $('.imgShow').index(obj);
+        if ($('.imgHide').eq(index).hasClass('hide') == true) {
+            $('.imgHide').eq(index).removeClass("hide");
+            $('.imgShow').eq(index).addClass('hide');
+            $('.content').eq(index).show();
+        }
+    }
+
+    function showIndex(obj) {
+        var index = $('.imgShow1').index(obj);
+        //console.log(index);
+        if ($('.imgHide1').eq(index).hasClass('hide') == true) {
+            $('.imgHide1').eq(index).removeClass('hide');
+            $('.imgShow1').eq(index).addClass('hide');
+            $('.listCate').eq(index).find('.content1').show();
+        }
+    }
+
+    function hideIndex(obj) {
+        var index = $('.imgHide1').index(obj);
+        //console.log(index);
+        if ($('.imgShow1').eq(index).hasClass('hide') == true) {
+            $('.imgShow1').eq(index).removeClass("hide");
+            $('.imgHide1').eq(index).addClass('hide');
+            $('.listCate').eq(index).find('.content1').hide();
+        }
+    }
+</script>
+
+
+

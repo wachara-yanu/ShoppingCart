@@ -1,0 +1,157 @@
+﻿@using System.Web.Mvc;
+@using Telerik.Web.Mvc;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Quotation.lblQuotation;
+    Layout = "~/Views/MP/MP_Quotation.cshtml";
+}
+@section HeadContent{
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet"type="text/css" />
+    <link href="@Url.css("Quotation/Quotation.css")" rel="stylesheet" type="text/css" />
+}
+<div id="Content" class="column" style="margin: 0 2%">
+<input type="hidden" id="txtFromName" value="@ViewBag.CompName" />
+<input type="hidden" id="txtFromEmail" value="@ViewBag.ContactEmail" />
+ @using (Ajax.BeginForm("List", "Quotation", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+ { 
+    <div id="HeadQuotation_List" style="margin-top:2%">
+        <div align="center">
+            <div class="alert alert-success" id="information" style="text-align:center;height:20px;display:none;">
+                <button class="close" type="button">×</button>
+                <p id="message"></p>
+            </div>
+        </div>
+        <div class="fl_l">
+            @*<span class="btnCheckAll" style="padding:3px 10px 8px 10px;">
+                <label class="checkbox inline" style="font-size:14px">
+                    <input type="checkbox" id="checkAll" onclick="CheckBoxall($(this))"/>@res.Message_Center.colSelectAll
+                </label>
+            </span>*@
+            @if (ViewBag.Type != "Trash")
+            {
+                if (ViewBag.Type != "Sentbox")
+                {
+                <div class="btn_markUnreadBlue cursor inline" onclick="MarkRead();">
+                    <span class="fl_l icon_menu_messNew mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r15">
+                        <p style="line-height:5px;">@res.Message_Center.btnMark_unread</p>
+                        <input type="hidden" value="@res.Message_Center.btnMark_unread1" />
+                    </span>
+                </div>
+                }
+                if (ViewBag.Type == "Importance")
+                {
+                    <div class="btn_delCrimson cursor inline" onclick="ChangeImportantList();" style="width:70px">
+                        <span class="fl_l icon_menu_mesDel mar_l10 mar_t5"></span>
+                        <span class="fl_r mar_t13 mar_r15">
+                            <p style="line-height:5px;">ลบ</p>
+                        </span>
+                    </div>
+                }
+                else
+                {
+                    <div class="btn_delCrimson cursor inline" onclick="delQuotation();" style="width:70px">
+                        <span class="fl_l icon_menu_mesDel mar_l10 mar_t5"></span>
+                        <span class="fl_r mar_t13 mar_r15">
+                            <p style="line-height:5px;">ลบ</p>
+                        </span>
+                    </div>
+                }
+            }
+            else
+            {
+                <div class="btn_saveGreen cursor inline" onclick="Move();" style="width:100px">
+                    <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r15">
+                        <p style="line-height:5px;">ย้ายกลับ</p>
+                    </span>
+                </div>
+                <div class="btn_delCrimson cursor inline" onclick="delQuo();" style="width:70px">
+                    <span class="fl_l icon_menu_mesDel mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r15">
+                        <p style="line-height:5px;">ลบ</p>
+                    </span>
+                </div>
+                <div class="btn_delCrimson cursor inline" onclick="delAllQuotation();">
+                    <span class="fl_l icon_menu_messDelAll  mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r15">
+                        <p style="line-height:5px;">ล้างข้อมูล</p>
+                    </span>
+                </div>
+            }
+            @*<a class="btn mar_l5" id="btnReject">@res.Quotation.btnReject <span class="caret"></span></a>*@
+        </div>
+        <div class="fl_r">
+             <div class="input-prepend input-append inline fl_l mar_t7 mar_r15" id="KeywordGroup">
+                <select id="Sel_Quotation" name="QuotationStatus" style="border-radius:3px 0px 0px 3px ; border-right:0px;">
+                    <option value="">ทั้งหมด</option>
+                    <option value="Q">@res.Quotation.lblQuotation_</option>
+                    <option value="R">@res.Quotation.lblBid</option>
+                    <option value="J">ปฏิเสธ</option>
+                </select>
+                <input placeholder="Search" size="16" type="text" name="TextSearch" id="TextSearch"/>
+                <button class="btn btnsearch" style="width: 50px;">
+                    <i class="icon-search"></i>
+                </button>
+            </div>
+        </div>
+         <div class="clean15"></div>
+        <table>
+            <tr>
+                <td>หมายเหตุ:</td>
+                <td><div class="icon_requestQuotation inline mar_l10"></div></td>
+                <td><span class="mar_r15">ขอราคา</span></td>
+                <td><div class="icon_quoQuotation inline"></div></td>
+                <td><span class="mar_r15">เสนอราคา</span></td> 
+                <td><div class="icon_rejectQuotation inline"></div></td>
+                <td><span class="mar_r15">ปฏิเสธ</span></td>
+                <td><div class="icon_tagQuotation inline"></div></td>
+                <td><span class="mar_r15">สำคัญ</span></td>
+                <td><div class="icon_fileQuotation inline"></div></td>
+                <td><span class="mar_r15">ไฟล์แนบ</span></td>
+            </tr>
+        </table>
+        <div class="clean10"></div>
+    </div>
+    <input type="hidden" id="TypeQuotation" name="TypeQuotation" value="@ViewBag.Type" />
+    
+    <div id="ContentRight">     
+        @Html.Partial("UC/Grid/GridUC")
+    </div> 
+ }
+</div>
+<!------popup------->
+<div id="rejectPopup" class="popover" style="width:200px;height:255px;">
+    @{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus; }
+    <label><input type="checkbox" id="rbtReject_1" name="ChkReject"  value="@res.Quotation.btnnoStock" /><span class="mar_l5 font_m">@res.Quotation.btnnoStock</span></label>
+    <label><input type="checkbox" id="rbtReject_2" name="ChkReject"  value="@res.Quotation.btnPronot_enough" /><span class="mar_l5 font_m">@res.Quotation.btnPronot_enough</span></label>
+    <label><input type="checkbox" id="rbtReject_3" name="ChkReject"  value="@res.Quotation.btnCancleforSale" /><span class="mar_l5 font_m">@res.Quotation.btnCancleforSale</span></label>
+    <label><input type="checkbox" id="rbtReject_4" name="ChkReject"  value="@res.Common.lblOther"/><span class="mar_l5 font_m">@res.Common.lblOther</label>
+    <textarea id="txtaRejectDetail" rows="4" class="span3" cols=""></textarea>
+    <a class="btn btn-danger" onclick="if(confirm('Do you want this quotation reject?')){SendReject(@user.CompID);}">@res.Message_Center.btnSend</a>
+</div>
+@section FooterContent{
+    <script src="@Url.js("Quotation/Quotation.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Scrollbar/jquery.mousewheel.min.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            var Win_width = $(window).width();
+            if (Win_width < 1200) { $("#TextSearch").css("width","120px"); }
+            /*----------เลือกเมนู ด้านซ้าย-----------*/
+            var id = $("#TypeQuotation").val();
+            $(".toggle").find('li#' + id).addClass('active_template');
+            $(g_hidsubmit).eq(g_no).click();
+
+            /*---------------Display----------------------*/
+            $('#sidebar').css('height', $(window).height() - 60);
+            $('#main').css('height', $(window).height() - 60);
+            $("#btnReject").popover({
+                placement: 'bottom',
+                content: $("#rejectPopup").html(),
+                template: '<div class="popover" style="width:300px;"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
+            });
+            $("#rejectPopup").html('');
+        });
+    </script>
+}

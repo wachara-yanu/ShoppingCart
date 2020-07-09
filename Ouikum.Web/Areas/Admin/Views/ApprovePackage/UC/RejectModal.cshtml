@@ -1,0 +1,28 @@
+﻿
+@using res = Prosoft.Resource.Web.Ouikum
+<div id="RejectModal" data-id="" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">Reject</h3>
+    </div>
+    <div class="modal-body">
+    <div id="rejectform">
+    <label class="checkbox">
+        <input name="" type="checkbox" class="msg_reject" value="ข้อมูลไม่ครบ/ไม่ถูกต้อง"> ข้อมูลไม่ครบ/ไม่ถูกต้อง
+    </label>
+    <label class="checkbox">
+        <input name="" type="checkbox" class="msg_reject"  value="ไม่มีการชำระเงินเป็นระยะเวลานาน" > ไม่มีการชำระเงินเป็นระยะเวลานาน
+    </label>
+    <label class="checkbox">
+        <input name="" type="checkbox" class="msg_reject"  value="ข้อมูลผิดพลาด/ข้อมูลซ้ำซ้อน"> ข้อมูลผิดพลาด/ข้อมูลซ้ำซ้อน
+    </label>
+    <label class="checkbox">
+        <input name="" type="checkbox" class="msg_reject"  value="@res.Product.validOtherRemark">@res.Product.validOtherRemark
+    </label>
+    <textarea rows="4" class="span3 msg_reject_remark"></textarea>
+    </div>
+    <div class="clean10"></div>
+    <button id="save_reject_Package" class="btn btn-danger"  type="button">@res.Common.btnSave_en</button>
+
+</div> 
+</div>

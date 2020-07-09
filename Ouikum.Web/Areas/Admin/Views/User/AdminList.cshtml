@@ -1,0 +1,47 @@
+﻿@{
+    ViewBag.Title = res.Admin.lblAdminList;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />  
+    <link href="@Url.css("UC/DatePeriodUC/ui.daterangepicker.css")" rel="stylesheet" type="text/css" />
+}
+@using res = Prosoft.Resource.Web.Ouikum
+
+<div id="autoHeight" class="ContentAdmin">
+<div class="clean25"></div>
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/WebconfigMainMenu")*@
+<!---------------------------Table------------------------------>
+<div id="main_content" style="margin:0px 10px 10px 10px;">
+@using (Ajax.BeginForm("AdminList", "User", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+{ 
+@Html.Partial("UC/SearchAdmin")
+    <span class="btnCheckAll mar_r7">
+        <label class="checkbox inline">
+            <input type="checkbox" id="CheckAll" onclick="CheckBoxall($(this))" /> @res.Message_Center.colSelectAll
+        </label>
+    </span>
+    <a href="@Url.Action("NewAdmin","User","Admin")" id="New" class="btn" style="margin:2px;" onclick="">
+        <i class="icon-plus-sign"></i>
+        @res.Common.btnNew
+    </a>
+    <button class="btn" style="margin:2px;"
+    onclick="if(confirm('@res.Common.btnDel_Confirm ?')){DelUSer();}">
+    <i class="icon-remove-sign"></i>
+    @res.Common.btnDelete
+    </button>
+    
+    <input  type="hidden" id="MemberType" name="MemberType" value="@ViewBag.MemberType" />
+    <input  type="hidden" id="hidPopup" name="hidPopup" value="" />
+    <div id="UserGrid" class="mar_t10">@Html.Partial("UC/Grid/GridUC")</div>
+}
+</div>
+<div class="clean50"></div>
+@section js {
+    <script src="@Url.js("Admin/User/ListUser.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script>
+}

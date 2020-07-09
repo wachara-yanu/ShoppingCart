@@ -1,0 +1,97 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+<div id="formAdd" style="margin:10px;">
+    <div class="row " style="height:20px"></div>
+    <div class="row" style="padding-left:25px"> 
+    <center>
+        <div class="span4 " style="margin:auto;"> 
+        <form action="/" method="post" id="frmAddRecommend"  class="form-inline" form-data="#formAdd" onsubmit="return OnSearch($(this));" > 
+            <input class="TextSearch"   placeholder="@res.Product.lblPro_name"  type="text" value="@ViewBag.TextSearch" />
+            <button type="submit" class="btn btn-primary "><i class="icon-search icon-white"></i></button> 
+        </form>
+        </div>  
+         <div class="span5 inline pull-right"  >
+         <form id="formPaging" action="/" method="post" class="form-inline"  form-data="#formAdd" onsubmit="return GotoPageFormAdd($(this));">                    
+            <label class="mar_r5 lblTotalRow"></label>
+            <div class="input-append input-prepend "> 
+                <button class="btn   btn-prev"  form-data="#formAdd"  type="button"  title="Previous Page" >
+                    <i class="icon-chevron-left"></i>
+                </button>
+                <input  class="txtPageIndex" style="width:20px;" type="text"  form-data="#formAdd"   value="@ViewBag.PageIndex" />
+                <button class="btn btn-next"  form-data="#formAdd" type="button"  title="Next Page" >
+                <i class="icon-chevron-right"></i>
+                </button>
+            </div>
+              &nbsp;&nbsp;of&nbsp;<label  class="mar_l5 mar_r5 lblTotalPage"> </label> 
+         </form>
+    </div> 
+    </center>
+    </div>
+    
+    <hr />
+    <div class="row" style="margin:auto;overflow: auto;">
+        <div id="recommend_item" class="span" style="height:500px;padding-left:25px;">
+        @if (ViewBag.TotalRow > 0)
+        {
+           foreach (var it in (List<b2bProduct>)ViewBag.Products)
+           {
+                <center class="span2 mar_t10 add-item" data-id="@it.ProductID" style="height:140px;">
+                    <div class="fl_l mar_l4 icon_Approve cursor check-item hide " style="width:30px; position:absolute" ></div>
+                    <img title="@it.ProductName" alt="@it.ProductName" class="img-polaroid cursor recomm-item" style="width:85px; height:85px;"
+                     src="@Url.ThumbProduct(it.CompID, it.ProductID, it.ProductImgPath)"
+                      />
+                    <p><a target="_blank" href="@Url.Action("Detail", "Product", new { id = it.ProductID , name =  @Url.ReplaceUrl(it.ProductName) ,area="Search"})" >@it.ProductName</a></p>
+                </center>
+           }
+        }
+        else
+        {
+            <center>@res.Common.lblNotFound</center>
+        }
+        </div>
+    </div>
+    <div class="clean"></div>
+    <hr />
+    <div class="clean10"></div>
+    <div class="row">
+        <center  >
+            <button type="button" id="import-item" class="btn  btn-large">@res.Common.btnAdd</button>
+            <button type="button" id="cancel-item" class="btn   btn-large mar_l10" data-dismiss="modal" aria-hidden="true">@res.Common.btnCancel</button>
+        </center>
+    </div>
+    <div class="clean10"></div> 
+        <input type="hidden" class="hidPageIndex" value="@ViewBag.PageIndex" />
+        <input type="hidden" class="hidPageSize" value="@ViewBag.PageSize" />
+        <input type="hidden" class="hidTotalRow" value="@ViewBag.TotalRow" />
+        <input type="hidden" class="hidTotalPage" value="@ViewBag.TotalPage" />  
+    </div>
+<script type="text/javascript">
+    $(function () {
+        $('.recomm-item').click(function () {
+            var index = $('.recomm-item').index($(this));
+            var obj = $('.check-item').eq(index);
+            if (obj.hasClass('hide')) {
+                obj.removeClass('hide');
+            } else {
+                obj.addClass('hide');
+            }
+
+        });
+        SetPageFormAdd('#formAdd');
+
+        CheckPageFormAdd(parseInt('@ViewBag.PageIndex', 10),'#formAdd');
+
+
+        $('.btn-next').click(function () {
+            OnNext($(this));
+        });
+
+        $('.btn-prev').click(function () {
+            OnPrev($(this));
+        });
+
+
+
+    });
+
+</script>

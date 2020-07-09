@@ -1,0 +1,145 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+<div class="fl_r cursor mar_r10 mar_t10" data-dismiss="modal" aria-hidden="true"  onclick="CloseQuickDetails()">
+     <button class="fl_r btn btn-small btn-danger  btn-tootip-top" type="button" rel="tooltip" title="Close"><i class="icon-remove  icon-white"></i></button>
+</div>
+<div class="fl_l mar_t20" style="width:97%">
+
+     @if (ViewBag.ProductGetByID != null)
+     {
+         var it = (view_Product)ViewBag.ProductGetByID;
+         
+        <div class="Quickdetail_img"> 
+            @if (!string.IsNullOrEmpty(it.ProductImgPath))
+            {
+            <img alt="@it.ProductName" class="thumbnail"  title="@it.ProductName" src="@Url.ThumbProduct(it.CompID, it.ProductID, it.ProductImgPath)" /> 
+            }
+            else
+            { 
+            <img alt="@it.ProductName" class="thumbnail"  title="@it.ProductName" src="http://www.placehold.it/100x100/EFEFEF/AAAAAA&amp;text=no+image" /> 
+            }
+        </div>
+        <div class="Quickdetail_ch1" style="width:15%;margin-right:1%">
+        <p>@it.ProductName</p>
+        <p class="muted">@Html.ListSplit(it.ShortDescription)</p>
+        </div>
+        <div class="Quickdetail_ch2" style="width:20%;margin-right:1%">
+        <table>
+            <tr><td class="muted" align="right">@res.Product.lblProductCode : </td>
+                <td>@if (it.ProductID == null)
+                    {
+                        <text>ไม่ระบุ</text>
+                    }
+                    else
+                    { 
+                        @it.ProductID
+                    }
+                    </td>
+           </tr>
+
+            <tr><td class="muted" align="right">@res.Product.lblPro_Group : </td>
+                <td>@if (ViewBag.ProductGroups != null)
+                    {              
+                    <select id="QuickProductGroup" name="QuickProductGroup" style="float:right;height:30px;margin:0" class="span2 font_m" onchange="ChangeGroup();">   
+                         <option value="1" @if (it.ProductGroupID == 1)
+                                           {<text>selected="selected"</text>} >ไม่ระบุ</option>
+                            @foreach (var item in (IEnumerable<b2bProductGroup>)ViewBag.ProductGroups)
+                            {
+                                if (it.ProductGroupID == item.ProductGroupID)
+                                {
+                                      <option value="@item.ProductGroupID" selected="selected">@item.ProductGroupName</option>
+                                }
+                                else
+                                {
+                                    <option value="@item.ProductGroupID">@item.ProductGroupName</option>
+                                }
+                            } 
+                
+                    </select>
+                    }
+                    else
+                    {
+                    <select id="QuickProductGroup" name="QuickProductGroup" disabled style="float:right;height:30px;margin:0" class="mar_t10 span2 font_m" >
+                         <option value="0" selected="selected" >@res.Common.lblNonSpecific</option>                
+                    </select>   
+                    }
+                </td>
+            </tr>
+            <tr><td class="muted" align="right">@res.Product.lblPro_Cate : </td><td>@it.CategoryName</td></tr>
+       </table>
+       </div>
+        <div class="Quickdetail_ch3 fl_l" style="width:21%;margin-right:1%">
+        <table>
+            <tr>
+                <td class="muted" align="right"> @res.Product.lblViewCount :&nbsp;</td><td>@it.ViewCount</td>
+            </tr>
+            <tr>
+                <td class="muted" align="right">@res.Common.colStatus :&nbsp;</td>
+                <td >
+                @{
+                    string status = "";
+                    if (it.RowFlag == 2) { status = @res.Common.lblWaitapprove; }
+                    else if (it.RowFlag == 3) { status = @res.Common.lblNoapprove; }
+                    else if (it.RowFlag == 4) { status = @res.Common.lblApprove; }
+                    else if (it.RowFlag == 5) { status = @res.Common.lblWaitapproveRemark; }
+                    else if (it.RowFlag == 6) { status = @res.Common.lblWaitForCheck; }
+                @status;                 
+                }    
+                </td>
+            </tr>
+            <tr>
+            <td class="muted" align="right">@res.Product.lblShow_Topic :&nbsp;</td>
+            <td  > 
+            @if (it.IsShow == true)
+            { 
+                <label class="radio inline">
+                    <input type="radio" name="optionsRadios" class="optionsRadio" value="1" checked />
+                    <span class="font_m">@res.Common.btnShow</span>
+                </label>  
+                <label class="radio inline">
+                    <input type="radio" name="optionsRadios" class="optionsRadio" value="0" />
+                    <span class="font_m">@res.Common.btnNotShow</span>
+                </label>  
+            }
+            else
+            { 
+                <label class="radio inline">
+                    <input type="radio" name="optionsRadios" class="optionsRadio" value="1"  />
+                    <span class="font_m">@res.Common.btnShow</span>
+                </label>  
+                <label class="radio inline">
+                    <input type="radio" name="optionsRadios" class="optionsRadio" value="0" checked />
+                    <span class="font_m">@res.Common.btnNotShow</span>
+                </label> 
+            }
+                </td>
+            </tr>
+       </table>
+       </div>
+        <div class="Quickdetail_ch4 fl_l" style="width:13%;margin-right:2%">
+       <table>
+            <tr>
+       
+            
+                <td class="muted" align="right">@res.Common.colModifiedDate : </td><td>@(DateTime.Parse(it.ModifiedDate.ToString()).ToString("dd/MM/yyyy"))</td>
+            </tr>
+            <tr>
+      
+                <td class="muted" align="right">@res.Common.colCreatedDate :&nbsp;</td>
+                <td >@(DateTime.Parse(it.CreatedDate.ToString()).ToString("dd/MM/yyyy"))</td>
+            </tr>
+       </table>
+       </div>
+       <div class="Quickdetail_ch5 fl_l">
+            <a title="@res.Common.lblSeeDetail" target="_blank" href="@Url.Action("Detail", "Product", new { id = it.ProductID, name =  @Url.ReplaceUrl(it.ProductName) , area="Search" })">@res.Common.lblSeeDetail</a>
+            <br/>
+            <a href="#" data-toggle="modal" data-target="#ModalEditProduct" id="@it.ProductID" onclick="PrepareEditByID($(this))">@res.Common.colEdit</a><br>
+            <a id="btn-save-junk"  class="cursor">@res.Product.lblMoveToTrash</a><br>
+       </div>
+       <div class="clean30"></div>
+         <input type="hidden" id="hidCateLV1" value="@it.CateLV1" />
+         <input type="hidden" id="hidCateLV2" value="@it.CateLV2" />
+         <input type="hidden" id="hidCateLV3" value="@it.CateLV3" /> 
+         <input type="hidden" id="hidDetailID" value="@it.ProductID" />        
+     }
+</div> 

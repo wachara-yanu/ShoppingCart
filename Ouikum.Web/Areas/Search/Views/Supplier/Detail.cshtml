@@ -1,0 +1,35 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+}
+@section head{
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" /> 
+    <link href="@Url.css("Search/Product.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" /> 
+    <link href="@Url.css("UC/SwiperUC/idangerous.swiper.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/SwiperUC/idangerous.swiper.scrollbar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("MessageCenter/MessageCenter.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.core.min.js")" type="text/javascript"></script>   
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.widget.min.js")" type="text/javascript"></script>   
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.rcarousel.min.js")" type="text/javascript"></script>   
+    <link href="@Url.css("UC/CaptchaUC/CaptchaUC.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" type="text/css" />
+    <style>
+        #tag-chat-status
+        {
+    bottom: 55px;
+    right: 10px;
+        }
+    </style>
+}
+@section js{
+    <script src="@Url.js("UC/SwiperUC/idangerous.swiper-2.1.min.js")" type="text/javascript"></script> 
+    <script src="@Url.js("UC/JsonCookie/jquery.cookie.js")" type="text/javascript"></script>  
+    <script src="@Url.js("UC/JsonCookie/jquery.jsoncookie.js")" type="text/javascript"></script>  
+    <script src="@Url.js("Search/Product.js")" type="text/javascript"></script>
+    <script src="@Url.js("Compare/Compare.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.js("UC/CaptChaUC/QapTchaProductContact.jquery.js")"></script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5099beca46b02aa8"></script>
+    <script src="@Url.js("UC/TinyScrollbarUC/jquery.tinyscrollbar.js")" type="text/javascript"></script>
+}

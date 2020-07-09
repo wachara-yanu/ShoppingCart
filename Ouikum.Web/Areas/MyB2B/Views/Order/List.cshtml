@@ -1,0 +1,48 @@
+﻿@{
+    ViewBag.Title = res.Order.lblOrderList;
+    Layout = "~/Views/MP/MP_Order.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+
+}
+
+<div class="mainContent" style="width:100%;margin-top:-5px">
+    <div class="clean"></div>
+    @Html.Partial("MyB2B/Order/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+@*    @Html.Partial("MyB2B/Order/WebconfigOrderMenu")*@
+    <button class="btn fl_r bg_product_hide hide mar_r10 ShowTabmenu mar_t10" type="button" style="padding:0 5px">
+        <i class="icon-chevron-down cursor btn-tootip-bottom"  rel="tooltip Popover" data-original-title="@res.Common.btnShow"></i>
+    </button>
+    <div class="clean"></div>
+
+    @using (Ajax.BeginForm("List", "Order", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+    { 
+        <!-------------------Simple Search & Advance Search------------------->
+       @* @Html.Partial("MyB2B/Order/AdvanceSearch")*@
+        <div class=" input-append inline fl_r mar_t7 mar_b15" style="margin-right:0.5%" id ="KeywordGroup">
+            <input class="OrderCode" placeholder="Order Code" size="16" type="text" name="OrderCode" />
+            <button class="btn btnsearch" type="submit" style="width: 50px;">
+                <i class="icon-search"></i>
+            </button>
+        </div>
+
+        <!---------------------------Table------------------------------>
+        <div style="margin:10px;"></div>
+ 
+        <div id="certifyGrid" style="width: 98.5%;margin-left: 10px;">@Html.Partial("UC/Grid/GridUC")</div>
+    }
+</div>
+
+@section js {
+    <script src="@Url.js("MyB2B/Order/ManageOrder.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatepickerUC/bootstrap-datepicker.js")" type="text/javascript" charset="UTF-8"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            ActiveMenu(1);
+        });
+    </script>
+}

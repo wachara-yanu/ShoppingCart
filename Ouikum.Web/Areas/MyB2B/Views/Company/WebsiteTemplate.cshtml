@@ -1,0 +1,352 @@
+﻿@{
+    ViewBag.Title = @res.Company.lblCompWebsite;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{
+}
+@using Ouikum;
+@{ var Companies = (view_Company)ViewBag.Company;
+   List<string> Template = new List<string>();
+   List<string> Style = new List<string>();
+ Template.Add("Default Free");
+ Template.Add("Agriculture Free");
+ Template.Add("Chemical");
+ Template.Add("Industry");
+ Template.Add("Other");
+ Template.Add("Default Gold");
+ Template.Add("Agriculture Gold");
+ Template.Add("Apparel & Accessories");
+ Template.Add("Business Services");
+ Template.Add("Chemistry");
+ Template.Add("Computer");
+ Template.Add("ConsumerElectronics");
+ Template.Add("Electrical");
+ Template.Add("Fibers");
+ Template.Add("Furniture");
+ Template.Add("Home/Garden");
+ Template.Add("Hardware-Tools");
+ Template.Add("Industry Gold");
+ Template.Add("Jewelry");
+ Template.Add("Lamp");
+ Template.Add("Machinery");
+ Template.Add("Measurement");
+ Template.Add("MineralMetallurgy");
+ Template.Add("Packeting/Printing/Semi");
+ Template.Add("Mechanical Part Fabrication Services");
+ Template.Add("Rubber & Plastic");
+ Template.Add("SportEntertainment");
+ Template.Add("Transportation");
+ Template.Add("Automobile");
+ Template.Add("Food");
+ Template.Add("Gifts");
+ Template.Add("Medical");
+ Template.Add("Office/School");
+ Template.Add("Sercurity");
+ Template.Add("ServiceEquipment");
+
+ Style.Add("Default");
+ Style.Add("Style 2");
+ Style.Add("Style 3");
+}
+
+<div class="row-fluid inline column">
+    <div class="span12">
+        <!--Sidebar content-->
+        <div style="margin-top:25px;">
+            <div class="data_system">
+                <div class="header_sys" style="border-top-left-radius:3px; border-top-right-radius:3px; min-width:1203px;">
+                    <div class="fl_l">
+                        <h5 class="mar_l20">ตั้งค่าโครงสร้าง (CSS) เว็บไซต์บริษัท</h5>
+                    </div>
+                    <div class="fl_r">
+                        <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#content_theme3">
+                            <i class="icon-arrow icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                        </div>
+                        <div class="blog-preview-style" id="Free">
+                            @if (Companies.CompWebsiteCss == null)
+                            { Companies.CompWebsiteCss = 0; }
+                            <a href="/MyB2B/Company/PreviewTemplate?template=@Companies.CompWebsiteTemplate&css=@Companies.CompWebsiteCss" target="_blank" class="offset">
+                                <div style="float:left; margin-left:10px;">
+                                    <img src="~/Content/CompanyWeb/images/h2_u8.png" style="padding-top:10px;" />
+                                </div>
+                                <div style="float:left; line-height:36px; margin-left:5px;">
+                                    <span class="fontsize14" style="color:#666666;">แสดงตัวอย่าง</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="blog-edit" id="submit_bottom4">
+                            <div style="float:left; margin-left:10px;">
+                                <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                            </div>
+                            <div style="float:left; line-height:36px; margin-left:5px;">
+                                <span class="fontsize14" style="color:#666666;">เลือก</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border_table" style="width:99.8%; min-width:1200px; border-bottom-left-radius:3px; border-bottom-right-radius:3px; padding:0px!important;">
+                    <div id="content_theme3" class="CollapseDetail">
+                        <div class="clean10"></div>
+                        <div class="" style="width:100%; min-width:1200px;">
+                            @*@if (Companies.CompLevel == 3)
+                            {*@
+                                <div id="css_group_gold" class="template_group" style="width:100%; word-wrap: break-word;padding:5px 10px;">
+                                    @for (int i = 0; i < 2; i++)
+                                    {
+                                        <div class="fl_l">
+                                            @if (Companies.CompWebsiteCss == null)
+                                            { Companies.CompWebsiteCss = 0; }
+                                            @if (i == (int)Companies.CompWebsiteCss)
+                                            {<div class='check_theme'></div>}
+                                            <p style="margin-bottom:0px;" class="mar_l5">@Style[i]</p><img src="@Url.css("Template/Style/BG_Style_" + i + ".png")" id="@i" class="mar_5 theme" style="border:1px #ccc solid;border-radius:3px;width: 386px;height: 141px;" />
+                                        </div>
+                                    }
+                                </div>
+                            @*}
+                            else
+                            {
+                                <div id="css_group_gold" class="template_group fl_l mar_l10" style="word-wrap: break-word;">
+                                    <div class="fl_l">
+                                        @if (Companies.CompWebsiteCss == null)
+                                            { Companies.CompWebsiteCss = 0; }
+                                            @if (0 == (int)Companies.CompWebsiteCss)
+                                            {<div class='check_theme'></div>}
+                                        <p style="margin-bottom:0px;" class="mar_l5">@Style[0]</p><img src="@Url.css("Template/Style/BG_Style_0.png")" id="0" class="mar_5 theme" style="border:1px #ccc solid;border-radius:3px;width: 386px;height: 141px;" />
+                                    </div>
+                                </div>
+                                <div id="css_group_show" class=" template_group fl_l" style="position: relative;z-index: 1;">
+                                    <div class="template_gold" id="upgrade_gold_sign" style="display:block; border:2px #FFCC00 solid;background-color:#EEDA6A;width:316px;height:106px;position:absolute;z-index:2;top:42px;left:230px">
+                                        <img src="@Url.css("MyB2B/images/icon_gold_large.png")" class="mar_l30 mar_b50 mar_r30" />
+                                        <div class="inline">
+                                            <h5>@res.Common.lblUpPack</h5>
+                                            <p>@res.Common.lblToMoreBenefits</p>
+                                            <a href="@Url.Action("Gold","Benefit",new{area=""})" target="_blank">@res.Common.lblAboutGold</a>
+                                        </div>
+                                    </div>
+                                    @for (int i = 1; i < 3; i++)
+                                    {
+                                        <div class="fl_l">
+                                            <p style="margin-bottom:0px;" class="mar_l5">@Style[i]</p><img src="@Url.css("Template/Style/BG_Style_" + i + ".png")" id="@i" class="mar_5" style="border:1px #ccc solid;border-radius:3px;width: 386px;height: 141px;" />
+                                        </div>
+                                    }
+                                </div>
+                            }*@
+                        </div>
+                        <div class="clean20"></div>
+                    </div>
+                </div>
+            </div>
+            <div class="clean20"></div>
+            <div class="data_system">
+                <div class="header_sys" style="border-top-left-radius:3px; border-top-right-radius:3px; min-width:1203px;">
+                    <div class="fl_l">
+                        <h5 class="mar_l20">ตั้งค่าธีม (Theme) รูปแบบเว็บไซต์บริษัท</h5>
+                    </div>
+                    <div class="fl_r">
+                        <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#content_theme">
+                            <i class="icon-arrow icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                        </div>
+                        <div class="blog-preview" id="Free">
+                            <a href="/MyB2B/Company/PreviewTemplate?template=@Companies.CompWebsiteTemplate&css=@Companies.CompWebsiteCss" target="_blank" class="offset">
+                                <div style="float:left; margin-left:10px;">
+                                    <img src="~/Content/CompanyWeb/images/h2_u8.png" style="padding-top:10px;" />
+                                </div>
+                                <div style="float:left; line-height:36px; margin-left:5px;">
+                                    <span class="fontsize14" style="color:#666666;">แสดงตัวอย่าง</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="blog-edit" id="submit_bottom1">
+                            <div style="float:left; margin-left:10px;">
+                                <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                            </div>
+                            <div style="float:left; line-height:36px; margin-left:5px;">
+                                <span class="fontsize14" style="color:#666666;">เลือก</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border_table" style="width:99.8%; min-width:1200px; border-bottom-left-radius:3px; border-bottom-right-radius:3px; padding:0px!important;">
+                    <div id="content_theme" class="CollapseDetail">
+                        <div class="clean10"></div>
+                        <div class="" style="width:100%; min-width:1200px;">
+                            <div id="theme_group_free" style="width: 100%; margin-bottom: 20px; padding:5px 10px;">
+                                @for (int i = 0; i < 5; i++)
+                                {
+                                    <div class="fl_l">
+                                        @if (Companies.CompWebsiteTemplate == null)
+                                        { Companies.CompWebsiteTemplate = 0; }
+                                        @if (i == (int)Companies.CompWebsiteTemplate)
+                                        {<div class='check_theme'></div>}
+                                        <p style="margin-bottom:0px;" class="mar_l5">@Template[i]</p><img src="@Url.css("Template/Free/BG_Template_Free_"+i+".png")" id="@i" class="mar_5 theme" style="border:1px #ccc solid;border-radius:3px;" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="clean20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inline fl_l mar_t20">
+                <div id="submit_top" class="btn_saveGreen cursor inline">
+                    <span class="fl_l icon_menu_done mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;">@res.Common.btnSave</p>
+                    </span>
+                </div>
+                <a href="/MyB2B/Company/PreviewTemplate?template=@Companies.CompWebsiteTemplate&css=@Companies.CompWebsiteCss" target="_blank" class="btn_saveYel cursor inline">
+                    <span class="fl_l icon_menu_eye mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;color:#ffffff">@res.Common.btnPreview</p>
+                    </span>
+                </a>
+                <button type="submit" class="btn btn-default offset hide">
+                    <i class="icon-remove mar_t3"></i>@res.Common.lblEdit
+                </button>
+            </div>
+            <input type="hidden" id="CompWebsiteTemplate" name="CompWebsiteTemplate" value="@Companies.CompWebsiteTemplate" />
+            <input type="hidden" id="CompWebsiteCss" name="CompWebsiteCss" value="@Companies.CompWebsiteCss" />
+            <div class="clean20"></div>
+            <div class="data_system">
+                <div class="header_sys" style="border-top-left-radius:3px; border-top-right-radius:3px; min-width:1203px;">
+                    <div class="fl_l">
+                        <h5 class="mar_l20">ตั้งค่าธีม (Theme) รูปแบบเว็บไซต์บริษัท (สำหรับ Gold Member)</h5>
+                    </div>
+                    <div class="fl_r">
+                        <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#content_theme2">
+                            <i class="icon-arrow icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                        </div>
+                        <div class="blog-preview" id="Gold">
+                            <a href="/MyB2B/Company/PreviewTemplate?template=@Companies.CompWebsiteTemplate&css=@Companies.CompWebsiteCss" target="_blank" class="offset">
+                                <div style="float:left; margin-left:10px;">
+                                    <img src="~/Content/CompanyWeb/images/h2_u8.png" style="padding-top:10px;" />
+                                </div>
+                                <div style="float:left; line-height:36px; margin-left:5px;">
+                                    <span class="fontsize14" style="color:#666666;">แสดงตัวอย่าง</span>
+                                </div>
+                            </a>
+                        </div>
+                        <div class="blog-edit" id="submit_bottom3">
+                            <div style="float:left; margin-left:10px;">
+                                <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                            </div>
+                            <div style="float:left; line-height:36px; margin-left:5px">
+                                <span class="fontsize14" style="color:#666666;">เลือก</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="border_table" style="width:99.8%; min-width:1200px; border-bottom-left-radius:3px; border-bottom-right-radius:3px; padding:0px!important;">
+                    <div id="content_theme2" class="CollapseDetail">
+                        <div class="clean10"></div>
+                        <div class="" style="width:100%; min-width:1200px;">
+                            @if (Companies.CompLevel == 3)
+                            {
+                                <div id="theme_group_gold" class="template_group" style="width:100%; word-wrap: break-word;padding:5px 10px;">
+                                    @for (int i = 5; i < 35; i++)
+                                    {
+                                        var ID = i - 5;
+                                        <div class="fl_l">
+                                            @if (Companies.CompWebsiteTemplate == null)
+                                            { Companies.CompWebsiteTemplate = 0; }
+                                            @if (i == (int)Companies.CompWebsiteTemplate)
+                                            {<div class='check_theme'></div>}
+                                            <p style="margin-bottom:0px;" class="mar_l5">@Template[i]</p><img src="@Url.css("Template/Gold/BG_Template_Gold_" + ID + ".png")" id="@i" class="mar_5 theme" style="border:1px #ccc solid;border-radius:3px;" />
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            else
+                            {
+                                <div id="theme_group_show" class=" template_group" style="width: 100%; min-width:1200px; margin-bottom: 20px; padding:5px 10px; position:relative;z-index:1;">
+                                    <div class="template_gold" id="upgrade_gold_sign" style="display:block; border:2px #FFCC00 solid;background-color:#EEDA6A;width:316px;height:106px;position:absolute;z-index:2;">
+                                        <img src="@Url.css("MyB2B/images/icon_gold_large.png")" class="mar_l30 mar_b50 mar_r30" />
+                                        <div class="inline">
+                                            <h5>@res.Common.lblUpPack</h5>
+                                            <p>@res.Common.lblToMoreBenefits</p>
+                                            <a href="@Url.Action("Gold","Benefit",new{area=""})" target="_blank">@res.Common.lblAboutGold</a>
+                                        </div>
+                                    </div>
+                                    @for (int i = 5; i < 35; i++)
+                                    {
+                                        var ID = i - 5;
+                                        <div class="fl_l">
+                                            <p style="margin-bottom:0px;" class="mar_l5">@Template[i]</p><img src="@Url.css("Template/Gold/BG_Template_Gold_" + ID + ".png")" id="@i" class="mar_5" style="border:1px #ccc solid;border-radius:3px;" />
+                                        </div>
+                                    }
+                                </div>
+                            }
+                            <div class="clean20"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="inline fl_l mar_t20">
+                <div id="submit_bottom" class="btn_saveGreen cursor inline">
+                    <span class="fl_l icon_menu_done mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;">@res.Common.btnSave</p>
+                    </span>
+                </div>
+                <a href="/MyB2B/Company/PreviewTemplate?template=@Companies.CompWebsiteTemplate&css=@Companies.CompWebsiteCss" target="_blank" class="btn_saveYel cursor inline">
+                    <span class="fl_l icon_menu_eye mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;color:#ffffff">@res.Common.btnPreview</p>
+                    </span>
+                </a>
+                <button type="submit" class="btn btn-default offset hide">
+                    <i class="icon-remove mar_t3"></i>@res.Common.lblEdit
+                </button>
+            </div>
+            @* <input type="hidden" id="RowVersion" name="RowVersion" value="@Companies.RowVersion"/>*@
+            <input type="hidden" id="CompWebsiteTemplate2" name="CompWebsiteTemplate" value="@Companies.CompWebsiteTemplate" />
+        </div>
+        <div class="clean50"></div>
+    </div>
+</div>
+
+@section js{
+    <script src="@Url.js("MyB2B/Company/WebsiteTemplate.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $("#sidebar").css("height", "1538px");
+            //var h = $(".container-fluid").height();
+            //$("#sidebar").height(h);
+        })
+
+        /*--------------------- toggle -------------------*/
+
+        $(".btnCollapse").live('click', function () {
+            var data = $(this).index(".btnCollapse");
+            var Icon = $(this).find("i")
+            var target = $(this).attr('data-target');
+            if (Icon.hasClass("icon-chevron-down")) {
+                Icon.removeClass('icon-chevron-down');
+                Icon.addClass("icon-chevron-up")
+                $(target).slideDown();
+            } else {
+                Icon.addClass("icon-chevron-down")
+                Icon.removeClass('icon-chevron-up');
+                $(target).slideUp();
+            }
+        });
+
+        $("#theme_group_free .theme,#theme_group_gold .theme").live("click", function () {
+            id = $(this).attr("id");
+            css = $('#CompWebsiteCss').val();
+            $(".blog-preview a").attr("href", "/MyB2B/Company/PreviewTemplate?template=" + id + "&css=" + css);
+            $(".blog-preview-style a").attr("href", "/MyB2B/Company/PreviewTemplate?template=" + id + "&css=" + css);
+            $(".btn_saveYel").attr("href", "/MyB2B/Company/PreviewTemplate?template=" + id + "&css=" + css);
+        });
+
+        $("#css_group_gold .theme").live("click", function () {
+            id = $("#CompWebsiteTemplate").val();
+            css = $(this).attr("id");
+            $(".blog-preview a").attr("href", "/MyB2B/Company/PreviewTemplate?template=" + id + "&css=" + css);
+            $(".blog-preview-style a").attr("href", "/MyB2B/Company/PreviewTemplate?template=" + id + "&css=" + css);
+            $(".btn_saveYel").attr("href", "/MyB2B/Company/PreviewTemplate?template=" + id + "&css=" + css);
+        });
+
+    </script>
+}

@@ -1,0 +1,116 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+
+
+<table class="table table-hover border_table grid mar_b10">
+    <thead class="HeaderTable">
+        <tr class="header">
+            <th></th>
+            <th class="span3">ชื่อบริษัท/ชื่อร้าน</th> 
+            <th class="span3">หมายเลขสั่งซื้อ</th>
+            <th class="span2">ราคา</th>
+            <th class="span2">วันที่สั่งซื้อ</th>
+            <th class="span2">ประเภท</th>
+            <th class="span2">ต่ออายุ</th>
+            <th class="span2">สถานะ</th>
+            <th class="span2"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+        {
+        <tr class="nodata b" valign="middle">
+            <td><div align="center">@res.Common.lblNotFound</div></td>
+        </tr>
+        }
+        else
+        {
+            foreach (var item in (List<view_OrderDetailComp>)ViewBag.OrderComp)
+            {   
+                int ID = (int)item.OrderID;
+                <tr class="body">
+                    <td style="width:5%;text-align:center"> 
+                    <input type="checkbox" name="cbxCompID" class="cbxCompID" data-id="@ID" data-orderid="@item.OrderID" onclick="CheckBox($(this))" /> 
+                    </td>   
+                    <td>   
+                        <a target="_blank" title="@item.CompName" href="@Url.Action("", "CompanyWebsite" + "/"+ @Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID,new{area = ""})">@item.CompName</a> 
+                    </td> 
+                    <td>
+                        <a target="_blank" title="@item.OrderCode" href="@Url.Action("Detail","ApprovePackage", new {OrderID = @item.OrderID, area ="Admin"})">@item.OrderCode</a> 
+                    </td>
+                    <td>  
+                        @if (item.TotalPrice > 0)
+                        {
+                            <span>฿</span>@(String.Format("{0:##,###.00}", item.TotalPrice))
+                        }
+                        else
+                        {
+                            <text>-</text>
+                        }
+                    </td> 
+                    <td>
+                        <span  class=" btn-tootip-bottom " rel="tooltip"   data-placement="bottom" 
+                            data-original-title="@("<div style='text-align:left'>created by : " + item.CreatedBy + "<br> modified by : " + item.ModifiedBy + "</div>")" >
+                            @{
+                                var CreatedDate = "";
+                                if (item.CreatedDate != null)
+                                {
+                                    CreatedDate = (DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                                }
+                                @CreatedDate
+                            }
+                        </span>
+                    </td>
+                    <td>
+                        @if(item.OrderType == 1){
+                            <span>สั่งซื้อใหม่</span>
+                        }else{
+                            <span>ต่ออายุ</span>
+                        }
+                    </td>
+                    <td>
+                        @item.OrderCount <span> ครั้ง</span>
+                    </td>
+                    <td>
+                        @if(item.OrderStatus == "A"){
+                            <span style="color:#009900">อนุมัติ</span>
+                        }
+                        else if (item.OrderStatus == "B")
+                        {
+                            <span style="color:#CC9900">รออนุมัติ</span>
+                        }
+                        else if (item.OrderStatus == "R")
+                        {
+                            <span class="text-error btn-tootip-bottom "  rel="tooltip"   data-placement="bottom" data-original-title="@(item.RejectComment)"  title="@(item.RejectComment)">ไม่อนุมัติ</span>
+                        }
+                    </td>
+                    <td>
+                        <div class="btn-group">
+                            <a data-id="@ID" class="btn btn-mini  padd_b4 approve" title="approve"  ><i class="icon-ok-sign"></i></a>
+                           
+                            @{if (item.OrderStatus == "R")
+                            {
+                                <a role="button" data-id="@ID" class="btn btn-mini   padd_b4 disabled"><i class="icon-eject"></i></a> 
+                            }
+                            else
+                            {
+                                <a role="button" data-id="@ID" class="btn btn-mini   padd_b4 reject-item" title="reject" ><i class="icon-eject"></i></a> 
+                            }
+                            }
+                            <a data-id="@ID" class="btn btn-mini padd_b4 delete-item-package" title="delete"  ><i class=" icon-minus-sign"></i></a>            
+                        </div>             
+                    </td>
+                </tr> 
+            }
+        }  
+        </tbody>
+</table>
+
+@Html.Partial("UC/Grid/PagingPostUC")
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.btn-tootip-bottom').tooltip()
+    });
+</script>

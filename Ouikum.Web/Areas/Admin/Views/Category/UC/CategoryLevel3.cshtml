@@ -1,0 +1,45 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@if (ViewBag.CateByTypes != null)
+{
+    foreach (var Cate in (List<b2bCategory>)ViewBag.CateByTypes)
+    {
+        <div class="mar_l10 mar_b10">
+            <img src="@Url.css("Admin/Category/images/img_plus.gif")" />
+            <a class="cate-lv3 cursor" data-product-count="@Cate.ProductCount" data-id="@Cate.CategoryID" 
+            data-name="@Cate.CategoryName" data-nameEN="@Cate.CategoryNameEng" data-parentid="@Cate.ParentCategoryID" data-catetype="@Cate.CategoryType" data-path="@Cate.ParentCategoryPath" onclick="CategoryClick($(this))" >@Cate.CategoryName</a>
+            <img class="editcate3 cursor hide" src="@Url.css("Admin/Category/images/img_edit.png")" onclick="editcate3($(this))" />
+            <img class="deletecate3 cursor hide" src="/Content/Admin/Category/images/img_delete.png" onclick="if(confirm('คุณต้องการลบหมวดหมู่หรือไม่ ?')){deletecate3(@Cate.CategoryID);}">
+        </div>
+    }
+}
+
+<div id="myModalcate3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="myModalLabel">@res.Product.lbledit_cateLV3 : <span class="lablecate3"></span></h4>
+  </div>
+  <div class="modal-body">
+    ชื่อหมวดหมู่ (ภาษาไทย)    : <input id="namecate3" type="text" value="" class="namecate3" /><br />
+    ชื่อหมวดหมู่ (ภาษาอังกฤษ) : <input id="namecate3EN" type="text" value="" class="namecate3EN" />
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary savecate3" data-dismiss="modal" aria-hidden="true">@res.Common.btnSave</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">@res.Common.btnCancel</button>
+  </div>
+</div>
+
+<div id="addcate3" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4>เพิ่มหมวดหมู่สินค้าย่อย</h4>
+  </div>
+  <div class="modal-body">
+     ชื่อหมวดหมู่ (ภาษาไทย)    : <input name="MCategoryLV3" id="MCategoryLV3" type="text" /><br />
+     ชื่อหมวดหมู่ (ภาษาอังกฤษ)    : <input name="MCategoryENLV3" id="MCategoryENLV3" type="text" />
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" id="InsertTextENCateLV3" data-dismiss="modal" aria-hidden="true">@res.Common.btnSave</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">@res.Common.lblCancel</button>
+  </div>
+</div>

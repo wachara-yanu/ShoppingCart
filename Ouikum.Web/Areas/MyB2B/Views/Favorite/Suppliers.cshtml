@@ -1,0 +1,93 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Common.lblTitleFavSup;
+    ViewBag.Favorite = true;
+    ViewBag.ChkPage = "Supplier";
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+}
+@section head{
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" /> 
+    <link href="@Url.css("Search/Product.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet"type="text/css" /> 
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+}
+@section js{
+    <script src="@Url.js("MyB2B/MyFavorite/Supplier.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Paging/Paging.js")" type="text/javascript"></script>
+}
+<div class="container_home">
+ <div class="font_20 label-header" style="z-index:0;width:1100px;margin-top:-34px">
+        <div class="fl_l">@Html.Partial("MyFavorite/Sidebar")</div>
+        <div class="fl_r mar_t5">@res.Product.lblItem</div>
+        <div class="fontOrange fl_r mar_t5 mar_l10 mar_r10" id="totalrow">@(String.Format("{0:##,###.##}", @ViewBag.totalrow))</div>
+        <div class="fl_r mar_t5">@res.Common.lblAll</div>
+ </div>
+</div>
+<div id="Content">
+    <div class="divRow mar_t10">
+        <div id="ContentRight" style="width:100%;padding-left:0">
+            <div class="divPaging" style="border-bottom:none">
+                <div class="fl_l span4 mar_l1">
+                     <span class="btn activeLink" style="font-weight:normal" type="button">
+                        <label class="checkbox" style="margin-bottom: 0;">
+                            <input class="fl_l" type="checkbox" name="chkpd" id="CheckAll" onclick="CheckCompAll($(this))" >@res.Common.colSelectAll
+                        </label>
+                    </span>
+                    <span class="btn activeLink btn-tootip-top" style="font-weight:normal" type="button" onclick="MultiDel()" rel="tooltip" data-original-title="ลบ"><i class="icon-minus-sign  mar_t3" ></i> @res.Common.btnDelete </span>
+                </div>
+            </div>
+            <div class="clean10"></div>
+            <div id="ProductDetail">
+                @Html.Partial("UC/SupplierListUC")
+            </div>
+           
+        </div>
+    </div>
+    </div>
+<div class="clean20"></div>
+<script type="text/javascript">
+
+    /*---------Navigate-----------*/
+    CateName = '@(ViewBag.CateName)';
+    TextSearch = '" @(ViewBag.TextSearch) "';
+    CateNameLV1 = '@(ViewBag.CateNameLV1)';
+    CateNameLV2 = '@(ViewBag.CateNameLV2)';
+    CateNameLV3 = '@(ViewBag.CateNameLV3)';
+    CateLV = '@(ViewBag.CateLV)';
+    CateID = "@(ViewBag.CateID)";
+    $("#TextSearch").val('@(ViewBag.TextSearch)');
+    function NumPage(PageIndex, PageSize) {
+
+        data = {
+            TextSearch: $('#TextSearch').val(),
+            PIndex: PageIndex,
+            PSize: PageSize
+        }
+        if (PageIndex == $('.hidPageIndex').val())
+            return false;
+        else
+            Onload();
+    }
+    function SubmitPage(Obj) {
+
+        data = {
+            TextSearch: $('#TextSearch').val(),
+            PIndex: Obj,
+            PSize: $('.hidPageSize').val()
+        }
+        if (PageIndex == $('.hidPageIndex').val())
+            return false;
+        else
+            Onload();
+    }
+    function SelectedPageSize(Obj) {
+        data = {
+            TextSearch: $('#TextSearch').val(),
+            PIndex: 1,
+            PSize: Obj
+        }
+
+        Onload();
+    }
+</script> 

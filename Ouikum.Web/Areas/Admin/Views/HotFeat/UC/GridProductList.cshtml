@@ -1,0 +1,99 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+<div class="mar_b5" style="float:right">
+    <span class="btnCheckAll mar_r7">
+        <label class="checkbox checkall inline">
+            <input type="checkbox" onclick="CheckHotFeatall($(this))"/> @res.Common.lblSave_all
+        </label>
+    </span>
+    <button type="button" class="btn SaveImport" style="margin:2px;">Import Selected</button>
+</div>
+<table class="table table-hover border_table grid mar_b10">
+    <thead class="HeaderTable">
+        <tr class="header">
+            <th style="width:5%"><div class="center"><input type="checkbox" onclick="CheckHotFeatall($(this))"/></div></th>
+            <th style="width:20%"><div>@res.Product.lblPro_name</div></th>
+            <th style="width:20%"><div>@res.Company.lblCompName</div></th>
+            <th style="width:15%"><div class="center">@res.Common.lblExpire</div></th>
+            <th style="width:15%"><div class="center">@res.Admin.lblType</div></th>
+            <th style="width:15%;"><div class="center">@res.Common.lblPrice</div></th>
+            <th style="width:9%"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+        {
+        <tr class="nodata b" valign="middle">
+            <td colspan="6"><div align="center">@res.Common.lblNotFound</div></td>
+        </tr>
+        }
+        else
+        {
+            foreach (var item in (List<view_SearchProduct>)ViewBag.Products)
+            {
+                int ID = (int)item.ProductID;
+        <tr class="body">
+            <td style="width:5%;text-align:center"> 
+            <input type="checkbox" name="cbxCompID" class="cbxHotFeat" 
+                data-id="@ID" 
+                data-expire="1"   
+                data-type="H"
+                data-comp="@item.CompID" 
+                data-hotprice="0"  
+                 /> 
+            </td>   
+            <td>   
+            <a target="_blank" title="@item.ProductName" href="@Url.Action("Detail","Product",new{id = ID ,name = @Url.ReplaceUrl(@item.ProductName).Trim(),area="Search"})">@item.ProductName</a> 
+            </td> 
+            <td>
+                <a target="_blank" title="@item.CompName" href="@Url.Action("Index","WebSite" + item.CompID)">@item.CompName</a>   
+            </td>
+            <td style="text-align:center"> 
+             <label id="ExpiredDate">
+                <select name="ExpiredDate" class="EditExpiredDate" id="EditExpiredDate" style="width:100px" >
+                @for (int i = 1; i <= 12;i++ )
+                {
+                    <option value="@i">@i @res.Common.lblMonth</option>
+                }
+                </select>
+            </label>
+            </td>  
+            <td style="text-align:center">
+                <select name="status" class="status" style="width:100px" >
+                    <option value="H" selected>@res.Product.lblHot</option>
+                    <option value="F">@res.Product.lblFeat</option>
+                    <option value="P">Premium</option>
+                </select>
+            </td>
+
+            <td>
+                <div class="input-append center span3 inline" style="margin-left:-1px;">
+                                            <input type="text" name="HotPrice"  class="HotPrice" style="width:60px;"  value="0.00" />
+                                            <span class="add-on" style="width:10px;">
+                                                <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_quo_up" /><br />
+                                                <img src="@Url.cssDefault("images/icon_down.jpg")"  style="margin-top:-32px;" class="cursor icon_quo_down" />
+                                            </span>
+                </div>
+            </td>
+           <td>
+            <a class="btn btn-mini btn-tootip-bottom padd_b4 Import" title="Import" ><i class="icon-plus-sign"></i></a>
+           </td>
+        </tr> 
+            }
+        }  
+        </tbody>
+</table>
+@Html.Partial("UC/Grid/PagingPostUC")
+<div class="clean3"></div>
+<div style="margin:10px;">
+    <button type="button" class="btn SaveImport" style="margin:2px;">@res.Common.btnImport</button>
+    <button type="button" class="btn CancleProductList" style="margin:2px;">@res.Common.btnCancel</button>
+</div>
+
+
+
+<script type="text/javascript">
+    $(function () {
+        $('.btn-tootip-bottom').tooltip()
+    });
+</script>

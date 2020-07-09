@@ -1,0 +1,176 @@
+﻿@{
+    ViewBag.Title = "New Article Type";
+    Layout = "~/Views/MP/MP_AdminArticle.cshtml";
+
+    b2bArticleType item = (b2bArticleType)ViewBag.ArticleType;
+}
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Admin/Article/ManageArticle.css")" rel="stylesheet" type="text/css" />
+}
+<style>
+    .control-label-Comp,.control-label-Owner,.control-label-Position{float: left;padding-top: 0;text-align: left;width: 150px;}
+</style>
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+
+<div class="ContentAdmin">
+<div class="clean5"></div>
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/WebconfigMainMenu")*@
+
+    <article class="module width_full">
+        <header>
+            <h3>เพิ่มประเภทบทความ</h3>
+            <div class="action_btn_up btnCollapse"  data-toggle="tooltip"  data-target="#ArticleAdd">
+                <i class="icon-arrow icon-chevron-up"></i>
+            </div>
+            <div class="action_btn" onclick="window.location = GetUrl('@res.Pageviews.UrlArticleList')">
+                <img src="~/Content/Admin/Article/image/close_icon.png" /><span class="mar_l5">ยกเลิก</span>
+            </div>
+            <div class="action_btn">
+                <img src="~/Content/Admin/Article/image/save_icon.png" /><span class="mar_l5">บันทึก</span>
+            </div>
+        </header>
+        <div class="module_content">
+    <div id="ArticleAdd">  
+    <form id="NewType_Form" class="form-horizontal" action="@Url.Action("EditType","ArticleType",new{area="Admin",})" method="post" style="margin-left:50px;">
+    
+    <div class="control-group">
+         <label class="control-label-Comp" for="ArticleTypeName">ชื่อประเภทบทความ :</label>
+            <div class="controls-Comp">
+            <input type="text" name="ArticleTypeName" id="ArticleTypeName" placeholder="Article Type Name"  class="span4" value="@item.ArticleTypeName"/>
+
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label-Comp" for="ArticleTypeID">ประเภทบทความ :</label>
+        <div class="controls-Comp">
+        <select name="ArticleTypeID" id="ArticleTypeID" class="span4" onclick="SelectedType($(this).val())">
+            <option value="0">@res.Common.ddlSelectPlease</option>
+            @foreach (var it in (IEnumerable<b2bArticleType>)ViewBag.ArticleTypes)
+            {
+            <option value="@it.ArticleTypeID">@it.ArticleTypeName</option>
+            }
+        </select>
+        </div>
+    </div> 
+
+    <div class="control-group">
+    <label class="control-label-Comp" for="CertifyImgPath">@res.Common.lblImage :</label>
+    <div class="controls-Comp">
+                <span class="btn btn-file btn-tootip-top" rel="tooltip"  title="@res.Common.lblSelectImage" style="margin:0">
+                    @(Html.Telerik().Upload()
+                .Name("FileImgPath")
+                .Multiple((bool)false)
+                .Async(async => async
+                .Save("SaveBlogImg", "Article")
+                .Remove("RemoveBlogImg", "Article")
+                .AutoUpload((bool)true))
+                .ClientEvents(events => events
+                .OnUpload("onUploadImg")
+                .OnSuccess("onSuccessBlog"))
+                    )
+                    </span>
+                <input type="hidden" id="ImgPath" name="ImgPath" />
+        <p class="clean5"></p>
+        <div class="fileupload-new thumbnail" id="ImgBlog" style="width: 180px; height: 120px;">
+            <img id="img_ImgPath" src="http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image"/>
+            <div class="clean5"></div>
+        </div>
+        <div class="clean10"></div>
+        <div class="img_detail">
+            <ul>
+                <li>ขนาดไฟล์ไม่เกิน <span style="color:Red;">5 MB</span>, รูปแบบไฟล์ <span style="color:Red;">JPG</span>, <span style="color:Red;">PNG</span></li>
+                <li>เพื่อการแสดงผลที่สวยงาม รูปภาพควรมี ขนาด <span style="color:Red;">150*90 pixel</span></li>
+            </ul>
+        </div>
+    </div> 
+    </div> 
+
+
+    <div class="control-group">
+    <label class="control-label-Comp" for="NoShow">ลำดับการแสดงผล :</label>
+    <div class="controls-Comp">
+        <div class="input-append center" style="margin-left:-5px;">
+            <input type="text" name="ListNo" class="ListNo w_30" value="0" readonly="readonly" />
+            <input type="hidden" name="OldListNo"  value="0" class="OldListNo"/>
+            <span class="add-on" style="width:10px;">
+                <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;margin-left:2px;" class="cursor icon_ListNo_up" /><br />
+                <img src="@Url.cssDefault("images/icon_down.jpg")"  style="margin-top:-32px;margin-left:2px;" class="cursor icon_ListNo_down" />
+            </span>
+        </div>
+    </div>
+    </div>
+
+    <div class="control-group">
+    <label class="control-label-Comp" for="IsShowArticle">การแสดงผล :</label>
+    <div class="controls-Comp">
+        <label class="radio inline">
+            <input type="radio" name="IsShowArticle" id="ShowArticle" value="0" checked>
+            แสดง
+        </label>
+        <label class="radio inline">
+            <input type="radio" name="IsShowArticle" id="HideArticle" value="1">
+            ไม่แสดง
+        </label>
+    </div>
+    </div> 
+     </div>
+     </div>
+    </article>
+</div>
+<div class="clean20"></div>
+<button id="submit" type="submit" class="btn btn-default offset " disabled="disabled"><i class="icon-save mar_t3"></i>@res.Common.btnSave</button>
+<button id="cancel" type="button" class="btn btn-default offset " onclick="window.location = GetUrl('@res.Pageviews.UrlArticleList')"><i class="icon-remove mar_t3"></i>@res.Common.btnCancel</button>
+</form>
+<div class="clean50"></div>
+
+@section js{
+    <script src="@Url.js("Admin/Article/NewArticle.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>
+    <script src="@Url.js("Admin/Article/UploadArticle.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(".btnCollapse").live('click', function () {
+            var data = $(this).index(".btnCollapse");
+            var Icon = $(this).find("i")
+            var target = $(this).attr('data-target');
+
+            if (Icon.hasClass("icon-chevron-down")) {
+                Icon.removeClass('icon-chevron-down');
+                Icon.addClass("icon-chevron-up")
+                $(target).slideDown();
+            } else {
+                Icon.addClass("icon-chevron-down")
+                Icon.removeClass('icon-chevron-up');
+                $(target).slideUp();
+            }
+        });
+
+        $(function () {
+            $('.btn-tootip-bottom').tooltip({ placement: 'bottom' });
+            $('.btn-tootip-top').tooltip({ placement: 'top' });
+            /*-----------------------text ChangeListNo--------------------------------*/
+
+            $(".icon_ListNo_up").click(function () {
+                if ($(this).parent().prev().prev().val() == "") {
+                    $(this).parent().prev().prev().val(1)
+                } else {
+                    $(this).parent().prev().prev().val(parseInt($(this).parent().prev().prev().val()) + 1)
+                }
+            });
+            $(".icon_ListNo_down").click(function () {
+                if ($(this).parent().prev().prev().val() == "") {
+                } else {
+                    if (parseInt($(this).parent().prev().prev().val()) > 0) {
+                        $(this).parent().prev().prev().val(parseInt($(this).parent().prev().prev().val()) - 1)
+                    }
+                }
+            });
+            SubTextShowDes();
+        });
+    </script>
+    
+}

@@ -1,0 +1,210 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = res.Product.lblMng_Category;
+    Layout = "~/Views/MP/MP_Category.cshtml";
+
+    <link href="@Url.css("Admin/Category/Category.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" type="text/css" /> 
+}
+@section js{
+    <script type="text/javascript" src="@Url.js("Admin/Category.js")"></script>
+    <script src="@Url.js("UC/TinyScrollbarUC/jquery.tinyscrollbar.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(document).ready(function () {
+
+            $('#CategoryScrollLv1').tinyscrollbar();
+            $('#CategoryScrollLv2').tinyscrollbar();
+            $('#CategoryScrollLv3').tinyscrollbar();
+
+        });    
+    </script>
+}
+
+<div class="well fl_l" style="height:60px;min-height:60px;width:267px;margin-bottom:0px">
+    
+</div>
+<div class="fl_l mar_l20">
+    <a href="@Url.Action("Index","Main","Admin")" class="btn btn-category fl_l center" style=" margin-top:14px;width:70px;height:20px""><img src="@Url.css("Admin/Category/images/img_back.png")" />@res.Common.btnBack</a>
+    <div class="mar_l5 btn btn-category fl_l center" style="margin-top:14px;width:90px;height:20px" onclick="window.location.reload();" ><img src="@Url.css("Admin/Category/images/img_clear.png")" /> @res.Common.lblClearData</div>
+</div>
+
+<div class="clean"></div>
+<hr />
+
+<div id="categorytype" class="fl_l well" style="margin-bottom:0px;">
+    <div class="mar_l10">
+        <h5>@res.Common.lblType</h5>
+    </div>
+    <div class="input-append" style="width:165px;float:left">
+        <div class="Bg_Search" style="width:93%; height:28px;">
+            <div class="controls fl_l" style="width:350px;">
+                <input style="width:40.2%;border:none;height:20px;float:left;" type="text" placeholder="ค้นหาประเภทหมวดหมู่" id="CategoryTypeName" />
+            </div>
+        </div>
+    <button type="button" class="btn" id="SearchText" style="margin-top:4px;" title="@res.Common.lblSearch"><i class="icon-search"></i></button>
+    </div>
+    <button type="button" class="btn" id="InsertText" style="margin-top:4px;margin-left:45px;height: 30px;" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+    
+    <div class="clean20"></div>
+    <hr />
+    <div class="clean20"></div>
+
+    <div id="catetype-content">
+
+    </div>
+</div>
+
+<div id="catelevel1" class="fl_l well" style="margin-bottom:0px;">
+    <div class="mar_l10">
+        <h5>@res.Product.lblCateLV1 :</h5>
+    </div>
+    <div class="input-append" style="width:165px;float:left">
+        <div class="Bg_Search" style="width:93%; height:28px;">
+            <div class="controls fl_l" style="width:350px;">
+                <input style="width:40.2%;border:none;height:20px;float:left;" type="text" placeholder="ค้นหาหมวดหมู่" id="CategoryLV1" />
+            </div>
+        </div>
+        <button type="button" class="btn" id="SearchTextCateLV1" style="margin-top:4px;" title="@res.Common.lblSearch"><i class="icon-search"></i></button>
+    </div> 
+    <button type="button" class="btn" id="InsertTextCateLV1" style="margin-top:4px;margin-left:45px;height: 30px;" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+       
+    <div class="CateNameEN1 hide">
+        <div class="clean5"></div>
+        <input class="mar_l10" style="width:52.5%;border:1px;height:20px;float:left;" type="text" placeholder="@res.Admin.lblNewCateEng" id="CategoryENLV1" />
+        <button type="button" class="btn fl_l" id="InsertTextENCateLV1" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+        <button type="button" class="btn fl_l mar_r10" id="CancelTextCateLV1"  title="@res.Common.btnCancel"><img src="@Url.css("Admin/Category/images/img_delete.png")" style="margin-bottom:2px;" /></button>
+    </div>
+
+    <div class="clean20"></div>
+    <hr />
+
+    <div id="CategoryScrollLv1" class="CategoryScroll">
+            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+            <div class="viewport">
+                <div class="overview">
+                    <div class="clean20"></div>
+                    <div id="catelevel1-content">
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div id="catelevel2" class="fl_l well" style="margin-bottom:0px;">
+    <div class="mar_l10">
+        <h5>@res.Product.lblCateLV2 :</h5>
+    </div>
+    <div class="input-append" style="width:165px; float:left">
+        <div class="Bg_Search" style="width:93%; height:28px;">
+            <div class="controls fl_l" style="width:350px;">
+                <input style="width:40.2%;border:none;height:20px;float:left;" type="text" placeholder="ค้นหาหมวดหมู่" id="CategoryLV2" />
+            </div>
+        </div>
+        <button type="button" class="btn" id="SearchTextCateLV2" style="margin-top:4px;" title="@res.Common.lblSearch"><i class="icon-search"></i></button>
+    </div> 
+    <button type="button" class="btn" id="InsertTextCateLV2" style="margin-top:4px;margin-left:45px;height: 30px;" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+    
+    
+    <div class="CateNameEN2 hide">
+        <div class="clean5"></div>
+        <input class="mar_l10" style="width:52.5%;border:1px;height:20px;float:left;" type="text" placeholder="@res.Admin.lblNewCateEng" id="CategoryENLV2" />
+        <button type="button" class="btn fl_l" id="InsertTextENCateLV2" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+        <button type="button" class="btn fl_l mar_r10" id="CancelTextCateLV2"  title="@res.Common.btnCancel"><img src="@Url.css("Admin/Category/images/img_delete.png")" style="margin-bottom:2px;" /></button>
+    </div>
+
+    <div class="clean20"></div>
+    <hr />
+    
+    <div id="CategoryScrollLv2" class="CategoryScroll">
+            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+            <div class="viewport">
+                <div class="overview">
+                    <div class="clean20"></div>
+                    <div id="catelevel2-content">
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div id="catelevel3" class="fl_l well" style="margin-bottom:0px;">
+    <div class="mar_l10">
+        <h5>@res.Product.lblCateLV3 :</h5>
+    </div>
+    <div class="input-append" style="width:165px; float:left">
+        <div class="Bg_Search" style="width:93%; height:28px;">
+            <div class="controls fl_l" style="width:350px;">
+                <input style="width:40.2%;border:none;height:20px;float:left;" type="text" placeholder="ค้นหาหมวดหมู่" id="CategoryLV3"/>
+            </div>
+        </div>
+        <button type="button" class="btn " id="SearchTextCateLV3" style="margin-top:4px;" title="@res.Common.lblSearch"><i class="icon-search"></i></button>
+    </div> 
+    <button type="button" class="btn" id="InsertTextCateLV3" style="margin-top:4px;margin-left:45px;height: 30px;" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+
+    <div class="CateNameEN3 hide">
+        <div class="clean5"></div>
+        <input class="mar_l10" style="width:52.5%;border:1px;height:20px;float:left;" type="text" placeholder="@res.Admin.lblNewCateEng" id="CategoryENLV3" />
+        <button type="button" class="btn fl_l" id="InsertTextENCateLV3" title="@res.Common.btnNew @res.Common.lblCategory"><img src="@Url.css("Admin/Category/images/img_insert.png")" style="margin-bottom:2px;" /></button>
+        <button type="button" class="btn fl_l mar_r10" id="CancelTextCateLV3"  title="@res.Common.btnCancel"><img src="@Url.css("Admin/Category/images/img_delete.png")" style="margin-bottom:2px;" /></button>
+    </div>
+    
+    <div class="clean20"></div>
+    <hr />
+    <div id="CategoryScrollLv3" class="CategoryScroll">
+            <div class="scrollbar"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+            <div class="viewport">
+                <div class="overview">
+                    <div class="clean20"></div>
+                    <div id="catelevel3-content">
+                    </div>
+                </div>
+            </div>
+    </div>
+</div>
+
+<div id="managecate" class="fl_l well" style="width:426px;margin-bottom:0px;">
+    <div class="btn-category menucategory">
+        <a class="cursor mar_l20 mar_r5 category"><img src="@Url.css("Admin/Category/images/img_category.png")" class="mar_r5" />@res.Admin.lblMoveCategory</a> | 
+        <a class="cursor mar_l10 mar_r5 product"><img src="@Url.css("Admin/Category/images/img_product.png")" class="mar_r5" />@res.Admin.lblMoveProduct</a> | 
+        <a class="cursor mar_l5 mar_r10 delete-category"><img src="@Url.css("Admin/Category/images/img_delete.png")" class="mar_r5" />@res.Common.btnDelete</a>
+    </div>
+    <div class="heightmanage" style="margin:10px;">
+        <div style="height:39px">
+            <table border="0" cellpadding="0" cellspacing="0" >
+                <tbody>
+                    <tr valign="top">
+                        <td style=" width: 42px; ">
+                            <div class="inline"><b>@res.Common.lblCategory: </b></div>
+                        </td>
+                        <td>
+                            <span class="categorypath inline"></span>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div><b>@res.Common.lblProduct: </b><span class="productcount"></span> @res.Common.lblList</div>
+    </div>
+
+    <div class="clean"></div>
+    <hr />
+
+    @Html.Partial("UC/ManageCategory") 
+</div>
+
+<div class="clean"></div>
+<hr style="margin-bottom:-27px" />
+
+<div id="addtypecate" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4>เพิ่มประเภทสินค้า</h4>
+  </div>
+    <div class="modal-body">
+        ชื่อประเภทสินค้า : <input id="CategoryType" type="text" value="" class="CategoryType" /><br />
+    </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary" id="InsertType" data-dismiss="modal" aria-hidden="true">@res.Common.btnSave</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">@res.Common.lblCancel</button>
+  </div>
+</div>

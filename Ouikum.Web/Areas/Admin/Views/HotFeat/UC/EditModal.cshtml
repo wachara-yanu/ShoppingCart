@@ -1,0 +1,61 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{
+    var a = ViewBag.PStatus;
+}
+<div id="RejectModal" data-id="" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+    <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h2 id="myModalLabel" class="label-header" style="line-height:20px">@res.Common.lblEdit</h2>
+    </div>
+    <div class="modal-body">
+        <form id="rejectform"  class="form-inline"> 
+            <label class="span2 fl_l">@res.Common.lblLifetime : </label>
+              <select name="ExpiredDate" id="EditExpiredDate" style="width:145px" >
+                  <option value="0">----กรุณาเลือก----</option>
+                @for (int i = 1; i <= 12;i++ )
+                {
+                    <option value="@i">@i @res.Common.lblMonth</option>
+                }
+            </select>
+            <div class="clean10"></div>
+            <label class="span2 fl_l">@res.Admin.lblType : </label>
+
+            <div id="EnumHotFeatStatus"></div>
+
+            @*<select name="editStatus" class="editStatus" style="width:145px" >
+                @foreach (var it in ViewBag.EnumHotFeatStatus)
+                {
+                    if (it.EnumValue == ViewBag.PStatus)
+                    {
+                        <option value="@it.EnumValue" selected >@it.EnumText</option>
+                    }
+                    else if (it.EnumText == "All")
+                    {
+                    }else
+                    {
+                        <option value="@it.EnumValue" >@it.EnumText</option>
+                    }
+                }
+            </select>*@
+
+            <div class="clean10"></div>
+            <label class="span2 fl_l">@res.Common.lblPrice : </label>
+            <div class="input-append fl_l span3 inline" style="margin-left:-1px;">
+                <input type="text" name="editHotPrice" id="editHotPrice" class="editHotPrice" style="width:105px;"  value="0.00" />
+                <span class="add-on" style="width:10px;">
+                    <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_quo_up" /><br />
+                    <img src="@Url.cssDefault("images/icon_down.jpg")"  style="margin-top:-32px;" class="cursor icon_quo_down" />
+                </span>
+               <span style="width:100px;">บาท</span>
+            </div>
+            <div class="clean10"></div>
+            <label class="span2 fl_l">ตั้งค่าการส่งข้อความ : </label>
+            <label class="lblSendMail"><input type="checkbox" id="IsSendMailExpire" value="0" style="margin-top:0px; margin-right:5px;" />@res.Message_Center.btnSendMessage@res.Common.lblContactSupplier </label>
+            <div class="clean10"></div>
+            <label class="span2 fl_l"></label>
+            <button id="save_edit" class="btn btn-danger fl_l"  type="button">@res.Common.btnSave</button> 
+            <button class="btn" data-dismiss="modal" aria-hidden="true" type="button" style="margin-left:10px;">@res.Common.btnCancel</button> 
+        </form> 
+</div> 
+</div>

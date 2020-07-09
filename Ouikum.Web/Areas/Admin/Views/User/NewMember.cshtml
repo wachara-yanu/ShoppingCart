@@ -1,0 +1,236 @@
+﻿@{
+    ViewBag.Title = res.Admin.lblNewMember;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+
+<div class="ContentAdmin">
+<div class="clean20"></div>
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/WebconfigMainMenu")*@
+
+    <article class="module width_full">
+        <header><h3>@res.Admin.lblNewMember</h3></header>
+        <div class="module_content">
+            <form id="NewUser_Form" class="form-horizontal" action="@Url.Action("NewMember","User",new{area="Admin"})" method="post" style="margin-left:50px;">
+            <h2>@res.Admin.lblWebAccessData</h2>
+                <div class="control-group">
+                    <label class="control-label" for="Username">@res.Member.lblUsername :</label>
+                    <div class="controls UserName">
+                        <input type="text" id="UserName" name="UserName" class="span4" placeholder="Username" onblur="checkUserName();" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Password">@res.Member.lblPassword :</label>
+                    <div class="controls Password">
+                        <input type="password" name="Password" id="Password" class="span4" placeholder="Password" onblur="checkError();" />
+                    </div>
+                </div>
+               <div class="control-group">
+                    <label class="control-label" for="ConfirmPassword">@res.Member.lblConfirm_Password :</label>
+                    <div class="controls ConfirmPassword">
+                        <input type="password" id="ConfirmPassword" name="ConfirmPassword" class="span4" placeholder="Confirm Password" onblur="checkError();" />
+                    </div>
+              </div>
+              <div class="control-group ">
+                <label class="control-label" for="Emails">@res.Common.lblEmail :</label>
+                <div class="controls Emails">
+                  <input type="text" name="Emails"  id="Emails" placeholder="Email"  class="wid_input" onblur="checkEmails();"/>
+                </div>
+              </div>
+              <div class="clean10"></div>
+
+            <h2>@res.Company.lblAccountData</h2>
+            
+            <div class="control-group">
+                <label class="control-label">@res.Member.lblMember_type :</label>
+                <div class="controls"> 
+                   <label class="radio inline">
+                        <input class="MemberType" type="radio" name="MemberType" value="1" checked="checked"/>@res.Common.lblMember
+                    </label>
+                </div>
+            </div>
+            
+            <div class="control-group">
+                <label class="control-label">@res.Common.lblServiceType :</label>
+                <div class="controls"> 
+                <select class="span4" id="ServiceType" name="ServiceType" onchange="checkError();">
+                    <option value="0">@res.Common.btnSelect</option>
+                    @foreach (var it in ViewBag.EnumMemberType)
+                    {
+                    <option value="@it.EnumValue">@it.EnumText</option>
+                    }
+                </select>
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="DisplayName">@res.Member.lblDisplay :</label>
+                <div class="controls DisplayName">
+                    <input type="text" id="DisplayName" name="DisplayName" class="span4" placeholder="Display Name" onblur="checkDisplayName();" />
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="Level">@res.Admin.lblMemberLevel :</label>
+                <div class="controls">
+                    <select class="span4" name="CompLevel" id="CompLevel" onchange="checkError();">
+                        <option value="0">@res.Common.ddlSelectPlease</option>
+                        @foreach (var it in ViewBag.EnumCompLevels)
+                        {
+                            <option value="@it.EnumValue">@it.EnumText</option>
+                        }
+                    </select>
+                </div>
+            </div>
+            <div class="control-group Ist" style="display:none;">
+                <label class="control-label" for="Istrust">@res.Admin.lblShowMainPage :</label>
+                <div class="controls">
+                    <input type="checkbox" id="IsTrust" name="IsTrust" value="0" onclick="istrust();" />
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="IsSME">จากผู้ประกอบการ SME :</label>
+                <div class="controls">
+                    <input type="checkbox" id="IsSME" name="IsSME" value="0" onclick="issme();" />
+                </div>
+            </div>
+            <div class="control-group exp" style="display:none;">
+            <label class="control-label" for="ExpireDate">@res.Common.lblExpire_date :</label>
+            <div class="controls">
+            @*<label id="lblExpireDate" class="control-label" for="ExpireDate" style="text-align:left;">*@
+                <select class="span4" id="ExpireDate" name="ExpireDate" disabled="disabled">
+                    <option value="0">@res.Common.ddlSelectPlease</option>
+                    @for (var i = 1; i < 12; i++)
+                    {
+                    <option value="@i">@i&nbsp;@res.Common.lblMonth</option>
+                    }
+                    <option value="12">1&nbsp;@res.Common.lblYear</option>
+                </select>
+            @*</label>*@
+            </div>
+         <div class="clean10"></div>
+         </div>
+
+        <h2>@res.Common.lblMemberProfile</h2>
+            <div class="control-group inline" style="vertical-align: top;">
+                <label class="control-label" for="FirstName_register">@res.Common.lblfirstlast_name :</label>
+                <div class="controls">
+                    <input type="text" name="FirstName_register" class="span2 mar_r25" placeholder="FirstName" onblur="checkError();" />
+                </div>
+            </div>
+
+            <div class="control-group inline" style="vertical-align: top;">
+                <div>
+                    <input type="text" name="LastName" class="span2" placeholder="Last Name" onblur="checkError();">
+                </div>
+            </div>
+
+            <div class="control-group">
+                <label class="control-label" for="CompanyName">@res.Common.lblComname :</label>
+                <div class="controls CompName">
+                  <input type="text"  name="CompName" id="CompName" placeholder="Company Name" class="span4" onblur="checkCompName();" />
+                </div>
+            </div>
+
+            <div class="control-group" style="margin-bottom:0px;">
+                <label class="control-label" for="BizTypeID">@res.Common.lblBusiness_Type :</label>
+                <div class="controls">
+                <select name="BizTypeID" id="BizTypeID"  class="span4" onchange="checkError();">
+                    <option value="0">@res.Common.chooseBizType</option>
+                    @foreach(var it in (List<b2bBusinessType>)ViewBag.Biztypes){
+                    <option value="@it.BizTypeID">@it.BizTypeName</option>
+                    }
+                </select>
+                </div>
+            </div> 
+
+            <div class="control-group">
+                <div class="controls">
+                <input type="text" id="BizTypeOther" name="BizTypeOther" placeholder="BusinessType Other" class="hide span4" onblur="checkError();" />
+                </div>
+            </div> 
+
+            <div class="control-group">
+                <label class="control-label" for="AddrLine1">@res.Common.lblAddress :</label>
+                <div class="controls">
+                    <input type="text" name="AddrLine1" id="AddrLine1" placeholder="Address" class="span4" onblur="checkError();" />
+                </div>
+            </div>
+
+         <div class="control-group">
+                <label class="control-label" for="Province">@res.Common.lblProvince :</label>
+               <div class="controls">
+                <select name="ProvinceID" id="ProvinceID" class="span4" onchange="checkError();">
+                  <option value="0">@res.Common.chooseProvince</option>
+                    @foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                    {
+                    <option value="@it.ProvinceID">@it.ProvinceName</option>
+                    }
+                </select>
+                </div>
+          </div> 
+   
+          <div class="control-group">
+                <label class="control-label" for="District">@res.Common.lblDistrict :</label>
+               <div class="controls">
+                <select name="DistrictID" id="DistrictID"  class="span4" onchange="checkError();">
+                  <option value="0">@res.Common.chooseDistrict</option>
+                </select>
+                </div>
+          </div> 
+
+          <div class="control-group">
+                <label class="control-label" for="PostalCode">@res.Common.lblPostal_code :</label>
+               <div class="controls">
+                  <input type="text" name="PostalCode" id="PostalCode" placeholder="Postal Code"  class="span4" onblur="checkError();"/>
+                </div>
+          </div>
+
+          <div class="control-group">
+                <label class="control-label" for="Phone">@res.Common.lblPhoneno :</label>
+               <div class="controls">
+                  <input type="text" name="Phone" id="Phone" placeholder="Phone"  class="span4" onblur="checkError();"/>
+                </div>
+          </div>
+
+          <div class="control-group">
+                <label class="control-label" for="Mobile">@res.Common.lblMobileno :</label>
+               <div class="controls">
+                  <input type="text" name="Mobile" id="Mobile" placeholder="Mobile"  class="span4" onblur="checkError();"/>
+                </div>
+          </div>
+      
+          <div class="control-group">
+                <label class="control-label" for="Fax">@res.Common.lblFax :</label>
+               <div class="controls">
+                  <input type="text" name="Fax" id="Fax" placeholder="Fax"  class="span4" onblur="checkError();"/>
+                </div>
+          </div>
+
+          <div class="controls">
+          <button class="btn btn-default" type="submit" id="submit" disabled="disabled">
+            <i class="icon-save mar_t3"></i>
+            @res.Common.btnSave
+          </button>
+          <button class="btn" type="reset" onclick="resetForm($('form[id=NewMemberForm]'));">
+          <i class="icon-remove mar_t3"></i>
+            @res.Common.btnCancel
+          </button>
+          </div>
+          <div class="clean20"></div>
+        </form>
+        </div>
+    </article>
+</div>
+<div class="clean20"></div>
+
+@section js{
+<script src="@Url.js("Admin/User/NewUser.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>
+}

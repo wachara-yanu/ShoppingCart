@@ -1,0 +1,171 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@{
+    ViewBag.Title = @res.Common.colManage+ @res.Admin.lblCategory;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ProductCategory.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />
+}
+@using res = Prosoft.Resource.Web.Ouikum
+
+<div class="mainContent">
+@Html.Partial("Admin/WelcomeMessage")
+
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/WebconfigMainMenu")*@
+
+<!-------------------New Product Category------------------->
+<article class="module width_full">
+    <header><h3>@res.Admin.lblNewProductCate</h3></header>
+    <div class="module_content">
+        <form id="NewCategoryForm" class="form-inline">
+            <div class="row">
+                <div class="span6 control-group" style="margin-left:8%;">
+
+                    <label class="control-label">@res.Admin.lblCategoryName : </label>
+                        <input type="text" name="categoryThaiName" class="span2 icon_thai mar_r5" style="padding-left:22px">
+                        <input type="text" name="categoryEngName" class="span2 icon_eng" style="padding-left:22px">
+
+
+                </div>
+                <div class="span4 control-group">
+                    <label class="control-label">@res.Admin.lblMainCategory : </label>
+                    <select class="span2" name="mainCategory">
+                        <option value="0">@res.Admin.lblMainCategory</option>
+                        <option value="1">@res.Common.lblCategory 1</option>
+                         <option value="2">@res.Common.lblCategory 2</option>
+                    </select>
+                </div>
+                <div class="span4" style="margin-top:15px; margin-left:17.5%">
+                    <button type="submit" id="btnSaveCate" class="btn btn-danger">@res.Common.btnSave</button>
+                    <button type="button" class="btn" onclick="resetForm($('form[id=NewCategoryForm]'));">@res.Common.btnCancel</button>
+                </div>
+            </div>
+        </form>
+
+    </div>
+</article>
+
+
+<!-------------------Simple Search & Advance Search------------------->
+@Html.Partial("Admin/AdvanceSearch")
+
+
+<div style="margin:10px 10px 10px 0px;">
+    <span class="btnCheckAll mar_r7">
+        <label class="checkbox checkall inline">
+            <input type="checkbox" id="CheckAll" onclick="CheckBoxall($(this))"/> @res.Common.colSelectAll
+        </label>
+    </span>
+    <button class="btn DeleteProductCates" style="margin:2px;">@res.Common.btnDelete</button>
+    <button class="btn" style="margin:2px;">@res.Common.btnShow</button>
+    <button class="btn" style="margin:2px;">@res.Common.btnHide</button>
+    <button class="btn" style="margin:2px;">@res.Common.btnImport</button>
+    <button class="btn" style="margin:2px;">@res.Common.lblExport</button>
+</div>
+
+<!---------------------------Table------------------------------>
+ <div class="">
+      @Html.Partial("Admin/Grid/ConfigProductCateGrid")
+      @Html.Partial("UC/PagingUC/PagingAdminUC")      
+ </div>
+</div>
+@Html.Partial("UC/FooterUC/AdminFooterUC")
+
+@section js{
+<script src="@Url.js("UC/DatepickerUC/bootstrap-datepicker.js")" type="text/javascript" charset="UTF-8"></script>
+<script src="@Url.js("UC/DatepickerUC/locales/bootstrap-datepicker.th.js")" type="text/javascript" charset="UTF-8"></script>
+<script src="@Url.js("Admin/WebConfig/ProductCategory.js")" type="text/javascript"></script>
+<script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+
+
+    <script type="text/javascript">
+        $(function () {
+        // validation //
+            $.validator.addMethod("select", function (value, element, arg) {
+                return arg != value;
+            }, '@res.Common.ddlSelectPlease');
+
+            $('#NewCategoryForm').validate(
+             {
+                 rules: {
+                     categoryThaiName: {
+                         required: true,
+                         minlength: 3
+                     },
+                    categoryEngName: {
+                        required: true,
+                        minlength: 3
+                    },
+                     mainCategory: {
+                         select: 0
+                     }
+                 },
+                 messages: {
+                     categoryThaiName: {
+                         required: " ",
+                         minlength: " "
+                     },
+                     categoryEngName: {
+                         required: " ",
+                         minlength: " "
+                     }
+                 },
+                 highlight: function (label) {
+//                     $('#btnSaveCate').attr('disabled', true);
+                     $(label).closest('.control-group').removeClass('success');
+                     $(label).closest('.control-group').addClass('error');
+
+                 },
+                 success: function (label) {
+                     label.closest('.control-group').removeClass('error');
+                     label.closest('.control-group').addClass('success');
+//                     $('#btnSaveCate').removeAttrs('disabled');
+                 }
+
+             });
+
+
+         });
+
+         //-----------------------------------duration datepicker--------------------------------------
+         var startDate = new Date();
+         var endDate = new Date();
+         $("#txtfromDate").datepicker()
+            .on('changeDate', function (ev) {
+                if (ev.date.valueOf() > endDate.valueOf()) {
+                    $('#fromDate').val('');
+                    $('#alert').find('i').addClass('icon-info-sign');
+                    $('#alert').show().find('strong').text('@MvcHtmlString.Create(res.JS.vldstartdate)');
+                    $('#alert').addClass("alert alert-error");
+                    return false;
+                } else {
+                    $('#alert').hide();
+                    startDate = new Date(ev.date);
+                    $('#fromDate').data('date');
+                }
+                $('#txtfromDate').datepicker('hide');
+            });
+         $("#txttoDate").datepicker()
+            .on('changeDate', function (ev) {
+                if (ev.date.valueOf() < startDate.valueOf()) {
+                    $('#toDate').val('');
+                    $('#alert').find('i').addClass('icon-info-sign');
+                    $('#alert').show().find('strong').text('@MvcHtmlString.Create(res.JS.vldenddate)');
+                    $('#alert').addClass("alert alert-error");
+                    return false;
+                } else {
+                    $('#alert').hide();
+                    endDate = new Date(ev.date);
+                    $('#toDate').data('date');
+                }
+                $('#txttoDate').datepicker('hide');
+
+            });
+
+    </script>
+
+    
+}

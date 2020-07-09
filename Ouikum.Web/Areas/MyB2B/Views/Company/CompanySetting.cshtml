@@ -1,0 +1,92 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Company.lblCompPayment;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+
+    int WebCompID = DataManager.ConvertToInteger(ViewBag.WebCompID);
+    int WebCompLevel = DataManager.ConvertToInteger(ViewBag.WebCompLevel);
+    var WebCompName = (string)ViewBag.WebCompName;
+    var Companies = (Ouikum.view_Company)ViewBag.Companies;
+    var WebCompHis = ViewBag.WebCompHistory;
+
+    //Count 
+
+    int ProductCount = DataManager.ConvertToInteger(ViewBag.ProductCount);
+    int ArticleCount = DataManager.ConvertToInteger(ViewBag.CountArticle);
+    int PaymentCount = DataManager.ConvertToInteger(ViewBag.PaymentCount);
+    int ShipmentCount = DataManager.ConvertToInteger(ViewBag.ShipmentCount);
+    int CertifyCount = DataManager.ConvertToInteger(ViewBag.CertifyCount);
+    int JobCount = DataManager.ConvertToInteger(ViewBag.CountJob);
+    bool IsOnline = DataManager.ConvertToBool(ViewBag.IsOnline);  
+}
+
+@section head{<link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />}
+
+<div style="margin-top:25px;">
+    @using (Ajax.BeginForm("CompanySetting", "Company", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+    {
+        <div id="SettingGrid">@Html.Partial("UC/Grid/GridUC")</div>
+    }
+</div>
+
+@section js{
+    <script src="~/Scripts/MyB2B/Company/CompSetting.js"></script>
+    <script type="text/ecmascript">
+    
+    /*--------------------- toggle -------------------*/
+
+        $(".btnCollapse").live('click',function () {
+            var data = $(this).index(".btnCollapse");
+            var Icon = $(this).find("i")
+
+            var target = $(this).attr('data-target');
+
+            console.log(target)
+
+            if (Icon.hasClass("icon-chevron-down")) {
+                Icon.removeClass('icon-chevron-down');
+                Icon.addClass("icon-chevron-up")
+                $(target).slideDown(); 
+            } else {
+                Icon.addClass("icon-chevron-down")
+                Icon.removeClass('icon-chevron-up');
+                $(target).slideUp();
+            }
+        });
+
+        /*--------------------------- Hide & Show ---------------------------------------*/
+
+        $("#Edit-url").hide();
+        $("#group-edit").hide();
+           
+            $("#btn_edit").click(function () {
+                if($(this).hasClass('active')){
+                    $('.active').removeClass();
+                } else {
+                    $('.active').addClass();
+                    $('#group-edit').show();
+                    $("#Edit-url").show();
+                    $('#group-begin').hide();
+                    $("#Check-url").hide();
+                }
+            }); 
+
+            $("#btn_cancle").click(function(){
+                if($(this).hasClass('active')){
+                    $('.active').removeClass();
+                    
+                } else {
+                    $('.active').addClass();
+                    $('#group-begin').show();
+                    $('#group-edit').hide();
+                    $('#Check-url').show();
+                    $('#Edit-url').hide();
+                    
+                } 
+            });
+
+        </script>
+
+    }
+        

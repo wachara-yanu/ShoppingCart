@@ -1,0 +1,57 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+<div class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 10px 0px;width: 96.3%">
+    <table>
+    <tr>
+        <td><text class="fl_r">@res.Common.lblKeyword :</text></td>
+        <td><input type="text" class="span2 mar_10" name="SearchText" placeholder="@res.Common.lblSearch" /></td> 
+        <td><text class="fl_r">@res.Admin.lblMemberLevel :</text></td>
+        <td>
+            <select class="mar_10" name="CompLevel" style="width: 170px; margin-left: 0px;">
+                <option value="0">All</option>
+                    @foreach (var it in ViewBag.CompLevels)
+                    {
+                        <option value="@it.EnumValue">@it.EnumText</option>
+                    }
+                </select>
+        </td>
+    </tr>
+    <tr>
+        <td><text class="fl_r">@res.Common.colStatus :</text></td>
+        <td>
+        <select class="mar_10" name="CompRowFlag" style="width: 170px; margin-left: 0px;">
+            <option value="5">All</option>
+                @foreach(var it in ViewBag.ddlUserStatus)
+                {
+                    <option value="@it.EnumValue">@it.EnumText</option>
+                }
+                </select>
+        </td>
+        <td><text class="fl_r">@res.Common.lblSearch_by :</text></td>
+        <td>
+            <select class="mar_10" name="SearchType" style="width: 170px; margin-left: 0px;">
+                <option selected="selected" value="All">@res.Common.lblAll</option>
+                <option value="CompCode">@res.Company.lblComp_code</option>
+                <option value="UserName">@res.Member.lblUser_name</option>
+                <option value="CompName">@res.Company.lblCompName</option>
+                <option value="FirstName">@res.Member.lblMem_name</option>
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td><text class="fl_r">@res.Common.lblRegister :</text></td>
+        <td>
+            <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA span2 mar_t10 mar_r5" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+            <input type="checkbox" id="SelectAllPeriod" class="tootip-buttom" title="Customize" />
+        </td>
+        <td><button type="submit" class="btn btn-darkblue mar_l20 btnsearch"><i class="icon-search icon-white mar_t3"></i></button></td>
+    </tr>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('.rangeA').daterangepicker();
+        $('.tootip-buttom').tooltip({ placement: 'bottom' });
+    });
+</script>

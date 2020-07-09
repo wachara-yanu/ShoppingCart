@@ -1,0 +1,224 @@
+﻿@using Ouikum.Product;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;}
+<div class="mar_rl10" style="border-bottom:1px solid #ccc;">
+    @Html.Partial("UC/Mobile/GeneratePagingUC")
+</div>
+@if (((List<view_SearchProduct>)ViewBag.Products).Count > 0)
+{
+    <input id="CategoryID" type="hidden" value="@ViewBag.CateID" class="@ViewBag.CateLV"/>
+    <ul class="mar_rl10" id="List" style="list-style:none">
+        @{string ItemName = "";}
+    @foreach (var item in (IEnumerable<view_SearchProduct>)ViewBag.Products)
+    {
+        ItemName = ViewBag.CurrentLanguage == "en" ? item.ProductNameEng : item.ProductName;
+        string imgPath = "http://www.placehold.it/190x200/EFEFEF/AAAAAA&text=no+image";
+        if (!string.IsNullOrEmpty(item.ProductImgPath))
+        {
+            imgPath = Url.ThumbProduct(item.CompID, item.ProductID, item.ProductImgPath);
+        }
+        <li class="divProductItem padd_t10 padd_b10" style="border-bottom:1px solid #ddd;">
+            <input type="checkbox" class="ChooseProduct mar_l10 fl_l hide" name="chkpd" title="@item.ProductID" />
+            @if (res.Common.lblWebsite == "AntCart" && item.PromotionPrice>0)
+            {
+                var priceof = Convert.ToInt32(100 - ((item.PromotionPrice / item.Price) * 100)) + "%";  
+                <div class="discountoff" style=""><span style="line-height:15px;color:white">ลด <center>@priceof</center></span><span></span></div>
+            }
+                <div class="divPicPro-mobile data-item inline mar_r15 img-frame" 
+                   data-id="@item.ProductID" 
+                    data-name="@item.ProductName"  
+                    data-img="@imgPath">
+                    <div class="item-drag" style="vertical-align:top;min-height:120px">
+                    <img src="@Url.Content(imgPath)" id="@item.ProductID" data-toggle="modal" data-target="#ModalProductDetail" 
+                        class="cursor ImgProduct" onclick="window.location.href = GetUrl('Search/Product/Detail/@item.ProductID/@Url.ReplaceUrl(@item.ProductName).Trim()')"  alt="@item.ProductName" title="@item.ProductName"  
+                         onload="setElementMiddle(120,null,$(this))"/>
+                    </div>
+                </div>
+                <div class="detail-mobile inline">
+                    <div class="divDetailPro ">
+                        <div class="Row mar_b10">
+                        <a class="cursor font_18" href="@Url.Action("Detail", "Product", new { id = item.ProductID, name = Url.FriendlyEncode(ItemName)})" title="@item.ProductName">
+                        @*@Html.SubText(item.ProductName,24)*@ @item.ProductName</a>
+                        </div>
+                         @if (item.ShortDescription != null)
+                        {
+                            var listitem = item.ShortDescription.Split('~');
+                            <ol style="list-style-type:decimal; margin:5px 0px 5px 20px; " class="word-wrap">
+                                @for (int i = 0; i < listitem.Count(); i++)
+                                {
+
+                                    if (listitem[i] != null && listitem[i] != "" && i < 3)
+                                    {
+                                        var ShortDescription = string.Empty;
+                                        if (listitem[i].Length > 40)
+                                        {
+                                            ShortDescription = listitem[i].Substring(0, 40 - 2) + "..";
+                                        }
+                                        else
+                                        {
+                                            ShortDescription = listitem[i];
+                                        }
+                                        <text><li>@(ShortDescription)</li></text>
+                                    }
+                                }                    
+                            </ol>
+                        }
+                    </div>
+                     @if (res.Common.lblWebsite == "AntCart" || res.Common.lblWebsite == "myOtopThai")
+                    {
+                        <div class="clearfix"></div>
+                        <div class="">
+                        @if (item.Price > 0)
+                        { 
+                            if(item.IsPromotion==true){
+                            <div class="muted" style="text-decoration:line-through;float:right">@(String.Format("{0:##,###.##}", item.Price)) @res.Product.lblBaht</div>
+                            }
+                            else{
+                                <div class="b font_l" style="color:#FD7C16;float:right">@(String.Format("{0:##,###.##}", item.Price)) @res.Product.lblBaht</div>
+                            }
+                        }
+                        @if (item.PromotionPrice > 0)
+                        { 
+                        <div class="clean"></div> <span class="mar_t10 b font_l" style="color:#FD7C16;float:right">@(String.Format("{0:##,###.##}", item.PromotionPrice)) @res.Product.lblBaht</span>
+                        }
+                        </div>
+                    }
+                </div>
+                <input type="hidden" class="Comphidden" value="@item.CompID" />
+        </li>
+    }
+    </ul>
+    <div class="mar_trl10">
+        @Html.Partial("UC/Mobile/GeneratePagingUC")
+    </div>
+    <div class="mar_rl10">
+        <a href="#Wrapper" class="btn btn-large span12 font_18" style="margin:10px 0px 0px 0px">กลับสู่ด้านบน</a>
+    </div>
+}
+else
+{ 
+  <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound
+  </div>
+}
+
+<script type="text/javascript">
+    // SetProvinceList();
+
+    function HideDiv(Obj) {
+        Obj.parents('.divProductItem').slideUp("slow");
+    }
+    // $('.Optionsortby').width($('#ProductDetail').width()-($('#ProductDetail').width()*4/100));
+    if ($('#ddlSort').val() == 2) {
+        $('.Sortbymodified').css('display', 'none');
+        $('.Sortbycreadted').css('display', 'block');
+    }
+    if ($('#ddlSort').val() == 4) {
+        $('.SortViewCount').css('display', 'none');
+        $('.SortContactCount').css('display', 'block');
+    }
+    if ($(window).width() > 1366) {
+        $(".Optionsortby").removeClass("mar_l13");
+    }
+    /*----Paging---*/
+    TotalRow = '@(ViewBag.TotalRow)';
+        $(".lblTotalRow").html('@(ViewBag.TotalRow)');
+
+    TotalPage = '@(ViewBag.TotalPage)';
+    $(".lblTotalPage").html('@(ViewBag.TotalPage)');
+
+    PageIndex = '@(ViewBag.PageIndex)';
+    $('.txtPageIndex').val('@(ViewBag.PageIndex)');
+
+    $("#AddCompare").attr("onclick", "AddCompare('List')");
+    CateName = '@(ViewBag.CateName)';
+    TextSearch = '@MvcHtmlString.Create(ViewBag.TextSearch)';
+    CateNameLV1 = '@MvcHtmlString.Create(ViewBag.CateNameLV1)';
+    CateNameLV2 = '@MvcHtmlString.Create(ViewBag.CateNameLV2)';
+    CateNameLV3 = '@MvcHtmlString.Create(ViewBag.CateNameLV3)';
+    CateLV = '@(ViewBag.CateLV)';
+    CateID = "@(ViewBag.CateID)";
+    $("#TextSearch").val(TextSearch);
+
+    $("#SelectCate").removeAttr("Class");
+    if (CateLV == 0) {
+        $("#divCateNameLV1").html("");
+        $("#divCateNameLV2").html("");
+        $("#divCateNameLV3").html("");
+        $("#SelectCate").attr("Class", 0).val(0);
+        $("#CateShow").html("<a onclick='SearchAll()' class='cursor'>" + label.vldall_cate + "</a>")
+    }
+    if ((CateNameLV1 != null) && (CateNameLV1 != '')) {
+        $("#divCateNameLV1").html("<span class='mar_r5 fl_l'> >>></span> <a class='cursor fl_l' title='@ViewBag.CateNameLV1'  href='@Url.Action("List/Category","Product", new {Category = ViewBag.CateLV1 ,CateLevel = 1 ,  CategoryName = ViewBag.ReCateNameLV1 ,area = "Search" })'> @ViewBag.CateNameLV1</a>");
+            $("#divCateNameLV2").html("");
+            $("#divCateNameLV3").html("");
+            $("#SelectCate").attr("Class", 1).val(@(ViewBag.CateLV1));
+            $("#CatePreview").html("<span class='icon-chevron-left cursor' onclick='SearchAll()'></span>");
+            $("#CateShow").html("<a onclick='SelectCate(@(ViewBag.CateLV1),1)' class='cursor'>@ViewBag.CateNameLV1</a>");
+        }
+    if ((CateNameLV2 != null) && (CateNameLV2 != '')) {                                                                                             
+            $("#divCateNameLV1").html("<span class='mar_r5 fl_l'> >> </span> <a class='cursor fl_l' title='@ViewBag.CateNameLV1'  href='@Url.Action("List/Category","Product", new{ Category= ViewBag.CateLV1,CateLevel=1,CategoryName=ViewBag.ReCateNameLV1 , area ="Search"})'> @ViewBag.CateNameLV1</a>");
+            $("#divCateNameLV2").html("<span class='mar_r5 fl_l'> >> </span><a class='cursor fl_l' title='@ViewBag.CateNameLV2'  href='@Url.Action("List/Category", "Product", new { Category = ViewBag.CateLV2, CateLevel = 2, ViewBag.ReCateNameLV2, area = "Search" })'> @ViewBag.CateNameLV2</a>");
+            $("#divCateNameLV3").html("");
+            $("#SelectCate").attr("Class", 2).val(@(ViewBag.CateLV2));
+            $("#CatePreview").html("<span class='icon-chevron-left cursor'  onclick='SelectCate(@(ViewBag.CateLV1),1)'></span>");
+            $("#CateShow").html("<a onclick='SelectCate(@(ViewBag.CateLV2),2)' class='cursor'>@ViewBag.CateNameLV2</a>");
+        }
+        if ((CateNameLV3 != null) && (CateNameLV3 != '')) {
+
+            $("#divCateNameLV1").html("<span class='mar_r5 fl_l'> >>></span> <a class='cursor fl_l' title='@ViewBag.CateNameLV1' href='@Url.Action("List/Category","Product", new{ Category= ViewBag.CateLV1,CateLevel=1,CategoryName=ViewBag.ReCateNameLV1 , area ="Search"})'> @ViewBag.CateNameLV1</a>");
+            $("#divCateNameLV2").html("<span class='mar_r5 fl_l'> >> </span><a class='cursor fl_l' title='@ViewBag.CateNameLV2'   href='@Url.Action("List/Category", "Product", new { Category = ViewBag.CateLV2, CateLevel = 2, ViewBag.ReCateNameLV2, area = "Search" })'> @ViewBag.CateNameLV2</a>");
+            $("#divCateNameLV3").html("<span class='mar_r5 fl_l'> > </span><a class='cursor fl_l' title='@ViewBag.CateNameLV3'  href='@Url.Action("List/Category", "Product", new { Category = ViewBag.CateLV3, CateLevel = 3, ViewBag.ReCateNameLV3, area = "Search" })'> @ViewBag.CateNameLV3</a>");
+        $("#SelectCate").attr("Class", 3).val(@(ViewBag.CateLV3));
+        $("#CatePreview").html("<span class='icon-chevron-left cursor'  onclick='SelectCate(@(ViewBag.CateLV1),1)'></span>");
+        $("#CateShow").html("<a onclick='SelectCate(@(ViewBag.CateLV2),2)' title='@ViewBag.CateNameLV2' class='cursor'>@ViewBag.CateNameLV2</a>");
+    }
+
+    /*----------droppable------------*/
+    var $List = $("#List"),
+    $trash = $("#trash");
+    $trash.droppable({
+        activeClass: "ui-state-default",
+        hoverClass: "ui-state-hover",
+        drop: function (event, ui) {
+
+            SaveCompareCookie(inxDataItem);
+            CallCompare();
+        }
+    });
+
+    var inxDataItem = null;
+    $("li", $List).draggable({
+        revert: "true",
+        cursor: "move",
+        zIndex: 11,
+        helper: function (event, ui) {
+
+            inxDataItem = $('.data-item').index($(this).find('.data-item'));
+            //console.log(inxDataItem); 
+
+            return $($(this).find(".item-drag").html());
+        }
+    });
+    function openWindowChat(url, target) {
+        var oldWin = window.open(url, target, 'width=620,height=565,menubar=no,status=no');
+        oldWin.focus();  // give focus 
+        return false;
+    }
+
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+</script>
+

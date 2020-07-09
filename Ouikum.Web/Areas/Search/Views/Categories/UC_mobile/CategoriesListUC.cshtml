@@ -1,0 +1,281 @@
+﻿@using Ouikum;
+@using Ouikum.Category;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+@{
+    var svCategory = new CategoryService();
+    //var index = ViewBag.Prefix;
+    var cateLevel = 1;
+    if (res.Common.lblWebsite == "AppstoreThai" || res.Common.lblWebsite == "myOtopThai")
+    {
+        cateLevel = 2;
+    } 
+}    
+@if (ViewBag.TotalRow != 0)
+{
+    <div class="clean20"></div>
+    if (ViewBag.Categories!=null)
+    {
+    <div class="mar_10 b font_20">@ViewBag.Prefix</div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_18">
+        @{var i = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories)
+        {
+            i = i + 1;
+            <li>
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" style="padding:10px">
+                    <i class="icon-chevron-right"></i>@it.CategoryName
+                </a>
+            </li>        
+        }
+        @if (i == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    }else{
+    <div class="mar_10 b font_20">
+        @{string[] prefix1 = @res.Product.lblCategories1.Split(',');var n1 = 0;}
+        @foreach(var p in prefix1)
+        {
+            if(n1==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n1++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_18">
+        @{var i_1 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories1)
+        {
+            i_1 = i_1 + 1;
+            <li>
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" style="padding:10px">
+                    <i class="icon-chevron-right"></i>@it.CategoryName
+                </a>
+            </li>        
+        }
+        @if (i_1 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    <div class="mar_10 b font_20">
+        @{string[] prefix2 = @res.Product.lblCategories2.Split(','); var n2 = 0;}
+        @foreach(var p in prefix2)
+        {
+            if(n2==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n2++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_xxl">
+        @{var i_2 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories2)
+        {
+            i_2 = i_2 + 1;
+            <li>
+                  @{string url = res.Pageviews.PvSearchProductCategory; 
+                   // if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))"  style="padding:10px"><i class="icon-chevron-right"></i>@it.CategoryName</a>
+            </li>        
+        }
+        @if (i_2 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    <div class="mar_10 b font_20">
+        @{string[] prefix3 = @res.Product.lblCategories3.Split(','); var n3 = 0;}
+        @foreach(var p in prefix3)
+        {
+            if(n3==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n3++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_xxl">
+        @{var i_3 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories3)
+        {
+            i_3 = i_3 + 1;
+            <li>
+                 @{string url = res.Pageviews.PvSearchProductCategory; 
+                   //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))"  style="padding:10px"><i class="icon-chevron-right"></i>@it.CategoryName</a>
+            </li>        
+        }
+        @if (i_3 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    <div class="mar_10 b font_20">
+        @{string[] prefix4 = @res.Product.lblCategories4.Split(','); var n4 = 0;}
+        @foreach(var p in prefix4)
+        {
+           if(n4==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n4++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_xxl">
+        @{var i_4 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories4)
+        {
+            i_4 = i_4 + 1;
+            <li>
+                   @{string url = res.Pageviews.PvSearchProductCategory; 
+                   //  if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                    }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))"  style="padding:10px"><i class="icon-chevron-right"></i>@it.CategoryName</a>
+            </li>        
+        }
+        @if (i_4 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    <div class="mar_10 b font_20">
+        @{string[] prefix5 = @res.Product.lblCategories5.Split(','); var n5 = 0;}
+        @foreach(var p in prefix5)
+        {
+            if(n5==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n5++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_xxl">
+        @{var i_5 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories5)
+        {
+            i_5 = i_5 + 1;
+            <li>
+                 @{string url = res.Pageviews.PvSearchProductCategory; 
+                   //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))"  style="padding:10px"><i class="icon-chevron-right"></i>@it.CategoryName</a>
+            </li>        
+        }
+        @if (i_5 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    <div class="mar_10 b font_20">
+        @{string[] prefix6 = @res.Product.lblCategories6.Split(','); var n6 = 0;}
+        @foreach(var p in prefix6)
+        {
+            if(n6==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n6++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_xxl">
+       @{var i_6 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories6)
+        {
+            i_6 = i_6 + 1;
+            <li>
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))"  style="padding:10px"><i class="icon-chevron-right"></i>@it.CategoryName</a>
+            </li>        
+        }
+        @if (i_6 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    <div class="mar_10 b font_20">
+        @{string[] prefix7 = @res.Product.lblCategories7.Split(','); var n7 = 0;}
+        @foreach(var p in prefix7)
+        {
+            if(n7==0)
+            {
+                <a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }else{
+                <text>,</text><a style="padding:10px 5px" href="@Url.Action("categories" + "?Prefix=" + p + "&&cateLevel=", new  { area = "Search"})@cateLevel">@p</a>
+            }
+            n7++;
+        }
+    </div>
+    <ul class="nav nav-list bs-docs-sidenav affix mar_rl10 font_xxl">
+        @{var i_7 = 0;}
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories7)
+        {
+            i_7 = i_7 + 1;
+            <li>
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <a href="@Url.Content(url  + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))"  style="padding:10px"><i class="icon-chevron-right"></i>@it.CategoryName</a>
+            </li>        
+        }
+        @if (i_7 == 0)
+        {
+            <li>
+                <a href="#" class="disable">@res.Common.lblNoData</a>
+            </li> 
+        }
+    </ul>
+    }
+} 
+else
+{
+    <div class="mar_b20 mar_t20 center"><b>@res.Product.lblNotfoundCate</b></div>
+}

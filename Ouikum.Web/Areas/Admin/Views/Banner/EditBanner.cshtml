@@ -1,0 +1,210 @@
+﻿@{
+    ViewBag.Title = "Edit Banner";
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+}
+
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var banner = (b2bBanner)ViewBag.data;}
+
+<div id="autoHeight" class="ContentAdmin">
+<div class="clean20"></div>
+
+<div id="main_content" style="margin:0px 10px 10px 10px;">
+<form id="EditBanner" class="form-horizontal" action="@Url.Action("EditBanner","Banner",new{area="Admin"})" method="post">    <div class="clean10"></div>
+    <input type="hidden" id="RowVersion" name="RowVersion" value="@banner.RowVersion" />
+    <input type="hidden" id="BannerID" name="BannerID" value="@banner.BannerID" />
+    <input type="hidden" id="Count" name="Count" value="@ViewBag.Count" />
+    
+    <div class="head_banner" style="width:99.9%">
+        <div class="header_sys">
+            <div class="fl_l">
+                <h5 class="mar_l20">แก้ไข Banner</h5>
+            </div>
+            <div class="fl_r">
+                <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#Banner_target">
+                    <i class="icon-arrow hideBanner" style="margin-top:12px;" title="ซ่อน"></i>
+                </div>
+                <a href="@Url.Action("","Banner",new{area="Admin"})">
+                    <div class="blog-edit" >
+                        <div style="float:left; margin-left:9px;">
+                            <div class="cancelBanner mar_t12"></div>
+                        </div>
+                        <div style="float:left; line-height:40px;">
+                            <span class="fontback">ยกเลิก</span>
+                        </div>
+                    </div>
+                </a>
+                <a id="saveBanner" >
+                    <div class="blog-edit">
+                        <div style="float:left; margin-left:10px;">
+                            <div class="saveBanner mar_t12"></div>
+                        </div>
+                        <div style="float:left; line-height:40px;margin-right:5px">
+                            <span class="fontback">บันทึก</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+<div id="Banner_target" class="CollapseDetail">
+    <div style="border: 1px solid #C9C9C9;height:auto;padding:20px;color:#666666">
+        <table>
+            <thead>
+                <tr>
+                  <th class="span3">
+                  <th style="width:10px">
+                  <th class="span1">
+                </tr>
+              </thead>
+            <tr>
+                <td>ตำแหน่ง</td>
+                <td>:</td>
+                <td>
+                    <select style="width: 268px;">
+                        <option value="1">หน้า Home</option>
+                    </select>
+                    <div class="clean15"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>รูปภาพ</td>
+                <td>:</td>
+                <td>
+                     <div class="control-group">
+                        <div class="controls-Banner">
+                            <span class="btn btn-file btn-tootip-top" rel="tooltip"  title="@res.Common.lblSelectImage" style="margin:0">
+                                @(Html.Telerik().Upload()
+                                .Name("FileImgPath")
+                                .Multiple((bool)false)
+                                .Async(async => async
+                                .Save("SaveBannerImg", "Banner")
+                                .Remove("RemoveBannerImg", "Banner")
+                                .AutoUpload((bool)true))
+                                .ClientEvents(events => events
+                                    .OnUpload("onUploadImg")
+                                    .OnSuccess("onSuccessBanner")
+                                    )
+                                )
+                            </span>
+                            <input type="hidden" id="ImgPath" name="ImgPath" value="@banner.BannerImgPath"/>
+                            <p class="clean5"></p>
+                            <div class="fileupload-new thumbnail" id="ImgBlog" style="width: 258px; height: 120px;">
+                                @if (!string.IsNullOrEmpty(banner.BannerImgPath))
+                                {
+                                    <img id="img_ImgPath" src="@Url.Banner(banner.BannerID,banner.BannerImgPath)" style="width: 180px; height: 120px;"/>
+                                }else{
+                                    <img id="img_ImgPath" src="http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image"/>
+                                }
+                            </div>
+                            <div class="clean10"></div>
+                            <div>
+                                - ขนาดไฟล์ไม่เกิน <span style="color:#CC0000">5 MB</span>, รูปแบบไฟล์ <span style="color:#CC0000">JPG</span>, <span style="color:#CC0000">PNG</span> เท่านั้น<br />
+                                - เพื่อการแสดงผลที่สวยงาม รูปภาพควรมีขนาด <span style="color:#CC0000">820*299 pixel</span> เท่านั้น<br />
+                            </div>
+                        </div> 
+                    </div> 
+                    <div class="clean5"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>Title</td>
+                <td>:</td>
+                <td>
+                     <div class="control-group">
+                        <div class="controls-Banner">
+                          <textarea style="width:533px;height: 120px;" id="Title" name="Title">@banner.BannerTitle</textarea>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>Link</td>
+                <td>:</td>
+                <td>
+                    <div class="control-group">
+                        <div class="controls-Banner">
+                         <div class="input-prepend">
+                            <span class="add-on" style="background-color:#ccc;padding-left:17px;padding-right:17px;">https://</span>
+                            <input type="text" name="Link" id="Link" placeholder="Website url"  class="span5" value="@banner.BannerLink"  />
+                        </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>ลำดับการแสดงผล</td>
+                <td>:</td>
+                <td>
+                    <div class="control-group">
+                        <div class="controls-Banner">
+                          <div class="input-append center inline" style="margin-left:-1px;">
+                            <input type="text" name="ListNo"  id="ListNo" style="width:60px;"  value="@banner.ListNo" />
+                            <span class="add-on" style="width:10px;">
+                                <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_quo_up" /><br />
+                                <img src="@Url.cssDefault("images/icon_down.jpg")"  style="margin-top:-32px;" class="cursor icon_quo_down" />
+                            </span>
+                         </div>
+                        </div>
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>การแสดงผล</td>
+                <td>:</td>
+                <td>
+                    @if(banner.IsShow == true){
+                        <span style="padding-right: 50px;">
+                            <input type="radio" id="isshow1" name="isShow" class="isShow" value="1" title="แสดง" checked="checked"/>แสดง
+                        </span>
+                        <span>
+                            <input type="radio" id="isshow2" name="isShow" class="isShow" value="0" title="ไม่แสดง" />ไม่แสดง
+                        </span>
+                    }else{
+                        <span style="padding-right: 50px;">
+                            <input type="radio" id="isshow1" name="isShow" class="isShow" value="1" title="แสดง" />แสดง
+                        </span>
+                        <span>
+                            <input type="radio" id="isshow2" name="isShow" class="isShow" value="0" title="ไม่แสดง" checked="checked" />ไม่แสดง
+                        </span>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>
+    </div>
+    <div class="controls-Banner" style="padding-top:20px">
+        <button id="submit" name="submit" type="submit" class="btn btn-default offset"><i class="icon-save mar_t3"></i> บันทึก</button>
+        <button id="cancel" type="button" class="btn btn-default offset " onclick="window.location = GetUrl('Admin/Banner')"><i class="icon-remove mar_t3"></i>ยกเลิก</button>
+    </div>
+</form>
+</div>
+<div class="clean50"></div>
+
+@section js{
+    <script src="@Url.js("Admin/Banner/EditBanner.js")" type="text/javascript"></script>
+    <script src="@Url.js("Admin/Banner/UploadBanner.js")" type="text/javascript"></script>
+    <script language="javascript" type="text/javascript">
+        $(function () {
+            $(".btnCollapse").live('click', function () {
+                var data = $(this).index(".btnCollapse");
+                var Icon = $(this).find("i")
+                var target = $(this).attr('data-target');
+                if (Icon.hasClass("hideBanner")) {
+                    Icon.removeClass('hideBanner');
+                    Icon.addClass("showBanner")
+                    $(target).slideUp();
+                } else {
+                    Icon.addClass("hideBanner")
+                    Icon.removeClass('showBanner');
+                    $(target).slideDown();
+                }
+            });
+        });
+    </script>
+}

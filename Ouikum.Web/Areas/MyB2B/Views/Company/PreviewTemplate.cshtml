@@ -1,0 +1,865 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = res.Company.titlePreview_Comp;
+    if (ViewBag.Css != null)
+    {
+        if (ViewBag.Css == 0)
+        {
+            Layout = "~/Views/MP/MP_Website.cshtml";
+        }
+        else if (ViewBag.Css == 1)
+        {
+            Layout = "~/Views/MP/MP_Website2.cshtml";
+        }
+    }
+}
+@section head{
+    @if (ViewBag.Css != null)
+    {
+        if (ViewBag.Css == 0)
+        {
+            <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+            <link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" type="text/css" />
+        }
+        else if (ViewBag.Css == 1)
+        {
+            <link href="~/Content/CompanyWeb/Website.css" rel="stylesheet" />
+            <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+            <link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" type="text/css" />
+            <script src="@Url.js("UC/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+
+            <style type="text/css">
+                label.error {
+                    margin-left: 85px;
+                }
+
+                span.error {
+                    padding-bottom: 10px;
+                }
+
+                .container_home {
+                    width: 1100px;
+                }
+            </style>
+        }
+    }
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@using Ouikum.Company;
+@{
+    var company = (view_Company)ViewBag.Company;
+    int WebCompLevel = DataManager.ConvertToInteger(ViewBag.WebCompLevel);
+    int ProductCount = DataManager.ConvertToInteger(ViewBag.ProductCount);
+    if (ViewBag.Css != null)
+    {
+        if (ViewBag.Css == 1)
+        {
+            int WebCompID = DataManager.ConvertToInteger(ViewBag.WebCompID);
+            var website = (WebsiteModel)ViewBag.WebStatus;
+            var chkuser = (UserStatusModel)ViewBag.UserStatus;
+            var WebImgName = (string)ViewBag.WebLogoImgPath;
+            var WebCompName = (string)ViewBag.WebCompName;
+            var WebCompHis = ViewBag.WebCompHistory;
+        }
+    }
+}
+
+@{
+    if (ViewBag.Css != null)
+    {
+        if (ViewBag.Css == 0)
+        {
+            <div id="Comp_Detail" style="margin-top:43px">
+                <div class="row-fluid" style="background-color:white;height:110px">
+                    <div class="container_home">
+                        @if (!string.IsNullOrEmpty(company.LogoImgPath))
+                    {
+                        <div class="fl_l mar_r20" style="vertical-align:top;">
+                            <img src="@Url.CompanyLogo(company.CompID, company.LogoImgPath)" alt="@company.LogoImgPath" title="@company.CompName" onload="resizeImg($(this),85,85);setElementMiddle(110,110,$(this));" style="margin-top:13%" />
+                        </div>
+                    }
+                        <div class="fl_l" style="margin-top:23px">
+                            <div>
+                                <span class="lead" style="font-size:24px">@company.CompName </span>
+                                <div class="clean5"></div>
+                                <div>
+                                    @if (company.CompLevel == 1)
+                                {
+                                <div class="Logo_FreeSmall inline">
+                                    <span class="fontBlue small" style="white-space:nowrap;margin-left:25px;font-size:14px">@res.Common.lblFreeMember #[@ViewBag.CompCode]</span>
+                                </div>
+                                }
+                                else if (company.CompLevel == 3)
+                                {
+                                <div class="Logo_GoldSmall mar_r5 inline">
+                                    <span class="fontOrange small" style="white-space:nowrap;margin-left:25px;font-size:14px">@res.Common.lblGoldMember #[@ViewBag.CompCode]</span>
+                                </div>
+                                }
+                                else if (company.CompLevel == 2)
+                                {
+                                <div class="Logo_GoldExpireSmall mar_r5 inline">
+                                    <span class="fontOrange small" style="white-space:nowrap;margin-left:40px;font-size:14px">@res.Common.lblGoldMemberExpired #[@ViewBag.CompCode]</span>
+                                </div>
+                                }
+                                </div>
+                            </div>
+                        </div>
+                        <div class="fl_r" style="margin-top:26px">
+                            <a class="fl_r Bg_Orangebtn" style="color:white;" href="@Url.Action("Contact", "Message", new { ToCompID = +company.CompID })" target="_blank">
+                                <div class="fl_r mar_t7 mar_r30 font_24"><h2 style="font-weight:normal;line-height:5px;font-size:16px">ส่งข้อความถึงผู้ขาย</h2></div>
+                                <div class="fl_l mar_l10 mar_t2 Bg_OrangeMess"></div>
+                            </a>
+                            <div class="mar_l40 font_l mar_t45">
+                                หรือ ดูข้อมูลการติดต่อ 55555<a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Contact/" + company.CompID, new { area = "" })">คลิก</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg_tabsearch" style="width:100%;">
+                <div style="width:100%; position:relative">
+                    <div class="container_home" id="website_menubar">
+                        <div id="menubar" class="blackmenu fl_l">
+                            <ul class="nav nav_font fl_l" style="margin-bottom:0;">
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="Home" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Main/Index/" + company.CompID, new { area = "" })">@res.Common.lblHome</a>
+                                </li>
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="Product" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Product/" + company.CompID, new { area = "" })">@res.Common.lblProduct</a>
+                                </li>
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="About" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/About/" + company.CompID, new { area = "" })">@res.Common.lblAbount_us</a>
+                                </li>
+                                @if (WebCompLevel == 3)
+                                {
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="Order" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Order/" + company.CompID, new { area = "" })">@res.Common.lblPayment/@res.Company.lblShipping</a>
+                                </li>
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="Certify" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Certify/" + company.CompID, new { area = "" })">@res.Company.lblCompCertify</a>
+                                </li>
+                                }
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="Blog" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Blog/" + company.CompID, new { area = "" })">@res.Company.lblBlog</a>
+                                </li>
+                                <li class="link">
+                                    <a style="padding:16px 15px" class="normal" id="Contact" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Contact/" + company.CompID, new { area = "" })">@res.Common.lblContac_us</a>
+                                </li>
+                                <li style="display:none" id="PageAction">@ViewBag.PageAction</li>
+                            </ul>
+
+                            <div id="txtFormSearch" class="fl_r">
+                                <form id="formSearch" action="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Product/" + company.CompID, new { area = "" })" method="get">
+                                    <span class="fl_l mar_r20 mar_t5">
+                                        <div style="position:relative">
+                                            <input type="text" id="TextSearch" name="TextSearch" value="@ViewBag.TextSearch" placeholder="@res.Common.lblSearchProduct" style="padding-right:25px; margin-bottom:0;" />
+                                            <span class="icon_search" style="position:absolute;top:6px;right:5px" onclick="ProductSearch()"></span>
+                                        </div>
+                                        <input type="hidden" id="hidGroupID" value="@ViewBag.GroupID" />
+                                        <input type="hidden" id="hidCateLevel" value="@ViewBag.CateLevel" />
+                                        <input type="hidden" id="hidCateID" value="@ViewBag.CateID" />
+                                        <input type="hidden" id="hidCompID" value="@company.CompID" />
+                                    </span>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                    <div id="menudropdown" class="blackmenu hide fl_r" style="width:95%">
+                        <ul class="nav fl_l">
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="Home" tabindex="-1" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Main/Index/" + company.CompID, new { area = "" })">@res.Common.lblHome</a>
+                            </li>
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="Product" tabindex="-1" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Product/" + company.CompID, new { area = "" })">@res.Common.lblProduct</a>
+                            </li>
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="About" tabindex="-1" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/About/" + company.CompID, new { area = "" })">@res.Common.lblAbount_us</a>
+                            </li>
+                            @if (WebCompLevel == 3)
+                            {
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="Order" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Order/" + company.CompID, new { area = "" })">@res.Common.lblPayment/@res.Company.lblShipping</a>
+                            </li>
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="Certify" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Certify/" + company.CompID, new { area = "" })">@res.Company.lblCompCertify</a>
+                            </li>
+                            }
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="Blog" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Blog/" + company.CompID, new { area = "" })">@res.Company.lblBlog</a>
+                            </li>
+                            <li class="link">
+                                <a style="padding:16px 15px" class="normal" id="Contact" href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Contact/" + company.CompID, new { area = "" })">@res.Common.lblContac_us</a>
+                            </li>
+                        </ul>
+
+                        <div id="txtFormSearch" class="fl_r">
+                            <form id="formSearch" action="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Product/" + company.CompID, new { area = "" })" method="get">
+                                <span class="fl_l">
+                                    <div style="position:relative">
+                                        <input type="text" id="TextSearch" name="TextSearch" value="@ViewBag.TextSearch" placeholder="Search for our products" style="padding-right:25px; margin-bottom:0;" />
+                                        <span class="icon_search" style="position:absolute;top:6px;right:5px" onclick="ProductSearch()"></span>
+                                    </div>
+                                    <input type="hidden" id="hidGroupID" value="@ViewBag.GroupID" />
+                                    <input type="hidden" id="hidCateLevel" value="@ViewBag.CateLevel" />
+                                    <input type="hidden" id="hidCateID" value="@ViewBag.CateID" />
+                                    <input type="hidden" id="hidCompID" value="@ViewBag.CompID" />
+                                    <input type="hidden" id="hidCompName" value="@company.CompName" />
+                                </span>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="bg_home">
+                <div id="Company_Detail" class="container_home container-fluid" style="min-height:650px;background-color:white;width:1060px">
+                    <div class="clean30"></div>
+                    <div class="row-fluid" style="width: 100%;">
+                        <div class="fl_l" style="width:17%">
+                            @if (company.CompLevel == 3)
+                           {
+                            <a title="B2BThai Gold Member" href="@Url.Action("Gold", "Benefit", new { area = "" })" target="_blank">
+                                <div class="iconGold170"></div>
+                            </a>
+                            <div class="clean10"></div>
+                            <a title="B2BThai Gold Member" href="@Url.Action("Gold", "Benefit", new { area = "" })" target="_blank">
+                                <div style="height: 38px;width: 176px;background-color:#F2F2F2;" class="fl_l">
+                                    <div class="font_xxl mar_t8 mar_l8" style="color:#C69B09">B2BThai Gold Member</div>
+                                </div>
+                            </a>
+                            <div class="clean20"></div>
+                           }
+                           else
+                           {
+                            <div class="clean10"></div>
+                           }
+
+                            <span class="font_xxl" style="color:#0066CC;">หมวดหมู่สินค้า</span>
+                            @*------Category------*@
+                            <div id="menu" class="fl_l" style="width:180px;"></div>
+                            @*------End Category------*@
+                            <div class="clean10"></div>
+
+                            <div style="border:1px solid #CDCDCD;padding:10px;width:155px">
+                                <span class="font_xxl" style="color:#0066CC;">ข้อมูลการติดต่อ</span>
+                                <p style="padding-left:10px;margin-top: 10px;padding:2px;" class="border-tel">
+                                    <span class="icon_tel fl_l"></span>
+                                    <span style="line-height:20px;max-width:255px;word-wrap: break-word;">@company.CompPhone</span>
+                                </p>
+                                @if (!string.IsNullOrEmpty(company.LineID))
+                                {
+                                <p style="padding-left:10px;margin-top: 10px;padding:2px;">
+                                    <span class="icon_line fl_l mar_r5"></span>
+                                    <span style="line-height:20px;max-width:255px;word-wrap: break-word;">@company.LineID</span>
+                                </p>
+                                }
+                                @if (!string.IsNullOrEmpty(company.FacebookUrl))
+                                {
+                                    string[] arr = company.FacebookUrl.Split('/');
+                                <p style="padding-left:10px;margin-top: 10px;padding:2px;">
+                                    <span class="icon_face fl_l mar_r5"></span>
+                                    <span style="line-height:20px;max-width:255px;word-wrap: break-word;">@arr[0]<span>/</span> @arr[1]</span>
+                                </p>
+                                }
+                            </div>
+                            <div class="clean15"></div>
+
+                            <div style="border:1px solid #CDCDCD;padding:10px;width:155px">
+                                <span class="font_xxl" style="color:#0066CC;">@res.Admin.lblStatistic</span>
+                                <p style="margin-top: 10px;">@res.Common.lblViewCount : @ViewBag.ViewCount</p>
+                                <p>@res.Common.lblProduct : @ProductCount</p>
+                                @{  var SendDate = "";
+                                        if (company.CreatedDate != null)
+                                        {
+                                            DateTime convertedDate = DateTime.Parse(company.CreatedDate.ToString());
+                                            SendDate = (DateTime.Parse(convertedDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                                        }
+                                }
+                                <p>เป็นสมาชิกเมื่อ : @SendDate</p>
+                            </div>
+
+                        </div>
+
+                        <div class="fl_l mar_r5 mar_l10" style="width:30%;height:234px">
+                            @{
+                            string[] img = null;
+                            if (!string.IsNullOrEmpty(company.CompImgPath))
+                            {
+                                img = company.CompImgPath.ToString().Split(',');
+                                if (img.Count() > 1)
+                                {
+                            <div id="slideshow-div" class="rs-slideshow">
+
+                                <div class="slide-container">
+
+                                    <img src="@Url.Company(company.CompID, img[0])" onload="resizeImg($(this),320,220);setElementMiddle(220, 320, $(this));" />
+
+                                </div>
+                                <ol class="slides">
+                                    @for (var i = 0; i < img.Count(); i++)
+                                        {
+                                        <li>
+                                            <a href="@Url.Company(company.CompID, img[i])">@img[i]</a>
+                                        </li>
+                                        }
+                                </ol>
+                            </div>
+                                }
+                                else
+                                {
+                            <div class="slide-container" style="width:320px;height:220px">
+
+                                <img src="@Url.Company(company.CompID, img[0])" onload="resizeImg($(this),320,220);setElementMiddle(220, 320, $(this));" />
+
+                            </div>
+                                }
+
+
+                            }
+                            else
+                            {
+                            <div class="DefaultCompImg" title="Company Image"></div>
+                            }
+                            }
+                            <div class="clean20"></div>
+                        </div>
+
+                        <div class="fl_r" style="width:50%;">
+                            <div style="padding-left:10px">
+                                @if (!string.IsNullOrEmpty(company.CompShortDes))
+                            {
+                                <span class="lead" style="line-height:35px">@company.CompName</span>
+                                <div id="scrollbar1">
+                                    <div class="scrollbar" style="height: 215px;"><div class="track"><div class="thumb"><div class="end"></div></div></div></div>
+                                    <div class="viewport" style="height: 215px;">
+                                        <div class="overview">@Html.Raw(company.CompShortDes)</div>
+
+                                    </div>
+                                </div>
+
+                            }
+                            else
+                            {
+                                <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Product/" + company.CompID, new { area = "" })">
+                                    <div class="fl_l mar_r10 box_link">
+                                        <div class="Bg_Product mar_t40 mar_l35"></div>
+                                        <div class="font_xxl mar_t10" style="text-align: center;">สินค้าทั้งหมด</div>
+                                    </div>
+                                </a>
+                                <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/About/" + company.CompID, new { area = "" })">
+                                    <div id="linkCompany" class="fl_l mar_r10 box_link">
+                                        <div class="Bg_Company mar_t40 mar_l35"></div>
+                                        <div class="font_xxl mar_t10" style="text-align: center;">ข้อมูลบริษัท</div>
+                                    </div>
+                                </a>
+                                <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Contact/" + company.CompID, new { area = "" })">
+                                    <div id="linkContact" class="fl_l box_link">
+                                        <div class="Bg_Contact mar_t40 mar_l35"></div>
+                                        <div class="font_xxl mar_t10" style="text-align: center;">ติดต่อเรา</div>
+                                    </div>
+                                </a>
+                            }
+
+                            </div>
+                        </div>
+
+                        <div class="fl_r mar_r5 mar_t20" style="width:82%;">
+                            <div id="div_ProductShowcase">
+                                <div class="label-header fontOrange" style="line-height:25px;font-weight:normal;background:white">
+                                    <span class="font_xxl fl_l mar_l5">
+                                        <img src="/Content/Search/images/u170.png" style="padding-right: 10px;margin-top:-5px">สินค้าแนะนำ
+                                    </span>
+                                    <span class="font_m fl_r mar_r15">
+                                        <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(company.CompName) + "/Product/" + company.CompID, new { area = "" })">ดูทั้งหมด</a>
+                                    </span>
+                                </div>
+                                <div class="clean5"></div>
+                                <div class="inline" style="margin-left:6px">
+                                    <div id="content">
+                                        <div class="clean10"></div>
+                                        @if (ViewBag.CountProducts == 0)
+                                        {
+                                        <div style="height:150px;width:900px;text-align:center;">@res.Product.lblNoFeatPro</div>
+                                        }
+                                        else
+                                        {
+                                            foreach (var it in (IEnumerable<view_Product>)ViewBag.Products)
+                                            {
+                                        <div class="span product_content data-item mar_r10" id="@it.ProductID" data-id="@it.ProductID" data-name="@it.ProductName" data-img="@Url.ThumbProduct(it.CompID, it.ProductID, it.ProductImgPath)"
+                                             style="width:162px;height:260px; margin-left:0px; position:relative;">
+                                            <div class="product_detail">
+                                                <div class="product_img" style="display:inline-block">
+                                                    <a class="productlink fl_l" target="_blank" title="@it.ProductName" href="@Url.Action("Detail", "Product", new { id = it.ProductID, name = @Url.ReplaceUrl(it.ProductName), area = "Search" })" style="text-align:center;display:block; width:160px; height:160px;border: 1px solid #ddd;">
+                                                        <span style="width:130px;height:130px;display:block" class="mar_15">
+                                                            <img src="@Url.ThumbProduct(it.CompID, it.ProductID, it.ProductImgPath)" alt="@it.ProductName" onload="resizeImg($(this),130,130);" />
+                                                        </span>
+                                                    </a>
+                                                </div>
+                                                <div class="clean20"></div>
+                                                <div class="product_shortdetail" style="text-align:center">
+                                                    <a class="product_link" title="@it.ProductName" href="@Url.Action("Detail", "Product", new { id = it.ProductID, name = @Url.ReplaceUrl(it.ProductName).Trim(), area = "Search" })" target="_blank" style="display: inline-block;">
+                                                        @{
+                                                                string productname = it.ProductName;
+                                                                if (productname.Length > 35)
+                                                                {
+                                                                <p class="fontProductName" title="@productname" style="line-height:20px;font-weight:normal;height:30px;font-size:13px">@productname.Substring(0, 35)... </p>
+                                                                }
+                                                                else
+                                                                {
+                                                                <p class="fontProductName" title="@productname" style="line-height:20px;font-weight:normal;height:30px;font-size:13px">@productname</p>
+                                                                }
+                                                        }
+                                                    </a>
+                                                    <div class="clean5"></div>
+                                                    <p class="normal">
+                                                        @if (it.Price > 0)
+                                                                {
+                                                                <span class="font_l" style="color:#FD7C16;font-size:13px">@(String.Format("{0:##,###.##}", it.Price)) @res.Product.lblBaht</span>
+                                                                }
+                                                    </p>
+                                                </div>
+                                            </div>
+                                        </div>
+                                            }
+                                        }
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="clean20"></div>
+                        </div>
+                        <div class="fl_l mar_r5 mar_t20" style="width:100%;">
+                            <div style="z-index:6;background-color:#fff;width:100%">@Html.Partial("UC/FooterUC/WebsiteFooterUC") </div>
+                        </div>
+                    </div>
+                    <div class="clean10"></div>
+                </div>
+                <div class="clean10"></div>
+            </div>
+        }
+        else if (ViewBag.Css == 1)
+        {
+            <div class="bg_home">
+                <input type="hidden" name="hidPageType" id="hidPageType" value="@ViewBag.PageType" />
+                <input type="hidden" name="hidWebCompLevel" id="hidWebCompLevel" value="@ViewBag.WebCompLevel" />
+                <div class="space">
+                    <div class="ContentWhiteSpace" @*style="top:215px!important;"*@>
+                        <div class="content_company">
+                            <div class="img_company">
+                                @{
+                                    string[] img = null;
+                                    if (!string.IsNullOrEmpty(company.CompImgPath))
+                                    {
+                                        img = company.CompImgPath.ToString().Split(',');
+                                        if (img.Count() > 1)
+                                        {
+                                            <div id="slideshow-div" class="rs-slideshow">
+                                                <div class="slide-container">
+                                                    <img src="@Url.Company(company.CompID, img[0])" onload="resizeImg($(this),530,230);setElementMiddle(230, 530, $(this));" />
+                                                </div>
+                                                <ol class="slides">
+                                                    @for (var i = 0; i < img.Count(); i++)
+                                                    {
+                                                        <li>
+                                                            <a href="@Url.Company(company.CompID, img[i])">@img[i]</a>
+                                                        </li>
+                                                    }
+                                                </ol>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="slide-container" style="width:530px; float:left;">
+                                                <img src="@Url.Company(company.CompID, img[0])" style="margin-left:20px;" onload="resizeImg($(this),530,230);setElementMiddle(230, 530, $(this));" />
+                                            </div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        <div class="DefaultCompImg" title="Company Image"></div>
+                                    }
+                                }
+                            </div>
+                            <div class="scroll">
+                                <div class="name_company">
+                                    <span class="fontsize16">@company.CompName</span>
+                                </div>
+                                @if (!string.IsNullOrEmpty(company.CompShortDes))
+                                {
+                                    <div class="viewport" style="height: 215px; padding-left:15px;">
+                                        <span class="fontsize12" style="margin:5px !important;">@Html.Raw(company.CompShortDes)</span>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="viewport" style="height: 215px; padding-left:15px;">
+                                        <span class="fontsize12">@company.CompName</span>
+                                    </div>
+                                }
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div class="content_body">
+                                <div class="clean25"></div>
+                                <div class="listmenu">
+                                    <div class="topic7">
+                                        <span class="fontsize16">หมวดสินค้า</span>
+                                    </div>
+                                    <div id="menu" style="width:208px;"></div>
+                                    @if (ViewBag.SlideProduct != null)
+                                    {
+                                        <div class="topic">
+                                            <span class="fontsize16">สินค้าแนะนำ</span>
+                                        </div>
+                                        foreach (var product in (List<view_SearchProduct>)ViewBag.SlideProduct)
+                                        {
+                                            <div class="recommend" style="padding-top:20px; right:23px;">
+                                                <div class="imgproduct">
+                                                    <a class="mar_r20" href="@Url.Action("Detail", "Product", new { id = product.ProductID, proname = @Url.ReplaceUrl(product.ProductName), area = "Search" })" target="_blank" style="text-align:center;">
+                                                        <img alt="@product.ProductImgPath" title="@product.ProductName" src="@Url.ThumbProduct(product.CompID, product.ProductID, product.ProductImgPath)" />
+                                                    </a>
+                                                </div>
+                                                <div class="clean15"></div>
+                                                <div class="text">
+                                                    <a class="product_link" title="@product.ProductName" href="@Url.Action("Detail", "Product", new { id = product.ProductID, proname = @Url.ReplaceUrl(product.ProductName).Trim(), area = "Search" })" target="_blank" style="display: inline-block;">
+                                                        @{
+                                                            string productname = product.ProductName;
+                                                            if (productname.Length > 25)
+                                                            {
+                                                                <span class="fontsize12 fontblue nameproduct" title="@productname" style="line-height:0;font-weight:normal">@productname.Substring(0, 20)... </span>
+                                                            }
+                                                            else
+                                                            {
+                                                                <span class="fontsize12 fontblue nameproduct" title="@productname" style="line-height:0;font-weight:normal">@productname</span>
+                                                            }
+                                                        }
+                                                    </a>
+                                                    <div class="clean10"></div>
+
+                                                    @if (product.Price != null && product.Price > 0)
+                                                    {
+                                                        <span class="fontsize12 fontgrey">ราคา :</span>
+                                                        @String.Format("{0:##,###.##}", product.Price)
+                                                        <br />
+                                                    }
+                                                    @if (product.Qty != null && product.Qty > 0)
+                                                    {
+                                                        <span class="fontsize12 fontgrey">สั่งซื้อขั้นต่ำ :</span>
+                                                        @String.Format("{0:##,###.##}", product.Qty)
+                                                        <br />
+                                                    }
+                                                    <span class="fontsize12 fontgrey">ผู้เข้าชม :</span>
+                                                        @ViewBag.ProductCount &nbsp; ครั้ง
+                                                </div>
+                                            </div>
+                                        }
+                                    }
+                                </div>
+                                <div id="IndexGallery">@Html.Partial("UC/IndexGalleryUC")</div>
+                                <div class="clean20"></div>
+                            </div>
+                        </div>
+                        <div class="container">
+                            <div>@Html.Partial("UC/Contact")</div>
+                        </div>
+                        <div class="clean20"></div>
+                        <div class="fl_l mar_r5 mar_t20" style="width:100%;">
+                            <div style="position:relative;z-index:4; background-color:#fff; width:100%">@Html.Partial("UC/FooterUC/WebsiteFooterUC")</div>
+                        </div>
+                    </div>
+                </div>
+                @if (company.CompID == ViewBag.LogonCompID)
+                {
+                    <div class="EditSet">
+                        <div class="btn-group dropup">
+                            <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" id="menu_dropdown">
+                                <i class="icon-cog"></i>&nbsp;
+                                <span class="caret"></span>
+                            </a>
+                            <ul class="dropdown-menu fontsize12" style="text-align:left;">
+                                <li><a href="@Url.Action("Company/CompanyAccount", "MyB2B", new { area = "" })"><i class="icon-pencil"></i>แก้ไขข้อมูลแนะนำบริษัท</a></li>
+                                <li><a href="@Url.Action("Product/Index", "MyB2B", new { area = "" })"><i class="icon-pencil"></i>แก้ไขข้อมูลสินค้า</a></li>
+                                <li><a target="_blank" href="http://www.ouikum.com"><i class="icon-file"></i>เข้าสู่ My Ouikum</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                }
+            </div>
+        }
+        //else if (ViewBag.Css == "2")
+        //{
+
+        //}
+    }
+}
+
+@section js{
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery-1.7.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.core.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.widget.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.rcarousel.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/TinyScrollbarUC/jquery.tinyscrollbar.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/ReallySimpleSlideShowUC/jquery.rs.slideshow.min.js")" type="text/javascript"></script>
+    <script src="~/Scripts/Bootstrap/bootstrap.min.js"></script>
+    <script src="@Url.js("UC/Paging/Paging.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.jsoncookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("Compare/Compare.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(function () {
+            //SetContentWhiteClearSize();
+            //Company slideshow
+            $('#slideshow-div').rsfSlideshow({
+                interval: 4,
+                transition: 500
+
+            });
+            // Scrollbar
+            var shortdes = $(".overview").height();
+            if (shortdes >= 220) {
+                $('#scrollbar1').tinyscrollbar();
+            } else {
+                $('.scrollbar').remove();
+                $('#scrollbar1').children().removeAttr('class').css('height', 'auto');
+                $('#scrollbar1').children().children().removeAttr('class');
+            }
+
+            // slide navigator
+            $("#div_ProductShowcase").hover(
+              function () {
+                  $("#pages").removeClass("hide");
+              },
+              function () {
+                  $("#pages").addClass("hide");
+              }
+            );
+        });
+        //------ slide ------//
+        jQuery(function ($) {
+            function generatePages() {
+                var _total, i, _link;
+                _total = $("#carousel").rcarousel("getTotalPages");
+                for (i = 0; i < _total; i++) {
+                    _link = $("<a href='#'></a>");
+                    $(_link)
+                        .bind("click", { page: i },
+                        function (event) {
+                            $("#carousel").rcarousel("goToPage", event.data.page);
+                            event.preventDefault();
+                        }
+                        )
+                        .addClass("bullet off white")
+                        .appendTo("#pages");
+                }
+
+                // mark first page as active
+                $("a:eq(0)", "#pages")
+                        .removeClass("off")
+                        .addClass("on")
+                        .removeClass("white")
+                        .addClass("black");
+            }
+            function pageLoaded(event, data) {
+                $("a.on", "#pages")
+                    .removeClass("on")
+                    .removeClass("black")
+                    .addClass("white");
+                $("a", "#pages")
+                    .eq(data.page)
+                    .addClass("on")
+                    .removeClass("white")
+                    .addClass("black");
+            }
+            $("#carousel").rcarousel({
+                margin: 20,
+                visible: 5,
+                step: 5,
+                width: 160,
+                height: 130,
+                speed: 3000,
+                auto: { enabled: true },
+                start: generatePages,
+                pageLoaded: pageLoaded
+            });
+
+            $(".bullet")
+                .hover(
+                function () {
+                    $(this).css("opacity", 0.7);
+                },
+                function () {
+                    $(this).css("opacity", 1.0);
+                }
+                );
+        });
+
+        // Toggle //
+        $("#setting").hide()
+        $("#menu_dropdown").click(function () {
+            $("#setting").toggle();
+            console.log("a")
+        });
+
+        /*--------------------------*/
+
+        $('#slideshow-div').rsfSlideshow({
+            interval: 4,
+            transition: 500
+
+        });
+
+        $(document).ready(function () {
+            LoadMenuIndex();
+            ActiveLink()
+            CheckPage();
+            SubmitPage(1);
+
+            $('.product_content').live('mouseenter', function () {
+                var index = $('.product_content').index(this);
+                $('.optionbuttonbar').eq(index).removeClass("hide");
+                $('.checkboxproduct').eq(index).removeClass("hide");
+            });
+
+            $('.product_content').live('mouseleave', function () {
+                var index = $('.product_content').index(this);
+
+                if ($('.checkboxproduct').eq(index).hasClass("checked") == true) {
+                    $('.optionbuttonbar').eq(index).removeClass("hide");
+                    $('.checkboxproduct').eq(index).removeClass("hide");
+
+                } else {
+                    $('.optionbuttonbar').eq(index).addClass("hide");
+                    $('.checkboxproduct').eq(index).addClass("hide");
+                }
+            });
+
+
+        });
+
+        function CheckShowOption(Obj) {
+            if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+                Obj.addClass('checked');
+
+            } else {
+                Obj.removeClass('checked');
+            }
+        }
+
+        function LoadMenuIndex() {
+            var id = $('#hidCompID').val();
+            var cate = $('#hidCateID').val();
+            var group = $('#hidGroupID').val();
+            $.ajax({
+                data: {
+                    CompID: parseInt(id),
+                    CateID: parseInt(cate),
+                    GroupID: parseInt(group)
+                },
+                url: GetUrl("Website/Menu"),
+                type: "POST",
+                success: function (data) {
+                    OpenLoading(true);
+                    $('#menu').html(data);
+                    OpenLoading(false);
+                }
+            });
+        }
+
+        function ActiveLink() {
+            $('.cate a').each(function () {
+                var path = $(this).attr('href');
+                bootbox.alert(path);
+                bootbox.alert(window.location.pathname);
+                if (path == window.location.pathname) {
+                    $(this).parent().addClass('current');
+                }
+            });
+        }
+        $("#setting").hide()
+        $("#menu_dropdown").click(function () {
+            $("#setting").toggle();
+            console.log("a")
+        });
+
+        /*--------------------------Compare-----------------------------------------*/
+
+        $('.compare-item').live('click', function () {
+            var index = $(".compare-item").index(this);
+            SaveCompareCookie(index);
+            CallCompare();
+        });
+
+        $("#AddCompare").attr("onclick", "AddCompare('List')");
+        CateName = '@(ViewBag.CateName)';
+        TextSearch = '@MvcHtmlString.Create(ViewBag.TextSearch)';
+        CateNameLV1 = '@MvcHtmlString.Create(ViewBag.CateNameLV1)';
+        CateNameLV2 = '@MvcHtmlString.Create(ViewBag.CateNameLV2)';
+        CateNameLV3 = '@MvcHtmlString.Create(ViewBag.CateNameLV3)';
+        CateLV = '@(ViewBag.CateLV)';
+        CateID = "@(ViewBag.CateID)";
+        $("#txtSearch").val(TextSearch);
+
+        /*---------------- Slide --------------------*/
+
+        jQuery(function ($) {
+            function generatePages() {
+                var _total, i, _link;
+                _total = $("#carousel").rcarousel("getTotalPages");
+                for (i = 0; i < _total; i++) {
+                    _link = $("<a href='#'></a>");
+                    $(_link)
+                        .bind("click", { page: i },
+                        function (event) {
+                            $("#carousel").rcarousel("goToPage", event.data.page);
+                            event.preventDefault();
+                        }
+                        )
+                        .addClass("bullet off white")
+                        .appendTo("#pages");
+                }
+
+                // mark first page as active
+                $("a:eq(0)", "#pages")
+                        .removeClass("off")
+                        .addClass("on")
+                        .removeClass("white")
+                        .addClass("black");
+            }
+
+            function pageLoaded(event, data) {
+                $("a.on", "#pages")
+                    .removeClass("on")
+                    .removeClass("black")
+                    .addClass("white");
+                $("a", "#pages")
+                    .eq(data.page)
+                    .addClass("on")
+                    .removeClass("white")
+                    .addClass("black");
+            }
+            $("#carousel").rcarousel({
+                margin: 20,
+                visible: 5,
+                step: 5,
+                width: 160,
+                height: 130,
+                speed: 3000,
+                auto: { enabled: true },
+                start: generatePages,
+                pageLoaded: pageLoaded
+            });
+
+            $(".bullet")
+                .hover(
+                function () {
+                    $(this).css("opacity", 0.7);
+                },
+                function () {
+                    $(this).css("opacity", 1.0);
+                }
+                );
+        });
+    </script>
+}

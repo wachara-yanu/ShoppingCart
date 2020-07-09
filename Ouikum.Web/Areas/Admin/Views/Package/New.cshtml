@@ -1,0 +1,230 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@{
+    ViewBag.Title = @res.Admin.lblNewPackage;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+
+@section head{
+    <link href="@Url.css("Admin/WebConfig/Package.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("UC/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        tinyMCE.init({
+            // General options
+            mode: "exact",
+            elements: "PackageDetail",
+            theme: "advanced",
+            height: "350",
+            width: "70%",
+            plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+            // Theme options
+            theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,image,cleanup,code,|,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,iespell,media,|,fullscreen",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: false
+        });
+</script>
+}
+@using res = Prosoft.Resource.Web.Ouikum
+
+<div class="mainContent">
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/WebconfigMainMenu")*@
+
+<article class="module width_full">
+    <header><h3>@res.Admin.lblNewPackage</h3></header>
+    <div class="module_content">
+        <form id="NewPackageForm" class="form-horizontal mar_l50">
+            <div class="control-group">
+                <label class="control-label" for="PackageName">@res.Admin.lblPackageName : </label>
+                <div class="controls">
+                    <input type="text" name="PackageName">
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="PackageGroup">@res.Admin.lblPakageGroup : </label>
+                <div class="controls">
+                    <select name="PackageGroup">
+                        <option value="0">----------</option>
+                        <option value="1">Test Group</option>
+                    </select>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="">@res.Admin.lblPackageImage : </label>
+                <div class="controls">
+                   <div class="ImgProfile fileupload-new" data-provides="fileupload">
+                        <div>
+                            <span class="btn btn-file btn-tootip-top" rel="tooltip" title="@res.Common.lblSelectImage">
+                                <span class="fileupload-new"><i class="icon-picture "></i></span>
+                                <span class="fileupload-exists"><i class="icon-edit"></i></span>
+                                <input type="file" id="AvatarImgPath" name="AvatarImgPath" ></input>
+                            </span>
+                            <a href="#" class="btn fileupload-exists btn-tootip-top" data-dismiss="fileupload" rel="tooltip"  title="@res.Common.btnDelete"><i class="icon-remove-sign"></i></a>
+                        </div>
+                        <p class="clean5"></p>
+                        <div class="fileupload-new thumbnail" style="width: 75px; height: 75px;">
+                            <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image">
+                        </div>
+                        <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 75px; max-height: 75px;"></div>
+                        <div class="clean20"></div>
+                    </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="Price">@res.Common.lblPrice : </label>
+                <div class="controls">
+                    <div class="input-prepend input-append">
+                        <span class="add-on">฿</span><input class="span2" id="appendedPrependedInput" name="Price" size="16" type="text"><span class="add-on">.00</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="">@res.Admin.lblSetTime_OpenBuy : </label>
+                <div class="controls">
+                    <label class="radio inline">
+                        <input type="radio" name="SetTime" id="no_setTime" value="0" checked="checked"> @res.Admin.lblNotSetTime
+                    </label>
+                    <label class="radio inline">
+                        <input type="radio" name="SetTime" id="setTime" value="1"> @res.Admin.lblSetTime
+                    </label>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="UseTime">@res.Admin.lblPeriod_Package : </label>
+                <div class="controls">
+                    <div class="input-append">
+                        <input id="appendedInput" name="UseTime" type="text" style="width:100%;"><span class="add-on">@res.Common.lblDay</span>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="PackageShortDetail">@res.Common.lblBriefDescription : </label>
+                <div class="controls">
+                    <textarea name="PackageShortDetail" rows="3" class="span4"></textarea>
+                </div>
+            </div>
+            <div class="control-group getHeight">
+                <label class="control-label" for="PackageDetail">@res.Common.lblDetail : </label>
+                <div class="controls">
+                    <textarea id="PackageDetail" rows="3" class="span4"></textarea>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label" for="">@res.Admin.lblPermissions_Setting : </label>
+                <div class="controls">
+                   <span class="mar_r5" style="text-decoration:underline;">@res.Admin.lblSelectFromOtherPackage</span><button type="button" id="btnBrowseOther" class="btn btn-small" rel="popover">@res.Common.btnBrowse</button>
+                   <!-------------------Otion from other package popup-------------------->
+                   @Html.Partial("Admin/PackageSelectFromOther")
+                   <div class="clean10"></div>
+                   <!-----------------------Option selected Table-------------------->
+                   <div id="ShowOptionCode" style="position:relative;">
+                        <div style="margin:6px;">
+                            <span class="btnCheckAll mar_r7">
+                                <label class="checkbox checkall inline">
+                                    <input type="checkbox" id="CheckAll" /> @res.Common.colSelectAll
+                                </label>
+                            </span>
+                            <button type="button" id="NewOption" class="btn" style="margin:2px;">@res.Common.btnNew</button>
+                            <!-------------------New Option-------------------->
+                            @Html.Partial("Admin/PackageNewOption")
+
+                            <button type="button" class="btn" style="margin:2px;">@res.Common.btnDelete</button>
+                        </div>
+
+                        @Html.Partial("Admin/Grid/ConfigPackageOptionGrid")
+                    </div>
+
+                </div>
+                <div class="clean30"></div>
+                <div class="controls">
+                   <button type="submit" class="btn btn-danger">@res.Common.btnSave</button>
+                   <button type="button" class="btn" onclick="resetForm($('form[id=NewPackageForm]'));">@res.Common.btnCancel</button>
+                </div>
+
+            </div>
+            
+
+        </form>
+    </div>
+</article>
+
+</div>
+@Html.Partial("UC/FooterUC/AdminFooterUC")
+
+@section js{
+    <script src="@Url.js("Admin/WebConfig/Package.js")" type="text/javascript"></script>
+    <script src="@Url.js("Bootstrap/bootstrap-fileupload.js")" type="text/javascript"></script>
+    <script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        
+        $(".fileupload").fileupload({});
+        $('.btn-tootip-top').tooltip({ placement: 'top' });
+
+        //---------------------------------click browse--------------------------------------
+        $("#btnBrowseOther").popover({
+            placement: 'bottom',
+            content: $("#OtherPackageOptionPopup").html(),
+            template: '<div class="popover" style="width:920px; min-height:300px; margin:10px 0 0 190px;"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>'
+        });
+        //---------------------------------click New--------------------------------------
+        $("#NewOption").popover({
+            placement: 'bottom',
+            title: '@res.Common.lblAddOption',
+            content: $("#NewOptionPopup").html(),
+            template: '<div class="popover" style="width:920px; min-height:300px; margin:-42px 0 0 318px;"><div class="popover-inner"><h3 class="popover-title"></h3><div class="popover-content"><p></p></div></div></div>'
+        });
+
+        $(function () {
+
+            $.validator.addMethod("select", function (value, element, arg) {
+                return arg != value;
+            }, '@res.Common.ddlSelectPlease');
+
+            $('#NewPackageForm').validate(
+             {
+     
+                 rules: {
+                     PackageName: {
+                         minlength: 4,
+                         required: true
+                     },
+                     PackageGroup: {
+                        select:0
+                     },
+//                    Price: {
+//                        required: true,
+//                        number:true
+//                    },
+//                    UseTime: {
+//                        required: true,
+//                        number: true
+//                     },
+                     PackageShortDetail: {
+                         minlength: 10,
+                         required: true
+                     }
+                 },
+                 onkeyup: false,
+                 highlight: function (label) {
+
+                     $(label).closest('.control-group').removeClass('success');
+                     $(label).closest('.control-group').addClass('error');
+
+                 },
+                 success: function (label) {
+                     label.closest('.control-group').removeClass('error');
+                     label.closest('.control-group').addClass('success');
+
+                 }
+
+             });
+        })
+    </script>
+
+}

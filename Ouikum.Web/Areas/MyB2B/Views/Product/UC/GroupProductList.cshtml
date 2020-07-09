@@ -1,0 +1,68 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+    @{var num = 1;}
+    @foreach (var it in (List<b2bProductGroup>)ViewBag.ProductGroups)
+    {
+        <li class="icongroup cursor"> 
+            <div class="product-group" rowversion="@it.RowVersion" group="@it.ProductGroupID"  group-name="@it.ProductGroupName" >
+                
+                <a class="fl_l"  href="@Url.Action("Index","product",new{id =  it.ProductGroupID , area ="MyB2B"})" style="font-size:14px" title="@it.ProductGroupName">
+                    <span style="margin-right:8px">
+                        <i class="line3"></i>
+                    </span>
+                    @Html.SubText(it.ProductGroupName, 13)
+                </a>
+                @if(num == 1){
+                    <div class="fl_r mar_r5 mar_t7" style="margin-top: 29px; width: 32%; right: 0%;">
+                        <div class="icon-Parrup  mar_t2 mar_r5" action="Up" onclick="GroupListNo($(this))"></div>
+                        <div class="icon-Parrdown  mar_t2 mar_r5" action="Down" onclick="GroupListNo($(this))"></div>
+                        <i class="icon-edit edit_group  cursor" title="@res.Common.colEdit"></i>
+                        <i class=" icon-minus-sign del_group  cursor" title="@res.Common.btnDelete"></i>
+                    </div> 
+                }else{
+                    <div class="fl_r mar_r5 mar_t7" style="margin-top: 26px; width: 32%; right: 0%;">
+                        <div class="icon-Parrup  mar_t2 mar_r5" action="Up" onclick="GroupListNo($(this))"></div>
+                        <div class="icon-Parrdown  mar_t2 mar_r5" action="Down" onclick="GroupListNo($(this))"></div>
+                        <i class="icon-edit edit_group  cursor" title="@res.Common.colEdit"></i>
+                        <i class=" icon-minus-sign del_group  cursor" title="@res.Common.btnDelete"></i>
+                    </div> 
+                }
+             </div>
+       </li>
+         <div class="clean"></div>
+        num++;
+    }
+
+    <div class="clean"></div>
+
+        <script type="text/javascript">
+            var grouplen = $(".product-group").length;
+            $(document).ready(function () {
+                for (var i = 0; i < grouplen; i++) {
+                    $('.product-group').eq(i).attr('listno', i + 1);
+                }
+            });
+            if (grouplen > 0) {
+                if (grouplen == 1) {
+                    $(".icon-Parrup").hide();
+                    $(".icon-Parrdown").hide();
+                    //$(".product-group").prepend("<div class='fl_l mar_t9 mar_l25'></div>");
+                }
+                else {
+                    $(".icon-Parrup").first().hide();
+                    //$(".icongroup a").first().css('margin-left', 20);
+                    //$(".icongroup a").css('margin-left', 26);
+                    //$(".icongroup a").last().css('margin-left', 20);
+                    //$(".icon-Parrdown").first().addClass("mar_l25");
+                    $(".icon-Parrdown").last().hide();
+                }
+            }
+            if ($(window).width() < 1025) {
+                var text_productgroup = $(".product-group a");
+                for (var i = 0; i < text_productgroup.length ; i++) {
+                    if (text_productgroup.eq(i).text().length > 15) {
+                        text_productgroup.eq(i).text(text_productgroup.eq(i).text().substring(0, 15) + "...");
+                    }
+                }
+            }
+        </script>

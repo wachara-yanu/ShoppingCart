@@ -1,0 +1,29 @@
+﻿@{
+    ViewBag.Title = @res.Purchasing.lblPurchasingCenter;
+    Layout = "~/Views/MP/MP_PurchasingCenter.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+
+
+<div id="autoHeight" class="ContentAdmin mar_l30">
+<div class="clean25"></div>
+@using (Ajax.BeginForm("List", "Purchase", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+{ 
+    <div class="MsgtoolbarList">
+        <span class="btnCheckAll mar_r7">
+            <label class="checkbox inline font_l">
+                <input type="checkbox" id="CheckAll" onclick="CheckBoxall($(this))" /> @res.Common.colSelectAll
+            </label>
+        </span>
+        
+        <button class="btn" style="margin:2px;" onclick="window.open(GetUrl('@res.Pageviews.UrlCreateEmLead'))">@res.Purchasing.btnCreate_emLead</button>
+        <button class="btn DeleteEmLead" style="margin:2px;" onclick="if(confirm('@res.JS.vldconfirm_del')){DelData();}">@res.Purchasing.btnMsgDelete</button>
+       
+    </div>
+    
+    <div class="clean10"></div>
+    <div id="certifyGrid">@Html.Partial("UC/Grid/GridUC")</div>
+}
+<input type="hidden" name="hidPageType" id="hidPageType" value="@ViewBag.hidPageType"/>
+<div class="clean30"></div>
+</div>

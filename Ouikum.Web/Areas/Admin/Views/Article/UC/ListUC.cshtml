@@ -1,0 +1,68 @@
+﻿@{
+    ViewBag.Title = "ListType";
+}
+
+@using res = Prosoft.Resource.Web.Ouikum;
+
+<div class="SearchAtc">
+    <table>
+        <tbody>
+            <tr>
+                <td class="span2">คำค้น</td>
+                <td>: &nbsp;<input type="text" class="span3 mar_10" name="SearchArticle" style="width:263px;" placeholder="คำค้นหา.." /></td>
+                <td class="span1"></td>
+                <td class="span2">ประเภทบทความหลัก</td>
+                <td>: &nbsp;
+                    <select class="mar_10" id="SearchType" name="SearchType" style="width: 263px; margin-left: 0px;">
+                        <option value="0">@res.Common.lblAll</option>
+                        @foreach (var it in (IEnumerable<Ouikum.b2bArticleType>)ViewBag.ArticleTypes)
+                        {
+                            <option value="@it.ArticleTypeID">@it.ArticleTypeName</option>
+                        }
+                       
+                    </select>
+                </td>
+            </tr>
+            @*<tr>
+                <td class="span2">ประเภทบทความรอง</td>
+                <td>: &nbsp;
+                    <select class="mar_10" id="SecondType" name="SecondType" style="width: 263px; margin-left: 0px;">
+                        <option selected="selected" value="0">@res.Common.lblAll</option>
+                        <option selected="selected" value="1">Member - คู่มือการใช้งานระบบสมาชิก</option>
+                        <option selected="selected" value="2">Company Website - คู่มือการใช้งานเว็บไซต์บริษัท</option>
+                        <option selected="selected" value="3">Supplier - คู่มือการใช้งานสำหรับผู้ขาย</option>
+                        <option selected="selected" value="4">Buyer - คู่มือการใช้งานสำหรับผู้ซื้อ</option>
+                        <option selected="selected" value="5">FAQ - คำถามที่พบบ่อย</option>
+                    </select>
+                </td>
+                <td class="span1"></td>
+                <td class="span2">ประเภทบทความย่อย</td>
+                <td>: &nbsp;
+                    <select class="mar_10" id="subMainType" name="subMainType" style="width: 263px; margin-left: 0px;">
+                        <option selected="selected" value="0">@res.Common.lblAll</option>
+                        <option selected="selected" value="1">Chapter1 : การสมัครสมาชิก</option>
+                        <option selected="selected" value="2">Chapter2 : การเข้าสู่ระบบและ My B2BThai</option>
+                        <option selected="selected" value="3">Chapter3 : การจัดการข้อมูลส่วนตัว</option>
+                        <option selected="selected" value="4">Chapter4 : Gold Member</option>
+                        <option selected="selected" value="5">Chapter5 : การเก็บข้อมูลโปรด</option>
+                    </select>
+                </td>
+            </tr>*@
+            <tr>
+                <td class="span2">วันที่แก้ไข</td>
+                <td>: &nbsp;
+                    <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA span3 mar_t10 mar_r5" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+                    <input type="checkbox" id="SelectAllPeriod" class="tootip-buttom" title="Customize" />
+                </td>
+                <td><button type="submit" class="btn btn-darkblue mar_l20 btnsearch"><i class="icon-search icon-white mar_t3"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.rangeA').daterangepicker();
+        $('.tootip-buttom').tooltip({ placement: 'bottom' });
+    });
+</script>

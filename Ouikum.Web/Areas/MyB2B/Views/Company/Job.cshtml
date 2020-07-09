@@ -1,0 +1,55 @@
+﻿@{
+    ViewBag.Title = @res.Company.lblJob;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{
+    
+} 
+    <div id="autoHeight" class="container-fluid">
+    <div class="row-fluid inline" style="vertical-align:top;">
+      <div class="span12" >
+    <!--Sidebar content-->
+    <div class="mar_t20">
+    <div><h5  class="inline">@res.Common.colManage@res.Company.lblJob</h5></div>
+        <img src="@Url.cssDefault("images/line.png")" style="width:100%"/>
+        <div id="Add_Edit" style="display:none;margin-bottom:30px;">
+            <article class="module width_full">
+                <header><h3 id="head_form" style="width:80%;"></h3><button type="button" class="close fl_r mar_r10 mar_t5">×</button></header>
+                <div class="module_content">
+                    @Html.Partial("MyB2B/Company/ModalForm/AddJob")
+                </div>
+            </article>
+        </div>
+        
+            @using (Ajax.BeginForm("Job", "Company", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+            { 
+                <div class="btn-group inline">
+                    <button type="button" id="add" class="btn btn-small btn-default offset btn-tootip-top" style="margin: 10px 0;" rel="tooltip" title="เพิ่ม">
+                        @*<i class="icon-plus mar_t3"></i>*@
+                        เพิ่ม
+                    </button>
+                    <button type="button" id="dels" class="btn btn-small btn-default offset btn-tootip-top" style="margin: 10px 0;" rel="tooltip" title="ลบ" onclick="if(confirm('ต้องการลบข้อมูลหรือไม่')){DelData('','','JobID','Company');}">
+                        @*<i class="icon-minus mar_t3"></i>*@
+                        ลบ
+                    </button>
+                </div>
+                
+                <div class=" input-append inline fl_r mar_t7" id="KeywordGroup">
+                    <input class="SearchJobName" placeholder="Job Name" size="16" type="text" name="JobName" />
+                    <button class="btn btnsearch" type="submit" style="width: 50px;">
+                        <i class="icon-search"></i>
+                    </button>
+                </div>
+               <div class="clea10"></div>
+               <div id="BlogGrid">@Html.Partial("UC/Grid/GridUC")</div>
+            }
+      </div>
+    </div>
+<div class="clean30"></div>
+    </div>
+    </div>
+@section js{
+<script src="@Url.js("MyB2B/Company/Job.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>
+}

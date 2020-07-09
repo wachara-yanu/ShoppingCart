@@ -1,0 +1,42 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@if (ViewBag.Categories != null && ViewBag.Countcategory != 0)
+{
+
+<select id="selCategoryCode" name="selCategoryCode" class="fl_r sel-cate mar_t5 span8" size="10">
+    @foreach (var it in (IEnumerable<b2bCategory>)ViewBag.Categories)
+    {
+        <option value="@it.CategoryID" catepath="@it.ParentCategoryPath" catecode="@it.CategoryCode" class="@it.CategoryName">@it.ParentCategoryPath</option>
+    }
+</select>
+}
+else
+{
+<div class="cate_not_foud Bg_searchcate" style="width:100%;" alt="Notfound">@res.Product.lblNotfoundCate</div>
+}
+<script type="text/javascript">
+    $(function () {
+        var catename, catecode, catepath = '';
+
+        $('.sel-cate').blur(function () {
+            $("#CategoryCode").val(catecode);
+            $("#selCategoryCode").fadeOut();
+            CheckCateCode();
+        });
+        $('.sel-cate').change(function () {
+            catename = $(".div-sel-category select option:selected").attr("class");
+            catecode = $(".div-sel-category select option:selected").attr("catecode");
+            catepath = $(".div-sel-category select option:selected").attr("catepath");
+
+            $("#CategoryCode").val(catecode);
+            $("#CategoryCode").attr('data-catename', catename);
+            $(".txtSearchCate").val(catename);
+            $(".show-catepath").text(catepath);
+            $(".show-catepath").fadeIn();
+            CheckCateCode();
+        });
+    });
+
+
+
+</script>

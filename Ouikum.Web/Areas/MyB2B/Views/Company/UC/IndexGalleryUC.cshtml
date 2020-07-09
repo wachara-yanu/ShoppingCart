@@ -1,0 +1,134 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    int ProductCount = DataManager.ConvertToInteger(ViewBag.ProductCount);
+}
+<link href="~/Content/CompanyWeb/CompanyStyle.css" rel="stylesheet" />
+<div class="Indexpro_rec">
+    <div class="topic7">
+        <span class="fontsize16">สินค้าใหม่ล่าสุด</span>
+    </div>
+    <div id="new-blogproduct">
+        @if (ViewBag.CountProducts > 0)
+        {
+            foreach (var pd in (IEnumerable<view_SearchProduct>)ViewBag.Products)
+            {
+                <div class="newproduct data-item"
+                     id="@pd.ProductID"
+                     data-id="@pd.ProductID"
+                     data-name="@pd.ProductName"
+                     data-img="@Url.ThumbProduct(pd.CompID, pd.ProductID, pd.ProductImgPath)">
+                    <div class="imgproduct2">
+                        <a class="product_link" title="@pd.ProductName" href="@Url.Action("Detail", "Product", new { id = pd.ProductID, proname = @Url.ReplaceUrl(pd.ProductName), area = "Search" })" target="_blank" style="display: inline-block;">
+                            <img alt="@pd.ProductImgPath" id="Img_@pd.ProductID" title="@pd.ProductName" src="@Url.ThumbProduct(pd.CompID, pd.ProductID, pd.ProductImgPath)" />
+                        </a>
+                    </div>
+                    <div class="clean15"></div>
+                    <div class="text2">
+                        <a class="product_link" title="@pd.ProductName" href="@Url.Action("Detail", "Product", new { id = pd.ProductID, proname = @Url.ReplaceUrl(pd.ProductName).Trim(), area = "Search" })" target="_blank" @*style="display: inline-block;"*@>
+                            @{
+                                string productname = pd.ProductName;
+                                if (productname.Length > 25)
+                                {
+                                    <span class="fontsize14 fontblue nameproduct" title="@productname" style="line-height:0;font-weight:normal">@productname.Substring(0, 20)... </span>
+                                }
+                                else
+                                {
+                                    <span class="fontsize14 fontblue nameproduct" title="@productname" style="line-height:0;font-weight:normal">@productname</span>
+                                }
+                            }
+                        </a>
+                        <div class="clean10"></div>
+                        <span class="fontsize12">สั่งซื้อขั้นต่ำ :</span>
+                        @if (pd.Qty != null && pd.Qty > 0)
+                        {
+                            @String.Format("{0:##,###.##}", pd.Qty)
+                        }
+                        else
+                        {
+                            <span class="fontsize12">@res.Common.lblNonSpecific</span>
+                        }<br />
+                        <span class="fontsize12">ราคา :</span>
+                        @if (pd.Price != null && pd.Price > 0)
+                        {
+                            @String.Format("{0:##,###.##}", pd.Price)
+                        }
+                        else
+                        {
+                            <span class="fontsize12">@res.Common.lblNonSpecific</span>
+                        }
+                    </div>
+                </div>
+            }
+            <div class="clean20" style="border-bottom:1px solid #E0D9D9; margin-left:20px;"></div>
+            <div class="divPaging" style="padding:20px !important;">@Html.Partial("UC/PagingUC/GeneratePagingUC")</div>
+            <div class="clean15"></div>
+        }
+        else
+        {
+            <div class="clean"></div>
+            <div class="mar_center">ไม่มีสินค้า</div>
+        }
+    </div>
+
+
+
+</div>
+
+<script type="text/javascript">
+
+    $(function () {
+        CheckPage(parseInt("@ViewBag.PageIndex", 10));
+        CheckWebsitePaging(parseInt("@ViewBag.PageIndex", 10))
+        SetPage();
+    });
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+
+    /*--------------------------- Hide & Show ---------------------------------------*/
+
+    $("#BlogProduct").hide();
+
+    $("#show-list").click(function () {
+        OpenLoading(true);
+        if ($(this).hasClass('active')) {
+            $('.active').removeClass();
+            setTimeout(function () { OpenLoading(false); }, 1000);
+        } else {
+            $('.active').addClass();
+            $(this).addClass('Activebtn-list')
+            $('.Activebtn-blog').removeClass();
+            $("#ListProduct").show('fade');
+            $("#BlogProduct").hide('fade');
+            setTimeout(function () { OpenLoading(false); }, 1000);
+        }
+    });
+
+    $("#show-blog").click(function () {
+        OpenLoading(true);
+        if ($(this).hasClass('active')) {
+            $('.active').removeClass();
+            setTimeout(function () { OpenLoading(false); }, 1000);
+        } else {
+            $('.active').addClass();
+            $(this).addClass('Activebtn-blog')
+            $('.Activebtn-list').removeClass();
+            $("#BlogProduct").show('fade');
+            $("#ListProduct").hide('fade');
+            setTimeout(function () { OpenLoading(false); }, 1000);
+        }
+    });
+
+</script>

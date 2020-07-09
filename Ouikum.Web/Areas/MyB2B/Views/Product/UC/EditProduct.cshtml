@@ -1,0 +1,483 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum; 
+@{
+    var it = (b2bProduct)ViewBag.Product;
+ }
+
+<style>
+    .close-FullDetail {
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #000000;
+        text-shadow: 0 1px 0 #ffffff;
+        opacity: 0.2;
+        filter: alpha(opacity=20);
+    }
+    .close-FullDetail:hover {
+        color: #000000;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+    }
+    .SaveFullDetail {
+        background-color: #FF8E01;
+        width: 90px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-family: 'Tahoma';
+        font-size: 14px;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 32px;
+    }
+    .SaveFullDetail:hover {
+        background-color:#F8AD49;
+    }
+</style>
+
+ <div style="padding:10px;">
+	<div class="close-big" data-dismiss="modal" aria-hidden="true" style="color:#0B0A08">×</div>
+	<div class="clean"></div>
+	<form id="EditProduct_Form" class="form-horizontal form-save-modal" action="/" method="post" onsubmit="return false;">
+	    <div class="mar_20">
+		    <div id="column_left">
+			    <div style="margin-bottom: 60px;margin-top: -3px;">
+				    <img src="@Url.css("MyB2B/images/img_header.png")" class="circle"/>
+                    <img src="@Url.css("MyB2B/images/img_header_circle.png")" class="incircle" />
+				    <span id="u6" class="label-header">@res.Product.lblPost_NewProduct</span>
+                    <div style="padding-top:5px;font-size:13px;padding-left:175px">
+                        <a href="@res.Pageviews.UrlTechnique" target="_blank" class="SellCondi" >(@res.Product.lblTechnique)</a>
+                    </div>
+			    </div>
+		        <div class="Bisector"></div>
+			    <div style="margin-left: 15px;">
+				    @Html.Partial("UC/ProductUC/ProductImageUpload")
+			    </div>
+			
+			    <div class="clean"></div>
+		    </div>
+		
+		    <div id="column_right">
+			    <div class="containner mar_l20">
+
+                    <div id="stat1" class="panel_state unensconce">
+                        <div class="line_1">
+                            <span class="textHead">@res.Product.lblPreProductInfo</span>
+                            <a href="@res.Pageviews.UrlCondition" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                            <div class="w100 fl_r mar_t3">
+                                <div class="boxPage onpage">1</div>
+                                <div class="boxPage" onclick="GoToPageEditStep(1,2,false)">2</div>
+                                
+                            </div>                                                    
+                        </div>
+                        <div class="PageBrage"></div>
+                        <div class="line_2">
+
+                            <div class="control-group">
+                                <label>@res.Product.lblPro_name<span class="require">*</span></label>
+                                <div class="Upd_ProductName">
+                                    <input type="text"  name="Upd_ProductName" id="Upd_ProductName" chkname="@it.ProductName" value="@it.ProductName" class="span3 mar_r10" 
+                                         onblur="CheckProductName();"/>                                
+                                    <label class="error"></label>
+                                </div> 
+                            </div>                          
+
+                            <div class="control-group">
+                                <label>@res.Product.lblAdd_kw<span class="require">*</span></label>
+                                <div class=" Keyword tagit-kw">
+                                    <ul id="tagit-editkeyword">
+                                        @if (!string.IsNullOrEmpty(it.ProductKeyword))
+{
+    var item = it.ProductKeyword.Split('~');
+    var str = "";
+    for (int i = 0; i < item.Length; i++)
+    {
+        if (item[i] != null && item[i] != "")
+        {
+            if (item[i].Length > 150) { str = item[i].Substring(0, 150 - 2) + ".."; } else { str = item[i]; }
+                                                    <li>@(str)</li>
+        }
+    }
+}
+                                    </ul>
+                                    <label class="error"></label>                                     
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblQuick_Detail<span class="require">*</span></label>
+                                <div class=" Detail tagit-dt">
+                                    <ul id="tagit-editdetail">
+                                        @if (!string.IsNullOrEmpty(it.ShortDescription))
+{
+    var item1 = it.ShortDescription.Split('~');
+    var str1 = "";
+    for (int i = 0; i < item1.Length; i++)
+    {
+        if (item1[i] != null && item1[i] != "")
+        {
+            if (item1[i].Length > 150) { str1 = item1[i].Substring(0, 150 - 2) + ".."; } else { str1 = item1[i]; }
+                                                    <li>@(str1)</li>
+        }
+    }
+}
+                                    </ul>
+                                    <label class="error"></label>  
+                                    <div class="clean"></div>
+                                    <label class="divRow error textdesc"></label>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblCate<span class="require">*</span></label>
+                                <div class=" Upd_Category "> 
+                   <div class="input-append" id="Upd_Category"> 
+                        @{ var catename = "";
+    var catecode = "";
+    var catepath = "";
+    if (ViewBag.Catename != null)
+    {
+        foreach (var cate in (List<b2bCategory>)ViewBag.Catename)
+        {
+            catename = cate.CategoryName;
+            catecode = cate.CategoryCode;
+            catepath = cate.ParentCategoryPath;
+        }
+    }
+                        }
+                        
+                        <input id="TextSearchCategoryEdit" class="span3 txtSearchCate" name="CateLV3" size="16" type="text" value="@catename" />
+                        <button class="btn" type="button" onclick="SearchCategory()">@res.Common.btnSearch</button> 
+                        <input type="hidden" name="Upd_CategoryCode" id="Upd_CategoryCode" data-catename="@catename" data-id="@it.CateLV3" value="@catecode" />
+                    </div>
+                    <div class="clean5"></div>
+                    <a class="cursor click-cateall" style="font-size:14px;"> @res.Common.lblShowAllCate</a>
+                    <div class="Show-selectCate hide">
+                        <div class="fl_l">
+                        @if (res.Common.lblWebsite == "AppstoreThai")
+{
+                            <select class="span4" id="SelectCateLV1" name="SelectCateLV1" disabled>
+                                <option value="7102" selected="selected">คอมพิวเตอร์, ซอฟต์แวร์</option>  
+                            </select>
+}
+else
+{
+                        <select class="span4" id="SelectCateLV1" name="SelectCateLV1" onchange="beforecateLV1();">
+                        @if (ViewBag.SelectCateLV1 != null)
+{
+
+    foreach (var lv1 in (IEnumerable<b2bCategory>)ViewBag.SelectCateLV1)
+    {
+        if (lv1.CategoryID == it.CateLV1)
+        {
+                                    <option value="@lv1.CategoryID" class="@lv1.CategoryName" selected="selected">@lv1.CategoryName</option>
+        }
+        else
+        {
+                                    <option value="@lv1.CategoryID" class="@lv1.CategoryName">@lv1.CategoryName</option>
+        }
+    }
+}
+else
+{
+			                <option value="0" selected="selected">-@res.Common.selectCatelv1-</option>
+}
+		                </select> 
+}
+                        </div>
+                        <div class="fl_l mar_l5"><span class="btn morekey1" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(1)" disabled><i class="icon-share"></i></span></div>
+                        <div class="clean10"></div>
+                        <div class="fl_l">
+                        <select class="span4" id="SelectCateLV2" name="SelectCateLV2" onchange="beforecateLV2();">
+			            @if (ViewBag.SelectCateLV2 != null)
+                            {
+
+                                foreach (var lv2 in (IEnumerable<b2bCategory>)ViewBag.SelectCateLV2)
+                                {
+                                    if (lv2.CategoryID == it.CateLV2)
+                                    {
+                                                                <option value="@lv2.CategoryID" class="@lv2.CategoryName" selected="selected">@lv2.CategoryName</option>
+                                    }
+                                    else
+                                    {
+                                                                <option value="@lv2.CategoryID" class="@lv2.CategoryName">@lv2.CategoryName</option>
+                                    }
+                                }
+                            }
+                            else
+                            {
+			                                            <option value="0" selected="selected">-@res.Common.selectCatelv2-</option>
+                            }
+		                </select> 
+                        </div>
+                        <div class="fl_l mar_l5"><span class="btn morekey2" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(2)" disabled><i class="icon-share"></i></span></div>
+                         <div class="clean10"></div>
+                        <div class="fl_l">
+                        <select class="span4" id="SelectCateLV3" name="SelectCateLV3"  onchange="selectedcateLV3();">
+			             @if (ViewBag.SelectCateLV3 != null)
+                            {
+
+                                foreach (var lv3 in (IEnumerable<b2bCategory>)ViewBag.SelectCateLV3)
+                                {
+                                    if (lv3.CategoryID == it.CateLV3)
+                                    {
+                                                                <option value="@lv3.CategoryID" class="@lv3.CategoryName" selected="selected">@lv3.CategoryName</option>
+                                    }
+                                    else
+                                    {
+                                                                <option value="@lv3.CategoryID" class="@lv3.CategoryName">@lv3.CategoryName</option>
+                                    }
+                                }
+                            }
+                            else
+                            {
+			                                                    <option value="0" selected="selected">-@res.Common.selectCatelv3-</option>
+                            }
+		                </select> 
+                        </div>
+                        <div class="fl_l mar_l5"><span class="btn morekey3" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(3)" disabled><i class="icon-share"></i></span></div>
+                        <div class="clean5"></div>
+                        <a class="cursor click-catesearch" style="font-size:14px;margin-top:10px">@res.Common.lblGotoSearch </a>
+                    </div>
+                </div>
+
+                            <label class="errorCate error"></label>
+                        </div>
+                            <div class="show-catepath Bg_searchcate" style="width:90%; display:none;" alt="Success"></div>
+                            <div class="div-sel-category"></div>   
+                        </div>
+                 
+                        <div class="line_3 font_right">
+                            <div class="submit_nextstep" onclick="GoToPageEditStep(1,2,false)">@res.Common.lblSaveNextStep</div>
+                            <div class="cancel_backstep mar_r10" data-dismiss="modal" aria-hidden="true">@res.Common.lblCancel</div>                            
+                        </div>
+                    </div>
+
+                    <div id="stat2" class="panel_state ensconce">
+                        <div class="line_1">
+                            <div class="line_1">
+                                <span class="textHead">@res.Product.lblProductInfoMore</span>
+                                <a href="@res.Pageviews.UrlNewAbout" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                                <div class="w100 fl_r mar_t3">
+                                    <div class="boxPage" onclick="GoToPageEditStep(2,1,false)">1</div>
+                                    <div class="boxPage onpage">2</div>                                  
+                                </div>                                                    
+                            </div>
+                        </div>
+
+                        <div class="PageBrage"></div>
+
+                        <div class="line_2">
+                            @*แก้ไขราคาสินค้า/ชิ้น*@
+                            <div class="control-group" id="Price_One">
+                                <label>@res.Product.lblPrice_one</label>
+                                <div class="Price_One PriceF fl_l">
+                                    <div class="input-append">
+                                        @{var Price_One = string.Format("{0:0.00}", it.Price_One);}
+                                        <input type="text" name="Upd_Price_One" id="Upd_Price_One" class="span2" style="float:left;" value="@Price_One" />
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label>@res.Product.lblPrice@res.Product.lblPro (@res.Product.lblPricesend)</label>
+                                <div class=" Price  PriceF fl_l">
+                                    <div class="input-append">
+                                        @{var Price = String.Format("{0:0.00}", it.Price);}
+                                        <input type="text" name="Upd_Price" id="Upd_Price" class="span2" style="float:left;" value="@Price" />
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="fl_l mar_l10" style="text-align:left;padding-top:3px">
+                                    @res.Product.lblBaht /
+                                    @if (it.QtyUnit != "0")
+                                    {
+                                        <span id="Upd_QtyUnitFirst">@it.QtyUnit</span>
+                                    }
+                                    else
+                                    {
+                                        <span id="Upd_QtyUnitFirst">หน่วยสินค้า</span>
+                                    }
+                                </label>
+
+                            </div>
+
+                            <div class="control-group" id="AllQty">
+                                <label>@res.Product.lblMinimum_Unit<span class="require">*</span></label>
+                                <div class="Upd_Qty">
+                                    <div class="input-append fl_l" style="width: 220px;">
+                                        @{var Qty = String.Format("{0:0.00}", it.Qty);}
+                                        <input type="text" name="Upd_Qty" id="Upd_Qty" class="span2" value="@Qty">
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class=" Upd_QtyUnit ">
+                                    <select class="span2" id="Upd_QtyUnit" style="margin-left:5px;width:108px" name="Upd_QtyUnit" onchange="selectedQtyUnit();">
+                                        <option value="@it.QtyUnit" selected="selected">@it.QtyUnit</option>
+                                        @foreach (var Qt in ViewBag.QtyUnits)
+                                        {
+                                            <option value="@Qt.EnumText">@Qt.EnumText</option>
+                                        }
+
+                                    </select>
+                                    <label class="error"></label>
+                                    <div class="QtyOther fl_l" style="width:120px;display:none">
+                                        <input type="text" name="QtyOther" id="QtyOther" class="fl_l" style="width:101px" />
+                                        <label class="error errorQtyOther"></label>
+                                    </div>
+
+                                </div>
+
+                            </div>
+
+                            <div class="control-group" style="display:none">
+                                <label>@res.Product.lblProductCode</label>
+                                <div class="ProductCode">
+                                    <input type="text" name="Upd_ProductCode" id="Upd_ProductCode" class="span3 mar_r5" style="float:left;"
+                                           value="@it.ProductCode" maxlength="16" onblur="CheckProductCode();" disabled="disabled" />
+                                    <label class="error" style="color:#999999;position:absolute;margin:5px 0 0 5px;z-index:-1"></label>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label>@res.Product.lblPro_Group</label>
+                                <div class="ProductGroup">
+                                    @if (ViewBag.ProductGroups != null)
+                                    {
+                                        <select id="ProductGroup" name="ProductGroup" class="span3">
+                                            <option value="">@res.Product.lblSelectGroup</option>
+                                            @foreach (var item in (List<b2bProductGroup>)ViewBag.ProductGroups)
+                                            {
+                                                if (it.ProductGroupID == item.ProductGroupID)
+                                                {
+                                                    <option selected="selected" value="@item.ProductGroupID">@item.ProductGroupName</option>
+                                                }
+                                                else
+                                                {
+                                                    <option value="@item.ProductGroupID">@item.ProductGroupName</option>
+                                                }
+                                            }
+                                        </select>
+                                    }
+                                    else
+                                    {
+                                        <select id="ProductGroup" name="ProductGroup" class="span3" disabled="disabled">
+                                            <option value="" selected="selected">ไม่ระบุ</option>
+                                        </select>
+                                    }
+                                </div>
+
+
+                            </div>
+
+                            <div class="control-group" id="Upd_FullDetail">
+                                <label>@res.Product.lblMore_Detail </label>
+                                <div class="FullDetail span3 padd_t5" style="float:left;margin-left:0;margin-right:30px">
+                                    <a class="cursor upd-detail-click" style="font-size:14px"> @res.Product.lbladd_moreDetail</a>
+                                    <label class="error"></label>
+                                </div>
+                            </div>
+                            <div class="upd-detail-textarea" style="display:none;">
+                                <textarea name="Upd_FullDetail" id="UpDFullDetail" class="Upd_ProductDetail">@it.ProductDetail</textarea>
+                            </div>
+
+                            @*<div class="upd-detail-textarea" style="display:none;">*@
+                            <div class="modal_1200 hide fade custom-size" data-backdrop="static" id="ModalUpDFullDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;opacity:1;height:76%">
+                                <div style="padding:10px;">
+                                    <div class="close-FullDetail" style="color: #0B0A08;">×</div>
+                                    <div class="clean15"></div>
+                                    <div style="padding:0px 30px;">
+                                        <div style="font-size:18px">@res.Product.lblMore_Detail</div>
+                                        <div class="clean40"></div>
+                                        <textarea name="Upd_FullDetail-modal" id="UpDFullDetail-modal" class="Upd_ProductDetail-modal">@it.ProductDetail</textarea>
+                                        <div class="SaveFullDetail mar_t30">ตกลง</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <div class="line_3 font_right">
+                            <div class="submit_nextstep" onclick="GoToPageEditStep(2,2,true)">@res.Product.lblConfirmSellProduct</div>
+                            <div class="cancel_backstep mar_r10" onclick="GoToPageEditStep(2,1,false)">@res.Common.lblPrev</div>                            
+                        </div>
+
+                    </div>                   
+                     <input type="hidden" value="@it.ProductID" id="Upd_ProductID"/>
+                    <input type="hidden" value="@it.RowFlag" id="hidRowflag" />
+			    </div>
+			    <div class="clean"></div>
+		    </div>
+        </div>
+	</form>
+</div>
+
+<script src="@Url.js("UC/Tag_it/tag-it.js")" type="text/javascript"></script>
+<script src="@Url.js("MyB2B/Product/EditProduct.js")" type="text/javascript"></script> 
+<script type="text/javascript">
+    $(function () {
+        // console.log("addproductfile");
+     
+        $('#tagit-editkeyword').tagit({
+            availableTags: [],
+            itemName: "KeyWord",
+            fieldName: "KeyWord",
+            maxTags: 5,
+            allowSpaces: true
+        });
+        //$('#tagit-editkeyword > .tagit-choice').remove();
+        $('#tagit-editdetail').tagit({
+            availableTags: [],
+            itemName: "ShortDescription",
+            fieldName: "ShortDescription",
+            maxTags: 5,
+            allowSpaces: true,
+        });
+        $('.click-cateall').live('click', function () {
+            $('.click-cateall').css('display', 'none');
+            $('#Upd_Category').css('display', 'none');
+            $('.Show-selectCate').removeClass('hide');
+        });
+        $('.click-catesearch').live('click', function () {
+            $('.click-cateall').css('display', 'block');
+            $('#Upd_Category').css('display', 'block');
+            $('.Show-selectCate').addClass('hide');
+        });
+
+    });
+    
+    function selectedQtyUnit() {
+        var unit = $('#Upd_QtyUnit option:selected').text();
+        $("#Upd_QtyUnitFirst").text(unit);
+
+        if ($('#Upd_QtyUnit option:selected').val() == "@MvcHtmlString.Create(@res.Common.lblOther)") {
+            $('#Upd_QtyUnit').css('display', 'none');
+            $(".QtyOther > .errorQtyOther").text('');
+            $('.QtyOther').slideDown();
+        }
+    }
+    $('.QtyOther').live('blur', function () {
+        var unit = $('#QtyOther').val();
+        if (unit != "") {
+            $('#Upd_QtyUnit').append("<option value='" + unit + "' selected='selected'>" + unit + "</option>");
+            $("#Upd_QtyUnitFirst").text(unit);
+            $('.QtyOther').hide();
+            $('#Upd_QtyUnit').css('display', 'inline');
+        }
+        
+    });
+
+</script>

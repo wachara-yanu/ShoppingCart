@@ -1,0 +1,335 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+  <style>  
+        .bg-active
+        {
+            background : #0044CC;
+        }
+        
+        .Bg_item_Sort {
+        background: none repeat scroll 0 0 white;
+        border: 1px solid lightGrey;
+        border-radius: 5px;
+        height: 160px;
+        padding: 10px;
+        width: 140px; }
+            
+</style>  
+<div class="ProductManageRight"> 
+     @if (ViewBag.Products != null)
+     {
+        <div id="recomm-item" class="Bg_Allitem">
+                <div class="fl_l mar_tl17 Bg_item font_center cursor"
+                @{
+         int totalrow = (int)ViewBag.TotalRow;
+                    }
+                @if (totalrow == 20)
+                {
+                 <text> onclick="AlertWarning('เต็ม');"</text> 
+                }
+                else
+                { 
+                 <text> onclick="SubmitPageFormAdd();"</text>
+                }
+                  >
+                     <a class="btn-tootip-bottom" rel="tooltip">
+                        <img class="layout_center " src="@Url.css("MyB2B/images/btn_ImportProduct.png")"  />
+                    </a>
+                </div>
+            @{ 
+                string[] arrRowFlag = new string[] { "", "", "", "", "approve-item", "approve-item", "approve-item" }; 
+            } 
+
+            @foreach (var it in (IEnumerable<b2bProduct>)ViewBag.Products)
+            {            
+            <div class=" fl_l mar_tl17 Bg_item font_center gallery-item @arrRowFlag[it.RowFlag]  ">            
+            @if (it.RowFlag == 4)
+            {
+            <div class="fl_l bg_tab_approve " title="@res.Common.lblApprove">
+                <div class="fl_l mar_t7 mar_l4 icon_Approve cursor"><span class="fl_l mar_l30">@res.Common.lblApprove</span></div>
+                <div class="fl_r mar_t5 mar_r2 icon_Edit cursor" title="@res.Common.colEdit" data-toggle="modal" data-target="#ModalEditProduct" id="@it.ProductID" onclick="PrepareEditByID($(this))"></div>
+            </div> 
+            }
+            else if (it.RowFlag == 5)
+            {
+            <div class="fl_l bg_tab_waitapprove " title="@res.Common.lblWaitapproveRemark">
+                <div class="fl_l mar_t7 mar_l4 icon_WaitapproveRemark cursor"><span class="fl_l mar_l30">@res.Common.lblWaitapproveRemark</span></div>
+                 <div class="fl_r mar_t5 mar_r2 icon_Edit cursor" title="@res.Common.colEdit" data-toggle="modal" data-target="#ModalEditProduct" id="@it.ProductID" onclick="PrepareEditByID($(this))"></div>
+            </div> 
+            }
+            else if (it.RowFlag == 6)
+            {
+            @*<div class="fl_l bg_tab_waitapprove approve-item" title="@res.Common.lblWaitForCheck">
+                <div class="fl_l mar_t7 mar_l4 icon_Waitforcheck cursor"><span class="fl_l mar_l30">@res.Common.lblWaitForCheck</span></div>
+                <div class="fl_r mar_t5 mar_r2 icon_Edit cursor" title="@res.Common.colEdit" data-toggle="modal" data-target="#ModalEditProduct" id="@it.ProductID" onclick="PrepareEditByID($(this))"></div>
+            </div> 
+            *@
+            <div class="fl_l bg_tab_approve " title="@res.Common.lblApprove">
+                <div class="fl_l mar_t7 mar_l4 icon_Approve cursor"><span class="fl_l mar_l30">@res.Common.lblApprove</span></div>
+                <div class="fl_r mar_t5 mar_r2 icon_Edit cursor" title="@res.Common.colEdit" data-toggle="modal" data-target="#ModalEditProduct" id="@it.ProductID" onclick="PrepareEditByID($(this))"></div>
+            </div> 
+            }
+            <div class="clean30"></div>
+                <div class="layout_center product-item" style="width:160px; height:160px;margin:0 auto;" 
+                data-id="@it.ProductID" data-rowflag="@it.RowFlag" data-rowversion="@it.RowVersion" catelv1="@it.CateLV1" catelv2="@it.CateLV2" catelv3="@it.CateLV3" 
+                onclick="RecommendDetail($(this))"> 
+                <a class="cursor" >
+                    <img alt="@it.ProductName" title="@it.ProductName" src="@Url.ThumbProduct(it.CompID, it.ProductID, it.ProductImgPath)" 
+                    onload="resizeImg($(this),155,155);setElementMiddle(155, 155,$(this));"/>
+                    </a> 
+                </div>
+            <div class="clean5"></div>
+            @{string dot = "...";
+              if (it.ProductName.Length > 30)
+              {
+                  it.ProductName = string.Concat(it.ProductName.Substring(0, 30), dot);
+              }
+            
+            } 
+            <strong>@it.ProductName</strong>   
+            </div> 
+            }  
+
+        <div class="clean20"></div>
+        </div> 
+           
+    <div id="sort-item" style="display:none;padding-left:10px">
+        @foreach (var it in (List<b2bProduct>)ViewBag.Products)
+        {                
+        <div class="fl_l mar_tl10 Bg_item_Sort product-item cursor"  data-id="@it.ProductID" data-rowversion="@it.RowVersion" catelv1="@it.CateLV1" catelv2="@it.CateLV2" catelv3="@it.CateLV3">            
+                <center class="layout_center" style="width:120px; height:120px; margin:0 auto;" >
+                <p>
+                    <img alt="@it.ProductName" title="@it.ProductName"  src="@Url.ThumbProduct(it.CompID, it.ProductID, it.ProductImgPath)"  
+                    style="min-height:110px;min-width:110px"/>  
+                </p>
+                <p style="line-height:15px;">@Html.SubText(it.ProductName, 25)</p>
+                </center>  
+        </div>     
+        }
+        <div class="clean20"></div>
+    </div>          
+     }
+
+    </div>
+
+    <script type="text/javascript">
+        
+
+        var param = new Array();
+        $(function () {
+            var proCount = $('#status-recommend').text();
+            var arrProCount = proCount.split("/");
+            if (arrProCount[0] != "0") {
+                if (parseInt(arrProCount[0]) > 4) {
+                    $("#sidebar").css("height", "785px");
+                }
+                if (parseInt(arrProCount[0]) > 9) {
+                    $("#sidebar").css("height", "1035px");
+                }
+                if (parseInt(arrProCount[0]) > 14) {
+                    $("#sidebar").css("height", "1288px");
+                }
+            }
+
+            var totalrow =   parseInt("@ViewBag.TotalRow", 10); 
+            if (totalrow == 0) {
+                $('.menu_setting').hide();
+            } else {
+                $('.menu_setting').show();
+            }
+
+            //-------------------------------------
+            CheckPage(parseInt("@ViewBag.PageIndex", 10));
+
+            // ตรวจสอบว่าเปิดการแก้ไขได้อยู่หรือเปล่า
+            $("#sort-item").sortable().disableSelection();
+
+            // there's the gallery and the trash
+            var $gallery = $(".gallery-item"),
+			$all = $(".trash,.recommend,.store");
+
+            $rec = $('.gallery-item.approve-item');
+
+            // let the gallery items be draggable
+            $gallery.draggable({
+                revert: "true", // when not dropped, the item will revert back to its initial position
+                //        containment: "body,html", // stick to demo-frame if present
+                cursor: "move",
+                zIndex: 3,
+                cursorAt: { top: 1, left: -10 },
+                helper: function (event, ui) {
+                    var id = $(this).find(".product-item").attr('data-id');
+                    var rowversion = $(this).find(".product-item").attr('data-rowversion');
+                    var catelv1 = $(this).find(".product-item").attr('catelv1');
+                    var catelv2 = $(this).find(".product-item").attr('catelv2');
+                    var catelv3 = $(this).find(".product-item").attr('catelv3');
+                    var rowflag = $(this).find(".product-item").attr('data-rowflag');
+
+                    param = {
+                        ProductID: parseInt(id, 10),
+                        RowVersion: parseInt(rowversion, 10),
+                        CateLV1: parseInt(catelv1, 10),
+                        CateLV2: parseInt(catelv2, 10),
+                        CateLV3: parseInt(catelv3, 10),
+                        RowFlag: parseInt(rowflag, 10)
+                    }
+
+                    var img = $(this).find(".product-item > a > img").attr('src');
+
+                    img = "<img src='" + img + "' >";
+                    var html = "<div class='movetotrash' data-id='" + id + "' rowversion='" + rowversion + "'>";
+                    html += "<center>" + img + "</center></div>";
+                    return $(html);
+                }
+
+            });
+            // let the trash be droppable, accepting the gallery items
+            //============ Drop to Store ========================//
+            $('.trash').droppable({
+                accept: $('.gallery-item'),
+                activeClass: "ui-state-new",
+                over: function () {
+                    $(this).addClass('bg-active');
+                },
+                out: function () {
+                    $(this).removeClass('bg-active');
+                },
+                drop: function (event, ui) {
+                    $(this).removeClass('bg-active');
+                    var process = $(this).attr('menu');
+                    try {
+                        if (process == "trash") {
+                            DragToJunk();
+                        }
+
+                    } catch (ex) {
+                    }
+                }
+            });
+
+            //============ Drop to Store ========================//
+            $('.store').droppable({
+                accept: $rec,
+                activeClass: "ui-state-new",
+                over: function () {
+                    $(this).addClass('bg-active');
+                },
+                out: function () {
+                    $(this).removeClass('bg-active');
+                },
+                drop: function (event, ui) {
+                    $(this).removeClass('bg-active');
+                    var process = $(this).attr('menu');
+                    try {
+                        if (process == "store") {
+                            DragToStore();
+                        }
+
+                    } catch (ex) {
+                    }
+                }
+            });
+
+            function DragToJunk() {
+                $.ajax({
+                    url: GetUrl('@res.Pageviews.UrlProductMoveToJunk'),
+                    data: param,
+                    success: function (data) {
+
+                        if (CheckError(data)) {
+                            SubmitPage();
+                        }
+                    },
+                    error: function () {
+                    },
+                    type: "POST"
+                });
+            }
+
+            function DragToStore() {
+
+                console.log(param);
+                $.ajax({
+                    url: GetUrl('@res.Pageviews.UrlProductMoveToStore'),
+                    data: param,
+                    success: function (data) {
+                        if (CheckError(data)) {
+                            SubmitPage();
+                        }
+                    },
+                    error: function () {
+                    },
+                    type: "POST"
+                });
+            }
+
+            // image deletion function
+            var recycle_icon = "<a href='link/to/recycle/script/when/we/have/js/off' title='Recycle this image' class='ui-icon ui-icon-refresh'>Recycle image</a>";
+            function deleteImage(id) {
+
+                for (var i = 0; i < $(".product-item").length; i++) {
+                    var data_id = $('.product-item').eq(i).attr('data-id');
+                    if (data_id == id) {
+                        $('.gallery-item').eq(i).remove();
+                        return false;
+                    }
+                }
+            }
+
+            // image recycle function
+            var trash_icon = "<a href='link/to/trash/script/when/we/have/js/off' title='Delete this image' class='ui-icon ui-icon-trash'>Delete product</a>";
+            function recycleImage($item) {
+                $item.fadeOut(function () {
+                    $item
+					.find("a.ui-icon-refresh")
+						.remove()
+					.end()
+					.css("width", "96px")
+					.append(trash_icon)
+					.find("img")
+						.css("height", "50px")
+					.end()
+					.appendTo($gallery)
+					.fadeIn();
+                });
+            }
+
+            // image preview function, demonstrating the ui.dialog used as a modal window
+            function viewLargerImage($link) {
+                var src = $link.attr("href"),
+				title = $link.siblings("img").attr("alt"),
+				$modal = $("img[src$='" + src + "']");
+
+                if ($modal.length) {
+                    $modal.dialog("open");
+                } else {
+                    var img = $("<img alt='" + title + "' width='384' height='288' style='display: none; padding: 8px;' />")
+					.attr("src", src).appendTo("body");
+                    setTimeout(function () {
+                        img.dialog({
+                            title: title,
+                            width: 400,
+                            modal: true
+                        });
+                    }, 1);
+                }
+            }
+
+            // resolve the icons behavior with event delegation
+            $("ul.gallery > li").click(function (event) {
+                var $item = $(this),
+				$target = $(event.target);
+
+                if ($target.is("a.ui-icon-trash")) {
+                    deleteImage($item);
+                } else if ($target.is("a.ui-icon-zoomin")) {
+                    viewLargerImage($target);
+                } else if ($target.is("a.ui-icon-refresh")) {
+                    recycleImage($item);
+                }
+
+                return false;
+            });
+        });
+    </script>
+  

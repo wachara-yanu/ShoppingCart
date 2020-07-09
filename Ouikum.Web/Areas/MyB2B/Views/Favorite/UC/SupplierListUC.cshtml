@@ -1,0 +1,120 @@
+﻿@using Ouikum;
+@using Ouikum.Favorite;
+@using res = Prosoft.Resource.Web.Ouikum;
+@if (((List<view_FavCompany>)ViewBag.Supplier).Count > 0)
+{
+    <div class="clean"></div>
+    <ul class="" id="List" style="list-style:none;margin:0;padding:0" >
+    @foreach (var item in (IEnumerable<view_FavCompany>)ViewBag.Supplier)
+    {
+        string imgPath = Url.NoImage();
+        if ((item.LogoImgPath != "") && (item.LogoImgPath != null))
+        {
+            //imgPath = ViewBag.PathB2BThai + "/Upload/Prosoft/Product/" + @item.CompID + "/" + @item.ProductID + "/Thumb_" + @item.ProductImgPath;
+            imgPath = Url.CompanyLogo(item.FavSupplierID, item.LogoImgPath);
+
+        }
+        <li class="divProductItem" style="width:100%;padding:2% 0">
+            <input type="checkbox" class="ChooseComp fl_l" onclick="ChooseComp($(this))" data-id="@item.FavSupplierID" name="chkpd" title="@item.CompName" />
+            <div class="divPicPro mar_l10" style="width:180px" >
+                <div style=" width:150px; height:150px">
+                @if ((item.LogoImgPath != null) && (item.LogoImgPath != ""))
+                {
+                    <img class="img-polaroid" src="@Url.Content(imgPath)" id="@item.CompID" data-toggle="modal" data-target="#ModalProductDetail" class="cursor ImgProduct" onclick="OpenDetail($(this))"  alt="@item.CompName" title="@item.CompName" style="margin-top:4px !important"  onload="resizeImg($(this),150,150);setElementMiddle(150,150 ,$(this))" />
+                }
+                else
+                {
+                    <img class="img-polaroid" src="http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image" id="@item.CompID" data-toggle="modal" data-target="#ModalProductDetail" class="cursor ImgProduct" onclick="OpenDetail($(this))"  alt="@item.CompName" title="@item.CompName" style="margin-top:4px !important"  onload="resizeImg($(this),150,150);setElementMiddle(150,150 ,$(this))" />
+                }
+                </div>
+            </div>
+            <div class="detail" style="width:65%">
+                <div class="divDetailPro" style="width: 82%;margin-left:0">
+                    <div class="Row">
+                        <a class="cursor activeLink fl_l fontMemberCard" target="_blank" href="@Url.Action("", "CompanyWebsite" +"/"+ @Url.ReplaceUrl(item.CompName) + "/Index/" + @item.FavSupplierID, new { area=""})" style="font-size:small;width:50%" target="_blank" title="@item.CompName">@item.CompName</a>
+                    </div>
+                    <div class="Row mar_t5 fontGray" style="width:50%"> 
+                            @if (!string.IsNullOrEmpty(item.BizTypeOther))
+                            {
+                                @("[" + item.BizTypeOther + "]")
+                            }
+                            else
+                            {
+                                @("[" + item.BizTypeName + "]")
+                            }
+                           ,<span class="mar_l5">@item.ProvinceName</span>
+                    </div>
+                
+                    <div class="mar_t5">
+                            @if (item.CompLevel == 3)
+                            {
+                                <a class="Logo_GoldSmall fl_l mar_r5"></a><span class="fontOrange small">@res.Common.lblGoldMember</span>
+                            }
+                            else if (item.CompLevel == 2)
+                            {
+                                <a class="Logo_GoldExpireSmall fl_l mar_r5"></a><span class="fontOrange small">@res.Common.lblGoldMemberExpired</span>
+                            }
+                            else
+                            {
+                                <a class="Logo_FreeSmall fl_l mar_r5"></a><span class="fontBlue small">@res.Common.lblFreeMember</span>
+                            }
+                    </div>
+                </div>
+                <div id="Action1" style="width:100%">
+                    
+                    <div id="divAction1" class="mar_t50">
+                        <span class="fl_l" onclick="window.open(GetUrl('@res.Pageviews.UrlMsgContact/?ToCompID=@item.FavSupplierID'))" title="Send Message" target="_blank">
+                            <i class="icon_new_contact fl_l"></i>
+                            @res.Message_Center.btnSendMessage
+
+                        </span>
+                        <span class="mar_l5 fl_l" style="line-height:25px" onclick="window.open(GetUrl('@res.Pageviews.UrlCompWebsite/@Url.ReplaceUrl(item.CompName)/Contact/@item.FavSupplierID'))" target="_blank">@res.Company.lblContactDetail</span>
+                        <span class="mar_l5 fl_l" style="line-height:25px" onclick="window.open(GetUrl('@res.Pageviews.UrlCompWebsite/@Url.ReplaceUrl(item.CompName)/Product/@item.FavSupplierID'))" target="_blank">@res.Product.lblAll_pro @item.ProductCount @res.Product.lblItem</span>
+                    </div>
+                </div>
+            </div>
+            <div class="divDeleteFav" style="float:right">
+                 <span class="btn activeLink btn-tootip-top " style="font-weight:normal" type="button" data-id="@item.FavSupplierID" onclick="DeleteFav($(this));" rel="tooltip" data-original-title="ลบ"><i class="icon-minus-sign mar_t3" ></i> @res.Common.btnDelete </span>
+                </div>
+        </li>
+    }
+    </ul>
+    <div class="clean20"></div>
+    <div class="inline" style="float:right">@Html.Partial("UC/PagingUC/GeneratePagingUC")</div>
+    <div class="clean20"></div>
+}
+else
+{ 
+  <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound</div>
+}
+
+<script type="text/javascript">
+    /*----Paging---*/
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+        TotalRow = @(ViewBag.TotalRow);
+        $(".hideTotalRow").val(TotalRow);
+        $(".lblTotalRow").html(TotalRow);
+
+        TotalPage = @(ViewBag.TotalPage);
+        $(".hidTotalPage").val(TotalPage);
+        $(".lblTotalPage").html(TotalPage);
+
+        PageIndex = @(ViewBag.PageIndex);
+        $(".hidPageIndex").val(PageIndex);
+        $('.txtPageIndex').val(PageIndex);
+
+</script>
+

@@ -1,0 +1,28 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using (Ajax.BeginForm("CreateLead", "Purchase", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+        { 
+  
+                <div class="fl_l mar_t7" id="KeywordGroup">
+                    <span class="form-search">
+                        
+                        <input type="text" class="span4" name="TextSearch" id="TextSearch" placeholder="Product Name"/>
+                        <button type="submit" class="btn btn-primary btnsearch" id="form0_submit">@res.Common.btnSearch</button>
+            
+                    </span>
+
+                </div>
+                <div class="clean10"></div>
+                <div class="PurchasToolbar">
+                    @*<button type="button" class="btn" data-toggle="button" onclick="SelectAllCompany($(this))">@res.Common.colSelectAll</button>*@
+                    <button type="button" class="btn" style="margin:2px;" onclick="AddCompany()">@res.Purchasing.btnImportToLead</button>
+
+                </div>
+
+
+                <div class="clean10"></div>
+                <div id="certifyGrid">@Html.Partial("UC/Grid/GridUC")</div>
+        }
+
+        <div class="clean10"></div>
+        <button type="button" class="btn" style="margin:2px;" onclick="AddCompany()">@res.Purchasing.btnImportToLead</button>
+        <div class="clean20"></div>

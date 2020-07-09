@@ -1,0 +1,131 @@
+﻿@{
+    ViewBag.Title = @res.Common.colManage + @res.Admin.lblPakageGroup;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+    <link href="@Url.css("Admin/WebConfig/Package.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("UC/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        tinyMCE.init({
+            // General options
+            mode: "exact",
+            elements: "PackageGroupDetail",
+            theme: "advanced",
+            height: "350",
+            width: "70%",
+            plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+            // Theme options
+            theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect",
+            theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,image,cleanup,code,|,preview,|,forecolor,backcolor",
+            theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,iespell,media,|,fullscreen",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_resizing: false
+        });
+</script>
+}
+@using res = Prosoft.Resource.Web.Ouikum
+
+<div class="mainContent">
+    @Html.Partial("Admin/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+@*    @Html.Partial("Admin/WebconfigMainMenu")*@
+
+    <article class="module width_full">
+        <header><h3>NEW PACKAGE GROUP</h3></header>
+        <div class="module_content">
+            <form id="NewPackageGroupForm" class="form-horizontal">
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Common.lblGroupname : </label>
+                    <div class="controls">
+                        <input type="text" name="PackageGroupName">
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Common.lblGroupimg : </label>
+                    <div class="controls">
+                        <div class="ImgProfile fileupload-new" data-provides="fileupload">
+                            <div>
+                                <span class="btn btn-file btn-tootip-top" rel="tooltip" title="@res.Common.lblSelectImage">
+                                    <span class="fileupload-new"><i class="icon-picture "></i></span>
+                                    <span class="fileupload-exists"><i class="icon-edit"></i></span>
+                                    <input type="file" id="AvatarImgPath" name="AvatarImgPath" ></input>
+                                </span>
+                                <a href="#" class="btn fileupload-exists btn-tootip-top" data-dismiss="fileupload" rel="tooltip"  title="ลบ"><i class="icon-remove-sign"></i></a>
+                            </div>
+                            <p class="clean5"></p>
+                            <div class="fileupload-new thumbnail" style="width: 75px; height: 75px;">
+                                <img src="http://www.placehold.it/200x150/EFEFEF/AAAAAA&text=no+image">
+                            </div>
+                            <div class="fileupload-preview fileupload-exists thumbnail" style="max-width: 550px;"></div>
+                            <div class="clean20"></div>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="ShortDetail">@res.Common.lblDescription : </label>
+                    <div class="controls">
+                        <textarea rows="3" name="ShortDetail" class="span4"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="PackageGroupDetail">@res.Common.lblDetail : </label>
+                    <div class="controls">
+                        <textarea id="PackageGroupDetail" rows="3" class="span6"></textarea>
+                    </div>
+                </div>
+                <div style="margin-left: 14.5%;">
+                    <button type="submit" class="btn btn-danger">@res.Common.btnSave</button>
+                    <button type="button" class="btn" onclick="resetForm($('form[id=NewPackageGroupForm]'));">@res.Common.btnCancel</button>
+                </div>
+            </form>
+
+        </div>
+    </article>
+
+
+
+</div>
+@Html.Partial("UC/FooterUC/AdminFooterUC")
+
+@section js{
+    <script src="@Url.js("Bootstrap/bootstrap-fileupload.js")" type="text/javascript"></script>
+    <script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(".fileupload").fileupload({});
+        $('.btn-tootip-top').tooltip({ placement: 'top' });
+
+        $(function () {
+            $('#NewPackageGroupForm').validate(
+             {
+                 rules: {
+                     PackageGroupName: {
+                         minlength: 4,
+                         required: true
+                     },
+                     ShortDetail: {
+                         minlength: 10,
+                         required: true
+                     }
+                 },
+                 onkeyup: false,
+                 highlight: function (label) {
+
+                     $(label).closest('.control-group').removeClass('success');
+                     $(label).closest('.control-group').addClass('error');
+
+                 },
+                 success: function (label) {
+                     label.closest('.control-group').removeClass('error');
+                     label.closest('.control-group').addClass('success');
+
+                 }
+
+             });
+        });
+    </script>
+}

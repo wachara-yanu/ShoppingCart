@@ -1,0 +1,166 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@if (((List<view_FavBuyLead>)ViewBag.Buyers).Count > 0)
+{
+    <div class="clean"></div>
+    <ul class="" id="List" style="list-style:none;margin:0;padding:0" >
+    @foreach (var item in (IEnumerable<view_FavBuyLead>)ViewBag.Buyers)
+    {
+        string imgPath = Url.NoImage();
+        if (!string.IsNullOrEmpty(item.BuyleadIMGPath))
+        {
+            //imgPath = ViewBag.PathB2BThai + "/Upload/Prosoft/Product/" + @item.CompID + "/" + @item.ProductID + "/Thumb_" + @item.ProductImgPath;
+            if (@item.BLCompID > 0)
+            {
+                imgPath = Url.ThumbBuylead(item.BLCompID, item.BuyleadID, item.BuyleadIMGPath);
+            }
+            else
+            {
+                imgPath = Url.ThumbBuylead(2, item.BuyleadID, item.BuyleadIMGPath);
+            }
+
+        }
+       <li class="divProductItem" style="width:100%;padding:2% 0">
+            <input type="checkbox" class="ChooseBuylead fl_l" onclick="ChooseBuylead($(this))" data-id="@item.BuyleadID" style="margin-right:20px" name="chkpd" title="@item.BuyleadName" />
+            <div class="divPicPro" style="width:180px">
+                <div style=" width:150px; height:150px">
+                @if (!string.IsNullOrEmpty(item.BuyleadIMGPath))
+                {
+                    <img class="img-polaroid" src="@Url.Content(imgPath)" id="@item.BuyleadID" data-toggle="modal" data-target="#ModalProductDetail" class="cursor ImgProduct" onclick="OpenDetail($(this))"  alt="@item.BuyleadName" title="@item.BuyleadName" style="margin-top:4px !important"  onload="resizeImg($(this),145,145);setElementMiddle(150,150 ,$(this))" />
+                }
+                else
+                {
+                    <img class="img-polaroid" src="http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image" id="@item.BuyleadID" data-toggle="modal" data-target="#ModalProductDetail" class="cursor ImgProduct" onclick="OpenDetail($(this))"  alt="@item.BuyleadName" title="@item.BuyleadName" style="margin-top:4px !important"  onload="resizeImg($(this),145,145);setElementMiddle(150,150 ,$(this))" />
+                }
+                </div>
+            </div>
+            <div class="detail" style="width:65%">
+                <div class="divDetailPro" style="width: 100%;margin-left:0;height:125px">
+                    <div class="divRow"><a class="cursor label-header" href="@Url.Action("Detail","Search", new { id =  @item.BuyleadID , name = @Url.ReplaceUrl(item.BuyleadName), area ="Purchase"})" target="_blank" title="@item.BuyleadName">@item.BuyleadName</a></div>
+                    <div class="divRow fontGray">
+                        @if (@item.BLCompID > 0)
+                    {
+                    <div class="mar_t5">
+                            <a target="_blank" class="fontMemberCard comp-name" style="font-size:13px;font-weight:normal" href="@Url.Action("", "CompanyWebsite" +"/"+ @Url.ReplaceUrl(item.BuyleadCompanyName) + "/Main/Index/" + item.BLCompID, new { area=""})" title="@item.BuyleadCompanyName" target="_blank">@(item.BuyleadCompanyName)</a>                            
+                    </div>
+                    }
+                    @if (@item.BLCompID > 0)
+                    {
+                    <div> 
+                            @if (!string.IsNullOrEmpty(item.BizTypeOther))
+                            {
+                                @("[" + item.BizTypeOther + "]")
+                            }
+                            else
+                            {
+                                @("[" + item.BizTypeName + "]")
+                            }
+                        ,<span>@item.ProvinceName</span>
+                    </div>
+                        <div class="mar_t5">
+                        @if (item.CompLevel == 3)
+                        {
+                                <a class="Logo_GoldSmall fl_l mar_r5"></a><span class="fontOrange small">@res.Common.lblGoldMember</span>
+                        }
+                        else if (item.CompLevel == 2)
+                        {
+                                <a class="Logo_GoldExpireSmall fl_l mar_r5"></a><span class="fontOrange small">@res.Common.lblGoldMemberExpired</span>
+                        }
+                        else
+                        {
+                                <a class="Logo_FreeSmall fl_l mar_r5"></a><span class="fontBlue small">@res.Common.lblFreeMember</span>
+                        }
+                        </div>
+                    }
+                    else
+                    {
+                    <div class="mar_t5"> 
+                            @if (!string.IsNullOrEmpty(item.BuyleadContactPerson))
+                            {
+                                <p class="divRow"> @(item.BuyleadContactPerson)</p>
+                            }
+                           @if (!string.IsNullOrEmpty(item.BuyleadTel))
+                           {    <p class="divRow"><span class="fl_l border-tel">
+                                     <span class="icon_tel fl_l"></span>
+                                     <span class="fl_l mar_r5" style="line-height:20px">@(item.BuyleadTel)</span>
+                                 </span>
+                                </p>
+                           }
+                        @if (!string.IsNullOrEmpty(item.BuyleadEmail))
+                        {
+                                 <a class="divRow" href="mailto:@(item.BuyleadEmail)" title="Send Email" target="_blank" style="font-size:13px">@(item.BuyleadEmail)</a>
+                        }
+                    </div>
+                    }
+                    </div>
+                </div>
+                <div id="Action1" style="width: 100%">
+                    
+                    <div id="divAction1" >
+                        @if (@item.BLCompID > 0)
+                        {
+                        <span class="fl_l"  onclick="window.open(GetUrl('@res.Pageviews.UrlMsgContact/?ToCompID=@item.BLCompID&BuyleadID=@item.BuyleadID'))" title="Send Message" target="_blank">
+                            <i class="icon_new_contact fl_l"></i>@res.Message_Center.btnSendMessage</span>
+                        }
+                        else
+                        {
+                        <span class="fl_l" onclick="window.open(GetUrl('@res.Pageviews.UrlMsgContact/?BuyleadID=@item.BuyleadID'))" title="Send Message" target="_blank">
+                            <i class="icon_new_contact fl_l"></i>@res.Message_Center.btnSendMessage</span>
+                        }
+                        @if (@item.BLCompID > 0)
+                        {
+                            <span class="mar_l5 fl_l" style="line-height:25px"   onclick="window.open(GetUrl('@res.Pageviews.UrlCompWebsite/@Url.ReplaceUrl(item.BuyleadCompanyName)/Contact/@item.BLCompID'))" target="_blank">@res.Common.lblContactCompany</span>
+                            <span class="mar_l5 fl_l" style="line-height:25px" onclick="window.open(GetUrl('@res.Pageviews.UrlCompWebsite/@Url.ReplaceUrl(item.BuyleadCompanyName)/Product/@item.BLCompID'))">@res.Product.lblAll_pro</span>
+                        }
+                        else
+                        {
+                            <span class="mar_l5 fl_l" style="line-height:25px"  onclick="window.open(GetUrl('@res.Pageviews.UrlPurchaseSearch'))">@res.Product.lblAllBuylead</span>
+                        }
+                </div>
+                </div>
+            </div>
+            <div class="divDeleteFav" style="float:right">
+                <div class="btn activeLink btn-tootip-top " style="font-weight:normal" type="button" data-id="@item.BuyleadID" onclick="DeleteFav($(this));" rel="tooltip" data-original-title="ลบ"><i class="icon-minus-sign mar_t3" ></i> @res.Common.btnDelete </div>
+            </div>
+        </li>
+    }
+    </ul>
+     <div class="clean20"></div>
+    <div class="inline" style="float:right">@Html.Partial("UC/PagingUC/GeneratePagingUC")</div>
+    <div class="clean20"></div>
+}
+else
+{ 
+  <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound</div>
+}
+
+<script type="text/javascript">
+    /*----Paging---*/
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+        TotalRow = @(ViewBag.TotalRow);
+        $(".hideTotalRow").val(TotalRow);
+        $(".lblTotalRow").html(TotalRow);
+
+        TotalPage = @(ViewBag.TotalPage);
+        $(".hidTotalPage").val(TotalPage);
+        $(".lblTotalPage").html(TotalPage);
+
+        PageIndex = @(ViewBag.PageIndex);
+        $(".hidPageIndex").val(PageIndex);
+        $('.txtPageIndex').val(PageIndex);
+
+</script>
+

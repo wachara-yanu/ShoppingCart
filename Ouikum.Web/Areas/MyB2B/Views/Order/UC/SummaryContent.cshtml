@@ -1,0 +1,104 @@
+﻿@using Ouikum.Order;
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+<div id="information"></div>
+@{
+        var Order = (b2bOrder)ViewBag.viewOrder;
+}
+<table class="table table-bordered" width="100%">
+    <tr style="background-color:#F2F2F2">
+        <th style="text-align: center;width:40%">@res.Common.lblList</th>
+        <th style="text-align: center">@res.Common.lblQuantity</th>
+        <th style="text-align: center">@res.Order.lblSumPrice_en</th>
+        <th></th>
+    </tr>
+    
+    @{int count = 0;
+      foreach (var OrderDetail in ((List<OrderSummaryModel>)ViewBag.OrderDetails))
+      {
+          count = count + 1;
+      }
+     }
+
+    @foreach (var OrderDetail in ((List<OrderSummaryModel>)ViewBag.OrderDetails))
+    {
+    <tr>
+        <td style="text-align:center">@OrderDetail.PackageName</td>
+        <td style="text-align: center">@OrderDetail.Qty</td> <!-- Qty-->
+        @{
+        string PackagePrice = String.Format("{0:0,0.00}", OrderDetail.Price * OrderDetail.Qty);
+         }
+        <td style="text-align: right">@PackagePrice</td>
+        <td style="text-align: center;width:19px" class="center">
+            @{if (count == 1)
+              { 
+                  <div><i class="icon-ban-circle" title="No Delete"></i></div>
+              }
+              else
+              {
+                  <img src="@Url.css("Order/Image/img_Delete.png")" class="delete cursor" title="Delete" orderDetail-id="@OrderDetail.OrderDetailID" order-id="@OrderDetail.OrderID"/>
+              }
+             }
+        </td> 
+    </tr>}
+        @{
+            string price = String.Format("{0:0,0.00}", Order.TotalPrice);
+         }
+    <tr>
+        <td style="text-align: right;background-color:#F2F2F2" colspan="5">
+        Total Price <font style="color:Red">@price</font> @res.Order.lblBaht</td>
+    </tr>
+</table>
+<div class="clean mar_l30">
+    <button type="button" class="btn btn-warning" id="submit">@res.Common.btnSubmit</button>
+    <button type="button" class="btn" id="cancel">@res.Common.btnCancel</button>
+</div>
+
+ <script type="text/javascript">
+     $(function () {
+         $('#cancel').click(function () {
+             bootbox.confirm(label.vldcancel, "Cancel", "Yes", function (e) {
+                 if (e) {
+                     var id = parseInt($('#hidOrderID').val(), 10);
+                     CancelOrder(id);
+                 }
+             })
+         });
+     });
+
+     $('.delete').click(function () {
+         if (confirm('@res.Order.lblCancelOrder')) {
+             var OrderDetailId = parseInt($(this).attr('orderDetail-id'), 10);
+             var OrderId = parseInt($(this).attr('order-id'), 10);
+             DeleteOrderDetail(OrderDetailId, OrderId);
+         }
+     });
+
+     $('#submit').click(function () {
+         if (confirm('@res.Order.lblOrdersuccessPayment')) {
+             var id = parseInt($('#hidOrderID').val(), 10);
+             SubmitOrder(id);
+         }
+     });
+
+     function SubmitOrder(id) {
+         data = {
+             OrderID: id
+         }
+         console.log(data);
+         $.ajax({
+             url: GetUrl('@res.Pageviews.UrlSubmitOrder'),
+             data: data,
+             traditional: true,
+             success: function (data) {
+                 if (CheckError(data)) {
+                     window.location = GetUrl(@res.Pageviews.UrlOrderList);
+                 }
+             },
+             error: function () {
+             },
+             type: "POST"
+         });
+         return false;
+     }
+ </script>

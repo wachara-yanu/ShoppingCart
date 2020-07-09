@@ -1,0 +1,405 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+@using Ouikum.Company;
+@{
+    var chkuser = (UserStatusModel)ViewBag.UserStatus;
+    var company = (view_Company)ViewBag.Company;
+}
+
+<div><p class="fontsize16" style="padding:20px 0 0 25px;">ส่งข้อความถึงผู้ขาย</p></div>
+<div class="clean"></div>
+@using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "Post", OnSuccess = "SendSuccessPopup" }, new { id = "ContactCompForm" }))
+{
+    <div id="MessageContent" style="padding: 30px 30px 0 25px;">
+        <div id="MsgHeadContent" style="width:83%">
+            @if (company != null)
+            {
+                <span class="inline Checkfield" style="width:100%">
+                    <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Message_Center.btnTo</label>
+                    <label style="margin-bottom:15px">
+                        :&nbsp;
+                        @if (!string.IsNullOrEmpty(company.LogoImgPath))
+                        {
+                            <img src="@Url.CompanyLogo(company.CompID, company.LogoImgPath)" alt="@company.LogoImgPath" title="@company.CompName" onload="resizeImg($(this),30,30);setElementMiddle(30, 30, $(this));" />
+                        }
+                        @company.CompName  [@res.Common.lblTel : @company.CompPhone]
+                    </label>
+                    <input type="hidden" id="hidToCompName" name="txtToCompName" style="width:75.5%;" value="@company.CompName" />
+                    <input type="hidden" id="hidToCompID" name="hidToCompID" value="@company.CompID" />
+                    <input type="hidden" id="hidToCompEmail" name="hidToCompEmail" value="@company.ContactEmail" />
+
+                </span>
+            }
+            else
+            {
+                @*<span class="inline" style="width:100%; display:none">
+                    <label class="span2" style="margin:0; width:85px;">To : </label><input type="hidden" id="txtToCompName" name="txtToCompName" style="width:65%;" placeholder="@res.Message_Center.pdToCompany"/>
+                    </span>*@
+                <div class="control-group">
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Message_Center.pdToEmail</label>
+                        :&nbsp;
+                        <input type="text" id="txtToEmail" name="txtToEmail" style="width:75.5%;" placeholder="@res.Message_Center.pdToEmail" />
+                    </span>
+                </div>
+            }
+
+            @if (chkuser.CompID > 0)
+            {
+                <div class="control-group">
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">ชื่อของคุณ</label>
+                        :&nbsp;
+                        <input type="text" id="txtFromName" name="txtFromName" style="width:75.5%;" value="@chkuser.CompName" placeholder="@res.Message_Center.pdFromName" />
+                        <input type="hidden" name="hidFromCompID" value="@chkuser.CompID" />
+                    </span>
+                </div>
+                <div class="control-group">
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">อีเมล์ของคุณ</label>
+                        :&nbsp;
+                        <input type="text" id="txtFromEmail" name="txtToEmail" style="width:75.5%;" value="@chkuser.Email" placeholder="@res.Message_Center.pdFromEmail" />
+                        <input type="hidden" name="hidFromCompID" value="@chkuser.Email" />
+                    </span>
+                </div>
+                <div class="control-group">
+                    <span class="inline" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Common.lblPhone</label>
+                        :&nbsp;
+                        <input type="text" id="txtFromContactPhone" name="txtFromContactPhone" style="width:75.5%;" placeholder="@res.Message_Center.pdYourPhone" />
+                    </span>
+                </div>
+            }
+            else
+            {
+                <div class="control-group">
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Message_Center.pdFromName</label>
+                        :&nbsp;
+                        <input type="text" id="txtFromName" name="txtFromName" style="width:75.5%;" placeholder="@res.Message_Center.pdFromName" />
+                    </span>
+                </div>
+                <div class="control-group">
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Message_Center.pdFromEmail</label>
+                        :&nbsp;
+                        <input type="text" id="txtFromEmail" name="txtFromEmail" style="width:75.5%;" placeholder="@res.Message_Center.pdFromEmail" />
+                    </span>
+                </div>
+                <div class="control-group">
+                    <span class="inline" style="width:100%">
+                        <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Common.lblPhone</label>
+                        :&nbsp;
+                        <input type="text" id="txtFromContactPhone" name="txtFromContactPhone" style="width:75.5%;" placeholder="@res.Message_Center.pdYourPhone" />
+                    </span>
+                </div>
+            }
+            <span class="inline" style="width:100%;display:none">
+                <label class="span2 fontGray font_l fontsize13" style="margin:0; width:85px;">@res.Message_Center.lblSubject</label>
+                :&nbsp;
+                <input type="hidden" id="txtSubject" name="txtSubject" style="width:75.5%;" value="@res.Message_Center.lblContactComp" />
+            </span>
+        </div>
+        <div id="MsgContent" class="inline Checkfield" style="margin-left:99px">
+            @Html.TextArea("MsgDetail")
+        </div>
+        <div style="margin-left:85px;padding-bottom: 20px;width: 60%;">
+            <span class="checkbox inline" style="padding-bottom:20px; padding-left:32px;">
+                <input type="checkbox" name="IsImportance" id="IsImportance" onclick="chkImportance($(this))" />
+                @res.Message_Center.lblContactImmediately
+            </span>
+            <div style="display:block; padding-left:15px;">
+                <img src="@Url.Content("~/home/getcaptcha")" />
+                <br />
+                <div class="control-group" style="padding-top:10px">
+                    <div class="captcha">
+                        <input type="text" name="captcha" id="captcha" placeholder="กรอกตัวเลขด้านบน" value="" maxlength="4" class="wid_input" onblur="checkCaptcha();" />
+                    </div>
+                </div>
+                <button type="submit" class="btn btn-primary" id="unlockMsg" style="width:120px;vertical-align:top">@res.Message_Center.btnSendMessage</button>
+            </div>
+        </div>
+    </div>
+}
+
+<script type="text/javascript">
+    $(function () {
+        tinyMCE.init({
+            // General options
+            mode: "exact",
+            elements: "MsgDetail",
+            theme: "advanced",
+            height: "340",
+            width: "70%",
+            plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+            // Theme options
+            theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect,|,forecolor,backcolor,|,cut,copy,paste,pastetext,pasteword",
+            theme_advanced_buttons2: "bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,image,cleanup,code,|,hr,removeformat,visualaid,|,sub,sup,|,iespell,media,|,fullscreen,|,preview,|,search",
+            theme_advanced_buttons3: "tablecontrols",
+            theme_advanced_toolbar_location: "top",
+            theme_advanced_toolbar_align: "left",
+            theme_advanced_statusbar_location: "bottom",
+            theme_advanced_path: false,
+            theme_advanced_resizing: true
+        });
+    });
+
+    $('#unlockMsg').click(function () {
+        $('#ContactCompForm').validate(
+        {
+            rules: {
+                txtToEmail: {
+                    required: true,
+                    email: true
+                },
+                txtFromName: {
+                    required: true
+                },
+                txtFromEmail: {
+                    required: true,
+                    email: true
+                },
+                txtFromContactPhone: {
+                    required: true
+                },
+                txtSubject: {
+                    required: true
+                },
+                MsgDetail: {
+                    required: true
+                },
+                captcha: {
+                    minlength: 4,
+                    required: true
+                }
+            },
+            messages: {
+                txtToEmail: {
+                    required: 'กรุณากรอกอีเมล์ของคุณ'
+                },
+                txtFromName: {
+                    required: label.vldfill_yourname
+                },
+                txtFromEmail: {
+                    required: 'กรุณากรอกอีเมล์ของคุณ',
+                    email: label.vldenter_validemail
+                },
+                txtFromContactPhone: {
+                    required: 'กรุณากรอกเบอร์โทรศัพท์'
+                },
+                txtSubject: {
+                    required: label.vldenter_subject
+                },
+                MsgDetail: {
+                    required: label.vldfill_yourmessage
+                },
+                captcha: {
+                    minlength: label.vldless_4char,
+                    required: label.vldrequired
+                }
+            },
+            highlight: function (label) {
+                $(label).closest('.control-group').removeClass('success');
+                $(label).closest('.control-group').addClass('error');
+                $(label).closest('.control-group').css('text-align', 'left');
+
+                $(".captcha > .error").css('margin-left', '0px');
+                OpenLoading(false);
+            },
+            success: function (label) {
+                label.closest('.control-group').removeClass('error');
+                label.closest('.control-group').addClass('success');
+            }
+        });
+
+        if ($('#ContactCompForm').valid()) {
+            SentMessage();
+        }
+    });
+
+    function SentMessage() {
+        var bool = false;
+        checktxtFromContactPhone();
+        checktxtFromEmail();
+        checktxtFromName();
+        checkcaptcha_Null();
+        bool = checkCaptcha();
+
+        if (checktxtFromContactPhone() == true && checktxtFromEmail() == true && checktxtFromName() == true && checkcaptcha_Null() == true) {
+            if (bool == true) {
+                OpenLoading(true);
+                console.log("ServiceType: " + ServiceType);
+                data = {
+                    hidToCompID: $("#hidToCompID").val(),
+                    hidToCompEmail: $("#hidToCompEmail").val(),
+                    MsgDetail: tinyMCE.activeEditor.getContent(),
+                    IsImportance: $("#IsImportance").val(),
+                    txtFromName: $("#txtFromName").val(),
+                    txtFromEmail: $("#txtFromEmail").val(),
+                    txtFromContactPhone: $("#txtFromContactPhone").val(),
+                    txtSubject: $("#txtSubject").val(),
+                    hidToCompName: $("#hidToCompName").val(),
+                    txtToEmail: $("#txtToEmail").val(),
+                    captcha: $("#captcha").val()
+                };
+                $.ajax({
+                    url: GetUrl("Message/Contact"),
+                    data: data,
+                    traditional: true,
+                    success: function (data) {
+                        if (data.IsResult && data.IsSendMail) {
+                            OpenLoading(false);
+                            bootbox.alert("ส่งข้อความเรียบร้อยแล้ว");
+                            window.location = GetUrl("Message/List?MsgType=Sentbox");
+                        } else {
+                            //OpenLoading(false);
+                            //bootbox.alert("ลงทะเบียนเรียบร้อยแล้ว แต่ระบบการส่งอีเมล์ขัดข้องจึงไม่สามารถส่งอีเมล์ได้");
+                            //window.location = GetUrl("MyB2B/Inbox");
+                        }
+                    },
+                    error: function () {
+                        OpenLoading(false);
+                        bootbox.alert("Send Message error");
+                    },
+                    type: "post"
+
+                });
+            } else {
+                bootbox.alert("คุณกรอกข้อมูลไม่ตรงกับตัวเลขด้านบน กรุณากรอกใหม่อีกครั้ง");
+            }
+        } else {
+            bootbox.alert("กรุณากรอกข้อมูลให้ครบ");
+        }
+    }
+
+    function checkCaptcha() {
+        var result;
+        $.ajax({
+            url: GetUrl("Member/ValidateRegister"),
+            data: { captcha: $('#captcha').val() },
+            type: "POST",
+            async: false,
+            success: function (data) {
+                if (!data) {
+                    //OpenLoading(false);
+                    $("#captcha").closest('.control-group').removeClass('success');
+                    $("#captcha").closest('.control-group').addClass('error');
+                    $(".captcha > .error").text('คุณกรอกข้อมูลไม่ตรงกับตัวเลขด้านบน กรุณากรอกใหม่อีกครั้ง');
+                    $(".captcha > .error").css('margin-left', '0px');
+                    result = false;
+                } //end if
+                else {
+                    result = true;
+                    // OpenLoading(false);
+                }
+            },
+            error: function () {
+                //  bootbox.alert(label.cannot_check_info);
+            }
+        });
+        return result;
+    }
+
+    function checktxtFromName() {
+        var isResult = false;
+        var txtFromName = $("#txtFromName").val();
+        console.log("txtFromName: " + txtFromName);
+        if (txtFromName == null || txtFromName == '') {
+            $("#txtFromName").closest('.control-group').removeClass('success');
+            $("#txtFromName").closest('.control-group').addClass('error');
+            $(".txtFromName > .error").text('กรุณากรอกชื่อของคุณ');
+            $(".txtFromName > .error").css('text-align', 'left');
+            return isResult = false;
+        } else {
+            $("#txtFromName").closest('.control-group').removeClass('error');
+            $("#txtFromName").closest('.control-group').addClass('success');
+            $(".txtFromName > .error").text('');
+            return isResult = true;
+        }
+        return isResult
+    }
+
+    function checktxtFromEmail() {
+        var isResult = false;
+        var txtFromEmail = $("#txtFromEmail").val();
+        console.log("txtFromEmail: " + txtFromEmail);
+        if (txtFromEmail == null || txtFromEmail == '') {
+            $("#txtFromEmail").closest('.control-group').removeClass('success');
+            $("#txtFromEmail").closest('.control-group').addClass('error');
+            $(".txtFromEmail > .error").text('กรุณากรอกอีเมล์ของคุณ');
+            $(".txtFromEmail > .error").css('text-align', 'left');
+            return isResult = false;
+        } else {
+            $("#txtFromEmail").closest('.control-group').removeClass('error');
+            $("#txtFromEmail").closest('.control-group').addClass('success');
+            $(".txtFromEmail > .error").text('');
+            return isResult = true;
+        }
+        return isResult
+    }
+
+    function checktxtFromContactPhone() {
+        var isResult = false;
+        var txtFromContactPhone = $("#txtFromContactPhone").val();
+        console.log("txtFromContactPhone: " + txtFromContactPhone);
+        if (txtFromContactPhone == null || txtFromContactPhone == '') {
+            $("#txtFromContactPhone").closest('.control-group').removeClass('success');
+            $("#txtFromContactPhone").closest('.control-group').addClass('error');
+            $(".txtFromContactPhone > .error").text('กรุณากรอกเบอร์โทรศัพท์');
+            $(".txtFromContactPhone > .error").css('text-align', 'left');
+            return isResult = false;
+        } else {
+            $("#txtFromContactPhone").closest('.control-group').removeClass('error');
+            $("#txtFromContactPhone").closest('.control-group').addClass('success');
+            $(".txtFromContactPhone > .error").text('');
+            return isResult = true;
+        }
+        return isResult
+    }
+
+    function checkcaptcha_Null() {
+        var isResult = false;
+        var captcha = $("#captcha").val();
+        console.log("captcha: " + captcha);
+        if (captcha == null || captcha == '') {
+            $("#captcha").closest('.control-group').removeClass('success');
+            $("#captcha").closest('.control-group').addClass('error');
+            $(".captcha > .error").text('กรุณากรอกตัวเลขให้เหมือนด้านบน');
+            $(".captcha > .error").css('text-align', 'left');
+            return isResult = false;
+        } else {
+            $("#captcha").closest('.control-group').removeClass('error');
+            $("#captcha").closest('.control-group').addClass('success');
+            $(".captcha > .error").text('');
+            return isResult = true;
+        }
+        return isResult
+    }
+
+    function OpenLoading(isLoad, img, obj) {
+        if (isLoad == true) {
+            if (img == null) {
+                img = '<div class="icon-loader"></div>';
+            } else {
+                img = '<img src=\"' + img + '\" >';
+            }
+            if ($('#loading').length == 0) {
+                if (obj == null || obj == undefined) {
+                    $('body').prepend('<div id="loading">&nbsp;</div><div id="imgloading" style="top: 350px; left: 779.5px;">' + img + '</div>');
+                } else {
+                    obj.prepend('<div id="loading">&nbsp;</div><div id="imgloading" style="top: 350px; left: 779.5px;">' + img + '</div>');
+                }
+                $("#loading").css({ 'filter': 'alpha(opacity=50)', 'opacity': '0.5' });
+                $("#imgloading").position({ my: "center", at: "center", of: "#loading" });
+            }
+
+        } else {
+            $('#loading').remove(); $('#imgloading').remove();
+        }
+    }
+</script>
+
+@section js{
+    <script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+}

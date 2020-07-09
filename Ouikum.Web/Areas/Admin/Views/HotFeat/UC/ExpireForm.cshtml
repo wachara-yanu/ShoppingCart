@@ -1,0 +1,23 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+    <div class="fl_r" >
+        <button id="Refresh" class="btn exp fl_l mar_r5 btnsearch" value="0">
+            <i class="icon-refresh"></i>
+        </button>
+        <div class="btn-group fl_r" data-toggle="buttons-radio">
+            <button class="btn exp btnsearch" value="1" style="font-size:13px">
+                <span id="Count_to_Exp" class="label label-important">@ViewBag.Count_to_Exp</span>
+                @res.Common.lbltoExpire
+            </button>
+            <button class="btn exp btnsearch" value="2"  style="font-size:13px">
+                <span id="Count_Exp_today" class="label label-important">@ViewBag.Count_Exp_today</span>
+                @res.Common.lblExpire_today
+            </button>
+            <button class="btn exp btnsearch" value="3"  style="font-size:13px">
+                <span id="Count_Exp" class="label label-important">@ViewBag.Count_Exp</span>
+                @res.Common.lblExpire
+            </button>
+        </div>
+    </div>
+
+    <input  type="hidden" id="ExpireStatus" name="ExpireStatus" value="" />
+    

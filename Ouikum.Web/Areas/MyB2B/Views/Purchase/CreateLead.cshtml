@@ -1,0 +1,144 @@
+﻿@{
+    ViewBag.Title = "ศูนย์กลางการจัดซื้อ";
+    Layout = "~/Views/MP/MP_PurchasingCenter.cshtml";
+}
+
+
+@using res = Prosoft.Resource.Web.Ouikum;
+<div class="ContentAdmin">
+    <div id="autoHeight" class="fl_l mar_l30" style="width:98%">
+        <div class="clean30"></div>
+        @using (Ajax.BeginForm("CreateLead", "Purchase", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+        {                     
+            <div class="fl_l mar_t7">
+                <span class="form-search">
+                    <button type="button" class="btn btn-info" id="btnImportEmLead">@res.Purchasing.btnImportemLead (<span id="cnt_lead">@ViewBag.CountEmLead</span>)</button>
+                    <input type="text" class="wid_input" name="TextSearch" id="TextSearch" placeholder="ค้นหาจากชื่อสินค้า" value="@ViewBag.TextSearch"/>
+                    <input type="hidden" name="hidEmLeadID" id="hidEmLeadID" value="@ViewBag.setEmLeadID"/>
+                    <button class="btn btn-info" type="submit" onclick="OpenLoading(true)">
+                        <i class="icon-search icon-white mar_t3"></i> ค้นหา
+                    </button>
+                </span>
+            </div>
+            <div class="clean10"></div>
+            <div class="PurchasToolbar">
+                @*<button type="button" class="btn" data-toggle="button" onclick="SelectAllCompany($(this))">@res.Common.colSelectAll</button>*@
+                @*<button type="button" class="btn btn-info" style="margin:2px;" onclick="AddCompany()">@res.Purchasing.btnImportToLead</button>*@
+            </div>
+            <div class="clean10"></div>
+            <div id="certifyGrid">@Html.Partial("UC/Grid/GridUC")</div>
+        }
+
+        <div class="clean10"></div>
+        <button type="button" class="btn btn-info" style="margin:2px;" onclick="AddCompany()">@res.Purchasing.btnImportToLead</button>
+        <div class="clean20"></div>
+        @Html.Partial("PurchasingCenter/CreateLeadTab")
+        <div class="clean30"></div>
+    </div>
+
+    <div class="modal_80 hide fade custom-size" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4>@res.Purchasing.lblImportemLead</h4>
+      </div>
+      <div class="modal-body" style="max-height:600px">  
+            @Html.Partial("PurchasingCenter/ImportEmLead")
+      </div>
+    </div>
+</div>
+
+@section js{
+    <script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+        $(document).on("click", "#btnImportEmLead", function () {
+            $("#myModal").modal();
+        });
+
+        $(document).on("keyup", "#TextSearch", function () {
+            $("#hidEmLeadID").val("");
+        });
+
+        $(document).on("click", ".cancel-importEmLead", function () {
+            $('.cbxItem').removeAttr("checked");
+            $('.cbxItem').attr("value", false);
+        });
+
+        $(function () {
+            $("#hidEmLeadID").val("");
+
+            //tooltip
+            //            $('.checkAll').tooltip({ 'title': 'Select All' });
+            //            $('.cbxCompID').tooltip({ 'title': 'Select This Supplier' });
+            //            $('.showSendEmail').tooltip({ 'title': "Attach User's ID" });
+
+            // add the rule here
+            $.validator.addMethod("valueNotEquals", function (value, element, arg) {
+                return arg != value;
+            }, "Please select Business type!");
+
+            // validate
+            $('#SaveAssignLeadForm').validate(
+             {
+                 ignore: ".reg",
+                 rules: {
+                     ToContactName: "required",
+                     ToContactLastName: "required",
+                     ToContactEmail: {
+                         required: true,
+                         email: true
+                     },
+                     ToContactTel: "required",
+                     ToSendEmail: {
+                         required: true,
+                         email: true
+                     },
+                     txtSetDefaultLead: "required",
+                     txtBuyleadUrl: "required",
+                     hidAllSupplierCompID: "required",
+                     txtRegCompName: "required",
+                     txtRegUsername: "required",
+                     txtRegPassword: "required",
+                     regServiceType: "required",
+                     RegBusinessTypeID: { valueNotEquals: 0 }
+                 },
+                 messages: {
+                     hidAllSupplierCompID: "Please Select Company!",
+                     regServiceType: "Please Select MemberType!"
+                 },
+                 errorPlacement: function(error, element) {
+                     if (element.attr("name") == "regServiceType")
+                         error.insertAfter("#servicetype3");
+                     else
+                         error.insertAfter(element);
+                 },
+                 highlight: function (label) {
+                     $(label).closest('.control-group').removeClass('success');
+                     $(label).closest('.control-group').addClass('error');
+                     OpenLoading(false);
+                 },
+                 success: function (label) {
+                     label.closest('.control-group').removeClass('error');
+                     label.closest('.control-group').addClass('success');
+                 }
+             });
+
+        });
+
+    </script>
+
+    <script src="@Url.js("Admin/User/ListUser.js")" type="text/javascript"></script>
+    <script src="@Url.js("PurchasingCenter/Purchasing.js")" type="text/javascript"></script>
+    
+
+
+    <script type="text/javascript">
+        
+        function GridSuccess(content) {
+            $(g_content).eq(g_no).html(content);
+            CheckGrid();
+            OpenLoading(false);
+        }
+
+</script>
+}

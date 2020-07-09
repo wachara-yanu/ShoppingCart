@@ -1,0 +1,185 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+@{ string ListNoPath = "'Message/List/ChangeSatatus'";}
+<table class="table table-hover grid mar_b10">
+    <thead class="">
+        <tr class="header">
+            <th class="" style="width:20px;"><div class="">#</div></th>
+            <th class="span1"><div class="">@res.Admin.lblUsername</div></th>
+            <th class="span1"><div class="" style="width:90px;">@res.Company.lblComp_code</div></th>
+            <th class="span1"><div style="width:140px;">@res.Common.lblFirstName - @res.Common.lblLastName</div></th> 
+            <th class="span1" style="width:20px;"></th> 
+            <th class="span2"><div class="">@res.Company.lblCompName</div></th>
+            <th class="span1"><div class="" style="width:65px;">@res.Common.lblStartDate</div></th>
+            <th class="span1"><div class="" style="width:79px;">@res.Common.lblExpire_date</div></th>
+            <th class="span1"><div class="">@res.Common.colStatus</div></th>
+            <th class="span1"><div class="">IsSME</div></th>
+            <th class="span2" style="min-width:90px;"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+        {
+            <tr class="nodata b" valign="middle">
+                <td><div align="center">@res.Common.lblNotFound</div></td>
+            </tr>
+        }
+        else
+        {
+            foreach (var item in (List<view_CompMember>)ViewBag.CompMembers)
+            {
+                var ID = item.MemberWebID;
+                if(item.WebID == 1){     
+                <tr class="body">
+                    <td style="vertical-align:middle;">
+                        <div  class="">
+                            <input type="hidden" id="MemberWeb_@{@ID}" class="hidPrimeID" value="@ID" />
+                            <input type="hidden" id="MemberID_@{@ID}" class="hidMemberID" value="@item.MemberID" />
+                            <input type="checkbox" class="cbxItem cbxCompID" value="@ID" id="@ID" onclick="CheckBox(@ID)" />
+                            <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                            @item.UserName
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                            @if (item.CompCode != null)
+                            {
+                            @item.CompCode
+                            }
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="break-word">
+                            @item.FirstName&nbsp;&nbsp;@item.LastName
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        @if (item.CompLevel == 3)
+                        {
+                        <div class="Logo_GoldSmall"></div> 
+                        }
+                        else if (item.CompLevel == 1)
+                        {
+                        <div class="Logo_FreeSmall"></div>
+                        }
+                         else if (item.CompLevel == 2)
+                        {
+                        <div class="Logo_GoldExpireSmall"></div>
+                        }
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="break-word">
+                            @{
+                            var urlcomplink = "";
+                                switch(item.WebID){
+                                    case 1: urlcomplink = "http://www.ouikum.com"; break; 
+                                    default: break;
+                                }   
+                             
+                                //string urllink = res.Pageviews.PvManualDownload;
+                                //if(Prosoft.Base.Base.AppLang == "en-US"){urllink = "en/";}else{urllink="";}
+                                }
+                            @*<a href="@Url.Content(urlcomplink+"/"+urllink+"CompanyWebsite/" + Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID)" target="_blank">@item.CompName </a>*@
+                            <a href="@Url.Content(urlcomplink+"/CompanyWebsite/" + Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID)" target="_blank">@item.CompName </a>
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class=""> 
+                        @{  var RegisDate = "";
+                            if (item.RegisDate != null)
+                            {
+                                RegisDate = (DateTime.Parse(item.RegisDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                            }
+                            }
+                            @RegisDate     
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class=""> 
+                        @{  var ExpireDate = "";
+                            if (item.ExpireDate != null)
+                            {
+                                ExpireDate = (DateTime.Parse(item.ExpireDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                            }
+                            else
+                            {
+                                ExpireDate = "-";
+                            }
+                            
+                            }
+
+                            @ExpireDate     
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                            @{var text = ""; var text_status = "";} 
+                            @foreach (var it in ViewBag.EnumUserStatus)
+                            {
+                                if (item.CompRowFlag == DataManager.ConvertToShort(it.EnumValue))
+                                {
+                                    text = it.EnumText;
+                                    text_status = "text_" + it.EnumText;
+                                }
+                            }
+                                <text class="@text_status">@text</text>
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                            @if(item.IsSME == true){
+                                <text>Yes</text>
+                            }else{
+                                <text>-</text>
+                            }
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+
+                        @*----------------------------------------Modal-------------------------------------------------------------------*@
+                        <div id="EmailModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+                            <div class="modal-header">
+                                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+                                <h3 id="myModalLabel" style="margin-left:0px">ส่งข้อมูลถึงผู้ใช้</h3>
+                            </div>
+                            <div class="modal-body">
+                                <input type="text" name="comp-email" id="comp-email" value="" /> 
+                                <input type="hidden" name="comp-id" id="comp-id" value="" /> 
+                            </div>
+                            <div class="modal-footer">
+                                <button class="btn" data-dismiss="modal" aria-hidden="true">@res.Common.btnCancel</button>
+                                <button class="btn btn-darkblue btn-send-mail">@res.Common.btnSend</button>
+                            </div>
+                        </div>
+
+                        <div class="fl_r">
+                            @if (item.IsTrust == true || item.CompLevel == 3)
+                            {
+                                <span id="Istrust" class="btn tootip-top " rel="tootip" style="width:0px;height:16px;" title="show/hide" onclick="changeIstrust(@item.CompID,$(this));" aria-valuetext="@item.IsTrust"><i class="icon-eye-open cursor" style="margin-left:-7px;"></i></span>
+                            }else{
+                                <span id="Istrust" class="btn tootip-top " rel="tootip" style="width:0px;height:16px;" title="show/hide" onclick="changeIstrust(@item.CompID,$(this));" aria-valuetext="@item.IsTrust"><i class="icon-eye-close cursor" style="margin-left:-7px;"></i></span>
+                            }
+                            <a href="#EmailModal" role="button" data-toggle="modal" class="btn cursor sendUser" style="width:0px;height:16px;" data-toggle="tooltip" title="send information to user" data-id="@ID" data-email="@item.Email" >
+                                <i class="icon-envelope" style="margin-left:-7px;"></i>
+                            </a>
+                                @{string url = res.Pageviews.PvEditmember; 
+                                //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                                //else { url = res.Pageviews.PvEditmember; }
+                                }
+                            <a href="@Url.Content(url+"?MemberWebID=" + ID)" target="_blank" class="btn tootip-top" rel="tootip" title="@res.Common.colEdit" style="width:0px;height:16px;"><i class="icon-edit mar_r10 cursor" style="margin-left:-7px;"></i></a>
+                                <span class="btn tootip-top" style="width:0px;height:16px;" rel="tootip" title="@res.Common.btnDelete" onclick="if(confirm('@res.Common.btnDel_Confirm ?')){DelUSer(@ID,@item.MemberID,@item.RowVersion);}"><i class="icon-minus-sign cursor" style="margin-left:-7px;"></i></span>   
+                        </div>
+                    </td>
+                </tr>
+                }
+                else { ; }       
+            }
+        }
+    </tbody>
+</table>
+@Html.Partial("UC/Grid/PagingPostUC")

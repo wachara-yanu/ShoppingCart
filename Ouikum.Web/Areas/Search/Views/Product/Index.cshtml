@@ -1,0 +1,254 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.ChkPage = "";
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+    int tempRegionID = 0;
+}
+@section head{
+    <link rel="canonical" href="http://@res.Common.lblDomainShortName/Search/Product" />
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Search/Product.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.core.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.widget.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.rcarousel.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Highlight/highlight.js")" type="text/javascript"></script>
+    <style>
+        .PageName {
+            margin-top: -15px;
+        }
+    </style>
+}
+@section js{
+    <script src="@Url.js("default.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.jsoncookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("Search/Product.js")" type="text/javascript"></script>
+    <script src="@Url.js("Compare/Compare.js")" type="text/javascript"></script>
+    @*<script src="@Url.js("Home/AdminMessagePopup.js")" type="text/javascript"></script>
+        <script type="text/javascript">$(function(){console.log($("body").width());})</script>*@
+    <script src="@Url.js("UC/Paging/Paging.js")" type="text/javascript"></script>
+}
+@{var LanguageCookies = Request.Cookies["Language"];
+    var Lang = LanguageCookies != null ? Convert.ToString(LanguageCookies.Value) : "th-TH"; }
+<div id="Content">
+    <div class="search_Cate" style="margin-top:-47px">@Html.Partial("Search/SlideCatelevel1")</div>
+    <div class="clean"></div>
+    <div class="divRow">
+        <div id="CateMenuLeft"></div>
+        <div id="ContentRight">
+
+            @*                @if (ViewBag.ShowBranner == "Show")
+                {
+                     <text>@Html.Partial("SlideProduct/BrannerProduct")</text>
+                }*@
+            <div class="clean10"></div>
+            <div class="tabTitle" style="width:905px;z-index:1;margin-top:-60px">
+                <button class="fl_l btn_ForwardBlue cursor inline call-compare mar_r10 mar_t8" style="border: none;width:140px">
+                    <span class="fl_l icon_compareSearch mar_l5 mar_t2"></span>
+                    <span class="fl_r mar_t10 mar_r5">
+                        <p style="line-height: 5px;">เปรียบเทียบสินค้า</p>
+                    </span>
+                </button>
+                <span class="fl_l mar_t10">@res.Common.lblSortby</span>
+                <label class="checkbox fl_l mar_t10 mar_l10" style="width:120px;" onclick="SetSearchOption()">
+                    <input type="checkbox" name="chkpd" id="ChooseCompLevel" style="margin-top:7px">
+                    <a class="fl_l Logo_GoldSmall mar_rl5"></a>
+                    <span class="fl_l fontOrange ">@res.Common.lblGoldMember</span>
+                </label>
+                <select class="mar_t9" style="font-size:13px;width:160px" id="ddlBizType" onchange="SelectedBizType($(this).val())">
+                    <option value="0">@res.Common.lblBusiness_Type</option>
+                    @if (Lang == "th-TH")
+                    {
+                        foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                        {
+                            <option value="@it.BizTypeID">@it.BizTypeName</option>
+                        }
+                    }
+                    else
+                    {
+                        foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                        {
+                            <option value="@it.BizTypeID">@it.BizTypeCode</option>
+                        }
+                    }
+
+                </select>
+                <select name="ProvinceID" id="ddlProvinceID" class="mar_t9" style="font-size:13px;width:160px" onchange="SelectedProvince($(this).val())">
+                    <option value="0">@res.Common.lblProvince</option>
+                    @if (Lang == "th-TH")
+                    {
+                        foreach (var it in (List<view_Province_Region>)ViewBag.Provinces)
+                        {
+                            if (it.RegionID != tempRegionID)
+                            {
+                                <option value="@it.ProvinceID" class="RegionText" disabled>@it.RegionName</option>
+                            }
+                            <option value="@it.ProvinceID">@it.ProvinceName</option>
+
+                            if (it.RegionID != null)
+                            {
+                                tempRegionID = (int)it.RegionID;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var it in (List<view_Province_Region>)ViewBag.Provinces)
+                        {
+                            if (it.RegionID != tempRegionID)
+                            {
+                                <option value="@it.ProvinceID" class="RegionText" disabled>@it.RegionNameEng</option>
+                            }
+                            <option value="@it.ProvinceID">@it.ProvinceNameEng</option>
+
+                            if (it.RegionID != null)
+                            {
+                                tempRegionID = (int)it.RegionID;
+                            }
+                        }
+                    }
+
+                </select>
+
+                <div class="font_20 label-header mar_t15" style="float:right">
+                    <div class="fl_l">@res.Product.lblAll_pro</div>
+                    <div class="fontOrange fl_l mar_l10 mar_r10" id="totalrow">
+                        @if (ViewBag.TotalRow == 0)
+                        {
+                            <text>0</text>
+                        }
+                        else
+                        {
+                            @(String.Format("{0:##,###.##}", @ViewBag.TotalRow))
+                        }
+                    </div>
+                    <div class="fl_l">@res.Product.lblItem</div>
+                </div>
+
+            </div>
+            <div class="ProductDetail mar_t5" id="ProductDetail">
+                @Html.Partial("Search/ProductListUC")
+            </div>
+
+            @if (ViewBag.FeatureCount > 3)
+            {
+                if (ViewBag.HotProducts != null)
+                {
+                    <div class="Slide_HotFeat">@Html.Partial("SlideProduct/FeaturedProduct")</div>
+                }
+            }
+        </div>
+    </div>
+</div>
+<div class="clean20"></div>
+<input type="hidden" id="catetype" value="@ViewBag.catetype" />
+<input type="hidden" id="hidKeyword" value="@ViewBag.TextSearch" />
+<script type="text/javascript">
+        HighlightTextSearch();
+        $('.PageName h1').text('"ศูนย์รวมสินค้าเกษตรอินทรีย์ สินค้าลดการเผาและสินค้าเกษตรปลอดสารเคมี"');
+        /*-----------CategoryMenu-------------*/
+        ChildCateMenu();
+
+       /*--------------Display--------------*/
+       var Window = $(window).width();
+       if(Window < 1025){
+        $("#btnCompare").css("font-size","12px");
+        $("#CateMenuTop").css("margin-top", "1px");
+       }
+        /*-----------ddlsort-------------*/
+       function sel_sort(obj) {
+           $('#dLabel > .txtval').text($(obj).text());
+           $('#ddlSort').val($(obj).parent().attr('aria-valuetext'));
+            SelectedSort($('#ddlSort').val())
+       }
+       function ChildCateMenu() {
+        //OpenLoading(true, null, $('.SearchlistNavbar'));
+        $.ajax({
+                url: GetUrl('@res.Pageviews.UrlProductMenu'),
+                data: {CategoryID:CateID,CateLevel:CateLV},
+                dataType : "Json",
+                success: function (data) {
+                    var HtmlReturn = '<input id="CategoryID" type="hidden" value="'+@(ViewBag.CateID)+'" class="'+@(ViewBag.CateLV)+'"/><div id="divCateItem">';
+                    HtmlReturn+='<div style="float:left; margin:10px 0; width:100%">';
+                    HtmlReturn+='<ul class="nav" id="Cate">';
+                    $("#CateMenuLeft").append(HtmlReturn);
+
+                   var url = GetUrl('@res.Pageviews.PvSearchProductCategoryJs');
+                   for(var i in data)
+                   {
+                        var val = data[i];
+                        HtmlReturn='<li class="cate_content">';
+                        var isThree = data[i].CategoryLevel==3 ? "cate CateName cursor" : "cate CateName cursor b";
+                        var txt_length = $('#divCateItem').width() > 170 ? 35 : 25;
+                        var ReCategoryName = val.CategoryName.replace(" ", "").replace(",", "-").replace(/[%]/g, '').replace(/[&]/g, '');
+                        HtmlReturn+='<a id="'+data[i].CategoryID+'" rel="'+ (parseInt(i)+1)+'" title="' +val.CategoryName+ '"';
+                        HtmlReturn += 'style=" width:100%" href="' + url + val.CategoryID + "/" + val.CategoryLevel + "/" + ReCategoryName + '" >';
+                        HtmlReturn+='<h2 class="font_m" style="font-weight:normal;margin:0;line-height:30px">';
+                        HtmlReturn+=(val.CategoryName.length > txt_length ? val.CategoryName.substring(0,txt_length)+"..." :val.CategoryName);
+                        HtmlReturn+='</h2></a>';
+                        HtmlReturn+='</li>';
+                          $("#CateMenuLeft ul.nav").append(HtmlReturn);
+                    }
+                 HtmlReturn='</ul></div></div>';
+                 $("#CateMenuLeft").append(HtmlReturn);
+                //OpenLoading( false, null, $('.SearchlistNavbar'));
+
+                /*----------CateMenu------------*/
+                var ContentRightH = $("#ContentRight").height();
+                var CateMenuLeftH = $("#CateMenuLeft").height();
+                if(CateMenuLeftH > ContentRightH){
+                    $("#Cate").css({"height":ContentRightH,"overflow":"auto"})
+                    $('#Cate').scrollbars();
+                    }
+                },
+                type: "POST"
+            });
+       }
+        $("body").click(function (event) {
+            if ($(event.target).hasClass('search-select')) {
+                OpenListSearch(true);
+            } else {
+                OpenListSearch(false);
+            }
+        });
+        $('#TextSearch').keypress(function () {
+            OpenListSearch(true);
+        });
+        $('#TextSearch').click(function () {
+            var width = $('#search-main').width();
+            $('#list-search').width(width - 2);
+            OpenListSearch(true);
+        });
+        function OpenListSearch(isOpen) {
+            if (isOpen != null && isOpen != undefined) {
+                if (isOpen) {
+                    $('#list-search').removeClass('hidden')
+                    $('#list-search').slideDown();
+                } else {
+                    $('#list-search').addClass('hidden')
+                    $('#list-search').slideUp();
+                }
+            } else {
+                if ($('#list-search').hasClass('hidden')) {
+                    $('#list-search').removeClass('hidden')
+                    $('#list-search').slideDown();
+                } else {
+                    $('#list-search').addClass('hidden')
+                    $('#list-search').slideUp();
+                }
+            }
+        }
+        function SetActiveListSearch(index) {
+            $('.list-search-text').removeClass('active');
+            $('.list-search-text').eq(index).addClass('active');
+
+            $('.icon-active').hide();
+            $('.icon-active').eq(index).show();
+    }
+
+   
+</script>

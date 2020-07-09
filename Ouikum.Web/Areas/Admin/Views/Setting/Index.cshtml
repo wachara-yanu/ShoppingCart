@@ -1,0 +1,13 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@{
+    ViewBag.Title = @res.Admin.lblSetting;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+    <link href="@Url.css("Admin/WebConfig/AdminMember.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />
+}
+<div class="mainContent">
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/ApproveCenterMainMenu")*@

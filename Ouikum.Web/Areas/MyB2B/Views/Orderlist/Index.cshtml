@@ -1,0 +1,97 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = "รายการสั่งซื้อ";
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@section head{
+    <link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />
+}
+
+<div class="row-fluid inline" style="vertical-align:top; margin-top:10px; min-width:1200px;">
+    <div class="clean20"></div>
+    <div style="text-align:center;">
+        <div class="alert" id="information" style="text-align:center;height:20px;display:none;">
+            <button class="close alert_close" type="button">×</button>
+            <strong class="inline"></strong>
+            <p class="inline"></p>
+        </div>
+    </div>
+    <div class="clean"></div>
+    @using (Ajax.BeginForm("Index", "Orderlist", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+    {
+        @*<div class=" input-append inline fl_l mar_t15" id="KeywordGroup">
+                <input class="SearchShimentName" placeholder="Shipment Name" size="16" type="text" name="ShipmentName" />
+                <button class="btn btnsearch" type="submit" style="width: 50px;">
+                    <i class="icon-search"></i>
+                </button>
+            </div>*@
+        <div class="fl_r" style="margin-top:15px;">
+            <span id="totalList">0</span> รายการ
+        </div>
+    }
+
+    <!--Sidebar content-->
+    <div style="margin-top:65px">
+
+        <div class="data_system">
+            <div class="header_sys" style="min-width:1203px;">
+                <div class="fl_l">
+                    <h5 class="mar_l20">จัดการประวัติการสั่งซื้อสินค้า</h5>
+                </div>
+                <!----------------------------------- btn save&edit ------------------------------------>
+                <div class="fl_r">
+                    <div class="blog-cancle hide" id="btn_cancle">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide" id="btn_save">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="company_ship" class="CollapseDetail">
+                <div class="module_content hide">@Html.Partial("ModalForm/EditStatusOrder")</div>
+                <div id="ShipmentGrid" class="show">@Html.Partial("UC/Grid/GridUC")</div>
+            </div>
+        </div>
+    </div>
+
+</div>
+
+@section js{
+
+    <script type="text/javascript">
+        /*--------------------- toggle -------------------*/
+        $(".btnCollapse").live('click', function () {
+            var data = $(this).index(".btnCollapse");
+            var Icon = $(this).find("i")
+
+            var target = $(this).attr('data-target');
+
+            console.log(target)
+
+            if (Icon.hasClass("icon-chevron-down")) {
+                Icon.removeClass('icon-chevron-down');
+                Icon.addClass("icon-chevron-up")
+                $(target).slideDown();
+            } else {
+                Icon.addClass("icon-chevron-down")
+                Icon.removeClass('icon-chevron-up');
+                $(target).slideUp();
+            }
+        });
+
+    </script>
+}
+

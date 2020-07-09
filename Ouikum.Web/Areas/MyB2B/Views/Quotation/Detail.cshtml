@@ -1,0 +1,1380 @@
+﻿@using System.Web.Mvc;
+@using Ouikum;
+@using Ouikum.Company;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+@{
+    ViewBag.Title = "Quotation Detail";
+    Layout = "~/Views/MP/MP_Quotation.cshtml";
+}
+@section HeadContent{
+    <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Jquery-ui/custom-theme/jquery.ui.1.8.16.ie.css")" rel="stylesheet"type="text/css" />
+    <link href="@Url.css("Quotation/Quotation.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("Quotation/QuotationUploads.js")" type="text/javascript"></script>
+}
+
+<div id="Content" class="column" style="margin: 0 2%">
+    @{  
+        var svCompany = new CompanyService();
+        var userlogin = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus; 
+    }
+    <input type="hidden" id="ToCompID" value="@userlogin.CompID" />
+    @if (ViewBag.QuotDetail != null)
+    {
+        var Quo = (b2bQuotation)ViewBag.QuotDetail;
+        <input type="hidden" id="QuotationCode"     value="@Quo.QuotationCode" />
+        <input type="hidden" id="txtToName"         value="@ViewBag.ContactName" />
+        <input type="hidden" id="txtToCompName"     value="@userlogin.CompName" />
+        <input type="hidden" id="txtFromEmail"      value="@ViewBag.ContactEmail" />
+        <input type="hidden" id="FromCompID"        value="@Quo.FromCompID" />
+        <input type="hidden" id="IsOutbox"          value="@Quo.IsOutbox.ToString()" />
+        <input type="hidden" id="IsReply"           value="@Quo.IsReply" />
+        <input type="hidden" id="QuotationID"       value="@Quo.QuotationID" />
+        <input type="hidden" id="RowVersion"        value="@Quo.RowVersion" />
+        <input type="hidden" id="PricePerPiece"     value="@Quo.PricePerPiece" />
+        <input type="hidden" id="Discount"          value="@Quo.Discount" />
+        <input type="hidden" id="Vat"               value="@Quo.Vat" />
+        <input type="hidden" id="TotalPrice"        value="@Quo.TotalPrice" />
+        <input type="hidden" id="ProductID"         value="@Quo.ProductID" />
+        <input type="hidden" id="ProductName"       value="@ViewBag.ProductName" />
+        <input type="hidden" id="ProductCode"       value="@ViewBag.ProductCode" />
+        <input type="hidden" id="CompanyName"       value="@Quo.CompanyName" />
+        <input type="hidden" id="ReqFirstName"      value="@Quo.ReqFirstName" />
+        <input type="hidden" id="ReqToCompID"       value="@Quo.ToCompID" />
+        <input type="hidden" id="UserLoginCompID"  value="@userlogin.CompID" />
+        <input type="hidden" id="QuotationType"     value="Quotation" />
+    
+        <input type="hidden" id="CompName"     value="" />
+        <input type="hidden" id="Email"     value="" />
+        <input type="hidden" id="FirstName"     value="" />
+        <input type="hidden" id="Tel"     value="" />
+        <input type="hidden" name="hidImgSize"     value="" />
+        <input type="hidden" class="hidImgFileName"     value="" />
+        <input type="hidden" class="hidImgFilePath"     value="" />
+        <input type="hidden" class="hidImgUploadPath"     value="" />
+    
+        <input type="hidden" id="FirstName1"   value="@Quo.ReqFirstName" />
+        <input type="hidden" id="Tel1"  value="@Quo.ReqPhone" />
+        <input type="hidden" id="Email1"   value="@Quo.ReqEmail" />
+        <input type="hidden" id="CompName1"   value="@Quo.CompanyName" />
+        var PricePerPiece = Quo.PricePerPiece;
+        var Discount = Quo.Discount;
+        var Vat = Quo.Discount;
+        string ProductImgPath = ViewBag.ProductImgPath;
+        string ProductNam = ViewBag.ProductNam;
+    
+        <table id="table" style="width:100%;margin-top:2%">
+            <tr>
+                <td>
+                    <div class="font_l">
+                        <a href="@Url.Action("List", "Quotation", new { area = "MyB2B" })" class="btn_ForwardBlue cursor inline" style="width:75px;color:white">
+                            <span class="fl_l icon_menu_messBack mar_l10 mar_t5"></span>
+                            <span class="fl_r mar_t13 mar_r15">
+                                <p style="line-height:5px;">@res.Message_Center.btnBack</p>
+                            </span>
+                        </a>
+
+                        @if (ViewBag.QuotationType != "Trash")
+                        {
+                            if (Quo.QuotationStatus == "R")
+                            {
+                                @*if (Quo.IsOutbox == true)
+                                {<text> 
+                                    <a href="@Url.Action("Quotation/List", "MyB2B", new { area = "" })" id="btnBack" class="btn hide">@res.Message_Center.btnBack</a>
+                                </text>}*@ 
+
+                                if (Quo.IsOutbox == false)
+                                {
+                                    if (Quo.IsClosed != true)
+                                    {
+                                    <text>
+                                        <div class="btn_saveGreen cursor inline btnReply" onclick="SaveData('Quotation')" style="width:130px">
+                                            <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                            <span class="fl_r mar_t13 mar_r10">
+                                                <p style="line-height:5px;">@res.Quotation.lblReplybid</p>
+                                            </span>
+                                        </div>
+                                    </text>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                if (Quo.FromCompID != userlogin.CompID)
+                                {
+                                    if (Quo.IsClosed == false)
+                                    {
+                                        <text>
+                                            <div class="btn_saveOr cursor inline btnReply" id="IsPublic" onclick="UpdateIsPublic('@Quo.QuotationCode')">
+                                                <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                                <span class="fl_r mar_t13 mar_r10">
+                                                    <p style="line-height:5px;">@res.Quotation.lblClosebid</p>
+                                                </span>
+                                            </div>
+                                        </text>
+                                    }
+                                }
+                            }
+                            if (Quo.IsOutbox == false)
+                            {
+                                if (Quo.QuotationStatus != "Q")
+                                {
+                                    if (Quo.IsClosed != true)
+                                    {
+                                        <text> 
+                                        <div class="btn_ForwardBlue cursor inline btnForward" id="btnRejectTop" style="width:107px;color:#ffffff">
+                                            <span class="fl_l icon_rejectQuotationW mar_l10 mar_t5"></span>
+                                            <span class="fl_l mar_t13 mar_r10">
+                                                <p style="line-height:5px;">ปฏิเสธ</p>
+                                            </span>
+                                                <span class="fl_r icon_rejectQuotationB mar_t13"></span>
+                                        </div>
+                                        </text>
+                                    }
+                                }
+                            }
+                            if (Quo.IsImportance != true)
+                            {
+                                <input type="hidden" id="txtIsImportance" value="@Quo.IsImportance"/> 
+                                <div class="btn_ForwardBlue cursor inline btnForward" onclick="ChangeStatus('Importance')" style="width:180px;color:#ffffff">
+                                    <span class="fl_l icon_menu_messStar mar_l10 mar_t5"></span>
+                                    <span class="fl_r mar_t13 mar_r10">
+                                        <p style="line-height:5px;">เพิ่มเป็นข้อความสำคัญ</p>
+                                    </span>
+                                </div>
+                            }
+                            <div class="btn_ForwardBlue cursor inline btnForward" onClick="window.print()" style="width:85px;color:#ffffff">
+                                <span class="fl_l icon_printQuotation mar_l10 mar_t5"></span>
+                                <span class="fl_r mar_t13 mar_r15">
+                                    <p style="line-height:5px;">@res.Common.btnPrint</p>
+                                </span>
+                            </div>
+                            if (Quo.IsImportance == true)
+                            {
+                                <div class="btn_delCrimson cursor inline" onclick="ChangeStatus('Unimportance')" style="width:70px">
+                                    <span class="fl_l icon_menu_mesDel mar_l10 mar_t5"></span>
+                                    <span class="fl_r mar_t13 mar_r15">
+                                        <p style="line-height:5px;">ลบ</p>
+                                    </span>
+                                </div>
+                            }
+                            else
+                            {
+                                 <div class="btn_delCrimson cursor inline" onclick="ChangeStatus('Delete')" style="width:70px">
+                                    <span class="fl_l icon_menu_mesDel mar_l10 mar_t5"></span>
+                                    <span class="fl_r mar_t13 mar_r15">
+                                        <p style="line-height:5px;">ลบ</p>
+                                    </span>
+                                </div>
+                            }
+                        }
+                        else
+                        {
+                            <div class="btn_saveGreen cursor inline" onclick="MoveDetail();" style="width:100px">
+                                <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                <span class="fl_r mar_t13 mar_r15">
+                                    <p style="line-height:5px;">ย้ายกลับ</p>
+                                </span>
+                            </div>
+                            <div class="btn_delCrimson cursor inline" onclick="ChangeStatus('Delete')" style="width:70px">
+                                <span class="fl_l icon_menu_mesDel mar_l10 mar_t5"></span>
+                                <span class="fl_r mar_t13 mar_r15">
+                                    <p style="line-height:5px;">ลบ</p>
+                                </span>
+                            </div>
+                        }
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="clean20"></div>
+                    <div class="line_horizontal" style="width:100%;"></div>
+                    <div class="clean10"></div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="divRow">
+                        <div id="divRequest" style="width:100%">
+                            <div class="divQuoDetail">
+                                <div class="divContent">
+                                    <div class="fl_l">
+                                        <div class="b font_xxl">
+                                            @if (Quo.QuotationStatus != "Q")
+                                            {
+                                                <span>รายละเอียดการขอราคาเลขที่ #</span>
+                                            }
+                                            else
+                                            {
+                                                <span>รายละเอียดการเสนอราคาเลขที่ #</span>
+                                            }
+                                            <span>@Quo.QuotationCode</span>
+                                        </div>
+                                        @if (Quo.QuotationStatus == "Q")
+                                        {
+                                            if (Quo.IsAttach == true)
+                                            {
+                                                var QuoAttach = (b2bQuotationAttach)ViewBag.AttachFile;
+                                                <div class="clean5"></div>
+                                                <div class="icon_fileQuotation  importantstatus inline" style="margin:8px 0px -7px 0px"></div> 
+                                                <span> | <a href="@QuoAttach.FilePath">@QuoAttach.FileName</a> | <a href="@QuoAttach.FilePath">ดาว์โหลดทั้งหมด</a></span>
+                                                <div class="clean10"></div>
+                                            }
+                                        }
+                                    </div>
+                                    <div class="fl_r">
+                                        @{
+                                        var SendDate = "";
+                                        var SendTime = "";
+                                        if (Quo.SendDate != null)
+                                        {
+                                            SendDate = (DateTime.Parse(Quo.SendDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                                            SendTime = (DateTime.Parse(Quo.SendDate.ToString()).ToString("HH:mm")).ToString();
+                                        }
+                                        }
+                                        @if (Quo.IsRead == false)
+                                        {
+                                            <b>วันที่ @SendDate || เวลา @SendTime น.</b>
+                                        }
+                                        else
+                                        {
+                                            <span>วันที่ @SendDate || เวลา @SendTime น.</span>
+                                        }
+                                    </div>
+                                </div>
+                                <div class="clean10"></div>
+                                <div class="formQuoDetail">
+                                    <div style="background-color: #F2F2F2;margin: -12px;border-top-left-radius: 4px;border-top-right-radius: 4px;padding: 2%;">
+                                        <table style="width:100%">
+                                            <tr>
+                                                <td colspan="2">
+                                                    @if (Quo.QuotationStatus == "R")
+                                                    {
+                                                        <label class="font_l">ข้อมูลผู้ขอราคา :</label>
+                                                        <div class="clean15"></div>
+                                                    }
+                                                    else
+                                                    {
+                                                        <label class="font_l">ข้อมูลผู้เสนอราคา :</label>
+                                                        <div class="clean10"></div>
+                                                    }
+                                                    
+                                                </td>
+                                            </tr>
+                                            @if (Quo.QuotationStatus == "Q")
+                                            {
+                                                <tr>
+                                                    <td colspan="2">
+                                                        @{
+                                                var company = svCompany.SelectData<view_Company>("*", "CompID = " + Quo.FromCompID).First();
+                                                ViewBag.CompanyFrom = company;
+                                                var Comp = (Ouikum.view_Company)ViewBag.CompanyFrom;
+                                                        }
+                                                        <div class="fl_l">
+                                                            @if (!string.IsNullOrEmpty(Comp.ContactImgPath))
+                                                            {
+                                                                <div class="fl_l mar_r20" style="vertical-align:top;">
+                                                                    <img class="img-polaroid" src="@Url.CompanyContact(Comp.CompID, Comp.ContactImgPath)" alt="@Comp.ContactImgPath" onload="resizeImg($(this),40,40);setElementMiddle(40, 40,$(this));"/>
+                                                                </div>
+                                                            }
+                                                            else
+                                                            {
+                                                                <img class="img-polaroid mar_center mar_r20" src="@Url.cssDefault("Images/no-avatar.png")" alt="Contact Company | Ouikum.com" onload="resizeImg($(this),40,40);setElementMiddle(40, 40,$(this));"/>
+                                                            }
+                                                        </div>
+                                                        <div class="fl_l">
+                                                            <a class="cursor inline" title="@Comp.CompName" onclick="window.open(GetUrl('CompanyWebsite/@Url.ReplaceUrl(Comp.CompName)/Main/Index/@Comp.CompID'))">
+                                                                <h2 class="font_l" style="line-height:5px;font-weight:normal">@Html.SubText(@Comp.CompName, 30)</h2>
+                                                            </a>
+                                                            <div class="clean5"></div>
+                                                            @if (!string.IsNullOrEmpty(Comp.ContactAddrLine1))
+                                                            {
+                                                                <span>@Comp.ContactAddrLine1</span>
+                                                            }
+                                                            @if (!string.IsNullOrEmpty(Comp.ContDistrictName))
+                                                            {
+                                                                <span>@Comp.ContDistrictName</span>
+                                                            }
+                                                            @if (!string.IsNullOrEmpty(Comp.ContProvinceName))
+                                                            {
+                                                                <span>@Comp.ContProvinceName</span>
+                                                            }
+                                                            @if (!string.IsNullOrEmpty(Comp.ContactPostalCode))
+                                                            {
+                                                                <span>@Comp.ContactPostalCode</span>
+                                                            }
+                                                        </div>
+                                                        <div class="clean20"></div>
+                                                        <div class="line_horizontal" style="width:100%;box-shadow: 0px 1px 0 #C9C9C9;"></div>
+                                                        <div class="clean20"></div>
+                                                    </td>
+                                                </tr>
+                                            }
+                                            <tr>
+                                                <td>
+                                                    <span class="fl_l icon_rejectQuotationR mar_t5"></span>
+                                                    <span class="fl_l mar_t5 mar_r10">
+                                                        <p style="line-height:5px;">
+                                                        @{
+                                            string ReqFirstName = "";
+                                            string ReqLastName = "";
+                                            string ReqPhone = "";
+                                            string CompanyName = "";
+                                            string ReqEmail = "";}
+                                                        @if (Quo.QuotationStatus == "Q")
+                                                        {
+                                                            if (Quo.ToCompID == userlogin.CompID)
+                                                            {
+                                                                if (Quo.FromCompID == 0)
+                                                                {
+                                                                    ReqFirstName = Quo.SaleName;
+                                                                    ReqEmail = Quo.SaleEmail;
+                                                                    CompanyName = Quo.SaleCompany;
+                                                                    ReqPhone = Quo.SalePhone;
+                                                                }
+                                                                else
+                                                                {
+                                                                    var From = svCompany.SelectData<b2bCompany>("*", "CompID = " + Quo.FromCompID).First();
+                                                                    ViewBag.CompFrom = From;
+                                                                    var from = (Ouikum.b2bCompany)ViewBag.CompFrom;
+                                                                    ReqFirstName = from.ContactFirstName;
+                                                                    ReqLastName = from.ContactLastName;
+                                                                    ReqEmail = from.ContactEmail;
+
+                                                                    if (!string.IsNullOrEmpty(from.CompName))
+                                                                    {
+                                                                        CompanyName = from.CompName;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        CompanyName = res.Common.lblNonSpecific;
+                                                                    }
+                                                                    if (!string.IsNullOrEmpty(from.ContactPhone))
+                                                                    {
+                                                                        ReqPhone = from.ContactPhone;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        ReqPhone = res.Common.lblNonSpecific;
+                                                                    }
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                if (Quo.FromCompID == 0)
+                                                                {
+                                                                    ReqFirstName = Quo.ReqFirstName;
+                                                                    ReqLastName = Quo.ReqLastName;
+                                                                    ReqEmail = Quo.ReqEmail;
+                                                                    if (!string.IsNullOrEmpty(Quo.CompanyName))
+                                                                    {
+                                                                        CompanyName = Quo.CompanyName;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        CompanyName = res.Common.lblNonSpecific;
+                                                                    }
+                                                                    if (!string.IsNullOrEmpty(Quo.ReqPhone))
+                                                                    {
+                                                                        ReqPhone = Quo.ReqPhone;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        ReqPhone = res.Common.lblNonSpecific;
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    var From = svCompany.SelectData<b2bCompany>("*", "CompID = " + Quo.FromCompID).First();
+                                                                    ViewBag.CompFrom = From;
+                                                                    var from = (Ouikum.b2bCompany)ViewBag.CompFrom;
+                                                                    ReqFirstName = from.ContactFirstName;
+                                                                    ReqLastName = from.ContactLastName;
+                                                                    ReqEmail = from.ContactEmail;
+
+                                                                    if (!string.IsNullOrEmpty(from.CompName))
+                                                                    {
+                                                                        CompanyName = from.CompName;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        CompanyName = res.Common.lblNonSpecific;
+                                                                    }
+                                                                    if (!string.IsNullOrEmpty(from.ContactPhone))
+                                                                    {
+                                                                        ReqPhone = from.ContactPhone;
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        ReqPhone = res.Common.lblNonSpecific;
+                                                                    }
+                                                                }
+                                                            }
+                                                        }
+                                                        @if (Quo.QuotationStatus == "R")
+                                                        {
+                                                            ReqFirstName = Quo.ReqFirstName;
+                                                            ReqLastName = Quo.ReqLastName;
+                                                            ReqEmail = Quo.ReqEmail;
+                                                            if (!string.IsNullOrEmpty(Quo.ReqPhone))
+                                                            {
+                                                                ReqPhone = Quo.ReqPhone;
+                                                            }
+                                                            else
+                                                            {
+                                                                ReqPhone = res.Common.lblNonSpecific;
+                                                            }
+                                                            if (!string.IsNullOrEmpty(Quo.CompanyName))
+                                                            {
+                                                                CompanyName = Quo.CompanyName;
+                                                            }
+                                                            else
+                                                            {
+                                                                CompanyName = res.Common.lblNonSpecific;
+                                                            }
+                                                        }
+                                                            คุณ<span>@ReqFirstName  @ReqLastName </span>
+                                                        </p>
+                                                    </span>
+                                                    <div class="clean5"></div>
+                                                </td>
+                                                <td>
+                                                    <span class="fl_l icon_rejectQuotationR mar_t5"></span>
+                                                    <span class="fl_l mar_t5 mar_r10">
+                                                        <p style="line-height:5px;">
+                                                            โทรศัพท์ :
+                                                            <span style="color:#993300">@ReqPhone </span>
+                                                        </p>
+                                                    </span>
+                                                    <div class="clean5"></div>
+                                                </td>
+                                            </tr>
+                                            <tr>
+                                                <td>
+                                                    <span class="fl_l icon_rejectQuotationR mar_t5"></span>
+                                                    <span class="fl_l mar_t5 mar_r10">
+                                                        <p style="line-height:5px;">
+                                                            @if (Quo.QuotationStatus == "R")
+                                                            {
+                                                                <text>@res.Common.lblComname :</text>
+                                                                if (Quo.FromCompID != 0)
+                                                                {
+                                                                    if (CompanyName == res.Common.lblNonSpecific)
+                                                                    { 
+                                                                            @CompanyName
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        if (Quo.CompanyName != "ไม่ระบุชื่อบริษัท")
+                                                                        {
+                                                                            <text>
+                                                                                <a href="@Url.Action("", "CompanyWebsite" + "/" + @Url.ReplaceUrl(Quo.CompanyName) + "/Contact/" + Quo.FromCompID, new { area = "" })" title="@CompanyName" class="cursor" target="_blank">@CompanyName</a>
+                                                                            </text> 
+                                                                        }
+                                                                        else
+                                                                        {
+                                                                            @CompanyName
+                                                                        }
+                                                                    }
+                                                                }
+                                                                else
+                                                                {
+                                                                    @CompanyName
+                                                                }
+                                                            }
+                                                            else
+                                                            {
+                                                                var company = svCompany.SelectData<view_Company>("CompID,ContactPositionName", "CompID = " + Quo.FromCompID).First();
+                                                                ViewBag.CompanyFrom = company;
+                                                                var Comp = (Ouikum.view_Company)ViewBag.CompanyFrom;
+                                                                <text>
+                                                                    ตำแหน่ง : 
+                                                                    @if (!string.IsNullOrEmpty(Comp.ContactPositionName))
+                                                                    {
+                                                                        <text>@Comp.ContactPositionName</text>
+                                                                    }
+                                                                    else
+                                                                    {
+                                                                        <text>-</text>
+                                                                    }
+                                                                </text>
+                                                            }
+                                                        </p>
+                                                    </span>
+                                                </td>
+                                                <td>
+                                                    <span class="fl_l icon_rejectQuotationR mar_t5"></span>
+                                                    <span class="fl_l mar_t5 mar_r10">
+                                                        <p style="line-height:5px;">
+                                                            อีเมล์ :
+                                                            <span><a href="mailto:@ReqEmail">@ReqEmail</a></span>
+                                                        </p>
+                                                    </span>
+                                                </td>
+                                            </tr>
+                                        </table>
+                                    </div>
+                                    <div class="clean30"></div>
+                                    <span class="font_l">
+                                            @if (Quo.QuotationStatus != "Q")
+                                            {
+                                                <text>@res.Quotation.lblEstimate_Price :</text>
+                                            }
+                                            else
+                                            {
+                                                <text>จากใบขอราคาเลขที่ #<span>@Quo.RootQuotationCode</span></text>
+                                            }
+                                    </span>
+                                    <div class="clean10"></div>
+                                    <table class="table table-condensed" id="tbQuoDetail">
+                                        <thead>
+                                            <tr style="border-bottom: 1px solid #E3E3E3;">
+                                                <td style="float: left; width: 5%; height: 30px; line-height: 30px; text-align: center">
+                                                    #
+                                                    <div class="clean10"></div>
+                                                </td>
+                                                <td style="float: left; width: 46%; height: 30px; line-height: 30px;">
+                                                    @res.Product.lblPro_name
+                                                    <div class="clean10"></div>
+                                                </td>
+                                                <td style="float: left; width: 14%; height: 30px; line-height: 30px; text-align: right">
+                                                    @res.Common.lblQty
+                                                    <div class="clean10"></div>
+                                                </td>
+                                                <td style="float: left; width: 20%; height: 30px; line-height: 30px; text-align: right">
+                                                    @res.Common.lblPrice/@res.Common.lblUnit_th
+                                                    <div class="clean10"></div>
+                                                </td>
+                                                <td style="float: left; width: 15%; height: 30px; line-height: 30px; text-align: right">
+                                                    <span class="mar_r5">
+                                                        @res.Common.lblSum_Price
+                                                    </span>
+                                                    <div class="clean10"></div>
+                                                </td>
+                                            </tr>
+                                        </thead>
+                                        @{  int Unit = 0;
+                                            int SumPrice = 0;
+                                            int SumPriceUnit = 0;
+
+                                            var SumPriceUnit1 = Quo.Qty * Quo.PricePerPiece;
+                                            var SumDiscount1 = SumPriceUnit1 - Quo.Discount;
+                                            var Vat1 = (SumDiscount1 * Quo.Vat) / 100;
+                                            }
+
+                                        <tr style="border-bottom: 1px solid #E3E3E3;height:70px">
+                                            <td style="float: left; width: 5%; height: 60px; line-height: 60px; text-align: center">
+                                                <span class="ListNumber">1</span>
+                                            </td>
+                                            <td style="float: left; width: 46%; height: 60px; line-height: 60px;">
+                                                @{
+                                            string imgPath = "http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image";
+                                            if (!string.IsNullOrEmpty(ProductImgPath))
+                                            {
+                                                if (Quo.QuotationStatus != "Q")
+                                                {
+                                                    imgPath = Url.ThumbProduct(Quo.ToCompID, Quo.ProductID, ProductImgPath);
+                                                }
+                                                else
+                                                {
+                                                    imgPath = Url.ThumbProduct(Quo.FromCompID, Quo.ProductID, ProductImgPath);
+                                                }
+                                            }
+                                                }
+                                                <a href="@Url.Action("Detail", "Product", new { id = Quo.ProductID, name = @Url.ReplaceUrl(ProductNam), area = "Search" })" target="_blank" style="padding:0px 20px 0px 0px;float:left;margin-top:5px">
+                                                    <img class="fl_l" alt="@ViewBag.ProductNam" title="@ViewBag.ProductNam"  src="@Url.Content(imgPath)"  style="height:46px;width:46px;border: 1px solid #ddd;"/>
+                                                </a>
+                                                <a href="@Url.Action("Detail", "Product", new { id = @Quo.ProductID, name = @ViewBag.ProNameShort, area = "Search" })" target="_blank" title="@ViewBag.ProductName">
+                                                    @ViewBag.ProNameShort
+                                                </a>
+                                            </td>
+                                            <td style="float: left; width: 14%; height: 60px; line-height: 60px; text-align: right;">
+                                                <input type="hidden" value="@Quo.Qty" class="Quantity w70 font_right"  readonly="readonly"  style=" border:none" />
+                                                @Quo.Qty  @Quo.QtyUnit
+                                            </td>
+                                            <td style="float: left; width: 20%; height: 60px; line-height: 60px; text-align: right">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden" value="@String.Format("{0:#,###}", Quo.PricePerPiece)" name="@Quo.Qty" readonly="readonly" class="UnitPrice w70 font_right test" onkeyup="calSumPrice($(this))" style="margin-bottom:0px"/>
+                                                        @String.Format("{0:#,###}", Quo.PricePerPiece) <text>บาท</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input id="txtPricePerPiece" type="text" value="@String.Format("{0:#,###}", Quo.PricePerPiece)" name="@Quo.Qty" class="UnitPrice w70 font_right test" onkeyup="calSumPrice($(this))" style="margin-bottom:0px"/>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="hidden" value="@String.Format("{0:#,###}", Quo.PricePerPiece)" name="@Quo.Qty" readonly="readonly" class="UnitPrice w70 font_right test" onkeyup="calSumPrice($(this))" style="margin-bottom:0px"/>
+                                                    @String.Format("{0:#,###}", Quo.PricePerPiece) <text>บาท</text>
+                                                }
+                                            </td>
+                                            <td style="float: left; width: 15%; height: 60px; line-height: 60px; text-align: right">
+                                               @*textbox รวมราคา*@
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden" value="@String.Format("{0:#,###}", SumPriceUnit1)" class="SumPriceUnit w70 font_right test mar_r5" readonly="readonly"  style=" border:none;margin-bottom:0px"/>
+                                                        @String.Format("{0:#,###}", SumPriceUnit1) <text> บาท</text>  
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" value="@SumPriceUnit" class="SumPriceUnit w70 font_right test mar_r5" readonly="readonly"  style=" border:none;margin-bottom:0px" />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text" value="@String.Format("{0:#,###}", SumPriceUnit1)" class="w70 font_right test mar_r5" readonly="readonly"  style=" border:none;margin-bottom:0px"/>
+                                                }
+                                            </td>
+                                        </tr>     
+                                        <tr>
+                                            <td style="float: left; width: 5%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 32%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 40px; line-height: 40px;font-weight: bold;text-align: right;border-bottom: 1px solid #E3E3E3;">
+                                                ราคาสินค้าทั้งหมด<input type="hidden" id="SumPriceUnit" />
+                                            </td>
+                                            <td style="float: left; width: 20%; height: 40px; line-height: 40px;border-bottom: 1px solid #E3E3E3;"></td>
+                                            <td style="float: left; width: 15%; height: 40px; line-height: 40px; text-align: right;  font-weight: bold;border-bottom: 1px solid #E3E3E3;">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden"  value="@String.Format("{0:#,###}", SumPriceUnit1)" class="w70 font_right mar_r5" readonly="readonly" style=" border:none;margin-bottom:0px"/>
+                                                        @String.Format("{0:#,###}", SumPriceUnit1)  <text>บาท</text> 
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="SumPrice" value="@SumPrice" class="w70 font_right mar_r5" readonly="readonly" style=" border:none;margin-bottom:0px"/>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text"  value="@String.Format("{0:#,###}", SumPriceUnit1)" class="w70 font_right mar_r5" readonly="readonly" style=" border:none;margin-bottom:0px"/>
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="float: left; width: 5%;  height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 32%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 40px; line-height: 40px;text-align: right;border-bottom: 1px solid #E3E3E3;">
+                                                <span>@res.Quotation.lblDiscount</span>
+                                            </td>
+                                            <td style="float: left; width: 20%; height: 40px; line-height: 40px; text-align: right;border-bottom: 1px solid #E3E3E3;">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden" value="@String.Format("{0:#,###}", Quo.Discount)" readonly="readonly" class="w70 font_right fl_r" onkeyup="calSumDiscount()" style="margin-bottom:0px"/>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="txtdiscount" value="@String.Format("{0:#,###}", Quo.Discount)" class="w70 font_right fl_r" onkeyup="calSumDiscount()" style="margin-top:5px"/>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text" value="@String.Format("{0:#,###}", Quo.Discount)" readonly="readonly" class="w70 font_right fl_r" onkeyup="calSumDiscount()" style="margin-bottom:0px"/>
+                                                }
+                                            </td>
+                                            <td style="float: left; width: 15%; height: 40px; line-height: 40px; text-align: right;border-bottom: 1px solid #E3E3E3;margin-bottom:0px">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden" value="@String.Format("{0:#,###}", SumDiscount1)" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                        @String.Format("{0:#,###}", Quo.Discount)  <text>บาท</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="SumDiscount" value="0" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text" value="@String.Format("{0:#,###}", SumDiscount1)" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="float: left; width: 5%;  height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 32%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 40px; line-height: 40px;text-align: right;border-bottom: 1px solid #E3E3E3;">
+                                                    @if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <span> VAT (@String.Format("{0:#,###}", Quo.Vat)%)</span>
+                                                    }
+                                                    else
+                                                    {
+                                                        <span> VAT (%)</span>
+                                                    }
+                                            </td>
+                                            <td style="float: left; width: 20%; height: 40px; line-height: 40px; text-align: right;border-bottom: 1px solid #E3E3E3;">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden" value="@String.Format("{0:#,###}", Quo.Vat)" readonly="readonly" class="w70 font_right fl_r" onkeyup="calSumVat()" maxlength="2" style="margin-bottom:0px"/>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="txtVAT" value="@String.Format("{0:#,###}", Quo.Vat)" class="w70 font_right fl_r" onkeyup="calSumVat()" maxlength="2" style="margin-top:5px"/>
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text" value="@String.Format("{0:#,###}", Quo.Vat)" readonly="readonly" class="w70 font_right fl_r" onkeyup="calSumVat()" maxlength="2" style="margin-bottom:0px"/>
+                                                }
+                                            </td>
+                                            <td style="float: left; width: 15%; height: 40px; line-height:40px; text-align: right; border-bottom: 1px solid #E3E3E3;">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden"  value="@String.Format("{0:#,###}", Vat1)" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                        @String.Format("{0:#,###}", Vat1)     <text>บาท</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="SumVat" value="0" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text"  value="@String.Format("{0:#,###}", Vat1)" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                }
+                                            </td>
+                                        </tr>
+                                        <tr>
+                                            <td style="float: left; width: 5%;  height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 32%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 30px; line-height: 30px; border: none"></td>
+                                            <td style="float: left; width: 14%; height: 40px; line-height: 40px; border: none; font-weight: bold;text-align: right;">
+                                                ราคารวมทั้งหมด
+                                            </td>
+                                            <td style="float: left; width: 20%; height: 40px; line-height: 40px; border: none"></td>
+                                            <td style="float: left; width: 15%; height: 40px; line-height: 40px; text-align: right; font-weight: bold; border: none">
+                                                @if (Quo.IsOutbox == false)
+                                                {
+                                                    if (Quo.QuotationStatus == "Q")
+                                                    {
+                                                        <input type="hidden"  value="@String.Format("{0:#,###}", Quo.TotalPrice)" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                        @String.Format("{0:#,###}", Quo.TotalPrice)  <text>บาท</text>
+                                                    }
+                                                    else
+                                                    {
+                                                        <input type="text" id="SumTotal" value="0" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                    }
+                                                }
+                                                else
+                                                {
+                                                    <input type="text"  value="@String.Format("{0:#,###}", Quo.TotalPrice)" class="w70 font_right mar_r5" readonly="readonly" style="border: none;margin-bottom:0px" />
+                                                }
+                                            </td>
+                                        </tr>
+                                    </table>
+
+                                    <div class="clean10"></div>
+                                    <span class="fl_l font_l"> @res.Common.lblRemark_th : </span>
+                                    <div class="clean10"></div>
+                                    <hr />
+                                    <div class="clean10"></div>
+                                        @if (Quo.QuotationStatus == "R")
+                                        {
+                                            <div>
+                                                @Quo.ReqRemark
+                                            </div>
+                                        }
+                                    
+                                    
+                                    @if (Quo.IsReject == true)
+                                    {
+                                        if (Quo.IsOutbox == false)
+                                        {
+                                            if (Quo.QuotationStatus == "Q")
+                                            {
+                                                    <span style="color:red;padding-left:5px">@Quo.RejectDetail</span>
+                                            }
+                                            else
+                                            {
+                                                <textarea id="txtaRemark"  rows="3" style="width:40%;margin-left:10px" class="fl_l"></textarea>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            <span style="color:red;padding-left:5px">@Quo.RejectDetail</span>
+                                            <div class="clean10"></div>
+                                        }
+                                    }
+                                    else
+                                    {
+                                        if (Quo.IsOutbox == false)
+                                        {
+                                            if (Quo.QuotationStatus == "Q")
+                                            {
+                                                @Quo.Remark
+                                                <div class="clean10"></div>
+                                            }
+                                            else
+                                            {
+                                                <div class="clean20"></div>
+                                                <div class="fl_l font_l"> ตอบกลับ : </div>
+                                                <div class="clean10"></div>
+                                                <textarea id="txtaRemark"  rows="3" style="width:40%;margin-left:10px" class="fl_l"></textarea>
+                                            }
+                                        }
+                                        else
+                                        {
+                                            @Quo.Remark
+                                            <div class="clean10"></div>
+                                        }
+                                    }
+                                    @if (Quo.QuotationStatus == "R")
+                                    {
+                                        <div class="clean10"></div>
+                                        <div class="control-group" style="text-align: left;">
+                                            <div class="controls hidImgFileName" style="margin-left: 10px;">
+                                                <input type="hidden" id="hidImgFileName" class="hidImgFileName" name="hidImgFileName" value="" />
+                                                <input type="hidden" id="hidImgSize" class="hidImgSize" name="hidImgSize" value="" />
+                                                <span class="btn btn-file btn-tootip-top span3" rel="tooltip"  title="แนบไฟล์" style="margin:0">
+                                                    @(Html.Telerik().Upload()
+                                                        .Name("FileCreateQuotationPath")
+                                                        .Multiple((bool)false)
+                                                        .Async(async => async
+                                                        .Save("SaveFileCreateQuotation", "Quotation")
+                                                        .Remove("RemoveFileCreateQuotation", "Quotation")
+                                                        .AutoUpload((bool)true))
+                                                        .ClientEvents(events => events
+                                                        .OnUpload("onUploadCreateQuotation")
+                                                        .OnSuccess("onSuccessCreateQuotatiom"))
+                                                        )
+                                                </span>
+                                            </div>
+                                        </div>
+                                    }
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="clean20"></div>
+                    <div class="divRow">
+                        @if (Quo.QuotationStatus == "R")
+                        {
+                            @*if (Quo.IsOutbox == true)
+                            {
+                                <text> 
+                                    <a href="@Url.Action("Quotation/List", "MyB2B", new { area = "" })" id="btnBack" class="btn hide">@res.Message_Center.btnBack</a>
+                                </text>
+                            }*@ 
+
+                            if (Quo.IsOutbox == false)
+                            {
+                                if (Quo.IsClosed != true)
+                                {
+                                <text>
+                                    <div class="btn_saveGreen cursor inline btnReply" onclick="SaveData('Quotation')" style="width:130px">
+                                        <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                        <span class="fl_r mar_t13 mar_r10">
+                                            <p style="line-height:5px;">@res.Quotation.lblReplybid</p>
+                                        </span>
+                                    </div>
+                                </text>
+                                }
+                            }
+                        }
+                        else
+                        {
+                            if (Quo.FromCompID != userlogin.CompID)
+                            {
+                                if (Quo.IsClosed == false)
+                                {
+                                    <text>
+                                        <div class="btn_saveOr cursor inline btnReply" id="IsPublic" onclick="UpdateIsPublic('@Quo.QuotationCode')">
+                                            <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                            <span class="fl_r mar_t13 mar_r10">
+                                                <p style="line-height:5px;">@res.Quotation.lblClosebid</p>
+                                            </span>
+                                        </div>
+                                    </text>
+                                }
+                            }
+                        }
+                        @if (Quo.IsOutbox == false)
+                        {
+                            if (Quo.QuotationStatus != "Q")
+                            {
+                                if (Quo.IsClosed != true)
+                                {
+                                    <text> 
+                                    <div class="btn_ForwardBlue cursor inline btnForward" id="btnRejectBottom" style="width:107px;color:#ffffff">
+                                        <span class="fl_l icon_rejectQuotationW mar_l10 mar_t5"></span>
+                                        <span class="fl_l mar_t13 mar_r10">
+                                            <p style="line-height:5px;">ปฏิเสธ</p>
+                                        </span>
+                                            <span class="fl_r icon_rejectQuotationB mar_t13"></span>
+                                    </div>
+                                    </text>
+                                }
+                            }
+                        }
+                    </div>
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    <div class="clean10"></div>
+                    <div id="divAction">
+                        
+                    </div>
+                </td>
+            </tr>
+        </table>
+    }
+    <div class="clean20"></div>
+</div>
+
+@*------------Member Card----------------*@
+@if (ViewBag.Company != null)
+{
+    var comp = (view_Company)ViewBag.Company;
+    var CardBG = "";
+    if (comp.CompLevel == 3)
+    {
+        CardBG = "bg_CardGold";
+    }
+    else
+    {
+        CardBG = "bg_CardFree";
+    }
+    <text>
+    <div id="divCardMember" >
+       <div  id="CardMemberGold" >
+        <div class="Card @CardBG" >
+                <div class="clean5"></div>
+                <div class="divRow">
+                    <div class="divRow b">
+                    <span class="fontMemberCard cursor" title="@comp.CompName" onclick="window.open(GetUrl('CompanyWebsite/@Url.ReplaceUrl(comp.CompName)/Main/Index/@comp.CompID'))">
+                    @if (comp.CompName.Count() > 40)
+                    {
+                        <text>
+                        @comp.CompName.Substring(0, 40) ..
+                        </text>
+                    }
+                    else
+                    {
+                        @comp.CompName 
+                    }</span></div>
+                    <div class="divRow"><span>@comp.ProvinceName</span></div>
+                    <div class="divRow"><span>@comp.BizTypeName</span></div>
+                    @if (comp.CompLevel == 3)
+                    {<text><span class="fontCardGold" style="float:right; margin-right:5px;">@res.Common.lblGoldMember</span></text>}
+                    else
+                    {
+                    <text><span class="fontCardFree" style="float:right; margin-right:5px;">@res.Common.lblFreeMember</span></text>}
+                </div>
+                <div class="clean20"></div>
+                <div class="clean20"></div>
+                <div class="divRow">
+                    <div class="divRow mar_t5"><span class="cursor" onclick="window.open(GetUrl('CompanyWebsite/@Url.ReplaceUrl(comp.CompName)/Main/Index/@comp.CompID'))">View company website</span></div>
+                    <div class="divRow mar_t5">
+                        <span class="cursor" onclick="window.open(GetUrl('CompanyWebsite/@Url.ReplaceUrl(comp.CompName)/Contact/@comp.CompID'))">@res.Company.lblContactDetail</span>
+                        <span style="font-size:11px; float:right">@comp.CompCode</span>
+                    </div>
+                </div>
+        </div>
+        </div>
+    </div>
+    </text>
+}
+
+<!------popup------->
+<div id="rejectPopup" class="popover" style="width:200px;height:255px;">
+    @{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus; }
+    <label><input type="checkbox" id="rbtReject_1" name="ChkReject"  value="@res.Quotation.btnnoStock" /><span class="mar_l5 font_m">@res.Quotation.btnnoStock</span></label>
+    <label><input type="checkbox" id="rbtReject_2" name="ChkReject"  value="@res.Quotation.btnPronot_enough" /><span class="mar_l5 font_m">@res.Quotation.btnPronot_enough</span></label>
+    <label><input type="checkbox" id="rbtReject_3" name="ChkReject"  value="@res.Quotation.btnCancleforSale" /><span class="mar_l5 font_m">@res.Quotation.btnCancleforSale</span></label>
+    <label><input type="checkbox" id="rbtReject_4" name="ChkReject"  value="@res.Common.lblOther"/><span class="mar_l5 font_m">@res.Common.lblOther</label>
+    <textarea id="txtaRejectDetail" rows="4" class="span3"></textarea>
+    <a class="btn btn-danger" onclick="if(confirm('Do you want this quotation reject?')){SendReject('Reject');}">@res.Message_Center.btnSend</a>
+</div>
+@section FooterContent{
+    <script src="@Url.js("jshashtable-2.1.js")" type="text/javascript"></script>
+    <script src="@Url.js("jquery.numberformatter-1.2.3.min.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.js("UC/BootBox/boot-box.js")"></script>
+    <script src="@Url.js("Quotation/Quotation.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        
+        $(function () {
+            /*----------เลือกเมนู ด้านซ้าย-----------*/
+            var id = $("#TypeQuotation").val();
+            $(".toggle").find('li#'+id).addClass('active_template');
+            $(g_hidsubmit).eq(g_no).click();
+
+            $('#txtPricePerPiece,#txtdiscount,#txtVAT').css("border-color","rgba(82, 168, 236, 0.8)");
+            $('#txtPricePerPiece,#txtdiscount,#txtVAT').css("-webkit-box-shadow","inset 0 1px 1px rgba(0, 0, 0, 0.075), 0 0 8px rgba(82, 168, 236, 0.6)");
+
+            //$('input.UnitPrice,#txtdiscount,#txtVAT').bind('keypress', function (e) {
+            //    return (e.which != 8 && e.which != 0 && ( e.which > 57)) ? false : true;
+            //})
+            $('#txtPricePerPiece').bind('keypress', function (e) {
+                if (this.value.match(/[^a-zA-Z0-9 ]/g)) {
+                    bootbox.alert('กรุณากรอกตัวเลขให้ถูกต้อง');
+                    $('#txtPricePerPiece').val(0);
+                }
+                return (e.which != 8 && e.which != 0 && (e.which > 57)) ? false : true;
+            })
+            $("#txtPricePerPiece").blur(function () {
+                if ($(this).val() == "") {
+                    $('#txtPricePerPiece').val(0);
+                }
+            });
+
+            $('#txtdiscount').bind('keypress', function (e) {
+                if (this.value.match(/[^a-zA-Z0-9 ]/g)) {
+                    bootbox.alert('กรุณากรอกตัวเลขให้ถูกต้อง');
+                    $('#txtdiscount').val(0);
+                }
+                return (e.which != 8 && e.which != 0 && (e.which > 57)) ? false : true;
+            })
+            $("#txtdiscount").blur(function () {
+                if ($(this).val() == "") {
+                    $('#txtdiscount').val(0);
+                }
+            });
+
+            $('#txtVAT').bind('keypress', function (e) {
+                if (this.value.match(/[^a-zA-Z0-9 ]/g)) {
+                    bootbox.alert('กรุณากรอกตัวเลขให้ถูกต้อง');
+                    $('#txtVAT').val(0);
+                }
+                return (e.which != 8 && e.which != 0 && (e.which > 57)) ? false : true;
+            })
+            $("#txtVAT").blur(function () {
+                if ($(this).val() == "") {
+                    $('#txtVAT').val(0);
+                }
+            });
+             
+            $("#btnRejectTop").popover({
+                placement:'bottom',
+                content: $("#rejectPopup").html(),
+                template: '<div class="popover" style="width:300px;"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>' ,
+                html : true
+            });
+            $("#btnRejectBottom").popover({
+                placement:'right',
+                content: $("#rejectPopup").html(),
+                template: '<div class="popover" style="width:300px;"><div class="arrow"></div><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
+                html : true
+            });
+            //$("#rejectPopup").html('');
+
+            /*-------- btnImportance------*/
+            if ($('#txtIsImportance').val() == 'True') {
+                $('.btnImportance').addClass('btn-success');
+            }
+            if ($('#txtIsImportance').val() == 'False') {
+                $('.btnImportance').removeClass('btn-success');
+            }
+
+            /*-----------Cal-------------*/
+            var SumPrice, Discount, SumDiscount, SumVat, SumTotal;
+            $(".UnitPrice").blur(function () {
+                if($(this).val() != "0"){
+                    $(this).formatNumber({ format: "#,###", locale: "th" });
+                }
+            });
+            $("#txtdiscount").blur(function () {
+                if($(this).val() != "0"){
+                    $(this).formatNumber({ format: "#,###", locale: "th" });
+                }
+            });
+            $("#txtVAT").blur(function () {
+                if ($(this).val() != "0") {
+                    $(this).formatNumber({ format: "#,###", locale: "th" });
+                }
+            });
+
+            if ($('#IsOutbox').val() == 'True' || $('#IsReply').val() == 'True') {
+                $('#btnBack').removeClass('hide');
+                $('#txtPricePerPiece').attr("readonly", "readonly");
+                $('#txtdiscount').attr("readonly", "readonly");
+                $('#txtVAT').attr("readonly", "readonly");
+                $('#txtaRemark').text('@(ViewBag.Remark)');
+                $('#txtaRemark').attr("readonly", "readonly");
+                $('.Attachfile').addClass('hide');
+                Cal(); 
+            }else{
+                $('#txtaRemark').text("");
+            }
+
+            if ($('#IsReply').val() == 'True') {
+                $("#btnRejectTop").addClass("hide");
+                $("#divOption").addClass("hide");
+                //$("#divAction").addClass("hide");
+            }
+
+            if ($('#FromCompID').val() == 0) {
+                @*$('.icon_contact').addClass('hide');*@
+            }
+
+        });
+
+        //function Cal() {
+        //    var Quantity = $('.Quantity').val();
+        //    var PricePerPiece = $('#PricePerPiece').val();
+        //    var Discount = $('#Discount').val();
+
+        //    $('#txtPricePerPiece').val(PricePerPiece).formatNumber({ format: "#,###.##", locale: "th" });
+        //    $('.SumPriceUnit').val(PricePerPiece * Quantity).formatNumber({ format: "#,###.##", locale: "th" });
+        //    $('#SumPrice').val(PricePerPiece * Quantity).formatNumber({ format: "#,###.##", locale: "th" });
+            
+        //    if(Discount > 0){
+        //        $('#txtdiscount').val(Discount).formatNumber({ format: "#,###.##", locale: "th" });
+        //    }else{
+        //        $('#txtdiscount').val(0);
+        //    }
+        //    var total_Discount = (PricePerPiece * Quantity) - Discount;
+        //    $('#SumDiscount').val(total_Discount).formatNumber({ format: "#,###.##", locale: "th" });
+
+        //    var Vat = $('#Vat').val();
+        //    $('#txtVAT').val(Vat).formatNumber({ format: "#,###.##", locale: "th" });
+
+        //    var Total_Vat = (total_Discount * Vat)/100;
+        //    $('#SumVat').val(Total_Vat).formatNumber({ format: "#,###.##", locale: "th" });
+
+        //    var Total = $("#TotalPrice").val();
+        //    $('#SumTotal').val(Total).formatNumber({ format: "#,###.##", locale: "th" });
+        //}
+
+        function calSumPrice(Obj) {
+            if (Obj.val() == 0) {
+                $('#txtPricePerPiece').val(0);
+                $('#SumPriceUnit').val(0);
+            }
+
+            if (Obj.val() < 0) {
+                bootbox.alert('กรุณากรอกตัวเลขให้ถูกต้อง');
+                $('#txtPricePerPiece').val(0);
+                $('#SumPriceUnit').val(0);
+            } else {
+                var SumPrice = Obj.val() * parseFloat(Obj.attr("name"));
+                Obj.parent().next().find(".SumPriceUnit").val(SumPrice).formatNumber({ format: "#,###", locale: "th" });
+                Obj.parent().next().find(".SumPrice").val(SumPrice).formatNumber({ format: "#,###", locale: "th" });
+                $('#SumPriceUnit').val(SumPrice);
+                $('#SumPrice').val(SumPrice);
+                $('#SumPrice').formatNumber({ format: "#,###", locale: "th" });
+                SumPrice
+                calSumDiscount();
+            }
+
+        }
+
+        function calSumDiscount(Obj) {
+            var sumPrice = parseFloat($('.SumPriceUnit').val().replace(/[,]/g, ''));// เจอ ,, สองตัว
+            SumDiscount = sumPrice - $('#txtdiscount').val();
+
+            var a = $('.SumPriceUnit').val();
+            var b = $('#txtdiscount').val()
+            console.log("sumPrice: "+ a);
+            console.log("SumDiscount: " + b);
+
+            if ($('.SumPriceUnit').val() == 0) {
+                $("#txtdiscount").val(0);
+                $('#SumDiscount').val(0);
+            }
+
+            if ($("#txtdiscount").val() == "") {
+                $("#SumDiscount").val(SumDiscount);
+                $('#SumDiscount').formatNumber({ format: "#,###", locale: "th" });
+                $('#SumTotal').val($('.SumPriceUnit').val());
+                $('#SumTotalText').text($('.SumPriceUnit').val());
+            } else if ($("#txtdiscount").val() == "0") {
+                $("#SumDiscount").val(SumDiscount);
+                $('#SumDiscount').formatNumber({ format: "#,###", locale: "th" });
+                $('#SumTotal').val($('.SumPriceUnit').val());
+                $('#SumTotalText').text($('.SumPriceUnit').val());
+            }
+
+            if (SumDiscount < 0) {
+                bootbox.alert('ส่วนลดต้องไม่มากกว่าราคารวม');
+                $("#txtdiscount").val(0);
+                $('#SumDiscount').val(0);
+            } else {
+                $('#SumDiscount').val(SumDiscount);
+                $('#SumDiscount').formatNumber({ format: "#,###", locale: "th" });
+                calSumVat();
+            }
+        }
+
+        function calSumVat(Obj) {
+            if ($('.SumPriceUnit').val() == 0) {
+                $("#txtVAT").val(0);
+                $('#SumVat').val(0);
+            }
+
+            if ($("#txtVAT").val() == "0") {
+                $("#SumVat").val(0);
+                $('#SumTotal').val($('#SumDiscount').val());
+                $('#SumTotalText').text($('#SumDiscount').val());
+            } else if ($("#txtVAT").val() == "") {
+                $("#SumVat").val(0);
+                $('#SumTotal').val($('#SumDiscount').val());
+                $('#SumTotalText').text($('#SumDiscount').val());
+            }else{
+                SumVat = (parseFloat($('#txtVAT').val().replace(/[,]/g, '')) * parseFloat($('#SumDiscount').val().replace(/[,]/g, ''))) / 100;
+                $('#SumVat').val(SumVat);
+                $('#SumVat').formatNumber({ format: "#,###", locale: "th" });
+                SumTotal = (parseFloat(($('#txtVAT').val().replace(/[,]/g, '')) * parseFloat($('#SumDiscount').val().replace(/[,]/g, ''))) / 100) + parseFloat($('#SumDiscount').val().replace(/[,]/g, ''));
+                $('#SumTotal').val(SumTotal);
+                $('#SumTotal').text(SumTotal).formatNumber({ format: "#,###", locale: "th" });
+                $('#SumTotalText').text(SumTotal).formatNumber({ format: "#,###", locale: "th" });
+            }
+        }
+
+
+        /*--------------------------------Send-Reject---------------------------------------*/
+        function SendReject(Obj) {
+
+            if ($('input[name=ChkReject]:checked').attr("checked") == true || $('input[name=ChkReject]:checked').attr("checked") == "checked") {
+
+                var RemarkRJ = label.vlderror_because + " -";
+                $('input[name=ChkReject]:checked').each(function () {
+                    RemarkRJ += $(this).val() + ",-";
+                });
+                if ($('#txtaRejectDetail').val() != '') {
+                    RemarkRJ += $('#txtaRejectDetail').val();
+                }
+                else {
+                    RemarkRJ = RemarkRJ.substring(0, RemarkRJ.length - 2);
+                }
+                //if ($('input[name=ChkSentMail]:checked').attr("checked") == true || $('input[name=ChkSentMail]:checked').attr("checked") == "checked") {
+                //    ChkSentMail = 1;
+                //}
+                console.log("OpenLoading");
+                /*----------------------------Send-Reject-----------------------*/
+                OpenLoading(true);
+
+                data = {
+                    QuotationID: $('#QuotationID').val(),
+                    //PricePerPiece: $('#txtPricePerPiece').val(),
+                    //TotalPrice: $("#SumTotal").val(),
+                    //Discount: discount,
+                    //Vat: vat,
+                    //IsSentEmail: ChkSentMail,
+                    //Remark: $('#txtaRemark').val(),
+                    SaleName: $("#FirstName1").val(),
+                    SaleCompany: $("#CompName1").val(),
+                    SaleEmail: $("#Email1").val(),
+                    SalePhone: $("#Tel1").val(),
+                    hidQuotationFileName: $(".hidImgFileName").val(),
+                    hidQuotationFilePath: $(".hidImgFilePath").val(),
+                    hidQuotationUploadPath: $(".hidImgUploadPath").val(),
+                    hidImgSize: $("input[name='hidImgSize']").val(),
+                    RejectDetail: RemarkRJ,
+                    Type: Obj
+                }
+                console.log("data");
+                $.ajax({
+                    url: GetUrl("MyB2B/Quotation/Reject"),
+                    data: data,
+                    success: function (data) {
+
+                        if (data.Result = true) {
+                            var QuotationID = data.ID;
+                            /*-----------------Sent-Mail----------------*/
+                            var ProductName = $("#ProductName").val();
+                            var ProductCode = $("#ProductCode").val();
+                            var ProductID = $("#ProductID").val();
+                            var FromCompID = $("#ToCompID").val();
+                            var FromName = $("#txtFromName").val();
+                            var FromEmail = $("#txtFromEmail").val();
+                            var CompID = $("#FromCompID").val();
+                            var CompanyName = $("#CompanyName").val();
+                            var ReqFirstName = $("#ReqFirstName").val();
+                            var ToCompName = $("#txtToCompName").val();
+                            var ToName = $("#txtToName").val();
+
+                            Detail = "<table><tr><td>" + label.vlddear + " " + ReqFirstName + "  [" + CompanyName + "]<br></td></tr>";
+                            Detail += "<tr><td>" + ToName + "[ " + ToCompName + " ] " + label.vldpro_bid + " " + ProductName + " " + label.vldget_quo + " <br></td></tr>";
+                            Detail += "<tr><td>" + label.vldview_quo + " : " + label.vldDomainFullName + "/BidProduct/Reply/" + QuotationID + "</td></tr>";
+                            $.ajax({
+                                url: GetUrl("MyB2B/Quotation/ReplyRequest"),
+                                data: {
+                                    MsgDetail: RemarkRJ,
+                                    ProductName: ProductName,
+                                    ProductCode: ProductCode,
+                                    QuotationID: QuotationID,
+                                    Status: "Reject",
+                                    RJFromName:FromName,
+                                    RJFromEmail: FromEmail,
+                                    IsSupplierRelated:0
+
+                                },
+                                success: function (data) {
+                                    /*---------ส่งให้ตัวเอง--------*/
+                                    //if (ChkSentMail == 1) {
+                                    //    $.ajax({
+                                    //        url: GetUrl("Quotation/ReplyRequest"),
+                                    //        data: {
+                                    //            MsgDetail: Detail,
+                                    //            ProductName: ProductName,
+                                    //            QuotationID: QuotationID,
+                                    //            Status: "Reply"
+                                    //        },
+                                    //        success: function (data) {
+                                    //            if (Obj == "Quotation") {
+                                    //                window.location = GetUrl('MyB2B/Quotation/List');
+                                    //            } else {
+                                    //                if ($("#ChkHaveUser").val() == "0") {
+                                    //                    window.location = GetUrl('BidProduct/List');
+                                    //                } else {
+                                    //                    window.location = GetUrl('MyB2B/Quotation/List/Inbox');
+                                    //                }
+                                    //            }
+                                    //        },
+                                    //        type: "POST"
+                                    //    });
+                                    //} else {
+                                    OpenLoading(false);
+
+                                    bootbox.alert("ส่งข้อมูลเรียบร้อยแล้ว<br />คุณสามารถตรวจสอบข้อมูลการเสนอราคาของคุณได้ที่กล่อง \"ส่งแล้ว\"", function () {
+                                        if (Obj == "Quotation") {
+                                            window.location = GetUrl("MyB2B/Quotation/List?Type=Sentbox");
+                                        } else {
+                                            if ($("#UserLoginCompID").val() > 0/*$("#ChkHaveUser").val() == "0"*/) {
+                                                window.location = GetUrl("MyB2B/Quotation/List?Type=Sentbox");
+                                            } else {
+                                                window.location = GetUrl("BidProduct/List");
+                                            }
+                                        }
+                                    });
+                                    //}
+
+                                },
+                                type: "POST"
+                            });
+                            return true;
+                        } else {
+                            return false;
+                        }
+                    },
+                    type: "POST",
+                    traditional: true
+                });
+
+            } else {
+                bootbox.alert('@res.Common.ddlSelectPlease');
+            }
+        }
+
+</script>
+}

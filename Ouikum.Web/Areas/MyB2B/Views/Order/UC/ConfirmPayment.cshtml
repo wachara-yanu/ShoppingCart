@@ -1,0 +1,303 @@
+﻿@using Ouikum;
+@{ 
+    var order = (b2bOrder)ViewBag.orders;
+    var it = (b2bMemberPaid)ViewBag.MemberPaid;
+ }
+<style>
+    .tab-process-order
+    {
+        display:inline-block;
+        border-bottom:5px solid #F2F2F2;
+        height:20px;
+        line-height:20px;
+        padding:0 20px;
+        margin-left:2px;
+    }
+    .tab-process-order.active
+    { 
+        border-bottom:5px solid #006699;
+    }
+</style>
+@using res = Prosoft.Resource.Web.Ouikum;
+<table class="table table-hover border_table grid mar_b10" style="width: 98.5%;margin-left: 1%;">
+    <thead class="HeaderTable">
+        <tr class="header">
+            <th class="span1"><h4>@res.Common.lblSubmitPayment</h4></th>
+        </tr>
+    </thead>
+</table>
+
+<div class="fl_r mar_r10" style=" margin-right:10px;">
+    <div class="fl_l tab-process-order" >1. @res.Order.lblPaymentInfo</div>
+    <div class="fl_l tab-process-order active">2. @res.Order.lblSumPaymentInfo</div>
+</div>
+
+<div class="clean mar_l20"><h5>@res.Order.lblFillPayment :</h5></div>
+<form id="PaymentAccount" method="post" action="@Url.Action("UpdatePayment","Order",new{area="MyB2B"})">
+<div class="container-fluid" style="width: 100%;">
+  <div class="row-fluid">
+    <div class="span6">
+
+<div class="mar_l20">
+    <table width="100%">
+        <tr style="height:50px">
+            <td style="color:Red;width:30%;vertical-align: text-top;">@res.Order.lblTax:</td>
+            <td style="width:45%">
+                <input type="hidden" id="OrderID" name="OrderID" value="@order.OrderID" />
+                <input type="hidden" id="MemberPaidID" name="MemberPaidID" value="@it.MemberPaidID" />
+                <input type="hidden" id="radio" class="show" />
+                <label class="radio">
+                  <input type="radio" class="radio" name="IsInvoice" id="IsInvoice" value="true" checked>@res.Order.lblNeedTax
+                </label>
+                <label class="radio">
+                  <input type="radio" class="radio" name="IsInvoice" id="IsInvoice" value="false">@res.Order.lblNotNeedTax
+                </label>
+            </td>
+        </tr>
+        <tr>
+            <td colspan="2">
+                <img src="@Url.css("Order/Image/img_line.png")" width="400px"/>
+            </td>
+        </tr>
+        <tr style="height:50px">
+            <td style="color:Red">@res.Common.lblfirstlast_name:</td>
+            <td>
+                <div class="control-group"><input type="text" id="PayerName" name="PayerName" value="@it.PayerName"/></div>
+            </td>
+        </tr> 
+        <tr style="height:50px">
+            <td style="color:Red;vertical-align: text-top;">@res.Common.lblAddress:</td>
+            <td><div class="control-group"><textarea style="resize: none;" rows="3" cols="50" id="PayerAddrLine1" name="PayerAddrLine1" >@it.PayerAddrLine1</textarea></div></td>
+        </tr>
+        <tr style="height:50px">
+            <td style="color:Red">@res.Common.lblDistrict:</td>
+            <td><div class="control-group">
+                <select style="width:222px" id="PayerDistrictID" name="PayerDistrictID">
+                 @{foreach (var districts in (List<emDistrict>)ViewBag.District)
+                    {
+                        if (it.PayerDistrictID == districts.DistrictID)
+                        {
+                        <option value="@districts.DistrictID" selected="selected">@districts.DistrictName</option>
+                        }
+                        else
+                        {
+                        <option value="@districts.DistrictID">@districts.DistrictName</option>
+                        }
+                    }
+                 }
+                </select>
+                </div>
+            </td>
+        </tr>
+        <tr style="height:50px">
+            <td style="color:Red">@res.Common.lblProvince:</td>
+            <td><div class="control-group">
+                <select style="width:222px" id="PayerProvinceID" name="PayerProvinceID">
+                     @{foreach (var provinces in (List<emProvince>)ViewBag.Province)
+                        {
+                            if (it.PayerProvinceID == provinces.ProvinceID)
+                            {
+                            <option value="@provinces.ProvinceID" selected="selected">@provinces.ProvinceName</option>
+                            }
+                            else
+                            {
+                            <option value="@provinces.ProvinceID">@provinces.ProvinceName</option>
+                            }
+                        }
+                      }
+                </select>
+                </div>
+            </td>
+        </tr>
+        <tr style="height:50px">
+            <td style="color:Red">@res.Common.lblPostal_code:</td>
+            <td><div class="control-group"><input type="text" id="PayerPostalCode" name="PayerPostalCode" value="@it.PayerPostalCode" /></div></td>
+        </tr>
+        <tr style="height:50px">
+            <td style="color:Red">@res.Common.lblPhoneno:</td>
+            <td><div class="control-group"><input type="text" id="PayerPhone" name="PayerPhone" value="@it.PayerPhone" /></div></td>
+        </tr>
+        <tr style="height:50px">
+            <td>@res.Common.lblMobileno:</td>
+            <td><input type="text" id="PayerMobile" name="PayerMobile" value="@it.PayerMobile" /></td>
+        </tr>
+        <tr style="height:50px">
+            <td>@res.Common.lblFax:</td>
+            <td><input type="text" id="PayerFax" name="PayerFax" value="@it.PayerFax" /></td>
+        </tr>
+        <tr style="height:50px">
+            <td>@res.Common.lblEmail:</td>
+            <td><input type="text" id="PayerEmail" name="PayerEmail" value="@it.PayerEmail" /></td>
+        </tr>
+        <tr style="height:50px">
+            <td>@res.Order.lblComments:</td>
+            <td><textarea style="resize: none;" rows="3" cols="50" id="RejectComment" name="RejectComment"></textarea></td>
+        </tr>
+    </table>
+</div>
+    </div>
+    <div class="span6">
+      <div class="invoice">
+        <h5>@res.Order.lblFillTax_Receipt:</h5>
+        <div class="mar_l20 mar_t40">
+        <div class="clean3"></div>
+            <table width="98%">
+                <tr style="height:50px">
+                    <td style="color:Red;width:40%">@res.Common.lblfirstlast_name/@res.Common.lblComname:</td>
+                    <td style="width:45%">
+                        <div class="control-group"><input type="text" id="BillRecieverName" name="BillRecieverName" value="@it.BillRecieverName" /></div>
+                    </td>
+                </tr>
+                <tr style="height:50px">
+                    <td style="color:Red;vertical-align: text-top;">@res.Common.lblAddress:</td>
+                    <td><div class="control-group"><textarea style="resize: none;" rows="3" cols="50" id="BillAddrLine1" name="BillAddrLine1">@it.BillAddrLine1</textarea></div></td>
+                </tr>
+                <tr style="height:50px">
+                    <td style="color:Red">@res.Common.lblDistrict:</td>
+                    <td><div class="control-group">
+                        <select style="width:222px" id="BillDistrictID" name="BillDistrictID">
+                            @{foreach (var districts in (List<emDistrict>)ViewBag.District)
+                                {
+                                    if (it.PayerDistrictID == districts.DistrictID)
+                                    {
+                                    <option value="@districts.DistrictID" selected="selected">@districts.DistrictName</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@districts.DistrictID">@districts.DistrictName</option>
+                                    }
+                                }
+                             }
+                        </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height:50px">
+                    <td style="color:Red">@res.Common.lblProvince:</td>
+                    <td><div class="control-group">
+                        <select style="width:222px" id="BillProvinceID" name="BillProvinceID" >
+                            @{foreach (var provinces in (List<emProvince>)ViewBag.Province)
+                                {
+                                    if (it.PayerProvinceID == provinces.ProvinceID)
+                                    {
+                                    <option value="@provinces.ProvinceID" selected="selected">@provinces.ProvinceName</option>
+                                    }
+                                    else
+                                    {
+                                    <option value="@provinces.ProvinceID">@provinces.ProvinceName</option>
+                                    }
+                                }
+                              }
+                        </select>
+                        </div>
+                    </td>
+                </tr>
+                <tr style="height:50px">
+                    <td style="color:Red">@res.Common.lblPostal_code:</td>
+                    <td><div class="control-group"><input type="text" id="BillPostalCode" name="BillPostalCode" value="@it.BillPostalCode" /></div></td>
+                </tr>
+                <tr style="height:50px">
+                    <td style="color:Red">@res.Common.lblPhoneno:</td>
+                    <td><div class="control-group"><input type="text" id="BillPhone" name="BillPhone" value="@it.BillPhone" /></div></td>
+                </tr>
+                <tr style="height:50px">
+                    <td>@res.Common.lblMobileno:</td>
+                    <td><input type="text" id="BillMobile" name="BillMobile" value="@it.BillMobile" /></td>
+                </tr>
+                <tr style="height:50px">
+                    <td>@res.Common.lblFax:</td>
+                    <td><input type="text" id="BillFax" name="BillFax" value="@it.BillFax" /></td>
+                </tr>
+                <tr style="height:50px">
+                    <td>@res.Common.lblEmail:</td>
+                    <td><input type="text" id="BillEmail" name="BillEmail" value="@it.BillEmail" /></td>
+                </tr>
+            </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div class="clean10"></div>
+<div class="center">
+    <button style="width:100px" class="btn btn-primary" type="submit" id="Submit" >@res.Common.btnSubmit</button>
+    <button style="width:100px" class="btn" type="button" id="Back">@res.Common.btnBack</button>
+    <button style="width:100px" class="btn" type="button" id="Cancel">@res.Common.btnCancel</button>
+</div>
+</form>
+
+<script>
+    $(function () {
+        ActiveMenu(2);
+
+        $('#Cancel').click(function () {
+            bootbox.confirm(label.vldcancel, "Cancel", "Yes", function (e) {
+                if (e) {
+
+                    var id = parseInt($('#MemberPaidID').val(), 10);
+                    CancelPayment(id);
+                }
+            })
+        });
+
+        $('#Back').click(function () {
+            var idMember = parseInt($('#MemberPaidID').val(), 10);
+            var idOrder = parseInt($('#OrderID').val(), 10);
+            BackPayment(idMember, idOrder);
+        });
+
+        $('.radio').click(function () {
+            var value = $(this).val();
+            if (value == 'true') {
+                $('#radio').addClass('show');
+                $('#radio').removeClass('hide');
+                $(".invoice").show();
+            }
+            else if (value == 'false') {
+                $('#radio').addClass('hide');
+                $('#radio').removeClass('show');
+                $(".invoice").hide();
+            }
+        });
+    });
+
+    function CancelPayment(id) {
+        data = {
+            MemberPaidID: id
+        }
+        $.ajax({
+            url: GetUrl('@res.Pageviews.UrlCancelPayment'),
+            data: data,
+            traditional: true,
+            success: function (data) {
+                window.location = GetUrl('@res.Pageviews.UrlOrderList');
+            },
+            error: function () {
+            },
+            type: "POST"
+        });
+        return false;
+    }
+
+    function BackPayment(idMemberPaid,idOrder) {
+        data = {
+            MemberPaidID: idMemberPaid,
+            OrderID: idOrder
+        }
+        $.ajax({
+            url: GetUrl('@res.Pageviews.UrlBackPayment'),
+            data: data,
+            traditional: true,
+            success: function (data) {
+                window.location = GetUrl('@res.Pageviews.UrlOrderPayment' + '?OrderID=' + idOrder);
+            },
+            error: function () {
+            },
+            type: "POST"
+        });
+        return false;
+    }
+
+</script>
+

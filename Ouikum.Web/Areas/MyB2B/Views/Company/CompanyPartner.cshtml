@@ -1,0 +1,196 @@
+﻿@{
+    ViewBag.Title = "CompanyPartner";
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+    <div class="container-fluid">
+    <div class="row-fluid inline" style="vertical-align:top;">
+      <div class="span12" >
+    <!--Sidebar content-->
+   <div class="mar_t15">
+    <div><h5  class="inline">Business Partner</h5></div>
+
+         <img src="@Url.cssDefault("images/line.png")" style="width:100%"/>
+            <div class="btn-group inline"> 
+                <button type="button" id="add" class="btn btn-small btn-default offset btn-tootip-top" style="margin:10px 0;" rel="tooltip"  title="เพิ่ม"><i class="icon-plus mar_t3"></i></button>
+                <button type="button" id="dels" class="btn btn-small btn-default offset btn-tootip-top" style="margin:10px 0;" rel="tooltip"  title="ลบ"><i class="icon-minus mar_t3"></i></button>
+            </div>
+                        <div class="input-prepend input-append inline fl_r mar_t7">
+                    <select name="DistrictID" id="DistrictID"  class="span4" style="border-radius:3px 0px 0px 3px ; border-right:0px;">
+                        <option>--------</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                    </select>
+                <input class="span6" id="appendedPrependedInput"  placeholder="Search" size="16" type="text" />
+                <button class="btn" type="button" style="width:50px;"><i class="icon-search"></i></button>
+            </div>
+
+               <div id="Add_Edit" style="display:none;margin-bottom:30px;">
+                    <article class="module width_full">
+                        <header><h3 id="head_form"></h3><button type="button" class="close fl_r mar_r10 mar_t5">×</button></header>
+                        <div class="module_content">
+                            @Html.Partial("MyB2B/Company/ModalForm/AddPartner")
+                        </div>
+                    </article>
+                </div>
+                <div class="clean30"></div>
+           @Html.Partial("MyB2B/Company/Grid/PartnerGrid")
+      </div
+    </div>
+    </div>
+    </div>
+<div class="clean30"></div>
+@section js{
+  
+<script type="text/javascript">
+
+    $(function () {
+
+        $("#add").click(function () {
+            $("h3#head_form").html("ADD Shipment");
+            $("#Add_Edit").slideDown();
+        });
+        $(".edit").click(function () {
+            $("h3#head_form").html("EDIT Shipment");
+            $("#Add_Edit").slideDown();
+        });
+        $(".close").click(function () {
+            $("#Add_Edit").slideUp();
+        });
+        $("#submit").click(function () {
+
+            //                $("#Add_Edit").slideUp();
+
+        });
+        /*-----------------------text numunical--------------------------------*/
+
+        $(".icon_up").click(function () {
+            if ($(this).parent().prev().val() == "") {
+                $(this).parent().prev().val(1)
+            } else {
+                $(this).parent().prev().val(parseInt($(this).parent().prev().val()) + 1)
+            }
+        });
+        $(".icon_down").click(function () {
+            if ($(this).parent().prev().val() == "") {
+                //alert('ไม่สามารถเลือกให้น้อยกว่า 0 ได้');
+            } else {
+                if (parseInt($(this).parent().prev().val()) > 0) {
+                    $(this).parent().prev().val(parseInt($(this).parent().prev().val()) - 1)
+                } else {
+                    //alert('ไม่สามารถเลือกให้น้อยกว่า 0 ได้');
+                }
+            }
+        });
+        $("ul.toggle > li").each(function (index) {
+            if ($(this).attr("id") == 'tab_partner') {
+                $(this).addClass('active_template');
+            }
+            else {
+                $(this).removeClass('active_template');
+            }
+        });
+
+        $('.btn-tootip-bottom').tooltip({ placement: 'bottom' });
+        $('.btn-tootip-top').tooltip({ placement: 'top' });
+    });
+    //#region checkbox
+
+    function CheckBoxall(Obj) {
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            $(".cbxCompID").attr("checked", "checked");
+            $(".cbxCompID").attr("value", "true");
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+
+        } else {
+            $(".cbxCompID").removeAttr("checked");
+            $(".cbxCompID").attr("value", "false");
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+        }
+
+    }
+    function CheckBox(id) {
+
+        if ($("#" + id + "").attr("value") == true || $("#" + id + "").attr("checked") == "checked") {
+            if ($(".checkboxAll").attr("value") == true || $(".checkboxAll").attr("checked") == "checked") {
+                $("#" + id + "").attr("checked", "checked");
+                $("#" + id + "").attr("value", "true");
+            } else {
+                $(".cbxCompID").removeAttr("checked");
+                $(".cbxCompID").attr("value", "false");
+                $("#" + id + "").attr("checked", "checked");
+                $("#" + id + "").attr("value", "true");
+            }
+        }
+    }
+    //#endregion
+
+
+    /*-----------------------validateform-----------------------------*/
+
+    $.validator.addMethod("Brief_Des", function (value, element, arg) {
+        var editorContent = tinyMCE.get('Brief_Description').getContent();
+        return arg != editorContent;
+
+    }, "กรอกข้อมูล");
+    $.validator.addMethod("detail", function (value, element, arg) {
+        var editorContent = tinyMCE.get('detail').getContent();
+        return arg != editorContent;
+
+    }, "กรอกข้อมูล");
+
+    $.validator.addMethod("select", function (value, element, arg) {
+        return arg != value;
+    }, "เลือกข้อมูล");
+
+    $('#addarticle_form').validate(
+             {
+                 rules: {
+                     ArticleName: {
+                         required: true,
+                         minlength: 4
+                     },
+                     Catagory: {
+                         select: 0
+                     },
+                     ArticleImgPath: {
+                         required: true
+                     },
+                     Brief_Description: {
+                         required: true,
+                         Brief_Des: ""
+                     },
+                     detail: {
+                         required: true,
+                         detail: ""
+                     }
+                 },
+                 highlight: function (label) {
+                     $('#submit').attr('disabled', true);
+                     $(label).closest('.control-group').removeClass('success');
+                     $(label).closest('.control-group').addClass('error');
+
+                 },
+                 success: function (label) {
+                     label.closest('.control-group').removeClass('error');
+                     label.closest('.control-group').addClass('success');
+                     $('#submit').removeAttrs('disabled');
+                 }
+             });
+             /*------------------------Isshow--------------------------------*/
+             function show(id, obj) {
+                 if (obj.attr('data-original-title') == "แสดงตัวอย่าง") {
+                     obj.attr("data-original-title", "ไม่แสดงตัวอย่าง");
+                 }
+                 else {
+                     obj.attr("data-original-title", "แสดงตัวอย่าง");
+                 }
+                 $(".show" + id).toggle();
+             }
+</script>
+}

@@ -1,0 +1,78 @@
+﻿@{
+    ViewBag.Title = res.Admin.lblTrade;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{
+
+<link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />  
+<link href="@Url.css("UC/DatePeriodUC/ui.daterangepicker.css")" rel="stylesheet" type="text/css" />
+<style>
+
+    .report-content
+    {
+        display:inline-block;
+        width: 48%; 
+        height:600px; 
+    }
+    
+    .pager
+    { 
+        margin:0px;
+    }
+</style> 
+}
+<div class="clean50"></div>
+<center style="margin-left:10px;width:98%">
+<a href="#myModal" role="button" class="btn btn-large btn-darkblue" data-toggle="modal">@res.Product.lblSelectSupplier</a>
+    <div class="clean20"></div>
+<div id="search-form" style="display:none;" class="fl_l">  
+    <div id="comp-detail"></div>
+</div>
+<div id="comp-link" style="display:none" class="fl_r">
+    <a class="btn comp-link-detail" target="_blank" >@res.Common.lblSeeDetail</a>
+    <a href="#EmailModal" role="button" data-toggle="modal" class="btn cursor mar_l5 " data-toggle="tooltip" title="send information to user"   ><i class="icon-envelope mar_t3"></i></a><br>
+    <div class="clean10"></div>
+</div> 
+<div class="clean10  mar_b10" style="border-bottom:1px solid #ccc;"></div>
+<div class="fl_l">
+    @res.Common.colIsShow :
+    <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA wid_input_search mar_t10 mar_r5" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+    <input type="checkbox" id="SelectAllPeriod" class="tootip-buttom" title="Defined" />
+    <button type="button" class="btn btn-darkblue btnsearch"  ><i class="icon-search icon-white mar_t3"></i></button>
+</div>
+ <div class="clean30"></div>   
+
+</center>
+
+
+<div style="margin-left:10px;width:98%"> 
+<div id="reportmsg-content" class="report-content fl_l" ></div>
+<div id="reportquotation-content" class="report-content fl_r mar_l5"></div>
+<div class="clean"></div>
+
+</div>
+<div class="clean50"></div> 
+
+@Html.Partial("UC/EmailModal")
+@Html.Partial("UC/SupplierModal")
+
+@section js{
+    <script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script> 
+    <script type="text/javascript" src="@Url.js("Admin/Trade.js")"></script>
+    <script type="text/javascript">
+        $(function () {
+
+            $('.rangeA').daterangepicker();
+            $('#myModal').modal('hide')
+            $('#supplier-form').submit(function () {
+                //console.log('search');
+                LoadPageSupplier('supplier', 1);
+                return false;
+            });
+            $('#myModal').modal('hide')
+        });
+
+    </script>
+}

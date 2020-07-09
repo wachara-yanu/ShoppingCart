@@ -1,0 +1,129 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum.Company;
+
+@if (ViewBag.Quotations != null)
+{
+    if (((List<View_QuotationList>)ViewBag.Quotations).Count > 0)
+    {
+        <table class="table table-hover grid mar_b10" id="TBQuotationList">
+            <thead style="border-bottom: none; font-weight:bold">
+                <tr>
+                    <td>
+                         <label class="checkbox inline" style="font-size:13px;font-weight: bold;">
+                            <input type="checkbox" id="checkAll" onclick="CheckBoxall($(this))"/>@res.Message_Center.colSelectAll
+                        </label>
+                    </td>
+                    <td>ข้อความจาก</td>
+                    <td>เรื่อง</td>
+                    <td>@res.Common.lblDate</td>
+                </tr>
+              </thead>
+             <tbody>
+                @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+                {
+                <tr class="nodata b" valign="middle">
+                        <td><div align="center">@res.Common.lblNotFound</div></td>
+                </tr>
+                }
+                else
+                {
+                    foreach (var item in (IEnumerable<View_QuotationList>)ViewBag.Quotations)
+                    {
+                        int ID = item.QuotationID;
+                        
+                        var svCompany = new CompanyService();
+                        var From = svCompany.SelectData<b2bCompany>("*", "CompID = " + item.FromCompID).Count() > 0 ? svCompany.SelectData<b2bCompany>("*", "CompID = " + item.FromCompID).First() : new b2bCompany();
+                    <tr class="body">
+                        <td>
+                            <input type="hidden" id="Quotation_@{@ID}" class="hidPrimeID" value="@ID" />
+                            <input type="hidden" id="@item.RowVersion" class="hidRowVersion" value="@item.RowVersion" />
+                            <input type="hidden" class="hidIsRead" value="@item.IsRead.ToString()" />
+                            <input type="hidden" class="hidIsOutbox" value="@item.IsOutbox.ToString()" />
+                            <input type="checkbox" class="cbxItem cbxCompID fl_l" value="@ID" id="@ID" onclick="CheckBox(@ID)" name="chkpd" rel="@item.FromCompID" style=" margin-top:14px;" />
+                            @if (item.IsReject == true)
+                            { 
+                                <text><i class="icon_rejectQuotation inline mar_l10" title="Reject"></i></text>
+                            }else{
+                                if (item.QuotationStatus == "Q")
+                                {
+                                    <text><i class="icon_quoQuotation inline mar_l10" title="Quotation"></i></text>
+                                }else{
+                                    <text><i class="icon_requestQuotation inline mar_l10" title="Request"></i></text>
+                                }
+                            }
+                            @if (item.IsImportance == true)
+                            { 
+                                <text><i class="icon_tagQuotation inline" title="Unimportance"></i></text>
+                            }else{ 
+                                <text><i class="icon_tagQuotation inline" title="Importance" style="display:none"></i></text>
+                            }
+                            @if (item.IsAttach == true)
+                            {
+                                <i class="icon_fileQuotation inline" id="tag_@{@ID}"></i>
+                            }
+                            else
+                            {
+                                <i class="icon_fileQuotation mar_t5 inline" id="tag_@{@ID}" style="display:none"></i>
+                            }
+                        </td>
+                        <td style="width:330px"> 
+                            <a href="@Url.Action("Detail","Quotation",new {id =item.QuotationID, area ="MyB2B"})" style="color:#333">             
+                                @if (item.IsRead == true)
+                                {
+                                    if(item.QuotationStatus == "Q"){
+                                        <text>@From.ContactFirstName  (@From.ContactEmail)</text>
+                                    }else{
+                                        <text>@item.ReqFirstName  (@item.ReqEmail)</text>
+                                    }
+                                }
+                                else
+                                {
+                                    if(item.QuotationStatus == "Q"){
+                                        <text><b>@From.ContactFirstName (@From.ContactEmail)</b></text>
+                                    }else{
+                                         <text><b>@item.ReqFirstName (@item.ReqEmail)</b></text>
+                                    }
+                                }
+                            </a>
+                        </td>
+                        <td style="width:430px">
+                             <a href="@Url.Action("Detail","Quotation",new {id =item.QuotationID , area ="MyB2B"})" style="color:#333">
+                                @if (item.IsRead == true)
+                                {
+                                <text>@item.ProductName - จำนวนสั่งซื้อ @item.Qty @item.QtyUnit</text>
+                                }
+                                else
+                                {
+                                <text><b>@item.ProductName - จำนวนสั่งซื้อ @item.Qty @item.QtyUnit</b></text>
+                                }
+                             </a>
+                        </td>
+                        <td style="width:230px"> 
+                            @{
+                                var SendDate = "";
+                                var SendTime = "";
+                                if (item.SendDate != null)
+                                {
+                                    SendDate = (DateTime.Parse(item.SendDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                                    SendTime = (DateTime.Parse(item.SendDate.ToString()).ToString("HH:mm")).ToString();
+                                }
+                            }
+                            @if (item.IsRead == false)
+                            {
+                                <b>วันที่ @SendDate || เวลา @SendTime น.</b>
+                            }
+                            else
+                            {
+                                <span>วันที่ @SendDate || เวลา @SendTime น.</span>
+                            }
+                        </td>
+                    </tr>
+                    }
+                }  
+            </tbody>
+        </table>
+    }
+}
+@Html.Partial("UC/Grid/PagingPostUC")
+

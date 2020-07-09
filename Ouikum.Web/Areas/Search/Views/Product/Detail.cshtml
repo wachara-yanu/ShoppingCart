@@ -1,0 +1,159 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.ChkPage = "";
+    var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+    var product = (view_Product)ViewBag.ProductDetail;
+}
+@section head{
+    <link rel="canonical" href="http://@res.Common.lblDomainShortName/Search/Product/Detail/@product.ProductID/@Url.ReplaceUrl(product.ProductName)" />
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Search/Product.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/SwiperUC/idangerous.swiper.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/SwiperUC/idangerous.swiper.scrollbar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("MessageCenter/MessageCenter.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.core.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.widget.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.rcarousel.min.js")" type="text/javascript"></script>
+    <link href="@Url.css("UC/CaptchaUC/CaptchaUC.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/PrettyPhotoUC/prettyPhoto.css")" rel="stylesheet" type="text/css" />
+
+    <link rel="stylesheet" type="text/css" href="@Url.css("Home/Slide.css")" media="screen" />
+    <!--<link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" />-->
+    <link href="~/Content/Home/Home.css" rel="stylesheet" />
+    <style>
+        #tag-chat-status {
+            bottom: 55px;
+            right: 10px;
+        }
+    </style>
+}
+@section js{
+    <script src="@Url.js("UC/SwiperUC/idangerous.swiper-2.1.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.jsoncookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("Search/Product.js")" type="text/javascript"></script>
+    <script src="@Url.js("Compare/Compare.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5099beca46b02aa8"></script>
+    <script src="@Url.js("UC/TinyScrollbarUC/jquery.tinyscrollbar.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/PrettyPhotoUC/jquery.prettyPhoto.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#scrollbar1').tinyscrollbar();
+            $('#scrollbarShortdes').tinyscrollbar();
+            $('#scrollbarMembercard').tinyscrollbar();
+            //captcha
+            // $('#QapTcha').QapTcha();
+        });
+
+
+
+    </script>
+    <script type="text/javascript" src="@Url.js("Home/Home.js")"></script>
+}
+<div class="ContentDetail">
+    @if (ViewBag.ProductCount != null)
+    {
+        var item = (view_Product)ViewBag.ProductDetail;
+        <div id="detailin" style="z-index:2;width:1100px;margin-top:-50px">
+            <a href="@Url.Action("Product/List","Search",new{area=""})" class="cursor inline mar_t15" style="border: none;">
+                <span class="fl_l icon_backSearch mar_t4 mar_r5"></span>
+                <span class="fl_r mar_t10 mar_r25">
+                    <p style="line-height: 5px;font-size:14px">กลับไปหน้าค้นหาสินค้า</p>
+                </span>
+            </a>
+
+        </div>
+
+        <div class="clean5"></div>
+        <div id="Detail">
+            @Html.Partial("UC/ProductUC/ProductDetailUC")
+            <hr style="width:1095px">
+        </div>
+        <div class="clean"></div>
+        <div id="divDescription">
+            @Html.Partial("UC/ProductUC/ProductTabPaymentUC")
+        </div>
+        <div class="clean10"></div>
+        <div id="Home-Feature">
+            @Html.Partial("UC/Feature")
+        </div>
+        <div class="clean10"></div>
+        <div class="tabTitle" style="border-top:1px solid #eee;padding:0px;width:100%;padding-bottom:10px">
+            <h3 class="label-header fontOrange" style="line-height:25px;font-weight:normal">
+                <p class="font_xxl">@res.Message_Center.lblSend_contact</p>
+            </h3>
+        </div>
+        <div id="divMessage">
+            @Html.Partial("UC/ProductUC/SendMessageUC")
+        </div>
+        <div class="clean10"></div>
+    }
+    else
+    {
+        <div class="divRow" style="height:100px; line-height:100px">
+            <center>
+                <span>@res.Common.lblNotFound</span>
+            </center>
+        </div>
+    }
+</div>
+<div class="clean20"></div>
+@{
+    if (user.CompID != 0 && user.CompID == product.CompID)
+    {
+        <div class="EditSet">
+            <div class="btn-group dropup">
+                <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" id="menu_dropdown">
+                    <i class="icon-cog"></i>&nbsp;
+                    <span class="caret"></span>
+                </a>
+                <ul class="dropdown-menu fontsize12" style="text-align:left;">
+                    <li><a href="@Url.Action("Product/Index", "MyB2B", new { area = "" })"><i class="icon-pencil"></i>แก้ไขข้อมูลสินค้า</a></li>
+                    <li><a target="_blank" href="http://www.ouikum.com"><i class="icon-file"></i>เข้าสู่ My Ouikum</a></li>
+                </ul>
+            </div>
+        </div>
+    }
+}
+
+@*สินค้าที่เกี่ยวข้อง*@
+@*@Html.Partial("UC/FooterUC/TabMenuShortcutUC")  *@
+
+<style>
+    .mycrm_b2b_promo_wrapper {
+        position: fixed;
+        bottom: 0px;
+        left: 0px;
+        right: 0px;
+        width: 652px;
+        height: 107px;
+        margin: auto auto;
+    }
+
+        .mycrm_b2b_promo_wrapper ._close {
+            position: absolute;
+            right: -20px;
+            top: -20px;
+            width: 20px;
+            cursor: pointer;
+        }
+</style>
+@*<div class="mycrm_b2b_promo_wrapper">
+     <img class="_close" src="~/Content/Default/images/icon-close-circled-128.png" />
+    <a href="https://www.sogoodweb.com/Package/Register?ref=b2bthai.com" target="_blank">*@
+@*<img src="~/Content/Default/images/SoGoodWebxB2BThaiPromotion.jpg" />*@
+@*<img src="@Url.Content("~/Content/Default/images/SoGoodWebxB2BThaiPromotion.jpg")" />*@
+@*<img src="http://ouikumstorage.blob.core.windows.net/upload/Content/Default/images/SoGoodWebxB2BThaiPromotion.jpg" />
+        </a>
+    </div>*@
+<script>
+    $(function () {
+        $(".mycrm_b2b_promo_wrapper ._close").click(function () {
+            $(".mycrm_b2b_promo_wrapper").remove();
+        })
+    })
+</script>

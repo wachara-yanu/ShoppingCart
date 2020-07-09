@@ -1,0 +1,135 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Product.lblMng_Premium;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+    @*<link href="@Url.css("Admin/WebConfig/AdminMember.css")" rel="stylesheet" type="text/css" />*@
+    <link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />  
+    <link href="@Url.css("UC/DatePeriodUC/ui.daterangepicker.css")" rel="stylesheet" type="text/css" />
+    @*<script src="@Url.js("Default.js")" type="text/javascript"></script>*@
+}
+
+<div id="autoHeight" class="ContentAdmin" style="margin-top: -5px;">
+    <div class="clean30"></div>
+    @Html.Partial("Admin/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+    @*@Html.Partial("Admin/ApproveCenterMainMenu")*@
+    <!---------------------------Table------------------------------>
+    <div id="main_content" style="margin:0px 10px 10px 10px;">
+        @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+        { 
+            @Html.Partial("UC/SearchForm")
+            <div style="margin:10px 0;"> 
+                <span class="btnCheckAll mar_r5">
+                    <label class="checkbox checkall inline">
+                        <input type="checkbox" onclick="CheckBoxall($(this))"/> @res.Common.btnSelect
+                    </label>
+                </span>
+                <a class="btn btnNew" id="New"><i class="icon-plus-sign mar_t2"></i>
+                    @res.Common.btnNew
+                </a>
+                <button class="btn btnDeleteAll" id="Delete" rel="popover" type="button"><i class="icon-remove-sign mar_t2"></i>
+                    @res.Common.btnDelete
+                </button>
+                <span id="SendMails_1" class="btn hide" style="margin:2px;" onclick="Send_mail(1);">
+                    <i class="icon-envelope"></i>
+                    @res.Common.btnSendMessage
+                </span>
+                <span id="SendMails_2" class="btn hide" style="margin:2px;" onclick="Send_mail(2);">
+                    <i class="icon-envelope"></i>
+                    @res.Common.btnSendMessage
+                </span>
+                @Html.Partial("UC/ExpireForm") 
+            </div>
+            <div class="clean10 hide" id="hideMar10"></div>
+            <div style="width:100.5%">@Html.Partial("UC/Grid/GridUC")</div>
+            <div class="clean50"></div>
+        }
+    </div>
+    
+    @Html.Partial("UC/EditModal") 
+
+    <div class="modal_1200 hide fade custom-size" id="ProductListModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4>Product List</h4>
+        </div>
+        <div class="modal-body" style="max-height:600px">
+            @Html.Partial("UC/ProductListModal") 
+        </div>
+    </div>
+
+    <div class="modal_700 hide fade custom-size" id="AddProductHotModal" data-id="" data-compid="" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+        <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+        <h4>Product List</h4>
+        <input type="hidden" id="CompID" class="CompID" name="CompID" value="" />
+            <input type="hidden" id="HotFeaProductID" class="HotFeaProductID" name="HotFeaProductID" value="" />
+        </div>
+        <div class="modal-body" style="max-height:600px">
+             <form id="hotfeat-form" class="form-search" style="width:100%">
+                <div class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 10px 0px;width: 93.3%">
+                         <div class="form-inline">
+                            <input type="text" class="span2" id="HotTextSearch" name="HotTextSearch" placeholder="@res.Common.lblSearch"> 
+                            <label class="checkbox mar_l10"> @res.Common.lblSearch_by : </label>
+                            <select class="span2" name="HotSearchType" id="HotSearchType">
+                                <option value="ProductName" selected >@res.Product.lblPro_name</option>
+                                <option value="CompName" >@res.Company.lblCompName</option>
+                            </select>
+                            <button type="submit" class="btn btn-primary mar_l10 searchmodal">@res.Common.lblSearch</button>
+                        </div>
+                    <div class="clean10"></div>
+                    </div>
+
+                <div class="clean10"></div>
+                <div id="hotfeat-content"></div> 
+             </form>
+           
+        </div>
+    </div>
+
+</div>
+@section js{
+<script src="@Url.js("Admin/HotFeat.js")" type="text/javascript" charset="UTF-8"></script>
+<script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script>
+
+<script type="text/javascript">
+    $(function () {
+        ActiveMenu(4);
+        $('.rangeA').daterangepicker();
+    });
+
+    function CheckBoxall(Obj) {
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            $(".cbxCompID").attr("checked", "checked");
+            $(".cbxCompID").attr("value", "true");
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+            $(".btnDeleteAll").addClass("checkNow");
+
+        } else {
+            $(".cbxCompID").removeAttr("checked");
+            $(".cbxCompID").attr("value", "false");
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+            $(".btnDeleteAll").removeClass("checkNow");
+        }
+
+    }
+    function CheckBox(Obj) {
+
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+            $(".btnDeleteAll").addClass("checkNow");
+
+        } else {
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+            $(".btnDeleteAll").removeClass("checkNow");
+        }
+    }
+</script>
+}

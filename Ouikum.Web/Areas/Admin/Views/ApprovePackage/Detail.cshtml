@@ -1,0 +1,111 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+@{
+    ViewBag.Title = "สั่งซื้อ/ชำระเงิน";
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+    var OrderComp = (view_OrderDetailComp)ViewBag.OrderComp;
+}
+@section head{
+
+    <link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />  
+    <link href="@Url.css("UC/DatePeriodUC/ui.daterangepicker.css")" rel="stylesheet" type="text/css" />
+    <style>
+        table {
+            max-width: 100%;
+            background-color: transparent;
+            border-collapse: collapse;
+            border-spacing: 0;
+            width: 100%;
+        }
+
+        td {
+            border: 1px solid #ccc;
+            padding:10px;
+        }
+    </style> 
+}
+@using res = Prosoft.Resource.Web.Ouikum
+<div id="autoHeight" class="ContentAdmin" style="margin-top: -5px;">
+<div class="clean30"></div>
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/ApproveCenterMainMenu")*@
+<!---------------------------Table------------------------------>
+<div id="main_content" style="margin:0px 10px 10px 10px;">
+@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+{  
+    <input type="hidden" id="hidUrlApprove" value="Admin/ApprovePackage/Approve" />
+    <input type="hidden" id="hidUrlReject" value="Admin/ApprovePackage/Reject" />
+    <input type="hidden" id="hidUrlDelete" value="Admin/ApprovePackage/Delete" />
+    
+    <div style="margin:10px 10px 10px 0px;">
+        <button class="approve btn" type="button" data-id="@OrderComp.OrderID" style="margin:2px;">@res.Common.lblApprove</button>
+        <button class="btn reject-item" data-id="@OrderComp.OrderID" type="button" @if(OrderComp.OrderStatus == "R"){<text>disabled</text>}>@res.Admin.lblReject <span class="caret"></span></button> 
+        <button class="btn delete-item-package" data-id="@OrderComp.OrderID" type="button">
+            <i class="icon-remove-sign mar_t2"></i>
+            ลบ
+        </button>
+    </div>
+
+    <div id="ApproveGrid" style="width: 100.5%;">@Html.Partial("UC/DetailUC")</div>
+    <div class="clean50"></div>
+}
+</div>
+
+
+@Html.Partial("UC/RejectModal") 
+
+<div id="PreviewAdminModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+
+</div>
+
+@section js{
+
+<script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script> 
+
+<script src="@Url.js("Admin/Approve.js")" type="text/javascript" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    $(function () {
+        ActiveMenu(2);
+        $('.rangeA').daterangepicker();
+    });
+
+    function CheckBoxall(Obj) {
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            $(".cbxCompID").attr("checked", "checked");
+            $(".cbxCompID").attr("value", "true");
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+            $("#btnApproveAll").addClass("checkNow");
+            $("#btnRejectAll").addClass("checkNow");
+
+        } else {
+            $(".cbxCompID").removeAttr("checked");
+            $(".cbxCompID").attr("value", "false");
+            $("#btnApproveAll").removeClass("checkNow");
+            $("#btnRejectAll").removeClass("checkNow");
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+        }
+
+    }
+    function CheckBox(Obj) {
+
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+            $("#btnApproveAll").addClass("checkNow");
+            $("#btnRejectAll").addClass("checkNow");
+
+        } else {
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+            $("#btnApproveAll").removeClass("checkNow");
+            $("#btnRejectAll").removeClass("checkNow");
+        }
+    }
+</script>
+}

@@ -1,0 +1,431 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+@using Ouikum.Company;
+@{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;}
+<style>
+    .swiper-container {
+    height: 250px;
+    text-align: center;
+    width: auto;
+}
+</style>
+@if (ViewBag.Company != null)
+{
+    <div class="clean20"></div>
+    @*<div class="clean"></div>
+    
+    <div class="clean10"></div>*@
+    if (ViewBag.Company != null)
+    {
+
+        var chkuser = (UserStatusModel)ViewBag.UserStatus;
+        var comp = (view_Company)ViewBag.Company;
+    <div class="mar_b20">
+        @if (!string.IsNullOrEmpty(comp.CompName))
+        {
+        <h4 class="center mar_10 font_20">@comp.CompName</h4>
+        }
+         @if (!string.IsNullOrEmpty(comp.LogoImgPath))
+         {
+            <div class="center mar_10">
+                <img src="@Url.CompanyLogo(comp.CompID, comp.LogoImgPath)" alt="@comp.LogoImgPath" title="@comp.CompName" id="logoimg" class="cursor img-polaroid" width="120" height="115" onclick="window.location.href = GetUrl('Search/Supplier/Detail/@comp.CompID/@Url.ReplaceUrl(comp.CompName).Trim()')"  alt="@comp.CompName" title="@comp.CompName" onload="resizeImg($(this), 100, 100)" />
+            </div>
+         }else{
+            <div class="center mar_10">
+                <img src="http://www.placehold.it/120x120/EFEFEF/AAAAAA&text=no+image" alt="@comp.LogoImgPath" title="@comp.CompName" id="logoimg" class="cursor img-polaroid" width="120" height="120" onclick="window.location.href = GetUrl('Search/Supplier/Detail/@comp.CompID/@Url.ReplaceUrl(comp.CompName).Trim()')"  alt="No CompanyLogo" title="No CompanyLogo" />
+            </div>
+        }
+    </div>
+    <ul class="nav nav-tabs font_xxl mar_rl10" id="myTab">
+        <li class="maps active"><a data-toggle="tab" href="#Supplier_Info_Tab">@res.Common.lblSupplier_info</a></li>
+        <li class="maps"><a data-toggle="tab" href="#Contac_Us_Tab">@res.Common.lblContac_us</a></li>
+    </ul>
+    <div class="tab-content mar_rl10" id="myTabContent">
+        <div id="Supplier_Info_Tab" class="tab-pane active font_xxl">
+            <div class=" mar_10" style="width:auto">
+                <div class="divRow"><span class="b font_xxl">@res.Company.lblCompany_Profile</span></div>
+                <div class="clean10"></div>
+                    <div class="form-horizontal">
+                        @if (!string.IsNullOrEmpty(comp.BizTypeName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="BizTypeName">@res.Common.chooseBizType : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.BizTypeName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompAddrLine1))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="AddrLine1">@res.Common.lblAddress : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompAddrLine1
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.DistrictName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="DistrictName">@res.Common.lblDistrict : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.DistrictName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.ProvinceName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="ProvinceName">@res.Common.lblProvince : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.ProvinceName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.EmployeeCount))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="EmployeeCount">@res.Company.lblNum_Emp : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.EmployeeCount
+                            </div>
+                        </div>
+                        }
+                        @if ((!string.IsNullOrEmpty(comp.CompProduct)) && (!string.IsNullOrEmpty(comp.CompProduct)))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompProduct">@res.Common.lblProduct : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompProduct
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompPhone))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompPhone">@res.Common.lblPhone : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompPhone
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompFax))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompFax">@res.Common.lblFax : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompFax
+                            </div>
+                        </div>
+                        } 
+                        @if (!string.IsNullOrEmpty(comp.ContactEmail))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="ContactEmail">@res.Common.lblEmail : </label>
+                            <div class="controls" style="padding-top:5px">
+                                <a href="mailto:@comp.ContactEmail">@comp.ContactEmail</a>
+                            </div>
+                        </div>
+                        } 
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompFax">@res.Company.lblGoogleMap : </label>
+                            <div id="map_canvas" style="width:90%; border:1px solid #999;margin:0 auto"></div>
+                            <input type="hidden" id="GMapLatitude" value="@comp.GMapLatitude"/>
+                            <input type="hidden" id="GMapLongtitude" value="@comp.GMapLongtitude"/>
+                            <input type="hidden" id="GPinLatitude" value="@comp.GPinLatitude"/>
+                            <input type="hidden" id="GPinLongtitude" value="@comp.GPinLongtitude"/>
+                            <input type="hidden" id="GZoom" value="@comp.GZoom"/>
+                            <input type="hidden" id="hidContactProvinceID" value="@comp.CompProvinceID" />
+                        </div>
+                    </div> 
+            </div>
+        </div>  
+        <div id="Contac_Us_Tab" class="tab-pane font_xxl">
+           <div class="divRow mar_t10"></div>
+            <div class="clean"></div>
+            <div id="MessageContent" style="float: left; width:100%">
+                <form action="@Url.Action("ContactSupplier","Message")" data-ajax="true" data-ajax-begin="BeginLoading" data-ajax-method="Post" data-ajax-success="SendSuccess" id="ContactCompForm" method="post" novalidate="novalidate">  
+                    @Html.AntiForgeryToken()
+                    <div id="MsgHeadContent">
+                    @if (comp != null)
+                    {   <input type="hidden" id="hidToCompName" name="ToCompName" class="span10" value="@comp.CompName"/>
+                        <input type="hidden" id="hidToCompID" name="ToCompID" value="@comp.CompID"/>
+                        <input type="hidden" id="hidToCompEmail" name="ToCompEmail" value="@comp.ContactEmail"/>
+                        
+                        <span class="inline Checkfield" style="width:100%">
+                            <label class="span2 font_18">@res.Message_Center.btnTo : </label>
+                            <label class="span10 font_18" style="margin-bottom:10px;margin:0"><p>@comp.CompName</p><p>[@res.Common.lblTel : @comp.CompPhone]</p></label>
+                        </span>
+                    }
+                    else
+                    {
+                        <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 font_18">@res.Message_Center.pdToEmail : </label>
+                            <input type="text" id="txtToEmail" name="ToEmail" class="span10" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" placeholder="@res.Message_Center.pdToEmail"/>
+                        </span>
+                    }
+                    
+                    @if (chkuser.CompID > 0)
+                    {
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 font_18">@res.Message_Center.btnFrom : </label>
+                        <input type="text" id="txtFromName" name="FromName" class="span10" value="@chkuser.CompName" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" placeholder="@res.Message_Center.pdFromName"/>
+                        <input type="hidden" name="FromCompID" value="@chkuser.CompID" />
+                    </span>
+                    <span class="inline" style="width:100%">
+                        <label class="span2 font_18">@res.Message_Center.pdYourPhone : </label>
+                        <input type="text" id="txtFromContactPhone" name="FromContactPhone" class="span10" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" placeholder="@res.Message_Center.pdYourPhone"/> 
+                    </span>
+                    }
+                    else
+                    {
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 font_18">@res.Message_Center.pdFromName : </label>
+                        <input type="text" id="txtFromName" name="FromName" class="span10" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" placeholder="@res.Message_Center.pdFromName"/>
+                    </span>
+                    <span class="inline Checkfield" style="width:100%">
+                        <label class="span2 font_18">@res.Common.lblEmail : </label>
+                        <input type="text" id="txtFromEmail" name="FromEmail" class="span10" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" placeholder="@res.Message_Center.pdFromEmail"/>
+                    </span>
+                    <span class="inline" style="width:100%">
+                        <label class="span2 font_18">@res.Common.lblPhone : </label>
+                        <input type="text" id="txtFromContactPhone" name="FromContactPhone" class="span10" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" placeholder="@res.Message_Center.pdYourPhone"/> 
+                    </span>
+                    }
+                    <span class="inline" style="width:100%">
+                        <label class="span2 font_18">@res.Message_Center.lblSubject : </label>
+                        @Html.TextArea("MsgDetail", new { @rows = "5", @class = "mar_r10 span10" })
+                        <input type="hidden" id="txtSubject" name="Subject" class="span10" value="@res.Message_Center.lblContactComp : @comp.CompName"/>
+                    </span>
+                </div>
+                <span class="inline Checkfield" style="width:100%">
+                    <label class="span2 font_18"></label>
+                    <span class="checkbox inline font_18">
+                        <input type="checkbox" name="IsImportance" onclick="chkImportance($(this))"/>
+                    @res.Message_Center.lblContactImmediately
+                    </span>
+                </span>
+                <div>
+                    <div class="clean20"></div>
+                    <button type="submit" class="btn btn-danger span12 mar_b10" id="btnSendMessage" style="height:45px;font-size:18px" data-loading-text="Loading..." onclick="OpenLoading(true)">
+                    @res.Message_Center.btnSendMessage</button>
+                    <button type="button" class="btn span12" style="height:45px;font-size:18px" data-loading-text="Loading..." onclick="document.location.reload(true);">@res.Common.btnCancel</button>
+                </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    @*<h4 class="mar_10">@res.Common.lblProduct</h4>
+    <div class="device mar_t20">
+        <a class="arrow-left" href="#"></a> 
+        <a class="arrow-right" href="#"></a>
+            <div class="swiper-container">
+                <div class="swiper-wrapper">
+                @foreach (var item in (List<view_SearchProduct>)ViewBag.CompanyPorducts)
+                { 
+                    <div class="swiper-slide">
+                        <div class="content-slide">
+                            <div align="center">
+                            <div class="divNewPro">
+                            <img class="itemImg" src="@Url.Product(item.CompID, item.ProductID, item.ProductImgPath)" alt="@item.ProductName" onload="resizeImg($(this), 200, 200);resizeNewPro($(this));" />
+                            </div>
+                            </div>
+                            <p class="title">
+                                <a class="substr center" title="@item.ProductName" style=" line-height:18px; display:block;" href="@Url.Content(res.Pageviews.PvProductDetail + item.ProductID + "/" + @Url.ReplaceUrl(item.ProductName))">
+                                    <div>@Html.SubText(item.ProductName, 40)</div>
+                                </a>
+                            </p>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>  
+        <div class="pagination hide"></div>
+    </div>*@
+    }
+<div class="clean"></div>
+}
+<script type="text/javascript">
+    $(function () {
+        var w = window.innerWidth-20;
+        var h = 250;
+        if (w > 480) {
+            h = 300;
+        }
+        if (w > 670) {
+            h = 350;
+        }
+        if (w > 980) {
+            h = 400;
+        }
+        if (w > 1024) {
+            h = 500;
+        }
+        $('#map_canvas').height(h + 'px');
+
+      var mySwiper = new Swiper('.swiper-container', {
+          pagination: '.pagination',
+          loop: false,
+          grabCursor: true,
+          paginationClickable: true,
+      })
+      $('.arrow-left').on('click', function (e) {
+          e.preventDefault()
+          mySwiper.swipePrev()
+      })
+      $('.arrow-right').on('click', function (e) {
+          e.preventDefault()
+          mySwiper.swipeNext()
+      })
+
+      $('#myTab a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+      })
+      loadmaps();
+      $('.maps').click(function () {
+          loadmaps();
+      })
+
+        // validate
+      $('#ContactCompForm').validate(
+       {
+           rules: {
+
+               txtToEmail: {
+                   required: true,
+                   email: true
+               },
+               txtFromName: {
+                   required: true
+               },
+               txtFromEmail: {
+                   required: true,
+                   email: true
+               },
+
+               txtSubject: {
+                   required: true
+               },
+               MsgDetail: {
+                   required: true
+               }
+           },
+           messages: {
+               txtToEmail: {
+                   required: label.vldenter_recipient
+               },
+               txtFromName: label.vldfill_yourname,
+               txtFromEmail: {
+                   required: label.vldfill_youremail,
+                   email: label.vldenter_validemail
+               },
+               txtSubject: label.vldenter_subject,
+               MsgDetail: label.vldfill_yourmessage
+
+           },
+           highlight: function (label) {
+               $(label).closest('.inline').removeClass('success');
+               $(label).closest('.inline').addClass('error');
+               OpenLoading(false);
+           },
+           success: function (label) {
+               label.closest('.inline').removeClass('error');
+               label.closest('.inline').addClass('success');
+           }
+       });
+  })
+    function chkImportance(Obj) {
+
+        var msgImportance = "";
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+
+        } else {
+            Obj.attr("value", "false");
+            Obj.removeAttr("checked");
+
+        }
+    }
+
+    function BeginLoading() {
+        OpenLoading(true, null, $('#Wrapper'));
+    }
+
+    function SendSuccess() {
+        OpenLoading(false, null, $('#Wrapper'));
+        bootbox.alert(label.vldsend_success);
+    }
+
+    function openWindowChat(url, target) {
+        var oldWin = window.open(url, target, 'width=620,height=565,menubar=no,status=no');
+        oldWin.focus();  // give focus 
+        return false;
+    }
+    function loadmaps(){
+        resizeImg($('#logoimg'), 100, 100)
+        if ($("#GMapLatitude").val() == 0 && $('#GMapLongtitude').val() == 0) {
+            var CompProvinceID = parseInt('@(ViewBag.Province)');
+            GetDefaultGmap(CompProvinceID);
+        } else {
+            initialize($('#GMapLatitude').val(), $('#GMapLongtitude').val(), $('#GPinLatitude').val(), $('#GPinLongtitude').val(), $('#GZoom').val(), 0);
+        }
+    }
+</script>
+<script type="text/javascript">
+    $(function () {
+        var mySwiper = new Swiper('.swiper-container', {
+            pagination: '.pagination',
+            loop: false,
+            grabCursor: true,
+            paginationClickable: true,
+        })
+        $('.arrow-left').on('click', function (e) {
+            e.preventDefault()
+            mySwiper.swipePrev()
+        })
+        $('.arrow-right').on('click', function (e) {
+            e.preventDefault()
+            mySwiper.swipeNext()
+        })
+    })
+    function GetDefaultGmap(CompProvinceID) {
+        // OpenLoading(true);
+
+        $.ajax({
+            url: GetUrl("Website/setDefaultGmap"),
+            data: { ProvinceID: parseInt(CompProvinceID) },
+            type: "POST",
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                $('#GMapLatitude').val(data["GMapLatitude"]);
+                $('#GMapLongtitude').val(data["GMapLongtitude"]);
+                $('#GPinLatitude').val(data["GPinLatitude"]);
+                $('#GPinLongtitude').val(data["GPinLongtitude"]);
+                $('#GZoom').val(data["GZoom"]);
+                $("#hidContactProvinceID").val(CompProvinceID);
+
+                initialize($('#GMapLatitude').val(), $('#GMapLongtitude').val(), $('#GPinLatitude').val(), $('#GPinLongtitude').val(), $('#GZoom').val(), 0);
+            }
+        });
+    }
+function resizeNewPro(obj) {
+    $(obj).parent().height($(obj).height()); 
+    $(obj).parent().width($(obj).width());
+}
+function chkImportance(Obj) {
+
+    var msgImportance = "";
+    if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+        Obj.attr("checked", "checked");
+        Obj.attr("value", "true");
+
+    } else {
+        Obj.attr("value", "false");
+        Obj.removeAttr("checked");
+
+    }
+}
+</script>

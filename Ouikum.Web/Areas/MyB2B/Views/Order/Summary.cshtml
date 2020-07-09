@@ -1,0 +1,145 @@
+﻿@{
+    ViewBag.Title = "Summary";
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+}
+
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{ 
+    var Order = (b2bOrder)ViewBag.Order;
+}
+
+<style>
+    .tab-process-order
+    {
+        display:inline-block;
+        border-bottom:5px solid #F2F2F2;
+        height:20px;
+        line-height:20px;
+        padding:0 20px;
+        margin-left:2px;
+    }
+    
+    .tab-process-order.active
+    { 
+        border-bottom:5px solid #006699;
+    }
+</style>
+<script src="@Url.js("Default.js")" type="text/javascript"></script>
+
+<div class="containner">
+    <div class="clean20"></div>
+    <div class="fl_l mar_l20"><h4>@res.Order.lblPackage_Price #  :</h4></div>
+    <div class="fl_r mar_r10" style=" margin-right:10px;">
+        <div class="fl_l tab-process-order " >@res.Order.lblStep1</div>
+        <div class="fl_l tab-process-order active ">@res.Order.lblStep2</div>
+        <div class="fl_l tab-process-order">@res.Order.lblStep3</div> 
+    </div>
+
+    <div class="clean10"></div>
+
+    <div class="container-fluid">
+        <div class="row-fluid">
+            <div class="span8">
+                <input type="hidden" id="hidOrderID" value="@(ViewBag.OrderID)" />
+                <div class="mar_l20">
+                    <div id="SummaryContent">
+                    </div>
+                </div>
+            </div>
+            <div class="span4">
+               @Html.Partial("MessageCenter/ContactDetail")
+            </div>
+        </div>
+    </div>
+
+    <div class="container-fluid mar_r10 mar_l10">
+        <!--foreach (var it in (List<View_PaymentAccount>)ViewBag.PaymentAccount)
+        {
+            <fieldset style="padding:1em" class="span9">
+                <legend><b>Bank Information</b></legend>
+                <table>
+                    <tr>
+                        <td>it.BankName it.BranchName</td>
+                    </tr>
+                    <tr>
+                        <td>ชื่อบัญชี it.AccName เลขที่บัญชี it.AccNo</td>
+                    </tr>
+                </table>
+            </fieldset>
+        }-->
+    </div>
+    <div class="clean60"></div>
+ </div>
+
+ @section  js{
+     <script type="text/javascript">
+         $(function () {
+             SubmitPage();
+         });
+
+         function CancelOrder(id) {
+             data = {
+                 OrderID: id
+             }
+             console.log(data);
+             $.ajax({
+                 url: GetUrl('@res.Pageviews.UrlOrderSummary'),
+                 data: data,
+                 traditional: true,
+                 success: function (data) {
+                     if (CheckError(data)) {
+                         window.location = GetUrl('@res.Pageviews.UrlOrderPackage');
+                     }
+                 },
+                 error: function () {
+                 },
+                 type: "POST"
+             });
+             return false;
+         }
+
+         function DeleteOrderDetail(OrderDetailId, OrderId) {
+             data = {
+                 OrderDetailID: OrderDetailId,
+                 OrderID: OrderId
+             }
+             $.ajax({
+                 url:
+
+                     ('@res.Pageviews.UrlCancelOrder'),
+                 data: data,
+                 traditional: true,
+                 success: function (data) {
+                     if (CheckError(data)) {
+                         SubmitPage();
+                     }
+                 },
+                 error: function () {
+                 },
+                 type: "POST"
+             });
+             return false;
+         }
+
+         function SubmitPage() {
+             data = {
+                 OrderID: parseInt($('#hidOrderID').val(), 10)
+             }
+             OpenLoading(true, null, $('#SummaryContent'));
+             $.ajax({
+                 url: GetUrl('@res.Pageviews.UrlOrderSummary'),
+                 data: data,
+                 traditional: true,
+                 success: function (data) {
+                     $('#SummaryContent').html(data);
+                     OpenLoading(false, null, $('#SummaryContent'));
+                 },
+                 error: function () {
+                 },
+                 type: "POST"
+             });
+             return false;
+         }
+     </script>
+ }

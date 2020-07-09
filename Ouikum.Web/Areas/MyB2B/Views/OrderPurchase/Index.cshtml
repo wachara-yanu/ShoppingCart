@@ -1,0 +1,306 @@
+﻿@{
+    ViewBag.Title = "รายการสั่งซื้อ";
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+
+@section head{
+    <link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />
+}
+
+<div class="row-fluid inline" style="vertical-align:top; margin-top:20px; min-width:1200px;">
+
+    <div class="clean10"></div>
+    @using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+    {
+        @*<div class="fl_l" style="margin:10px 0;">
+                @Html.Partial("UC/ExpireForm")
+            </div>*@
+        <div class="clean"></div>
+        <!--Sidebar content-->
+        <div class="mar_t10">
+            <div class="data_system">
+                <div class="header_sys" style="min-width:1203px;">
+                    <div class="fl_l">
+                        <h5 class="mar_l20">จัดการรายการสั่งซื้อสินค้า</h5>
+                    </div>
+                    <div class="fl_r">
+                        <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#HotFead">
+                            <i class="icon-arrow icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="HotFead" class="CollapseDetail">
+                    <div class="show">@Html.Partial("UC/Grid/GridUC")</div>
+                </div>
+            </div>
+        </div>
+    }
+</div>
+
+<div class="clean30"></div>
+
+
+@Html.Partial("ModalForm/ManageOrder")
+
+@section js{
+
+    <script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $(".btnCollapse").live('click', function () {
+                var data = $(this).index(".btnCollapse");
+                var Icon = $(this).find("i")
+
+                var target = $(this).attr('data-target');
+
+                console.log(target)
+
+                if (Icon.hasClass("icon-chevron-down")) {
+                    Icon.removeClass('icon-chevron-down');
+                    Icon.addClass("icon-chevron-up")
+                    $(target).slideDown();
+                } else {
+                    Icon.addClass("icon-chevron-down")
+                    Icon.removeClass('icon-chevron-up');
+                    $(target).slideUp();
+                }
+            });
+
+            $('.exp').click(function () {
+                $('#ExpireStatus').val($(this).val());
+            });
+
+            //$('.editOrderPackagGold').live('click', function () {
+            //    $('#editOrderPackagGold').attr('data-id', $(this).attr('data-id'))
+            //    OrderDetailID = parseInt($(this).attr('data-id'), 10);
+
+            //    $.ajax({
+            //        url: 'MyPackage/GetEditByID',
+            //        traditional: true,
+            //        type: "Post",
+            //        data: {
+            //            OrderDetailID: OrderDetailID
+            //        },
+            //        success: function (data) {
+            //            if (data.IsResult == true) {
+            //                $('#OrderDetailIDGold').val(OrderDetailID);
+            //                $('#PackageIDGold').val(data.PackageID);
+
+            //                var orderIsShow = data.orderIsShow;
+            //                var htmlType = "";
+            //                htmlType += "<select name=\"editStatus\" class=\"editStatus\" id=\"editStatus\" style=\"width:225px\" >";
+            //                for (var i = 0; i < orderIsShow.length; i++) {
+            //                    htmlType += "<option value=\"" + orderIsShow[i].PackageID + "\"" + orderIsShow[i].PackageID + "\" >" + orderIsShow[i].PackageName + "</option>"
+            //                }
+            //                htmlType += "</select>"
+            //                $('#EnumGoldStatus').html(htmlType);
+
+            //                $('#editPackagGold').modal('show')
+            //            } else {
+            //            }
+            //        }
+            //    });
+            //});
+
+            //$('.editOrderPackag').live('click', function () {
+            //    $('#editOrderPackag').attr('data-id', $(this).attr('data-id'))
+            //    OrderDetailID = parseInt($(this).attr('data-id'), 10);
+
+            //    $.ajax({
+            //        url: 'MyPackage/GetEditByID',
+            //        traditional: true,
+            //        type: "Post",
+            //        data: {
+            //            OrderDetailID: OrderDetailID
+            //        },
+            //        success: function (data) {
+            //            if (data.IsResult == true) {
+            //                $('#editPrice').val(data.Price);
+            //                $('#time').val(data.Duration + " วัน");
+            //                $('#OrderDetailID').val(OrderDetailID);
+            //                $('#PackageID').val(data.PackageID);
+
+            //                $('#editOrderPackag').modal('show')
+            //            } else {
+            //            }
+            //        }
+            //    });
+            //});
+
+            $('.editStatusOrder').live('click', function () {
+                $('#editStatusOrder').attr('data-id', $(this).attr('data-id'))
+                OrDetailID = parseInt($(this).attr('data-id'), 10);
+
+                $.ajax({
+                    url: 'OrderPurchase/GetEditOrderStatus',
+                    traditional: true,
+                    type: "Post",
+                    data: {
+                        OrDetailID: OrDetailID
+
+                    },
+                    success: function (data) {
+                        if (data.IsResult == true) {
+                            $('#OrDetailCode').val(data.OrDetailCode);
+                            $('#ProductName').val(data.ProductName);
+                            $('#StatusProduct').val(data.StatusProduct);
+
+                            //if (StatusProduct == 'A')
+                            //{
+                            //    //$('#StatusOrder option:selected').attr("ยืนยันการสั่งซื้อ");
+                            //    $("#StatusOrder option[value=B]").attr('selected', 'selected');
+                            //} else if (StatusProduct == 'B')
+                            //{
+                            //    //$('#StatusOrder option:selected').attr("ยืนยันการแจ้งชำระเงิน");
+                            //     $("#StatusOrder option[value=C]").attr('selected', 'selected');
+                            //}
+
+
+
+                            $('#editStatusOrder').modal('show')
+                        }
+                    }
+                });
+            });
+
+            $('#save_editGold').live('click', function () {
+                OpenLoading(true);
+                $.ajax({
+                    url: GetUrl("MyPackage/EditPackageGold"),
+                    data: {
+                        PackageID: $('#PackageIDGold').val(),
+                        Price: $('#editPriceGold').val(),
+                        Duration: $('#timeGold1').val(),
+                        OrderDetailID: $('#OrderDetailIDGold').val()
+                    },
+                    type: "POST",
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        window.location = GetUrl("MyPackage");
+                    },
+                    error: function () {
+                        OpenLoading(false);
+                        bootbox.alert("Save Package error");
+                        window.location = GetUrl("MyB2B/Main/Index");
+                    }
+                });
+            });
+
+
+            $('#save_edit').live('click', function () {
+                OpenLoading(true);
+                $.ajax({
+                    url: GetUrl("MyPackage/UpdateInactive"),
+                    data: {
+                        OrderDetailID: $('#OrderDetailID').val()
+                    },
+                    type: "POST",
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        $.ajax({
+                            url: GetUrl("Member/SavePackage"),
+                            data: {
+                                PackageID: "" + data.PackageID,
+                                TotalPrice: "" + data.TotalPrice
+                            },
+                            type: "POST",
+                            datatype: "json",
+                            traditional: true,
+                            success: function (data) {
+                                window.location = GetUrl("MyPackage");
+                            },
+                            error: function () {
+                                OpenLoading(false);
+                                bootbox.alert("Save Package error");
+                                window.location = GetUrl("MyB2B/Main/Index");
+                            }
+                        });
+                    },
+                    error: function () {
+                        OpenLoading(false);
+                        bootbox.alert("Save Package error");
+                        window.location = GetUrl("MyB2B/Main/Index");
+                    }
+                });
+            });
+
+
+            $('#save_editHot').live('click', function () {
+
+                $.ajax({
+                    url: GetUrl("OrderPurchase/SaveStatus"),
+                    data: {
+                        OrDetailCode: $('#OrDetailCode').val()
+                    },
+                    type: "POST",
+                    datatype: "json",
+                    traditional: true,
+                    success: function () {
+                        window.location = GetUrl("MyB2B/OrderPurchase/Index");
+                    }
+                    ,
+                    error: function () {
+                        OpenLoading(false);
+                        bootbox.alert("Cannot Save OrderDetail");
+                        window.location = GetUrl("MyB2B/Main/Index");
+                    }
+                });
+            });
+
+            $('#ShowBenefit').live('click', function () {
+                $('#Benefit').modal('show')
+            });
+
+            $('.editStatus').live('click', function () {
+                editStatus = $('.editStatus').val();
+                console.log(editStatus);
+                if (editStatus == 30) {
+                    $('#editPriceGold').val("4000.00");
+                    $('#timeGold').val("182 วัน");
+                    $('#timeGold1').val("182");
+                } else if (editStatus == 31) {
+                    $('#editPriceGold').val("6000.00");
+                    $('#timeGold').val("365 วัน");
+                    $('#timeGold1').val("365");
+                } else {
+                    $('#editPriceGold').val("2500.00");
+                    $('#timeGold').val("90 วัน");
+                    $('#timeGold1').val("90");
+                }
+            });
+
+            $(".SignUpPackageNow").live("click", function () {
+                OpenLoading(true);
+                $.ajax({
+                    url: GetUrl("MyPackage/GetExpiredDate"),
+                    type: "POST",
+                    datatype: "json",
+                    traditional: true,
+                    success: function (data) {
+                        if (data.Order > 0) {
+                            window.location = GetUrl("Member/SignUpPackage?ID=1&PackageID=" + data.PackageID);
+                        } else {
+                            window.location = GetUrl("Member/SignUpPackage");
+                        }
+                    },
+                    error: function () {
+                        OpenLoading(false);
+                        bootbox.alert("Save Package error");
+                        window.location = GetUrl("MyB2B/Main/Index");
+                    }
+                });
+
+            });
+        })
+
+
+    </script>
+}
+

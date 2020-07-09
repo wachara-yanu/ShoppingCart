@@ -1,0 +1,63 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{var it = (view_Company)ViewBag.CompanyDetail;
+ }
+
+    <div class="container-fluid padd_5" style="clear:both;float:right;width:100%">
+        <div class="row-fluid">
+            <div class="span4 pull-left">
+             @if (!string.IsNullOrEmpty(it.ContactImgPath))
+             {
+                <img alt="@it.ContactImgPath" src="@Url.CompanyContact(it.CompID, it.ContactImgPath)" onload="resizeImg($(this),80,80);setElementMiddle(0, 50,$(this));"/>
+             }
+            else if(!string.IsNullOrEmpty(it.LogoImgPath)){
+                <img alt="@it.ContactImgPath" src="@Url.CompanyLogo(it.CompID, it.LogoImgPath)" onload="resizeImg($(this),80,80);setElementMiddle(0, 50,$(this));"/>
+            }
+             else
+             {
+                 <img src="@Url.NoImage()" class="mar_center" onload="resizeImg($(this),80,80);setElementMiddle(0, 50,$(this));"/>
+             }
+            </div>
+            <div class="pull-left">
+                <div>
+                    <strong>@it.ContactFirstName @it.ContactLastName</strong><br />
+                    <div class="clearfix"></div>
+                    <a href="mailto:@it.ContactEmail">@it.ContactEmail</a><br />
+                    <div class="clearfix"></div>
+                </div>
+                <div class="clean10"></div>
+                <div>
+                    @if(!string.IsNullOrEmpty(it.ContactAddrLine1) && !string.IsNullOrEmpty(it.ContDistrictName))
+                    {
+                        <text><strong>Address :</strong><br />
+                        @it.ContactAddrLine1 &nbsp; @it.ContactSubDistrict<br />
+                        @it.ContDistrictName&nbsp;@it.ContProvinceName&nbsp;@it.ContactPostalCode<br />
+                        @it.ContactPhone</text>
+                    }else{
+                        <text><strong>Address :</strong><br />
+                        @it.CompAddrLine1 &nbsp; @it.CompSubDistrict<br />
+                        @it.CompDistrictName&nbsp;@it.CompProvinceName&nbsp;@it.CompPostalCode<br />
+                        @it.CompPhone</text>
+                    }
+                </div>
+                <div class="clean10"></div>
+                <div>
+                    @if (it.CompLevel == 1)
+                    {
+                            <div class="Logo_FreeSmall inline"><span class="fontBlue small" style="white-space:nowrap;margin-left:25px">@res.Common.lblFreeMember</span></div>
+                    }
+                    else if (it.CompLevel == 2)
+                    {
+                            <div class="Logo_GoldExpireSmall mar_r5 inline"><span class="fontOrange small" style="white-space:nowrap;margin-left:25px">@res.Common.lblGoldMemberExpired</span></div> 
+                    }
+                    else
+                    {
+                            <div class="Logo_GoldSmall mar_r5 inline"><span class="fontOrange small" style="white-space:nowrap;margin-left:25px">@res.Common.lblGoldMember</span></div> 
+                    }
+                </div>
+                <div class="clean10"></div><div class="clean10"></div>
+                <div style="width:240px;float:right"><a href="@Url.Action("","CompanyWebsite"+"/" + Url.ReplaceUrl(it.CompName) + "/Main/Index/" + it.CompID, new  { area = ""})" target="_blank" class="btn btn-warning pull-left" style="background:#FF6600">@res.Message_Center.btnView_more_details</a>@*Go to Company Website contact us*@
+                <span class="B2BLogo_small fl_r"></span></div>
+            </div>
+        </div>
+    </div>

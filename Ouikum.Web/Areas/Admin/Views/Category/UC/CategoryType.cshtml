@@ -1,0 +1,26 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+ @foreach (var it in (List<b2bCategoryType>)ViewBag.CateTypes)
+ {
+    <div class="CateMenu mar_l30 mar_b10">
+        <img src="@Url.css("Admin/Category/images/img_plus.gif")" class="img-catetype hide" />
+        <a class="cate-type cursor" data-id="@it.CategoryType" data-name="@it.CategoryTypeName" onclick="CategoryLevel1($(this))">@it.CategoryTypeName</a>
+        <img class="edittype cursor hide" src="@Url.css("Admin/Category/images/img_edit.png")" onclick="edittype($(this))" />
+        <img class="deletetype cursor hide" src="/Content/Admin/Category/images/img_delete.png" onclick="if(confirm('คุณต้องการลบหมวดหมู่หรือไม่ ?')){deletetype(@it.CategoryType);}">
+    </div>
+ }
+
+ <div id="myModaltype" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h4 id="myModalLabel">@res.Product.lbledit_catetype : <span class="labletype"></span></h4>
+  </div>
+  <div class="modal-body">
+    @res.Admin.lblCateType: <input id="nametype" type="text" value="" class="nametype" />
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-primary savetype" data-dismiss="modal" aria-hidden="true">@res.Common.btnSave</button>
+    <button class="btn" data-dismiss="modal" aria-hidden="true">@res.Common.btnCancel</button>
+  </div>
+</div>
+ 

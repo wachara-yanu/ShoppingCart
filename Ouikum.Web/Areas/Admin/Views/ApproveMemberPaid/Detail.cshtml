@@ -1,0 +1,50 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum
+@{
+    ViewBag.Title = res.Product.lblProduct_details;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+    <link href="@Url.css("Admin/WebConfig/AdminMember.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Admin/ApproveCenter/ApproveCenter.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Order/Order.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.css("UC/PrettyPhotoUC/prettyPhoto.css")" rel="stylesheet" type="text/css" />
+}
+@{var MemberPaid = (b2bMemberPaid)ViewBag.MemberPaid;}
+
+<div class="mainContent">
+    @Html.Partial("Admin/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+    @*@Html.Partial("Admin/ApproveCenterMainMenu")*@
+    <div style="margin:10px;">
+        <a href="@Url.Action("Index")" class="btn" >@res.Common.btnBack</a>
+        <button data-id="@MemberPaid.MemberPaidID" class="btn approve " type="button" style="margin:2px;">@res.Common.lblApprove</button>
+        <button data-id="@MemberPaid.MemberPaidID" class="btn btnRejectItem" rel="popover" type="button">@res.Admin.btnReject<span class="caret"></span></button>
+    </div>
+    
+    <input type="hidden" id="hidUrlApprove" value="Admin/ApproveMemberPaid/Approve" />
+    <input type="hidden" id="hidUrlReject" value="Admin/ApproveMemberPaid/Reject" />
+    @Html.Partial("MyB2B/Order/PaymentDetail")
+    @Html.Partial("UC/RejectModal")
+    @Html.Partial("UC/FooterUC/AdminFooterUC")
+</div>
+
+@section js{
+
+<script src="@Url.js("Admin/Approve.js")" type="text/javascript" charset="UTF-8"></script>
+<script src="@Url.js("UC/PrettyPhotoUC/jquery.prettyPhoto.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(function () {
+        ActiveMenu(3);
+        //prettyPhoto
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            show_title: false,
+            default_width: 500,
+            default_height: 344,
+            social_tools: false,
+            theme: 'light_rounded'
+        });
+    });
+</script>
+
+}

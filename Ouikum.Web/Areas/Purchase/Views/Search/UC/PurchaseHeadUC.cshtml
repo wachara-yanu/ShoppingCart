@@ -1,0 +1,54 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum.Company;
+@{
+    var user = (UserStatusModel)ViewBag.UserStatus;
+}
+<div class="Homeheadin">
+    <div>
+        <div  class="inline fl_l mar_t15">
+            <a class="B2BLogo fl_l" href="@Url.Action("Index","Home")"></a>   "Index","Home"         
+        </div>
+        <div class="bg-formhead inline fl_r mar_t20 mar_l15" >  
+            <div class="divrow label-header fontDarkBlue PageName"><span class="font_26" style="margin-top:-15px"></span></div>
+            <form id="frmSearch" action="@Url.Action("List", "Product", new  { area = "Search"})" method="get" class="form-inline">
+                <div id="search-main" class="fl_l"> 
+                    <div class="input-append"style="height: 37px;padding-top:7px;">
+                        <input class="txt_search wid_input_searchmain search-select" search-list="search" id="TextSearch" value="@ViewBag.TextSearch" placeholder="@res.Common.lblSearchProduct"   autocomplete="off" name="TextSearch" type="text"style="height: 27px;" />
+                        <button type="submit" class="btn_Search cursor inline btn_main_search" style="border: none;">
+                            <span class="fl_l icon_SearchList mar_l20 mar_t1"></span>
+                            <span class="fl_r mar_t10 mar_r25">
+                                <p style="line-height: 5px;font-size:14px">ค้นหา</p>
+                            </span>
+                        </button>                    </div>                      
+                    <ul id="list-search" class="hidden"  search-list="search" style="display:none;">
+                       
+                        @foreach (var it in ViewBag.EnumServiceType)
+                        {
+                            <li class="list-search-text search-select" data-val="@it.EnumValue"><i class="icon-active icon-ok icon-white"></i><a class="mar_l20">@it.EnumText</a></li> 
+                        }
+                    </ul>                        
+                </div>
+                <div class=" fl_r mar_l20 mar_t7"> 
+                    <span class="fl_l mar_r20 mar_t8 label-header">@res.Common.lblOr</span>
+                    @if (user.CompID > 0)//@ViewBag.ChkPage == "Product"
+                    {
+                        //<a target="_blank" href="@Url.Content(res.Pageviews.PvProductIndex)" class="fl_l btn_postproduct"></a> 
+                        //<a target="_blank" href="@Url.Action("product/Index","MyB2B",new{area=""})" class="fl_l btn_postproduct"></a> 
+                        <a class="fl_r" style="color:#AF6130;background-color:#FED469;border-radius:5px;width:231px;height: 37px;" href="@Url.Action("Index","Main",new {area = "MyB2B"})" target="_blank">
+                            <span class="fl_l mar_t5 mar_l30 font_24 hover_or"><h2 style="font-weight:normal;line-height:5px;font-size:16px">จัดการข้อมูลร้านค้า</h2></span>
+                            <span class="fl_r btn_manageproduct mar_r30"></span>
+                        </a>
+                    }
+                    else{
+                        //<a target="_blank" href="@Url.Content(res.Pageviews.PvBuyleadcenterCh2)"  class="fl_l btn_postbuylead"></a> 
+                        //<a target="_blank" href="http://sme.b2bthai.com/"  class="fl_l btn_postbuylead"></a> 
+                        <a target="_blank" href="@Url.Action("SignUp","Member", new {area = ""})" class="fl_l btn_postproduct"></a> 
+                    }
+
+                </div>    
+            </form>
+        </div>
+    </div>
+</div>
+

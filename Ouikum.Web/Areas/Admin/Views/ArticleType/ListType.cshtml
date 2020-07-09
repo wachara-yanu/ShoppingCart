@@ -1,0 +1,80 @@
+﻿@{
+    ViewBag.Title = "Article List";
+    Layout = "~/Views/MP/MP_AdminArticle.cshtml";
+}
+
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Admin/Article/ManageArticle.css")" rel="stylesheet" type="text/css" />
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+
+<div id="autoHeight" class="ContentAdmin" style="min-width:1203px!important;">
+
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/WebconfigMainMenu")*@
+<!---------------------------Table------------------------------>
+
+<div id="main_content" style="margin:0px 10px 10px 10px;">
+@using (Ajax.BeginForm("ListType", "ArticleType", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+{ 
+    <div id="KeywordGroup">
+        @Html.Partial("UC/ListTypeUC")
+    </div>
+}
+
+    <article class="module_list">
+        <header>
+            <h3 class="module_list_subject">ประเภทบทความ</h3>
+            <div class="action_btn_up btnCollapse"  data-toggle="tooltip"  data-target="#ArticleListType">
+                <i class="icon-arrow icon-chevron-up"></i>
+            </div>
+            <div class="action_btn" id="dels" onclick="if(confirm('@res.Common.btnDel_Confirm')){DelArticleType();}">
+                <img src="~/Content/Admin/Article/image/delete_icon.png" /><span class="mar_l5">ลบ</span> 
+            </div>
+            <a href="@Url.Action("NewType","ArticleType","Admin")">
+                <div class="action_btn" id="add">
+                    <img src="~/Content/Admin/Article/image/add_icon.png" /><span class="mar_l5">เพิ่ม</span>
+                </div>
+            </a>
+        </header>
+    </article>
+
+    <div id="ArticleListType">
+        <div id="ArticleGridType">@Html.Partial("UC/Grid/GridUC")</div>
+    </div>
+</div> 
+
+
+@section js {
+    <script src="@Url.js("Admin/Article/ListArticleType.js")" type="text/javascript"></script>
+  @*<script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script>*@
+
+    <script type="text/javascript">
+
+        /*--------------------- toggle -------------------*/
+
+        $(".btnCollapse").live('click', function () {
+            var data = $(this).index(".btnCollapse");
+            var Icon = $(this).find("i")
+
+            var target = $(this).attr('data-target');
+
+            console.log(target)
+
+            if (Icon.hasClass("icon-chevron-down")) {
+                Icon.removeClass('icon-chevron-down');
+                Icon.addClass("icon-chevron-up")
+                $(target).slideDown();
+            } else {
+                Icon.addClass("icon-chevron-down")
+                Icon.removeClass('icon-chevron-up');
+                $(target).slideUp();
+            }
+        });
+
+    </script>
+
+}

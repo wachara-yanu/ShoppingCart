@@ -1,0 +1,88 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+         <table class="table table-hover grid mar_b10">
+              <thead>
+                 <tr>
+                    <th></th>
+                    <th>@res.Message_Center.lblSender</th>
+                    <th>@res.Message_Center.lblRecipient</th>
+                    <th>@res.Message_Center.lblSubject</th>
+                    <th>@res.Message_Center.lblSendDate</th>
+                </tr>
+              </thead>
+              <tbody>
+                @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+                {
+                   <tr class="nodata b" valign="middle">
+                        <td><div align="center">@res.Common.lblNotFound</div></td>
+                   </tr>
+                }
+                else
+                {
+                    foreach (var item in (List<view_Message>)ViewBag.Messages)
+                    {
+                        int ID = item.MessageID;
+                <tr class="body">
+                    
+                    <td class="span1" style="vertical-align:middle;">
+                        <div class="center">
+                            @if (item.IsFavorite == true)
+                            {
+                                <i class="icon-tags mar_t5 cursor" title="Importance"></i>
+                            }
+                            else
+                            {
+                                <i class="icon-tag mar_t5 cursor" title="Unimportance"></i>
+                            }
+                        </div>
+                    </td>
+                    <td class="span3" style="vertical-align:middle;">
+                        @{string url = res.Pageviews.PvStatMsgDetail; 
+                          //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                          //else { url = res.Pageviews.PvStatMsgDetail; }
+                        }
+
+                    @if (item.FromCompID > 0)
+                    {
+                        <div class=""><a target="_blank" href="@Url.Content(url+"?MessageID=" + item.MessageID + "&&MessageCode=" + item.MessageCode)" style="color:#333">@item.FromCompName</a></div>
+                    }
+                    else if (item.FromCompID == 0 && !string.IsNullOrEmpty(item.FromName))
+                    {
+                        <div class=""><a target="_blank" href="@Url.Content(url+"?MessageID=" + item.MessageID + "&&MessageCode=" + item.MessageCode)" style="color:#333">@item.FromName</a></div>
+                    }else
+                    {
+                        <div class=""><a target="_blank" href="@Url.Content(url+"?MessageID=" + item.MessageID + "&&MessageCode=" + item.MessageCode)" style="color:#333">(ไม่พบรายชื่อ)</a></div>
+                    }
+                    </td>
+                    <td class="span3" style="vertical-align:middle;">
+                    @if (item.ToCompID > 0){
+                        <div class=""><a target="_blank" href="@Url.Content(url+"?MessageID=" + item.MessageID + "&&MessageCode=" + item.MessageCode)" style="color:#333">@item.ToCompName</a></div>
+                    }else{
+                        <div class=""><a target="_blank" href="@Url.Content(url+"?MessageID=" + item.MessageID + "&&MessageCode=" + item.MessageCode)" style="color:#333">(ไม่พบรายชื่อ)</a></div>
+                    }
+                    </td>
+                    <td class="span5" style="vertical-align:middle;">
+                        <div class="">
+                            <a target="_blank" href="@Url.Content(url+"?MessageID=" + item.MessageID + "&&MessageCode=" + item.MessageCode)" style="color:#333">@item.Subject</a>
+                        </div>
+                    </td>
+                    <td class="span2" style="vertical-align:middle;">
+                        <div class="center">
+                            @{
+                    var SendDate = "";
+                    if (item.SendDate != null)
+                    {
+                        SendDate = (DateTime.Parse(item.SendDate.ToString()).ToString("d/M/yyyy HH:mm:ss")).ToString();
+                    }
+                            }
+                            
+                            @SendDate
+                        </div>
+                    </td>
+                </tr>
+                    }
+                }
+              </tbody>
+            </table>
+@Html.Partial("UC/Grid/PagingPostUC")

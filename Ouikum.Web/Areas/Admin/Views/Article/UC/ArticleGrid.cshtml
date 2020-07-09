@@ -1,0 +1,167 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum; 
+@using Ouikum;
+@{  string ListNoPath = "'MyB2B/Company/ChangeListNo'";
+    string CompName = ViewBag.WebCompName;
+}
+<div class="border_table ArticleAdmin module_list_table">
+    <table class="table table-hover  grid" style="margin:0px;">
+        <thead class="HeaderTable">
+            <tr class="header">
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div style="width:25px; text-align:center; margin-bottom:5px;">
+                        <input type="checkbox" class="checkboxAll" value="false" onclick="CheckBoxall($(this))" />
+                    </div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="center" style="width:70px;">
+                        ลำดับ<img src="@Url.cssDefault("images/icon_save_b_12.png")" rel="tooltip" title="@res.Common.lblSaveSequence" class="cursor btn-tootip-top mar_l5 mar_b2" onclick="ChangeListNo($(this),@ListNoPath,'CompShipmentID')" />
+                    </div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="center" style="width:100px;">@res.Common.lblImage</div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="mar_l5" style="width:310px; text-align:left;">@res.Company.lblBlog_Name</div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="mar_l5" style="width:250px; text-align:left;">ประเภทบทความ</div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="center" style="width:100px;">ผู้เข้าชม</div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="center" style="width:100px;">วันที่แก้ไข</div>
+                </th>
+                <th style="border-right:1px solid #E0D9D9;">
+                    <div class="mar_l5" style="width:130px; text-align:left;">แก้ไขโดย</div>
+                </th>
+               
+            </tr>
+        </thead>
+        <tbody>
+            @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+            {
+                <tr class="nodata b" valign="middle">
+                    <td><div align="center">@res.Common.lblNotFound</div></td>
+                </tr>
+            }
+            else
+            {
+                foreach (var item in (List<view_b2bArticle>)ViewBag.Articles)    
+                {
+                int ID = Convert.ToInt16(item.ArticleID);
+                <tr class="body">
+                    <td style="vertical-align:middle;">
+                        <div  class="center">
+                            <input type="hidden" id="Article_@{@ID}" class="hidPrimeID" value="@ID" />
+                            @*ใช้กับ Grid*@
+                            <input type="checkbox" class="cbxItem cbxCompID" value="@ID" id="@ID" onclick="CheckBox(@ID)" />
+                            <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="input-append center" style="margin-left:-5px;">
+                            <input type="text" name="ListNo" class="ListNo w_30" value="@item.ListNo" readonly="readonly" />
+                            <input type="hidden" name="OldListNo"  value="@item.ListNo" class="OldListNo"/>
+                            <span class="add-on" style="width:10px;">
+                                <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;margin-left:2px;" class="cursor icon_ListNo_up" /><br />
+                                <img src="@Url.cssDefault("images/icon_down.jpg")"  style="margin-top:-32px;margin-left:2px;" class="cursor icon_ListNo_down" />
+                            </span>
+                        </div>
+                    </td> 
+                    <td style="vertical-align:middle;">
+                        <div class="center">
+                            @if(item.ImgPath!=null && item.ImgPath != "")
+                            {
+                                <img src="@Url.Article(item.CompID, item.ArticleID, item.ImgPath)" style="width:80px;height:60px;border:1px solid #ccc;border-radius:3px;" />
+                            }
+                            else
+                            {
+                                <img src="http://www.placehold.it/80x60/EFEFEF/AAAAAA&text=no+image" style="width:80px;height:60px;border:1px solid #ccc;border-radius:3px;" />
+                            }
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="mar_b5">
+                            <b class="mar_l5" style="text-align:left">
+                                <a href="@Url.Action("", "CompanyWebsite/" + Url.ReplaceUrl(CompName) + "/BlogDetail/" + item.CompID, new {BlogID = item.ArticleID , area = "" })" target="_blank">@item.ArticleName</a>
+                            </b>
+                        </div>
+                        <div class="btn-group mar_l5">
+                            @if (item.IsShow == true)
+                                {
+                                    <a class="del_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="show/hide" onclick="ChangeIsShow(@item.ArticleID,$(this));">
+                                        <i class="icon-eye-open cursor"></i>
+                                    </a>
+                                }
+                                else
+                                {
+                                    <a class="del_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="show/hide" onclick="ChangeIsShow(@item.ArticleID,$(this));">
+                                        <i class="icon-eye-close cursor"></i>
+                                    </a>
+                                } 
+                                    <a class="edit_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="@res.Common.lblEdit" href="@Url.Action("EditArticle","Article",new{ArticleID=ID , area ="Admin"})" target="_blank"><i class="icon-edit"></i></a>
+                                    <a class="del_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="@res.Common.btnDelete" @*onclick="DeleteCertify(@ID);"*@
+                                    onclick="if(confirm('@res.Common.btnDel_Confirm')){DelData(@item.ArticleID,@item.RowVersion,'ArticleID','Company');}">
+                                        <i class="icon-remove-sign"></i>
+                                    </a>
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="mar_l5" style="text-align:left;">@item.ArticleTypeName</div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="center">@item.ViewCount</div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        @{var ExpiredDate = (DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                            <div class="center">@ExpiredDate</div>
+                        }
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="mar_l5" style="text-align:left;">@item.CreatedBy</div>
+                    </td>
+                </tr>
+                }
+            }  
+        </tbody>
+    </table>
+</div>
+
+<div class="clean20"></div>
+@Html.Partial("UC/Grid/PagingPostUC")
+
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $('.btn-tootip-bottom').tooltip({ placement: 'bottom' });
+        $('.btn-tootip-top').tooltip({ placement: 'top' });
+        /*-----------------------text ChangeListNo--------------------------------*/
+
+        $(".icon_ListNo_up").click(function () {
+            if ($(this).parent().prev().prev().val() == "") {
+                $(this).parent().prev().prev().val(1)
+            } else {
+                $(this).parent().prev().prev().val(parseInt($(this).parent().prev().prev().val()) + 1)
+            }
+        });
+        $(".icon_ListNo_down").click(function () {
+            if ($(this).parent().prev().prev().val() == "") {
+            } else {
+                if (parseInt($(this).parent().prev().prev().val()) > 0) {
+                    $(this).parent().prev().prev().val(parseInt($(this).parent().prev().prev().val()) - 1)
+                }
+            }
+        });
+        SubTextShowDes();
+    });
+
+    function SubTextShowDes() {
+        for (var i = 0; i < $('.shortdesp').length; i++) {
+            var shortdespHtml = $('.shortdesp').eq(i).text();
+            if (shortdespHtml.length > 80) {
+                shortdespHtml = shortdespHtml.substring(0, 77);
+                $('.shortdesp').eq(i).text(shortdespHtml + '...');
+            }
+        }
+    }
+</script>

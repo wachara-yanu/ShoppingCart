@@ -1,0 +1,23 @@
+﻿
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+
+@*--------Modal ExtendLifetime------------*@
+<div class="modal_300 hide fade custom-size" id="myModal_ExtendLifetime" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>@res.Common.lblLifetime</h3>
+  </div>
+  <div class="modal-body">  
+ <div id="modal_form" style="text-align:center;"> 
+ <select id="ExtendMonth" style="width:150px;">
+ @for (var i = 1; i < 12;i++ )
+ {
+    <option value="@i">@i&nbsp;@res.Common.lblMonth</option>
+ }
+ <option value="12">1 @res.Common.lblYear</option>
+ </select>
+    <button class="btn" onclick="Extend_lifetime($('#ExtendMonth').val());">@res.Common.btnSave</button>
+</div>
+  </div>
+</div>

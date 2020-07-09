@@ -1,0 +1,329 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{
+    ViewBag.Title = @res.Company.lblCompProduction;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+
+@{ var Companies = (view_Company)ViewBag.Companies; }
+
+@section head{<link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />}
+
+<form id="CompProduct_form" class="form-horizontal" action="" method="post" style="margin:0px;">
+    <!--Sidebar content-->
+    <div style="margin-top:25px;">
+
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">จัดการข้อมูลการผลิตของบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_pro">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit">
+                    <div style="float:left; margin-left:10px;" >
+                        <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-------------------------------btn edit&save ------------------------------------>
+                <div class="fl_r">
+                    <div class="blog-cancle hide" id="cancel">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide" id="submit">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="company_pro" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryAddrLine1">@res.Company.lblFact_addr :</label>
+                    <div class="controls FactoryAddrLine1"> 
+                        <label id="lblFactoryAddrLine1" class="control-label show" for="FactoryAddrLine1" style="text-align:left;width:400px;">
+                            @if (Companies.FactoryAddrLine1 != null && Companies.FactoryAddrLine1 != "")
+                            {
+                                @Companies.FactoryAddrLine1
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text"  name="FactoryAddrLine1" id="FactoryAddrLine1" placeholder="Factory Address" class="span5 hide" value="@Companies.FactoryAddrLine1"/>  
+                        <label class="checkbox inline hide" style="cursor:pointer;padding-top:0px;">
+                            @if (Companies.IsFactSameAddr == true)
+                            {
+                                <input type="checkbox" id="IsFactSameAddr" value="@Companies.IsFactSameAddr" checked="checked" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="IsFactSameAddr" value="@Companies.IsFactSameAddr" />
+                            }@res.Company.lblUserComp
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryProvinceID">@res.Common.lblProvince :</label>
+                    <div class="controls FactoryProvinceID">
+                        <label id="lblFactoryProvinceID" class="control-label show" for="FactoryProvinceID" style="text-align:left;">
+                            @if (ViewBag.FactoryProvinceName != null && ViewBag.FactoryProvinceName != "")
+                            {
+                                @ViewBag.FactoryProvinceName
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+                        </label>
+                        <select name="FactoryProvinceID" id="FactoryProvinceID" class="span5 hide">
+                        <option value="0">-----@res.Common.chooseProvince-----</option>
+                            @foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                            {
+                                if (Companies.FactoryProvinceID == it.ProvinceID)
+                                {
+                                    <option value="@it.ProvinceID" selected="selected">@it.ProvinceName</option>
+                                }
+                                else
+                                {
+                                    <option value="@it.ProvinceID">@it.ProvinceName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryDistrictID">@res.Common.lblDistrict :</label>
+                    <div class="controls FactoryDistrictID">
+                        <label id="lblFactoryDistrictID" class="control-label show" for="FactoryDistrictID" style="text-align:left;width:500px">
+                            @if (ViewBag.FactoryDistrictName != null && ViewBag.FactoryDistrictName != "")
+                            {
+                                @ViewBag.FactoryDistrictName
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+                        </label>
+                        <select name="FactoryDistrictID" id="FactoryDistrictID"  class="span5 hide">
+                        <option value="0">-----@res.Common.chooseDistrict-----</option>
+                            @foreach (var it in (List<emDistrict>)ViewBag.Districts)
+                            {
+                                if (Companies.FactoryDistrictID == it.DistrictID)
+                                {
+                                    <option value="@it.DistrictID" selected="selected">@it.DistrictName</option>
+                                }
+                                else
+                                {
+                                    <option value="@it.DistrictID">@it.DistrictName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div> 
+                <div class="control-group">
+                    <label class="control-label" for="FactoryPostalCode">@res.Common.lblPostal_code :</label>
+                    <div class="controls FactoryPostalCode">
+                        <label id="lblFactoryPostalCode" class="control-label show" for="FactoryPostalCode" style="text-align:left;">
+                            @if (Companies.FactoryPostalCode != null && Companies.FactoryPostalCode != "")
+                            {
+                                @Companies.FactoryPostalCode
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text" name="FactoryPostalCode" id="FactoryPostalCode" placeholder="Postal Code"  class="span5 hide" value="@Companies.FactoryPostalCode"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryPhone">@res.Common.lblPhoneno :</label>
+                    <div class="controls">
+                        <label id="lblFactoryPhone" class="control-label show" for="FactoryPhone" style="text-align:left;">
+                            @if (Companies.FactoryPhone != null && Companies.FactoryPhone != "")
+                            {
+                                @Companies.FactoryPhone
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text" name="FactoryPhone" id="FactoryPhone" placeholder="Phone"  class="span5 hide" value="@Companies.FactoryPhone"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryMobile">@res.Common.lblMobileno :</label>
+                    <div class="controls">
+                        <label id="lblFactoryMobile" class="control-label show" for="FactoryMobile" style="text-align:left;">
+                            @if (Companies.FactoryMobile != null && Companies.FactoryMobile != "")
+                            {
+                                @Companies.FactoryMobile
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            }        
+                        </label>
+                        <input type="text" name="FactoryMobile" id="FactoryMobile" placeholder="Mobile"  class="span5 hide" value="@Companies.FactoryMobile"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryFax">@res.Common.lblFax :</label>
+                    <div class="controls">
+                        <label id="lblFactoryFax" class="control-label show" for="FactoryFax" style="text-align:left;">
+                            @if (Companies.FactoryFax != null && Companies.FactoryFax != "")
+                            {
+                                @Companies.FactoryMobile
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            } 
+                        </label>
+                        <input type="text" name="FactoryFax" id="FactoryFax" placeholder="Fax"  class="span5 hide" value="@Companies.FactoryFax"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactorySize">@res.Company.lblFact_size :</label>
+                    <div class="controls">
+                        <label id="lblFactorySize" class="control-label show" for="FactorySize" style="text-align:left;">
+                            @if (Companies.FactorySize != null && Companies.FactorySize != "")
+                            {
+                                @Companies.FactorySize
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            } 
+                        </label>
+                        <input type="text" name="FactorySize" id="FactorySize" placeholder="Factory Size" class="span5 hide" value="@Companies.FactorySize"/> 
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="RESEmployeeCount">@res.Company.lblEmp_R_and_D :</label>
+                    <div class="controls">
+                        <label id="lblRESEmployeeCount" class="control-label show" for="RESEmployeeCount" style="text-align:left;">
+                            @if (Companies.RESEmployeeCount != null && Companies.RESEmployeeCount != 0)
+                            {
+                                @Companies.RESEmployeeCount <p class="inline">&nbsp;@res.Company.lblPeople</p>
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            } 
+                        </label>
+                        <input type="text" name="RESEmployeeCount" id="RESEmployeeCount" placeholder="Number of R&D"  class="span5 hide" value="@Companies.RESEmployeeCount"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="QCEmployeeCount">@res.Company.lblEm_QC :</label>
+                    <div class="controls">
+                        <label id="lblQCEmployeeCount" class="control-label show" for="QCEmployeeCount" style="text-align:left;">
+                            @if (Companies.QCEmployeeCount != null && Companies.QCEmployeeCount !=0)
+                            {
+                                @Companies.QCEmployeeCount <p class="inline">&nbsp;@res.Company.lblPeople</p>
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            } 
+                        </label>
+                        <input type="text" name="QCEmployeeCount" id="QCEmployeeCount" placeholder="Number of QC" class="span5 hide" value="@Companies.QCEmployeeCount"/>
+                        </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FactoryRemark">@res.Company.lblMore :</label>
+                    <div class="controls FactoryRemark show">
+                        @if (Companies.FactoryRemark != null && Companies.FactoryRemark != "")
+                        {
+                            <label id="lblFactoryRemark"class="control-label" for="FactoryRemark" style="text-align:left;overflow:auto;width:500px">
+                                @Html.Raw(Companies.FactoryRemark)
+                            </label>
+                        }
+                        else
+                        { 
+                            <text>-</text>
+                        } 
+                    </div>
+                    <div class="hide mar_l150">
+                        <textarea id="FactoryRemark" rows="5"  class="span9">@Companies.FactoryRemark</textarea>  
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+
+        <div class="control-group">
+            <div class="controls" style="margin-left:0 !important;">
+                <div class="edit btn_editBlue show cursor" id="editAll" style="width:150px">
+                    <span class="fl_l icon_btn_edit mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r10">
+                        <p style="line-height:5px;">แก้ไขข้อมูลทั้งหมด</p>
+                    </span>
+                </div>
+                <div id="submitAll" class="btn_saveGreen hide cursor">
+                    <span class="fl_l icon_btn_save mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;">@res.Common.btnSave</p>
+                    </span>
+                </div>
+                <div id="cancelAll" class="btn_calcelGray mar_l20 hide cursor">
+                    <span class="fl_l icon_btn_cancel mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;">@res.Common.btnCancel</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section js{
+<script src="@Url.js("MyB2B/Company/CompProduction.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+@*<script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>*@
+<script type="text/javascript">
+
+    /*--------------------- toggle -------------------*/
+
+    $(".btnCollapse").live('click', function () {
+        var data = $(this).index(".btnCollapse");
+        var Icon = $(this).find("i")
+
+        var target = $(this).attr('data-target');
+
+        console.log(target)
+
+        if (Icon.hasClass("icon-chevron-down")) {
+            Icon.removeClass('icon-chevron-down');
+            Icon.addClass("icon-chevron-up")
+            $(target).slideDown();
+        } else {
+            Icon.addClass("icon-chevron-down")
+            Icon.removeClass('icon-chevron-up');
+            $(target).slideUp();
+        }
+    });
+
+</script>
+}

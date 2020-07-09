@@ -1,0 +1,20 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+<div id="myModal" class="modal_700 hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 id="myModalLabel">@res.Common.btnSelect @res.Common.lblCompany</h3>
+  </div>
+  <div class="modal-body"> 
+<div>
+    <form id="supplier-form" class="form-search">
+      <input type="text" class="input-medium search-query textsearch" placeholder="Company Name" />
+      <button type="submit" class="btn">@res.Common.lblSearch</button>
+    </form>
+</div>
+<div id="supplier-content"></div>
+
+  </div> 
+  <div class="modal-footer">
+    <button class="btn" data-dismiss="modal" aria-hidden="true">@res.Common.btnCancel</button>
+  </div>
+</div>

@@ -1,0 +1,398 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{
+    ViewBag.Title = @res.Company.lblCompany_Profile;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+
+@section head{<link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />} 
+
+@{
+    var CompProfile = (view_CompanyProfile)ViewBag.CompProfiles;   
+ }
+
+<form class="form-horizontal" action="" method="post" id="CompProfile_form" name="CompProfile_form">
+    <!--Sidebar content-->
+    <div style="margin-top:25px;">
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลจดทะเบียนบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_proflie">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!---------------------------------btn edit&save---------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide" id="cancel">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide" id="submit">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!--------------------------------------------------------------------------------------------->
+            <div id="company_proflie" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="CompName">@res.Company.lblCompName :</label>
+                    <div class="controls CompName"> 
+                        <label id="lblCompName" class="control-label show comp-label" for="CompName" style="text-align:left;">
+                            @if (CompProfile.CompName != null && CompProfile.CompName != "")
+                                {
+                                    @CompProfile.CompName
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                            @if (CompProfile.IsSameAddr == true)
+                                {
+                                    <input type="text" name="CompName" id="CompName" placeholder="Company Name" class="span4 hide" value="@CompProfile.CompName" onblur="checkCompName();" readonly="readonly"/>  
+                                } 
+                            else
+                                {
+                                    <input type="text" name="CompName" id="CompName" placeholder="Company Name" class="span4 hide" value="@CompProfile.CompName" onblur="checkCompName();"/>  
+                                }
+                        <label class="error"></label>
+                        <label class="checkbox inline hide" style="cursor:pointer;padding-top:0px;">
+                            @if (CompProfile.IsSameAddr == true)
+                                {
+                                    <input type="checkbox" id="IsSameAddr"value="@CompProfile.IsSameAddr" checked="checked" />
+                                } 
+                            else 
+                                {
+                                    <input type="checkbox" id="IsSameAddr"value="@CompProfile.IsSameAddr" />
+                                }
+                                    @res.Company.lblUserComp
+                        </label>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="AddrLine1">@res.Company.lblPro_addr :</label>
+                    <div class="controls AddrLine1"> 
+                        <label id="lblAddrLine1" class="control-label show comp-label" for="AddrLine1" style="text-align:left;">
+                            @if (CompProfile.AddrLine1 != null && CompProfile.AddrLine1 != "")
+                                {
+                                    @CompProfile.AddrLine1
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        @if (CompProfile.IsSameAddr == true)
+                        {
+                            <input type="text"  name="AddrLine1" id="AddrLine1" placeholder="Company Address" class="span4 hide" value="@CompProfile.AddrLine1" readonly="readonly" />
+                        } 
+                        else 
+                        { 
+                            <input type="text"  name="AddrLine1" id="AddrLine1" placeholder="Company Address" class="span4 hide" value="@CompProfile.AddrLine1"/>
+                        } 
+                    </div> 
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Province">@res.Common.lblProvince :</label>
+                    <div class="controls ProvinceID">
+                        <label id="lblProvinceID" class="control-label show comp-label" for="Province" style="text-align:left;">
+                            @if (CompProfile.ProvinceName != null && CompProfile.ProvinceName != "")
+                                {
+                                    @CompProfile.ProvinceName
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        @if (CompProfile.IsSameAddr == true)
+                        {
+                        <select name="ProvinceID" id="ProvinceID" class="span4 hide" readonly="readonly">   
+                            @foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                            {
+                                if (CompProfile.ProvinceID == it.ProvinceID)
+                                {
+                                    <option value="@it.ProvinceID" selected="selected">@it.ProvinceName</option>
+                                }
+                            }
+                        </select>
+                        } else { 
+                        <select name="ProvinceID" id="ProvinceID" class="span4 hide">
+                        <option value="0">-----@res.Common.chooseProvince-----</option>
+                            @foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                            {
+                                if (CompProfile.ProvinceID == it.ProvinceID)
+                                {
+                                    <option value="@it.ProvinceID" selected="selected">@it.ProvinceName</option>
+                                } else {
+                                    <option value="@it.ProvinceID">@it.ProvinceName</option>
+                                }
+                            }
+                        </select>
+                        }
+                    </div>
+                </div> 
+
+                <div class="control-group">
+                    <label class="control-label" for="District">@res.Common.lblDistrict :</label>
+                    <div class="controls DistrictID">
+                        <label id="lblDistrictID" class="control-label show comp-label" for="District" style="text-align:left;">
+                            @if (CompProfile.DistrictName != null && CompProfile.DistrictName != "" )
+                                {
+                                    @CompProfile.DistrictName
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        @if (@CompProfile.IsSameAddr == true)
+                        {
+                        <select name="DistrictID" id="DistrictID"  class="span4 hide" readonly="readonly">
+                            @foreach (var it in (List<emDistrict>)ViewBag.Districts)
+                            {
+                                if (CompProfile.DistrictID == it.DistrictID)
+                                {
+                                    <option value="@it.DistrictID" selected="selected">@it.DistrictName</option>
+                                }
+                            }
+                        </select>
+                        } else { 
+                        <select name="DistrictID" id="DistrictID"  class="span4 hide">
+                            <option value="0">-----@res.Common.chooseDistrict-----</option>
+                            @foreach (var it in (List<emDistrict>)ViewBag.Districts)
+                            {
+                                if (CompProfile.DistrictID == it.DistrictID)
+                                {
+                                    <option value="@it.DistrictID" selected="selected">@it.DistrictName</option>
+                                } else {
+                                    <option value="@it.DistrictID">@it.DistrictName</option>
+                                }
+                            }
+                        </select>
+                        }
+                    </div>
+                </div> 
+
+                <div class="control-group">
+                    <label class="control-label" for="PostalCode">@res.Common.lblPostal_code :</label>
+                    <div class="controls PostalCode">
+                        <label id="lblPostalCode" class="control-label show comp-label" for="PostalCode" style="text-align:left;">
+                            @if (CompProfile.PostalCode != null && CompProfile.PostalCode != "")
+                                {
+                                    @CompProfile.PostalCode
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        <label class="error"></label>
+                        @if (CompProfile.IsSameAddr == true)
+                            {
+                                <input type="text" name="PostalCode" id="PostalCode" placeholder="Postal Code"  class="span4 hide" value="@CompProfile.PostalCode" readonly="readonly"/>
+                            } else { 
+                                <input type="text" name="PostalCode" id="PostalCode" placeholder="Postal Code"  class="span4 hide" value="@CompProfile.PostalCode"/>     
+                            }
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Owner">@res.Company.lblOwner2 :</label>
+                    <div class="controls CeoName">
+                        <label id="lblCeoName" class="control-label show comp-label" for="CeoName" style="text-align:left;">
+                            @if (CompProfile.CeoName != null && CompProfile.CeoName != "")
+                                {
+                                    @CompProfile.CeoName
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        <input type="text" name="CeoName" id="CeoName" placeholder="Owner" class="span4 hide" value="@CompProfile.CeoName"/> 
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="CompBizType">@res.Company.lblBizType :</label>
+                    <div class="controls CompBizType">
+                        <label id="lblCompBizType" class="control-label show comp-label" for="CompBizType" style="text-align:left;">
+                            @if (CompProfile.BizTypeName != null && CompProfile.BizTypeName != "")
+                                {
+                                    if (CompProfile.CompBizTypeOther != null && CompProfile.CompBizTypeOther != "")
+                                        { 
+                                            <text>@CompProfile.BizTypeName (@CompProfile.CompBizTypeOther)</text>
+                                        } else { 
+                                            <text>@CompProfile.BizTypeName</text>
+                                        }
+                                } 
+                            else 
+                                {
+                                    <text>-</text>
+                                }
+                        </label>
+                        @if (CompProfile.IsSameAddr == true)
+                        {
+                            <select name="CompBizType" id="CompBizType" class="span4 hide" readonly="readonly">
+                            <option value="0">-----@res.Company.lblBizType-----</option>
+                            @foreach (var it in (List<b2bBusinessType>)ViewBag.BizTypes)
+                            {
+                                if (CompProfile.CompBizType == it.BizTypeID)
+                                    {
+                                        <option value="@it.BizTypeID" selected="selected">@it.BizTypeName</option>
+                                    } else {
+                                        <option value="@it.BizTypeID">@it.BizTypeName</option>
+                                    }
+                            }
+                            </select>
+                        }
+                        else
+                        { 
+                            <select name="CompBizType" id="CompBizType" class="span4 hide">
+                            <option value="0">-----@res.Company.lblBizType-----</option>
+                            @foreach (var it in (List<b2bBusinessType>)ViewBag.BizTypes)
+                            {
+                                if (CompProfile.CompBizType == it.BizTypeID)
+                                    {
+                                        <option value="@it.BizTypeID" selected="selected">@it.BizTypeName</option>
+                                    } else {
+                                        <option value="@it.BizTypeID">@it.BizTypeName</option>
+                                    }
+                            }
+                            </select>
+                            <label class="error"></label>       
+                        }
+                        <br/>
+                        @if (CompProfile.CompBizType == 13)
+                        {
+                                <input type="text" id="CompBizTypeOther" name="CompBizTypeOther" class="mar_t20 span4 hide" placeholder="@res.Company.lblOtherBizType" value="@CompProfile.CompBizTypeOther" />
+                        }
+                        else
+                        { 
+                                <input type="text" id="CompBizTypeOther" name="CompBizTypeOther" class="mar_t20 span4" placeholder="@res.Company.lblOtherBizType" value="@CompProfile.CompBizTypeOther" style="display:none;"/>
+                        }
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Email">@res.Company.lblComercial_no :</label>
+                    <div class="controls">
+                        <label id="lblComercialNo" class="control-label show comp-label" for="ComercialNo" style="text-align:left;">
+                            @if (CompProfile.ComercialNo != null && CompProfile.ComercialNo != "")
+                            {
+                                    @CompProfile.ComercialNo
+                            }
+                            else
+                            {
+                                    <text>-</text>
+                            }
+                        </label>
+                        <input type="text" name="ComercialNo" id="ComercialNo" placeholder="Commercial Number" class="span4 hide" value="@CompProfile.ComercialNo"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Phone">@res.Company.lblRegisDate :</label>
+                    <div class="controls">
+                        <label id="lblCompRegisDate" class="control-label show comp-label" for="CompRegisDate" style="text-align:left;">
+                            @{ string CompRegisDate = string.Empty; }
+                            @if (CompProfile.CompRegisDate != null)
+                            {
+                                CompRegisDate = (DateTime.Parse(CompProfile.CompRegisDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                                    @CompRegisDate
+                            }
+                            else
+                            {
+                                    <text>-</text>
+                            }
+                        </label>
+                        <div data-date-format="mm/dd/yyyy" data-date="@CompRegisDate" id="dp3" class="input-append date hide">
+	                        <input id="CompRegisDate" name="CompRegisDate" type="text" value="@CompRegisDate" placeholder="@res.Buylead.lblFormatDate" size="16" class="span3" />
+	                        <span class="add-on"><i class="icon-calendar mar_t2 mar_l3"></i></span>
+	                    </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+
+        <div class="control-group">
+            <div class="controls" style="margin-left:0 !important;">
+                <div class="edit btn_editBlue show cursor" id="editAll"  style="width:150px">
+                    <span class="fl_l icon_btn_edit mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r10">
+                        <p style="line-height:5px;">แก้ไขข้อมูลทั้งหมด</p>
+                    </span>
+                </div>
+                <div id="submitAll" class="btn_saveGreen hide cursor">
+                    <span class="fl_l icon_btn_save mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;">@res.Common.btnSave</p>
+                    </span>
+                </div>
+                <div id="cancelAll" class="btn_calcelGray mar_l20 hide cursor">
+                    <span class="fl_l icon_btn_cancel mar_l10 mar_t5"></span>
+                    <span class="fl_r mar_t13 mar_r30">
+                        <p style="line-height:5px;">@res.Common.btnCancel</p>
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section js{
+<script src="@Url.js("MyB2B/Company/CompProfile.js")" type="text/javascript"></script>
+@*<script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>*@
+<script type="text/javascript">
+
+    /*--------------------- toggle -------------------*/
+
+    $(".btnCollapse").live('click', function () {
+        var data = $(this).index(".btnCollapse");
+        var Icon = $(this).find("i")
+
+        var target = $(this).attr('data-target');
+
+        console.log(target)
+
+        if (Icon.hasClass("icon-chevron-down")) {
+            Icon.removeClass('icon-chevron-down');
+            Icon.addClass("icon-chevron-up")
+            $(target).slideDown();
+        } else {
+            Icon.addClass("icon-chevron-down")
+            Icon.removeClass('icon-chevron-up');
+            $(target).slideUp();
+        }
+    });
+
+</script>
+
+}

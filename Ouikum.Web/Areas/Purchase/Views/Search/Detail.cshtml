@@ -1,0 +1,418 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+@{
+    ViewBag.ChkPage = "Product";
+    Layout = "~/Views/MP/MP_Purchase.cshtml";
+    var item = (view_BuyLead)ViewBag.BuyleadDetail;
+    var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;
+}
+@section head{
+    <link href="@Url.css("Purchase/Purchase.css")" rel="stylesheet" type="text/css" />
+}
+@section js{
+    <link rel="canonical" href="http://@res.Common.lblDomainShortName/Purchase/Search/Detail/@item.BuyleadID/@Url.ReplaceUrl(item.BuyleadName)" />
+    <script src="@Url.js("Purchase/Purchase.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5099beca46b02aa8"></script>
+}
+<div class="container_home">
+ <div class="font_20 label-header" style="z-index:0;width:1100px;margin-top:-50px">
+        <h1 class="fl_l font_Navy" style="font-weight:normal;line-height:17px;height:30px"><span class="font_xxl"><span style="color:#000"> @res.Common.lblBuylead : </span>@item.BuyleadName </span></h1>
+ </div>
+</div>
+<div class="container_home">
+    <div id="home-main"> 
+    @if (ViewBag.BuyleadDetail != null)
+    {
+        //IEnumerable<view_PurchaseComp> ThisBuyer = null;
+        //var Buyer = ViewBag.Buyer as IEnumerable<view_PurchaseComp>;
+        //ThisBuyer = Buyer.Where(it => it.CateLV3 == item.CateLV3);
+        <div class="Content"> 
+        <input id="BuyleadID" type="hidden" value ="@item.BuyleadID" />
+            <div class="wrapper_purchase">
+                <div class="fl_l" style="width:100%;">
+                    <div id="ImgBuylead" style=" float:left; width:270px; height:270px;">
+                        <div id="BuyleadImg" class="fl_l mar_t20">
+                        @if (!string.IsNullOrEmpty(item.BuyleadIMGPath))
+                        {
+                            if (item.CompID > 0)
+                            {
+                            <img  alt="@item.BuyleadName" title="@item.BuyleadName" src="@Url.Buylead(item.CompID, item.BuyleadID, item.BuyleadIMGPath)" onload="resizeImg($(this),250,250);setElementMiddle(250, 250,$(this));"  />
+                            }
+                            else
+                            {
+                            <img  alt="@item.BuyleadName" title="@item.BuyleadName" src="@Url.Buylead(2, item.BuyleadID, item.BuyleadIMGPath)" onload="resizeImg($(this),250,250);setElementMiddle(250, 250,$(this));"  />
+                            }
+                        }
+                        else
+                        { 
+                            <img  alt="@item.BuyleadName" class="img-polaroid mar_t20" title="@item.BuyleadName" src="http://www.placehold.it/230x230/EFEFEF/AAAAAA&text=no+image" onload="resizeImg($(this),250,250);setElementMiddle(230, 230,$(this));"  />
+                        }
+                        </div>
+                    </div>
+                    <div id="DataBuylead" class="fl_l padd_l20" style="width:480px;border-left:1px solid #e4e4e4">
+                        <table style="width:100%">
+                            <tr><td colspan="3">
+                                <h2 class="fl_l label-header fontOrange" style="font-weight:normal;">
+                                    <span class="font_xxl">@res.Buylead.lblBuyleadDetail</span>
+                                </h2><div class="clean"></div>
+                                </td>
+                            </tr>
+
+                            <tr>
+                                <td class="fontGray padd_b5 padd_t5">รหัสประกาศซื้อ : </td>
+                                <td>@item.BuyleadCode</td>
+                            </tr>
+
+                            <tr class="mar_b10">
+                                <td class="w120 fontGray padd_b5 padd_t5">@res.Product.lblMinimum_Unit : </td>
+
+                            @if ((item.Qty != null) && (item.Qty != 0))
+                            {
+                                <td>@(String.Format("{0:##,###.##}", item.Qty)) 
+                                @{var Unit = "";
+                                  if (!string.IsNullOrEmpty(item.QtyUnit))
+                                  {
+
+                                      var QtyUnit = item.QtyUnit.ToString().Split('~');
+
+                                      if (QtyUnit.Count() > 1)
+                                      {
+                                          if (!string.IsNullOrEmpty(QtyUnit[1]))
+                                          {
+                                              Unit += QtyUnit[1];
+                                          }
+                                      }
+                                      else
+                                      {
+                                          if (item.QtyUnit == @res.Common.lblOther)
+                                          {
+                                              Unit = @res.Common.lblUnit;
+                                          }
+                                          else
+                                          {
+                                              Unit = item.QtyUnit;
+                                          }
+                                      }
+                                  }
+                                }
+                                @Unit</td>
+                            }
+                            else
+                            {
+                                <td>ไม่ระบุจำนวณ</td>
+                            }
+                            </tr>
+                            <tr>
+                                <td class="fontGray padd_b5 padd_t5">@res.Buylead.lblBuyleadCreate : </td>
+                                <td>@(DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy"))</td>
+                            </tr>
+                            <tr>
+                                <td class="fontGray padd_b5 padd_t5">@res.Buylead.lblBuyleadExpire : </td>
+                                <td>@(DateTime.Parse(item.BuyleadExpDate.ToString()).ToString("dd/MM/yyyy"))</td>
+                            </tr>
+                            @*<tr>
+                                <td class="fontGray padd_b5 padd_t5" style="vertical-align:top">@res.Product.lblMore_Detail :</td>
+                                <td class="padd_t5" style="max-width:300px;word-wrap: break-word;">@{WriteLiteral(item.BuyleadDetail);}</td>
+                            </tr>*@
+                            <tr>
+                                <td colspan="2" style="padding-top:89px">
+                                    <hr />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td colspan="3" class="padd_t15 padd_b15">
+                                    @*<a class="btn btn-primary" onclick="AddFavBuy(@item.BuyleadID)" title="@res.Product.lblAddFavorite">Favorite</a>*@
+                                      @{string url = res.Pageviews.PvMessageContact;
+                                        //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                                        //else { url = res.Pageviews.PvMessageContact; }
+                                      }
+                                    <a class="btn btn-primary label-header fl_l" href="@Url.Content(url + "?ToCompID=" + @item.CompID + "&BuyleadID=" + @item.BuyleadID)" target="_blank" title="@res.Common.btnSendMessage">
+                                        <span class="font_l">
+                                            @res.Common.lblContactBuyer
+                                        </span>
+                                    </a>
+                                    <div class="fl_l w120 mar_l10" style="height:25px; line-height:25px;">
+                                        <i class="fl_l icon_Favorite mar_r5 mar_t5" title="@res.Product.lblAddFavorite"></i><a onclick="AddFavBuy('@item.BuyleadID')" class="cursor">@res.Product.lblAddFavorite</a>
+                                    </div>
+                                    <div class="addthis_toolbox addthis_default_style w140 fl_r mar_t3">
+                                        <div class="fl_l" style="color:#0088cc">@res.Common.lblShare</div>
+                                        <a id="atic_facebook" href="#" onkeypress="if(!e){var e = window.event||event;}if(e.keyCode){_ate.maf.key=e.keyCode;}else{if(e.which){_ate.maf.key=e.which;}}" onkeydown="if(!e){var e = window.event||event;}if(e.keyCode){_ate.maf.key=e.keyCode;}else{if(e.which){_ate.maf.key=e.which;}}" onblur="if(_ate.maf.key==9){_ate.maf.key=null;}else{_ate.maf.key=null;addthis_close();}" onclick="return addthis_sendto('facebook');" tabindex="1000">
+                                            <span class="at16nc at16t_facebook at16t fl_l mar_l10"></span>
+                                        </a>
+                                        <a class="addthis_button_preferred_2"></a>
+                                        <a class="addthis_button_preferred_3"></a>
+                                        <a class="addthis_button_preferred_4"></a>
+                                        <a class="addthis_button_compact"></a>
+                
+                                    </div>
+                                </td>
+                            </tr>
+                        
+                        </table>
+                    </div>
+
+                    <div id="DataSaller" class="data-saller fl_r" style="width:300px; ">
+                        <h2 style="color:transparent;line-height:0;margin:0">@res.Common.lblCompInfo @ViewBag.Title</h2>   
+                        <div class="padd_l10" style="float:left; width:100%;  border-left:1px solid #e4e4e4;background:#fbfbfb;height: 335px;">
+                            <h2 class="fl_l label-header fontOrange" style="font-weight:normal;">
+                                <span class="font_xxl">ข้อมูลผู้ประกาศ</span>
+                            </h2><div class="clean"></div>
+                           @if (user.CompID == 0)
+                           { 
+                            <text>
+                                <div class="fl_l padd_10">
+                                    <i class="icon-exclamation-sign fl_l mar_r5"></i>
+                                    <p class="fl_l">@res.Common.lblContactSupplier @res.Common.lblOr <a class="b" href="@Url.Action("SignIn", "Member", new { area = "" })" target="_blank">@res.Common.lblSign_in</a></p><br>
+                                    <p class="fl_l padd_r10">@res.Member.lblNotregister
+                                    <a class="b" href="@Url.Action("SignUp", "Member", new { area = "" })" target="_blank">@res.Common.lblRegister</a></p>
+                                 </div>
+                           </text>
+                           }
+                           else
+                           {
+                            <text>
+                                <table>
+                                    <tr>
+                                        <td style="vertical-align:top; width:110px">
+                                             @if (!string.IsNullOrEmpty(item.LogoImgPath))
+                                             {
+                                                <text>
+                                                    <div class="img-person" style="background-image:none"><img src="@Url.CompanyLogo(item.CompID, item.LogoImgPath)" /></div>
+                                                </text> 
+                                             }
+                                             else
+                                             { 
+                                                <text>
+                                                    <div class="img-person"></div>
+                                                </text> 
+                                             }
+                                        </td>
+                                        <td class="span2" colspan="3">
+                                        <div class="clean10"></div>
+
+                                            <a target="_blank" class="fontMemberCard" href="@Url.Action("", "CompanyWebsite" + "/" + @Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID + "", new { area = "" })" title="@item.CompName" >@Html.SubText(item.CompName, 30)</a>
+                                        <div class="clean10"></div>
+                                        </td>
+                                    </tr>
+                                    <tr>
+                                    @if (!string.IsNullOrEmpty(item.BuyleadContactPerson))
+                                    {
+                                        <td class="fontGray span2 padd_b5 padd_t5">@res.Buylead.lblContactName : </td>
+                                        <td class="span4">@item.BuyleadContactPerson</td>
+                                    }
+                                    </tr>
+                                    <tr>
+                                    @if (!string.IsNullOrEmpty(item.BuyleadContactPosition))
+                                    {
+                                        <td class="fontGray span2 padd_b5 padd_t5">@res.Buylead.lblPositionName : </td>
+                                        <td class="span4">@item.BuyleadContactPosition</td>
+                                    }
+                                    </tr>
+                                    <tr>
+                                    @if (!string.IsNullOrEmpty(item.BuyleadTel))
+                                    {
+                                        <td class="fontGray span2 padd_b5 padd_t5">@res.Common.lblPhone : </td>
+                                        <td class="span4">@item.BuyleadTel</td>
+                                    }
+                                    </tr>
+                                    <tr>
+                                    @if (!string.IsNullOrEmpty(item.BuyleadEmail))
+                                    {
+                                        <td class="fontGray span2 padd_b5 padd_t5">@res.Common.lblEmail : </td>
+                                        <td class="span4">@item.BuyleadEmail</td>
+                                    }
+                                    </tr>
+
+                                    <tr>
+                                    @if (!string.IsNullOrEmpty(item.BuyleadFax))
+                                    {
+                                        <td class="fontGray span2 padd_b5 padd_t5">@res.Common.lblFax : </td>
+                                        <td class="span4">@item.BuyleadFax</td>
+                                    }
+                                    </tr>
+                               
+                                    <tr>
+                                    @if (!string.IsNullOrEmpty(item.ProvinceName))
+                                    {
+                                        <td class="fontGray span2 padd_b5 padd_t5" style="vertical-align:top">@res.Common.lblAddress : </td>
+                                        <td>@item.BuyleadAddressLine1 @item.DistrictName @item.ProvinceName @item.BuyleadPostelCode</td>
+                                    }
+                                    </tr>
+                                </table>
+                            </text>
+                           }
+                        <div class="clean10"></div>
+                        </div>
+                   
+                    </div>
+                    <div class="clean"></div>
+                    <hr />
+                </div>
+
+                <div style="float:left;width:72.8%;">
+                    <h2 class="fl_l label-header fontOrange" style="font-weight:normal;">
+                        <span class="font_xxl">@res.Buylead.lblBuyleadDetail : @item.BuyleadName</span>
+                    </h2>
+                    <div class="clean"></div>
+
+                    @if (item.BuyleadDetail != null)
+                    {
+                     <div class="RowContent mar_b10">@{WriteLiteral(item.BuyleadDetail);}</div>
+                    } 
+                    <div class="clean"></div>
+
+                    @if (item.BuyleadKeyword != null)
+                    {
+                    <text>
+                        <div class="divRow mar_b10">
+                            <div class="fl_l fontGray">คำค้นหา : </div>
+                            <div class="fl_l">
+                                <ul id="BuyleadKeyword" data="@item.BuyleadKeyword" style="margin:0">
+                                </ul>
+                            </div>
+                        </div>
+                    </text>
+                    } 
+                    <div class="clean"></div>
+
+                    @if (item.ParentCategoryPath != null)
+                    {
+                    <text>
+                            <div class="fl_l mar_t10"><span class="fontGray">หมวดหมู่ประกาศซื้อ : </span> @item.ParentCategoryPath
+                            </div>
+                    </text>
+                    } 
+                    <div class="clean20"></div>
+                </div>
+
+
+                @if (((List<view_BuyLead>)ViewBag.BuyerOther).Count > 0){
+                <div style="float:right;width:27.1%;border-left: 1px solid #e4e4e4;">
+                    <div class="label-header fontOrange padd_10" style="line-height:25px;font-weight:normal;background:white">
+                        <span class="font_xxl">
+                            ประกาศซื้ออื่น ๆ ที่ใกล้เคียง
+                        </span>
+        @*                <span style="float: right;"><a href="@Url.Action("Product/List","Search",new{HotProduct = 1 , area=""})" target="_blank">ดูทั้งหมด</a></span>*@
+                     </div>
+            
+                    <div class="scrollbar">
+                        <div class="track" 
+                        style="@if (ViewBag.Page != "Gallery")
+                               {<text> margin-right:-30px; </text>}
+                               else
+                               {<text> margin-right:-3px; </text>}">
+                        <div class="thumb"><div class="end"></div></div>
+                        </div>
+                    </div>
+
+                    <div class="viewport" id="ImgViewport">
+                        <div class="overview">
+                            @foreach (var BuyleadOther in (IEnumerable<view_BuyLead>)ViewBag.BuyerOther)
+                            {
+                                    string imgPath = "http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image";
+                                    if (!string.IsNullOrEmpty(BuyleadOther.BuyleadIMGPath))
+                                    {
+                                        if (BuyleadOther.CompID != 0){
+                                        imgPath = Url.Buylead(BuyleadOther.CompID, BuyleadOther.BuyleadID, BuyleadOther.BuyleadIMGPath);
+                                        }else{
+                                            imgPath = Url.Buylead(2, BuyleadOther.BuyleadID, BuyleadOther.BuyleadIMGPath);
+                                        }
+                                    }
+                                <div class="media" style="padding-left:20px">
+                                  <a href="@Url.Action("Detail", "Search", new { id = BuyleadOther.BuyleadID, name = @Url.ReplaceUrl(BuyleadOther.BuyleadName), area = "Purchase" })" style="padding:10px 20px 10px 0px;float:left">
+                                    <img class="fl_l media-object imgborder" alt="@BuyleadOther.BuyleadName" title="@BuyleadOther.BuyleadName"  src="@Url.Content(imgPath)"  style="height:60px;width:60px;"/>
+                                  </a>
+                                </div>
+                          
+                       
+                                @*<div class="fl_l center" style="margin:10px 10px 0px 10px;width:90px;"><img alt="@image.ProductName" title="@image.ProductName" src="@Url.Content(imgPath)" onclick="window.open(GetUrl('Search/Product/Detail/@image.ProductID/@Url.ReplaceUrl(@image.ProductName)'))" style=" width:80px; height:80px;" class="cursor"  onload="resizeImg($(this),80,80);" /></div>*@
+                                    string ProductName = (string)BuyleadOther.BuyleadName; string Name = "";
+                                    if (ProductName.Length > 27)
+                                    {
+                                        Name = ProductName.Substring(0, 25) + "..";
+                                    }
+                                    else
+                                    {
+                                        Name = BuyleadOther.BuyleadName;
+                                    } 
+                                <div>
+                                    <a target="_blank" href="@Url.Action("Detail", "Search", new { id = BuyleadOther.BuyleadID, name = @Url.ReplaceUrl(BuyleadOther.BuyleadName), area = "Purchase" })">
+                                        @Name
+                                    </a>
+                                    @{if (Convert.ToInt32(BuyleadOther.Qty) != 0)
+                                      {
+                                          string minQty = String.Format("{0:##,###}", BuyleadOther.Qty);
+                                            <div style="color:#666666;margin-top: 10px;">จำนวนที่ต้องการ: @minQty @BuyleadOther.QtyUnit</div>
+                                      }
+                                      else
+                                      { 
+                                            <div style="color:#666666;margin-top: 10px;">จำนวนที่ต้องการ: @res.Common.lblNonSpecific</div> 
+                                      }
+                                    }
+
+                                    <div style="color:#666666">วันที่ประกาศซื้อ: @(DateTime.Parse(BuyleadOther.CreatedDate.ToString()).ToString("dd/MM/yyyy"))</div>
+                                </div>
+                                <div class="clean"></div>
+                            }
+                            <div style="margin-bottom:10px"></div>
+                        </div>          
+                    </div>
+                </div>
+                }
+            </div>
+        </div>
+    }
+    </div>
+    <div class="clean10"></div>  
+    @{
+        if (user.CompID != 0 && user.CompID == item.CompID)
+        { 
+            <div class="EditSet">
+                <div class="btn-group dropup">
+                    <a class="btn btn-small dropdown-toggle" data-toggle="dropdown" id="menu_dropdown">
+                        <i class="icon-cog"></i>&nbsp;
+                        <span class="caret"></span>
+                    </a>
+                    <ul class="dropdown-menu fontsize12" style="text-align:left;">
+                        <li><a href="@Url.Action("Channel2", "BuyleadCenter", new { ID = item.BuyleadID, Comp = item.CompID, area = "" })"><i class="icon-pencil"></i>แก้ไขข้อมูลประกาศซื้อ</a></li>
+                        <li><a target="_blank" href="http://www.ouikum.com"><i class="icon-file"></i>เข้าสู่ My Ouikum</a></li>
+                    </ul>
+                </div>
+            </div>
+        }
+    }
+</div>
+@Html.Partial("~/Views/Shared/UC/FooterUC/HomeFooterUC.cshtml")
+
+<script type="text/javascript">
+    //console.log($("#DataSaller").width());
+    //if ($(window).width() < 1201) {
+    //    $(".img-fixsize").attr("onload", "resizeImg($(this),90,90);setElementMiddle(96, 96,$(this))");
+    //}
+
+    $(document).ready(function () {
+       @* $('#divDescription a').click(function (e) {
+            e.preventDefault();
+            $(this).tab('show');
+        });*@
+        var str = $('#BuyleadKeyword').attr('data');
+        var list = str.split(/[~,]/);
+        //var url = GetUrl('Search/Purchase/List/');
+        var HtmlReturn = "";
+        for (var i = 0; i < list.length; i++) {
+            if (list[i] != "" && list[i] != "No search results.") {
+                HtmlReturn += "<li style='list-style:none;display:inline;float:left;padding-left:5px;'>" + list[i] + ", ";
+                if (i == (list.length - 2)) {
+                    HtmlReturn += "</a></li>";
+                }
+                else {
+                    HtmlReturn += "</a></li>";
+                }
+            }
+        }
+        $("#BuyleadKeyword").append(HtmlReturn);
+
+
+    });
+</script>

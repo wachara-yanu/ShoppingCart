@@ -1,0 +1,9 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+<div id="modal_form" style="text-align:center;"> 
+<select id="StatusMail" style="width:350px;">
+    <option value="1">@res.Member.lblemailalert_gold_mem_toexp</option>
+    <option value="2">@res.Member.lblemailalert_gold_mem_exp</option>
+</select>
+    <button class="btn" onclick="Send_mail($('#StatusMail').val());">@res.Common.btnSubmit</button>
+</div>

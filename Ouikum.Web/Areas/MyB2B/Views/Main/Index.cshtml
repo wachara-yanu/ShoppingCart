@@ -1,0 +1,586 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@using Ouikum.Company;
+@{
+    ViewBag.Title = "Ouikum";
+    Layout = "~/Views/MP/MP_MyB2B.cshtml";
+}
+@section HeadContent{
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet"type="text/css" />
+    <link href="~/Content/Home/Home.css" rel="stylesheet" />
+    <style>
+        .progress
+        {
+            margin-bottom:0px;
+        } 
+        .toggleLink
+        {
+            font-size:11px;
+        }
+        .bgMainMenu 
+        {
+            width:100%;
+        }
+        .mar_tl30
+        {
+            margin:30px 0 0 30px;
+        }
+        table.tb_MyB2B
+        {
+            width:100%;
+            border:1px solid #e3e3e3;
+        }
+        table.tb_MyB2B td
+        {
+            border:1px solid #e3e3e3;
+        }
+         
+        table.TBcontent td
+        {
+            border:none;
+        }
+        
+        ul.nav_myb2b
+        {
+            margin:0px;
+            list-style:none;
+        }
+        ul.nav_myb2b li
+        {
+            margin-top:10px;
+            list-style:none;
+        }
+        .task_menu
+        {
+            margin:30px;
+        }
+        
+        .text-orange
+        {
+          color:  #FF6600;
+        }
+        .text-green
+        {
+          color:  #006600;
+        }
+        .text-red
+        {
+          color:  #FF0000;
+        }
+        
+    </style>
+}
+ @{
+     var user = (UserStatusModel)ViewBag.UserStatus;
+     var comp = (view_Company)ViewBag.Company;
+     var productMax = (b2bProduct)ViewBag.ViewCountMax;
+     var quoMax = (b2bProduct)ViewBag.QuotationCountMax;
+     var contactMax = (b2bProduct)ViewBag.ContactCountMax;
+     var newQuotation = (view_Quotation)ViewBag.NewQuotation;
+     var newMessage = (emMessage)ViewBag.NewMessage;
+     }
+ <div class="clean20"></div>
+<div id="main" >
+@*     <h4 id="information_msg" class="alert_info">Welcome to My B2BThai. </h4>   *@
+    <div class="fl_l" style="/*width:38%*/min-width: 472px;">
+        <div class="fl_l myb2b_company">
+            <div class="font_xxl">ข้อมูลร้านค้า</div> 
+            <div class="clean10"></div>
+            <div style="border: 1px solid #e3e3e3;padding:15px;height:145px">
+                <div class="fl_l">
+                    <p style="display:block; height:115px;width:135px">
+                        <a target="_blank" class="@Url.Action("", "CompanyWebsite" +"/"+ comp.CompName + "/Main/Index" + comp.CompID ,new { area=""})" >
+                            @if (!string.IsNullOrEmpty(comp.LogoImgPath))
+                            {
+                            <img class="img-polaroid" style="width:100px; height:110px;" src="@Url.CompanyLogo(comp.CompID,comp.LogoImgPath)" alt="@comp.CompName"  />
+                            }
+                            else
+                            {
+                                <img class="img-polaroid" src="http://www.placehold.it/110x110/EFEFEF/AAAAAA&amp;text=no+image" alt="@comp.CompName"/>
+                            }
+                        </a>
+                    </p>
+                    <p>
+                        <a target="_blank" href="@Url.Action("Company/CompanyAccount","MyB2B",new{area=""})">@res.Common.lblEdit</a>
+                    </p>  
+                </div>
+                <div class="fl_l">
+                    <a class="label-header text-success" href="@Url.Action("","CompanyWebsite"+"/"+ @Url.ReplaceUrl(comp.CompName) + "/Main/Index/" + @comp.CompID,new { area=""})" target="_blank" title="@comp.CompName">
+                        <span class="font_xl">@Html.SubText(@comp.CompName,25)</span>
+                    </a>
+                    <div class="clean5"></div>
+                    @if (comp.CompLevel == 3)
+                    {
+                        <p class="Logo_GoldSmall ">@res.Common.lblGoldMember</p>
+                    }
+                    else if (comp.CompLevel == 2)
+                    {
+                        <p class="Logo_GoldExpireSmall "><span class="mar_l20">@res.Common.lblGoldMemberExpired</span></p>
+                    }
+                    else
+                    {
+                        <p class="Logo_FreeSmall ">@res.Common.lblFreeMember</p>
+                        <a target="_blank" href="@Url.Action("Adsrate","Benefit",new{area=""})">[@res.Company.lblUpgrade]</a>
+                    }
+                    <p>
+                        @if (comp.CompLevel == 3)
+                        {
+                            var start = String.Format("{0:d/M/yyyy}", comp.CreatedDate);
+                            var exp = String.Format("{0:d/M/yyyy}", comp.ExpireDate);  
+                            <div>@res.Common.lblStartDate : @start</div> 
+                            <div>@res.Common.lblExpire_date : @exp</div>                                
+                        }
+                        else
+                        {
+                            var start = String.Format("{0:d}", comp.CreatedDate); 
+                            <div> @res.Common.lblStartDate : @start</div>          
+                        }
+                    </p>
+                    @if (comp.CompLevel == 3)
+                    {
+                        <div class="clean20"></div>
+                    }else{
+                        <div class="clean10"></div>
+                    }
+                    <span  class="icon_supplier_website fl_l mar_r10"></span>
+                    <span  class="mar_0 fl_l"> 
+                        <a href="@Url.Action("", "CompanyWebsite" + "/" + @Url.ReplaceUrl(comp.CompName) + "/Main/Index/" + @comp.CompID, new { area = "" })" target="_blank" title="@comp.CompName">
+                            @res.Common.lblCompWebsite
+                        </a>
+                    </span>
+                </div>
+            </div>
+            <div style="border-bottom: 3px solid #0088cc;height:110px">
+                <div class="fl_l" style="border-left: 1px solid #e3e3e3;border-right: 1px solid #e3e3e3;width:112px;height: 110px;text-align: center;">
+                    <div class="clean25"></div>
+                    <p class="font_24">
+                        @if (comp.ProductCount == null)
+                        {<text>0</text> }
+                    else
+                    { @comp.ProductCount}
+
+                </p>
+                <div class="clean20"></div>
+                <p>จำนวนสินค้า</p>
+            </div>
+            <div class="fl_l" style="border-right: 1px solid #e3e3e3;width:112px;height: 110px;text-align: center;">
+                <div class="clean25"></div>
+                <p class="font_24">
+                    @if (comp.ViewCount == null)
+                    {<text>0</text> }
+                else
+                { @comp.ViewCount}
+            </p>
+            <div class="clean20"></div>
+            <p>ผู้เข้าชมเว็บไซต์</p>
+            </div>
+            <div class="fl_l" style="border-right: 1px solid #e3e3e3;width:113px;height: 110px;text-align: center;">
+                <div class="clean25"></div>
+                <p class="font_24">@ViewBag.QuoCountList</p>
+                <div class="clean20"></div>
+                <p>ขอราคาสินค้า</p>
+            </div>
+            <div class="fl_l" style="border-right: 1px solid #e3e3e3;width:113px;height: 110px;text-align: center;">
+                <div class="clean25"></div>
+                <p class="font_24">@ViewBag.CountInboxList</p>
+                <div class="clean20"></div>
+                <p>ข้อความ</p>
+            </div>
+            @*<div class="fl_l" style="border-right: 1px solid #e3e3e3;width:113px;height: 110px;text-align: center;">
+                <div class="clean25"></div>
+                <p class="font_24">@ViewBag.CountOrP</p>
+                <div class="clean20"></div>
+                <p>สั่งซื้อสินค้า</p>
+            </div>*@
+            </div>
+        </div>
+        <div class="clean20"></div>
+        <div class="fl_l myb2b_company">
+            <div class="font_xxl">ข่าวสารจาก Ouikum.com</div> 
+            <div class="clean10"></div>
+            <div class="myb2b_blog">
+                @*<div class="fl_l">
+                    <a href="@Url.Action("Guide", "Manual", new { area = "" })" target="_blank">
+                        <div class="bg_blog1"></div>
+                    </a>
+                </div>
+                <div class="fl_r" style="width:68%;margin-top:-8px">
+                    <div>
+                        <span class="font_l" style="line-height:30px;">
+                            <a href="@Url.Action("Guide", "Manual", new { area = "" })" target="_blank" class="fontNormal">เรียนรู้วิธีการใช้งาน Ouikum.com</a>
+                        </span><br />
+                        <span class="font_m fontLightGray">คู่มือเริ่มต้นสำหรับแนะนำการใช้งานระบบทั้งผู้ซื้อ-ผู้ขายมือใหม่และมืออาชีพที่ไม่ควรพลาด เทคนิคและเคล็ดลับที่จะทำให้คุณประสบความสำเร็จ</span>
+                    </div>
+                </div>
+
+                <div class="clean20"></div>
+                <div class="fl_l">
+                    <a href="http://about.ouikum.com/Article/Detail/17297/B2BThai-บน-Cloud-Computing" target="_blank">
+                        <div class="bg_blog2"></div>
+                    </a>
+                </div>
+                <div class="fl_r" style="width:68%;margin-top:-8px">
+                    <div>
+                        <span class="font_l" style="line-height:30px;">
+                            <a href="http://about.ouikum.com/Article/Detail/17297/B2BThai-บน-Cloud-Computing" target="_blank" class="fontNormal">
+                                ที่มาของ Ouikum.com
+                            </a>
+                        </span><br />
+                        <span class="font_m fontLightGray">Ouikum.com คือ ระบบเก็บข้อมูลที่นำเอาข้อมูลทั้งหมดขึ้นไปเก็บไว้บนระบบอินเทอร์เน็ต หรือเรียกง่ายๆ ว่าเก็บข้อมูลไว้บนอากาศ</span>
+                    </div>
+                </div>
+
+                <div class="clean20"></div>
+         <div class="fl_l">
+             <a href="http://about.ouikum.com/Article/Detail/17300/B2BThai-ต่างจาก-Google-อย่างไร-" target="_blank">
+                 <div class="bg_blog3"></div>
+             </a>
+         </div>
+        <div class="fl_r" style="width:68%;margin-top:-8px">
+             <div>
+                 <span class="font_l" style="line-height:30px;">
+                     <a href="http://about.ouikum.com/Article/Detail/17300/B2BThai-ต่างจาก-Google-อย่างไร-" target="_blank" class="fontNormal">Ouikum ต่างจาก เว็บไซต์ขายสินค้าออนไลน์ อย่างไร</a>
+                 </span><br />
+                        <span class="font_m fontLightGray">Ouikum.com ต่างจาก เว็บไซต์ขายสินค้าออนไลน์</span>
+             </div>
+         </div>*@
+            </div>
+        </div>
+    </div>
+
+     <div class="fl_l" style="/*width:62%*/ max-width: 770px">
+        <div class="fl_l myb2b_menu">
+            <div class="font_xxl">จัดการข้อมูลร้านค้า</div> 
+            <div class="clean10"></div>
+            <div class="myb2b_boxmenu">
+                <table class="fl_l">
+                    <tr>
+                        <td class="myb2b_circle">
+                            <a href="@Url.Action("Index", "Home", new { area = "" })" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_Buylead.png" class="mar_t25 mar_l24" />
+                            </a>
+                        </td>
+                        <td class="myb2b_circle">
+                            <a href="@Url.Action("Index", "product", new { area = "MyB2B" })" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_Product.png" class="mar_t25 mar_l24" />
+                            </a>
+                        </td>
+                        <td class="myb2b_circle">
+                            <a href="@Url.Action("CompanyAccount", "Company", new { area = "MyB2B" })" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_Profile.png" class="mar_t25 mar_l24" />
+                            </a>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">
+                            <a href="@Url.Action("Index", "Home", new { area = "" })" target="_blank" class="fontNormal">
+                                <p class="mar_t10">หน้าหลัก</p>
+                            </a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="@Url.Action("Index", "product", new { area = "MyB2B" })" target="_blank" class="fontNormal">
+                                <p class="mar_t10">จัดการสินค้า</p>
+                            </a>
+                        </td>
+
+                        <td style="text-align:center">
+                            <a href="@Url.Action("CompanyAccount", "Company", new { area = "MyB2B" })" target="_blank" class="fontNormal">
+                                <p class="mar_t10">จัดการข้อมูลบริษัท</p>
+                            </a>
+                        </td>
+                    </tr>
+                </table>
+                <table class="fl_r">
+                    <tr>
+                        <td class="myb2b_circle">
+                            <a href="~/MyB2B/Quotation/List" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_Quotation.png" class="mar_t25 mar_l24" />
+                                <span class="label label-important lblImportant" style="background-color:#FF6666;margin:0">@ViewBag.QuoCount</span>
+                            </a>
+                        </td>
+                        <td class="myb2b_circle">
+                            <a href="@Url.Action("List", "Message", new { area = "" })" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_MessageCenter.png" class="mar_t25 mar_l24" />
+                                <span class="label label-important lblImportant" style="background-color:#FF6666;margin:0">@ViewBag.CountInbox</span>
+                            </a>
+                        </td>
+                        <td class="myb2b_circle">
+                            <a href="@Url.Action("Index", "OrderPurchase", new { area = "MyB2B" })" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_Product.png" class="mar_t25 mar_l24" />
+                                <span class="label label-important lblImportant" style="background-color:#FF6666;margin:0">@ViewBag.CountOrP</span>
+                            </a>
+                        </td>
+                        @*<td class="myb2b_circle">
+                            <a href="@Url.Action("MemberProfile", "Member", new { area = "" })" target="_blank" class="Bg_Blue" style="margin-top:10px">
+                                <img src="~/Content/Default/images/icon_Account.png" class="mar_t25 mar_l24" />
+                            </a>
+                        </td>*@
+                    </tr>
+                    <tr>
+                        <td style="text-align:center">
+                            <a href="~/MyB2B/Quotation/List" target="_blank" class="fontNormal">
+                                <p class="mar_t10">รายการขอราคาสินค้า</p>
+                            </a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="@Url.Action("List", "Message", new { area = "" })" target="_blank" class="fontNormal">
+                                <p class="mar_t10">ข้อความ</p>
+                            </a>
+                        </td>
+                        <td style="text-align:center">
+                            <a href="@Url.Action("Index", "OrderPurchase", new { area = "MyB2B" })" target="_blank" class="fontNormal">
+                                <p class="mar_t10">รายการสั่งซื้อสินค้า</p>
+                            </a>
+                        </td>
+                        @*<td style="text-align:center">
+                            <a href="@Url.Action("MemberProfile", "Member", new { area = "" })" target="_blank" class="fontNormal">
+                                <p class="mar_t10">ข้อมูลส่วนตัว</p>
+                            </a>
+                        </td>*@
+
+                    </tr>
+                </table>
+            </div>
+        </div>
+         <div class="clean20"></div>
+        <div class="fl_l myb2b_product">
+            <div class="font_xxl">สินค้าเด่นของคุณ</div> 
+            <div class="clean10"></div>
+            <div style="border: 1px solid #e3e3e3;height:388px;padding:20px;border-bottom:2px solid #FED469">
+                @if (productMax != null)
+                {
+                    <div class="fl_l">
+                        <a href="@Url.Action("Detail", "Product", new { id = "/" + productMax.ProductID, name = Url.ReplaceUrl(productMax.ProductName), area = "Search" })" target="_blank">
+                            @if (!string.IsNullOrEmpty(productMax.ProductImgPath))
+                            {
+                                <img onload="resizeImg($(this),90,90)" style="min-height:90px;min-width:90px" class="img-polaroid mar_r10" src="@Url.ThumbProduct(productMax.CompID, productMax.ProductID, productMax.ProductImgPath)">
+                            }
+                            else
+                            {
+                                 <img class="cursor ImgProduct img-polaroid" src="http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image" id="@productMax.ProductID" title="@productMax.ProductName"   onload="resizeImg($(this),150,150);setElementMiddle(90,90 ,$(this))" />
+                            }
+                        </a>
+                    </div>
+                    <div class="fl_l myb2b_countmax">
+                        <div class="font_l mar_b5">เข้าชมมากที่สุด</div>
+                        <div class="font_l mar_b5">
+                            <a href="@Url.Action("Detail", "Product", new { id = "/" + productMax.ProductID, name = Url.ReplaceUrl(productMax.ProductName), area = "Search" })" target="_blank"  class="fontNormal">
+                                @productMax.ProductName
+                            </a>
+                        </div>
+                        <div class="font_24">
+                            <div class="icon_viewMax inline"></div>
+                            <div class="inline">@productMax.ViewCount</div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="font_l" style="text-align:center">ยังไม่มีสินค้าที่ถูกเข้าชม</div>
+                }
+                <div class="clean20"></div>
+                <div class="line_horizontal fl_r" style="width:100%;height:2px"></div>
+                <div class="clean20"></div>
+
+                @if (quoMax != null)
+                {
+                    <div class="fl_l">
+                        <a href="@Url.Action("Detail", "Product", new { id = "/" + quoMax.ProductID, name = Url.ReplaceUrl(quoMax.ProductName), area = "Search" })" target="_blank">
+                             @if (!string.IsNullOrEmpty(quoMax.ProductImgPath))
+                             {
+                                <img onload="resizeImg($(this),90,90)" style="min-height:90px;min-width:90px" class="img-polaroid mar_r10" src="@Url.ThumbProduct(quoMax.CompID, quoMax.ProductID, quoMax.ProductImgPath)">
+                             }
+                             else
+                             {
+                                 <img class="cursor ImgProduct img-polaroid" src="http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image" id="@quoMax.ProductID" title="@quoMax.ProductName"   onload="resizeImg($(this),150,150);setElementMiddle(90,90 ,$(this))" />
+                             }
+                        </a>
+                    </div>
+                    <div class="fl_l myb2b_countmax">
+                        <div class="font_l mar_b5">ขอราคามากที่สุด</div>
+                        <div class="font_l mar_b5">
+                            <a href="@Url.Action("Detail", "Product", new { id = "/" + quoMax.ProductID, name = Url.ReplaceUrl(quoMax.ProductName), area = "Search" })" target="_blank" class="fontNormal">
+                                @quoMax.ProductName
+                            </a>
+                        </div>
+                        <div class="font_24">
+                            <div class="icon_quotationMax inline"></div>
+                            <div class="inline">@quoMax.QuotationCount</div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="font_l" style="text-align:center">ยังไม่มีสินค้าที่ถูกขอราคา</div>
+                }
+                <div class="clean20"></div>
+                <div class="line_horizontal fl_r" style="width:100%;height:2px"></div>
+                <div class="clean20"></div>
+
+                @if (contactMax != null)
+                {
+                    <div class="fl_l">
+                        <a href="@Url.Action("Detail", "Product", new { id = "/" + contactMax.ProductID, name = Url.ReplaceUrl(contactMax.ProductName), area = "Search" })" target="_blank">
+                            @if (!string.IsNullOrEmpty(contactMax.ProductImgPath))
+                            {
+                                <img onload="resizeImg($(this),90,90)" style="min-height:90px;min-width:90px" class="img-polaroid mar_r10" src="@Url.ThumbProduct(contactMax.CompID, contactMax.ProductID, contactMax.ProductImgPath)">
+                            }
+                            else
+                            {
+                                 <img class="cursor ImgProduct img-polaroid" src="http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image" id="@contactMax.ProductID" title="@contactMax.ProductName"   onload="resizeImg($(this),150,150);setElementMiddle(90,90 ,$(this))" />
+                            }
+                        </a>
+                    </div>
+                    <div class="fl_l myb2b_countmax">
+                        <div class="font_l mar_b5">สอบถามมากที่สุด</div>
+                        <div class="font_l mar_b5">
+                            <a href="@Url.Action("Detail", "Product", new { id = "/" + contactMax.ProductID, name = Url.ReplaceUrl(contactMax.ProductName), area = "Search" })" target="_blank" class="fontNormal">
+                                @contactMax.ProductName
+                            </a>
+                        </div>
+                        <div class="font_24">
+                            <div class="icon_contactMax inline"></div>
+                            <div class="inline">@contactMax.ContactCount</div>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="font_l" style="text-align:center">ยังไม่มีสินค้าที่ถูกสอบถาม</div>
+                }
+            </div>
+        </div>
+        <div class="fl_l mar_l25 myb2b_message">
+            <div class="font_xxl">ข้อความใหม่</div> 
+            <div class="clean10"></div>
+            <div style="border: 1px solid #e3e3e3;height:149px;padding:20px">
+                @if (ViewBag.NewMessage != null)
+                {
+                    <div class="font_l" title="@newMessage.Subject"><b>@Html.SubText(newMessage.Subject, 42)</b></div>
+                    var sendDate = String.Format("{0:d/M/yyyy}", newMessage.SendDate);
+                    <div class="font_l">@sendDate</div>
+                    <div class="clean10"></div>
+                    if (!string.IsNullOrEmpty(newMessage.FromName))
+                    {
+                        <div> จาก : @newMessage.FromName</div>
+                    }
+                    if (!string.IsNullOrEmpty(newMessage.FromContactPhone))
+                    {
+                        <div> โทรศัพท์ : @newMessage.FromContactPhone</div>
+                    }
+                    if (!string.IsNullOrEmpty(newMessage.FromEmail))
+                    {
+                        <div> Email : @newMessage.FromEmail</div>
+                    }
+                    <div class="clean14"></div>
+                    <div class="myb2b_bggray">
+                        <div class="fl_l mar_t10 mar_l20">
+                            @if (newMessage.IsFavorite == true)
+                            {
+                                <img src="~/Content/MessageCenter/images/mess_tag.png" class="inline" />
+                            }
+                            @if (newMessage.IsAttach == true)
+                            {
+                                 <img src="~/Content/MessageCenter/images/mess_file.png" class="inline" />
+                            }
+                        </div>
+                        <div class="fl_r mar_r20 mar_t7">
+                            @{string url = res.Pageviews.PvMessageDetail;}
+                            <a href="@Url.Content(url + "?MessageID=" + newMessage.MessageID + "&MessageCode=" + newMessage.MessageCode + "&MsgType=Inbox")" class="btn_saveGreen cursor inline btnReply" style="width:100px" target="_blank">
+                                <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                <span class="fl_r mar_t13 mar_r10">
+                                    <p style="line-height:5px;color:#ffffff">ตอบกลับ</p>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="font_l" style="text-align:center">ยังไม่มีข้อความใหม่</div>
+                }
+            </div>
+            <div class="clean20"></div>
+            <div class="font_xxl">รายการขอราคาจากผู้ซื้อ</div> 
+            <div class="clean10"></div>
+            <div style="border: 1px solid #e3e3e3;height:148px;padding:20px">
+                @if (ViewBag.newQuotation != null)
+                {
+                    <div class="font_l" title="@newQuotation.ProductName"><b>@Html.SubText(newQuotation.ProductName, 42)</b></div>
+                    <div class="font_l">จำนวน : @newQuotation.Qty @newQuotation.QtyUnit</div>
+                    <div class="clean10"></div>
+                    if (!string.IsNullOrEmpty(newQuotation.ReqFirstName))
+                    {
+                        <div> ผู้ขอราคา :  @newQuotation.ReqFirstName @newQuotation.ReqLastName</div>
+                    }
+                    if (!string.IsNullOrEmpty(newQuotation.ReqPhone))
+                    {
+                        <div> โทรศัพท์ : @newQuotation.ReqPhone</div>
+                    }
+                    if (!string.IsNullOrEmpty(newQuotation.ReqEmail))
+                    {
+                        <div> Email : @newQuotation.ReqEmail</div>
+                    }
+                    <div class="clean13"></div>
+                    <div class="myb2b_bggray">
+                        <div class="fl_l mar_t10 mar_l20">
+                            @if (newQuotation.IsImportance == true)
+                            {
+                                <img src="~/Content/MessageCenter/images/mess_tag.png" class="inline" />
+                            }
+                            <img src="~/Content/MessageCenter/images/icon_QuoR.png" />
+                        </div>
+                        <div class="fl_r mar_r20 mar_t7">
+                            @{string url = res.Pageviews.PvMessageDetail;}
+                            <a href="@Url.Action("Detail", "Quotation", new { id = newQuotation.QuotationID, area = "MyB2B" })" class="btn_saveGreen cursor inline btnReply" style="width:120px" target="_blank">
+                                <span class="fl_l icon_menu_messReplyForward mar_l10 mar_t5"></span>
+                                <span class="fl_r mar_t13 mar_r10">
+                                    <p style="line-height:5px;color:#ffffff">เสนอราคาขาย</p>
+                                </span>
+                            </a>
+                        </div>
+                    </div>
+                }
+                else
+                {
+                    <div class="font_l" style="text-align:center">ยังไม่มีรายการขอราคาใหม่</div>
+                }
+            </div>
+        </div>
+    </div>
+</div> 
+
+@section js{
+
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Scrollbar/jquery.mousewheel.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("MyB2B/Main/main.js")" type="text/javascript"></script>
+    <script src="@Url.js("jquery.equalHeight.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('.column').equalHeight();
+            SidebarResize();
+        });
+
+        $(document).ready(function () {
+            $("#ContentManageRight section").attr("style", "height: 748px; width: 1243px");
+        });
+        //$(function () {
+            //var maxH = parseFloat($('#Content').height() + 50);
+            //$("#sidebar").css("height", maxH);
+            //$("#sidebar").scrollbars();
+            //GetCompStatus();
+            //CloseMenuSideBarAll();
+        //});
+
+        //function CloseMenuSideBarAll() {
+        //    var len = $('a.toggleLink').length;
+        //    for (var i = 1; i < len; i++) {
+        //        console.log(' toggle : ' + i);
+        //        ShowMenuSidebar(false, $('a.toggleLink').eq(i));
+        //    }
+        //}
+         
+         
+    </script>
+ }

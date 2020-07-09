@@ -1,0 +1,43 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+
+<form id="addShipmentProduct_form" class="form-horizontal" style="margin-bottom:0px;" action="" method="post">
+        <input type="hidden" id="objState" class="hidObjstate" />
+        <input type="hidden" id="RowVersion" class="hidRowVersion" />
+        <input type="hidden" id="ID" class="hidID" />
+
+        <div class="clean20"></div>
+        <div class="control-group">
+            <label class="control-label-Comp" for="ProductName">สินค้า :</label>
+            <div class="controls-Comp">
+                <select name="ProductName" id="ProductName" style="color:black" onblur="checkError();" >
+                    <option value="0">-----เลือกสินค้า------</option>
+                    @foreach (var getProduct in (List<view_SearchProduct>)ViewBag.Products)
+                    {
+                        <option value="@getProduct.ProductID">@getProduct.ProductName</option>
+                    }
+                </select>
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label-Comp" for="ProductBuyMinimum">สั่งซื้อขั้นต่ำ :</label>
+            <div class="controls-Comp ProductBuyMinimum">
+                <input type="text" name="ProductBuyMinimum" id="ProductBuyMinimum" placeholder="Product BuyMinimum" class="span4" value="1" onblur="checkError();" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label-Comp" for="ProductBuyMaximum">สั่งซื้อขั้นสูง :</label>
+            <div class="controls-Comp ProductBuyMaximum" style="position:relative">
+                <input type="text" name="ProductBuyMaximum" id="ProductBuyMaximum" placeholder="BuyMaximum" class="span4" value="1" onblur="checkError();" />
+            </div>
+        </div>
+
+        <div class="control-group">
+            <label class="control-label-Comp" for="ProductPriceShippment">ราคาขนส่งสินค้า :</label>
+            <div class="controls-Comp ProductPriceShippment">
+                <input type="text" name="ProductPriceShippment" id="ProductPriceShippment" placeholder="Shipment Price" class="span4" value="" onblur="checkError();" />
+            </div>
+        </div>
+    </form>

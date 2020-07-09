@@ -1,0 +1,137 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+
+
+<table class="table table-hover border_table grid mar_b10">
+    <thead class="HeaderTable">
+        <tr class="header">
+            <th></th>
+            <th class="span3"><div>@res.Buylead.lblBuyleadName</div></th> 
+            <th class="span3"><div>@res.Company.lblCompName/@res.Common.lblEmail</div></th>
+            <th class="span2"><div>@res.Common.colCreatedDate</div></th>
+            <th class="span2"><div class="center">@res.Common.colStatus</div></th>
+        </tr>
+    </thead>
+    <tbody>
+        @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+        {
+        <tr class="nodata b" valign="middle">
+            <td><div align="center">@res.Common.lblNotFound</div></td>
+        </tr>
+        }
+        else
+        {
+            foreach (var item in (List<view_SearchBuylead>)ViewBag.Buyleads)
+            {   
+                int ID = (int)item.BuyleadID;
+        <tr class="body">
+            <td style="width:5%;text-align:center"> 
+            <input type="checkbox" name="cbxCompID" class="cbxCompID" data-id="@ID" 
+                data-catelv1="@item.CateLV1"  
+                data-catelv2="@item.CateLV2"  
+                data-catelv3="@item.CateLV3" 
+                data-compid="@item.CompID" 
+                onclick="CheckBox($(this))" 
+                 /> 
+            </td>   
+            <td>   
+            <a target="_blank" title="@item.BuyleadName" href="@Url.Action("Detail", "Search", new { id= ID , name= @Url.ReplaceUrl(@item.BuyleadName),area="Purchase"} )">@item.BuyleadName</a>
+                <div class="btn-group">
+                    @*@{if (item.RowFlag == 3)
+                    {
+                        <a data-id="@ID" class="btn btn-mini  padd_b4 disabled" ><i class="icon-ok-sign"></i></a>
+                    }
+                    else
+                    {*@
+                        <a data-id="@ID" class="btn btn-mini  padd_b4 approve" title="approve"  ><i class="icon-ok-sign"></i></a>
+                    @*}
+                    }*@
+                    @if(!string.IsNullOrEmpty(item.AdminCode)){                        
+                        <a data-id="@item.AdminCode" class="btn btn-mini  padd_b4 preview_admin" title="@item.AdminCode" ><i class=" icon-user"></i></a>
+                        }
+                    @{if (item.RowFlag == 3)
+                    {
+                        <a role="button" data-id="@ID" class="btn btn-mini   padd_b4 disabled"><i class="icon-eject"></i></a> 
+                    }
+                    else
+                    {
+                        <a role="button" data-id="@ID" class="btn btn-mini   padd_b4 reject-item" title="reject" ><i class="icon-eject"></i></a> 
+                    }
+                    }
+                    <a data-id="@ID" class="btn btn-mini padd_b4 delete-item" title="delete"  ><i class=" icon-minus-sign"></i></a>            
+                </div>             
+            </td> 
+            <td>
+                @*@{
+                var urlcomplink = "";
+                switch (item.CategoryType)
+                {
+                     case 1: urlcomplink = "http://www.ouikum.com";   break;
+                     case 2: urlcomplink = "http://www.ouikum.com"; break;
+                     case 3: urlcomplink = "http://www.antcart.com"; break;
+                     case 5: urlcomplink = "http://www.myotopthai.com"; break;
+                     case 6: urlcomplink = "http://www.appstorethai.com"; break;
+                     default: break;
+                 }
+                }*@
+                @if (item.CompName != null) {
+                    <a target="_blank" title="@item.CompName" href="@Url.Action("", "CompanyWebsite" + "/"+ @Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID,new{area = ""})">@item.CompName</a> 
+                }
+                else {
+                    <a href="mailto:@item.BuyleadEmail" title="@item.BuyleadEmail">@item.BuyleadEmail</a>
+                }
+            </td>
+            <td>  
+               <span  class=" btn-tootip-bottom " rel="tooltip"   data-placement="bottom" 
+               data-original-title="@("<div style='text-align:left'>created by : " + item.CreatedBy + "<br> modified by : " + item.ModifiedBy + "</div>")" 
+               >
+                          @{
+                    var CreatedDate = "";
+                    if (item.CreatedDate != null)
+                    {
+                        CreatedDate = (DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                    }
+                    @CreatedDate
+                            }
+               </span>
+            </td> 
+            <td>
+            <div class="center">
+            @if (item.RowFlag == 2)
+            {
+                <span class="text-warning" >@res.Common.lblWaitapprove</span> 
+            }
+            else if (item.RowFlag == 3)
+            {
+                <span class="text-error btn-tootip-bottom "  rel="tooltip"   data-placement="bottom" data-original-title="@(item.Remark)"  title="@(item.Remark)">
+                    @res.Common.lblNoapprove
+                </span>
+            }
+            else if (item.RowFlag == 4)
+            {
+                <span class="text-success"  >@res.Common.lblApprove</span>
+            }
+            else if (item.RowFlag == 5)
+            {
+                <span class="text-warning" >@res.Common.lblApprove [@res.Common.colEdit]</span>
+            }
+            else if (item.RowFlag == 6)
+            {
+                <span class="text-warning" >@res.Common.lblWaitForCheck</span>
+            }  
+            </div>
+            </td>
+        </tr> 
+            }
+        }  
+        </tbody>
+</table>
+
+@Html.Partial("UC/Grid/PagingPostUC")
+
+<script type="text/javascript">
+    $(function () {
+
+        $('.btn-tootip-bottom').tooltip()
+    });
+</script>

@@ -1,0 +1,20 @@
+﻿
+@using res = Prosoft.Resource.Web.Ouikum;
+<div class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 10px 0px;width: 96.3%">
+    <table>
+        <tr>
+            <td><text class="fl_l">@res.Common.lblKeyword :</text></td>
+
+            <td><input type="text" class="span3 mar_10" name="SearchText" placeholder="@res.Common.lblSearch" /></td>
+            <td><button type="submit" class="btn btn-darkblue mar_l20 btnsearch"><i class="icon-search icon-white mar_t3"></i></button></td> 
+        </tr>
+    </table>
+</div>
+
+
+<script type="text/javascript">
+    $(function () {
+        $('.rangeA').daterangepicker();
+        $('.tootip-buttom').tooltip({ placement: 'bottom' });
+    });
+</script>

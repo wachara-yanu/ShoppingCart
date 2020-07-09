@@ -1,0 +1,559 @@
+﻿@using Ouikum.Company;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    var user = (UserStatusModel)ViewBag.UserStatus;
+}
+
+<aside id="sidebar" class="column">
+    <div class="resize fl_r mar_r5 cursor" title="Hide"><i class="icon-widget-left mar_t20 mar_r15"></i></div>
+    <div class="clean10"></div>
+    <input type="hidden" id="hidOldClick" />
+    <input type="hidden" id="compLevel" value="@ViewBag.CateLevel1" />
+    <input type="hidden" id="PageType" value="@ViewBag.PageType" />
+    <div class="autoShowHide">
+        <h3 style="width:70%">
+            <div class="fl_l icon_menu_home"></div>
+            <div class="fl_l" style="width:80%;">
+                <span class="fl_l mar_l15 mar_t3"><a href="@Url.Action("Index", "Main", new { area = "MyB2B" })" class="@if (ViewBag.PageType == "MainIndex"){ <text>hover</text> }">หน้าหลัก</a></span>
+            </div>
+        </h3>
+        <hr />
+
+        @if (user.ServiceType != 1)
+        {
+            <h3 onclick="Slides('btnShowHide1')" class="cursor">
+                <div class="fl_l icon_supplier_product mar_r11"></div>
+                <span id="btnShowHide1" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#MenuUser_target1">
+                    <i class="menurightadmin" style="margin-top:6px;display:none" title="แสดง"></i>
+                </span>
+                <span class="mar_t3">จัดการสินค้า</span>
+            </h3>
+            <div id="MenuUser_target1" class="CollapseDetail" style="display: none;">
+                <ul class="toggle line1">
+                    <li class="mar_l15">
+                        <span id="btnShowHide2" class="btnShowHide mar_r5 " data-toggle="tooltip" data-target="#Menu_Product" onclick="Slide('btnShowHide2')">
+                            <i class="menumiddleDownadmin" style="margin-top:6px;" title="ซ่อน"></i>
+                        </span>
+                        <a class="@if (ViewBag.MenuName == "Index" && ViewBag.PageType == "Product") { <text>hover</text> }" href="@Url.Action("Index", "product", new { area = "MyB2B" })" style="font-size:14px">จัดการสินค้า</a>
+                        <div id="menu-status-product" class="fl_r menu-status">0</div>
+                        <div id="Menu_Product" class="CollapseDetail blog-menu-user">
+                            <ul class="toggle" style="margin:0px">
+                                <li class="mar_t10 mar_l5 mar_b10 cursor">
+                                    <a href="@Url.Action("Index", "product", new { area = "MyB2B" })" onclick="PrepareAddProduct($(this))">
+                                        <span>
+                                            <i class="line4"></i>
+                                        </span>
+                                        <span style="margin-right:8px">
+                                            <i class="line3"></i>
+                                        </span>
+                                        <span style="font-size:14px;color:#008000">+ เพิ่มสินค้า</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    @if (ViewBag.CateLevel1 == 3)
+                    {
+                        <li class="mar_l15">
+                            <span id="btnShowHide3" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#Menu_Recommend" onclick="Slide('btnShowHide3')">
+                                <i class="menumiddleDownadmin" style="margin-top:6px;" title="ซ่อน"></i>
+                            </span>
+                            <a class="@if (ViewBag.MenuName == "Recommend" && ViewBag.PageType == "Product") { <text>hover</text> }" href="@Url.Action("Recommend", "product", new { area = "MyB2B" })" style="font-size:14px">จัดการสินค้าแนะนำ</a>
+                            <div id="menu-status-recommend" class="fl_r menu-status">0</div>
+                            <div id="Menu_Recommend" class="CollapseDetail">
+                                <ul class="toggle" style="margin:0px">
+                                    <li class="mar_t10 mar_l5 mar_b10">
+                                        <a href="http://www.ouikum.com/MyB2B/product/Recommend#Product/AddRecommend" onclick="SubmitPageFormAdd();" style="font-size:14px">
+                                            <span>
+                                                <i class="line4"></i>
+                                            </span>
+                                            <span style="margin-right:8px">
+                                                <i class="line3"></i>
+                                            </span>
+                                            เพิ่มสินค้าแนะนำ
+                                        </a>
+                                    </li>
+                                </ul>
+                            </div>
+                        </li>
+                    }
+                    <li class="mar_l15" style="font-size:14px;">
+                        <span id="btnShowHide4" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#Menu_ProductGroup" onclick="Slide('btnShowHide4')">
+                            <i class="menumiddleDownadmin" style="margin-top:6px;" title="ซ่อน"></i>
+                        </span>
+                        จัดการกลุ่มสินค้า
+
+                        <div id="Menu_ProductGroup" class="CollapseDetail line2">
+                            <div class="fl_l hide_group mar_t10" style="width:100%;margin-top:10px;line-height: 13px;height: 0px;" id="groups">
+                                <span style="margin-right:8px">
+                                    <i class="line5"></i>
+                                </span>
+                                <span class="add_group cursor mar_t10" style="font-size:14px;color:#008000">+ เพิ่มกลุ่มสินค้า</span>
+                            </div>
+                            <div class="fl_l input_group mar_t10" style="display:none;width:100%;margin-top:10px;line-height: 13px;height: 5px;">
+                                <form action="/" method="post" id="formGroupProduct" onsubmit="return AddGroupProduct();" style="margin:0px">
+                                    <span style="margin-right:8px">
+                                        <i class="line5"></i>
+                                    </span>
+                                    <input type="text" placeholder="@res.Common.btnAdd@res.Product.lblPro_Group" id="ProductGroupName" class="mar_r5 mar_t10 minput_search" style="height:18px; width:64%;margin:0;" />
+                                    <i title="ok" class="mar_t6 addgroup_already  icon-ok-sign cursor" onclick="return AddGroupProduct();"></i>
+                                    <i title="cancel" class="mar_t6 addgroup_close cursor icon-remove-sign"></i>
+                                </form>
+                            </div>
+                            <div class="fl_l input_edit_group mar_t10" style="display:none;width:100%;margin-top:10px;line-height: 13px;height: 5px;">
+                                <form action="/" method="post" id="formEditProduct" onsubmit="return EditGroupProduct();" style="margin:0px">
+                                    <span style="margin-right:8px">
+                                        <i class="line5"></i>
+                                    </span>
+                                    <input id="txtEditGroupName" class="mar_r5 mar_t10 minput_search" style="height:18px; width:64%;margin:0;" type="text" placeholder="" />
+                                    <input type="hidden" id="hidEditGroupID" />
+                                    <input type="hidden" id="hidEditGroupRowversion" />
+                                    <i title="ok" class="mar_t6  icon-ok-sign cursor" onclick="return EditGroupProduct();"></i>
+                                    <i title="cancel" class="mar_t6 editgroup_close cursor icon-remove-sign"></i>
+                                </form>
+                            </div>
+                            @*<ul class="toggle">
+                                <li class="">เพิ่มกลุ่มสินค้า</li>
+                            </ul>*@
+                            <ul class="toggle" id="GroupProductList" style="margin-left: 0;"></ul>
+                        </div>
+                    </li>
+                    <li class="mar_t20" style="height: 12px">
+                        <a class="@if (ViewBag.MenuName == "Junk" && ViewBag.PageType == "Product") { <text>hover</text> }" href="@Url.Action("Junk", "product", new { area = "MyB2B" })" style="font-size:14px">
+                            <span style="margin-right:8px">
+                                <i class="line5"></i>
+                            </span>
+                            ถังขยะสินค้า
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr />
+        }
+
+        @if (user.ServiceType != 3)
+        {
+            <h3 onclick="Slides('btnShowHide5')" class="cursor">
+                <div class="fl_l icon_menu_buylead mar_r11"></div>
+                <span id="btnShowHide5" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#MenuUser_target2">
+                    <i class="menurightadmin" style="margin-top:6px;display:none" title="แสดง"></i>
+                </span>จัดการประกาศซื้อ
+            </h3>
+            <div id="MenuUser_target2" class="CollapseDetail" style="display: none;">
+                <ul class="toggle line10">
+                    <li class="mar_l15">
+                        <span id="btnShowHide6" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#Menu_Buylead" onclick="Slide('btnShowHide6')">
+                            <i class="menumiddleDownadmin" style="margin-top:6px;" title="ซ่อน"></i>
+                        </span>
+                        <a class="@if (ViewBag.MenuName == "Index" && ViewBag.PageType == "Buylead") { <text>hover</text> }" href="@Url.Action("buylead", "MyB2B", new { area = "" })" style="font-size:14px">จัดการประกาศซื้อ</a>
+                        <div id="menu-status-Buylead" class="fl_r menu-status">0</div>
+                        <div id="Menu_Buylead" class="CollapseDetail">
+                            <ul class="toggle" style="margin:0px">
+                                <li class="mar_t10 mar_l5 mar_b10">
+                                    <a href="@Url.Action("Channel2", "BuyleadCenter/Main", new { area = "" })" target="_blank">
+                                        <span>
+                                            <i class="line4"></i>
+                                        </span>
+                                        <span style="margin-right:8px">
+                                            <i class="line3"></i>
+                                        </span>
+                                        <span style="font-size:14px;color:#008000">+ เพิ่มประกาศซื้อ</span>
+                                    </a>
+                                </li>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="">
+                        <a class="@if (ViewBag.MenuName == "Junk" && ViewBag.PageType == "Buylead") { <text>hover</text> }" href="@Url.Action("Junk", "buylead", new { area = "MyB2B" })" style="font-size:14px">
+                            <span style="margin-right:8px">
+                                <i class="line5"></i>
+                            </span>
+                            ถังขยะประกาศซื้อ
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <hr />
+        }
+
+        <h3 onclick="Slides('btnShowHide7')" class="cursor">
+            <div class="fl_l icon_login_website mar_r11"></div>
+            <span id="btnShowHide7" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#MenuUser_target3">
+                <i class="menurightadmin" style="margin-top:6px;display:none" title="แสดง"></i>
+            </span>จัดการข้อมูลบริษัท
+        </h3>
+        <div id="MenuUser_target3" class="CollapseDetail" style="display: none;">
+            <ul class="toggle line9">
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Account" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyAccount", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ข้อมูลทั่วไปบริษัท
+                    </a>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "History" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyHistory", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ข้อมูลประวัติบริษัท
+                    </a>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Production" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyProduction", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ข้อมูลการผลิตของบริษัท
+                    </a>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Profile" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyProfile", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ข้อมูลจดทะเบียนบริษัท
+                    </a>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Contact" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyContact", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ข้อมูลติดต่อบริษัท
+                    </a>
+                </li>
+                
+                    <li class="mar_t10">
+                        <a class="@if (ViewBag.MenuName == "Certify" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyCertify", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                            <span style="margin-right:8px">
+                                <i class="line5"></i>
+                            </span>
+                            ข้อมูลใบรับรองคุณภาพบริษัท
+                        </a>
+                    </li>
+                    <li class="mar_t10">
+                        <a class="@if (ViewBag.MenuName == "Payment" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyPayment", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                            <span style="margin-right:8px">
+                                <i class="line5"></i>
+                            </span>
+                            ข้อมูลช่องทางการชำระค่าบริการ
+                        </a>
+                    </li>
+                    <li class="mar_t10">
+                        <a class="@if (ViewBag.MenuName == "Shipment" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanyShipment", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                            <span style="margin-right:8px">
+                                <i class="line5"></i>
+                            </span>
+                            ข้อมูลช่องทางการขนส่ง
+                        </a>
+                    </li>
+                
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Blog" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("Blog", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        จัดการข่าวสารบริษัท
+                    </a>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Website" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("WebsiteTemplate", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ธีม (Theme) รูปแบบเว็บไซต์บริษัท
+                    </a>
+                </li>
+               
+                    <li class="mar_t10">
+                        <a class="@if (ViewBag.MenuName == "CompanySetting" && ViewBag.PageType == "Company") { <text>hover</text> }" href="@Url.Action("CompanySetting", "Company", new { area = "MyB2B" })" style="font-size:14px">
+                            <span style="margin-right:8px">
+                                <i class="line5"></i>
+                            </span>
+                            ตั้งค่าเว็บไซต์บริษัท
+                        </a>
+                    </li>
+                
+            </ul>
+        </div>
+        <hr />
+        <h3>
+            <div class="fl_l icon_menu_MyPackage"></div>
+            <span class="mar_l15 fl_l">
+                <a href="@Url.Action("Index", "MyPackage", new { area = "" })" class="@if (ViewBag.PageType == "MyPackage"){ <text>hover</text> }">รายการสั่งซื้อสินค้า</a>
+            </span>
+        </h3>
+        <hr />
+        <h3 onclick="Slides('btnShowHide8')" class="cursor">
+            <div class="fl_l icon_login_message mar_r11"></div>
+            <span id="btnShowHide8" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#MenuUser_target4">
+                <i class="menurightadmin" style="margin-top:6px;display:none" title="แสดง"></i>
+            </span>ศูนย์ข้อความ
+            <div id="message_status" class="fl_r menu-status-red">@ViewBag.CountInbox</div>
+        </h3>
+        <div id="MenuUser_target4" class="CollapseDetail" style="display: none;">
+            <ul class="toggle line8">
+                <li class="mar_l15">
+                    <span id="btnShowHide9" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#Menu_Message" onclick="Slide('btnShowHide9')">
+                        <i class="menumiddleDownadmin" style="margin-top:6px;" title="ซ่อน"></i>
+                    </span>
+                    <a class="@if (ViewBag.MenuName == "Inbox" && ViewBag.PageType == "Message") { <text>hover</text> }" href="@Url.Action("List", "Message", new { area = "" })" style="font-size:14px">ข้อความเข้า</a>
+                    <div class="fl_r menu-status-red">@ViewBag.CountInbox</div>
+                    <div id="Menu_Message" class="CollapseDetail">
+                        <ul class="toggle" style="margin:0px">
+                            <li class="mar_t10 mar_b10">
+                                <a class="@if (ViewBag.MenuName == "New" && ViewBag.PageType == "Message") { <text>hover</text> }" href="@Url.Action("New", "Message", new { area = "" })" style="font-size:14px">
+                                    <span>
+                                        <i class="line4"></i>
+                                    </span>
+                                    <span style="margin-right:8px">
+                                        <i class="line3"></i>
+                                    </span>
+                                    เขียนข้อความ
+                                </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+                <li class="">
+                    <a class="@if (ViewBag.MenuName == "Importance" && ViewBag.PageType == "Message") { <text>hover</text> }" href="@Url.Action("List", "Message", new { area = "", MsgType = "Importance" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        สำคัญ
+                    </a>
+                    <div class="fl_r menu-status">@ViewBag.CountImportance</div>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Draftbox" && ViewBag.PageType == "Message") { <text>hover</text> }" href="@Url.Action("List", "Message", new { area = "", MsgType = "Draftbox" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ร่าง
+                    </a>
+                    <div class="fl_r menu-status">@ViewBag.CountDraftbox</div>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Sentbox" && ViewBag.PageType == "Message") { <text>hover</text> }" href="@Url.Action("List", "Message", new { area = "", MsgType = "Sentbox" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ส่งแล้ว
+                    </a>
+                    @*<div class="fl_r menu-status">@ViewBag.CountSentbox</div>*@
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Trash" && ViewBag.PageType == "Message") { <text>hover</text> }" href="@Url.Action("List", "Message", new { area = "", MsgType = "Trash" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ถังขยะ
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <hr />
+
+        <h3 onclick="Slides('btnShowHide10')" class="cursor">
+            <div class="fl_l icon_login_quotation mar_r11"></div>
+            <span id="btnShowHide10" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#MenuUser_target5">
+                <i class="menurightadmin" style="margin-top:6px;display:none" title="แสดง"></i>
+            </span>สินค้าที่ขอราคา
+            <div id="quotaion_status" class="fl_r menu-status-red">@ViewBag.Inbox</div>
+        </h3>
+        <div id="MenuUser_target5" class="CollapseDetail" style="display: none;">
+            <ul class="toggle line12">
+                <li class="">
+                    <a class="@if (ViewBag.MenuName == "Inbox" && ViewBag.PageType == "Quotation") { <text>hover</text> }" href="~/MyB2B/Quotation/List" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ขอราคา/เสนอราคา
+                    </a>
+                    <div class="fl_r menu-status-red">@ViewBag.Inbox</div>
+                </li>
+                <li class=" mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Importance" && ViewBag.PageType == "Quotation") { <text>hover</text> }" href="@Url.Action("List/Importance", "Quotation", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        สำคัญ
+                    </a>
+                    <div class="fl_r menu-status">@ViewBag.Importance</div>
+                </li>
+                <li class=" mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Sentbox" && ViewBag.PageType == "Quotation") { <text>hover</text> }" href="@Url.Action("List/Sentbox", "Quotation", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ส่งแล้ว
+                    </a>
+                    @*<div class="fl_r menu-status">@ViewBag.Sentbox</div>*@
+                </li>
+                <li class=" mar_t10">
+                    <a class="@if (ViewBag.MenuName == "Trash" && ViewBag.PageType == "Quotation") { <text>hover</text> }" href="@Url.Action("List/Trash", "Quotation", new { area = "MyB2B" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ถังขยะ
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <hr />
+
+        <h3 onclick="Slides('btnShowHide11')" class="cursor">
+            <div class="fl_l icon_menu_mangeprofile mar_r11"></div>
+            <span id="btnShowHide11" class="btnShowHide mar_r5" data-toggle="tooltip" data-target="#MenuUser_target6">
+                <i class="menurightadmin" style="margin-top:6px;display:none" title="แสดง"></i>
+            </span>ตั้งค่าบัญชีผู้ใช้
+        </h3>
+        <div id="MenuUser_target6" class="CollapseDetail" style="display: none;">
+            <ul class="toggle line6">
+                <li class="">
+                    <a class="@if (ViewBag.MenuName == "MemberProfile" && ViewBag.PageType == "Profile") { <text>hover</text> }" href="@Url.Action("MemberProfile", "Member", new { area = "" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        ข้อมูลส่วนตัว
+                    </a>
+                </li>
+                <li class="mar_t10">
+                    <a class="@if (ViewBag.MenuName == "ChangePassword" && ViewBag.PageType == "Profile") { <text>hover</text> }" href="@Url.Action("ChangePassword", "Member", new { area = "" })" style="font-size:14px">
+                        <span style="margin-right:8px">
+                            <i class="line5"></i>
+                        </span>
+                        เปลี่ยนรหัสผ่าน
+                    </a>
+                </li>
+            </ul>
+        </div>
+        <hr />
+
+        <h3>
+            <div class="fl_l icon_menu_MyPackage"></div>
+            <span class="mar_l15 fl_l">
+                <a href="@Url.Action("Index", "MyPackage", new { area = "" })" class="@if (ViewBag.PageType == "MyPackage"){ <text>hover</text> }">บริการเสริมของฉัน</a>
+            </span>
+        </h3>
+        <hr />
+
+        <h3>
+            <div class="fl_l icon_menu_companyStat"></div>
+            <span class="mar_l15 fl_l">
+                <a href="@Url.Action("Index", "CompanyStat", new { area = "" })" class="@if (ViewBag.PageType == "CompanyStat"){ <text>hover</text> }">รายงาน/สถิติบริษัท</a>
+            </span>
+        </h3>
+        <hr />
+
+        <h3>
+            <div class="fl_l icon_menu_favorite"></div>
+            <span class="mar_l15 fl_l">
+                <a href="@Url.Action("Index", "Favorite", new { area = "MyB2B" })">รายการโปรด</a>
+            </span>
+        </h3>
+        <hr />
+
+        <h3>
+            <div class="fl_l icon_supplier_website"></div>
+            <span class="mar_l15 fl_l">
+                <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(user.CompName) + "/Main/Index/" + user.CompID, new { area = "" })">เว็บไซต์บริษัท</a>
+            </span>
+        </h3>
+        <hr />
+    </div>
+    <div class="icon-ShowHide hide">
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("Index", "Main", new { area = "MyB2B" })" title="หน้าหลัก">
+                <div class="icon_menu_home padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("Index", "product", new { area = "MyB2B" })" title="จัดการสินค้า">
+                <div class="icon_supplier_product padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("buylead", "MyB2B", new { area = "" })" title="จัดการประกาศซื้อ">
+                <div class="icon_menu_buylead padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("CompanyAccount", "Company", new { area = "MyB2B" })" title="จัดการข้อมูลบริษัท">
+                <div class="icon_login_website padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("List", "Message", new { area = "" })" title="ศูนย์ข้อความ">
+                <div class="icon_login_message padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("List", "Quotation", new { area = "MyB2B" })" title="สินค้าที่ขอราคา">
+                <div class="icon_login_quotation padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("MemberProfile", "Member", new { area = "" })" title="ตั้งค่าบัญชีผู้ใช้">
+                <div class="icon_menu_mangeprofile padd5 mar_l7"></div>
+            </a>
+        </div>
+         <div class="menu-hide cursor">
+            <a href="@Url.Action("Index", "MyPackage", new { area = "" })" title="บริการเสริมของฉัน">
+                <div class="icon_menu_MyPackage padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("Index", "CompanyStat", new { area = "" })" title="รายงาน/สถิติบริษัท">
+                <div class="icon_menu_companyStat padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("Index", "Favorite", new { area = "MyB2B" })" title="รายการโปรด">
+                <div class="icon_menu_favorite padd5 mar_l7"></div>
+            </a>
+        </div>
+        <div class="menu-hide cursor">
+            <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(user.CompName) + "/Main/Index/" + user.CompID, new { area = "" })" title="เว็บไซต์บริษัท">
+                <div class="icon_supplier_website padd5 mar_l7"></div>
+            </a>
+        </div>
+    </div>
+</aside>
+
+<script src="~/Scripts/underscore-min.js" type="text/javascript"></script>
+<script src="~/Scripts/backbone-min.js" type="text/javascript"></script>
+<script src="~/Scripts/MenuUser.js" type="text/javascript"></script>
+<script type="text/javascript" language="javascript">
+    $(function () {
+        GroupProductList();
+
+        var comp = $('#compLevel').val();
+        //if (comp != 3) {
+            $('ul.line9').css('height', '335px');
+        //}
+    });
+
+    ppRoute = Backbone.Router.extend({
+        'routes': {
+            '': 'defaults',
+            'Product/:name': 'openTab',
+        },
+        defaults: function () {
+            //PrepareAddProduct($(this)).click();
+        },
+        openTab: function (name) {
+            if (name == "AddRecommend") {
+                OpenLoading(true);
+                SubmitPageFormAdd().click();
+            }
+        }
+    });
+
+    $(function () {
+        router = new ppRoute();
+        Backbone.history.start();
+    });
+</script>

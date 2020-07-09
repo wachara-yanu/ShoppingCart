@@ -1,0 +1,25 @@
+﻿
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum.Buylead;
+        <div class="row bg_product_mainmenu">
+            <div class="span2 product_mainMenu store mar_t5" menu="store">
+                <a href="@Url.Action("buylead/Index","MyB2B",new{ area = ""})" class="fontMainMenu"> 
+                <div id="status-Buylead" class="fl_r badge badge-important">0</div>
+                <div class="clean"></div>
+                    <img style="margin:0 auto;display:block" src="@Url.css("MyB2B/images/icon_product.png")">
+                    <p>@res.Product.lblBuylead</p>
+                </a>
+            </div>
+            <div class="span2 product_mainMenu trash mar_t5" menu="trash" style="width:200px">
+                <a href="@Url.Action("buylead/Junk","MyB2B",new{ area = ""})" class="fontMainMenu active" >
+                    <div id="status-junk" class="fl_r badge badge-important">0</div>
+                <div class="clean"></div>
+                    <img style="margin:0 auto;display:block" src="@Url.css("MyB2B/images/icon_bin.png")">
+                    <p>@res.Product.lblJunk</p>
+                </a>
+            </div>
+            <div class="fl_r add-on mar_t8 mar_r10 CloseTabmenu" style="width:10px;height:16px;">
+                  <i class="icon-chevron-up cursor " style="margin-top:-5px;"  data-original-title="@res.Common.btnHide" title="@res.Common.btnHide"></i>
+            </div>
+
+        </div>

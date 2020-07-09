@@ -1,0 +1,170 @@
+﻿@{
+    ViewBag.Title = ViewBag.msgtitle;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var Message = (view_Message)ViewBag.Message;}
+
+<div id="autoHeight" class="ContentAdmin">
+    <div class="clean20"></div>
+ 
+    <div id="MessageDetail">
+        <div class="clean20"></div>
+        <div id="MessageDetailContent" style="width:99%; margin:0 auto;">
+            <span id="MsgSubject" class="lead">@Message.Subject</span>
+           
+            <div class="clean10"></div>
+            <div id="ContactData">
+                <span class="pull-left">
+                <span id="fromContact" class="icon_contact_L fromContact inline cursor" ></span>
+              
+                    @if (Message.FromCompID == 0 && !string.IsNullOrEmpty(Message.FromName))
+                    {
+                        string FromName = "";
+                        string strFromName = Message.FromName;
+                        string[] ArrayFromName = strFromName.Split(',');
+                        // ดัก error format message เก่า
+                        if (ArrayFromName.Length > 1)
+                        {
+                            FromName = ArrayFromName[0];
+                        }
+                        <span>@res.Message_Center.btnFrom: </span>
+                        if (!string.IsNullOrEmpty(Message.FromEmail))
+                        {
+                        <span>@Message.FromName (<a href="mailto:@Message.FromEmail">@Message.FromEmail</a>)</span>
+                        }
+                        else
+                        {
+                        <span>@FromName</span>
+                        }
+                        
+                        if (!string.IsNullOrEmpty(Message.FromContactPhone))
+                        {
+                        <span>@res.Common.lblTel: </span><span>@Message.FromContactPhone</span>
+                        }
+
+                    }
+                    else if (Message.FromCompID > 0)
+                    {
+                        <span>@res.Message_Center.btnFrom: </span>
+                        <a href="@Url.Action("", "CompanyWebsite" + "/" + @Url.ReplaceUrl(Message.FromCompName) + "/Main/Index/" + Message.FromCompID, new { area = "" })" target="_blank">
+                        @Message.FromCompName
+                        </a>
+
+                    }
+                    else
+                    {
+                        <span>@res.Message_Center.btnFrom: (@res.Message_Center.lblNoContact)</span>
+                    }
+                </span>
+
+                <span class="pull-right" style="">
+                 @{  var SendDate = "";
+                     if (Message.SendDate != null)
+                     {
+
+                         DateTime convertedDate = DateTime.Parse(Message.SendDate.ToString());
+
+                         SendDate = (DateTime.Parse(convertedDate.ToString()).ToString("dd/MM/yyyy | HH:mm:ss")).ToString();
+                     }
+                         }
+                           @SendDate
+                </span> 
+            </div>
+            <div class="clean5"></div>
+            <div>
+                <span class="pull-left">
+                <span id="toContact" class="icon_contact_L toContact inline cursor"></span>
+                 
+                    @if (Message.ToCompID > 0)
+                    {
+                        <span>To: </span>
+                        <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(Message.ToCompName) + "/Main/Index/" + Message.ToCompID, new { area = "" })" target="_blank" >
+                        @Message.ToCompName
+                        </a>
+                    }
+                    else
+                    {
+                        <span>To: (@res.Message_Center.lblNoContact)</span>
+                    }
+                </span>
+            </div>
+            <div class="clean5"></div>
+            <div class="line_horizontal" style="width:100%; margin:10px 0px"></div>
+            <div class="clean5"></div>
+
+            @Html.Raw(Message.MsgDetail)
+
+            <div class="clean5"></div>
+            <div class="line_horizontal" style="width:100%; margin:10px 0px"></div>
+
+        </div>
+        <div id="FromCompDetailContent" class="popover">
+            @if (Message.FromCompID > 0)
+            {
+                @Html.Partial("MessageCenter/ContactDetail")
+            }
+            else
+            {
+                <span style="margin-left:150px; font-size:15px;">@res.Common.lblNotFound</span>
+            }
+                
+        </div>
+
+        <div id="ToCompDetailContent" class="popover">
+            @if (Message.ToCompID > 0)
+            {
+                @Html.Partial("UC/ContactDetail")
+            }
+            else
+            {
+                <span style="margin-left:150px; font-size:15px;">@res.Common.lblNotFound</span>
+            }
+                
+        </div>
+
+        <div class="clean10"></div>
+    </div>
+
+</div>
+@section js{
+<script type="text/javascript">
+    $('.zoomImg').css('left', 0).css('top', 0).css('position', 'relative');
+    $("#fromContact").popover({
+        offset: 10,
+        placement: 'bottom',
+        content: $("#FromCompDetailContent").html(),
+        template: '<div class="popover FromCompDetailContent" style="width:410px;margin-left:190px;"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
+        html: true
+    }).click(function (e) {
+        e.stopPropagation();
+        $(this).popover('show');
+    });
+    $("#toContact").popover({
+        offset: 10,
+        placement: 'bottom',
+        content: $("#ToCompDetailContent").html(),
+        template: '<div class="popover ToCompDetailContent" style="width:410px;margin-left:190px;"><div class="popover-inner"><div class="popover-content"><p></p></div></div></div>',
+        html: true
+    }).click(function (e) {
+        e.stopPropagation();
+        $(this).popover('show');
+    });
+        
+    $('html').click(function () {
+        $('#fromContact').popover('hide');
+        $('#toContact').popover('hide');
+    });
+
+    $('body').on('click', function (e) {
+        $('[rel="popover"]').each(function () {
+            if (!$(this).is(e.target) && $(this).has(e.target).length === 0 && $('.popover').has(e.target).length === 0) {
+
+                $(this).popover('hide');
+            }
+        });
+    });
+</script>            
+    
+}

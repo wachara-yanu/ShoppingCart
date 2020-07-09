@@ -1,0 +1,62 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+<table class="table mar_t20 grid" style="width:100%">
+    <tbody>
+     @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+     {
+         <tr class="nodata b" valign="middle">
+            <td><div align="center">@res.Common.lblNotFound</div></td>
+        </tr>
+     }
+     else
+     {
+         foreach (var item in (List<b2bEmLead>)ViewBag.EmLeads)
+         {
+                <tr>
+                    <td style="width: 20px;">
+                        <input type="hidden" class="hidPrimeID" value="@item.EmLeadID"/>
+                        <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />
+                        <input type="checkbox" name="cbxEmLeadID" class="cbxItem cbxEmLeadID" id="@item.EmLeadID" onclick="selectDefaultLead(@item.EmLeadID)"/>
+                        @*@if (item.IsMark == false)
+                        {
+                            <i class="icon-star-empty iconHorizontal cursor" onclick="ChangeStatus(@item.EmLeadID,true,'Mark')" title="Unmark"></i>
+                        }
+                        else if (item.IsMark == true)
+                        {
+                            <i class="icon-star iconHorizontal cursor" onclick="ChangeStatus(@item.EmLeadID,false, 'Mark')" title="Mark"></i>
+                        }
+                        @if (item.IsImportance == false)
+                        {
+                            <i class="icon-tag iconHorizontal cursor" onclick="ChangeStatus(@item.EmLeadID,true, 'important')" title="Unimportant"></i>
+                        }
+                        else if (item.IsImportance == true)
+                        {
+                            <i class="icon-tags iconHorizontal cursor" onclick="ChangeStatus(@item.EmLeadID,false, 'important')" title="Important"></i>
+                        }*@
+                        
+                    </td>
+                    @if (!string.IsNullOrEmpty(ViewBag.hidPageType))
+                    {
+                        if (item.IsMark == true)
+                        {
+                            <td><a href="@Url.Action("OpenEmLead","Purchase",new{id = item.EmLeadID , area="MyB2B"})" style="color:#333;font-weight:bold;">@item.EmLeadName</a> -  [ <span style="color:#999999" id="emLeadKeyword">@item.EmLeadKeyword</span> ]</td>
+                        }
+                        else
+                        {
+                            <td><a href="@Url.Action("OpenEmLead","Purchase",new{id = item.EmLeadID , area="MyB2B"})" style="color:#333">@item.EmLeadName</a> -  [ <span style="color:#999999" id="emLeadKeyword">@item.EmLeadKeyword</span> ]</td>
+                        }
+
+                    }
+                    else
+                    {
+                        <td>@item.EmLeadName -  [ <span style="color:#999999" id="emLeadKeyword">@item.EmLeadKeyword</span> ]</td>  
+                    }
+
+                    <td>@item.LeadCount</td>
+                    <td>@item.Remark</td>
+                </tr>
+         }
+     }
+</tbody>
+</table>
+@Html.Partial("UC/Grid/PagingPostUC")

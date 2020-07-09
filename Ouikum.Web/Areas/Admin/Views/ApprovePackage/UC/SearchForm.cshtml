@@ -1,0 +1,56 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+<div class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 0px 0px;width: 97%">
+<div class="form-inline">
+    <label class="checkbox mar_l20"> @res.Common.lblKeyword : </label>
+    <input type="text" class="wid_input_search mar_l5" name="TextSearch" placeholder="@res.Common.lblSearch"> 
+    <label class="checkbox mar_l10"> @res.Common.lblSearch_by : </label>
+    <select class="wid_select_search mar_l5" name="SearchType">  
+        @foreach (var it in ViewBag.EnumPackage)
+        {
+            <option value="@it.EnumValue">@it.EnumText</option>
+        }
+    </select> 
+</div>
+
+<div class="clean10"></div>
+<div class="form-inline">
+    <label class="checkbox mar_l10"> ประเภท : </label>    
+    <select name="PSType" id="PSType" class="wid_select_search mar_l5">
+        @foreach (var it in ViewBag.EnumPackageType)
+        {
+            if (it.EnumValue == ViewBag.PStatus)
+            {
+                <option value="@it.EnumValue" selected >@it.EnumText</option>
+            }
+            else
+            {
+                <option value="@it.EnumValue" >@it.EnumText</option>
+            }
+        }
+    </select>
+    <label class="checkbox mar_l30"> @res.Common.colStatus : </label>    
+    <select name="PStatus" id="PStatus" class="wid_select_search mar_l5">
+        @foreach (var it in ViewBag.EnumPackageStatus)
+        {
+            if (it.EnumValue == ViewBag.PStatus)
+            {
+                <option value="@it.EnumValue" selected >@it.EnumText</option>
+            }
+            else
+            {
+                <option value="@it.EnumValue" >@it.EnumText</option>
+            }
+        }
+    </select>
+</div>
+
+<div class="clean10"></div>
+<div class="form-inline">
+    <label class="checkbox"> วันที่สั่งซื้อ : </label>
+    <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA wid_input_search mar_l3" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+    <input type="checkbox" id="SelectAllPeriod"  />
+    <button class="btn btn-info btnsearch" type="submit">
+        <i class="icon-search icon-white mar_t3"></i>
+    </button>
+</div>
+</div>

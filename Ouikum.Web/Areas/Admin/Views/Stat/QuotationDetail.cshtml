@@ -1,0 +1,324 @@
+﻿    @{ string url = "";
+        //string url = ""; if (Prosoft.Base.Base.AppLang == "en-US") { url = "en/"; }
+        //           else { url = ""; }    
+        }   
+@{
+    ViewBag.Title = res.Quotation.lblQuotation_Detail;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@using Ouikum;
+@using Ouikum.Company;
+@using Ouikum.Product;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var Quotation = (view_Quotation)ViewBag.Quotation;
+  var svProduct = new ProductService();
+}
+
+<div id="autoHeight" class="ContentAdmin">
+    <div class="clean20"></div>
+
+    @Html.Partial("Admin/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+    @*<div class="row bgMainMenu" style="margin-left:10px;">
+        <span style="width:100%">
+            <div class="span2 mainMenu">
+                <a href="@Url.Action("List", "ApproveProduct")" class="fontMainMenu">
+                    <img src="@Url.css("Admin/Home/images/icn_approvecenter.png")" style="margin: 5px 0px 10px 0px;"/><br />
+                    <span>@res.Admin.lblApproveCenter</span>
+                </a>
+            </div>
+            <div class="span2 mainMenu">
+                <a href="@Url.Action("MemberList", "User")" class="fontMainMenu">
+                    <img src="@Url.css("Admin/Home/images/icn_webconfig.png")"/><br />
+                    <span>@res.Admin.lblWebConfig</span>
+                </a>
+            </div>
+            <div class="span2 mainMenu">
+                 <a href="@Url.Action("Message", "Stat")" class="fontMainMenu">
+                    <img src="@Url.css("Admin/Home/images/icn_statistic.png")"/><br />
+                    <span>@res.Admin.lblStatistic</span>
+                </a>
+            </div>
+        </span>
+    </div>*@
+    <div class="clean20"></div>
+    <div class="head-quotation" style="margin:0px 10px"><h3>@res.Quotation.lblQuoCode : @Quotation.QuotationCode</h3></div>
+    <div class="clean5"></div>
+    <div class="well" style="margin:0px 10px">
+ 
+    <div class="clean10"></div>
+    <div class="inline span4 mar_0">
+         @{
+                var urlfromcomp = "";
+                switch (Quotation.FromWebID)
+                {
+                    case 1: urlfromcomp = "http://www.ouikum.com"; break;
+                    case 2: urlfromcomp = "http://www.ouikum.com"; break;
+                    case 3: urlfromcomp = "http://www.antcart.com"; break;
+                    case 5: urlfromcomp = "http://www.myotopthai.com"; break;
+                    case 6: urlfromcomp = "http://www.appstorethai.com"; break;
+                     default: break;
+                 }
+           }
+           @if(Quotation.QuotationStatus == "Q")
+            {   
+                <div>
+                <b>From : </b>
+                           
+                <a href="@Url.Content(urlfromcomp+"/"+url+"CompanyWebsite/" + Url.ReplaceUrl(Quotation.FromCompName) + "/Main/Index/" + Quotation.FromCompID)" target="_blank">@Quotation.FromCompName</a>
+                </div>
+                <div class="clean10"></div>
+                <div>
+                    <b>@res.Common.lblTel : </b>@if(!string.IsNullOrEmpty(ViewBag.ReqPhone)){<text>@ViewBag.ReqPhone</text>}else{<text>-</text>}
+                </div>
+                <div class="clean10"></div>
+                <div>
+                    <b>@res.Common.lblEmail : </b>@if(!string.IsNullOrEmpty(ViewBag.ReqEmail)){<text>@ViewBag.ReqEmail</text>}else{<text>-</text>}
+                </div>
+            }else{
+                <div>
+                <b>From : </b>
+                  
+                @if(Quotation.FromCompID != 0){
+                    <a href="@Url.Content(urlfromcomp+"/"+url+"CompanyWebsite/" + Url.ReplaceUrl(Quotation.FromCompName) + "/Main/Index/" + Quotation.FromCompID)" target="_blank">@Quotation.CompanyName</a>
+                }
+                else
+                {
+                    <text>@Quotation.CompanyName</text>
+                }
+                </div>
+                 <div class="clean10"></div>
+                <div>
+                    <b>@res.Common.lblTel : </b>@if (!string.IsNullOrEmpty(Quotation.ReqPhone))
+                                                {<text>@Quotation.ReqPhone</text>}
+                                                else
+                                                {<text>-</text>}
+                </div>
+                <div class="clean10"></div>
+                <div>
+                    <b>@res.Common.lblEmail : </b>@if (!string.IsNullOrEmpty(Quotation.ReqEmail))
+                                                  {<text>@Quotation.ReqEmail</text>}
+                                                  else
+                                                  {<text>-</text>}
+                </div>
+            } 
+
+    </div>
+    
+    <div class="inline span4">
+        @{ var urltocomp = "";
+                switch (Quotation.WebID)
+                {
+                    case 1: urltocomp = "http://www.ouikum.com"; break;
+                    case 2: urltocomp = "http://www.ouikum.com"; break;
+                    case 3: urltocomp = "http://www.antcart.com"; break;
+                    case 5: urltocomp = "http://www.myotopthai.com"; break;
+                    case 6: urltocomp = "http://www.appstorethai.com"; break;
+                    default: break;
+                }
+        }
+        @if (Quotation.QuotationStatus == "Q")
+        {  
+           <div>
+            <b>To : </b>
+            
+            @if (Quotation.ToCompID != 0)
+            {
+
+               
+                
+                <a href="@Url.Content(urltocomp + "/"+url+"CompanyWebsite/" + Url.ReplaceUrl(Quotation.ToCompName) + "/Main/Index/" + Quotation.ToCompID)" target="_blank">@Quotation.CompanyName</a>
+            }
+            else
+            {
+                <text>@Quotation.CompanyName</text>
+            }
+            </div>
+            <div class="clean10"></div>
+            <div>
+                <b>@res.Common.lblTel : </b>@if (!string.IsNullOrEmpty(Quotation.ReqPhone))
+                                            {<text>@Quotation.ReqPhone</text>}
+                                            else
+                                            {<text>-</text>}
+            </div>
+            <div class="clean10"></div>
+            <div>
+                <b>@res.Common.lblEmail : </b>@if (!string.IsNullOrEmpty(Quotation.ReqEmail))
+                                              {<text>@Quotation.ReqEmail</text>}
+                                              else
+                                              {<text>-</text>}
+            </div>
+        }
+        else
+        {
+            <div>
+            <b>To : </b>
+                <a href="@Url.Content(urltocomp+"/"+url+"CompanyWebsite/" + Url.ReplaceUrl(Quotation.ToCompName) + "/Main/Index/" + Quotation.ToCompID)" target="_blank">@Quotation.ToCompName</a>
+            </div>
+                <div class="clean10"></div>
+            <div>
+                <b>@res.Common.lblTel : </b>@if (!string.IsNullOrEmpty(ViewBag.ReqPhone))
+                                            {<text>@ViewBag.ReqPhone</text>}
+                                            else
+                                            {<text>-</text>}
+            </div>
+            <div class="clean10"></div>
+            <div>
+                <b>@res.Common.lblEmail : </b>@if (!string.IsNullOrEmpty(ViewBag.ReqEmail))
+                                              {<text>@ViewBag.ReqEmail</text>}
+                                              else
+                                              {<text>-</text>}
+            </div>
+        }
+    </div>
+    
+    <div class="inline fl_r center">
+        @{
+            var SendDate = "";
+            var SendTime = "";
+            if (Quotation.SendDate != null)
+            {
+                SendDate = (DateTime.Parse(Quotation.SendDate.ToString()).ToString("dd MMM yyyy")).ToString();
+                SendTime = (DateTime.Parse(Quotation.SendDate.ToString()).ToString("hh:mm")).ToString();
+            }
+        }
+        @SendDate | @SendTime
+    </div>
+    <div class="clean10"></div>
+    
+    <div class="clean5"></div>
+    <hr />
+    <div class="clean20"></div>
+    @*<div class="inline ">Sale Name : @Quotation.SaleName</div>
+    <div class="inline" style="margin-left:160px">Sale Manager : @Quotation.SaleManager</div>
+    <div class="clean10"></div>
+    <div class="">Sale Approval : @Quotation.SaleApproval</div>*@
+    <div class="clean20"></div>
+    <div class=""><b>Estimate Price : </b></div>
+    <div class="clean10"></div>
+    <div class="">
+        <table class="table table-bordered table-hover" width="75%">
+            <tr>
+                <th style="text-align:center">#</th>
+                <th style="text-align:center">@res.Product.lblPro_name</th>
+                <th style="text-align:center">จำนวน</th>
+                <th style="text-align:center">@res.Product.lblPro_Unit</th>
+                <th style="text-align:center;color:Red;">@res.Product.lblPrice/@res.Product.lblPro_Unit</th>
+                <th style="text-align:center">@res.Common.lblSum_Price</th>
+            </tr>
+            @{
+                var Product = svProduct.SelectData<view_SearchProduct>(" * ", "ProductID = " + Quotation.ProductID).First();
+                ViewBag.Product = Product;
+                var Products = (view_SearchProduct)ViewBag.Product;
+             }
+            <tr>
+                <td style="text-align:center">1</td>
+                <td>@{
+                    var urlsearch = "";
+                    switch (Products.CategoryType)
+                    {
+                        case 1: urlsearch = "http://www.ouikum.com"; break;
+                        //case 2: urlsearch = "http://www.ouikum.com"; break;
+                        //case 3: urlsearch = "http://www.antcart.com"; break;
+                        //case 5: urlsearch = "http://www.myotopthai.com"; break;
+                        //case 6: urlsearch = "http://www.appstorethai.com"; break;
+                        default: break;
+                    }
+                    }
+                    <a href="@urlsearch/Search/Product/Detail/@Quotation.ProductID/@Url.ReplaceUrl(@Products.ProductName)" target="_blank">
+                    
+                    @Products.ProductName
+                    </a>
+                </td>
+                <td style="text-align:center">@Quotation.Qty</td>
+                <td style="text-align:center">@Quotation.QtyUnit</td>
+                @{
+                    int p = 0;
+                    int totalprice = 0;
+                    if (Quotation.PricePerPiece != null)
+                    {
+                        p = (int)Quotation.PricePerPiece;
+                        int q = (int)Quotation.Qty;
+                        totalprice = (p * q);
+                    }
+                 }
+                <td style="text-align:right">@if (Quotation.QuotationStatus == "Q")
+                                             {<text>@String.Format("{0:#,##0.00}", p)</text>}</td>
+                <td style="text-align:right">@if (Quotation.QuotationStatus == "Q")
+                                             {<text>@String.Format("{0:#,##0.00}", totalprice)</text>}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right;color:Red;">Discount</td>
+                @{ if (Quotation.Discount == null && Quotation.PricePerPiece != null)
+                   {
+                       Quotation.Discount = 0;
+                   }
+                   string Discount = String.Format("{0:#,##0.00}", Quotation.Discount);
+                 }
+                <td style="text-align:right">@Discount</td>
+                <td style="text-align:right">@Discount</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                @{ if (Quotation.Discount == null)
+                   {
+                       Quotation.Discount = 0;
+                   }
+                   if (Quotation.Vat == null) { Quotation.Vat = 0; }
+                   int Price = totalprice - (int)Quotation.Discount;
+                   int Vat = (Price * (int)Quotation.Vat) / 100;
+                   int TotalPrice = Price + Vat;
+                 }
+                <td style="text-align:right;color:Red;">VAT(%)</td>
+                 @{
+                     string vat = String.Format("{0:#,##0.00}", Quotation.Vat);
+                     string totalVat = String.Format("{0:#,##0.00}", Vat);
+                  }
+                <td style="text-align:right">@if (Quotation.QuotationStatus == "Q")
+                                             {<text>@vat</text>}</td>
+                <td style="text-align:right">@if (Quotation.QuotationStatus == "Q")
+                                             {<text>@totalVat</text>}</td>
+            </tr>
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td style="text-align:right"><b>Total Price</b></td>
+                @{
+                    string TotalPrices = String.Format("{0:#,##0.00}", TotalPrice);
+                 }
+                <td style="text-align:right">@if (Quotation.QuotationStatus == "Q")
+                                             {<text>@TotalPrices</text>}</td>
+            </tr>
+        </table>
+    </div>
+    <div class="fl_l ">@res.Common.lblMessage_attach : </div>
+    <div class="fl_l mar_l10">@Quotation.Remark</div>
+    <div class="clean10"></div>
+    @if (ViewBag.AttachFile != null)
+    {
+        <div class="clean10"></div>
+        var File = (b2bQuotationAttach)ViewBag.AttachFile;
+        <text>  
+        <div class="form-horizontal">
+            <span class="b">@res.Common.lblMessage_attach : </span><div class="clean10"></div>
+            <input type="text" disabled value="@File.FileName" /><div class="clean10"></div>
+            <a class="btn btn-success cursor control-label2 fl_l" href="@Url.Content("~/"+url+"Default/DownLoads?dir=Quotation-" + File.QuotationID + "&name=" + File.FileName)">Download</a>
+        </div>
+        </text>
+    }
+    <div class="clean20"></div>
+</div>
+</div>
+
+<script type="text/javascript" >
+    $(function () {
+        ActiveMenu(3);
+    })
+</script>

@@ -1,0 +1,67 @@
+﻿@using Ouikum.Quotation;
+@using Ouikum.Company;
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+    <table class="table table-hover grid">
+    <thead>
+        <tr>
+            <th style="text-align:center">เลขที่ขอราคา</th> 
+            <th>From</th>
+            <th>To</th>
+            <th style="text-align:center">@res.Common.lblDate_Time</th>
+        </tr>
+    </thead>
+    <tbody>
+    @if (ViewBag.TotalRow <= 0 || ViewBag.TotalRow == null)
+    {
+        <tr class="nodata b" valign="middle">
+            <td><div align="center">@res.Common.lblNotFound</div></td>
+        </tr>
+    }
+    else
+    {
+        foreach (var item in (List<view_Quotation>)ViewBag.Quotations)
+        {
+        <tr class="body">
+            <td class="span3" style="vertical-align:middle;">
+                    <div class="center"><a target="_blank" href="@Url.Action("QuotationDetail","Stat" ,new{area="Admin",QuotationID= item.QuotationID ,QuotationCode=item.QuotationCode})" >@item.QuotationCode</a></div>
+            </td>
+            <td class="span4">@if (item.QuotationStatus == "Q")
+                              {@item.FromCompName}
+                              else
+                              {@item.CompanyName}</td>
+            <td class="span4">
+                    @if (item.QuotationStatus == "Q")
+                    {
+                          <div>@item.CompanyName </div>
+                    }
+                    else
+                    {
+                         <div>@item.ToCompName </div>
+                    }
+            </td>
+            <td class="span3" style="vertical-align:middle;">
+                    <div class="center">
+                    @{
+                    var SendDate = "";
+                    var SendTime = "";
+                    if (item.SendDate != null)
+                    {
+                        SendDate = (DateTime.Parse(item.SendDate.ToString()).ToString("d/M/yyyy HH:mm:ss")).ToString();
+                        SendTime = (DateTime.Parse(item.SendDate.ToString()).ToString("hh:mm")).ToString();
+                    }
+                    }
+                    @SendDate
+                    </div>
+                </td>
+        </tr>
+        }
+    }
+    </tbody>
+</table>
+@Html.Partial("UC/Grid/PagingPostUC")
+<script type="text/javascript">
+    $(function () {
+        OpenLoading(false);
+    });
+</script>

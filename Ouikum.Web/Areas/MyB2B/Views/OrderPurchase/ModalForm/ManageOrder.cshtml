@@ -1,0 +1,46 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+
+    <div id="editStatusOrder" data-id="" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabelHot" aria-hidden="true">
+        <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+            <h2 id="myModalLabelHot" class="label-header" style="line-height:20px">จัดการสถานะสินค้า</h2>
+        </div>
+        <div class="modal-body">
+            <input type="hidden" id="OrDetailID" />
+            <div class="control-group">
+                <label class="span2 fl_l">รหัสรายการสั่งซื้อ : </label>
+                <div class="controls">
+                    <input type="text" name="OrDetailCode" id="OrDetailCode" value="0" style="margin-top:0px; margin-right:5px;width:131px" disabled />
+
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="span2 fl_l">สินค้า : </label>
+                <div class="controls">
+                    <div class="input-append fl_l span3 inline" style="margin-left:-1px;">
+                        <input type="text" name="ProductName" id="ProductName" class="ProductName" style="width:131px;" disabled />
+                        @*<input type="text" name="StatusProduct" id="StatusProduct" class="StatusProduct" style="width:131px;" disabled />*@
+                    </div>
+                </div>
+             </div>
+            <div class="control-group">
+                @*<input type="hidden" id="PackageIDHot" />*@
+                <label class="span2 fl_l">สถานะ : </label>
+                <div class="controls">
+                    <div class="input-append fl_l span3 inline" style="margin-left:-1px;">
+                        <select name="StatusOrder" id="StatusOrder" style="width:145px">
+                            <option value="B">ยืนยันการสั่งซื้อ</option>
+                            <option value="C">ยืนยันการชำระเงิน</option>
+                            <option value="D">จัดส่งสินค้าแล้ว</option>
+                        </select>
+                    </div>
+                </div>
+            </div>
+            <div class="clean10"></div>
+            <label class="span2 fl_l"></label>
+            <button id="save_editHot" class="btn btn-danger fl_l" type="button">ยืนยัน</button>
+            <button class="btn" data-dismiss="modal" aria-hidden="true" type="button" style="margin-left:10px;">@res.Common.btnCancel</button>
+        </div>
+    </div>
+

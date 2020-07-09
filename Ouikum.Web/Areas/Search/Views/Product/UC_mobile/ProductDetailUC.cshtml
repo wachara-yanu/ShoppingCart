@@ -1,0 +1,445 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;}
+<style>
+    .swiper-container {
+    height: 220px;
+    text-align: center;
+    width: auto;
+}
+</style>
+@if (ViewBag.ProductDetail != null)
+{
+    var item = (view_Product)ViewBag.ProductDetail;
+    <div class="mar_t20"></div>
+    <div class="clean"></div>
+    <h4 class="mar_rl10" title="@item.ProductName" style=" line-height:18px; display:block;">@Html.SubText(item.ProductName, 40)</h4>
+    <div class="device mar_t20">
+        <a class="arrow-left" href="#"></a> 
+        <a class="arrow-right" href="#"></a>
+        @if (((List<view_ProductImage>)ViewBag.ProductImage).Count > 0)
+        {
+            <div class="swiper-container">
+                <div class="swiper-wrapper" style="padding-top:20px">
+                @foreach (var itemImg in (List<view_ProductImage>)ViewBag.ProductImage)
+                { 
+                    <div class="swiper-slide">
+                        <div class="content-slide">
+                            <div align="center">
+                            <div class="divNewPro">
+                            @if (res.Common.lblWebsite == "AntCart" && item.PromotionPrice > 0)
+                            {
+                                var priceof = Convert.ToInt32(100 - ((item.PromotionPrice / item.Price) * 100)) + "%";  
+                                <div class="discountoff"><span style="line-height:15px;color:white">ลด <center>@priceof</center></span><span></span></div>
+                            }
+                            <img class="itemImg" src="@Url.Product(item.CompID, item.ProductID, itemImg.ImgPath)" alt="@itemImg.ProductName" onload="resizeImg($(this), 200, 200);resizeNewPro($(this));" />
+                            </div>
+                            </div>
+                            <p class="title">
+                                @if (res.Common.lblWebsite == "AntCart" || res.Common.lblWebsite == "myOtopThai")
+                                {
+                                    if (item.Price > 0)
+                                    {
+                                        if (item.IsPromotion == true)
+                                        {
+                                        <div class="muted" style="text-decoration:line-through">@(String.Format("{0:##,###.##}", item.Price)) @res.Product.lblBaht</div>
+                                        }
+                                        else
+                                        {
+                                        <div class="b" style="color:#FD7C16;">@(String.Format("{0:##,###.##}", item.Price)) @res.Product.lblBaht</div>
+                                        }
+                                    }
+                                    if (item.PromotionPrice > 0)
+                                    { 
+                                        <span class="b font_l" style="color:#FD7C16">@(String.Format("{0:##,###.##}", item.PromotionPrice)) @res.Product.lblBaht</span>
+                                    }
+                                }
+                            </p>
+                        </div>
+                    </div>
+                }
+                </div>
+            </div>
+        }
+        else
+        {  
+            <div class="swiper-container">
+                <div class="swiper-wrapper" style="padding-top:20px">
+                    <div class="swiper-slide">
+                        <div class="content-slide">
+                            <div align="center">
+                            <div class="divNewPro">
+                            @if (res.Common.lblWebsite == "AntCart" && item.PromotionPrice > 0)
+                            {
+                                var priceof = Convert.ToInt32(100 - ((item.PromotionPrice / item.Price) * 100)) + "%";  
+                                <div class="discountoff"><span style="line-height:15px;color:white">ลด <center>@priceof</center></span><span></span></div>
+                            }
+                            <img  class="itemImg" alt="@item.ProductName" title="@item.ProductName" src="@Url.Product(item.CompID, item.ProductID, item.ProductImgPath)" onload="resizeImg($(this), 200, 200);resizeNewPro($(this));" />  
+                            </div>
+                            </div>
+                            <p class="title">
+                                @if (res.Common.lblWebsite == "AntCart" || res.Common.lblWebsite == "myOtopThai")
+                                {
+                                    if (item.Price > 0)
+                                    {
+                                        if (item.IsPromotion == true)
+                                        {
+                                        <div class="muted" style="text-decoration:line-through">@(String.Format("{0:##,###.##}", item.Price)) @res.Product.lblBaht</div>
+                                        }
+                                        else
+                                        {
+                                        <div class="b" style="color:#FD7C16;">@(String.Format("{0:##,###.##}", item.Price)) @res.Product.lblBaht</div>
+                                        }
+                                    }
+                                    if (item.PromotionPrice > 0)
+                                    { 
+                                        <span class="b font_l" style="color:#FD7C16">@(String.Format("{0:##,###.##}", item.PromotionPrice)) @res.Product.lblBaht</span>
+                                    }
+                                }
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>     
+        }
+        <div class="pagination hide"></div>
+    </div>
+    <div class="clean30"></div>
+    <div class="btn-group mar_rl10 center">
+      <button class="btn btn-primary" style="width:48%;height:40px" onclick="window.location.href = GetUrl('MyB2B/Quotation/RequestPrice/@item.ProductID')">@res.Quotation.lblQuotation</button>
+      <button class="btn btn-primary" style="width:48%;height:40px" onclick="window.location.href = GetUrl('Message/Contact?ToCompID=@item.CompID&ProductID=@item.ProductID')">@res.Common.lblContactSupplier</button>
+    </div>
+    <div class="clean10"></div>
+    <ul class="nav nav-tabs font_xxl mar_rl10" id="myTab">
+        <li class="maps active"><a data-toggle="tab" href="#DetailTab">@res.Product.lblProduct_details</a></li>
+        <li class="maps"><a data-toggle="tab" href="#ContactTab">@res.Common.lblSupplier_info</a></li>
+        <li class="maps"><a data-toggle="tab" href="#PaymentTab">@res.Common.lblPayment</a></li>
+    </ul>
+    <div class="tab-content mar_rl10" id="myTabContent">
+        <div id="DetailTab" class="tab-pane active in font_xxl">
+            <div class="mar_10" style="width:auto">
+                <div class="divRow"><span class="b font_xxl">@res.Product.lblGeneral_Product </span></div>
+                <div class="clean20"></div>
+                @if (!string.IsNullOrEmpty(item.ProductCode))
+                {<text>
+                <div class="divRow mar_b10">
+                    <div class="divleft  textGray">@res.Product.lblProductCode : </div>
+                    <div class="divright">@item.ProductCode</div>
+                </div></text>}
+                @if (!string.IsNullOrEmpty(item.ProductKeyword))
+                {<text>
+                <div class="divRow mar_b10">
+                    <div class="divleft  textGray">@res.Product.lblKey_word :</div>
+                    <div class="divright">
+                        <ul id="ProductKeyword" data="@item.ProductKeyword" style="margin:0"></ul>
+                    </div>
+                </div></text>}
+                @if ((item.MinOrderQty != 0) && (item.MinOrderQty != null))
+                {<text>
+                <div class="divRow mar_b10">
+                    <div class="divleft  textGray">@res.Product.lblMinimum_Unit :</div>
+                    <div class="divright">@(string.Format("{0:#,###.00}", item.MinOrderQty))</div>
+                </div></text>}
+                @if ((item.Productivity != 0) && (item.Productivity != null))
+                {<text>
+                <div class="divRow mar_b10">
+                    <div class="divleft  textGray">@res.Product.lblHighProduction : </div>
+                    <div class="divright">@(string.Format("{0:#,###.00}", item.Productivity))</div>
+                </div></text>}
+                @if (!string.IsNullOrEmpty(ViewBag.FactoryProvince))
+                {<text>
+                <div class="divRow mar_b10">
+                    <div class="divleft  textGray">@res.Product.lblOrigin:</div>
+                    <div class="divright">@ViewBag.FactoryProvince</div>
+                </div></text>} 
+        </div>
+            <div class="mar_rl10" style="width:auto">
+                <div class="divRow"><span class="b font_xxl">@res.Product.lblProduct_in_detail</span></div>
+                <div class="clean10"></div>
+                <div class="divRow">
+                    <span class="font_xxl">@{WriteLiteral(item.ProductDetail);}</span>
+                </div>
+            </div>
+        </div>
+        <div id="ContactTab" class="tab-pane font_xxl">
+        @if (ViewBag.Company != null)
+        {
+            var comp = (view_Company)ViewBag.Company;
+            <div class=" mar_10" style="width:auto">
+                <div class="divRow"><span class="b font_xxl">@res.Company.lblCompany_Profile</span></div>
+                <div class="clean10"></div>
+
+                    <div class="form-horizontal">
+                        @if (!string.IsNullOrEmpty(comp.LogoImgPath))
+                        {
+                        <div class="control-group">
+                            <label class="control-label"></label>
+                            <div class="controls" style="padding-top:5px">
+                                <img src="@Url.CompanyLogo(comp.CompID, comp.LogoImgPath)" alt="@comp.LogoImgPath" title="@comp.CompName" id="logoimg" width="120" height="115" onload="resizeImg($(this), 100, 100)" />
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompName">@res.Company.lblCompName : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.BizTypeName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="BizTypeName">@res.Common.chooseBizType : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.BizTypeName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompAddrLine1))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="AddrLine1">@res.Common.lblAddress : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompAddrLine1
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.DistrictName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="DistrictName">@res.Common.lblDistrict : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.DistrictName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.ProvinceName))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="ProvinceName">@res.Common.lblProvince : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.ProvinceName
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.EmployeeCount))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="EmployeeCount">@res.Company.lblNum_Emp : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.EmployeeCount
+                            </div>
+                        </div>
+                        }
+                        @if ((!string.IsNullOrEmpty(comp.CompProduct)) && (!string.IsNullOrEmpty(comp.CompProduct)))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompProduct">@res.Common.lblProduct : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompProduct
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompPhone))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompPhone">@res.Common.lblPhone : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompPhone
+                            </div>
+                        </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.CompFax))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompFax">@res.Common.lblFax : </label>
+                            <div class="controls" style="padding-top:5px">
+                                @comp.CompFax
+                            </div>
+                        </div>
+                        } 
+                        @if (!string.IsNullOrEmpty(comp.ContactEmail))
+                        {
+                        <div class="control-group">
+                            <label class="control-label textGray" for="ContactEmail">@res.Common.lblEmail : </label>
+                            <div class="controls" style="padding-top:5px">
+                                <a href="mailto:@comp.ContactEmail">@comp.ContactEmail</a>
+                            </div>
+                        </div>
+                        } 
+                        <div class="control-group">
+                            <label class="control-label textGray" for="CompFax">@res.Company.lblGoogleMap : </label>
+                            <div id="map_canvas" style="width:90%; border:1px solid #999;margin:0 auto"></div>
+                            <input type="hidden" id="GMapLatitude" value="@comp.GMapLatitude"/>
+                            <input type="hidden" id="GMapLongtitude" value="@comp.GMapLongtitude"/>
+                            <input type="hidden" id="GPinLatitude" value="@comp.GPinLatitude"/>
+                            <input type="hidden" id="GPinLongtitude" value="@comp.GPinLongtitude"/>
+                            <input type="hidden" id="GZoom" value="@comp.GZoom"/>
+                            <input type="hidden" id="hidContactProvinceID" value="@comp.CompProvinceID" />
+                        </div>
+                    </div>
+            </div>
+
+        }
+        </div>       
+        <div id="PaymentTab" class="tab-pane font_xxl">
+            <div class="divRow mar_t10"><span class="textTopic">@res.Company.lblCompPayment</span></div>
+            <div class="clean20"></div>
+            @if (ViewBag.CompanyPayments != null)
+            {
+            <table class="table table-condensed" id="TBPayment">
+            <thead>
+            <tr>
+                <th>@res.Order.lblAcc_name</th>
+                <th>@res.Order.lblBank_name</th>
+                <th>@res.Order.lblBranch</th>
+                <th>@res.Order.lblAccNum</th>
+                <th>@res.Order.lblAcc_type</th>
+            </tr>
+            </thead>
+            <tbody>
+            @foreach (var Payment in ((IEnumerable<view_CompanyPayment>)ViewBag.CompanyPayments))
+            {
+                <tr>
+                    <td>@Payment.AccName</td>
+                    <td>@Payment.BankName</td>
+                    <td>@Payment.BranchName</td>
+                    <td>@Payment.AccNo</td>
+                    <td>
+                        @if (Payment.AccType == 1)
+                        {<text>@res.Common.lblSavings</text>}
+                        else if (Payment.AccType == 2)
+                        {<text>@res.Common.lblDeposits</text>}
+                        else if (Payment.AccType == 3)
+                        {<text>@res.Common.lblCurrents</text> }
+                        else
+                        {<text>@res.Common.lblNonSpecific</text> }
+                    </td>
+                </tr>
+            }
+            </tbody>
+            </table>
+            }
+            else
+            { 
+                <div class="divRow">@res.Common.lblNonSpecific</div>
+            }
+            <div class="clean20"></div>
+            <div class="divRow"><span class="textTopic">@res.Company.lblShipping</span></div>
+            <div class="clean20"></div>
+            @if (ViewBag.CompanyShipment != null)
+            {
+            <table class="table table-condensed" id="TBTransport">
+                <thead>
+                    <tr>
+                        <th>@res.Company.lblShipping</th>
+                        <th>@res.Company.lblDuration</th>
+                        <th>@res.Company.lblPackage</th>
+                        <th>@res.Company.lblShipping_Detail</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var Shipment in ((IEnumerable<b2bCompanyShipment>)ViewBag.CompanyShipment))
+                    {
+                        <tr>
+                            <td>@Shipment.ShipmentName</td>
+                            <td>@Shipment.ShipmentDuration</td>
+                            <td>@Shipment.PackingName</td>
+                            <td>@{WriteLiteral(Shipment.Remark);}</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+            }
+            else
+            { 
+                <div class="divRow">@res.Common.lblNonSpecific</div>
+            }
+        </div>
+    </div>
+<div class="clean"></div>
+}
+<script type="text/javascript">
+    $(function () {
+        var w = window.innerWidth-20;
+        var h = 250;
+        if (w > 480) {
+            h = 300;
+        }
+        if (w > 670) {
+            h = 350;
+        }
+        if (w > 980) {
+            h = 400;
+        }
+        if (w > 1024) {
+            h = 500;
+        }
+        $('#map_canvas').height(h + 'px');
+
+      var mySwiper = new Swiper('.swiper-container', {
+          pagination: '.pagination',
+          loop: false,
+          grabCursor: true,
+          paginationClickable: true,
+      })
+      $('.arrow-left').on('click', function (e) {
+          e.preventDefault()
+          mySwiper.swipePrev()
+      })
+      $('.arrow-right').on('click', function (e) {
+          e.preventDefault()
+          mySwiper.swipeNext()
+      })
+
+      $('#myTab a').click(function (e) {
+          e.preventDefault();
+          $(this).tab('show');
+      })
+
+      $('.maps').click(function () {
+          resizeImg($('#logoimg'), 100, 100)
+          if ($("#GMapLatitude").val() == 0 && $('#GMapLongtitude').val() == 0) {
+              var CompProvinceID = parseInt('@(ViewBag.ProvincceID)');
+              GetDefaultGmap(CompProvinceID);
+          } else {
+              initialize($('#GMapLatitude').val(), $('#GMapLongtitude').val(), $('#GPinLatitude').val(), $('#GPinLongtitude').val(), $('#GZoom').val(), 0);
+          }
+      })
+  })
+
+    function openWindowChat(url, target) {
+        var oldWin = window.open(url, target, 'width=620,height=565,menubar=no,status=no');
+        oldWin.focus();  // give focus 
+        return false;
+    }
+</script>
+<script type="text/javascript">
+    function GetDefaultGmap(CompProvinceID) {
+        // OpenLoading(true);
+
+        $.ajax({
+            url: GetUrl("Website/setDefaultGmap"),
+            data: { ProvinceID: parseInt(CompProvinceID) },
+            type: "POST",
+            datatype: "json",
+            traditional: true,
+            success: function (data) {
+                $('#GMapLatitude').val(data["GMapLatitude"]);
+                $('#GMapLongtitude').val(data["GMapLongtitude"]);
+                $('#GPinLatitude').val(data["GPinLatitude"]);
+                $('#GPinLongtitude').val(data["GPinLongtitude"]);
+                $('#GZoom').val(data["GZoom"]);
+                $("#hidContactProvinceID").val(CompProvinceID);
+
+                initialize($('#GMapLatitude').val(), $('#GMapLongtitude').val(), $('#GPinLatitude').val(), $('#GPinLongtitude').val(), $('#GZoom').val(), 0);
+            }
+        });
+    }
+function resizeNewPro(obj) {
+    $(obj).parent().height($(obj).height()); 
+    $(obj).parent().width($(obj).width());
+}
+</script>

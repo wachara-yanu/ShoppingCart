@@ -1,0 +1,179 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+ <script src="@Url.js("UC/tiny_mce/tiny_mce.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    tinyMCE.init({
+        // General options
+        mode: "exact",
+        elements: "MsgProductDetail",
+        theme: "advanced",
+        height: "340",
+        width: "70%",
+        plugins: "autolink,lists,spellchecker,pagebreak,style,layer,table,save,advhr,advimage,advlink,emotions,iespell,inlinepopups,insertdatetime,preview,media,searchreplace,print,contextmenu,paste,directionality,fullscreen,noneditable,visualchars,nonbreaking,xhtmlxtras,template",
+
+        // Theme options
+        theme_advanced_buttons1: "bold,italic,underline,strikethrough,|,justifyleft,justifycenter,justifyright,justifyfull,|,formatselect,fontselect,fontsizeselect",
+        theme_advanced_buttons2: "cut,copy,paste,pastetext,pasteword,|,search,|,bullist,numlist,|,outdent,indent,|,undo,redo,|,link,unlink,image,cleanup,code,|,preview,|,forecolor,backcolor",
+        theme_advanced_buttons3: "tablecontrols,|,hr,removeformat,visualaid,|,sub,sup,|,iespell,media,|,fullscreen",
+        theme_advanced_toolbar_location: "top",
+        theme_advanced_toolbar_align: "left",
+        theme_advanced_statusbar_location: "bottom",
+        theme_advanced_resizing: false
+    });
+</script>
+    @if (ViewBag.ProductCount != null)
+    {
+    var Product = (view_Product)ViewBag.ProductDetail;
+
+    <div class="ProductContact" style="display:none;"><span class="ProID">@Product.ProductID</span><span class="ProName">@Product.ProductName</span><span class="ProNameUrl">@Url.ReplaceUrl(Product.ProductName)</span></div>
+    <div id="SendContactMessageForm" style="float: left; width:100%">
+        <div class="clean30"></div>
+        <div id="MessageContent">
+            <div id="MsgHeadContent"> 
+                <div class="row">
+                    <div class="span10">
+                        <span class="inline" style="width:100%">
+                            <span class="span3 mar_l50" style="width:85px;">@res.Message_Center.btnTo : </span>
+                            <span id="txtToCompName" name="txtToCompName">@Product.CompName </span> [ @Product.ContactEmail ]
+                            <input type="hidden" id="hidToCompID" value="@Product.CompID"/>
+                            <input type="hidden" id="hidToCompEmail" value="@Product.ContactEmail"/>
+                        </span>
+                        <div class="clean5"></div>
+                        <span class="inline" style="width:100%">
+                            <span class="span3 mar_l50" style="width:85px;">@res.Message_Center.btnFrom : </span>
+                            @if (ViewBag.CompanyView != null)
+                            {
+                                var item = (b2bCompany)ViewBag.CompanyView;
+                                if (!string.IsNullOrEmpty(item.ContactFirstName))
+                                {
+                                <text>
+                                    <input type="text" id="txtFromName" class="@item.CompID" name="txtFromName" style="width:65%;" value="@item.ContactFirstName @item.ContactLastName" placeholder="@res.Message_Center.pdFromName"/>
+                                </text>
+                                }
+                            }
+                            else
+                            { 
+                              <text>
+                                <input type="text" id="txtFromName" name="txtFromName" style="width:65%;" placeholder="@res.Message_Center.pdFromName"/>
+                            </text>
+                            }
+                         
+                        </span>
+                        <span class="inline" style="width:100%">
+                            <span class="span3 mar_l50" style="width:85px;">@res.Message_Center.pdFromEmail : </span>
+                            @if (ViewBag.CompanyView != null)
+                            {
+                                var item = (b2bCompany)ViewBag.CompanyView;
+                                if (!string.IsNullOrEmpty(item.ContactFirstName))
+                                {
+                            <text>
+                                <input type="text" id="txtFromEmail" name="txtFromEmail" style="width:65%;" value="@item.ContactEmail" placeholder="@res.Message_Center.pdFromEmail"/>
+                            </text>
+                                }
+                            }
+                            else
+                            { 
+                           <text>
+                                <input type="text" id="txtFromEmail" name="txtFromEmail" style="width:65%;"  placeholder="@res.Message_Center.pdFromEmail"/>
+                            </text>
+                            } 
+                        </span>
+                        <span class="inline" style="width:100%">
+                            <span class="span3 mar_l50" style="width:85px;">@res.Common.lblPhone : </span>
+                             @if (ViewBag.CompanyView != null)
+                             {
+                                 var item = (b2bCompany)ViewBag.CompanyView;
+                                 if (!string.IsNullOrEmpty(item.ContactPhone))
+                                 {
+                                    <input type="text" id="txtFromContactPhone" name="txtFromContactPhone" style="width:65%;"  value="@item.ContactPhone" placeholder="@res.Message_Center.pdYourPhone"/>
+                                 }
+                                 else if (!string.IsNullOrEmpty(item.CompPhone))
+                                 {
+                                     <input type="text" id="txtFromContactPhone" name="txtFromContactPhone" style="width:65%;"  value="@item.CompPhone" placeholder="@res.Message_Center.pdYourPhone"/>
+                                 }
+                                 else
+                                 {
+                                   <input type="text" id="txtFromContactPhone" name="txtFromContactPhone" style="width:65%;" placeholder="@res.Message_Center.pdYourPhone" />
+                                 }
+                             }
+                             else
+                             {
+                                 <input type="text" id="txtFromContactPhone" name="txtFromContactPhone" style="width:65%;" placeholder="@res.Message_Center.pdYourPhone" />
+                             }
+                        </span>
+                        <span class="inline" style="width:100%;display:none;">
+                            <span class="span3 mar_l50" style="width:85px;">@res.Message_Center.lblSubject : </span>
+                            <input type="text" id="txtSubject" name="txtSubject" style="width:65%;" value="@res.Common.lblContactSupplier @Product.ProductName"/>
+                        </span>
+                        
+                    </div>
+                </div>
+            </div>
+            <div class="clean10"></div>
+            <div id="MsgContent" style="margin-left:106px">
+                @Html.TextArea("MsgProductDetail")
+            </div>
+            <div class="clean20"></div>
+            <span class="inline" style="width:100%">
+                <span class="span3" style="margin-left:106px">
+                    <label class="checkbox font_m">
+                        <input type="checkbox" value="1" name="ChkImportance" />
+                        @res.Common.lblContact_imm
+                    </label>
+                </span>
+            </span>
+            <div class="clean10"></div>
+              <span class="inline" style="width:100%">
+                <span class="span8" style="margin-left:106px">
+                    @*<button class="btn btn-danger" type="submit" id="btnSendMessage" onclick="SendMail(@Product.ProductID)" style="margin:2px;" data-loading-text="Loading...">@res.Message_Center.btnSendMessage</button>*@
+                    @Html.Partial("UC/CaptchaUC/CaptchaMessageUC")
+                    <br />
+                    <button class="btn btn-primary label-header" type="button" id="unlockMsg" onclick="SendMail(@Product.ProductID)" style="margin-top: 10px; width:120px;vertical-align:top;" data-loading-text="Loading..." disabled="disabled"><span class="font_l"> @res.Message_Center.btnSendMessage</span></button>
+                </span>
+            </span>
+
+        </div>
+    </div>
+    }
+<script type="text/javascript">
+    $(function () {
+        var ProID = $(".ProID").text();
+        if (ProID != "") {
+            SetContent();
+        }
+        $("#btnCancel").click(function () {
+            $("#txtFromName").val("");
+            $("#txtFromEmail").val("");
+            $("#txtSubject").val("");
+        });
+    });
+    function SetContent() {
+        var mycontent = "<br/><br/><br/><br/><br/><br/><br/><br/><br/><br/><hr/>";
+        mycontent += '@MvcHtmlString.Create(res.Message_Center.lblProductLink)' +"<br/>";
+        var domain = '@MvcHtmlString.Create(res.Common.lblDomainFullName)';
+        var path = domain + '/'+'@MvcHtmlString.Create(res.Pageviews.PvProductDetailJs)';
+        var subject = "";
+        var productid = "";
+
+        $('.ProductContact').each(function (index) {
+            if ($(".ProID").eq(index).text() != "0") {
+                // Msg Content
+                mycontent += $(".ProName").eq(index).text() + " : ";
+                mycontent += "<a href='http://" + path + $(this).children(".ProID").text() + "/" + $(".ProNameUrl").eq(index).text();
+                mycontent += "'>" + path + $(this).children(".ProID").text() + "/" + $(".ProName").eq(index).text();
+                mycontent += "</a><br/>"
+
+                productid += $(this).children(".ProID").text() + ",";
+
+                // Subject
+                subject += $(".ProName").eq(index).text() + " ,";
+            } else {
+                mycontent = "";
+            }
+
+        });
+
+        $('#MsgProductDetail').attr("value", mycontent);
+    }
+   
+</script>

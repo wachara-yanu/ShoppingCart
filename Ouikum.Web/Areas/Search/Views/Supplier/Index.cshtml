@@ -1,0 +1,186 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@*@using Prosoft.Base;*@
+@{
+    ViewBag.ChkPage = "Supplier";
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+    int tempRegionID = 0;
+}
+@section head{
+    <link rel="canonical" href="http://@res.Common.lblDomainShortName/Search/Supplier" />
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Search/Product.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/RcarouselUC/rcarousel.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet" type="text/css" />
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.core.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.widget.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Rcarousel-sliderUC/jquery.ui.rcarousel.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/Highlight/highlight.js")" type="text/javascript"></script>
+    <style>
+        #ProductDetail .divProductItem .detail .divDetailPro div a {
+            font-size: 13px
+        }
+
+        .PageName {
+            margin-top: -15px;
+        }
+
+        .cate_content:hover {
+            background: #EDEDED;
+        }
+    </style>
+}
+@section js{
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.jsoncookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("Search/Supplier.js")" type="text/javascript"></script>
+    <script src="@Url.js("Compare/Compare.js")" type="text/javascript"></script>
+    @*<script src="@Url.js("Home/AdminMessagePopup.js")" type="text/javascript"></script>*@
+    <script src="@Url.js("UC/Paging/Paging.js")" type="text/javascript"></script>
+
+    <script type="text/javascript">
+
+    SetFormAction('Supplier');
+    var Window = $(window).width();
+    if (Window < 1025) {
+        $("#CateMenuTop").css("margin-top", "1px");
+    }
+
+    $('.PageName h1').text('@res.Product.lblSupplierlist');
+    /*-----------ddlsort-------------*/
+    function sel_sort(obj) {
+        $('#dLabel > .txtval').text($(obj).text());
+        $('#ddlSort').val($(obj).parent().attr('aria-valuetext'));
+        SelectedSort($('#ddlSort').val())
+    }
+    var TotalPage = eval($(".hidTotalPage").val().replace(',', ''));
+    </script>
+}
+@{var LanguageCookies = Request.Cookies["Language"];
+    var Lang = LanguageCookies != null ? Convert.ToString(LanguageCookies.Value) : "th-TH"; }
+<div id="Content">
+    <div class="search_Cate" style="margin-top:-50px">
+        <select class="mar_t9" style="font-size:13px;width:180px" id="ddlBizType" onchange="SelectedBizType($(this).val())">
+            <option value="0">@res.Common.lblBusiness_Type</option>
+            @if (Lang == "th-TH")
+            {
+                foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                {
+                    <option value="@it.BizTypeID">@it.BizTypeName</option>
+                }
+            }
+            else
+            {
+                foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                {
+                    <option value="@it.BizTypeID">@it.BizTypeCode</option>
+                }
+            }
+
+        </select>
+    </div>
+    <div class="divRow">
+        <div id="CateMenuLeft">
+            <div id="divCateItem">
+                <div style="float:left; margin:10px 0; width:100%">
+                    <ul class="nav" id="Cate">
+                        @if (Lang == "th-TH")
+                        {
+                            foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                            {
+                                <li class="cate_content cursor" onclick="SelectedBizType(@it.BizTypeID)">
+                                    <h2 class="font_m" style="font-weight:normal;margin:0;line-height:30px">@it.BizTypeName</h2>
+                                </li>
+                            }
+                        }
+                        else
+                        {
+                            foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                            {
+                                <li class="cate_content cursor" onclick="SelectedBizType(@it.BizTypeID)">
+                                    <h2 class="font_m" style="font-weight:normal;margin:0;line-height:30px">@it.BizTypeCode</h2>
+                                </li>
+                            }
+                        }
+
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div id="ContentRight" style="margin-top:-60px">
+            <div class="clean10"></div>
+            <div class="tabTitle" style="width:880px;z-index:1">
+                <span class="fl_l mar_t10">@res.Common.lblSortby</span>
+                <label class="checkbox fl_l mar_t10 mar_l10" style="width:120px;" onclick="SetSearchOption()">
+                    <input type="checkbox" name="chkpd" id="ChooseCompLevel" style="margin-top:7px">
+                    <a class="fl_l Logo_GoldSmall mar_rl5"></a>
+                    <span class="fl_l fontOrange ">@res.Common.lblGoldMember</span>
+                </label>
+                <select name="ProvinceID" id="ddlProvinceID" class="mar_t9" style="font-size:13px;" onchange="SelectedProvince($(this).val())">
+                    <option value="0">@res.Common.lblProvince</option>
+                    @if (Lang == "th-TH")
+                    {
+                        foreach (var it in (List<view_Province_Region>)ViewBag.Provinces)
+                        {
+                            if (it.RegionID != tempRegionID)
+                            {
+                                <option value="@it.ProvinceID" class="RegionText" disabled>@it.RegionName</option>
+                            }
+                            <option value="@it.ProvinceID">@it.ProvinceName</option>
+
+                            if (it.RegionID != null)
+                            {
+                                tempRegionID = (int)it.RegionID;
+                            }
+                        }
+                    }
+                    else
+                    {
+                        foreach (var it in (List<view_Province_Region>)ViewBag.Provinces)
+                        {
+                            if (it.RegionID != tempRegionID)
+                            {
+                                <option value="@it.ProvinceID" class="RegionText" disabled>@it.RegionNameEng</option>
+                            }
+                            <option value="@it.ProvinceID">@it.ProvinceNameEng</option>
+
+                            if (it.RegionID != null)
+                            {
+                                tempRegionID = (int)it.RegionID;
+                            }
+                        }
+                    }
+
+                </select>
+
+                <div class="font_20 label-header mar_t15" style="float:right">
+                    <div class="fl_l">@res.Product.lblSupplierlist</div>
+                    <div class="fontOrange fl_l mar_l10 mar_r10" id="totalrow">
+                        @if (ViewBag.TotalRow == 0)
+                        {
+                            <text>0</text>
+                        }
+                        else
+                        {
+                            @(String.Format("{0:##,###.##}", @ViewBag.TotalRow))
+                        }
+
+                    </div>
+                    <div class="fl_l">@res.Product.lblItem</div>
+
+                </div>
+
+            </div>
+            <div id="ProductDetail">
+                @Html.Partial("Search/SupplierListUC")
+            </div>
+            @*<div class="Slide_Supplier">@Html.Partial("Search/InterestSupplier")</div>*@
+        </div>
+    </div>
+
+</div>
+<div class="clean20"></div>
+<input type="hidden" id="catetype" value="@ViewBag.catetype" />
+

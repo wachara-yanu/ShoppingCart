@@ -1,0 +1,79 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var item = (view_Product)ViewBag.ProductDetail;}
+@{
+    ViewBag.ChkPage = "Product";
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+    ViewBag.Page = "Gallery";
+    var product = (view_Product)ViewBag.ProductDetail; 
+}
+@section head{
+    <link href="/Content/UC/Tag_it/jquery.tagit.css" rel="stylesheet" type="text/css">
+    <link rel="canonical" href="http://@res.Common.lblDomainShortName/Search/Product/Gallery/@product.ProductID/@Url.ReplaceUrl(product.ProductName)" />
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" /> 
+    <link href="@Url.css("Search/Product.css")" rel="stylesheet" type="text/css" /> 
+    <link href="@Url.css("MessageCenter/MessageCenter.css")" rel="stylesheet" type="text/css" />
+   <link href="@Url.css("UC/TinyScrollbarUC/tinyscrollbar.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet"type="text/css" />   
+    <link href="@Url.css("UC/CaptchaUC/CaptchaUC.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Zoom/github.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Zoom/normalize.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Zoom/tiksluszoom.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.cssDefault("template.css")" rel="stylesheet" type="text/css" /> 
+    <link href="@Url.css("UC/PrettyPhotoUC/prettyPhoto.css")" rel="stylesheet" type="text/css" />
+}
+
+@section js{
+    <script type="text/javascript" src="@Url.js("UC/JcarouselUC/jquery.jcarousel.js")"></script> 
+    <script type="text/javascript" src="http://s7.addthis.com/js/300/addthis_widget.js#pubid=xa-5099beca46b02aa8"></script>
+	<script src="@Url.js("Search/jquery.zoom.js")"></script>
+    <script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.cookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/JsonCookie/jquery.jsoncookie.js")" type="text/javascript"></script>
+    <script src="@Url.js("Search/Product.js")" type="text/javascript"></script>
+    <script src="@Url.js("Compare/Compare.js")" type="text/javascript"></script>
+    <script type="text/javascript" src="@Url.js("UC/CaptChaUC/QapTchaProductContact.jquery.js")"></script>
+    <script type="text/javascript" src="@Url.js("UC/CaptChaUC/jquery.ui.touch.js")"></script>
+    <script src="@Url.js("UC/TinyScrollbarUC/jquery.tinyscrollbar.js")" type="text/javascript"></script>
+    <script src="@Url.js("Home/AdminMessagePopup.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/PrettyPhotoUC/jquery.prettyPhoto.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+        $(function () {
+            $('#scrollbar1').tinyscrollbar();
+            $('#scrollbarMembercard').tinyscrollbar();
+            //captcha
+            $('#QapTcha').QapTcha();
+        });
+    </script>
+}
+
+<div class="ContentGallery">
+    <div id="detailin" style="z-index:2;width:1100px;margin-top:-50px;background:#fff;">
+        <h1 class="fl_l label-header font_Navy" style="font-weight:normal;line-height:17px;height:30px"><span class="font_xxl"><em style="font-style:normal">@item.ProductName</em></span></h1>
+        <div id="Shortcuthelp" class="mar_t7"><span class="fl_r mar_r2 label-header"><a href="@Url.Action("Detail","Product",new{id =item.ProductID , name = @Url.ReplaceUrl(@item.ProductName).Trim() ,area ="Search"})">@res.Product.lblProduct_Detail</a></span></div>
+    </div>
+    <div class="clean10"></div>
+@if (ViewBag.ProductCount != null)
+{
+    <div id="Detail" style="margin-top:-29px;">
+        @Html.Partial("UC/GalleryDetail")
+    </div>
+    <div class="clean30"></div>
+    <div class="tabTitle mar_t20 label-header fontOrange" style="padding:0">
+        <span class="font_22">@res.Message_Center.btnSendMessage</span>
+    </div>
+    <div id="divMessage">
+        @Html.Partial("UC/ProductUC/SendMessageUC")
+    </div>
+    <div class="clean10"></div>
+}
+else
+{ 
+    <div class="divRow" style="height:100px; line-height:100px"><center><span>@res.Common.lblNotFound</span></center></div>
+}
+</div>
+<div class="clean20"></div>
+@*@Html.Partial("UC/FooterUC/TabMenuShortcutUC")*@
+
+
+

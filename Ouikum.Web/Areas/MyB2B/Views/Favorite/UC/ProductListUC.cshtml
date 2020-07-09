@@ -1,0 +1,195 @@
+﻿@using Ouikum;
+@using Ouikum.Favorite;
+@using res = Prosoft.Resource.Web.Ouikum;
+@if (((List<view_FavProduct>)ViewBag.Products).Count > 0)
+{
+    <div class="clean"></div>
+    <ul class="" id="List" style="list-style:none;margin:0;padding:0" >
+    @foreach (var item in (IEnumerable<view_FavProduct>)ViewBag.Products)
+    {
+        string imgPath = Url.NoImage();
+        if (!string.IsNullOrEmpty(item.ProductImgPath))
+        {
+            //imgPath = ViewBag.PathB2BThai + "/Upload/Prosoft/Product/" + @item.CompID + "/" + @item.ProductID + "/Thumb_" + @item.ProductImgPath;
+            imgPath = Url.ThumbProduct(item.ProductCompID, item.ProductID, item.ProductImgPath);
+
+        }
+        <li class="divProductItem" style="width:100%;padding:2% 0">
+            <input type="checkbox" class="ChooseProduct fl_l" name="chkpd"  title="@item.ProductName" data-id="@item.ProductID" onclick="ChooseProduct($(this));"/>
+            <div class="divPicPro mar_l10 data-item" data-id="@item.ProductID" data-name="@item.ProductName"  data-img="@imgPath" style="width:180px">
+               
+            
+                <div class="item-drag" style=" width:150px; height:150px">
+                @if (!string.IsNullOrEmpty(item.ProductImgPath))
+                {
+                    <img class="img-polaroid" src="@Url.Content(imgPath)" id="@item.ProductID" data-toggle="modal" data-target="#ModalProductDetail" class="cursor ImgProduct" onclick="OpenDetail($(this))"  alt="@item.ProductName" title="@item.ProductName" style="margin-top:4px !important"  onload="resizeImg($(this),150,150);setElementMiddle(150,150 ,$(this))" />
+                }
+                else
+                {
+                    <img class="img-polaroid" src="http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image" id="@item.ProductID" data-toggle="modal" data-target="#ModalProductDetail" class="cursor ImgProduct" onclick="OpenDetail($(this))"  alt="@item.ProductName" title="@item.ProductName" style="margin-top:4px !important"  onload="resizeImg($(this),150,150);setElementMiddle(150,150 ,$(this))" />
+                }
+                </div>
+            </div>
+            <div class="detail" style="width:70%">
+                <div class="divDetailPro" style="width: 57%;margin-left:0;height:140px">
+                    <div class="Row"><a class="cursor label-header"  href="@Url.Action("Detail", "Product", new {id= item.ProductID , name = @Url.ReplaceUrl(item.ProductName) , area="Search"} )" target="_blank" title="@item.ProductName">@item.ProductName</a></div>
+                    <div class="Row mar_l15">
+                    @if (item.ShortDescription != null)
+                    {
+                        var listitem = item.ShortDescription.Split('~');
+                        <ol style="list-style-type:decimal; margin:5px 0px; " class="word-wrap">
+                            @for (int i = 0; i < listitem.Count(); i++)
+                            {
+
+                                if (listitem[i] != null && listitem[i] != "" && i < 5)
+                                {
+                                    var ShortDescription = string.Empty;
+                                    if (listitem[i].Length > 60)
+                                    {
+                                        ShortDescription = listitem[i].Substring(0, 60 - 2) + "..";
+                                    }
+                                    else
+                                    {
+                                        ShortDescription = listitem[i];
+                                    }
+                                    <text><li>@(ShortDescription)</li></text>
+                                }
+                            }                    
+                        </ol>
+                    }
+                    </div>
+                </div>
+                <div class="divDetailComp" style="width:40%">
+                    <div class="mar_b5">
+                            <a target="_blank" class="comp-name fontMemberCard fl_r font_l" style="font-weight:normal" href="@Url.Action("", "CompanyWebsite" +"/"+ @Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.ProductCompID, new { area=""})" title="@item.CompName" >
+                                @Html.SubText(item.CompName, 35)
+                            </a>                            
+                        </div>
+                        <div class="fl_r fontGray"> 
+                            <span class="fl_r mar_l5">@item.ProvinceName</span>
+                            <span class="fl_r">
+                            @if (!string.IsNullOrEmpty(item.BizTypeOther))
+                            {
+                                @("[" + item.BizTypeOther + "]")
+                            }
+                            else
+                            {
+                                @("[" + item.BizTypeName + "]")
+                            }
+                            ,</span>
+                            
+                        </div>
+                        <div class="fl_r">
+                            <a target="_blank"  class="fl_r cursor" style="line-height:25px" href="@Url.Action("","CompanyWebsite"+"/"+ @Url.ReplaceUrl(item.CompName) + "/Contact/" + item.ProductCompID, new { area=""})">@res.Common.lblContactCompany</a>
+                            <span class="muted mar_rl10 fl_r"  style="line-height:25px"> | </span>    
+                            @if (item.CompLevel == 3)
+                            {
+                                    <a href="@Url.Action("Gold", "Benefit", new { area =""})" style="line-height:25px" class="fontOrange small fl_r">@res.Common.lblGoldMember</a><a href="@Url.Action("Gold","Benefit")" class="Logo_GoldSmall fl_r mar_r5"></a>
+                            }
+                            else if (item.CompLevel == 2)
+                            {
+                                    <a href="@Url.Action("Gold", "Benefit", new { area =""})" style="line-height:25px" class="fontOrange small fl_r">@res.Common.lblGoldMemberExpired</a><a href="@Url.Action("Gold","Benefit")" class="Logo_GoldExpireSmall fl_r mar_r5"></a>
+                            }
+                            else
+                            {
+                                    <a href="@Url.Action("Gold","Benefit", new { area =""})" style="line-height:25px" class="fontBlue small fl_r">@res.Common.lblFreeMember</a><a href="@Url.Action("Gold","Benefit")" class="Logo_FreeSmall fl_r mar_r5"></a>
+                            }
+                            
+                        </div>
+                    <div class="clean50"></div>
+                    <div id="Action2">
+                    <div id="divAction2">
+                        <div class=" Optionsortby mar_l13">
+                             <p class="fontGray fl_r font_ss Sortbymodified">@res.Common.colModifiedDate : @(DateTime.Parse(item.ModifiedDate.ToString()).ToString("dd/MM/yyyy")) </p>
+                            <p class="fontGray fl_r font_ss Sortbycreadted" style="display:none">@res.Common.colCreatedDate : @(DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy")) </p>                
+                        </div>
+                    </div>
+                    </div>
+                    
+                </div>
+                
+                <div id="Action1" style="width: 51%">
+                    <div id="divAction1" >
+                       <span class="fl_l" onclick="window.open(GetUrl('Message/Contact?ToCompID=@item.ProductCompID&ProductID=@item.ProductID'))" title="@res.Common.lblContactSupplier"><i class="icon_new_contact fl_l"></i>@res.Common.lblContactSupplier</span>
+                            <span class="fl_l mar_l5"  onclick="window.open(GetUrl('MyB2B/Quotation/RequestPrice/@item.ProductID'))" title="@res.Quotation.lblQuotation"><i class="icon_new_requestprice fl_l"></i>@res.Product.lblReq_Quo</span>
+                            @*<p class="fl_l mar_l10 mar_t8 cursor icon_Favorite" onclick="AddFavPro(@item.ProductID)" title="@res.Common.lblFavorite"></p>*@
+                            <p class="fl_l mar_l10 mar_t8 cursor icon_Compare compare-item" title="@res.Product.lblAddCompare"></p>
+                    </div>
+                </div>
+            </div>
+            <div class="divDeleteFav" style="float:right">
+                <button class="btn btn-tootip-top" type="button" data-id="@item.ProductID" rel="tooltip" data-original-title="@res.Common.btnDelete" onclick="DeleteFav($(this));" >
+                        <i class="icon-minus-sign mar_t3 mar_r5"></i>@res.Common.btnDelete
+                </button>
+                 </div>
+        </li>
+    }
+    </ul>
+    <div class="clean20"></div>
+    <div class="inline" style="float:right">@Html.Partial("UC/PagingUC/GeneratePagingUC")</div>
+    <div class="clean20"></div>
+}
+else
+{ 
+  <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound</div>
+}
+
+<script type="text/javascript">
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+        TotalRow = @(ViewBag.TotalRow);
+        $(".hideTotalRow").val(TotalRow);
+        $(".lblTotalRow").html(TotalRow);
+
+        TotalPage = @(ViewBag.TotalPage);
+        $(".hidTotalPage").val(TotalPage);
+        $(".lblTotalPage").html(TotalPage);
+
+        PageIndex = @(ViewBag.PageIndex);
+        $(".hidPageIndex").val(PageIndex);
+        $('.txtPageIndex').val(PageIndex);
+
+
+
+        var $List = $("#List"),
+		$trash = $("#trash");
+        $trash.droppable({
+            activeClass: "ui-state-default",
+            hoverClass: "ui-state-hover",
+            drop: function (event, ui) {
+               
+             SaveCompareCookie(inxDataItem);
+             CallCompare();
+            }
+        });
+        
+        var inxDataItem = null;
+        $("li", $List).draggable({
+            revert: "true",
+            cursor: "move",
+            zIndex: 11,
+            helper: function (event, ui) {
+            
+                inxDataItem = $('.data-item').index($(this).find('.data-item'));
+
+                 //console.log(inxDataItem); 
+
+                return $($(this).find(".item-drag").html());
+            }
+        });
+
+
+</script>
+

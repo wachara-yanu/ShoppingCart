@@ -1,0 +1,123 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@if (ViewBag.Buyleads != null)
+{
+    IEnumerable<view_PurchaseComp> ThisBuyer = null;
+    if (((List<view_BuyLead>)ViewBag.Buyleads).Count > 0)
+    {
+        <div class="container_home">
+            <div class="font_l label-header" style="z-index:0;width:1100px;margin-top:-40px">
+                    <div class="fl_r mar_t5">@res.Product.lblItem</div>
+                    <div class="fontOrange fl_r mar_t5 mar_l10 mar_r10" id="totalrow">
+                        @if (ViewBag.TotalRow > 0)
+                        {
+                            @(String.Format("{0:##,###.##}", @ViewBag.TotalRow))}
+                        else
+                        {
+                            <text>0</text>
+                        }
+                    </div>
+                    <div class="fl_r mar_t5">@res.Benefit.lblbuy<span>@res.Common.lblAll</span></div>
+             </div>
+        </div>
+        <div class="clean20"></div>
+        <table class="table table-hover BuyleadDetail" id="List" >
+            <tr style="border-bottom:2px solid #e4e4e4">
+                <td class="span5 font_l">@res.Benefit.lblbuy</td>
+                <td class="span2 font_l">@res.Common.lblAmount<span>ที่ต้องการ</span></td>
+                <td class="span2 font_l">วันที่สิ้นสุดประกาศ</td>
+                <td class="span4 font_l">ผู้ประกาศ</td>
+                <td class="span2 font_l"></td>
+            </tr>
+            @foreach (var item in (IEnumerable<view_BuyLead>)ViewBag.Buyleads)
+            {
+            <tr>
+                <td class="fl_l span5">
+                    @if (!string.IsNullOrEmpty(item.BuyleadIMGPath))
+                    {
+                        <a class="border-polaroid-normal fl_l" href="@Url.Action("Detail", "Search", new { id = @item.BuyleadID + "/" + @Url.ReplaceUrl(item.BuyleadName), area = "Purchase" })" target="_blank" title="@item.BuyleadName">
+                        @if (item.CompID > 0)
+                        {
+                            <img src="@Url.Buylead(@item.CompID, item.BuyleadID, item.BuyleadIMGPath)" onload="resizeImg($(this),60,60);setElementMiddle(60, 60,$(this))" />
+                        }
+                        else
+                        {
+                            <img src="@Url.Buylead(2, item.BuyleadID, item.BuyleadIMGPath)"  onload="resizeImg($(this),60,60);setElementMiddle(60, 60,$(this))" />
+                        }
+                        </a>
+                    }
+                    else
+                    {
+                        <a class="border-polaroid-normal fl_l" href="@Url.Action("Detail", "Search" + @item.BuyleadID + "/" + @Url.ReplaceUrl(item.BuyleadName), new { area = "Purchase" })" target="_blank" title="@item.BuyleadName">
+                            <img src="http://www.placehold.it/110x110/EFEFEF/AAAAAA&amp;text=no+image" />
+                        </a>
+                    }
+                                
+                    <a href="@Url.Action("Detail", "Search", new { id = @item.BuyleadID + "/" + @Url.ReplaceUrl(item.BuyleadName), area = "Purchase" })" target="_blank" title="@item.BuyleadName" class="fl_l mar_l10 fontDarkBlue label-header mar_t25">@Html.SubText(item.BuyleadName, 30)</a>
+                </td>
+                <td class="span2">
+                    <div class="Row">
+                    @if (Convert.ToInt32(item.Qty) != 0)
+                    {
+                        @(String.Format("{0:##,###.##}", @item.Qty))
+                        <span class="mar_l5">@if (item.QtyUnit == @res.Common.lblOther)
+                                             { <text>หน่วย</text> }
+                                             else
+                                             { @item.QtyUnit   }</span>
+                    }
+                    else
+                    {
+                        <span>@res.Common.lblNonSpecific</span>
+                    }                                                                                                                                                                     
+                    </div>
+                </td>
+                <td class="span2">
+                    <div class="Row">@(DateTime.Parse(item.BuyleadExpDate.ToString()).ToString("dd/MM/yyyy"))</div>
+                </td>
+                <td class="span4">
+                    <h2 style="color:transparent;line-height:0;margin:0;display:none">@ViewBag.Title | @item.BuyleadName</h2>
+                    <div class="Row">
+                    <span class="fl_l img-person mar_r10"></span>
+                    @if (item.CompLevel != null)
+                    {
+                            <a href="@Url.Action("", "CompanyWebsite" + "/" + @Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID, new { area = "" })" target="_blank" class="fl_l mar_t15 fontMemberCard" style="font-weight:normal;margin-top:15px">@Html.SubText(item.CompName, 30)</a>
+                    }
+                    else
+                    {
+                        <div class="mar_t15"><span>@res.Common.lblNonSpecific</span></div>
+                    }
+                    </div>
+                </td> 
+
+                <td class="span2">
+                    <a href="@Url.Action("Detail", "Search", new { id = @item.BuyleadID + "/" + @Url.ReplaceUrl(item.BuyleadName), area = "Purchase" })" target="_blank" class="Row label-header fontDarkBlue">
+                        <span><img src="/Content/Search/images/img_ViewGallery.png" class="mar_r5"></span><span>ดู</span>@res.Common.lblDetail
+                    </a>
+                </td>  
+            </tr> 
+            }
+       </table>
+    }
+    else
+    { 
+        <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound</div>
+    }
+    <div class="clean10"></div>
+    <div class="divPaging">@Html.Partial("UC/PagingUC/GeneratePagingUC")</div>
+}
+<script type="text/javascript">
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+</script>

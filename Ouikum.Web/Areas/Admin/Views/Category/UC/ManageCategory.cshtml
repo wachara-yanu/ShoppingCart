@@ -1,0 +1,168 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+<div class="category-content hide" style="background-color:#FFFFFF">
+    <div class="fl_l mar_l20 mar_t20" style="width:351px"><b>1. @res.Admin.lblMoveCategory: </b>"<span class="nameproduct"></span>" <b>@res.Common.btnGo</b></div>
+    <div class="btn btn-danger mar_t5 cursor category-close" title="@res.Common.btnCancel"><i class="icon-remove icon-white"></i></div>
+
+    <div class="clean10"></div>
+
+    <div style="margin-left:35px">
+        <select class="sel-movecate-lv1" style="width:180px" >
+
+        </select>
+    </div>
+    <div style="margin-left:35px">
+        <select  class="sel-movecate-lv2" style="width:180px" >
+            
+        </select>
+    </div>
+
+    <div class="clean5"></div>
+
+    <div style="margin-left:35px">- @res.Product.lblmovetonewcate</div>
+    <div class="clean"></div>
+    <hr style="margin:10px 35px 10px 35px" />
+
+    <div class="mar_l20"><b>2. @res.Product.lblnewlocation_pro :</b></div>
+
+    <div class="clean10"></div>
+
+    <div style="margin-left:35px">
+        <div><input type="text" class="cateLV1" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldLV1" value=""/>
+        <div><input type="text" class="cateLV2" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldLV2" value=""/>
+        <div><input type="text" class="cateLV3" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldLV3" value=""/>
+    </div>
+
+    <div class="clean"></div>
+
+    <hr style="margin:10px 35px 10px 35px" />
+
+    <div id="save-move-cate" class="btn btn-category center cursor inline" style="margin-left:35px;width:90px;height:20px">@res.Common.btnSave</div>
+    <div class="btn btn-category center cursor inline cancel" style="margin-left:5px;width:90px;height:20px">@res.Common.btnCancel</div>
+
+    <div class="clean" style="height:205px"></div>
+    <hr />
+</div>
+
+<div class="product-content hide" style="background-color:#FFFFFF">
+    <div class="fl_l mar_l20 mar_t20" style="width:351px"><b>1. @res.Product.lblPro_Cate: </b>"<span class="nameproduct"></span>" <b>@res.Common.btnGo</b></div>
+    <div class="btn btn-danger mar_t5 cursor product-close"><i class="icon-remove icon-white"></i></div>
+
+    <div class="clean10"></div>
+
+    <div style="margin-left:35px">
+        <select class="sel-moveproduct-lv1" style="width:180px" >
+
+        </select>
+    </div>
+    <div style="margin-left:35px">
+        <select  class="sel-moveproduct-lv2" style="width:180px" >
+            
+        </select>
+    </div>
+        <div style="margin-left:35px">
+        <select  class="sel-moveproduct-lv3" style="width:180px" >
+            
+        </select>
+    </div>
+
+    <div class="clean5"></div>
+
+    <div style="margin-left:35px">- @res.Product.lblnotdel_catepro</div>
+    <div class="clean"></div>
+    <hr style="margin:10px 35px 10px 35px" />
+
+    <div class="mar_l20"><b>2. @res.Product.lblnewlocation_pro:</b></div>
+
+    <div class="clean10"></div>
+
+    <div style="margin-left:35px">
+        <div><input type="text" class="cateMPLV1" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldMPLV1" value=""/>
+        <div><input type="text" class="cateMPLV2" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldMPLV2" value=""/>
+        <div><input type="text" class="cateMPLV3" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldMPLV3" value=""/>
+    </div>
+
+    <div class="clean"></div>
+
+    <hr style="margin:10px 35px 10px 35px" />
+
+    <div id="save-move-product" class="btn btn-category center cursor inline" style="margin-left:35px;width:90px;height:20px">@res.Common.btnSave</div>
+    <div class="btn btn-category center cursor inline cancel" style="margin-left:5px;width:90px;height:20px">@res.Common.btnCancel</div>
+
+    <div class="clean" style="height:170px"></div>
+    <hr />
+</div>
+
+<div class="delete-category-content hide" style="background-color:#FFFFFF">
+    <div class="fl_l mar_l20 mar_t20" style="width:351px"><b>1. @res.Admin.lblDelCategory: </b>"<span class="nameproduct"></span>"</div>
+    <div class="fl_r mar_t5 cursor delete-category-close"><img src="@Url.css("Admin/Category/images/img_close.png")" /></div>
+
+    <div class="clean10"></div>
+
+    <div style="margin-left:35px">
+        <label class="checkbox">
+            <input id="check-delete-cate" type="checkbox"> @res.Product.lblconfirm_del_catepro (@res.Product.lblPro_Cate = 0)
+        </label>
+    </div>
+    <div style="margin-left:35px">
+        <label class="checkbox">
+            <input id="check-move-product" type="checkbox"> @res.Product.lblmove_del_proandcate (@res.Product.lblPro_Cate > 0)
+        </label>
+    </div>
+
+    <div class="fl_l mar_l20 mar_t20"><b>2. @res.Product.lblselect_location_pro : </b></div>
+
+    <div class="clean10"></div>
+
+     <div style="margin-left:35px">
+        <select class="sel-deletecate-lv1" style="width:180px" >
+
+        </select>
+    </div>
+    <div style="margin-left:35px">
+        <select  class="sel-deletecate-lv2" style="width:180px" >
+            
+        </select>
+    </div>
+        <div style="margin-left:35px">
+        <select  class="sel-deletecate-lv3" style="width:180px" >
+            
+        </select>
+    </div>
+
+    <div class="clean5"></div>
+
+    
+    <div class="clean"></div>
+    <hr style="margin:10px 35px 10px 35px" />
+
+    <div class="mar_l20"><b>3. @res.Product.lblnewlocation_pro:</b></div>
+
+    <div class="clean10"></div>
+
+    <div style="margin-left:35px">
+        <div><input type="text" class="cateDCLV1" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldDCLV1" value=""/>
+        <div><input type="text" class="cateDCLV2" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldDCLV2" value=""/>
+        <div><input type="text" class="cateDCLV3" style="width:165px" value="" disabled /></div>
+        <input type="hidden" class="cateOldDCLV3" value=""/>
+    </div>
+
+    <div style="margin-left:35px">- @res.Product.lbldel_af_move</div>
+
+    <div class="clean10"></div>
+
+    <hr style="margin:10px 35px 10px 35px" />
+
+    <div id="save-delete-cate" class="btn btn-category center cursor inline" style="margin-left:35px;width:90px;height:20px">@res.Common.btnSave</div>
+    <div class="btn btn-category center cursor inline cancel" style="margin-left:5px;width:90px;height:20px">@res.Common.btnCancel</div>
+
+    <div class="clean" style="height:60px"></div>
+    <hr />
+</div>

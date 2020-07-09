@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "OrderDetail";
+    Layout = "~/Views/MP/MP_Order.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+
+}
+@{var Order = (b2bOrder)ViewBag.Order;}
+<form method="post" action="@Url.Action("Payment","Order",new{area="MyB2B"})">
+<div class="mainContent" style="width:100%;margin-top:-5px">
+    <div class="clean"></div>
+    @Html.Partial("MyB2B/Order/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+@*    @Html.Partial("MyB2B/Order/WebconfigOrderMenu")*@
+    <button class="btn fl_r bg_product_hide hide mar_r10 ShowTabmenu mar_t10" type="button" style="padding:0 5px">
+        <i class="icon-chevron-down cursor btn-tootip-bottom"  rel="tooltip Popover" data-original-title="@res.Common.btnShow"></i>
+    </button>
+    <div class="clean"></div>
+    <!---------------------------Table------------------------------>
+    
+    <div style="margin:10px 10px 10px 7px">
+        @{if (Order.OrderStatus == "A" || Order.OrderStatus == "W" || Order.OrderStatus == "C" || Order.TotalPrice == 0)
+          {
+           @* <button type="button" class="btn disabled" style="margin:2px;">@res.Order.lblSubmitPayment_en</button>
+            <button type="button" class="btn disabled" style="margin:2px;">@res.Order.lblCancelOrder_en</button>*@
+          }
+          else
+          {
+            <button type="submit" class="btn btn-warning submit" style="margin:2px;">@res.Common.btnSubmit</button>
+            <button type="button" class="btn cancel" style="margin:2px;">@res.Common.btnCancel</button>
+          }
+         }
+         <button type="button" class="btn" style="margin:2px;" onclick="window.history.back();">@res.Common.btnBack</button>
+    </div>
+    @Html.Partial("UC/OrderDetail")
+</div>
+</form>
+
+@section js {
+    <script src="@Url.js("MyB2B/Order/ManageOrder.js")" type="text/javascript"></script>
+}

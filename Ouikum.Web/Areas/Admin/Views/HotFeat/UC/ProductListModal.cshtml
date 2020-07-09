@@ -1,0 +1,21 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+ @using (Ajax.BeginForm("ProductList", "HotFeat", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+ { 
+    <div class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 10px 0px;width: 96.3%">
+             <div class="form-inline">
+                <input type="text" class="span2" name="TextSearch" placeholder="@res.Common.lblSearch"> 
+                <label class="checkbox mar_l10"> @res.Common.lblSearch_by : </label>
+                <select class="span2" name="SearchType">
+                    <option value="ProductName" selected >@res.Product.lblPro_name</option>
+                    <option value="CompName" >@res.Company.lblCompName</option>
+                </select>
+                <button type="submit" class="btn btn-primary mar_l10 searchmodal">@res.Common.lblSearch</button>
+            </div>
+        <div class="clean10"></div>
+        </div>
+
+    <div class="clean10"></div>
+    <div id="ProductListGrid">@Html.Partial("UC/Grid/GridUC")</div>
+ }
+
+<div class="clean10"></div>

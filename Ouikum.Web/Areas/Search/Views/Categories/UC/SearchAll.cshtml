@@ -1,0 +1,428 @@
+﻿@using Ouikum.Category;
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+@{
+    var svCategory = new CategoryService();
+    var index = ViewBag.Prefix;
+}
+
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories1</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories1)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                 @{string url = res.Pageviews.PvSearchProductCategory; 
+                   //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@(string.Format("{0:0,0}", it.ProductCount)))</b></a></div>
+                @{
+                    
+
+                   var SQLSelect_list = "";
+                   //if (Prosoft.Base.Base.AppLang == "en-US")
+                   //{SQLSelect_list = "*,CategoryNameEng AS CategoryName";}
+                   //else
+                   //{SQLSelect_list = "*";}
+                   SQLSelect_list = "*";
+                   var  CateLV1 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                        ViewBag.CateLV1 = CateLV1;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate1 in (List<b2bCategory>)ViewBag.CateLV1)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate1.CategoryID + "/" + cate1.CategoryLevel + "/" + Url.ReplaceUrl(cate1.CategoryName))" target="_blank" class="cursor">@cate1.CategoryName (@cate1.ProductCount)</a></li></div>
+                                        
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate1.CategoryID + "/" + cate1.CategoryLevel + "/" + Url.ReplaceUrl(cate1.CategoryName))" target="_blank" class="cursor">@cate1.CategoryName (@(string.Format("{0:0,0}", cate1.ProductCount)))</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>
+                
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories2</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories2)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@it.ProductCount)</b></a></div>
+                @{
+                  var SQLSelect_list = "";
+                  //if (Prosoft.Base.Base.AppLang == "en-US")
+                  //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                  //else
+                  //{ SQLSelect_list = "*"; }
+                  SQLSelect_list = "*";
+                  var CateLV2 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                  ViewBag.CateLV2 = CateLV2;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate2 in (List<b2bCategory>)ViewBag.CateLV2)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate2.CategoryID + "/" + cate2.CategoryLevel + "/" + Url.ReplaceUrl(cate2.CategoryName))" target="_blank" class="cursor">@cate2.CategoryName (@cate2.ProductCount)</a></li></div>
+                                        
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate2.CategoryID + "/" + cate2.CategoryLevel + "/" + Url.ReplaceUrl(cate2.CategoryName))" target="_blank" class="cursor">@cate2.CategoryName (@cate2.ProductCount)</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>
+                
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories3</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories3)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@it.ProductCount)</b></a></div>
+                @{
+                  var SQLSelect_list = "";
+                  //if (Prosoft.Base.Base.AppLang == "en-US")
+                  //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                  //else
+                  //{ SQLSelect_list = "*"; }
+                  SQLSelect_list = "*";
+                  var CateLV3 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                  ViewBag.CateLV3 = CateLV3;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate3 in (List<b2bCategory>)ViewBag.CateLV3)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate3.CategoryID + "/" + cate3.CategoryLevel + "/" + Url.ReplaceUrl(cate3.CategoryName))" target="_blank" class="cursor">@cate3.CategoryName (@cate3.ProductCount)</a></li></div>
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate3.CategoryID + "/" + cate3.CategoryLevel + "/" + Url.ReplaceUrl(cate3.CategoryName))" target="_blank" class="cursor">@cate3.CategoryName (@cate3.ProductCount)</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>
+                
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories4</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories4)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                 @{string url = res.Pageviews.PvSearchProductCategory; 
+                   //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@it.ProductCount)</b></a></div>
+                @{
+                   var SQLSelect_list = "";
+                   //if (Prosoft.Base.Base.AppLang == "en-US")
+                   //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                   //else
+                   //{ SQLSelect_list = "*"; }
+                   SQLSelect_list = "*";
+                   var CateLV4 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                  ViewBag.CateLV4 = CateLV4;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate4 in (List<b2bCategory>)ViewBag.CateLV4)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate4.CategoryID + "/" + cate4.CategoryLevel + "/" + Url.ReplaceUrl(cate4.CategoryName))" target="_blank" class="cursor">@cate4.CategoryName (@cate4.ProductCount)</a></li></div>
+                                        
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate4.CategoryID + "/" + cate4.CategoryLevel + "/" + Url.ReplaceUrl(cate4.CategoryName))" target="_blank" class="cursor">@cate4.CategoryName (@cate4.ProductCount)</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>
+                
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories5</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories5)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                @{string url = res.Pageviews.PvSearchProductCategory; 
+                  //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                  // else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@it.ProductCount)</b></a></div>
+                @{
+                  var SQLSelect_list = "";
+                  //if (Prosoft.Base.Base.AppLang == "en-US")
+                  //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                  //else
+                  //{ SQLSelect_list = "*"; }
+                  SQLSelect_list = "*";
+                  var CateLV5 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                  ViewBag.CateLV5 = CateLV5;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate5 in (List<b2bCategory>)ViewBag.CateLV5)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate5.CategoryID + "/" + cate5.CategoryLevel + "/" + Url.ReplaceUrl(cate5.CategoryName))" target="_blank" class="cursor">@cate5.CategoryName (@cate5.ProductCount)</a></li></div>
+                                        
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate5.CategoryID + "/" + cate5.CategoryLevel + "/" + Url.ReplaceUrl(cate5.CategoryName))" target="_blank" class="cursor">@cate5.CategoryName (@cate5.ProductCount)</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>
+                
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories6</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories6)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                  @{string url = res.Pageviews.PvSearchProductCategory; 
+                   // if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@it.ProductCount)</b></a></div>
+                @{
+                    var SQLSelect_list = "";
+                    //if (Prosoft.Base.Base.AppLang == "en-US")
+                    //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                    //else
+                    //{ SQLSelect_list = "*"; }
+                    SQLSelect_list = "*";
+                    var CateLV6 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                  ViewBag.CateLV6 = CateLV6;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate6 in (List<b2bCategory>)ViewBag.CateLV6)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate6.CategoryID + "/" + cate6.CategoryLevel + "/" + Url.ReplaceUrl(cate6.CategoryName))" target="_blank" class="cursor">@cate6.CategoryName (@cate6.ProductCount)</a></li></div>
+                                        
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate6.CategoryID + "/" + cate6.CategoryLevel + "/" + Url.ReplaceUrl(cate6.CategoryName))" target="_blank" class="cursor">@cate6.CategoryName (@cate6.ProductCount)</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>
+                
+<article class="module">
+    <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+        <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+        <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+    </div>
+    <div class="inline" style="font-size:16px;font-weight:bold">@res.Product.lblCategories7</div>
+    <div class="clean10"></div>
+    <div class="content">
+        @foreach (var it in (List<b2bCategory>)ViewBag.Categories7)
+        {
+            <div class="mar_l40" style="width:345px;display:inline-table" >
+                 @{string url = res.Pageviews.PvSearchProductCategory; 
+                   //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                   //else { url = res.Pageviews.PvSearchProductCategory; }
+                }
+                <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@it.ProductCount)</b></a></div>
+                @{var SQLSelect_list = "";
+                  //if (Prosoft.Base.Base.AppLang == "en-US")
+                  //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                  //else
+                  //{ SQLSelect_list = "*"; }
+                  SQLSelect_list = "*";
+                  var CateLV7 = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                  ViewBag.CateLV7 = CateLV7;
+                  int i = 1;
+                }
+                <ul class="listCate">
+                @foreach (var cate7 in (List<b2bCategory>)ViewBag.CateLV7)
+                {
+                    if (i > 8)
+                    {
+                        <div class="content1 hide"><li><a href="@Url.Content(url + cate7.CategoryID + "/" + cate7.CategoryLevel + "/" + Url.ReplaceUrl(cate7.CategoryName))" target="_blank" class="cursor">@cate7.CategoryName (@cate7.ProductCount)</a></li></div>
+                                        
+                    }
+                    else if (i <= 8)
+                    {
+                        <li><a href="@Url.Content(url + cate7.CategoryID + "/" + cate7.CategoryLevel + "/" + Url.ReplaceUrl(cate7.CategoryName))" target="_blank" class="cursor">@cate7.CategoryName (@cate7.ProductCount)</a></li>
+                    }
+                    i++;
+                }
+                <div>
+                    @if (i > 8)
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                    else
+                    {
+                        <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                        <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                    }
+                </div>
+                </ul>
+                <div class="clean20"></div>
+            </div>
+        }
+        </div>
+</article>

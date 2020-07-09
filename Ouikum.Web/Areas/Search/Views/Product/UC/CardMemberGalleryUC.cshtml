@@ -1,0 +1,104 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;
+  var item = (view_Product)ViewBag.ProductDetail;
+}
+<div id="divCardMemberGallery">
+            <input type="hidden" id="txtCompLevel" value="@item.CompLevel" />
+                @if (ViewBag.Company != null)
+                {
+                    var comp = (Ouikum.view_Company)ViewBag.Company;
+                        <text>
+                    
+                       <div class="padd_lr10" id="scrollbarMembercard"> 
+                            <div class="scrollbar"><div class="track" style="margin-right:-30px;"><div class="thumb"><div class="end"></div></div></div></div>
+                            <div class="viewport" style="height:267px;width:290px;float:left">
+                                @*@if(comp.IsSME == true){<text>width:242px;</text>}else{<text>width:290px;</text>}*@
+                                <div class="overview">
+                                <div class="label-header fontOrange" style="line-height:35px;font-weight:normal;margin-top:10px">
+                                    <span class="font_xxl">@res.Common.lblSupplier_info</span>
+                                </div>
+                                <div class="divRow b">
+                                    <a class="cursor fontMemberCard inline" title="@comp.CompName" onclick="window.open(GetUrl('CompanyWebsite/@Url.ReplaceUrl(comp.CompName)/Main/Index/@comp.CompID'))">
+                                        <h2 class="font_m" style="line-height:5px;font-weight:normal">@Html.SubText(@comp.CompName, 37)</h2>
+                                    </a>
+                                </div>
+                                <div class="divRow">@if (item.CompLevel == 3)
+                                        {<text><a class="Logo_GoldSmall mar_t5" style="float:left; width:200px;margin-right:5px;" href="@Url.Action("Gold", "Benefit", new  { area = ""})" target="_blank"><span class="fontOrange mar_l25 fl_l">@res.Common.lblGoldMember</span></a></text>}
+                                        else if (item.CompLevel == 2)
+                                        {<text><a class="Logo_GoldExpireSmall mar_t5" style="float:left; width:200px;margin-right:5px;" href="@Url.Action("Gold", "Benefit", new  { area = ""})" target="_blank"><span class="fontOrange mar_l25 fl_l">@res.Common.lblGoldMemberExpired</span></a></text>}
+                                        else
+                                        {
+                                        <text><a class="Logo_FreeSmall mar_t5" style="float:left;  width:200px;margin-right:5px;" href="@Url.Action("Gold","Benefit", new  { area = ""})" target="_blank"><span class="fontBlue mar_l25 fl_l">@res.Common.lblFreeMember</span></a></text>}
+                                 </div>
+                                 <div class="divRow mar_b5">
+                                     <p style="padding-left:10px;padding-right: 10px;margin-top: 10px;padding:2px;" class="border-tel inline">
+                                        <span class="icon_tel fl_l"></span>
+                                        <span style="line-height:20px;max-width:255px;word-wrap: break-word;">@comp.CompPhone</span>
+                                    </p>
+                                 </div>
+                                 @if (!string.IsNullOrEmpty(comp.LineID)){
+                                     <div class="divRow mar_t5"><span><span class="icon_line fl_l mar_r5"></span> @comp.LineID</span></div>
+                                    }
+                                @if (!string.IsNullOrEmpty(comp.FacebookUrl)){
+                                    <div class="divRow mar_t5"><span><span class="icon_face fl_l mar_r5"></span> <a href="http://@comp.FacebookUrl" target="_blank">@Html.SubText(@comp.FacebookUrl,30)</a></span></div>
+                                }
+                                </div>
+                            </div>
+
+                            @*@if(comp.IsSME == true){
+                                <div class="IsSme" style="float:right;margin-right:-9px">
+                                    <div class="Btn_SME"></div>
+                                </div>
+                            }*@
+                        </div>
+                        </text>
+                }
+            <div class="clean10"></div>
+           @if (@ViewBag.Page != "Gallery")
+           {
+            <hr style="width:100%">
+            
+            <div class="TabStatistic padd_lr10 mar_t5">
+                <div class="fontOrange" style="line-height:30px;font-weight:normal">
+                <span class="font_24">@res.Common.lblStatistic</span>
+                </div>
+                <table>
+                    <tr>
+                <td class="fontGray span3">@res.Common.lblViewCount</td>
+                <td>:</td>
+                <td class="span3">
+                @if (!string.IsNullOrEmpty(item.BizTypeName))
+                { @item.ViewCount}
+                else
+                { <text>0</text> } @res.Common.lblTime
+            </td></tr>
+            <tr>
+                <td class="fontGray span3"><span class="mar_t10">@res.Product.lblContactCount</span></td>
+                <td>:</td>
+                <td class="span3">@if (!string.IsNullOrEmpty(item.BizTypeName))
+                                  { @item.ContactCount}
+                                  else
+                                  { <text>0</text> } @res.Common.lblTime</td>
+            </tr>
+                </table>
+        @*        <table>
+                    <tr>
+                        <td class="fontGray span3">@res.Common.colCreatedDate</td>
+                        <td>:</td>
+                        <td class="span3">@if (!string.IsNullOrEmpty(item.BizTypeName))
+                                          { @(DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy"))}</td>
+                    </tr>
+                    <tr>
+                        <td class="fontGray span3">@res.Common.colModifiedDate</td>
+                        <td>:</td>
+                        <td class="span3">
+                        @if (!string.IsNullOrEmpty(item.BizTypeName))
+                        { @(DateTime.Parse(item.ModifiedDate.ToString()).ToString("dd/MM/yyyy"))}</td>
+                    </tr>
+                </table>*@
+            </div>
+            }
+        </div>
+        <hr class="hr_width">
+       

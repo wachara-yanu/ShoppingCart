@@ -1,0 +1,206 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Order.tltPagekage;
+    Layout = "~/Views/MP/MP_SearchProduct.cshtml";
+}
+
+@using Ouikum;
+<style>
+    .tab-process-order
+    {
+        display:inline-block;
+        border-bottom:5px solid #F2F2F2;
+        height:20px;
+        line-height:20px;
+        padding:0 20px;
+        margin-left:2px;
+    }
+    .tab-process-order.active
+    { 
+        border-bottom:5px solid #006699;
+    }
+</style>
+
+<div class="clean30"></div>
+<div class="fl_l" style="margin:0px 0px 0px 100px"><h4>@res.Order.lblServicePackage</h4></div>
+<div class="fl_r mar_r10" style=" margin-right:80px;">
+    <div class="fl_l tab-process-order active" >@res.Order.lblStep1</div>
+    <div class="fl_l tab-process-order ">@res.Order.lblStep2</div>
+    <div class="fl_l tab-process-order">@res.Order.lblStep3</div> 
+</div>
+<div class="clean20"></div>
+<div class="clean mar_l100 center span12" style="width:82%">
+    <form class="clean" method="post" action="@Url.Action("Summary","Order",new{area="MyB2B"})">
+        <table class="table table-striped">
+            <tr style="height:40px">
+                <th><input type="checkbox" class="cbxall" value="false" onclick="CheckBoxall($(this));" /></th>
+                <th>@res.Order.lblPackageName</th>
+                <th style="text-align: center">@res.Common.lblQty</th>
+                <th style="text-align: center">@res.Order.lblDuration</th>
+                <th style="text-align: right">@res.Common.lblPrice</th>
+                <th></th>
+            </tr>
+
+            @{if (ViewBag.MemberPackage == null && ViewBag.HotPackage == null && ViewBag.FeatPackage == null)
+              {
+                  @*<tr class="nodata b" valign="middle" style="height:40px">
+                    <td colspan="7"><div align="center">@res.Order.lblAlreadyPurchased <a class="cursor" href="@Url.Action("Order/List","MyB2B",new{area=""})">@res.Order.lblHere</a></div></td>
+                </tr>*@
+              } else {
+                  
+                  if (ViewBag.MemberPackage != null)
+                  {
+                      var MemberPackage = (b2bPackage)ViewBag.MemberPackage; 
+            <tr style="height:40px">
+                <td style="vertical-align:middle;">
+                    <div>
+                        <input type="hidden" class="PackageID" name="PackageID"  value="@MemberPackage.PackageID" />
+                        <input type="checkbox" name="h_Package" class="cbx" id="0" value="false" onclick="CheckBox(0);">
+                        <input type="hidden" name="Package" class="Package" id="3" value="false" />
+                        <input type="hidden" name="Qty" value="1" />
+                     </div>
+                 </td>
+                 <td class="span3"><a target="_blank" href="@Url.Action("Gold","Benefit",new{area=""})">@MemberPackage.PackageName</a></td>
+                 <td style="text-align: center">-</td> 
+                 <td style="text-align: center">1 @res.Common.lblYear</td> 
+                    @{
+                      string price = String.Format("{0:0,0.00}", MemberPackage.Price);
+                    }
+                 <td style="text-align: right">@price</td>
+                 <td>@*<center><a href="@Url.Content("~/Benefit/Gold")" target="_blank" id="btnDetail" class="btn btn-success span2">Detail</a></center>*@</td>
+            </tr>
+                  }
+
+                  if (ViewBag.HotPackage != null)
+                  {
+                      var Hot = (b2bPackage)ViewBag.HotPackage; 
+            <tr style="height:40px">
+                <td style="vertical-align:middle;">
+        
+                    <div>
+                        <input type="hidden" name="PackageID" value="@Hot.PackageID" />
+                        <input type="checkbox" name="h_Package" class="cbx" id="1" value="false" onclick="CheckBox(1);">
+                        <input type="hidden" name="Package" class="Package" id="4" value="false" />
+                    </div>
+                 </td>
+                 <td class="span3">@Hot.PackageName</td>
+                 <td>
+                    <div class="input-append center">
+                        <input type="text" name="Qty"  placeholder="" class="span1" value="@ViewBag.MaxHotQty" max-val="@ViewBag.MaxHotQty" readonly />
+                        <span class="add-on" style="width:10px;">
+                            <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_up"><br />
+                            <img src="@Url.cssDefault("images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_down">
+                        </span>
+                    </div>
+                 </td>
+                 <td style="text-align: center">@Hot.Duratrion @res.Common.lblDay</td>
+                    @{
+                      string price = String.Format("{0:0,0.00}", Hot.Price);
+                    }
+                 <td style="text-align: right">@price</td>
+                 <td>@*<center><a id="btnDetail" class="btn btn-success span2">Detail</a></center>*@</td>
+            </tr>
+                  }
+                  
+                  if (ViewBag.FeatPackage != null)
+                  {
+                      var Feat = (b2bPackage)ViewBag.FeatPackage;
+            <tr style="height:40px">
+                <td style="vertical-align:middle;">
+                    <div>
+                        <input type="hidden" name="PackageID" class="PackageID" value="@Feat.PackageID" />
+                        <input type="checkbox" name="h_Package" class="cbx" id="2" value="false" onclick="CheckBox(2);">
+                        <input type="hidden" name="Package" class="Package" id="5" value="false" />
+                    </div>
+                 </td>
+                 <td class="span3">@Feat.PackageName</td>
+                 <td>
+                    <div class="input-append center">
+                        <input type="text" name="Qty" placeholder="" class="span1" value="@ViewBag.MaxFeatQty" max-val="@ViewBag.MaxFeatQty" readonly />
+                        <span class="add-on" style="width:10px;">
+                            <img src="@Url.cssDefault("images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_up" /><br />
+                            <img src="@Url.cssDefault("images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_down" />
+                        </span>
+                    </div>
+                 </td>
+                 <td style="text-align: center">@Feat.Duratrion @res.Common.lblDay</td>
+                 @{
+                      string price = String.Format("{0:0,0.00}", Feat.Price);
+                 }
+                 <td style="text-align: right">@price</td>
+                 <td>@*<center><a id="btnDetail" class="btn btn-success span2">Detail</a></center>*@</td>
+            </tr>
+              }
+            }
+            }
+        </table>
+
+    <div class="center">
+        <button type="submit"  class="btn btn-warning" id="buyNow">@res.Order.lblBuyNow</button>
+        <a href="@Url.Action("Index","Main",new{area ="MyB2B"})" class="btn " id="cancel">@res.Common.btnCancel</a>
+    </div>
+    </form>
+</div>
+
+<div class="clean60"></div>
+<div class="clean30"></div>
+
+@section  js{
+<script type="text/javascript">
+    $(function () {
+        $("#buyNow").click(function () {
+            if (!$("#buyNow").hasClass('checkbuyNow')) {
+                bootbox.alert(@res.Common.ddlSelectPlease @res.Order.lblPackageName);
+                return false;
+            }
+        });
+    });
+    /*-----------------------Check Box--------------------------------*/
+    function CheckBoxall(Obj) {
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            var len = $('.cbx').length;
+            for (var i = 0; i < len; i++) {
+                $(".cbx").eq(i).attr("checked", "checked");
+                $(".cbx").eq(i).attr("value", true);
+                $(".Package").eq(i).attr("value", true);
+            }
+            $("#buyNow").addClass("checkbuyNow");
+            Obj.attr("checked", "checked");
+            Obj.attr("value", true);
+        } else {
+            var len = $('.cbx').length;
+            for (var i = 0; i < len; i++) {
+                $(".cbx").eq(i).removeAttr("checked");
+                $(".cbx").eq(i).attr("value", false);
+                $(".Package").eq(i).attr("value", false);
+            }
+            $("#buyNow").removeClass("checkbuyNow");
+            Obj.removeAttr("checked");
+            Obj.attr("value", false);
+        }
+    }
+
+    function CheckBox(id) {
+        var pId = id + 3;
+        if ($("#" + id + "").attr("value") == true || $("#" + id + "").attr("checked") == "checked") {
+            $("#" + id + "").attr("checked", "checked");
+            $("#" + id + "").attr("value", "true");
+            $("#" + pId + "").attr("value", true);
+            $("#buyNow").addClass("checkbuyNow");
+        } else {
+            $("#" + id + "").removeAttr("checked");
+            $("#" + id + "").attr("value", false);
+            $("#" + pId + "").attr("value", false);
+            var n = 0;
+            for (var i = 0; i < $('.cbx').length; i++) {
+                if ($(".cbx").eq(i).attr('checked') == 'checked') {
+                    n++;
+                }
+            }
+            if (n == 0) {
+                $("#buyNow").removeClass("checkbuyNow");
+            }
+        }
+    }
+</script>
+}

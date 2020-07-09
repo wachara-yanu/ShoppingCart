@@ -1,0 +1,68 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+<div class="advance_search" style="padding:20px;border-radius:5px; margin:10px 0px 10px 0px;width: 96.3%">
+    <table>
+    <tr>
+        <td><text class="fl_r">@res.Common.lblKeyword :</text></td>
+        <td><input type="text" class="span2 mar_10" name="SearchText" placeholder="@res.Common.lblSearch" /></td> 
+        <td><text class="fl_r">@res.Admin.lblMemberLevel :</text></td>
+        <td>
+            <select class="mar_10" name="CompLevel" style="width: 170px; margin-left: 0px;">
+                <option value="0">@res.Common.lblAll</option>
+                    @foreach (var it in ViewBag.EnumCompLevels)
+                    {
+                        <option value="@it.EnumValue">@it.EnumText</option>
+                    }
+                </select>
+            <input type="checkbox" id="ProductCount" name="ProductCount" class="tootip-buttom ProductCount" title="ผู้ขายที่ไม่มีสินค้า" style="margin: 0px 0 0;">
+            <text class="mar_l2">ผู้ขายที่ไม่มีสินค้า</text>
+        </td>
+    </tr>
+    <tr>
+        <td><text class="fl_r">@res.Common.colStatus :</text></td>
+        <td>
+        <select class="mar_10 CompRowFlag" name="CompRowFlag" style="width: 170px; margin-left: 0px;" onchange="ChangeRowFlag($(this))">
+            <option value="5" class="text_All">@res.Common.lblAll</option>
+                @foreach(var it in ViewBag.EnumUserStatus)
+                {
+                    var text_status = "text_" + it.EnumText;
+                    <option value="@it.EnumValue" class="@text_status">@it.EnumText</option>
+                }
+                </select>
+        </td>
+        <td><text class="fl_r">@res.Common.lblSearch_by :</text></td>
+        <td>
+            <select class="mar_10" name="SearchType" style="width: 170px; margin-left: 0px;">
+                <option selected="selected" value="All">@res.Common.lblAll</option>
+                @foreach (var it in ViewBag.EnumSearchByMember)
+                {
+                    <option value="@it.EnumValue">@it.EnumText</option>
+                }
+            </select>
+        </td>
+    </tr>
+    <tr>
+        <td><text class="fl_r">ประเภทสมาชิก : </text></td>
+        <td>
+            <select class="mar_10" name="ServiceType" style="width: 170px; margin-left: 0px;">
+                <option selected="selected" value="All">@res.Common.lblAll</option>
+                @foreach (var it in ViewBag.EnumSearchByMemberType)
+                {
+                    <option value="@it.EnumValue">@it.EnumText</option>
+                }
+            </select>
+        </td>
+        <td><text class="fl_r">@res.Common.lblRegister :</text></td>
+        <td>
+            <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA span2 mar_t10 mar_r5" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+            <input type="checkbox" id="SelectAllPeriod" class="tootip-buttom" title="Customize" />
+            <button type="submit" class="btn btn-darkblue btnsearch"><i class="icon-search icon-white mar_t3"></i></button>
+        </td>
+    </tr>
+    </table>
+    </div>
+<script type="text/javascript">
+    $(function () {
+        $('.rangeA').daterangepicker();
+        $('.tootip-buttom').tooltip({ placement: 'bottom' });
+    });
+</script>

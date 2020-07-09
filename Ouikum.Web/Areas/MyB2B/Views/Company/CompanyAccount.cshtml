@@ -1,0 +1,781 @@
+﻿@{
+    ViewBag.Title = @res.Company.lblComp_Detail;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{ 
+    <link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />
+}
+@{ var Companies = (Ouikum.view_Company)ViewBag.Companies; }
+
+<form class="form-horizontal" action="" method="post" id="CompAcc_form" name="CompAcc_form" enctype="multipart/form-data" style="margin-bottom:0px;">
+    <!--Sidebar content-->
+    <div style="margin-top:25px;">
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลบัญชีผู้ใช้ในระบบ</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#content_sys">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน" ></i>
+                    </div>
+                    <div class="blog-edit" id="edit1">
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-----------------------------------btn edit&save--------------------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideTop" id="btn-cancel1">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+
+                    <div class="blog-saveSet hide hideTop" id="btn-save1">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div id="content_sys" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Common.lblServiceType :</label>
+                    <div class="controls-Comp show show1">
+                        @if (ViewBag.MemberType == DataManager.ConvertToByte(1))
+                        {
+                            foreach (var it in ViewBag.EnumMemberType)
+                            {
+                                if (Companies.ServiceType == DataManager.ConvertToByte(it.EnumValue))
+                                {
+                                    <label id="lblServiceType" class="control-label" for="" style="text-align: left;">@it.EnumText</label>
+                                }
+                            }
+                        }
+                        @if (ViewBag.MemberType == DataManager.ConvertToByte(2))
+                        {
+                            foreach (var it in ViewBag.EnumAdminType)
+                            {
+                                if (Companies.ServiceType == DataManager.ConvertToByte(it.EnumValue))
+                                {
+                                    <label id="lblServiceType" class="control-label" for="" style="text-align: left;">@it.EnumText</label>
+                                }
+                            }
+                        }
+                    </div>
+                    <div class="controls-Comp hide hide1"> 
+                        @if (ViewBag.MemberType == DataManager.ConvertToByte(1))
+                        {
+                            foreach (var it in ViewBag.EnumMemberType)
+                            {
+                                <label class="radio inline">
+                                @if (Companies.ServiceType == DataManager.ConvertToByte(it.EnumValue))
+                                {
+                                    <input type="radio" id="ServiceType@{@it.EnumValue}" name="ServiceType" class="ServiceType" value="@it.EnumValue" checked="checked" />@it.EnumText
+                                }else{
+                                    <input type="radio" id="ServiceType@{@it.EnumValue}" name="ServiceType" class="ServiceType" value="@it.EnumValue" />@it.EnumText
+                                }
+                                </label>
+                            }
+                        }
+                        @if (ViewBag.MemberType == DataManager.ConvertToByte(2))
+                        {
+                            foreach (var it in ViewBag.EnumAdminType)
+                            {
+                                <label class="radio inline" style="margin-left:0px;margin-right:10px;">
+                                @if (Companies.ServiceType == DataManager.ConvertToByte(it.EnumValue))
+                                {
+                                    <input type="radio" id="ServiceType@{@it.EnumValue}" name="ServiceType" class="ServiceType" value="@it.EnumValue" checked="checked" />@it.EnumText
+                                }else{
+                                    <input type="radio" id="ServiceType@{@it.EnumValue}" name="ServiceType" class="ServiceType" value="@it.EnumValue" />@it.EnumText
+                                }
+                                </label>
+                            }  
+                        }
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="majorMarket">@res.Member.lblDisplay :</label>
+                    <div class="controls-Comp DisplayName">
+                        <label id="lblDisplayName" class="control-label show show1" for="DisplayName" style="text-align:left;">
+                            @if (Companies.DisplayName != null && Companies.DisplayName != "")
+                            {
+                                @Companies.DisplayName
+                            }
+                            else
+                            { 
+                                <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="DisplayName" id="DisplayName" placeholder="Display Name" class="span6 hide hide1" value="@Companies.DisplayName" onblur="checkDisplayName();"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">แนะนำบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#content_sys2">
+                        <i class="icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit2">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!----------------------------------------btn edit&save------------------------------------------------->
+
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideMiddle1" id="btn-cancel2">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideMiddle1" id="btn-save2">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content_sys2" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label-Comp" for="CompImgPath">@res.Company.lblCompPic :</label>
+                    <div class="controls-Comp">
+                        <div>
+                            <span class="btn btn-file btn-tootip-top hide2" style="display:none;" rel="tooltip"  title="@res.Common.lblSelectImage" style="margin:0">
+                                    @(Html.Telerik().Upload()
+                                    .Name("FileCompImgPath")
+                                    .Multiple((bool)true)
+                                    .Async(async => async
+                                    .Save("SaveCompImg", "Company")
+                                    .AutoUpload((bool)true))
+                                    .ClientEvents(events => events
+                                    .OnUpload("onUploadImg")
+                                    .OnSuccess("onSuccessCompImg")
+                                    .OnComplete("onComplateCompImg"))
+                                    )
+                            </span>
+                            <input type="hidden" id="CompImgPath_1" name="CompImgPath" value="@ViewBag.CompImgName_1" />
+                            <input type="hidden" id="CompImgPath_2" name="CompImgPath" value="@ViewBag.CompImgName_2" />
+                            <input type="hidden" id="CompImgPath_3" name="CompImgPath" value="@ViewBag.CompImgName_3" />
+                            <input type="hidden" id="chkImg" name="chkImg" value="" />
+                        </div>
+                        @if (ViewBag.CompImgName_1 != null && ViewBag.CompImgName_1 != "")
+                        {
+                            string CompImgName_1 = ViewBag.CompImgName_1;
+                            <div class="thumbnail inline mar_t10" id="CompImg_1" style="width: 180px; height: 120px;">
+                                <i id="del_1" class="icon-remove-sign btn-tootip-top cursor hide hide2" rel="tooltip"  title="@res.Common.colDelete" style="position:absolute;margin-left: 175px;margin-top: -10px;" onclick="Del_image(1)"></i>
+                                <img id="img_CompImgPath_1" src="@Url.Company(Companies.CompID,CompImgName_1)" style="width: 180px; height: 120px;" />
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="thumbnail inline NoImg mar_t10" id="CompImg_1" style="width: 180px; height: 120px;">
+                                <img id="img_CompImgPath_1" src="http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image" />
+                            </div>
+                        }
+                        @if (ViewBag.CompImgName_2 != null && ViewBag.CompImgName_2 != "")
+                        {
+                            string CompImgName_2 = ViewBag.CompImgName_2;
+                            <div class="thumbnail inline" id="CompImg_2" style="width: 180px; height: 120px;">
+                                <i id="del_2" class="icon-remove-sign btn-tootip-top cursor hide hide2" rel="tooltip"  title="@res.Common.colDelete" style="position:absolute;margin-left: 175px;margin-top: -10px;" onclick="Del_image(2)"></i>
+                                <img id="img_CompImgPath_2" src="@Url.Company(Companies.CompID,CompImgName_2)" style="width: 180px; height: 120px;"/>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="thumbnail inline NoImg" id="CompImg_2" style="width: 180px; height: 120px;">
+                                <img id="img_CompImgPath_2" src="http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image" />
+                            </div>
+                        }
+                        @if (ViewBag.CompImgName_3 != null && ViewBag.CompImgName_3 != "")
+                        {
+                            string CompImgName_3 = ViewBag.CompImgName_3;
+                            <div class="thumbnail inline" id="CompImg_3" style="width: 180px; height: 120px;">
+                                <i id="del_3" class="icon-remove-sign btn-tootip-top cursor hide hide2" rel="tooltip"  title="@res.Common.colDelete" style="position:absolute;margin-left: 175px;margin-top: -10px;" onclick="Del_image(3)"></i>
+                                <img id="img_CompImgPath_3" src="@Url.Company(Companies.CompID,CompImgName_3)" style="width: 180px; height: 120px;"/>
+                            </div>
+                        }
+                        else
+                        {
+                            <div class="thumbnail inline NoImg" id="CompImg_3" style="width: 180px; height: 120px;">
+                                <img id="img_CompImgPath_3" src="http://www.placehold.it/180x120/EFEFEF/AAAAAA&text=no+image" />
+                            </div>
+                        }
+                        <div style="color:Red;">
+                            - @res.Company.lblUpload_CompImg1<br />
+                            - @res.Company.lblUpload_CompImg2<br />
+                            - @res.Company.lblUpload_CompImg3<br />
+                            - @res.Company.lblUpload_CompImg4
+                        </div>
+                    </div> 
+                </div> 
+                <div class="control-group">
+                    <label class="control-label-Comp" for="CompShortDes">@res.Company.lblGuide :</label>
+                    <div class="controls-Comp">
+                        <label id="lblCompShortDes" class="control-label show show2 span6" for="CompShortDes" style="text-align:left;max-height:300px; width:80%; overflow:auto;">
+                            @if (Companies.CompShortDes != null && Companies.CompShortDes != "")
+                            {
+                                @Html.Raw(Companies.CompShortDes)
+                            }
+                            else
+                            { 
+                                    <text>-</text> 
+                            }
+                        </label>
+                        <div class="hide hide2">
+                            <textarea id="CompShortDes">@Companies.CompShortDes</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลกลุ่มตลาดบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#content_sys3">
+                        <i class="icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit3">
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!-------------------------------------btn edit&save---------------------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideMiddle2" id="btn-cancel3">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideMiddle2" id="btn-save3">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content_sys3" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="majorMarket">@res.Company.lblMajorMarket :</label>
+                    <div class="controls">
+                        <label id="lblMainCustomer" class="control-label show show3" for="MainCustomer" style="text-align:left;">
+                            @if (Companies.MainCustomer != null && Companies.MainCustomer != "")
+                            {
+                                @Companies.MainCustomer
+                            }
+                            else
+                            { 
+                                    <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="MainCustomer" id="MainCustomer" placeholder="Major Market" class="span6 hide hide3" value="@Companies.MainCustomer"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="MinorMarket">@res.Company.lblMinorMarket :</label>
+                    <div class="controls">
+                        <label id="lblSecondaryCustomer" class="control-label show show3" for="SecondaryCustomer" style="text-align:left;">
+                            @if (Companies.SecondaryCustomer != null && Companies.SecondaryCustomer != "")
+                            {
+                                @Companies.SecondaryCustomer
+                            }
+                            else
+                            {
+                                <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="SecondaryCustomer" id="SecondaryCustomer" placeholder="Minor Market" class="span6 hide hide3" value="@Companies.SecondaryCustomer" />
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลทั่วไปบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse" data-toggle="tooltip" data-target="#content_sys4">
+                        <i class="icon-chevron-up" style="margin-top:10px;" title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit4">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+                <!-----------------------------------btn edit&save------------------------------------------>
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideButtom" id="btn-cancel4">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideButtom" id="btn-save4">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="content_sys4" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="AvatarImgPath">@res.Company.lblCompLogo :</label>
+                    <div class="controls">
+                        <span class="btn btn-file btn-tootip-top hide4" style="display:none;" rel="tooltip"  title="@res.Common.lblSelectImage" style="margin:0">
+                            @(Html.Telerik().Upload()
+                            .Name("FileLogoImgPath")
+                            .Multiple((bool)false)
+                            .Async(async => async
+                            .Save("SaveLogo", "Company")
+                            .Remove("RemoveLogo", "Company")
+                            .AutoUpload((bool)true))
+                            .ClientEvents(events => events
+                            .OnUpload("onUploadImg")
+                            .OnSuccess("onSuccessLogo"))
+                        )
+                        </span>
+                        <input type="hidden" id="LogoImgPath" name="LogoImgPath" value="@Companies.LogoImgPath" />
+                        <div class="fileupload-new thumbnail mar_t10" id="ImgLogo" style="width: 100px; height: 75px;">
+                            @if (Companies.LogoImgPath != null && Companies.LogoImgPath != "")
+                            {
+                                <i id='del_Logo' class='icon-remove-sign btn-tootip-top cursor hide hide4' rel='tooltip'  title='ลบ' style='position:absolute;margin-left:95px;margin-top:-10px;' onclick='Del_Logoimage();'></i>
+                                <img id="img_LogoImgPath" src="@Url.CompanyLogo(Companies.CompID, Companies.LogoImgPath)" style="width: 100px; height: 75px;" />
+                            }
+                            else
+                            {
+                                <img id="img_LogoImgPath" src="http://www.placehold.it/100x75/EFEFEF/AAAAAA&text=no+image" />
+                            }
+                        </div>
+                        <div style="color:Red;">
+                            - @res.Company.lblUpload_Logo1<br />
+                            - @res.Company.lblUpload_Logo2<br />
+                            - @res.Company.lblUpload_Logo3<br />
+                            - @res.Company.lblUpload_Logo4 
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="CompName" >@res.Company.lblCompName :</label>
+                    <div class="controls CompName">
+                        <label id="lblCompName" class="control-label show show4" for="CompanyName" style="text-align:left;width:400px;">
+                            @if (Companies.CompName != null && Companies.CompName != "")
+                            {
+                                <text>@Companies.CompName</text>
+                            }
+                        </label>
+                        <input type="text"  name="CompName" id="CompName" placeholder="Company Name" class="span6 hide hide4" value="@Companies.CompName" onblur="checkCompName();"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="CompNameEng">@res.Company.lblCompName (Eng) :</label>
+                    <div class="controls CompNameEng">
+                        <label id="lblCompNameEng" class="control-label show show4" for="CompNameEng" style="text-align:left;width:500px;">
+                            @if (Companies.CompNameEng != null && Companies.CompNameEng != "")
+                            {
+                            <text>@Companies.CompNameEng</text>
+                            }
+                            else
+                            {
+                            <text>-</text> 
+                            }
+                        </label>
+                        <input type="text"  name="CompNameEng" id="CompNameEng" placeholder="Company Name" class="span6 hide hide4" value="@Companies.CompNameEng" onblur="checkCompNameEng();"/>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="AddrLine1">@res.Common.lblAddress :</label>
+                    <div class="controls CompAddrLine1">
+                        <label id="lblCompAddrLine1" class="control-label show show4" for="CompAddrLine1" style="text-align:left;width:500px;">
+                            @if (Companies.CompAddrLine1 != null && Companies.CompAddrLine1 != "")
+                            {
+                                @Companies.CompAddrLine1
+                            }
+                            else
+                            { 
+                                    <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="CompAddrLine1" id="CompAddrLine1" placeholder="Address" class="span6 hide hide4" value="@Companies.CompAddrLine1" />
+                        <div class="clean"></div>
+                        <label class="checkbox inline hide hide4" style="cursor:pointer;padding-top:0px;">
+                            @if (Companies.IsCompSameAddr == true)
+                            {
+                                <input type="checkbox" id="IsCompSameAddr" value="true" checked="checked" />
+                            }
+                            else
+                            {
+                                <input type="checkbox" id="IsCompSameAddr" value="false" />
+                            }
+                            @res.Company.lblUserMem
+                        </label>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Province">@res.Common.lblProvince :</label>
+                    <div class="controls CompProvinceID">
+                        <label id="lblCompProvinceID" class="control-label show show4" for="Province" style="text-align:left;">
+                            @if (Companies.CompProvinceID != null && Companies.CompProvinceID != 0)
+                            {
+                                foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                                {
+                                    if (Companies.CompProvinceID == it.ProvinceID)
+                                    {
+                                    @it.ProvinceName
+                                    }
+                                }
+                            }
+                            else
+                            {
+                            <text>-</text> 
+                            }     
+                        </label>
+                        <select name="CompProvinceID" id="CompProvinceID" class="span6 hide hide4">
+                        <option value="0">-----@res.Common.chooseProvince-----</option>
+                            @foreach (var it in (List<emProvince>)ViewBag.Provinces)
+                            {
+                                if (Companies.CompProvinceID == it.ProvinceID)
+                                {
+                                <option value="@it.ProvinceID" selected="selected">@it.ProvinceName</option>
+                                }
+                                else
+                                {
+                                <option value="@it.ProvinceID">@it.ProvinceName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div> 
+                <div class="control-group">
+                    <label class="control-label" for="District">@res.Common.lblDistrict :</label>
+                    <div class="controls CompDistrictID">
+                        <label id="lblCompDistrictID" class="control-label show show4" for="District" style="text-align:left;width:500px;">
+                            @if (Companies.CompDistrictID != null && Companies.CompDistrictID != 0)
+                            {
+                                foreach (var it in (List<emDistrict>)ViewBag.Districts)
+                                {
+                                    if (Companies.CompDistrictID == it.DistrictID)
+                                    {
+                                        @it.DistrictName
+                                    }
+                                }
+                            }
+                            else
+                            { 
+                                <text>-</text> 
+                            }
+                        </label>
+                        <select name="CompDistrictID" id="CompDistrictID"  class="span6 hide hide4">
+                            <option value="0">-----@res.Common.chooseDistrict-----</option>
+                            @foreach (var it in (List<emDistrict>)ViewBag.Districts)
+                            {
+                                if (Companies.CompDistrictID == it.DistrictID)
+                                {
+                                    <option value="@it.DistrictID" selected="selected">@it.DistrictName</option>
+                                }
+                                else
+                                {
+                                    <option value="@it.DistrictID">@it.DistrictName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div> 
+                <div class="control-group">
+                    <label class="control-label" for="CompPostalCode">@res.Common.lblPostal_code :</label>
+                    <div class="controls CompPostalCode">
+                        <label id="lblCompPostalCode" class="control-label show show4" for="CompPostalCode" style="text-align:left;">
+                            @if (Companies.CompPostalCode != null && Companies.CompPostalCode != "")
+                            {
+                                @Companies.CompPostalCode
+                            }
+                            else
+                            {
+                                <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="CompPostalCode" id="CompPostalCode" placeholder="Postal Code"  class="span6 hide hide4" value="@Companies.CompPostalCode" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Phone">@res.Common.lblPhoneno :</label>
+                    <div class="controls CompPhone">
+                        <label id="lblCompPhone" class="control-label show show4" for="CompPhone" style="text-align:left;">
+                            @if (Companies.CompPhone != null && Companies.CompPhone != "")
+                            {
+                                @Companies.CompPhone
+                            }
+                            else
+                            {
+                                <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="CompPhone" id="CompPhone" placeholder="Phone"  class="span6 hide hide4" value="@Companies.CompPhone" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Mobile">@res.Common.lblMobileno :</label>
+                    <div class="controls">
+                        <label id="lblCompMobile" class="control-label show show4" for="CompMobile" style="text-align:left;">
+                            @if (Companies.CompMobile != null && Companies.CompMobile != "")
+                            {
+                                @Companies.CompMobile
+                            }
+                            else
+                            { 
+                                <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="CompMobile" id="CompMobile" placeholder="Mobile"  class="span6 hide hide4" value="@Companies.CompMobile" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="Fax">@res.Common.lblFax :</label>
+                    <div class="controls">
+                        <label id="lblCompFax" class="control-label show show4" for="CompFax" style="text-align:left;">
+                            @if (Companies.CompFax != null && Companies.CompFax != "")
+                            {
+                                @Companies.CompFax
+                            }
+                            else
+                            { 
+                                <text>-</text> 
+                            }
+                        </label>
+                        <input type="text" name="CompFax" id="CompFax" placeholder="Fax"  class="span6 hide hide4" value="@Companies.CompFax" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="BizType">@res.Common.lblBusiness_Type :</label>
+                    <div class="controls">
+                        <label id="lblBizTypeID" class="control-label show show4" for="BizTypeID" style="text-align:left; width:300px;">
+                            @if (Companies.BizTypeID == 13 && !string.IsNullOrEmpty(@Companies.BizTypeOther))
+                            {
+                                <text>@Companies.BizTypeName (@Companies.BizTypeOther)</text>
+                            }
+                            else
+                            { 
+                                @Companies.BizTypeName
+                            }
+                        </label>
+                        <select name="BizTypeID" id="BizTypeID"  class="span6 hide hide4">
+                        <option value="0">-----@res.Common.chooseBizType-----</option>
+                            @foreach (var it in (List<b2bBusinessType>)ViewBag.BizTypes)
+                            {
+                                if (Companies.BizTypeID == it.BizTypeID)
+                                {
+                                    <option value="@it.BizTypeID" selected="selected">@it.BizTypeName</option>
+                                }
+                                else
+                                {
+                                    <option value="@it.BizTypeID">@it.BizTypeName</option>
+                                }
+                            }
+                        </select>
+                    </div>
+                </div> 
+                @if (Companies.BizTypeID == 13)
+                {
+                    <div class="BizOther hide hide4">
+                        <div class="control-group">
+                            <label class="control-label" for="BizTypeOther"></label>
+                            <div class="controls">
+                                <input type="text" id="BizTypeOther" name="BizTypeOther" class="span6" placeholder="@res.Company.lblOtherBizType" value="@Companies.BizTypeOther" />
+                            </div>
+                        </div>
+                    </div>
+                 }
+                 else
+                 {
+                    <div class="BizOther" style="display:none;" >
+                        <div class="control-group">
+                            <label class="control-label" for="BizTypeOther"></label>
+                            <div class="controls">
+                                <input type="text" id="BizTypeOther" name="BizTypeOther" class="span6" placeholder="@res.Company.lblOtherBizType" value="@Companies.BizTypeOther"/>
+                            </div>
+                        </div>
+                     </div>
+                }
+           
+                <div class="control-group">
+                    <label class="control-label" for="CompWebsite">@res.Company.lblWebSite :</label>
+                    <div class="controls">
+                        <label id="lblCompWebsiteUrl" class="control-label show show4" for="CompWebsiteUrl" style="text-align:left;width:500px;">
+                        @if (Companies.CompWebsiteUrl != null && Companies.CompWebsiteUrl != "")
+                        {
+                            @Companies.CompWebsiteUrl
+                        }
+                        else
+                        { 
+                            <text>-</text> 
+                        }
+                        </label>
+                        <div class="input-prepend  hide hide4">
+                            <span class="add-on" style="background-color:#ccc;padding-left:17px;padding-right:17px;">https://</span>
+                            <input type="text" name="CompWebsiteUrl" id="CompWebsiteUrl" placeholder="Website url"  class="span5" value="@Companies.CompWebsiteUrl"  style="width:476px"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="FacebookUrl">Facebook Url : </label>
+                    <div class="controls">
+                        <label id="lblFacebookUrl" class="control-label show show4" for="FacebookUrl" style="text-align:left;width:500px;">
+                            @if (Companies.FacebookUrl != null && Companies.FacebookUrl != "")
+                            {
+                                @Companies.FacebookUrl
+                            }
+                            else
+                            { 
+                                <text>-</text> 
+                            }
+                        </label>
+                        <div class="input-prepend  hide hide4">
+                            <span class="add-on" style="background-color:#ccc;padding-left:17px;padding-right:17px;">https://</span>
+                            <input type="text" name="FacebookUrl" id="FacebookUrl" placeholder="Facebook Url"  class="span5" value="@Companies.FacebookUrl" style="width:476px"/>
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label" for="LineID">Line ID : </label>
+                    <div class="controls">
+                        <label id="lblLineID" class="control-label show show4" for="LineID" style="text-align:left;width:500px;">
+                            @if (Companies.LineID != null && Companies.LineID != "")
+                            {
+                                @Companies.LineID
+                            }
+                            else
+                            { 
+                                <text>-</text> 
+                            }
+                        </label>
+                        <div class=" hide hide4"> 
+                            <input type="text" name="LineID" id="LineID" placeholder="Line ID"  class="span6" value="@Companies.LineID"  />
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clean20"></div>
+
+    <div class="control-group">
+        <div class="controls" style="margin-left:0 !important;">
+            <div class="edit btn_editBlue show cursor" id="editAll" style="width:150px">
+                <span class="fl_l icon_btn_edit mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r10">
+                    <p style="line-height:5px;">แก้ไขข้อมูลทั้งหมด</p>
+                </span>
+            </div>
+            <div id="submitAll" class="btn_saveGreen hide cursor">
+                <span class="fl_l icon_btn_save mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r30">
+                    <p style="line-height:5px;">@res.Common.btnSave</p>
+                </span>
+            </div>
+            <div id="cancelAll" class="btn_calcelGray mar_l20 hide cursor">
+                <span class="fl_l icon_btn_cancel mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r30">
+                    <p style="line-height:5px;">@res.Common.btnCancel</p>
+                </span>
+            </div>
+        </div>
+    </div>
+
+</form>
+
+@section js{
+    <script src="@Url.js("MyB2B/Company/CompanyUploads.js")" type="text/javascript"></script>
+    <script src="@Url.js("MyB2B/Company/CompAccount.js")" type="text/javascript"></script>
+    <script type="text/javascript">
+    /*--------------------- toggle -------------------*/
+
+    $(".btnCollapse").live('click',function () {
+        var data = $(this).index(".btnCollapse");
+        var Icon = $(this).find("i")
+
+        var target = $(this).attr('data-target');
+
+        console.log(target)
+
+        if (Icon.hasClass("icon-chevron-down")) {
+            Icon.removeClass('icon-chevron-down');
+            Icon.addClass("icon-chevron-up")
+            $(target).slideDown(); 
+        } else {
+            Icon.addClass("icon-chevron-down")
+            Icon.removeClass('icon-chevron-up');
+            $(target).slideUp();
+        }
+    });
+
+    </script>
+
+}

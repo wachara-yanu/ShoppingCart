@@ -1,0 +1,130 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@if (ViewBag.ProductDetail != null)
+{
+    string[] content = { "สื่อกลางระหว่างผู้ประกอบการและผู้สมัครงาน ที่ต้องการเปิดรับบุคลากรเข้าทำงาน ผ่านทางระบบอินเตอร์เน็ต", "เว็บไซต์สำเร็จรูป SoGoodWeb พัฒนาขึ้นเพื่อให้ผู้ประกอบการสามารถสร้างเว็บไซต์สำเร็จรูปฟรี และสร้างร้านค้าออนไลน์ได้ด้วยตนเอง", "รับออกแบบและผลิต ฉลากสินค้า โลโก้ นามบัตร สติ๊กเกอร์ โบรชัวร์ แผ่นพับ ด่วน ด้วยเครื่องพิมพ์คุณภาพสูง ส่งทั่วประเทศ" };
+    string[] label = { "เว็บไซต์หางาน สมัครงาน", "สร้างเว็บไซต์สำเร็จรูป ฟรี", "อิสระ ปริ้นติ้ง" };
+    string[] url = { res.Pageviews.PvLionJob, res.Pageviews.PvSogood, "http://www.isaraprinting.com/" };
+    string[] urldesc = { "www.lionjob.com", "www.sogoodweb.com", "www.isaraprinting.com" };
+    var item = (view_Product)ViewBag.ProductDetail;
+    var products = (List<view_HotFeaProduct>)ViewBag.PremiumProducts;
+    <input type="hidden" value="@ViewBag.ImageCount" id="ImgCount" />
+    if (products.Count > 0)
+    {
+        <div id="scrollbar1">
+            <div class="label-header fontOrange padd_10" style="line-height:25px;font-weight:normal;background:white">
+                <span class="font_xxl">
+                    <img src="~/Content/Search/images/u170.png" style="padding-right: 10px;margin-top:-5px" />สินค้าแนะนำ
+                </span>
+@*                <span style="float: right;"><a href="@Url.Action("Product/List","Search",new{HotProduct = 1 , area=""})" target="_blank">ดูทั้งหมด</a></span>*@
+             </div>
+            
+            <div class="scrollbar">
+                <div class="track" 
+                style="@if (ViewBag.Page != "Gallery")
+                       {<text> margin-right:-30px; </text>}
+                       else
+                       {<text> margin-right:-3px; </text>}">
+                <div class="thumb"><div class="end"></div></div>
+                </div>
+            </div>
+            <div class="viewport" id="ImgViewport">
+                <div class="overview">
+                    @{ foreach (var image in products)
+                       {
+                           string imgPath = "http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image";
+                           if (!string.IsNullOrEmpty(item.ProductImgPath))
+                           {
+                               imgPath = Url.ThumbProduct(image.CompID, image.ProductID, image.ProductImgPath);
+                           }
+                        <div class="media" style="padding-left:20px">
+                          <a href="@Url.Action("Detail", "Product", new { id = image.ProductID, name = @Url.ReplaceUrl(image.ProductName), area = "Search" })" style="padding:10px 20px 10px 0px;float:left">
+                            <img class="fl_l media-object imgborder" alt="@item.ProductName" title="@item.ProductName"  src="@Url.Content(imgPath)"  style="height:70px;width:70px;"/>
+                          </a>
+                        </div>
+                          
+                       
+                        @*<div class="fl_l center" style="margin:10px 10px 0px 10px;width:90px;"><img alt="@image.ProductName" title="@image.ProductName" src="@Url.Content(imgPath)" onclick="window.open(GetUrl('Search/Product/Detail/@image.ProductID/@Url.ReplaceUrl(@image.ProductName)'))" style=" width:80px; height:80px;" class="cursor"  onload="resizeImg($(this),80,80);" /></div>*@
+                           string ProductName = (string)image.ProductName; string Name = "";
+                           if (ProductName.Length > 27)
+                           {
+                               Name = ProductName.Substring(0, 25) + "..";
+                           }
+                           else
+                           {
+                               Name = image.ProductName;
+                           } 
+                        <div>
+                            <a target="_blank" href="@Url.Content(res.Pageviews.PvProductDetail + @image.ProductID + "/" + @Url.ReplaceUrl(@image.ProductName))">
+                                @Name
+                            </a>
+                            @{if (image.Price != 0)
+                              {
+                                  string price = String.Format("{0:##,###}", image.Price);
+                                    <div style="margin-top:5px">@res.Common.lblPrice: @price @res.Product.lblBaht</div>
+                              }
+                              else
+                              {
+                                    <div style="margin-top:5px">@res.Product.lblPrice: @res.Common.lblNonSpecific</div> 
+                              }
+                            }
+                            @{if (Convert.ToInt32(image.MinOrderQty) != 0)
+                              {
+                                  string minQty = String.Format("{0:##,###}", image.MinOrderQty);
+                                    <div style="color:#666666">@res.Product.lblMinimum_Unit: @minQty @image.QtyUnit</div>
+                              }
+                              else
+                              {
+                                    <div style="color:#666666">@res.Product.lblMinimum_Unit: @res.Common.lblNonSpecific</div> 
+                              }
+                            }
+                            @{if (image.ViewCount != null && image.ViewCount > 0)
+                              { 
+                                    <div style="color:#666666">@res.Common.lblViewCount: @(String.Format("{0:##,###.##}", @image.ViewCount)) @res.Common.lblTime</div>
+                              }
+                              else
+                              { 
+                                    <div style="color:#666666">@res.Common.lblViewCount: 0 @res.Common.lblTime</div>
+                              }
+                            }
+                        </div>
+                        <div class="clean"></div>
+                       }
+                    }
+                    <div style="margin-bottom:10px"></div>
+                </div>          
+            </div>
+        </div>
+    }
+    else
+    {
+    <div class="padd_l10">
+        <div class="label-header mar_t15"><span class="fl_l fontDarkBlue font_22 b">Ads.</span><span class="fl_l icon_bidproductnotice"></span></div>
+        <div class="clean5"></div>
+        @{var a = label.Length - 1;}
+        @for (int i = 0; i < label.Length; i++)
+        {
+            if (i == a)
+            {
+            <div class="fl_l mar_b10" style="padding-bottom:20px;" >
+                <span class="fontDarkBlue b">@label[i]</span><div class="clean"></div>
+                <span class="fontNavyGray">@content[i]</span><div class="clean"></div>
+                <a class="fontMemberCard fl_l" style="font-weight:normal" href="@url[i]" target="_blank">@urldesc[i]</a>
+            </div>
+            }
+            else
+            {
+            <div class="fl_l mar_b10" style="border-bottom:1px solid #eee;padding-bottom:20px;" >
+                <span class="fontDarkBlue b">@label[i]</span><div class="clean"></div>
+                <span class="fontNavyGray">@content[i]</span><div class="clean"></div>
+                <a class="fontMemberCard fl_l" style="font-weight:normal" href="@url[i]" target="_blank">@urldesc[i]</a>
+            </div>
+            }
+            <div class="clean"></div>
+        }
+    </div>
+    }
+}
+<script type="text/ecmascript">
+    $('.titleshadow').css('z-index', 1);
+</script>

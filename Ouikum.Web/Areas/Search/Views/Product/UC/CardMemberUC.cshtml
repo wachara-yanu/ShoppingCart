@@ -1,0 +1,196 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;
+    var item = (view_Product)ViewBag.ProductDetail;
+}
+<div id="divCardMember">
+    <input type="hidden" id="txtCompLevel" value="@item.CompLevel" />
+    @if (ViewBag.Company != null)
+    {
+        var comp = (Ouikum.view_Company)ViewBag.Company;
+        <text>
+            <div id="">
+                <div class="" style="height:420px;width:324px;float:left">
+                    <div class="">
+                        <div class="divRow b fl_l mar_t10">
+                            <div class="fl_l">
+                                @if (!string.IsNullOrEmpty(comp.LogoImgPath))
+                                {
+                                    <div class="fl_l mar_r20" style="vertical-align:top;">
+                                        <img src="@Url.CompanyLogo(comp.CompID, comp.LogoImgPath)" alt="@comp.LogoImgPath" title="@comp.CompName" onload="resizeImg($(this),57,57);setElementMiddle(57,57,$(this));" style="margin-top:13%" />
+                                    </div>
+                                }
+                            </div>
+                            <div class="fl_l">
+                                <a class="cursor fontMemberCard inline" title="@comp.CompName" onclick="window.open(GetUrl('CompanyWebsite/@Url.ReplaceUrl(comp.CompName)/Main/Index/@comp.CompID'))">
+                                    <h2 class="font_xxl" style="line-height:5px;font-weight:normal">@Html.SubText(@comp.CompName, 30)</h2>
+                                </a>
+                                <div class="clean5"></div>
+                                <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(comp.CompName) + "/Main/Index/" + comp.CompID, new { area = "" })" target="_blank" class="btn_ForwardBlue cursor inline" style="width:75px;color:#ffffff">
+                                    <span class="fl_r mar_t13 mar_r15">
+                                        <p style="line-height:5px;font-weight: normal;">เว็บไซต์</p>
+                                    </span>
+                                </a>
+                                <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(comp.CompName) + "/Product/" + comp.CompID, new { area = "" })" target="_blank" class="btn_calcelGray mar_l5 cursor inline" style="width:75px;background:#E4E4E4;color:#000000">
+                                    <span class="fl_r mar_t13 mar_r20">
+                                        <p style="line-height:5px;font-weight: normal;">สินค้า</p>
+                                    </span>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="clean20"></div>
+                        <hr style="width:100%">
+                        <div class="divRow">
+                            @if (item.CompLevel == 3)
+                            {<text><a class="Logo_GoldSmall mar_t5 mar_r5 fl_l" style=" width:200px;" href="@Url.Action("Gold", "Benefit", new { area = "" })" target="_blank"><span class="fontOrange mar_l30 fl_l font_l">@res.Common.lblGoldMember</span></a></text>}
+                        else if (item.CompLevel == 2)
+                        {<text><a class="Logo_GoldExpireSmall mar_t5 mar_r5 fl_l" style=" width:200px;" href="@Url.Action("Gold", "Benefit", new { area = "" })" target="_blank"><span class="fontOrange mar_l40 fl_l font_l">@res.Common.lblGoldMemberExpired</span></a></text>}
+                    else
+                    {
+                        <text><a class="Logo_FreeSmall mar_t5 mar_r5 fl_l" style="width:200px;" href="@Url.Action("Gold", "Benefit", new { area = "" })" target="_blank"><span class="fontBlue mar_l30 fl_l font_l">@res.Common.lblFreeMember</span></a></text>}
+                        </div>
+                        <div class="clean10"></div>
+                        <hr style="width:100%">
+                        <div class="divRow mar_t5">
+                            <span class="fontGreen" onclick="ShowTel();"><span class="icon_TelSearch fl_l mar_r5"></span>  @* <span class="font_l cursor show" id="compPhoneDetail">กดดูเบอร์โทรผู้ขาย</span></span>*@ <span class="font_l show" id="compPhone">@comp.CompPhone</span>
+                        </div>
+                        @if (!string.IsNullOrEmpty(comp.LineID))
+                        {
+                            <div class="hide" id="line">
+                                <div class="clean10"></div>
+                                <hr style="width:100%">
+                                <div class="divRow mar_t5">
+                                    <span class="font_l"><span class="icon_line fl_l mar_r10 mar_t5"></span> @comp.LineID</span>
+                                </div>
+                            </div>
+                        }
+                        @if (!string.IsNullOrEmpty(comp.FacebookUrl))
+                        {
+                            <div class="hide" id="facebook">
+                                <div class="clean10"></div>
+                                <hr style="width:100%">
+                                <div class="divRow mar_t5">
+                                    <span><span class="icon_face fl_l mar_r10 mar_t5"></span> <a class="font_l" href="http://@comp.FacebookUrl" target="_blank">@Html.SubText(@comp.FacebookUrl, 40)</a></span>
+                                </div>
+                            </div>
+                        }
+                        <div class="clean10"></div>
+                        <hr style="width:100%">
+                        <div class="divRow mar_t5">
+                            <span class="font_l fontLightGray">
+                                <span class="icon_viewSearch fl_l mar_r5"></span>
+                                @res.Common.lblViewCount
+                                @if (item.ViewCount > 0)
+                                {@(String.Format("{0:##,###.##}", @item.ViewCount))}
+                            else
+                            { <text>0</text>} @res.Common.lblTime
+                        </span>
+                    </div>
+                    <div class="clean10"></div>
+                    <hr style="width:100%">
+                    <div class="clean10"></div>
+                    <div class="divRow mar_t5">
+                        <span class="font_l fontLightGray">
+                            ข้อมูลสินค้าและเนื้อหาอื่น ๆ ในนี้ถือ <span class="font_l fontOrange">เป็นลิขสิทธิ์ของผู้ขาย</span> Ouikum.com เป็นสื่อกลางในการนำเสนอเนื้อหาเท่านั้น
+                        </span>
+                    </div>
+                </div>
+                <div class="clean5"></div>
+
+                @*<div>
+                        @if (((List<b2bProduct>)ViewBag.ProductKeyword).Count > 0)
+                        {
+                            var num = 1;
+                            foreach (var image in (List<b2bProduct>)ViewBag.ProductKeyword)
+                            {
+                                string imgPath = "http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image";
+                                if (!string.IsNullOrEmpty(item.ProductImgPath))
+                                {
+                                    imgPath = Url.ThumbProduct(image.CompID, image.ProductID, image.ProductImgPath);
+                                }
+                                if (num == 3)
+                                {
+                                    <div class="media">
+                                        <a href="@Url.Action("Detail", "Product", new { id = image.ProductID, name = @Url.ReplaceUrl(image.ProductName), area = "Search" })" style="padding:10px 0px 10px 0px;float:left">
+                                            <img class="fl_l media-object imgborder" alt="@item.ProductName" title="@item.ProductName"  src="@Url.Content(imgPath)"  style="height:88px;width:88px;"/>
+                                        </a>
+                                    </div>
+                                }
+                                else
+                                {
+                                    <div class="media">
+                                        <a href="@Url.Action("Detail", "Product", new { id = image.ProductID, name = @Url.ReplaceUrl(image.ProductName), area = "Search" })" style="padding:10px 24px 10px 0px;float:left">
+                                            <img class="fl_l media-object imgborder" alt="@item.ProductName" title="@item.ProductName"  src="@Url.Content(imgPath)"  style="height:88px;width:88px;"/>
+                                        </a>
+                                    </div>
+                                }
+                                num++;
+                            }
+
+                            if (((List<b2bProduct>)ViewBag.ProductKeyword).Count < 3)
+                            {
+                                if (((List<b2bProduct>)ViewBag.ProductKeywordByCate).Count > 0)
+                                {
+                                    foreach (var image in (List<b2bProduct>)ViewBag.ProductKeywordByCate)
+                                    {
+                                        string imgPath = "http://www.placehold.it/150x150/EFEFEF/AAAAAA&text=no+image";
+                                        if (!string.IsNullOrEmpty(item.ProductImgPath))
+                                        {
+                                            imgPath = Url.ThumbProduct(image.CompID, image.ProductID, image.ProductImgPath);
+                                        }
+                                        if (num == 3)
+                                        {
+                                            <div class="media">
+                                                <a href="@Url.Action("Detail", "Product", new { id = image.ProductID, name = @Url.ReplaceUrl(image.ProductName), area = "Search" })" style="padding:10px 0px 10px 0px;float:left">
+                                                    <img class="fl_l media-object imgborder" alt="@item.ProductName" title="@item.ProductName"  src="@Url.Content(imgPath)"  style="height:88px;width:88px;"/>
+                                                </a>
+                                            </div>
+                                        }
+                                        else
+                                        {
+                                            <div class="media">
+                                                <a href="@Url.Action("Detail", "Product", new { id = image.ProductID, name = @Url.ReplaceUrl(image.ProductName), area = "Search" })" style="padding:10px 24px 10px 0px;float:left">
+                                                    <img class="fl_l media-object imgborder" alt="@item.ProductName" title="@item.ProductName"  src="@Url.Content(imgPath)"  style="height:88px;width:88px;"/>
+                                                </a>
+                                            </div>
+                                        }
+                                        num++;
+                                    }
+                                }
+                            }
+                        }
+                    </div>*@
+            </div>
+
+            @*@if (comp.IsSME == true)
+                {
+                    <div class="IsSme" style="float:right;margin-right:-9px">
+                        <div class="Btn_SME"></div>
+                    </div>
+                }*@
+        </div>
+        </text>
+    }
+    <div class="clean10"></div>
+</div>
+
+<script type="text/javascript">
+    function ShowTel() {
+        $('#line').show();
+        $('#facebook').show();
+        $('#compPhoneDetail').hide();
+        $('#compPhone').show();
+
+        $.ajax({
+            url: GetUrl("Search/Product/PostAddTelCount"),
+            data: { ProductID: $("#productID").val() },
+            type: "POST",
+            success: function (data) {
+                return true;
+            }
+        });
+    }
+
+</script>
+
+

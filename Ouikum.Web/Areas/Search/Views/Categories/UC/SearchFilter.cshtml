@@ -1,0 +1,34 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{  var colorclass = "";
+    if (ViewBag.Controller == "Product")
+    {
+        colorclass = "fontGreenSearch";
+    }
+    else if (ViewBag.Controller == "BuyLead")
+    {
+        colorclass = "fontBlueSearch";
+    }
+    else if (ViewBag.Controller == "Supplier")
+    {
+        colorclass = "fontOrangeSearch";
+    }
+    var cateLevel = 1;
+    if (res.Common.lblWebsite == "AppstoreThai" || res.Common.lblWebsite == "myOtopThai")
+    {
+        cateLevel = 2;
+    } 
+}
+<div class="boxLeftResult_bgWhite" style="padding:10px;">
+    <div style="color:#999999; margin-left:15px; font-weight:bold;font-size:16px">
+    @{
+        string[] CharSearch = res.Product.lblCharsearch.Split(',');
+        <text>|</text><a href="@Url.Action("","Categories", new  { area ="Search"})" class="cursor" title="ทั้งหมด" style="text-decoration:none"> @res.Common.lblAll </a>
+        foreach (var ch in CharSearch)
+        {
+            <div class="fl_l" style="margin-right:5px; min-width:10px;"> 
+                <a href="@Url.Action("Categories","Search",new{Prefix=ch,cateLevel=cateLevel,  area =""})" title="@ch" style="text-decoration:none">@ch</a>
+            </div>
+        }
+    }
+    </div>
+</div>

@@ -1,0 +1,64 @@
+﻿
+
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@using Telerik.Web.Mvc; 
+ 
+ 
+<div class="Bg_Allitem">
+    <ul class="galleryrec ui-helper-reset"> 
+    @foreach (var it in (IEnumerable<b2bBuylead>)ViewBag.Buyleads)
+    { 
+            <li class="fl_l mar_tl17 Bg_item Buylead-item"  data-id="@it.BuyleadID" data-rowversion="@it.RowVersion" catelv1="@it.CateLV1" catelv2="@it.CateLV2" catelv3="@it.CateLV3">
+            <div class="font_center"> 
+            <div class="fl_r mar_t8 icon_Del cursor del-Buylead" title="@res.Common.btnDelete_th"></div>  
+            <div class="fl_r mar_t8 icon_Restore cursor restore-Buylead" title="@res.Common.btnRestore"></div>
+                <div class="clean"></div>
+                @if (it.BuyleadIMGPath != null)
+             {
+                    <div class="layout_center" style="width:160px; height:160px; margin:0 auto;" onclick="CallQuickDetails()">
+                        <a class="cursor" >
+                            <img alt="@it.BuyleadName" title="@it.BuyleadName"  src="@Url.ThumbBuylead(it.CompID,it.BuyleadID,it.BuyleadIMGPath)"  onload="resizeImg($(this),155,155);setElementMiddle(155, 155,$(this));"/> 
+                         </a>
+                    </div>
+                }
+                else{
+                    <div class="layout_center thumbnail" style="width:150px; height:150px; margin:0 auto;" onclick="CallQuickDetails()">
+                        <a class="cursor" >
+                            <img alt="@it.BuyleadName" title="@it.BuyleadName" src="http://www.placehold.it/200x200/EFEFEF/AAAAAA&amp;text=no+image" onload="resizeImg($(this),148,148);setElementMiddle(148, 148,$(this));"/>    
+                         </a>
+                    </div>
+                }
+                <div class="clean5"></div>
+            <strong>@Html.SubText(it.BuyleadName, 30)</strong>
+            </div>         
+            </li>
+    }
+    </ul>
+    <div class="clean20"></div>
+       <input type="hidden" class="hidPageIndex" value="@ViewBag.PageIndex" />
+        <input type="hidden" class="hidPageSize" value="@ViewBag.PageSize" />
+        <input type="hidden" class="hidTotalRow" value="@ViewBag.TotalRow" />
+        <input type="hidden" class="hidTotalPage" value="@ViewBag.TotalPage" /> 
+    </div>
+
+
+    
+    <script type="text/javascript">
+        if ($('.hidTotalPage').val() == 0) {
+            $('.hidTotalPage').val(1);
+        }
+        $(function () {
+            //-------------------------------------
+            CheckPage(parseInt("@ViewBag.PageIndex", 10));
+
+            // ตรวจสอบว่าเปิดการแก้ไขได้อยู่หรือเปล่า  
+
+
+
+
+        });
+
+         
+       
+    </script>

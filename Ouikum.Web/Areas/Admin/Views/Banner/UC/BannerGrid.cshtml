@@ -1,0 +1,281 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum; 
+@using Ouikum;
+@{ string ListNoPath = "'MyB2B/Company/ChangeListNo'";}
+    <div align="center">
+        <div class="alert" id="information" style="text-align:center;height:20px;display:none;">
+            <button class="close alert_close" type="button">×</button>
+            <strong class="inline"></strong>
+            <p class="inline"></p>
+        </div>
+    </div>
+
+    <div class="head_banner">
+        <div class="header_sys">
+            <div class="fl_l">
+                <h5 class="mar_l20">จัดการ Banner เว็บไซต์</h5>
+            </div>
+            <div class="fl_r">
+                <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#Banner_target">
+                    <i class="icon-arrow hideBanner" style="margin-top:12px;" title="ซ่อน"></i>
+                </div>
+                <a href="#" onclick="if(confirm('ต้องการลบข้อมูลหรือไม่ ?')){DelBanner();}">
+                    <div class="blog-add_delete" >
+                        <div style="float:left; margin-left:10px;">
+                            <div class="delBanner mar_r5 mar_t12"></div>
+                        </div>
+                        <div style="float:left; line-height:40px;">
+                            <span class="fontback">ลบ</span>
+                        </div>
+                    </div>
+                </a>
+                <a target="_blank" href="Banner/AddBanner">
+                    <div class="blog-add_delete">
+                        <div style="float:left; margin-left:10px;">
+                            <div class="addBanner mar_t12"></div>
+                        </div>
+                        <div style="float:left; line-height:40px;margin-right:5px">
+                            <span class="fontback">เพิ่ม</span>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div>
+<div id="Banner_target" class="CollapseDetail">
+     <div class="border_table mar_b10" style="width:100%;">
+            <table class="table table-hover  grid" style="margin:0px;margin-left:1px">
+              <thead class="HeaderTable">
+                <tr class="header">
+                  <th style="width:20px"><div class="center"><input type="checkbox" class="checkboxAll" value="false" onclick="CheckBoxall($(this))" /></div></th>
+                  <th style="width:20px"><div>ลำดับ</div></th>
+                  <th style="width:60px"><div>@res.Common.lblImage</div></th>
+                  <th class="span2"><div>ตำแหน่งที่แสดง</div></th>
+                  <th class="span3"><div>Title</div></th>
+                  <th class="span1"><div class="center">ผู้เข้าชม</div></th>
+                  <th class="span1"><div class="center">วันที่แก้ไข</div></th>
+                  <th class="span1"><div class="center">แก้ไขโดย</div></th>
+                </tr>
+              </thead>
+              <tbody>
+                  @{var TotalPage = ViewBag.TotalPage;}
+                   @if (TotalPage <= 0 || TotalPage == null)
+                   {
+                   <tr class="nodata b" valign="middle">
+                        <td><div align="center">@res.Common.lblNotFound</div></td>
+                   </tr>
+                   }
+                   else
+                   {
+                       foreach (var item in (List<b2bBanner>)ViewBag.Banner)
+                       {
+                        int ID = Convert.ToInt16(item.BannerID);
+                        <tr class="body">
+                          <td style="vertical-align:middle;"><div  class="center">
+                              <input type="hidden" id="Article_@{@ID}" class="hidPrimeID" value="@ID" />
+                      
+                              @*ใช้กับ Grid*@
+                              <input type="checkbox" class="cbxItem cbxCompID" value="@ID" id="@ID" onclick="CheckBox(@ID)" />
+                              <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />
+                          </td>
+                          <td class="icongroup center" style="vertical-align:middle;">
+                              <div class="banner-group" rowversion="@item.RowVersion" group="@item.BannerID"  group-name="@item.BannerTitle">
+                                <div class="fl_l mar_t4 mar_l10">@item.ListNo</div>
+                                <div class="fl_l icon-arrup mar_t8 mar_l25 mar_r5" action="Up" onclick="GroupListNo($(this))"></div>
+                                <div class="fl_l icon-arrdown mar_t8" action="Down" onclick="GroupListNo($(this))"></div>
+                              </div>
+                          </td> 
+                          <td style="vertical-align:middle;"><div>
+                          @if (item.BannerImgPath != null && item.BannerImgPath != "")
+                          {
+                            <img src="@Url.Banner(item.BannerID, item.BannerImgPath)" style="width:120px;height:60px;border:1px solid #ccc;border-radius:3px;" />
+                          }
+                          else
+                          {
+                            <img src="http://www.placehold.it/80x60/EFEFEF/AAAAAA&text=no+image" style="width:80px;height:60px;border:1px solid #ccc;border-radius:3px;" />
+                          }
+                            </div>
+                          </td>
+                          <td style="vertical-align:middle;">
+                            <div class="mar_b5">
+                                <p style="color:#0088CC">หน้า Home</p>
+                            </div>
+                                <div class="btn-group"> 
+                                    @if (item.IsShow == true)
+                                    {
+                                        <a class="del_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="show/hide" onclick="ChangeIsShow(@item.BannerID,$(this));">
+                                            <i class="icon-eye-open cursor"></i>
+                                        </a>
+                                    }
+                                    else
+                                    {
+                                         <a class="del_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="show/hide" onclick="ChangeIsShow(@item.BannerID,$(this));">
+                                            <i class="icon-eye-close cursor"></i>
+                                        </a>
+                                    }
+                                    <a class="edit_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="@res.Common.lblEdit" href="@Url.Action("EditBanner", "Banner", new { BannerId = ID, area = "Admin" })">
+                                        <i class="icon-edit"></i>
+                                    </a>
+                                    <a class="del_@{@ID} btn btn-mini btn-tootip-bottom padd_b4" rel="tooltip"  title="@res.Common.btnDelete" @*onclick="DeleteCertify(@ID);"*@ onclick="if(confirm('@res.Common.btnDel_Confirm')){DelData(@item.BannerID,@item.RowVersion,'BannerId','Banner');}">
+                                        <i class="icon-remove-sign"></i>
+                                    </a>
+                                </div>
+                          </td>
+                           <td style="vertical-align:middle;"><div>@item.BannerTitle</div></td>
+                          <td style="vertical-align:middle;padding-left:20px;text-align: center;">
+                         @{ 
+                                    var CreatedDate = (DateTime.Parse(item.CreatedDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                            }
+                              @CreatedDate
+                          </td>
+                          <td style="vertical-align:middle;text-align: center;">
+                              @CreatedDate
+                          </td>
+                            <td style="vertical-align:middle;text-align: center;">
+                              @item.ModifiedBy
+                          </td>
+                        </tr>
+                       }
+                   }  
+              </tbody>
+            </table>
+            </div>
+    </div>
+
+@Html.Partial("UC/Grid/PagingPostUC")
+<script language="javascript" type="text/javascript">
+    $(function () {
+        $(".btnCollapse").live('click', function () {
+            var data = $(this).index(".btnCollapse");
+            var Icon = $(this).find("i")
+            var target = $(this).attr('data-target');
+            if (Icon.hasClass("hideBanner")) {
+                Icon.removeClass('hideBanner');
+                Icon.addClass("showBanner")
+                $(target).slideUp();
+            } else {
+                Icon.addClass("hideBanner")
+                Icon.removeClass('showBanner');
+                $(target).slideDown();
+            }
+        });
+
+        $('.btn-tootip-bottom').tooltip({ placement: 'bottom' });
+        $('.btn-tootip-top').tooltip({ placement: 'top' });
+        /*-----------------------text ChangeListNo--------------------------------*/
+
+        $(".icon_ListNo_up").click(function () {
+            if ($(this).parent().prev().prev().val() == "") {
+                $(this).parent().prev().prev().val(1)
+            } else {
+                $(this).parent().prev().prev().val(parseInt($(this).parent().prev().prev().val()) + 1)
+            }
+        });
+        $(".icon_ListNo_down").click(function () {
+            if ($(this).parent().prev().prev().val() == "") {
+            } else {
+                if (parseInt($(this).parent().prev().prev().val()) > 0) {
+                    $(this).parent().prev().prev().val(parseInt($(this).parent().prev().prev().val()) - 1)
+                }
+            }
+        });
+        $(".delBanner").click(function () {
+            if(confirm('@res.Common.btnDel_Confirm'))
+            {
+                DelData();
+            }
+        });
+        SubTextShowDes();
+    });
+
+    function SubTextShowDes() {
+        for (var i = 0; i < $('.shortdesp').length; i++) {
+            var shortdespHtml = $('.shortdesp').eq(i).text();
+            if (shortdespHtml.length > 80) {
+                shortdespHtml = shortdespHtml.substring(0, 77);
+                $('.shortdesp').eq(i).text(shortdespHtml + '...');
+            }
+        }
+    }
+
+    // Update ListNo
+    var grouplen = $(".banner-group").length;
+    
+    $(document).ready(function () {
+        for (var i = 0; i < grouplen; i++) {
+            $('.banner-group').eq(i).attr('listno', i + 1);
+        }
+    });
+    if (grouplen > 0) {
+        if (grouplen == 1) {
+            $(".icon-arrup").hide();
+            $(".icon-arrdown").hide();
+            $(".banner-group").prepend("<div class='fl_l icon-group mar_t9 mar_l25'></div>");
+        }
+        else {
+            $(".icon-arrup").first().hide();
+            $(".icongroup a").first().css('margin-left', 12);
+            $(".icongroup a").last().css('margin-left', 12);
+            $(".icon-arrdown").first().addClass("mar_l25");
+            $(".icon-arrdown").last().hide();
+        }
+    }
+    if ($(window).width() < 1025) {
+        var text_productgroup = $(".banner-group a");
+        for (var i = 0; i < text_productgroup.length ; i++) {
+            if (text_productgroup.eq(i).text().length > 15) {
+                text_productgroup.eq(i).text(text_productgroup.eq(i).text().substring(0, 15) + "...");
+            }
+        }
+    }
+
+    function GroupListNo(obj) {
+        var id = new Array();
+        var no = new Array();
+        id[0] = parseInt(obj.parents('.banner-group').attr('group'));
+        no[1] = parseInt(obj.parents('.banner-group').attr('listno'));
+        var action = obj.attr('action');
+        if (action == "Up") {
+            no[0] = no[1] - 1;
+        }
+        else if (action == "Down") {
+            no[0] = no[1] + 1;
+        }
+        id[1] = parseInt($('.banner-group').eq(no[0] - 1).attr('group'));
+        OpenLoading(true);
+        $.ajax({
+            url: GetUrl("Admin/Banner/ChangeListNoBanner"),
+            data: {
+                id: id
+            },
+            traditional: true,
+            success: function (data) {
+                if (CheckError(data)) {
+                    GroupProductList();
+                }
+            },
+            error: function () {
+                OpenLoading(false);
+                bootbox.alert("Error");
+            },
+            type: "POST"
+        });
+    }
+
+    function GroupProductList() {
+        $.ajax({
+            url: GetUrl("Admin/Banner/BannerList"),
+            success: function (data) {
+                OpenLoading(false);
+                $('#ArticleGrid').html(data);
+            },
+            error: function () {
+                OpenLoading(false);
+            },
+            type: "POST"
+        });
+
+        return false;
+
+    }
+
+</script>

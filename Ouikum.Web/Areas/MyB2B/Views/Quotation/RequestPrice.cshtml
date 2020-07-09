@@ -1,0 +1,37 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{
+    ViewBag.ChkPage = "Supplier";
+    Layout = "~/Views/MP/MP_RequestPrice.cshtml";
+    var item = (view_Product)ViewBag.ProductDetail;
+}
+@section  head{
+    <link href="@Url.css("Quotation/Quotation.css")" rel="stylesheet" type="text/css" />  
+    <link href="@Url.css(Prosoft.Resource.Web.Ouikum.Pageviews.PvHomeCss)" rel="stylesheet" type="text/css" /> 
+    <script type="text/javascript" src="@Url.js("Default.js")"></script>
+}
+@section  js{
+    <script src="@Url.js("jquery-ui.js")" type="text/javascript"></script> 
+    <script type="text/javascript" src="@Url.js("UC/BootBox/boot-box.js")"></script>
+    <script src="@Url.js("Quotation/Quotation.js")" type="text/javascript"></script>
+}
+<div class="clean"></div>
+<div id="divRequestPrice">
+    <input type="hidden" id="ProductID" value="@ViewBag.ProductID"/>
+    <div id="detailin" style="z-index:0;width:1100px;margin-top:-40px">
+    <h1 class="fl_l label-header font_Navy" style="font-weight:normal;line-height:17px;">
+        <span class="font_xxl" style="color:#000">@res.Quotation.lblReq_Price : </span>
+        <span class="font_xxl">@item.ProductName</span>
+                
+    </h1>
+    </div>
+    <div class="clean8 inclean"></div>
+    @Html.Partial("UC/QuotationUC/RequestPricePopupUC")
+</div>
+
+<script type="text/javascript">
+    $(document).ready(function () {
+        RequestDataMember();
+    });
+    $("title").html("@(ViewBag.Title)");
+</script>

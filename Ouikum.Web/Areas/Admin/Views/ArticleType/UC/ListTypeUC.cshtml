@@ -1,0 +1,40 @@
+﻿@{
+    ViewBag.Title = "ListType";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+
+<div class="SearchAtc">
+    <table>
+        <tbody>
+            <tr>
+                <td class="span2">ชื่อประเภทบทความ</td>
+                <td>: &nbsp;<input type="text" class="span3 mar_10" name="SearchArticleType" style="width:263px;" placeholder="คำค้นหา.." /></td>
+                <td class="span1"></td>
+                <td class="span2">ค้นหาตาม</td>
+                <td>: &nbsp;
+                    <select class="mar_10" id="SearchType" name="SearchType" style="width: 263px; margin-left: 0px;">
+                        <option selected="selected" value="0">@res.Common.lblAll</option>
+                        <option value="1">ประเภทบทความหลัก</option>
+                        <option value="2">ประเภทบทความรอง</option>
+                        <option value="3">ประเภทบทความย่อย</option>
+                    </select>
+                </td>
+            </tr>
+            <tr>
+                <td class="span2">วันที่แก้ไข</td>
+                <td>: &nbsp;
+                    <input type="text" id="ddlFindDatePeriod" name="Period" class="rangeA span3 mar_t10 mar_r5" placeholder=" --@res.Common.colSelectAll--" disabled readonly=readonly/>
+                    <input type="checkbox" id="SelectAllPeriod" class="tootip-buttom" title="Customize" />
+                </td>
+                <td><button type="submit" class="btn btn-darkblue mar_l20 btnsearch"><i class="icon-search icon-white mar_t3"></i></button></td>
+            </tr>
+        </tbody>
+    </table>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        $('.rangeA').daterangepicker();
+        $('.tootip-buttom').tooltip({ placement: 'bottom' });
+    });
+</script>

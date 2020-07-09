@@ -1,0 +1,366 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum; 
+
+<style>
+    .close-FullDetail {
+        float: right;
+        font-size: 20px;
+        font-weight: bold;
+        line-height: 20px;
+        color: #000000;
+        text-shadow: 0 1px 0 #ffffff;
+        opacity: 0.2;
+        filter: alpha(opacity=20);
+    }
+
+    .close-FullDetail:hover {
+        color: #000000;
+        text-decoration: none;
+        cursor: pointer;
+        opacity: 0.4;
+        filter: alpha(opacity=40);
+    }
+
+    .SaveFullDetail {
+        background-color: #FF8E01;
+        width: 90px;
+        height: 30px;
+        border-radius: 5px;
+        cursor: pointer;
+        color: #FFFFFF;
+        font-family: 'Tahoma';
+        font-size: 14px;
+        vertical-align: middle;
+        text-align: center;
+        line-height: 32px;
+    }
+
+    .SaveFullDetail:hover {
+        background-color: #F8AD49;
+    }
+</style>
+
+ <div style="padding:10px;">
+	<div class="close-big" data-dismiss="modal" aria-hidden="true" style="color:#0B0A08">×</div>
+	<div class="clean"></div>
+	<form id="AddProduct_Form" class="form-horizontal  form-save-modal" action="/" method="post" onsubmit="return false;">
+	    <div class="mar_20">
+		    <div id="column_left">
+			    <div style="margin-bottom: 34px;margin-top: -3px;">
+				    <img src="@Url.css("MyB2B/images/img_header.png")" class="circle"/>
+                    <img src="@Url.css("MyB2B/images/img_header_circle.png")" class="incircle" />
+				    <span id="u6" class="label-header" >@res.Product.lblPost_NewProduct</span>
+                    <div style="padding-top:5px;font-size:13px;padding-left:175px">
+                        <a href="@res.Pageviews.UrlTechnique" target="_blank" class="SellCondi" >(@res.Product.lblTechnique)</a>
+                    </div>
+			    </div>
+                
+		        <div class="Bisector"></div>
+			    <div style="margin-left: 15px;">
+				    @Html.Partial("UC/ProductUC/ProductImageUpload")
+			    </div>
+			    <div class="clean"></div>
+		    </div>
+		
+		    <div id="column_right">
+			    <div class="containner mar_l20">
+                    <div id="stat1" class="panel_state unensconce">
+                        <div class="line_1">
+                            <span class="textHead label-header">@res.Product.lblPreProductInfo</span>
+                            <a href="@res.Pageviews.UrlCondition" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                            <div class="w100 fl_r mar_t3">
+                                <div class="boxPage onpage">1</div>
+                                <div class="boxPage" onclick="GoToPageStep(1,2,false)">2</div>
+                                
+                            </div>                                                    
+                        </div>
+                        <div class="PageBrage"></div>
+                        <div class="line_2">
+
+                            <div class="control-group">
+                                <label>@res.Product.lblPro_name<span class="require">*</span></label>
+                                <div class="ProductName">
+                                    <input type="text"  name="ProductName" id="ProductName"  class="  mar_r10"   onblur="CheckProductName();"/>
+                                    <label class="error"></label>
+                                </div> 
+                            </div>                          
+
+                            <div class="control-group">
+                                <label>@res.Product.lblAdd_kw<span class="require">*</span></label>
+                                <div class=" Keyword tagit-kw"> 
+                                    <ul id="tagit-keyword" class="tagit"></ul>
+                                    <label class="error"></label>                                     
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblQuick_Detail<span class="require">*</span></label>
+                                <div class=" Detail tagit-dt"> 
+                                    <ul id="tagit-detail"  class="tagit"></ul>
+                                    <label class="error"></label>  
+                                    <div class="clean"></div>
+                                    <label class="divRow error textdesc"></label>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblCate<span class="require">*</span></label>
+                                <div class="Category"> 
+                                <div class="input-append fl_l" id="Category"> 
+                                    <input id="TextSearchCategory" class="span3 txtSearchCate"  name="CateLV3" size="16" type="text" 
+                                    placeholder="@res.Common.lblSearch@res.Product.lblCate"  onblur="CheckCate()"/>
+                                    <button class="btn" type="button" onclick="SearchCategory()">@res.Common.btnSearch</button> 
+                                </div>
+                                <input type="hidden" name="Categorycode" id="CategoryCode" data-catename="" data-id="" value="" /> 
+                                <div class="clean5"></div>
+                                <a class="cursor click-cateall" style="font-size:12px;"> @res.Common.lblShowAllCate</a>
+                                <div class="Show-selectCate hide">
+                                    <div class="fl_l">
+                          
+                                        <select class="span4" id="SelectCateLV1" name="SelectCateLV1" onchange="beforecateLV1();" >
+
+                                            @if (ViewBag.SelectCateLV1 != null)
+                                            {
+                                                <option value="0" selected="selected">-@res.Common.selectCatelv1-</option>   
+                                                foreach (var lv1 in (IEnumerable<b2bCategory>)ViewBag.SelectCateLV1)
+                                                {
+                                                        <option value="@lv1.CategoryID" class="@lv1.CategoryName">@lv1.CategoryName</option>
+                                                }
+                                            }
+                        
+		                                </select> 
+                                    
+                                    </div>
+                                    <div class="fl_l mar_l5"><span class="btn morekey1" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(1)" disabled><i class="icon-share"></i></span></div>
+                                    <div class="clean10"></div>
+                                    <div class="fl_l">
+                                    <select class="span4" id="SelectCateLV2" name="SelectCateLV2" onchange="beforecateLV2();"  disabled>
+			                                    <option value="0" selected="selected">-@res.Common.selectCatelv2-</option>
+		                            </select> 
+                                    </div>
+                                    <div class="fl_l mar_l5"><span class="btn morekey2" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(2)" disabled><i class="icon-share"></i></span></div>
+                                     <div class="clean10"></div>
+                                    <div class="fl_l">
+                                    <select class="span4" id="SelectCateLV3" name="SelectCateLV3"  onchange="selectedcateLV3();"  disabled>
+			                                    <option value="0" selected="selected">-@res.Common.selectCatelv3-</option>
+		                            </select> 
+                                    </div>
+                                    <div class="fl_l mar_l5"><span class="btn morekey3" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(3)" disabled><i class="icon-share"></i></span></div>
+                                    <div class="clean"></div>
+                                    <a class="cursor click-catesearch" style="margin-top:10px">@res.Common.lblGotoSearch </a>
+                                </div>
+                    
+                            </div>
+
+                            <label class="errorCate error"></label>
+                        </div>
+                            <div class="show-catepath Bg_searchcate" style="width:90%; display:none;" alt="Success"></div>
+                            <div class="div-sel-category"></div>   
+                        </div>
+                 
+                        <div class="line_3 font_right">
+                            <div class="submit_nextstep label-header " onclick="GoToPageStep(1,2,false)">@res.Common.lblSaveNextStep</div>
+                            <div class="cancel_backstep label-header mar_r10" data-dismiss="modal" aria-hidden="true">@res.Common.lblCancel</div>                            
+                        </div>
+                    </div>
+                    <div id="stat2" class="panel_state ensconce">
+                        <div class="line_1">
+                            <div class="line_1">
+                                <span class="textHead label-header">@res.Product.lblProductInfoMore</span>
+                                <a href="@res.Pageviews.UrlCondition" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                                <div class="w100 fl_r mar_t3">
+                                    <div class="boxPage" onclick="GoToPageStep(2,1,false)">1</div>
+                                    <div class="boxPage onpage">2</div>                                  
+                                </div>                                                    
+                            </div>
+                        </div>
+
+                        <div class="PageBrage"></div>
+
+                        <div class="line_2">
+                            @*เพิ่มราคาสินค้า/ชิ้น*@
+                            <div class="control-group">
+                                <label>@res.Product.lblPrice_one</label>
+                                <div class="Price_One PriceF fl_l">
+                                    <div class="input-append">
+                                        <input type="text" name="Price_One" id="Price_One" class="span2" style="float:left;" value="0.00" />
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group">
+                                <label>@res.Product.lblPrice@res.Product.lblPro (@res.Product.lblPricesend)</label>
+                                <div class="Price  PriceF fl_l">
+                                    <div class="input-append">
+                                        <input type="text" name="Price" id="Price" class="span2" style="float:left;" value="0.00" />
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="fl_l mar_l10" style="text-align:left;padding-top:3px">
+                                    @res.Product.lblBaht /
+                                <span id="QtyUnitFirst">@res.Product.lblPro_Unit</span>
+                            </label>
+                        </div>
+
+                        <div class="control-group" id="AllQty">
+                            <label>@res.Product.lblMinimum_Unit<span class="require">*</span></label>
+                            <div class="Qty  fl_l">
+                                <div class="input-append">
+                                    <input type="text" name="Qty" id="Qty" class="span2" value="0.00" Placeholder="@res.Product.lblMinimum_Unit">
+                                    <span class="add-on" style="width:10px;">
+                                        <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                        <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                    </span>
+                                </div>
+                            </div>
+                            <div class="QtyUnit span2 fl_l mar_l10">
+                                <select class="span2" id="QtyUnit" name="QtyUnit" onchange="selectedQtyUnit();" style="width:108px">
+                                    <option value="0" selected="selected">@res.Product.lblPro_Unit</option>
+                                    @foreach (var Qty in ViewBag.QtyUnits)
+                                    {
+                                        <option value="@Qty.EnumText">@Qty.EnumText</option>
+
+                                    }
+                                </select>
+                                <label class="error"></label>
+                                <div class="QtyOther fl_l" style="width:135px;display:none">
+                                    <input type="text" name="QtyOther" id="QtyOther" class="fl_l" style="width:113px" />
+                                    <label class="error errorQtyOther"></label>
+                                </div>
+                                @*<div class="controls span2 QtyOther" style="display:none">
+                <input type="text" name="QtyOther"  id="QtyOther" class="span2" />
+            </div>*@
+                            </div>
+                        </div>
+
+
+                        <div class="control-group" style="display:none">
+                            <label>@res.Product.lblProductCode</label>
+                            <div class="ProductCode span6">
+                                <input type="text" name="ProductCode" id="ProductCode" class="span3 mar_r5" style="float:left;"
+                                       value="@ViewBag.ProductCode" maxlength="16" onblur="CheckProductCode();" disabled="disabled" />
+                                <label class="error"></label>
+                            </div>
+                        </div>
+                        <div class="control-group">
+                            <label>@res.Product.lblPro_Group</label>
+                            <div class="ProductGroup">
+                                @if (ViewBag.ProductGroups != null)
+                                {
+                                    <select id="ProductGroup" name="ProductGroup" class="span3">
+                                        <option value="">@res.Product.lblSelectGroup</option>
+                                        @foreach (var item in (List<b2bProductGroup>)ViewBag.ProductGroups)
+                                        {
+                                            <option value="@item.ProductGroupID">@item.ProductGroupName</option>
+                                        }
+                                    </select>
+                                }
+                                else
+                                {
+                                    <select id="ProductGroup" name="ProductGroup" class="span3" disabled="disabled">
+                                        <option value="" selected="selected">ไม่ระบุ</option>
+                                    </select>
+                                }
+                            </div>
+                        </div>
+
+                        <div class="control-group" id="FullDetail">
+                            <label>@res.Product.lblMore_Detail<span class="require">*</span></label>
+                            <div class="FullDetail span3 padd_t5" style="float:left;margin-left:0;margin-right:30px">
+                                <a class="cursor product-detail-click" style="font-size:14px"> @res.Product.lbladd_moreDetail</a>
+                                <label class="error"></label>
+                            </div>
+
+                        </div>
+                        <div class="product-detail-textarea" style="display:none;">
+                            <textarea name="FullDetail" class="ProductDetail" id="ProductDetail"></textarea>
+                        </div>
+
+                        <div class="modal_1200 hide fade custom-size" data-backdrop="static" id="ModalProductDetail" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" style="z-index:10000;opacity:1;height:76%">
+                            <div style="padding:10px;">
+                                <div class="close-FullDetail" style="color: #0B0A08;">×</div>
+                                <div class="clean15"></div>
+                                <div style="padding:0px 30px;">
+                                    <div style="font-size:18px">@res.Product.lblMore_Detail</div>
+                                    <div class="clean40"></div>
+                                    <textarea name="ProductDetail-modal" id="ProductDetail-modal" class="ProductDetail-modal"></textarea>
+                                    <div class="SaveFullDetail mar_t30">ตกลง</div>
+                                </div>
+                            </div>
+                        </div>
+
+                        </div>
+
+                        <div class="line_3 font_right">
+                            <div class="submit_nextstep label-header " onclick="GoToPageStep(2,2,true)">@res.Product.lblConfirmSellProduct</div>
+                            <div class="cancel_backstep label-header mar_r10" onclick="GoToPageStep(2,1,false)">@res.Common.lblPrev</div>                            
+                        </div>
+
+                    </div>                   
+
+			    </div>
+			    <div class="clean"></div>
+		    </div>
+        </div>
+	</form>
+</div>
+
+<script src="@Url.js("UC/Tag_it/tag-it.js")" type="text/javascript"></script>
+<script src="@Url.js("MyB2B/Product/AddProduct.js")" type="text/javascript"></script> 
+<script type="text/javascript">
+    $(function () {
+
+        $('#tagit-keyword').tagit({
+            availableTags: [],
+            itemName: "RecipientName",
+            fieldName: "txtName",
+            maxTags: 5,
+            allowSpaces: true
+        });
+        $('#tagit-detail').tagit({
+            availableTags: [],
+            itemName: "RecipientName",
+            fieldName: "txtName",
+            maxTags: 5,
+            allowSpaces: true
+        });
+        $('.click-cateall').live('click', function () {
+            $('.click-cateall').css('display', 'none');
+            $('#Category').css('display', 'none');
+            $('.Show-selectCate').removeClass('hide');
+        });
+        $('.click-catesearch').live('click', function () {
+            $('.click-cateall').css('display', 'block');
+            $('#Category').css('display', 'block');
+            $('.Show-selectCate').addClass('hide');
+        });
+
+    });
+
+    function selectedQtyUnit() {
+        var unit = $('#QtyUnit option:selected').text();
+        $("#QtyUnitFirst").text(unit);
+
+        if ($('#QtyUnit option:selected').val() == "@MvcHtmlString.Create(@res.Common.lblOther)") {
+            $('#QtyUnit').css('display', 'none');
+            $(".QtyOther > .errorQtyOther").text('');
+            $('.QtyOther').slideDown();
+        }
+    }
+    $('.QtyOther').live('blur', function () {
+        var unit = $('#QtyOther').val();
+        if (unit != "") {
+            $('#QtyUnit').append("<option value='" + unit + "' selected='selected'>" + unit + "</option>");
+            $("#QtyUnitFirst").text(unit);
+            $('.QtyOther').hide();
+            $('#QtyUnit').css('display', 'inline');
+        }
+        
+    });
+</script>

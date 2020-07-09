@@ -1,0 +1,44 @@
+﻿@{
+    ViewBag.Title = "PaymentDetail";
+    Layout = "~/Views/MP/MP_Order.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("Order/Order.css")" rel="Stylesheet" type="text/css" />
+    <link href="@Url.css("UC/PrettyPhotoUC/prettyPhoto.css")" rel="stylesheet" type="text/css" />
+}
+@section js{
+    <script src="@Url.js("UC/PrettyPhotoUC/jquery.prettyPhoto.js")" type="text/javascript"></script>
+}
+
+<div class="mainContent" style="width:100%;margin-top:-5px">
+    <div class="clean"></div>
+    @Html.Partial("MyB2B/Order/PaymentMessage")
+    <!-------------------------Main Menu---------------------------->
+@*    @Html.Partial("MyB2B/Order/WebconfigOrderMenu")*@
+    <button class="btn fl_r bg_product_hide hide mar_r10 ShowTabmenu mar_t10" type="button" style="padding:0 5px">
+        <i class="icon-chevron-down cursor btn-tootip-bottom"  rel="tooltip Popover" data-original-title="@res.Common.btnShow"></i>
+    </button>
+    <div class="clean"></div>
+    <!---------------------------Table------------------------------>
+    <div style="margin:7px;">
+        <button type="button" class="btn" style="margin:2px;" onclick="window.history.back();">@res.Common.btnBack</button>
+    </div>
+    @Html.Partial("MyB2B/Order/PaymentDetail")
+</div>
+
+<script src="@Url.js("MyB2B/Order/ManageOrder.js")" type="text/javascript"></script>
+<script type="text/javascript">
+    $(document).ready(function () {
+        ActiveMenu(2);
+        //prettyPhoto
+        $("a[rel^='prettyPhoto']").prettyPhoto({
+            show_title: false,
+            default_width: 500,
+            default_height: 344,
+            social_tools: false,
+            theme: 'light_rounded'
+        });
+    });
+</script>

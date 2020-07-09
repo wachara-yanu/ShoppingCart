@@ -1,0 +1,150 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@if (ViewBag.TotalRow > 0)
+{
+    <table class="table table-hover border_table grid mar_b10" id="tableHotfeat">
+    <thead class="HeaderTable">
+        <tr class="header">
+            <th style="width:5%" class="center"></th>
+            <th style="width:25%"><div>@res.Product.lblPro_name</div></th>
+            <th style="width:25%">@res.Company.lblCompName</th>
+            <th style="width:12%"><div class="center">@res.Common.lblStartDate</div></th>
+            <th style="width:12%"><div class="center">@res.Common.lblExpire</div></th>
+            <th style="width:5%"><div>@res.Admin.lblType</div></th>
+            <th style="width:10%;"><div>@res.Common.lblPrice</div></th>
+            <th style="width:5%"></th>
+            <th style="width:3%" class="center"></th>
+            <th style="width:3%" class="center"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in (List<view_HotFeaProduct>)ViewBag.HotFeats)
+        {
+             var ID = item.HotFeaProductID;
+            <tr class="body">
+                <td style="text-align:center">
+                    <input type="checkbox" name="cbxCompID" class="cbxItem cbxCompID" data-id="@ID" onclick="CheckBox($(this))" />
+                    <input type="hidden" id="HotFeaProductID_@{@ID}" class="hidHotFeaProductID" value="@ID" />
+                    <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />
+                </td>
+                @if (item.ProductID != null){
+                    if(item.ProductDelete != true){
+                        <td><span class="badge badge-info package_count" rel="tooltip" title="จำนวณการต่ออายุ">@item.PackageCount</span>&nbsp;
+                           <a class="mar_l20" target="_blank" href="@Url.Action("Detail","Product",new{id = @item.ProductID ,name = @Url.ReplaceUrl(@item.ProductName).Trim(),area="Search"})">@item.ProductName</a>
+                        </td>
+                    }else{
+                        <td><span class="badge badge-info package_count" rel="tooltip" title="จำนวณการต่ออายุ">@item.PackageCount</span>&nbsp;
+                           <a class="mar_l20" target="_blank" href="@Url.Action("Detail","Product",new{id = @item.ProductID ,name = @Url.ReplaceUrl(@item.ProductName).Trim(),area="Search"})" style="color: red;" title="สินค้าถูกลบไปแล้ว">@item.ProductName</a>
+                        </td>
+                    }
+                }else{
+                    <td>
+                        <a class="fontLightGray cursor" id="AddProductHot" data-compid="@item.CompID" data-id="@item.HotFeaProductID">ยังไม่ได้ระบุสินค้า</a>
+                    </td>
+                }
+                <td> 
+               @* @{
+                var urlcomplink = "";
+                 switch(item.CategoryType){
+                     case 1: urlcomplink = "http://www.ouikum.com"; break;
+                     case 2: urlcomplink = "http://www.ouikum.com"; break;
+                     case 3: urlcomplink = "http://www.antcart.com"; break;
+                     case 5: urlcomplink = "http://www.myotopthai.com"; break;
+                     case 6: urlcomplink = "http://www.appstorethai.com"; break;
+                     default: break;
+                 }
+                }*@
+                <a target="_blank" title="@item.CompName" href="@Url.Action("", "CompanyWebsite" + "/" + @Url.ReplaceUrl(item.CompName) + "/Main/Index/" + item.CompID, new  { area = ""})">@item.CompName</a>   
+                </td>
+                <td style=" text-align: center">
+                    @item.ActivatedDate.Value.ToString("d MMM yyyy")
+                </td> 
+                <td style=" text-align: center">
+                    @item.ExpiredDate.Value.ToString("d MMM yyyy")
+                </td>
+                <td>
+                    <select class="select-status" data-id="@ID" name="status" style="width:100px" >
+                        @foreach (var it in ViewBag.ddlHotFeatStatus)
+                        {
+                            if (it.EnumValue == item.Status)
+                            {
+                                <option value="@it.EnumValue" selected>@it.EnumText</option>
+                            }
+                            else if (it.EnumText == "All")
+                            {
+                            }
+                            else
+                            {
+                                <option value="@it.EnumValue">@it.EnumText</option>
+                            }
+                        }
+                    </select>
+                </td>
+                <td>    
+                    @if(item.HotPrice>0){
+                        <text>@(String.Format("{0:##,###.##}", item.HotPrice)) บาท</text>
+                    }else{
+                        <text>ไม่ระบุราคา</text>
+                    }
+                </td>
+                <td>
+                <select name="Expired" style="width:100px" >
+             
+                    @if (item.ExpiredDate > DateTime.Now)
+                    { 
+                        <option value="Expire">@res.Common.lblExpire</option>
+                        <option value="Activated" selected>@res.Common.lblActivated</option>  
+                    }
+                    else
+                    {
+                        <option value="Expire" selected>@res.Common.lblExpire</option>
+                        <option value="Activated">@res.Common.lblActivated</option>
+                    }
+                    </select>
+                </td>
+                <td>
+                    <a class="btn btn-mini btn-tootip-bottom padd_b4 edit" data-id="@ID" title="Edit"  ><i class="icon-edit"></i></a>
+                </td>
+                <td>
+                    <a class="btn btn-mini btn-tootip-bottom padd_b4 delete" data-id="@ID" title="Delete"  ><i class="icon-remove-sign"></i></a>
+                </td>
+            </tr>
+            }
+
+        </tbody>
+</table>
+
+}
+else
+{
+    <table class="table table-hover border_table grid mar_b10">
+    <thead class="HeaderTable">
+        <tr class="header">
+            <th style="width:5%" class="center"></th>
+            <th style="width:25%"><div>@res.Product.lblPro_name</div></th>
+            <th style="width:25%">@res.Company.lblCompName</th>
+            <th style="width:12%"><div class="center">@res.Common.lblStartDate</div></th>
+            <th style="width:12%"><div class="center">@res.Common.lblExpire</div></th>
+            <th style="width:5%"><div>@res.Admin.lblType</div></th>
+            <th style="width:10%;display:none"><div>@res.Common.lblPrice</div></th>
+            <th style="width:5%"></th>
+            <th style="width:3%" class="center"></th>
+            <th style="width:3%" class="center"></th>
+        </tr>
+    </thead>
+        <tbody>
+            <tr class="body">
+                    <td colspan="9" style="text-align:center">@res.Common.lblNotFound</td>
+            </tr>
+        </tbody>
+        </table>
+}
+@Html.Partial("UC/Grid/PagingPostUC")
+<script type="text/javascript">
+    $(function () {
+        $('.package_count').tooltip({ placement: 'bottom' });
+        OpenLoading(false);
+    });
+</script>
+
+

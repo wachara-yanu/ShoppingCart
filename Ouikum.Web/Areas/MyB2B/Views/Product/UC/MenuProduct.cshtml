@@ -1,0 +1,36 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum.Product;
+        <div class="row bg_product_mainmenu">
+            <div class="inline product_mainMenu store mar_t5" menu="store">
+                <a href="@Url.Action("product/Index","MyB2B",new{area=""})" class="fontMainMenu active"> 
+                <div id="status-product" class="fl_r badge badge-important">0</div>
+                <div class="clean"></div>
+                    <img style="margin:0 auto;display:block" src="@Url.css("MyB2B/images/icon_product.png")">
+                    <p>@res.Product.lblProduct</p>
+                </a>
+            </div>
+            @if(ViewBag.CateLevel1 == 3)
+            {
+            <div class="inline product_mainMenu recommend mar_t5" menu="recommend">
+                <a href="@Url.Action("Recommend","product",new{area="MyB2B"})" class="fontMainMenu">
+                <div id="status-recommend" class="fl_r badge badge-important">0</div>
+                <div class="clean"></div>
+                    <img style="margin:0 auto;display:block" src="@Url.css("MyB2B/images/icon_recproduct.png")">
+                    <p>@res.Product.lblFeature_Pro</p>
+                </a>
+            </div>
+            }
+            <div class="inline product_mainMenu trash mar_t5" menu="trash" >
+                <a href="@Url.Action("Junk","product",new{area="MyB2B"})" class="fontMainMenu" >
+                    <div id="status-junk" class="fl_r badge badge-important">0</div>
+                <div class="clean"></div>
+                    <img style="margin:0 auto;display:block" src="@Url.css("MyB2B/images/icon_bin.png")">
+                    <p>@res.Product.lblJunk</p>
+                </a>
+            </div>
+
+            <div class="fl_r add-on mar_t8 mar_r10 CloseTabmenu" style="width:10px;height:16px;">
+                  <i class="icon-chevron-up cursor btn-tootip-bottom" rel="tooltip Popover" data-original-title="@res.Common.btnHide" style="margin-top:-5px;"  ></i>
+            </div>
+
+        </div>

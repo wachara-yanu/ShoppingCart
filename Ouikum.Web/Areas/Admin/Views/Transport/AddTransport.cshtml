@@ -1,0 +1,60 @@
+﻿
+@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+
+<form id="addPayment_form" class="form-horizontal" style="margin-bottom:0px;" action="" method="post">
+    <input type="hidden" id="objState" class="hidObjState" />
+    <input type="hidden" id="RowVersion" class="hidRowVersion" />
+    <input type="hidden" id="CompPaymentID" class="hidPaymentID" />
+    <div class="clean20"></div>
+    <div class="control-group">
+        <label class="control-label-Comp" for="BankID">@res.Common.lblBank :</label>
+        <div class="controls-Comp BankID">
+          
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label-Comp" for="AccountName">@res.Common.lblAcc_Name :</label>
+        <div class="controls-Comp AccName">
+            <input type="text" name="AccName" id="AccName" placeholder="Account Name" class="span4" value="" onblur="checkError();" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label-Comp" for="AccType">@res.Common.lblAcc_Type :</label>
+        <div class="controls-Comp AccType">
+            <select name="AccType" id="AccType" class="span4" onchange="checkError();">
+                <option value="0">-----@res.Common.chooseAcc_Type-----</option>
+                <option value="1">@res.Common.lblSavings</option>
+                <option value="2">@res.Common.lblDeposits</option>
+                <option value="3">@res.Common.lblCurrents</option>
+            </select>
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label-Comp" for="BranchName">@res.Common.lblBranch :</label>
+        <div class="controls-Comp BranchName">
+            <input type="text" name="BranchName" id="BranchName" placeholder="Branch Name" class="span4" value="" onblur="checkError();" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label-Comp" for="AccNo">@res.Common.lblAcc_No :</label>
+        <div class="controls-Comp AccNo">
+            <input type="text" name="AccNo" id="AccNo" placeholder="Account Number" class="span4" value="" onblur="checkError();" />
+        </div>
+    </div>
+
+    <div class="control-group">
+        <label class="control-label-Comp" for="Remark">@res.Common.lblDetail :</label>
+        <div class="controls-Comp">
+            <textarea id="Remark" name="Remark" rows="5" class="span4"></textarea>
+            <div style="color:Red;">
+                @res.Common.lblmore_500_char
+            </div>
+        </div>
+    </div>
+</form>
+

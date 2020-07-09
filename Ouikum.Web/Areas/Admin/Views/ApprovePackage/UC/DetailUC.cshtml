@@ -1,0 +1,162 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+@{
+    var OrderComp = (view_OrderDetailComp)ViewBag.OrderComp;
+    var company = (view_Company)ViewBag.Company;
+    var i = 1;
+}
+<article class="module width_full">
+    <header>
+        <h3 class="tabs_involved">หมายเลขสั่งซื้อ : @OrderComp.OrderCode</h3>
+    </header>
+    <div class="module_content" style="color:#000">
+        <div class="clean10"></div>
+        <div class="font_l">รายการสั่งซื้อ :</div>
+        <div class="clean10"></div>
+        <table>
+            <tbody>
+                <tr style="background-color:#F2F2F2;height:50px">
+                    <td style="width:2%;text-align:center">#</td>
+                    <td style="width:68%">รายการ</td> 
+                    <td style="width:10%;text-align:right">ระยะเวลา</td>
+                    <td style="width:10%;text-align:right">จำนวน</td>
+                    <td style="width:10%;text-align:right">ราคา (บาท)</td>
+                </tr>
+                @foreach (var item in (List<view_OrderDetail>)ViewBag.OrderDetail)
+                {   
+                    int ID = (int)item.OrderID;
+                    <tr class="body">
+                        <td style="text-align:center">@i</td>
+                        <td>  
+                            @item.PackageName 
+                            @if (item.PackageID >= 23 && item.PackageID <= 25)
+                            {
+                                <span> , </span> @item.ShortDescription
+                            }
+                        </td> 
+                        <td style="text-align:right">
+                            
+                            @item.ODDuration <span>วัน</span>
+                        </td>
+                        <td style="text-align:right">
+                            @item.ODOptionValue @item.ODOptionValueUnit
+                        </td>
+                        <td style="text-align:right">
+                            @if (item.Price > 0)
+                            {
+                                @(String.Format("{0:##,###.00}", item.Price))
+                            }
+                            else
+                            {
+                                <text>-</text>
+                            }
+                        </td>
+                    </tr> 
+                    i++;
+                }  
+                <tr>
+                    <td colspan="3" style="text-align:right"><b>ราคาทั้งหมด</b></td>
+                    <td colspan="2" style="text-align:right"><b>@(String.Format("{0:##,###.00}", OrderComp.TotalPrice))</b></td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align:right">ส่วนลด</td>
+                    <td colspan="2" style="text-align:right">0.00</td>
+                </tr>
+                <tr>
+                    <td colspan="3" style="text-align:right">VAT (%)</td>
+                    <td colspan="2" style="text-align:right">0.00</td>
+                </tr>
+                <tr style="background-color:#F2F2F2;">
+                    <td colspan="3" style="text-align:right"><b>ราคารวมทั้งหมด</b></td>
+                    <td colspan="2" style="color:#DD2226;text-align:right"><b>@(String.Format("{0:##,###.00}", OrderComp.TotalPrice)) <span> บาท</span></b></td>
+                </tr>
+                </tbody>
+        </table>
+
+        <div class="clean20"></div>
+        <div class="font_l">รายละเอียดผู้สั่งซื้อ:</div>
+        <div class="clean10"></div>
+        <table>
+            <tr>
+                <td style="width:15%;background-color:#F2F2F2;">ชื่อผู้สั่งซื้อ</td>
+                <td style="width:35%">@company.ContactFirstName @company.ContactLastName</td>
+                <td style="width:15%;background-color:#F2F2F2;">ชื่อบริษัท/ชื่อร้าน</td>
+                <td style="width:35%">@company.CompName</td>
+            </tr>
+            <tr>
+                <td style="background-color:#F2F2F2;">ที่อยู่</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(company.CompAddrLine1))
+                    {
+                        @company.CompAddrLine1 @company.CompAddrLine2
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+                <td style="background-color:#F2F2F2;">โทรศัพท์</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(company.CompPhone))
+                    {
+                        @company.CompPhone
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#F2F2F2;">ตำบล/แขวง</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(company.CompSubDistrict))
+                    {
+                        @company.CompSubDistrict
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+                <td style="background-color:#F2F2F2;">อีเมล์</td>
+                <td>
+                    @if (!string.IsNullOrEmpty(company.ContactEmail))
+                    {
+                        <a href="mailto:@company.ContactEmail">@company.ContactEmail</a>
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#F2F2F2;">อำเภอ/เขต</td>
+                <td colspan="3">
+                    @if (!string.IsNullOrEmpty(company.DistrictName))
+                    {
+                        @company.DistrictName
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#F2F2F2;">จังหวัด</td>
+                <td colspan="3">
+                    @if (!string.IsNullOrEmpty(company.ProvinceName))
+                    {
+                        @company.ProvinceName
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+            </tr>
+            <tr>
+                <td style="background-color:#F2F2F2;">รหัสไปรษณีย์</td>
+                <td colspan="3">
+                    @if (!string.IsNullOrEmpty(company.ContactPostalCode))
+                    {
+                        @company.ContactPostalCode
+                    }else{
+                        <span>-</span>
+                    }
+                </td>
+            </tr>
+        </table>
+    </div>  
+    <div class="clean10"></div>
+</article>

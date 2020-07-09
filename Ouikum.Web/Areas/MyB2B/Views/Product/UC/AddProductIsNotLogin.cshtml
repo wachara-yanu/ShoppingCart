@@ -1,0 +1,478 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum; 
+          
+    <link href="@Url.css("UC/Tag_it/jquery.tagit.css")" rel="stylesheet" type="text/css" />
+    <link href="@Url.css("UC/Scrollbar/jquery.scrollbars.css")" rel="stylesheet"type="text/css" />
+    <link href="@Url.css("UC/CaptchaUC/CaptchaUC.css")" rel="stylesheet" type="text/css" />
+
+    <link href="@Url.css("MyB2B/MyB2B.css")" rel="stylesheet" type="text/css" />
+<div style="padding:10px;">
+	<div class="close-big" data-dismiss="modal" aria-hidden="true" style="color:#0B0A08">×</div>
+	<div class="clean"></div>
+	
+	    <div class="mar_20">
+            
+		    <div id="column_left">          @* Column Left do upload photo*@
+			    <div style="margin-bottom: 60px;margin-top: -5px;">
+				    <img src="@Url.css("MyB2B/images/img_header.png")" class="circle"/>
+                    <img src="@Url.css("MyB2B/images/img_header_circle.png")" class="incircle" />
+				    <span id="u6" class="label-header" >@res.Product.lblPost_NewProduct</span>
+                    <div style="padding-top:5px;font-size:13px;padding-left:175px">
+                        <a href="@res.Pageviews.UrlTechnique" target="_blank" class="SellCondi" >(@res.Product.lblTechnique)</a>
+                    </div>
+			    </div>
+		        <div class="Bisector"></div>
+			    <div style="margin-left: 15px;">
+				    @Html.Partial("UC/ProductUC/ProductImageUploadNotLogin")
+			    </div> 
+			    <div class="clean"></div>
+		    </div>
+		
+		    <div id="column_right">
+			    <div class="containner mar_l20">
+                <form id="AddProduct_Form" class="form-horizontal" action="/" method="post" onsubmit="return false;">
+                    <input type="hidden" id="hidAddProductNotLogin" name="hidAddProductNotLogin" value="0" />
+                    <div id="stat1" class="panel_state unensconce">
+                        <div class="line_1">
+                            <span class="textHead label-header">@res.Product.lblPreProductInfo</span>
+                            <a href="@res.Pageviews.UrlCondition" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                            <div class="w100 fl_r mar_t3">
+                                <div class="boxPage onpage">1</div>
+                                <div class="boxPage" onclick="GoToPageStepNotLogin(1,2,false)">2</div>         @*GoToPageStepNotLogin is function next page or back page*@
+                                <div class="boxPage" onclick="GoToPageStepNotLogin(1,3,false)">3</div>         @*function GoToPageStepNotLogin(currentpage,gotopage,submit)*@
+                            </div>                                                    
+                        </div>
+                        <div class="PageBrage"></div>
+                        <div class="line_2">
+
+                            <div class="control-group">
+                                <label>@res.Product.lblPro_name<span class="require">*</span></label>
+                                <div class="ProductName">
+                                    <input type="text"  name="ProductName" id="ProductName"  class="  mar_r10"   onblur="CheckProductName();"/>
+                                    <label class="error"></label>
+                                </div> 
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblAdd_kw<span class="require">*</span></label>
+                                <div class=" Keyword tagit-kw"> 
+                                    <ul id="tagit-keyword" class="tagit"></ul>
+                                    <label class="error"></label>                                     
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblQuick_Detail<span class="require">*</span></label>
+                                <div class=" Detail tagit-dt"> 
+                                    <ul id="tagit-detail"  class="tagit""></ul>
+                                    <label class="error"></label>  
+                                    <div class="clean"></div>
+                                    <label class="divRow error textdesc"></label>
+                                </div>
+                            </div>
+
+                            <div class="control-group">
+                                <label>@res.Product.lblCate<span class="require">*</span></label>
+                                <div class="Category"> 
+                                <div class="input-append fl_l" id="Category"> 
+                                    <input id="TextSearchCategory" class="span3 txtSearchCate"  name="CateLV3" size="16" type="text" 
+                                    placeholder="@res.Common.lblSearch@res.Product.lblCate"  onblur="CheckCate()"/>
+                                    <button class="btn" type="button" onclick="SearchCategory()">@res.Common.btnSearch</button> 
+                                </div>
+                                <input type="hidden" name="Categorycode" id="CategoryCode" data-catename="" data-id="" value="" /> 
+                                <div class="clean5"></div>
+                                <a class="cursor click-cateall" style="font-size:12px;"> @res.Common.lblShowAllCate</a>
+                                <div class="Show-selectCate hide">
+                                    <div class="fl_l">
+                          
+                                        <select class="span4" id="SelectCateLV1" name="SelectCateLV1" onchange="beforecateLV1();" >
+
+                                            @if (ViewBag.SelectCateLV1 != null)
+                                            {
+                                                <option value="0" selected="selected">-@res.Common.selectCatelv1-</option>   
+                                                foreach (var lv1 in (IEnumerable<b2bCategory>)ViewBag.SelectCateLV1)
+                                                {
+                                                        <option value="@lv1.CategoryID" class="@lv1.CategoryName">@lv1.CategoryName</option>
+                                                }
+                                            }
+                        
+		                                </select> 
+                                    
+                                    </div>
+                                    <div class="fl_l mar_l5"><span class="btn morekey1" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(1)" disabled><i class="icon-share"></i></span></div>
+                                    <div class="clean10"></div>
+                                    <div class="fl_l">
+                                    <select class="span4" id="SelectCateLV2" name="SelectCateLV2" onchange="beforecateLV2();"  disabled>
+			                                    <option value="0" selected="selected">-@res.Common.selectCatelv2-</option>
+		                            </select> 
+                                    </div>
+                                    <div class="fl_l mar_l5"><span class="btn morekey2" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(2)" disabled><i class="icon-share"></i></span></div>
+                                     <div class="clean10"></div>
+                                    <div class="fl_l">
+                                    <select class="span4" id="SelectCateLV3" name="SelectCateLV3"  onchange="selectedcateLV3();"  disabled>
+			                                    <option value="0" selected="selected">-@res.Common.selectCatelv3-</option>
+		                            </select> 
+                                    </div>
+                                    <div class="fl_l mar_l5"><span class="btn morekey3" title="@res.Common.lblmakekeywordtag" style="padding:4px 10px" onclick="addmorekeyword(3)" disabled><i class="icon-share"></i></span></div>
+                                    <div class="clean"></div>
+                                    <a class="cursor click-catesearch" style="margin-top:10px">@res.Common.lblGotoSearch </a>
+                                </div>
+                    
+                            </div>
+
+                            <label class="errorCate error"></label>
+                        </div>
+                            <div class="show-catepath Bg_searchcate" style="width:90%; display:none;" alt="Success"></div>
+                            <div class="div-sel-category"></div>   
+                        </div>
+                 
+                        <div class="line_3 font_right">
+                            <div class="submit_nextstep label-header " onclick="GoToPageStepNotLogin(1,2,false)">@res.Common.lblSaveNextStep</div>
+                            <div class="cancel_backstep label-header mar_r10" data-dismiss="modal" aria-hidden="true">@res.Common.lblCancel</div>                            
+                        </div>
+                    </div>
+
+                    <div id="stat2" class="panel_state ensconce">
+                      
+                       <div class="line_1">
+                           <span class="textHead label-header">@res.Product.lblProductInfoMore</span>
+                           <a href="@res.Pageviews.UrlCondition" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                           <div class="w100 fl_r mar_t3">
+                               <div class="boxPage" onclick="GoToPageStepNotLogin(2,1,false)">1</div>
+                               <div class="boxPage onpage" >2</div>    
+                               <div class="boxPage" onclick="GoToPageStepNotLogin(2,3,false)">3</div>                                 
+                           </div>                                                    
+                       </div>
+                   
+
+                        <div class="PageBrage"></div>
+
+                        <div class="line_2">
+
+                            <div class="control-group">
+                                <label>@res.Product.lblPrice@res.Product.lblPro (@res.Product.lblPricesend)</label>
+                                <div class=" Price  PriceF fl_l">
+                                    <div class="input-append">
+                                        <input type="text" name="Price" id="Price" class="span2" style="float:left;" value="0.00" />
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                                <label class="fl_l mar_l10" style="text-align:left;padding-top:3px;margin-left: 39px;">@res.Product.lblBaht / <span id="QtyUnitFirst">@res.Product.lblPro_Unit</span></label>
+
+                            </div>
+                            <div class="control-group" id="AllQty">
+                                <label>@res.Product.lblMinimum_Unit</label>
+                                <div class="Qty  fl_l">
+                                    <div class="input-append">
+                                        <input type="text" name="Qty" id="Qty" class="span2" value="0.00" Placeholder="@res.Product.lblMinimum_Unit">
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                                <div class="QtyUnit span2 fl_l mar_l10" style="width: 137px;margin-left: 37px;">
+                                    <select style="margin-left:8px;width:108px" id="QtyUnit" name="QtyUnit" onchange="selectedQtyUnit();">
+                                        <option value="0" selected="selected">@res.Product.lblPro_Unit</option>
+                                        @foreach (var Qty in ViewBag.QtyUnits)
+                                        {
+                                            <option value="@Qty.EnumText">@Qty.EnumText</option>
+
+                                        }
+                                    </select>
+                                    @*<div class="controls span2 QtyOther" style="display:none">
+                <input type="text" name="QtyOther"  id="QtyOther" class="span2" />
+                </div>*@
+                                    <div class="controls span2 QtyOther" style="display:none;margin-left:10px">
+                                        <input type="text" name="QtyOther" id="QtyOther" class="span2" />
+                                    </div>
+                                </div>
+                            </div>
+
+                            @*เพิ่มราคาสินค้า/ชิ้น*@
+                            <div class="control-group" id="Price_One">
+                                <label>@res.Product.lblPrice_one</label>
+                                <div class="Price_One PriceF fl_l">
+                                    <div class="input-append">
+                                        <input type="text" name="Price_One" id="Price_One" class="span2" style="float:left;" value="0.00" />
+                                        <span class="add-on" style="width:10px;">
+                                            <img src="@Url.css("Default/images/icon_up.jpg")" style="margin-top:-15px;" class="cursor icon_money_up"><br>
+                                            <img src="@Url.css("Default/images/icon_down.jpg")" style="margin-top:-32px;" class="cursor icon_money_down">
+                                        </span>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="control-group" style="display:none">
+                                <label>@res.Product.lblProductCode</label>
+                                <div class="ProductCode span6" style="margin-left:0px;">
+                                    <input type="text" name="ProductCode" id="ProductCode" class="span3 mar_r5" style="float:left;"
+                                           value="@ViewBag.ProductCode" maxlength="16" onblur="CheckProductCode();" disabled="disabled" />
+                                    <label class="error"></label>
+                                </div>
+                            </div>
+                            <div class="control-group" id="FullDetail">
+                                <label>@res.Product.lblMore_Detail</label>
+                                <div class="FullDetail span3 padd_t5" style="float:left;margin-left:0;margin-right:30px">
+                                    <a class="cursor product-detail-click" style="font-size:14px"> @res.Product.lbladd_moreDetail</a>
+                                </div>
+                            </div>
+                            <div class="product-detail-textarea" style="display:none;">
+                                <textarea name="FullDetail" class="ProductDetail" id="ProductDetail"></textarea>
+                            </div>
+
+                        </div>
+
+                        <div class="line_3 font_right">
+                            <div class="submit_nextstep label-header " onclick="GoToPageStepNotLogin(2,3,false)">@res.Common.lblSaveNextStep</div>
+                            <div class="cancel_backstep label-header mar_r10" onclick="GoToPageStepNotLogin(2,1,false)">@res.Common.lblPrev</div>                            
+                        </div>
+
+                    </div>
+                </form>
+                
+                 @*@using (Html.BeginForm("", "", FormMethod.Post, new { id = "signup_form", @class = "form-horizontal " }))
+                 {*@
+                 @using (Ajax.BeginForm("", "", new AjaxOptions { HttpMethod = "Post"}, new { id = "signup_form", @class = "form-horizontal" }))
+                 {
+                    <div id="stat3" class="panel_state ensconce" style="margin-top: -22px;">
+                        <div class="line_1">
+                           <span class="textHead label-header">@res.Common.lblMemberProfile<span class="require">*</span></span>
+                           <a href="@res.Pageviews.UrlCondition" target="_blank" class="SellCondi">(@res.Product.lblSellingConditions)</a>
+                           <div class="w100 fl_r mar_t3">
+                               <div class="boxPage" onclick="GoToPageStepNotLogin(3,1,false)">1</div>
+                               <div class="boxPage" onclick="GoToPageStepNotLogin(3,2,false)">2</div>   
+                               <div class="boxPage onpage" >3</div>                                  
+                           </div>      
+                        </div>
+
+                        <div class="PageBrage"></div>
+
+                        <div class="line_2">
+
+                            <div class="control-group ">
+                                <label  for="UserName">@res.Member.lblUsername<span class="require">*</span></label>
+                                <div class="UserName">
+                                  <input type="text"  name="UserName" id="UserName" placeholder="Username" class="wid_input" onblur="checkUserName();"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="Password">@res.Member.lblPassword<span class="require">*</span></label>
+                                <div >
+                                    <input type="Password"  name="Password" id="Password" placeholder="Password" class="wid_input"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="ConfirmPassword">@res.Member.lblConfirm_Password<span class="require">*</span></label>
+                                <div >
+                                  <input type="password"  name="ConfirmPassword" id="ConfirmPassword" placeholder="Confirm Password" class="wid_input"/>
+                               </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="Emails">@res.Common.lblEmail<span class="require">*</span></label>
+                                <div class=" Emails">
+                                  <input type="text"  name="Emails"  id="Emails" placeholder="Email"  class="wid_input" onblur="checkEmails();"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="CompName" id="ActiveCompname">@res.Common.lblComname<span class="require">*</span></label>
+                                <div class=" CompName">
+                                    <input type="text"  name="CompName" id="CompName" placeholder="Company Name"  class="wid_input" onblur="checkCompName();"/>
+                                </div>
+                            </div>     
+
+                            <div class="control-group ">
+                                <label  for="BizTypeID">@res.Common.lblBusiness_Type<span class="require">*</span></label>
+                                <div class=""> 
+                                    <select name="BizTypeID" id="BizTypeID" class="wid_select show">
+                                      <option value="0">-----@res.Common.chooseBizType-----</option>
+                                      @foreach (var it in (List<b2bBusinessType>)ViewBag.BizType)
+                                      {
+                                        <option value="@it.BizTypeID">@it.BizTypeName</option>
+                                      }
+                                    </select>
+
+                                </div>
+                                <div class="BizTypeOther" style="display:none;">
+                                    <div class="clean10"></div> 
+                                    <div >  
+                                        <input type="text"   id="BizTypeOther" name="BizTypeOther" placeholder="@res.Common.chooseBizType" class="wid_input"/>
+                                    </div>  
+                                </div>
+                            </div> 
+
+                            <div class="control-group ">
+                                <label  for="">@res.Common.lblFirstName<span class="require">*</span></label>
+                                <div >
+                                    <input type="text" name="FirstName_register" id="FirstName_register" value="@ViewBag.first_name" placeholder="First Name" class="wid_input"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="">@res.Common.lblLastName<span class="require">*</span></label>
+                                <div >
+                                    <input type="text" name="LastName" id="LastName" placeholder="Last Name" value="@ViewBag.last_name" class="wid_input"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="Phone">@res.Common.lblPhoneno<span class="require">*</span></label>
+                                <div class=" Phone">
+                                    <input type="text" name="Phone"  id="Phone" placeholder="Phone" value=""  class="wid_input" onblur="checkEmails();"/>
+                                </div>
+                            </div>
+
+                            <div class="control-group ">
+                                <label  for="ProvinceID">@res.Common.lblProvince<span class="require">*</span></label>
+                                <div class="">
+                                    <select name="ProvinceID" id="ProvinceID" class="wid_select">
+                                          <option value="0">-----@res.Common.chooseProvince-----</option>
+                                          @foreach (var it in (List<view_Province_Region>)ViewBag.Provinces)
+                                          {
+                                              if (ViewBag.FBProvince == it.ProvinceID)
+                                              {
+                                                <option value="@it.ProvinceID" selected="selected">@it.ProvinceName</option>
+                                              }
+                                              else
+                                              {
+                                                <option value="@it.ProvinceID">@it.ProvinceName</option>
+                                              }
+                                          }
+                                     </select>
+                                 </div>
+                             </div>
+
+                            <div class="control-group ">
+                                <label for="DistrictID">@res.Common.lblDistrict<span class="require">*</span></label>
+                                <div >
+                                    <select name="DistrictID" id="DistrictID" class="wid_select">
+                                        <option value="0">-----@res.Common.chooseDistrict-----</option>
+                                    </select>
+                                </div>
+                            </div> 
+                            <div > 
+                                <label class="">
+                                    <span class="label open-agree cursor" data-toggle="modal" data-target="#myModal1" id="condition">@res.Member.lblCondition</span>                                   
+                                </label>
+                                <div>
+                                    <p style="height:0px;"></p>
+                                    <label class="checkbox ">
+                                        <input type="checkbox" name="agree" id="agree" value="false" onclick="disabled = 'disabled'" />
+                                        @res.Member.lblAccept_Condition
+                                    </label>                             
+                                </div>
+                            </div> 
+                            <div class="control-group">
+                                <div> 
+                                     @*@Html.Partial("UC/CaptchaUC/CaptchaUC")*@
+                                     @{
+                                        Random rnd = new Random();
+                                        var rand = rnd.Next(99999999); 
+                                    }
+                                    <img src="@Url.Content("~/home/getcaptcha?id="+ rand)" />
+                                </div>
+                            </div>
+                            <div class="control-group ">
+                                <label for="captcha"></label>
+                                <div class="captcha">
+                                    @*<input type="text" name="captcha" id="captcha" placeholder="กรอกตัวเลขด้านบน" class="span4" maxlength="4" />*@
+                                    <input type="hidden" name="captcha_id" id="captcha_id" value="@rand" />
+                                    <input type="text" name="captcha"  id="captcha" placeholder="กรอกตัวเลขด้านบน" value="" maxlength="4" class="wid_input" onblur="checkCaptcha();" />
+                                </div>
+                            </div>  
+                        </div>
+
+                        <div class="line_3">
+                            <div class="submit_nextsteps label-header " onclick="GoToPageStepNotLogin(3,3,true)">@res.Product.lblConfirmSellProduct</div>
+                            <div class="cancel_backstep label-header mar_r10" onclick="GoToPageStepNotLogin(3,3,false)">@res.Common.lblPrev</div>      
+                        </div>
+
+                    </div>
+                 }
+			    </div>
+			    <div class="clean"></div>
+		    </div>
+        </div>	
+</div>
+
+@*<div class="modal hide fade custom-size" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" data-backdrop="static">
+      <div class="modal-header">
+       <button type="button" class="close" data-dismiss="modal" aria-hidden="true">x</button>
+        <h5>@res.Member.lblCondition</h5>
+      </div>
+      <div class="modal-body" >  
+            @Html.Partial(res.Member.pvAgreement)
+      </div>
+      <div class="modal-footer">         
+           <a href="#" id="agree_con" class="btn btn-primary"  data-dismiss="modal">Agree</a>
+      </div>
+</div>*@
+
+
+<script type="text/javascript" src="@Url.js("UC/CaptChaUC/QapTchaSignUp.jquery.js")"></script>
+
+<script src="@Url.js("UC/Scrollbar/jquery.scrollbars.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/Tag_it/tag-it.js")" type="text/javascript"></script>
+<script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/Validate/validator-select.js")" type="text/javascript"></script>
+
+<script src="@Url.js("Member/SignUp.js")" type="text/javascript"></script>
+<script src="@Url.js("MyB2B/Product/ProductUploads.js")" type="text/javascript"></script>
+<script src="@Url.js("MyB2B/Product/ManageProduct.js")" type="text/javascript"></script>
+<script src="@Url.js("MyB2B/Product/AddProductNotLogin.js")" type="text/javascript"></script> 
+
+<script type="text/javascript">
+
+    $(function () {
+        $('#tagit-keyword').tagit({
+            availableTags: [],
+            itemName: "RecipientName",
+            fieldName: "txtName",
+            maxTags: 5,
+            allowSpaces: true
+        });
+        $('#tagit-detail').tagit({
+            availableTags: [],
+            itemName: "RecipientName",
+            fieldName: "txtName",
+            maxTags: 5,
+            allowSpaces: true
+        });
+        $('.click-cateall').live('click', function () {
+            $('.click-cateall').css('display', 'none');
+            $('#Category').css('display', 'none');
+            $('.Show-selectCate').removeClass('hide');
+        });
+        $('.click-catesearch').live('click', function () {
+            $('.click-cateall').css('display', 'block');
+            $('#Category').css('display', 'block');
+            $('.Show-selectCate').addClass('hide');
+        });
+
+    });
+
+    function selectedQtyUnit() {
+        var unit = $('#QtyUnit option:selected').text();
+        $("#QtyUnitFirst").text(unit);
+
+        if ($('#QtyUnit option:selected').val() == "@MvcHtmlString.Create(@res.Common.lblOther)") {
+            $('#QtyUnit').css('display', 'none');
+            $('.QtyOther').slideDown();
+        }
+    }
+    $('.QtyOther').live('blur', function () {
+        var unit = $('#QtyOther').val();
+        if (unit != "") {
+            $('#QtyUnit').append("<option value='" + unit + "' selected='selected'>" + unit + "</option>");
+            $("#QtyUnitFirst").text(unit);
+        }
+        $('.QtyOther').hide();
+        $('#QtyUnit').css('display', 'inline');
+    });
+</script>

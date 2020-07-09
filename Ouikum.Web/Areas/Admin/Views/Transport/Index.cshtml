@@ -1,0 +1,27 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+
+}
+
+<div id="autoHeight" class="ContentAdmin">
+    <div class="clean30"></div>
+    <div id="main_content" style="margin:0px 10px 10px 10px;">
+        @using (Ajax.BeginForm("TransportList", "Transport", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+        {
+            <div class="clean10"></div>
+            @Html.Partial("UC/SearchTransport")
+
+            <div id="ArticleGrid" class="mar_t10">@Html.Partial("UC/Grid/GridUC")</div>
+        }
+    </div>
+<div class="clean30"></div>
+</div>
+@section js {
+    <script src="@Url.js("Admin/Banner/ListBanner.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+    <script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script>
+    <script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+}
+

@@ -1,0 +1,129 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Company.lblCompPayment;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@{
+    int PageIndex = DataManager.ConvertToInteger(ViewBag.PageIndex);
+    int PageSize = DataManager.ConvertToInteger(ViewBag.PageSize);
+    int TotalPage = DataManager.ConvertToInteger(ViewBag.TotalPage);
+    int TotalRow = DataManager.ConvertToInteger(ViewBag.TotalRow);
+}
+
+@section head{ <link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" /> }
+
+<div class="row-fluid inline" style="vertical-align:top; margin-top:20px; min-width:1200px;">
+    <div class="clean10"></div>
+    <div style="text-align:center;">
+        <div class="alert" id="information" style="text-align:center;height:20px;display:none;">
+            <button class="close alert_close" type="button">×</button>
+            <strong class="inline"></strong>
+            <p class="inline"></p>
+        </div>
+    </div>
+    <div class="clean"></div>
+    @using (Ajax.BeginForm("CompanyPayment", "Company", new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+    { 
+    <div class="input-prepend input-append inline fl_l mar_t7 mar_r15" id="KeywordGroup">
+        <select name="SearchType" id="SearchType"  class="span5" style="border-radius:3px 0px 0px 3px ; border-right:0px;">
+            <option value="AccName">@res.Common.lblAcc_Name</option>
+            <option value="AccNo">@res.Common.lblAcc_No</option>
+        </select>
+        <input class="SearchPayment span8" placeholder="คำค้นหา ..." size="16" type="text" name="SearchPayment" />
+        <button class="btn btnsearch" type="submit" style="width: 50px;">
+            <i class="icon-search"></i>
+        </button>
+    </div>
+    <div class="fl_r" style="margin-top:15px;">ช่องทางการชำระค่าบริการ
+        <span id="totalList"> @PageSize </span> รายการ
+    </div>
+    }
+
+    <!--Sidebar content-->
+    <div class="mar_t60">
+        <div class="data_system">
+            <div class="header_sys" style="min-width:1203px;">
+                <div class="fl_l">
+                    <h5 class="mar_l20">จัดการข้อมูลช่องทางการชำระค่าบริการ</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_pay">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-add_delete show" id="dels" onclick="delPayment()" >
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u167.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">ลบ</span>
+                    </div>
+                    </div>
+                    <div class="blog-add_delete show" id="add">
+                    <div style="float:left; margin-left:10px;">
+                        <img src="~/Content/CompanyWeb/images/h2_u171.png" style="padding-top:10px;" />
+                    </div>
+                    <div style="float:left; line-height:36px; margin-left:5px;">
+                        <span class="fontsize14" style="color:#666666;">เพิ่ม</span>
+                    </div>
+                    </div>
+                </div>
+
+                <!------------------------------------- btn edit&save --------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide" id="btn_cancle">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide" id="btn_save">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div id="company_pay" class="CollapseDetail">
+                <div class="module_content hide">@Html.Partial("MyB2B/Company/ModalForm/AddPayment")</div>
+                <div id="PaymentGrid" class="show">@Html.Partial("UC/Grid/GridUC")</div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="clean30"></div>
+
+
+@section js{
+<script src="@Url.js("MyB2B/Company/CompPayment.js")" type="text/javascript"></script>
+<script type="text/javascript">
+
+    /*--------------------- toggle -------------------*/
+
+    $(".btnCollapse").live('click', function () {
+        var data = $(this).index(".btnCollapse");
+        var Icon = $(this).find("i")
+
+        var target = $(this).attr('data-target');
+
+        console.log(target)
+
+        if (Icon.hasClass("icon-chevron-down")) {
+            Icon.removeClass('icon-chevron-down');
+            Icon.addClass("icon-chevron-up")
+            $(target).slideDown();
+        } else {
+            Icon.addClass("icon-chevron-down")
+            Icon.removeClass('icon-chevron-up');
+            $(target).slideUp();
+        }
+    });
+
+    </script>
+}

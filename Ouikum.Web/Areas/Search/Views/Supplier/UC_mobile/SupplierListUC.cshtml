@@ -1,0 +1,180 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;}
+<div class="mar_rl10" style="border-bottom:1px solid #ccc;">
+    @Html.Partial("UC/Mobile/GeneratePagingUC")
+</div>
+@if (ViewBag.Suppliers != null)
+{
+    if (((List<view_Company>)ViewBag.Suppliers).Count > 0)
+    {
+    <ul id="List" class="mar_rl10" style="list-style:none" >
+    @foreach (var item in (IEnumerable<view_Company>)ViewBag.Suppliers)
+    {
+        <li class="divProductItem padd_t10 padd_b10" data-comp="@item.CompID" style="border-bottom:1px solid #ddd;">
+            <input type="checkbox" class="ChooseProduct mar_l10 fl_l hide" name="chkpd" title="@item.CompID" />
+            <div class="divPicPro-mobile data-item inline mar_r15 img-frame" style="vertical-align:top;min-height:120px">
+                <div class="item-drag">
+                    @if (!string.IsNullOrEmpty(item.LogoImgPath))
+                    {
+                        <img src="@Url.CompanyLogo(item.CompID, item.LogoImgPath)" id="img-@(item.CompID)"class="cursor ImgProduct" onclick="window.location.href = GetUrl('Search/Supplier/Detail/@item.CompID/@Url.ReplaceUrl(@item.CompName).Trim()')"  alt="@item.CompName" title="@item.CompName" onload="setElementMiddle(120,null,$(this))"/>
+                    }
+                    else
+                    {
+                        <img src="http://www.placehold.it/120x120/EFEFEF/AAAAAA&text=no+image" class="cursor ImgProduct" onclick="window.location.href = #"  alt="No CompanyLogo" title="No CompanyLogo" onload="setElementMiddle(120,null,$(this))"/>
+                    }
+                </div>
+            </div>    
+            <div class="detail-mobile inline">
+                <div class="Row">
+                    @if (item.CompLevel == 3)
+                    { 
+                        <a class="cursor fontMemberCard inline" href="@Url.Action("Detail","Supplier",new { id = item.CompID + "/" + Url.ReplaceUrl(@item.CompName).Trim() + "",area="Search"})" title="@item.CompName"><img src="@Url.cssDefault("images/icon_goldsmall.png")" alt="@item.CompName" class="fl_l mar_r5 inline" /> @item.CompName</a>
+                    }
+                    else
+                    {
+                        <a class="cursor fontMemberCard inline" href="@Url.Action("Detail","Supplier",new { id = item.CompID + "/" + Url.ReplaceUrl(@item.CompName).Trim() + "",area="Search"})" title="@item.CompName"><img src="@Url.cssDefault("images/icon_freesmall.png")" alt="@item.CompName" class="fl_l mar_r5 inline" /> @item.CompName</a> 
+                    }
+                </div>
+                <div class="clean"></div>
+                @if (!string.IsNullOrEmpty(item.BizTypeOther))
+                {
+                <div class="Row mar_t5 fontGray"> 
+                    @(item.BizTypeOther)
+                </div>
+                }else
+                {
+                <div class="Row mar_t5 fontGray"> 
+                    @(item.BizTypeName)
+                </div>
+                }
+                @if (!string.IsNullOrEmpty(item.CompPhone))
+                {
+                <div class="Row mar_t5 fontGray" style="word-break:break-word;"> 
+                    @item.CompPhone
+                </div>
+                }
+                @if (!string.IsNullOrEmpty(item.ContactEmail))
+                {
+                    <div class="Row mar_t5 fontGray" style="word-break:break-word;"> 
+                        @item.ContactEmail
+                    </div>
+                }
+            </div>
+            @*<div id="@item.CompID" class="divDetailComp"></div>*@
+        </li>
+    }
+    </ul>
+    <div class="mar_trl10">
+        @Html.Partial("UC/Mobile/GeneratePagingUC")
+    </div>
+    <div class="mar_rl10">
+        <a href="#Wrapper" class="btn btn-large span12 font_18" style="margin:10px 0px 0px 0px">กลับสู่ด้านบน</a>
+    </div>
+    }
+    else
+    {
+        <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound</div>
+    }
+}
+else
+{ 
+  <div style=" float:left; width:100%; height:250px; line-height:250px; text-align:center;">@res.Common.lblNotFound</div>
+}
+<script type="text/javascript">
+        $(function () {
+             LoadRelateProductInSupplier();
+        });
+        function HideDiv(Obj){
+          Obj.parents('.divProductItem').slideUp("slow");
+        }
+        //$('.Optionsortby').width($('.divProductItem').width() -$('.detail').width()-5);
+        if($('#ddlSort').val()==2){
+            $('.Sortbymodified').css('display','none');
+            $('.Sortbycreadted').css('display','block');
+        }
+        var Window = $(window).width();
+       if(Window < 1025){
+        $("#CateMenuTop").css("margin-top","-3px");
+       }
+        /*----Paging---*/
+         TotalRow = '@(ViewBag.TotalRow)';
+        $(".hideTotalRow").val(TotalRow);
+        $(".lblTotalRow").html('@(ViewBag.TotalRow)');
+
+        if(parseInt( @(ViewBag.TotalPage)) == 0){
+            TotalPage=1;
+        }
+        else{
+            TotalPage = '@(ViewBag.TotalPage)';
+        }
+        $(".hidTotalPage").val(TotalPage);
+        $(".lblTotalPage").html(TotalPage);
+
+        PageIndex = '@(ViewBag.PageIndex)';
+        $(".hidPageIndex").val(PageIndex);
+        $('.txtPageIndex').val('@(ViewBag.PageIndex)');
+         /*---------Navigate-----------*/
+        CateName = '@(ViewBag.CateName)';
+        TextSearch = '@MvcHtmlString.Create(ViewBag.TextSearch)';
+        CateNameLV1 = '@MvcHtmlString.Create(ViewBag.CateNameLV1)';
+        CateNameLV2 = '@MvcHtmlString.Create(ViewBag.CateNameLV2)';
+        CateNameLV3 = '@MvcHtmlString.Create(ViewBag.CateNameLV3)';
+        CateLV = '@(ViewBag.CateLV)';
+        CateID = "@(ViewBag.CateID)";
+        $("#TextSearch").val(TextSearch);
+
+
+        $("#SelectCate").removeAttr("Class");
+        if( CateLV == 0){
+            $("#divCateNameLV1").html("");
+            $("#divCateNameLV2").html("");
+            $("#divCateNameLV3").html("");
+            $("#SelectCate").attr("Class",0).val(0);
+            $("#CateShow").html("<a onclick='SearchAll()' class='cursor'>"+label.vldall_cate+"</a>")
+        }
+        if((CateNameLV1 != null)&&(CateNameLV1 != '')){
+            $("#divCateNameLV1").html("<span class='mar_r5 fl_l'> >>></span> <a class='fl_l cursor'  href='@Url.Action("List/Category","Supplier" ,new{  Category =ViewBag.CateLV1 ,CateLevel=1,CategoryName= ViewBag.ReCateNameLV1 , area="Search"})'> @ViewBag.CateNameLV1</a>");
+            $("#divCateNameLV2").html("");
+            $("#divCateNameLV3").html("");
+            $("#SelectCate").attr("Class",1).val(@(ViewBag.CateLV1));
+            $("#CatePreview").html("<span class='icon-chevron-left cursor' onclick='SearchAll()'></span>");
+            $("#CateShow").html("<a onclick='SelectCate(@(ViewBag.CateLV1),1)' class='cursor'>@ViewBag.CateNameLV1</a>");
+        }
+        if((CateNameLV2 != null)&&(CateNameLV2 != '')){
+            $("#divCateNameLV1").html("<span class='mar_r5 fl_l'> >>></span> <a class='fl_l cursor'  href='@Url.Action("List/Category","Supplier" ,new{  Category =ViewBag.CateLV1 ,CateLevel=1,CategoryName= ViewBag.ReCateNameLV1 , area="Search"})'> @ViewBag.CateNameLV1</a>");
+            $("#divCateNameLV2").html("<span class='mar_r5 fl_l'> >> </span><a class='fl_l cursor'  href='@Url.Action("List/Category","Supplier" ,new{  Category =ViewBag.CateLV2 ,CateLevel=2,CategoryName= ViewBag.ReCateNameLV2 , area="Search"})'> @ViewBag.CateNameLV2</a>");
+            $("#divCateNameLV3").html("");
+            $("#SelectCate").attr("Class",2).val(@(ViewBag.CateLV2));
+            $("#CatePreview").html("<span class='icon-chevron-left cursor'  onclick='SelectCate(@(ViewBag.CateLV1),1)'></span>");
+            $("#CateShow").html("<a onclick='SelectCate(@(ViewBag.CateLV2),2)' class='cursor'>@ViewBag.CateNameLV2</a>");
+        }
+        if((CateNameLV3 != null)&&(CateNameLV3 != '')){
+            $("#divCateNameLV1").html("<span class='mar_r5 fl_l'> >>></span> <a class='fl_l cursor' href='@Url.Action("List/Category","Supplier" ,new{  Category =ViewBag.CateLV1 ,CateLevel=1,CategoryName= ViewBag.ReCateNameLV1 , area="Search"})'> @ViewBag.CateNameLV1</a>");
+            $("#divCateNameLV2").html("<span class='mar_r5 fl_l'> >> </span><a class='fl_l cursor'  href='@Url.Action("List/Category","Supplier" ,new{  Category =ViewBag.CateLV2 ,CateLevel=2,CategoryName= ViewBag.ReCateNameLV2 , area="Search"})'> @ViewBag.CateNameLV2</a>");
+            $("#divCateNameLV3").html("<span class='mar_r5 fl_l'> > </span><a class='fl_l cursor' href='@Url.Action("List/Category","Supplier" ,new{  Category =ViewBag.CateLV3 ,CateLevel=3,CategoryName= ViewBag.ReCateNameLV3 , area="Search"})'> @ViewBag.CateNameLV3</a>");
+            $("#SelectCate").attr("Class",3).val(@(ViewBag.CateLV3));
+            $("#CatePreview").html("<span class='icon-chevron-left cursor'  onclick='SelectCate(@(ViewBag.CateLV1),1)'></span>");
+            $("#CateShow").html("<a onclick='SelectCate(@(ViewBag.CateLV2),2)' class='cursor'>@ViewBag.CateNameLV2</a>");
+        }
+    function openWindowChat(url,target) {
+        var oldWin = window.open(url, target, 'width=620,height=565,menubar=no,status=no');
+        oldWin.focus();  // give focus 
+        return false;
+    }
+    $('.txtPageIndex').keypress(function (e) {
+        if (e.which == 13) {
+            var PageIndex = parseInt($(this).val(), 10);
+            var TotalPage = parseInt($('.hidTotalPage').val(), 10);
+
+            if (CheckPage(PageIndex)) {
+                SubmitPage(PageIndex);
+            } else {
+                SubmitPage(TotalPage);
+                return false;
+            }
+            return false;
+        }
+    });
+</script>
+

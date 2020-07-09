@@ -1,0 +1,87 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    var TextSearch = (string)ViewBag.TextSearch;
+}
+
+
+    <script src="@Url.js("Admin/User/ListUser.js")" type="text/javascript"></script>
+    <script src="@Url.js("PurchasingCenter/Purchasing.js")" type="text/javascript"></script>
+    
+
+
+<table class="table table-hover border_table grid mar_b10">
+            <thead class="HeaderTable">
+                <tr class="header">
+                  @*<th class="span1" style="width:85px"><input type="checkbox" class="checkAll" title="Select All" onclick="SelectAllCompany($(this))" style="margin-left:10px"/></th>*@
+                  <th class="span1" style="width:130px">
+                      <div style="margin:10px 10px 10px 0px;">
+                         <span class="btnCheckAll mar_r7">
+                              <label class="checkbox checkall inline">
+                                <input type="checkbox" class="CheckAll" title="Select All" onclick="SelectAllCompany($(this))"/> @res.Message_Center.colSelectAll
+                              </label>
+                        </span>    
+                      </div>
+                  </th>
+                  <th class="span6"><div class="center">@res.Purchasing.lblCompName</div></th>
+                  <th class="span3"><div class="center">@res.Buylead.lblContactName</div></th>
+                  <th class="span2"><div class="center">@res.Common.lblPhoneno</div></th>
+                  <th class="span3"><div class="center">@res.Common.lblEmail</div></th>
+                </tr>
+              </thead>
+
+              <tbody>
+                   @if (ViewBag.TotalRow <= 0 || ViewBag.TotalRow == null)
+                   {
+                   <tr class="nodata b" valign="middle">
+                        <td><div align="center">@res.Common.lblNotFound</div></td>
+                   </tr>
+                   }
+                   else
+                   {
+
+                        foreach (var item in (List<view_Company>)ViewBag.Suppliers)
+                        {
+                            int ID = DataManager.ConvertToInteger(item.CompID);
+                            <tr class="body">
+                              <td>
+                                  <div>
+                                    @*<input type="hidden" id="CompID_{@ID}" class="hidPrimeID" value="@ID" />
+                                    <input type="checkbox" class="cbxCompID fl_l" id="@ID" onclick="toggleAddClass($(this))" title="Select this supplier" />*@
+                                   @*<span class="icon_NotSendEmail showSendEmail fl_l hide" onclick="toggleEmailClass($(this))" title="Attach User"></span>*@
+                                 
+                                     <input type="hidden" id="CompID_{@ID}" class="hidPrimeID" value="@ID" />                                   
+                                    @* <input type="checkbox" class="icon_NotAdd cbxCompID" value="@ID" id="@ID" onclick="toggleAddClass($(this))" />*@   
+                                      <input type="checkbox" class="icon_NotAdd cbxItem cbxCompID" style="margin-left:10px" value="@ID" id="@ID" onclick="toggleAddClass($(this))" /> 
+                                      <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />                             
+                                  </div>
+                              </td>                       
+                              <td>
+                                    <div id="CompName-@ID">
+                                    <a href="@Url.Action("", "CompanyWebsite" + "/" + Url.ReplaceUrl(item.CompName) + "/Product/" + item.CompID ,  new { TextSearch= TextSearch, area =""})" target="_blank" style="color:#333">
+                                    @item.CompName</a> - [@item.DistrictName,@item.ProvinceName]</div>
+                              </td> 
+                              <td>
+                                    <div>@item.ContactFirstName @item.ContactLastName</div>
+                              </td>
+                              <td>
+                                  @if (!string.IsNullOrEmpty(item.ContactPhone))
+                                  {                  
+                                    <div>@item.ContactPhone</div>
+                                  }
+                                  else
+                                  {
+                                    <div>@item.CompPhone</div>
+                                  }
+                                
+                              </td>
+                              <td>
+                                    <div><span class="displayContactEmail mar_r5">@item.ContactEmail</span><i class="icon-edit cursor" onclick="editEmail($(this))" title="Edit Email"></i></div>
+                                    <div class="hide"><input type="text" class="supplierContactEmail span2 mar_r5" value="@item.ContactEmail"/><i class="icon-save mar_r5 cursor" onclick="saveNewEmail($(this),@ID)" title="Save"></i><i class="icon-remove cursor" onclick="closeEditEmail($(this))" title="Cancel"></i></div>
+                              </td>
+                            </tr>
+                        }
+                   }  
+              </tbody>
+            </table>
+@Html.Partial("UC/Grid/PagingPostUC")

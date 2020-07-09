@@ -1,0 +1,28 @@
+﻿@{
+    ViewBag.Title = "EditPayment";
+    Layout = "~/Views/MP/MP_Order.cshtml";
+}
+@using res = Prosoft.Resource.Web.Ouikum;
+@section head{
+    <link href="@Url.css("Admin/WebConfig/ManageMember.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="mainContent" style="width:100%;margin-top:-5px">
+    <div class="clean"></div>
+    @Html.Partial("MyB2B/Order/WelcomeMessage")
+    <!-------------------------Main Menu---------------------------->
+@*    @Html.Partial("MyB2B/Order/WebconfigOrderMenu")*@
+    <button class="btn fl_r bg_product_hide hide mar_r10 ShowTabmenu mar_t10" type="button" style="padding:0 5px">
+        <i class="icon-chevron-down cursor btn-tootip-bottom"  rel="tooltip Popover" data-original-title="@res.Common.btnShow"></i>
+    </button>
+    <div class="clean"></div>
+    <!---------------------------Table------------------------------>
+    <div style="margin:10px;"></div>
+    @Html.Partial("UC/EditPaymentContent")
+</div>
+
+@section js {
+    <script src="@Url.js("MyB2B/Order/ManageOrder.js")" type="text/javascript"></script>
+    <script src="@Url.js("jquery.validate.min.js")" type="text/javascript"></script>
+    <script src="@Url.js("MyB2B/Order/SubmitPayment.js")" type="text/javascript"></script>
+}

@@ -1,0 +1,253 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+@{var Company = (view_Company)ViewBag.Company;}
+
+<table class="table table-hover border_table grid mar_b10" style="width:98.5%;margin-left:9px">
+    <thead class="HeaderTable">
+    @{var Order = (b2bOrder)ViewBag.Order;}
+        <tr class="header">
+            <th class="span1" style="padding:0px;height:20px"><h4 style="margin:10px">@res.Order.lblOrderCode : @Order.OrderCode</h4></th>
+        </tr>
+    </thead>
+</table>
+<div class="clean"></div>
+<div class="container-fluid">
+  <div class="row-fluid">
+    <div class="span6">
+      <div style="float:left">
+          <div style="height:50px">
+              <div><h5>@res.Order.lblOrdersInfo :</h5></div>
+          </div>
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 20px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Member.lblDisplay : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.DisplayName</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 22px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblfirstlast_name : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.ContactFirstName @Company.ContactLastName</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 56px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblComname : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.CompName</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:40px">
+             <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 62px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblEmail : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.ContactEmail</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:55px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 64px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblAddress : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.ContactAddrLine1</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          @*<tr>
+              <td style="text-align:right"><div class="mar_l20">@res.Common.lblSubdistrict : </div></td>
+              <td>@Company.FactorySubDistrict</td>
+          </tr>*@
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 30px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblDistrict : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.DistrictName</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 54px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblProvince : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.ProvinceName</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 18px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblPostal_code : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.CompPostalCode</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+          <div style="height:40px">
+            <table border="0" cellpadding="0" cellspacing="0" style="  margin-left: 42px; ">
+                <tbody>
+                    <tr valign="top">
+                        <td>
+                            <div class="inline">@res.Common.lblPhoneno : </div>
+                        </td>
+                        <td>
+                            <div class="inline mar_l10">@Company.CompMobile</div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+          </div>
+        </div>
+    </div>
+    <div class="span6">
+        <div class="mar_l10" style="float:left">
+            <h5>@res.Order.lblProducts_Costs :</h5>
+        </div>
+        <table class="mar_l10 table table-bordered" style="float:left" width="50%">
+            <tr style="background-color:#F2F2F2" >
+                <th style="text-align:center;width:5%">@res.Common.colListNo</th>
+                <th style="text-align:center;width:50%">@res.Common.lblList</th>
+                <th style="text-align:center;width:20%">@res.Common.lblAmount</th>
+            </tr>
+            @{int i = 1;}
+            @foreach (var VOrder in (List<view_OrderDetail>)ViewBag.OrderDetail)
+            {
+                <input type="hidden" name="OrderID" class="hiddenOrderId" value="@VOrder.OrderID" />
+            <tr>
+                <td style="text-align:center">@i</td>
+                <td style="text-align:left">@VOrder.PackageName</td>
+                @{string price = String.Format("{0:0,0.00}", VOrder.Price);}
+                <td style="text-align:right">@price</td>
+            </tr>
+                  i++;
+            }
+            <tr>
+                <td colspan="2" style="text-align: center">@res.Order.lblVat7</td>
+                @{string Vat = String.Format("{0:0,0.00}", Order.TotalPrice * 7 / 100);}
+                <td style="text-align: right">@Vat</td>
+            </tr>
+            <tr>
+                @{string totalPrice = String.Format("{0:0,0.00}", Order.TotalPrice + (Order.TotalPrice * 7 / 100));}
+                <td style="text-align: right;background-color:#F2F2F2" colspan="5"><strong>@res.Order.lblAllPayment @totalPrice @res.Order.lblBaht</strong></td>
+            </tr>
+        </table>
+        <div class="clean center"><b>@res.Common.colStatus : </b>
+            @{if (@Order.OrderStatus == "N")
+              {
+                <font color="red"><b>@res.Order.lblUnpaid</b></font>
+              }
+              else if (@Order.OrderStatus == "C")
+              {
+                <font color="gray"><b>@res.Common.btnCancel</b></font>
+              }
+              else if (@Order.OrderStatus == "A")
+              {
+                <font color="green"><b>@res.Order.lblPaid</b></font>
+              }
+              else if (@Order.OrderStatus == "W")
+              {
+                <font color="#D19E0F"><b>@res.Common.lblWaitapprove</b></font>
+              }
+            }
+        </div>
+    </div>
+  </div>
+</div>
+<div class="clean50"></div>
+<div class="center">
+    @{if (Order.OrderStatus == "A" || Order.OrderStatus == "W" || Order.OrderStatus == "C" || Order.TotalPrice == 0)
+      {
+        @*<button type="button" class="btn disabled" style="margin:2px;">@res.Order.lblSubmitPayment_en</button>
+        <button type="button" class="btn disabled" style="margin:2px;">@res.Order.lblCancelOrder_en</button>*@
+      }
+      else
+      {
+        <button type="submit" class="btn btn-warning submit" style="margin:2px;">@res.Order.lblSubmitPayment_en</button>
+        <button type="button" class="btn cancel" style="margin:2px;">@res.Order.lblCancelOrder_en</button>
+      }
+     }
+     <button type="button" class="btn" style="margin:2px;" onclick="window.history.back();">@res.Order.lblBack_en</button>
+</div>
+
+<script type="text/javascript">
+    $(function () {
+        ActiveMenu(1);
+        $('.cancel').click(function () {
+            bootbox.confirm(label.vldcancel, "Cancel", "Yes", function (e) {
+                if (e) {
+                        var id = parseInt($('.hiddenOrderId').val(), 10);
+                        CancelOrder(id);
+                }
+        });
+    });
+
+    function CancelOrder(id) {
+        data = {
+            OrderID: id
+        }
+        console.log(data);
+        $.ajax({
+            url: GetUrl('@res.Pageviews.UrlCancelOrder'),
+            data: data,
+            traditional: true,
+            success: function (data) {
+                window.location = GetUrl('@res.Pageviews.UrlOrderList');
+            },
+            error: function () {
+            },
+            type: "POST"
+        });
+        return false;
+    }
+</script>

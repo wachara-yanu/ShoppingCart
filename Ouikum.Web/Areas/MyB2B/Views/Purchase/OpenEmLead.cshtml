@@ -1,0 +1,200 @@
+﻿@{
+    ViewBag.Title = "Default Lead Detail";
+    Layout = "~/Views/MP/MP_PurchasingCenter.cshtml";
+}
+@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+
+@{ var EmLeads = (b2bEmLead)ViewBag.EmLeads;
+ 
+<div class="ContentAdmin">
+    <div id="autoHeight" class="fl_l" style="width:100%">  
+<div class="clean20"></div>
+        <div id="moreCompany" class="hide">
+        @Html.Partial("UC/SearchForEmLead")
+        </div>
+
+        @using (Ajax.BeginForm("UpdateEmLead", "Purchase", new AjaxOptions { HttpMethod = "Post", OnSuccess = "displaySuccess" }))
+        { 
+            <ul class="nav nav-tabs" id="myTab">
+                <span class="fl_r">
+                    <button type="submit" class="btn btn-danger btnSaveEmLead mar_r2" onclick="CheckCompanyList()">@res.Common.btnSave_en</button>
+                    @*<button class="btn btnDraft mar_r2" disabled="disabled">@res.Message_Center.btnDraft</button>*@
+                    <button type="button" class="btn mar_r2" onclick="reload()">@res.Common.btnCancel</button>
+                </span>
+                <li class="active"><a href="#Lead" data-toggle="tab">@EmLeads.EmLeadCode</a></li>
+
+            </ul>
+            <div class="tab-content CreateLeadContent padd_30">
+                <div class="tab-pane active" id="Lead">
+                    <div class="container" style="width:100%;">
+                        <div class="row">
+                           <div class="span5">
+                           @if (ViewBag.actionEmLead != 0)
+                           { 
+                                <a href="#" class="fontOrange" id="addMoreCompany">+@res.Purchasing.lblAddMoreCompany</a>
+                                <div class="clean10"></div>
+                           }
+                         
+                            <input type="hidden" id="hidProductName" name="hidProductName" value="@EmLeads.EmLeadKeyword"/>
+                            <input type="hidden" id="hidCountCompLead" name="hidCountCompLead" value="@EmLeads.LeadCount"/>
+                            <span class="myvalidate fontRed" style="font-size:16px"></span>
+
+                                <table id="ListCompany" class="b2btable" style="width:100%;">
+                                <thead class="bgHeadTable">
+                                    <tr>
+                                        <th>#</th>
+                                        <th>@res.Common.lblComname_en</th>
+                                        <th></th>
+                               
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                @{ 
+                                    foreach (var it in (List<view_EmCompanyLead>)ViewBag.EmCompLeads)
+                                      {
+                                        <tr class="oldData">
+                                            <td class="RowNumber" style="color:#999"></td>
+                                            <td style="text-align:left;color:#999">@it.CompName</td>
+                                            <td>
+                                                <i class="icon-remove-sign cursor" id="i@(it.CompID)" onclick="if(confirm('ต้องการลบข้อมูลหรือไม่')){DeleteThisCompany($(this),@it.EmCompLeadID);}"></i>
+                                            </td>
+                                        </tr>
+                                      }
+                                   }
+                                </tbody>
+                            </table>
+                           
+                                <input type="hidden" name="hidAllSupplierCompID" id="hidAllSupplierCompID" />
+                                <input type="hidden" name="hidAttachEmailCompID" id="hidAttachEmailCompID" />
+                                <div class="clean20"></div>
+                           </div>
+
+                           <div class="span6">
+                                <div class="formPanel"> 
+                                <div class="overlap">@res.Purchasing.lblLeadOption</div>
+                                    <div id="leadForm" class="form-horizontal" style="width:400px;">
+                                        <div class="control-group">
+                                            <label class="control-label" for="inputLeadName">@res.Purchasing.lblLeadName : </label>
+                                            <div class="controls">
+                                                <input type="hidden" name="hidEmLeadID" value="@EmLeads.EmLeadID" />
+                                                <input type="text" id="inputLeadName" name="txtLeadName" value="@EmLeads.EmLeadName">
+                                            </div>
+                                    
+
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="inputKeyword">@res.Common.lblKeyword_en : </label>
+                                            <div class="controls">
+                                                <textarea id="inputKeyword" rows="3" name="txtKeyword">@EmLeads.EmLeadKeyword</textarea>
+                                            </div>
+                                        </div>
+                                        <div class="control-group">
+                                            <label class="control-label" for="inputRemark">@res.Common.lblRemark : </label>
+                                            <div class="controls">
+                                                <textarea id="inputRemark" rows="3" name="txtRemark">@EmLeads.Remark</textarea>
+                                            </div>
+                                        </div>
+
+                                    </div>
+                                </div>
+                            </div>
+
+                         </div>
+
+                      </div>
+
+                   </div>
+            
+            </div>
+            <div class="clean20"></div>
+            <span class="fl_l">
+                <button type="submit" class="btn btn-danger btnSaveEmLead mar_r2" onclick="CheckCompanyList()">@res.Common.btnSave_en</button>
+                @*<button class="btn btnDraft mar_r2" disabled="disabled">@res.Message_Center.btnDraft</button>*@
+                <button type="button" class="btn mar_r2" onclick="reload()">@res.Common.btnCancel</button>
+            </span>
+        }
+        <div class="clean30"></div>
+    </div>
+</div>
+    }
+
+@section js{
+<script type="text/javascript">
+
+    $("#addMoreCompany").click(function () {
+        if ($("#moreCompany").hasClass('hide') == true) {
+        $("#auroHeight").slideDown(function () {
+            $("#sidebar").height($("#auroHeight").height());
+            $("#main").height($("#auroHeight").height());
+        });
+            $("#moreCompany").show("slow");
+            $("#moreCompany").removeClass('hide');
+            var text = $("#inputKeyword").val()
+            $("#TextSearch").val(text);
+            $("#form0").submit();
+
+        } else {
+
+            $("#moreCompany").slideUp(function () {
+                $("#sidebar").height($("#auroHeight").height());
+                $("#main").height($("#auroHeight").height());
+            });
+            $("#moreCompany").addClass('hide');
+        }
+    });
+
+    $(function () {
+
+        var count = ManageSequenceNumber();
+        $("#hidCountCompLead").val(count);
+
+        $('#form1').validate(
+             {
+                 rules: {
+                     txtLeadName: {
+                         minlength: 4,
+                         required: true
+                     },
+                     txtKeyword: {
+                         required: true
+                     }
+                 },
+                 highlight: function (label) {
+                     $(label).closest('.control-group').removeClass('success');
+                     $(label).closest('.control-group').addClass('error');
+                 },
+                 success: function (label) {
+                     label.closest('.control-group').removeClass('error');
+                     label.closest('.control-group').addClass('success');
+
+                 }
+             });
+
+    });
+
+    function reload()
+    {
+        document.location.reload(true);
+    }
+
+    function DeleteThisCompany(Obj,EmCompLeadID) {
+        $.ajax({
+            url: GetUrl('@res.Pageviews.UrlDelEmCompLead'),
+            type: "POST",
+            data: { EmCompLeadID: EmCompLeadID },
+            success: function () {
+                bootbox.alert(label.vlddel_success);
+                Obj.parent().parent().remove();
+
+                var count = ManageSequenceNumber();
+                $("#hidCountCompLead").val(count);
+            },
+            error: function () {
+                bootbox.alert("Can not delete this company!");
+            }
+        });
+    }
+</script>
+}
+

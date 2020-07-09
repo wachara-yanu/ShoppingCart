@@ -1,0 +1,188 @@
+﻿@using Ouikum;
+@using Ouikum.Common;
+@using res = Prosoft.Resource.Web.Ouikum;
+<div class="clean20"></div>
+    <div class="mar_t20 font_18 mar_rl10">
+        @if (ViewBag.ProductDetail != null)
+        {
+            var item = (view_Product)ViewBag.ProductDetail;
+            @*<a href="@Url.Content(res.Pageviews.PvProductDetail + @item.ProductID + "/" + @Url.ReplaceUrl(@item.ProductName))">@res.Common.btnBack</a>*@
+         
+        }
+                   
+        <p class="fl_r">@res.Quotation.lblQuotation</p>
+    </div>
+<div class="clean20"></div>
+<form id="RequestPrice_form" class="form-horizontal mar_rl10" action="@Url.Action("RequestPrice","Quotation",new{area="MyB2B"})" method="post" style="border:none;padding:0px">
+        <div class="row-fluid">
+            <!------Left Content------>
+            @if (ViewBag.ProductDetail != null)
+            {
+                var item = (view_Product)ViewBag.ProductDetail;
+                var user = (Ouikum.Company.UserStatusModel)ViewBag.UserStatus;
+                <div class="span12 center">
+                <input id="ProductID" type="hidden" value="@item.ProductID" name="ProductID" />
+                <input id="CompID" type="hidden" value="@item.CompID" name="ToCompID" />
+                <input id="ProductCompName" type="hidden" value="@item.CompName" name="CompName" />
+                <input type=hidden value="@item.ProductName" id="ProductName" />
+                <input type=hidden value="@Url.ReplaceUrl(item.ProductName)" id="ProNameUrl" />
+                @if (!string.IsNullOrEmpty(item.ProductImgPath))
+                {
+                    <text><img  alt="@item.ProductName" title="@item.ProductName"  src="@Url.Product(item.CompID, item.ProductID, item.ProductImgPath)" class="img-polaroid" onload="resizeImg_mobile($(this),50,50); "  /></text>
+                }
+                else
+                { 
+                    <text><img  alt="@item.ProductName" title="@item.ProductName"  src="@Url.NoImage()" class="img-polaroid" width="150px" height="150px"/></text>
+                }    
+                <div class="clean20"></div>
+                <div class="span12 center">
+                    @{string ProductName = (string)item.ProductName; string Name = "";
+                      if (ProductName.Length > 25)
+                      {
+                          Name = ProductName.Substring(0, 25) + "..";
+                      }
+                      else
+                      {
+                          Name = item.ProductName;
+                      } 
+                    }
+                    <a href="@Url.Action("Detail","Product",new{ id =  @item.ProductID , name = @Url.ReplaceUrl(@item.ProductName).Trim(), area ="Search"})"><h1 class="font_xl b" style="line-height:5px" title="@item.ProductName" >@Name</h1></a>
+                </div>
+                </div>   
+                <div class="clean20"></div>
+                <div class="control-group">
+                    <label class="control-label font_xxl">@res.Common.lblQty:</label>
+                    <div class="controls">
+                        <input type="number" min="1" name="Qty"  id="Qty" class="span12" style="margin:0; height :auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;"  value="1" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl">@res.Common.lblUnit_th:</label>
+                    <div class="controls">
+                        <select class="font_xxl span12" style="height:40px;padding: 10px;font-size: 18px;line-height: 1.33;" id="QtyUnit" name="QtyUnit" onchange="selectedQtyUnit();">
+                            @foreach (var Qty in ViewBag.QtyUnits)
+                            {
+                                    <option value="@Qty.EnumText">@Qty.EnumText</option> 
+                            }
+		                </select>
+                        <div class="QtyOther fl_l" style="width:85px;display:none">
+                            <input type="text" name="QtyOther"  id="QtyOther" class="fl_l" style="width:85px" />
+                        </div>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl">@res.Common.lblRemark_th:</label>
+                    <div class="controls">
+                        <textarea rows="3"  id="Remark" name="Remark" class="span12" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33"></textarea>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl">@res.Common.lblComname:</label>
+                    <div class="controls">
+                        <input id="FromCompID" name="FromCompID" type="hidden" value="@user.CompID" />
+                        <input type="text" id="CompName" class="fl_l span12" name="CompanyName" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;"/>
+                        <span onclick="NonSpecificEmail();" id="SpecificEmail" class="btn span12" style="height:45px;font-size:18px;margin-left:0px;margin-top:10px">@res.Common.lblNonSpecific</span>
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl">@res.Common.lblFirstName:</label>
+                    <div class="controls">
+                         <input type="text" id="FirstName" class="span12" name="ReqFirstName" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl" for="Tel">@res.Common.lblPhone:</label>
+                    <div class="controls">
+                        <input type="text" id="Tel" class="span12" name="ReqPhone" maxlength="15" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl" for="Email">@res.Common.lblEmail:</label>
+                    <div class="controls">
+                        <input type="text" id="Email" class="span12" name="ReqEmail" maxlength="50" style="height:auto;padding: 10px 16px;font-size: 18px;line-height: 1.33;" />
+                    </div>
+                </div>
+                <div class="control-group">
+                    <label class="control-label font_xxl"></label>
+                    <div class="controls">
+                        <label class="checkbox font_xxl">
+                            <input type="checkbox"  name="IsPublic" id="IsPublic" checked="checked" />@res.Quotation.lblReqPublic 
+                        </label>
+                    </div>
+                </div>
+                <div class="divRow">
+                    <center>
+                    <div class="alert" style="margin: 0px;">@res.Quotation.lblRqsWorn</div>
+                    <div class="clean20"></div>
+                    </center>
+                </div>
+                <div class="clean20"></div>
+                <button class="btn btn-darkblue span12 mar_b10" id="btnSend"  type="submit" style="height:45px;font-size:18px;">@res.Product.btnRequestPrice fffff</button>
+                <button class="btn span12" type="reset" style="height:45px;font-size:18px;">@res.Common.btnCancel</button>
+            }
+        </div>
+</form>
+<script type="text/javascript">
+    function NonSpecificEmail() {
+        $('#CompName').attr('disabled', 'disabled').val("@MvcHtmlString.Create(res.Common.lblNonSpecific)" + "@MvcHtmlString.Create(res.Company.lblCompName)");
+        $('#SpecificEmail').attr('onclick', 'SpecificEmail();').text("@MvcHtmlString.Create(res.Common.lblspecific)");
+        $("#CompName").closest('.control-group').addClass('success').removeClass('error');
+    }
+    function SpecificEmail() {
+        $('#CompName').removeAttr('disabled', 'disabled').val('');
+        $('#SpecificEmail').attr('onclick', 'NonSpecificEmail();').text("@MvcHtmlString.Create(res.Common.lblNonSpecific)");
+        $("#CompName").closest('.control-group').removeClass('success').addClass('error');
+    }
+    $('#Province').change(function () {
+        $.ajax({
+            url: GetUrl("Default/GetDistrict"),
+            data: { id: $('#Province option:selected').val() },
+            success: function (data) {
+                console.log(data);
+                $('#District').html(data);
+            },
+            error: function () {
+                bootbox.alert(label.vldcannot_check_info);
+            },
+            type: "POST"
+        });
+        return false;
+    });
+    $(".icon_quo_up").live('click', function () {
+        var input = $(this).parent().parent().find("input[type=text]:eq(0)");
+        if (input.val() == "") {
+            input.val(1)
+        } else {
+            input.val(parseFloat(eval(input.val()) + 1).toFixed(2))
+        }
+    });
+    $(".icon_quo_down").live('click', function () {
+        var input = $(this).parent().parent().find("input[type=text]:eq(0)");
+        if (input.val() == "") {
+            bootbox.alert(label.vldcannot_insert_zero);
+        } else {
+            if (parseFloat(input.val()) > 0) {
+                input.val(parseFloat(eval(input.val()) - 1).toFixed(2))
+            }
+        }
+    });
+    function selectedQtyUnit() {
+        var unit = $('#QtyUnit option:selected').text();
+        $("#QtyUnitFirst").text(unit);
+
+        if ($('#QtyUnit option:selected').val() == '@MvcHtmlString.Create(res.Common.lblOther)' ) {
+            $('#QtyUnit').css('display', 'none');
+            $('.QtyOther').slideDown();
+        }
+    }
+    $('.QtyOther').live('blur', function () {
+        var unit = $('#QtyOther').val();
+        if (unit != "") {
+            $('#QtyUnit').append("<option value='" + unit + "' selected='selected'>" + unit + "</option>");
+            $("#QtyUnitFirst").text(unit);
+        }
+        $('.QtyOther').hide();
+        $('#QtyUnit').css('display', 'inline');
+    });
+
+</script>

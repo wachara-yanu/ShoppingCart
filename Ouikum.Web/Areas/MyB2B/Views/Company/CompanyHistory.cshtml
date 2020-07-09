@@ -1,0 +1,245 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@using Ouikum;
+@{
+    ViewBag.Title = @res.Company.lblCompHistory;
+    Layout = "~/Views/MP/MP_Company.cshtml";
+}
+@{ var Companies = (view_Company)ViewBag.Companies; }
+
+@section head{
+    <link href="~/Content/CompanyWeb/WebsiteStyle.css" rel="stylesheet" />
+} 
+
+<form id="CompHistory_form" class="form-horizontal" action="" method="post" style="margin-bottom:0px;">
+    <!--Sidebar content-->
+    <div style="margin-top:25px;">
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ข้อมูลประวัติบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_his">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit1">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!--------------------------------btn edit&save (ตัวบน) -------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideTop" id="btn_cancle">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideTop" id="btn_save">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="company_his" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group" id="group1">
+                    <label class="control-label-Comp" for="CompHistory">@res.Company.lblCompHistory :</label>
+                    <div class="controls-Comp CompHistory">
+                        <label id="lblCompHistory" class="control-label show show1" for="CompHistory" style="text-align:left;max-height:300px;width:80%; overflow:auto;">
+                            @if (Companies.CompHistory != null && Companies.CompHistory != "")
+                            {
+                                @Html.Raw(Companies.CompHistory)
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <div class="hide hide1">
+                            <textarea id="CompHistory" rows="5"  class="span9">@Companies.CompHistory</textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="clean20"></div>
+
+        <div class="data_system BottomRadius">
+            <div class="header_sys">
+                <div class="fl_l">
+                    <h5 class="mar_l20">ผู้ก่อตั้งและเจ้าของบริษัท</h5>
+                </div>
+                <div class="fl_r">
+                    <div class="btn_arrow-up btnCollapse"  data-toggle="tooltip"  data-target="#company_his2">
+                        <i class="icon-arrow icon-chevron-up" style="margin-top:10px;"title="ซ่อน"></i>
+                    </div>
+                    <div class="blog-edit" id="edit2">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u202.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">แก้ไข</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-----------------------------------btn edit&save (ตัวล่าง)------------------------------------------------->
+                <div class="fl_r">
+                    <div class="blog-cancle hide hideButtom" id="btn_cancle2">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u188.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">ยกเลิก</span>
+                        </div>
+                    </div>
+                    <div class="blog-saveSet hide hideButtom" id="btn_save2">
+                        <div style="float:left; margin-left:10px;">
+                            <img src="~/Content/CompanyWeb/images/h2_u192.png" style="padding-top:10px;" />
+                        </div>
+                        <div style="float:left; line-height:36px; margin-left:5px;">
+                            <span class="fontsize14" style="color:#666666;">บันทึก</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div id="company_his2" class="CollapseDetail">
+                <div class="clean10"></div>
+                <div class="control-group">
+                    <label class="control-label" for="">@res.Company.lblFounder :</label>
+                    <div class="controls CompFounder"> 
+                        <label id="lblCompFounder" class="control-label show show2" for="CompFounder" style="text-align:left;min-width:300px">
+                            @if (Companies.CompFounder != null && Companies.CompFounder != "")
+                            {
+                                @Companies.CompFounder
+                            }
+                            else
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text"  name="CompFounder" id="CompFounder" placeholder="Company Founder" class="span4 hide hide2" value="@Companies.CompFounder"/>  
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Owner">@res.Company.lblOwner :</label>
+                    <div class="controls CompOwner">
+                        <label id="lblCompOwner" class="control-label show show2" for="CompOwner" style="text-align:left;min-width:300px">
+                            @if (Companies.CompOwner != null && Companies.CompOwner != "")
+                            {
+                                @Companies.CompOwner
+                            }
+                            else 
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text" name="CompOwner" id="CompOwner" placeholder="Company Owner" class="span4 hide hide2" value="@Companies.CompOwner"/> 
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="PostalCode">@res.Company.lblYear_Est :</label>
+                    <div class="controls YearEstablished">
+                        <label id="lblYearEstablished" class="control-label show show2" for="YearEstablished" style="text-align:left;">
+                            @if (Companies.YearEstablished != null && Companies.YearEstablished != "")
+                            {
+                                @(Companies.YearEstablished)
+                            }
+                            else 
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text" name="YearEstablished" id="YearEstablished" placeholder="Year Established" class="span4 hide hide2" value="@Companies.YearEstablished"/>
+                    </div>
+                </div>
+
+                <div class="control-group">
+                    <label class="control-label" for="Email">@res.Company.lblNum_Emp :</label>
+                    <div class="controls EmployeeCount">
+                        <label id="lblEmployeeCount" class="control-label show show2" for="EmployeeCount" style="text-align:left;">
+                            @if (Companies.EmployeeCount != null && Companies.EmployeeCount != "")
+                            {
+                                @Companies.EmployeeCount
+                            }
+                            else 
+                            { 
+                                <text>-</text>
+                            }
+                        </label>
+                        <input type="text" name="EmployeeCount" id="EmployeeCount" placeholder="Number of employees" class="span4 hide hide2" value="@Companies.EmployeeCount"/>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="clean20"></div>
+
+    <div class="control-group">
+        <div class="controls" style="margin-left:0 !important;">
+            <div class="edit btn_editBlue show cursor" id="editAll"  style="width:150px">
+                <span class="fl_l icon_btn_edit mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r10">
+                    <p style="line-height:5px;">แก้ไขข้อมูลทั้งหมด</p>
+                </span>
+            </div>
+            <div id="submitAll" class="btn_saveGreen hide cursor">
+                <span class="fl_l icon_btn_save mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r30">
+                    <p style="line-height:5px;">@res.Common.btnSave</p>
+                </span>
+            </div>
+            <div id="cancelAll" class="btn_calcelGray mar_l20 hide cursor">
+                <span class="fl_l icon_btn_cancel mar_l10 mar_t5"></span>
+                <span class="fl_r mar_t13 mar_r30">
+                    <p style="line-height:5px;">@res.Common.btnCancel</p>
+                </span>
+            </div>
+        </div>
+    </div>
+</form>
+
+@section js{
+<script src="@Url.js("MyB2B/Company/CompHistory.js")" type="text/javascript"></script>
+<script type="text/javascript">
+
+    /*--------------------- toggle -------------------*/
+
+    $(".btnCollapse").live('click', function () {
+        var data = $(this).index(".btnCollapse");
+        var Icon = $(this).find("i")
+
+        var target = $(this).attr('data-target');
+
+        console.log(target)
+
+        if (Icon.hasClass("icon-chevron-down")) {
+            Icon.removeClass('icon-chevron-down');
+            Icon.addClass("icon-chevron-up")
+            $(target).slideDown();
+        } else {
+            Icon.addClass("icon-chevron-down")
+            Icon.removeClass('icon-chevron-up');
+            $(target).slideUp();
+        }
+    });
+
+    </script>
+}
+

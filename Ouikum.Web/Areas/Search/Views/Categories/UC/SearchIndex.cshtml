@@ -1,0 +1,76 @@
+﻿@using Ouikum;
+@using Ouikum.Category;
+@using res = Prosoft.Resource.Web.Ouikum;
+@using System.Text.RegularExpressions;
+@{
+    var svCategory = new CategoryService();
+    var index = ViewBag.Prefix;
+}
+
+<article class="module index">
+    @{if (ViewBag.TotalRow != 0)
+      {
+          <div class="mar_l20 mar_t10 mar_b10 cursor inline">
+              <img src="@Url.css("Search/images/img_hidden.png")" id="hide" title="Hide" class="imgHide" onclick="hideArticle($(this));" />
+              <img src="@Url.css("Search/images/img_show.png")" id="show" title="Show" class="imgShow hide" onclick="showArticle($(this));" />
+          </div>
+          <div class="inline" style="font-size:16px;font-weight:bold"> @index</div>
+          <div class="clean10"></div>
+          <div class="content"> 
+            @foreach (var it in (List<b2bCategory>)ViewBag.Categories)
+            {
+                <div class="mar_l40" style="width:345px;display:inline-table" >
+                        @{string url = res.Pageviews.PvSearchProductCategory; 
+                          //if (Prosoft.Base.Base.AppLang == "en-US") { url = Regex.Replace(url, "~/", "~/en/"); }
+                          //  else { url = res.Pageviews.PvSearchProductCategory; }
+                        }
+                    <div><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor"><b>@it.CategoryName (@(string.Format("{0:0,0}", it.ProductCount)))</b></a></div>
+                    @{
+                          var SQLSelect_list = "";
+                          //if (Prosoft.Base.Base.AppLang == "en-US")
+                          //{ SQLSelect_list = "* ,CategoryNameEng AS CategoryName"; }
+                          //else
+                          //{ SQLSelect_list = "*"; }
+                          SQLSelect_list = "*";
+                        var Cate = svCategory.SelectData<b2bCategory>(SQLSelect_list, "CategoryLevel = 2 AND ProductCount > 0 AND ParentCategoryID = " + it.CategoryID, "CategoryName");
+                        ViewBag.Cate = Cate;
+                        int i = 1;
+                    }
+                    <ul class="listCate">
+                    @foreach (var cate in (List<b2bCategory>)ViewBag.Cate)
+                    {
+                        if (i > 8)
+                        {
+                                <div class="content1 hide"><li><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor">@cate.CategoryName (@cate.ProductCount)</a></li></div>
+                                        
+                        }
+                        else if (i <= 8)
+                        {
+                                <li><a href="@Url.Content(url + it.CategoryID + "/" + it.CategoryLevel + "/" + Url.ReplaceUrl(it.CategoryName))" target="_blank" class="cursor">@cate.CategoryName (@(string.Format("{0:0,0}", cate.ProductCount)))</a></li>
+                        }
+                        i++;
+                    }
+                    <div>
+                        @if (i > 8)
+                        {
+                            <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1" onclick="showIndex($(this));" />
+                            <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                        }
+                        else
+                        {
+                            <img src="@Url.css("Search/images/img_show1.png")" title="Show"  class="cursor imgShow1 hide" onclick="showIndex($(this));" />
+                            <img src="@Url.css("Search/images/img_hidden1.png")" title="Hide"  class="cursor imgHide1 hide" onclick="hideIndex($(this));" />
+                        }
+                    </div>
+                    </ul>
+                    <div class="clean20"></div>
+                </div>
+            }
+        </div>
+      }
+      else
+      {
+        <div class="mar_b20 mar_t20 center"><b>@res.Product.lblNotfoundCate</b></div>
+      }
+    }
+</article>

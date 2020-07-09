@@ -1,0 +1,88 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum;
+@{
+    ViewBag.Title = @res.Common.lblSign_in;
+    Layout = "~/Views/MP/MP_Default.cshtml";
+    bool isRemember = (bool?)ViewBag.IsRemember ?? false;
+}
+
+@section head{
+<link href="@Url.css("UC/CaptchaUC/CaptchaUC.css")" rel="stylesheet" type="text/css" />
+}
+
+<div class="row" style="padding-top: 60px;">
+<div class="container mar_b50" style="width:1248px;"> 
+  <div class="row">
+    <div class="span6" style="margin-left:13%">
+   <div class="containner" >
+       <div class="row" style="border:1px solid #CCC;width:400px;height:450px;padding:30px;">
+       <p class="lead mar_l20">@res.Common.lblWebsiteStore
+       </p>
+       <div class="mar_b30"></div>
+            <img src="@Url.css("Home/images/img_B2BThaistore.gif")" style=" width:300px; height:250px; margin-left:50px;" />
+            <div class="mar_t30 mar_l20">
+            <h5>@res.Common.lblMTE</h5>
+            <p>@res.Common.lblTeamFullSupport</p>
+            <div class="mar_b20"></div>
+            <a href="@Url.Action("SignUp","Member")" class="btn btn-darkblue" style="position:relative"><span class="icon_b2b" style="position:absolute;top:2px;left:2px;"></span><span class="mar_l20">| @res.Common.lblConnectWebsite</span></a>
+            </div>
+        </div>
+    </div>
+  </div>
+      <div class="span5 mar_l50"> 
+      <form id="login_form" class="form-horizontal" action="" method="post">
+      <div class="control-group">
+      
+         @*<p class="clean10"></p>*@
+       <a href="@Url.Action("Index","Home")"><div class="B2BLogo fl_l"></div></a>
+        <p class="clean20"></p>
+          <input type="text"  name="UserName" id="UserName" placeholder=" Username" class="span4" value="@ViewBag.UserName" />
+      
+      </div>
+      <div class="control-group">
+          <input type="Password" name="Password" id="Password" placeholder="Password" class="span4" value="@ViewBag.Password" />
+      </div>
+      <div class="control-group">
+          <input type="text" name="CompCode" id="CompCode" placeholder="Admin Code" class="span4" value="" />
+      </div>
+         <div class="ui-widget" id="validateError" style="display:none;width:370px;">
+              <div class="ui-state-error ui-corner-all">
+                <p id="LoginError"></p>
+              </div>
+        </div>
+       <label class="checkbox inline" style="cursor:pointer;">
+              <input type="checkbox" id="RememberUser" value="@isRemember" @(isRemember == true ? "checked==\"checked\"" : "")  />@*@res.Member.lblKeep_me*@ @res.Common.lblRememLogIn
+            </label>
+      <div>
+          <button type="button" id="login" class="btn btn-primary offset mar_t30" data-loading-text="Loading...">@res.Common.lblSign_in</button>
+      </div>
+  </form>
+    </div>
+</div>
+</div>
+<div style="width:1248px;margin: 0 auto;">
+<div class="footer mar_t50"style="width:90%;margin: 0 auto;border-top:1px solid #999;">
+    <div class="mar_t10">
+        <span style="color:#999;margin-right:10px;">@("@")2012 @res.Common.lblWebsite</span>
+        <span style="margin:0px 10px 0px 10px;">@res.Common.lblAbount_us</span>
+        <span style="margin:0px 10px 0px 10px;">@res.Common.lblOtherService   </span>
+        <span style="margin:0px 10px 0px 10px;">@res.Common.lblHelp</span>
+        <span style="margin:0px 10px 0px 10px;">@res.Common.lblSupport</span>
+    </div>
+</div>
+</div>
+</div>
+<div class="modal hide fade custom-size" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+  <div class="modal-header">
+    <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3>@*@res.Common.lblSige_up*@ @res.Common.lblSignUpWithOtherAccount</h3>
+  </div>
+  <div class="modal-body">  
+        @Html.Partial("Member/SignUp/SignUpWithOtherAccount")
+  </div>
+</div>
+@section js{
+<script type="text/javascript" src="@Url.js("Bootstrap/bootstrapx-clickover.js")"></script> 
+<script type="text/javascript" src="@Url.js("Admin/User/SignInOutsource.js")"></script> 
+
+}
+

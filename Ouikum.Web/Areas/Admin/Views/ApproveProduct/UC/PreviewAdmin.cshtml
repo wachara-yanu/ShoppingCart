@@ -1,0 +1,48 @@
+﻿
+@using res = Prosoft.Resource.Web.Ouikum
+@using Ouikum;
+@{
+    var Company = (view_Company)ViewBag.Company;
+}
+
+    <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-hidden="true">×</button>
+    <h3 >@res.Company.lblAccountData</h3>
+    </div>
+    <div class="modal-body">
+        @if (Company != null)
+        {
+            var ddlAdminType = (List<view_EnumData>)ViewBag.ddlAdminType;
+            <p >  @res.Company.lblCompName : @Company.CompName </p>
+            <p >  @res.Company.lblName : @Company.ContactFirstName @Company.ContactLastName </p> 
+            <p >  @res.Common.lblAddress : @Company.CompAddrLine1 @Company.ProvinceName </p> 
+            <p >   @res.Admin.lblAdminCode : @Company.CompCode </p>
+            <p >  @res.Admin.lblAdminType : 
+                @if (ddlAdminType != null && ddlAdminType.Count() > 0)
+                {
+                    string type = Company.ServiceType+"";
+                    foreach (var item in ddlAdminType)
+                    {
+                        if (item.EnumValue == type) 
+                        {
+                              @item.EnumText ;
+                        }
+                            
+                    } 
+                }
+             </p>  
+        }
+        else
+        {
+            <center>@res.Common.lblNotFound</center>
+        }
+    </div>  
+    <script type="text/javascript">
+
+        $(function () {
+            $('#PreviewAdminModal').on('hidden', function () {
+                // do something… 
+                $('#PreviewAdminModal').html('');
+            })
+        });
+    </script>

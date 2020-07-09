@@ -1,0 +1,95 @@
+﻿@using res = Prosoft.Resource.Web.Ouikum
+@{
+    ViewBag.Title = res.Product.lblApproveProduct;
+    Layout = "~/Views/MP/MP_Administrator.cshtml";
+}
+@section head{
+
+    <link href="@Url.css("UC/DatepickerUC/datepicker.css")" rel="stylesheet" type="text/css" />  
+    <link href="@Url.css("UC/DatePeriodUC/ui.daterangepicker.css")" rel="stylesheet" type="text/css" />
+}
+
+<div id="autoHeight" class="ContentAdmin" style="margin-top: -5px;">
+<div class="clean30"></div>
+@Html.Partial("Admin/WelcomeMessage")
+<!-------------------------Main Menu---------------------------->
+@*@Html.Partial("Admin/ApproveCenterMainMenu")*@
+<!---------------------------Table------------------------------>
+<div id="main_content" style="margin:0px 10px 10px 10px;">
+@using (Ajax.BeginForm(new AjaxOptions { HttpMethod = "Post", OnSuccess = "GridSuccess" }))
+{  
+    <input type="hidden" id="hidUrlApprove" value="Admin/ApproveProduct/Approve" />
+    <input type="hidden" id="hidUrlReject" value="Admin/ApproveProduct/Reject" />
+    <input type="hidden" id="hidUrlDelete" value="Admin/ApproveProduct/Delete" />
+    @Html.Partial("UC/SearchForm")
+    
+<div style="margin:10px 10px 10px 0px;">
+    <span class="btnCheckAll mar_r7">
+        <label class="checkbox checkall inline">
+            <input type="checkbox" onclick="CheckBoxall($(this))"/> @res.Common.btnSelect
+        </label>
+    </span>   
+    <button id="btnApproveAll" class="btn " type="button" style="margin:2px;">@res.Admin.lblApprove</button>
+    <button id="btnRejectAll" class="btn" rel="popover" type="button">@res.Admin.lblReject <span class="caret"></span></button> 
+</div>
+
+    <div id="ApproveGrid" style="width:100.5%">@Html.Partial("UC/Grid/GridUC")</div>
+<div class="clean50"></div>
+}
+</div>
+
+@Html.Partial("UC/RejectModal") 
+
+<div id="PreviewAdminModal" class="modal hide fade" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+</div>
+
+</div>
+@section js{
+
+<script src="@Url.js("UC/DatePeriodUC/date.js")" type="text/javascript"></script>
+<script src="@Url.js("UC/DatePeriodUC/daterangepicker.jQuery.js")" type="text/javascript"></script> 
+
+<script src="@Url.js("Admin/Approve.js")" type="text/javascript" charset="UTF-8"></script>
+
+<script type="text/javascript">
+    $(function () {
+        ActiveMenu(1);
+        $('.rangeA').daterangepicker();
+    });
+
+    function CheckBoxall(Obj) {
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            $(".cbxCompID").attr("checked", "checked");
+            $(".cbxCompID").attr("value", "true");
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+            $("#btnApproveAll").addClass("checkNow");
+            $("#btnRejectAll").addClass("checkNow");
+
+        } else {
+            $(".cbxCompID").removeAttr("checked");
+            $(".cbxCompID").attr("value", "false");
+            $("#btnApproveAll").removeClass("checkNow");
+            $("#btnRejectAll").removeClass("checkNow");
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+        }
+
+    }
+    function CheckBox(Obj) {
+
+        if (Obj.attr("value") == true || Obj.attr("checked") == "checked") {
+            Obj.attr("checked", "checked");
+            Obj.attr("value", "true");
+            $("#btnApproveAll").addClass("checkNow");
+            $("#btnRejectAll").addClass("checkNow");
+
+        } else {
+            Obj.removeAttr("checked");
+            Obj.attr("value", "false");
+            $("#btnApproveAll").removeClass("checkNow");
+            $("#btnRejectAll").removeClass("checkNow");
+        }
+    }
+</script>
+}

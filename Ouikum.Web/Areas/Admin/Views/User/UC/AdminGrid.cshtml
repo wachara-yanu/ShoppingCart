@@ -1,0 +1,128 @@
+﻿@using Ouikum;
+@using res = Prosoft.Resource.Web.Ouikum;
+     @{ string ListNoPath = "'Message/List/ChangeSatatus'";}
+            <table class="table table-hover grid mar_b10">
+              <thead class="">
+                <tr class="header">
+                   <th class="" style="width:20px;"><div class="">#</div></th>
+                  <th class="span1"><div class="">@res.Admin.lblUsername</div></th>
+                  <th class="span1"><div class="" style="min-width:100px;">@res.Admin.lblAdminCode</div></th>
+                  <th class="span2"><div style="min-width:85px;">@res.Common.lblFirstName - @res.Common.lblLastName</div></th> 
+                  <th class="span1"><div class="center" style="min-width:80px;">@res.Admin.lblAdminLevel</div></th>
+                  <th class="span1"><div class="center" style="min-width:110px;">@res.Company.lblRegisDate</div></th>
+                  <th class="span1"><div class="" style="min-width:60px;">@res.Common.colStatus</div></th>
+
+                  <th style="width:100px;"><div class=""></div></th>
+                </tr>
+              </thead>
+              <tbody>
+                @if (ViewBag.TotalPage <= 0 || ViewBag.TotalPage == null)
+                {
+                   <tr class="nodata b" valign="middle">
+                        <td><div align="center">@res.Common.lblNotFound</div></td>
+                   </tr>
+                }
+                else
+                {
+                    foreach (var item in (List<view_CompMember>)ViewBag.CompMembers)
+                    {
+                        int ID = (int)item.MemberWebID;
+
+                <tr class="body">
+                    <td style="vertical-align:middle;">
+                        <div  class="">
+                            <input type="hidden" id="MemberWeb_@{@ID}" class="hidPrimeID" value="@ID" />
+                             <input type="hidden" id="MemberID_@{@ID}" class="hidMemberID" value="@item.MemberID" />
+                            <input type="checkbox" class="cbxItem cbxCompID" value="@ID" id="@ID" onclick="CheckBox(@ID)" />
+                           <input type="hidden" class="hidRowVersion" value="@item.RowVersion" />
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                            @item.UserName
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                        @if (item.CompCode != null)
+                        {
+                            @item.CompCode
+                        }
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="">
+                           @item.FirstName&nbsp;&nbsp;@item.LastName
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="center">
+                        @if(item.ServiceType == 9){
+                            <text>Super Admin</text>
+                        }
+                        else if(item.ServiceType == 10){
+                            <text>User Admin</text>
+                        }
+                        else if(item.ServiceType == 11){
+                            <text>Article Admin</text>
+                        }
+                        else if(item.ServiceType == 12){
+                            <text>Product Admin</text>
+                        }
+                        else if(item.ServiceType == 13){
+                            <text>Order Admin</text>
+                        }
+                        else if(item.ServiceType == 14){
+                            <text>Outsource</text>
+                        }
+                        else if(item.ServiceType == 15){
+                            <text>External Admin</text>
+                        }
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                        <div class="center"> 
+                        @{  var RegisDate = "";
+                            if (item.RegisDate != null)
+                            {
+                                RegisDate = (DateTime.Parse(item.RegisDate.ToString()).ToString("dd/MM/yyyy")).ToString();
+                            }
+                         }
+                           @RegisDate     
+                        </div>
+                    </td>
+                     <td style="vertical-align:middle;">
+                        <div class="">
+                        @{var text = ""; var text_status = "";} 
+                         @foreach (var it in ViewBag.ddlUserStatus)
+                         {
+                             if (item.CompRowFlag == DataManager.ConvertToShort(it.EnumValue))
+                             {
+                                 text = it.EnumText;
+                                 text_status = "text_" + it.EnumText;
+                             }
+                         }
+                               <text class="@text_status">@text</text>
+                        </div>
+                    </td>
+                    <td style="vertical-align:middle;">
+                    <div id="UserData_@{@ID}" class="center popover">
+                        <div class="divRow b mar_l22">@res.Common.lblEmail</div>
+                        <div class="center">
+                            <input class="mar_t10" type="text" id="Email_@{@ID}" name="Email" value="@item.Email" />
+                            <input type="button" class="btn" id="btnSendUserData" value="Send" onclick="sendUser(@ID);" />
+                            <input type="button" class="btn" id="close" value="Cancel" onclick="Close(@ID);" />
+                        </div>
+                    </div>
+                        <div class="center">
+                             <span id="sendUser_@{@ID}" class="btn tootip-top" rel="tootip" style="width:0px;height:16px;" title="@res.Common.btnSendMessage @res.Common.lblForSupplier" onclick="Popup(@ID);"><i class="icon-envelope cursor" style="margin-left:-7px;"></i></span>
+                             <a href="@Url.Action("EditAdmin","User",new{MemberWebID = @ID,area="Admin"})" target="_blank" class="btn tootip-top" rel="tootip" title="@res.Common.colEdit / @res.Common.lblDetail" style="width:0px;height:16px;"><i class="icon-edit mar_r10 cursor" style="margin-left:-7px;"></i></a>
+                             <span class="btn tootip-top" style="width:0px;height:16px;" rel="tootip" title="ลบ" onclick="if(confirm('@res.Common.btnDel_Confirm ?')){DelUSer(@ID,@item.MemberID,@item.RowVersion);}"><i class="icon-minus-sign cursor" style="margin-left:-7px;"></i></span>  
+                        </div>
+                    </td>
+                </tr>
+                    }
+                }
+              </tbody>
+            </table>
+@Html.Partial("UC/Grid/PagingPostUC")
